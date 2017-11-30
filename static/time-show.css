@@ -1,7 +1,56 @@
+html {
+    background-color: grey;
+}
+
+body {
+    color: white;
+    width: 60%;
+    margin: 0 auto;
+}
+
+header{
+    background-color: black;
+}
+
+header h1 {
+    text-align: center;
+}
+
+main {
+    width: 60%;
+    height: 100%;
+    position: absolute;
+}
+
 main::before {
     content: "";
     width: 10px;
     height: 100%;
-    background-color: grey;
+    background-color: black;
     position: absolute;
+    left: 30%;
+}
+
+article {
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+article::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.datetime {
+    padding: 0 5%;
+    float: left;
+    width: 20%;
+    text-align: right;
+}
+
+.mind {
+    padding: 0 10%;
+    float: right;
+    width: 50%;
 }
