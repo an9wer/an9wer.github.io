@@ -18,51 +18,16 @@
         </header>
 
         <main>
-            <article>
-                <section class="datetime">
-                    <time>2017-11-26</time>
-                </section>
-                <section class="mind">
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                    I'll get it.
-                </section>
-            </article>
-            <article>
-                <section class="datetime">
-                    <time>2017-11-30</time>
-                </section>
-                <section class="mind">
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                    demo it.
-                </section>
-            </article>
+            <template v-for="item in items">
+                <article>
+                    <section class="datetime">
+                        <time>{{ item.datetime }}</time>
+                    </section>
+                    <section class="mind">
+                        {{ item.mind }}
+                    </section>
+                </article>
+            </template>
         </main>
 
         <!-- footer -->
@@ -72,6 +37,16 @@
         <!-- scripts -->
         <script src="https://vuejs.org/js/vue.js"></script>
         <script>
+            var vm = new Vue({
+                el: "main",
+                data: {
+                    items: [
+                        { datetime: "2017-11-26", mind: "I'll get it" },
+                        { datetime: "2017-11-30", mind: "demo it."},
+                        { datetime: "2017-12-03", mind: "dame cool."},
+                    ]
+                }
+            })
         </script>
     </body>
 </html>
