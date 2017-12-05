@@ -10,6 +10,8 @@
 
         <link rel="stylesheet" href="./static/time-show.css">
 
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
         <!-- header -->
@@ -35,18 +37,34 @@
         </footer>
 
         <!-- scripts -->
-        <script src="https://vuejs.org/js/vue.js"></script>
         <script>
             var vm = new Vue({
                 el: "main",
                 data: {
-                    items: [
-                        { datetime: "2017-11-26", mind: "I'll get it" },
-                        { datetime: "2017-11-30", mind: "demo it."},
-                        { datetime: "2017-12-03", mind: "dame cool."},
-                    ]
-                }
+                    items: [],
+                },
             })
+            axios.get('/api/load/')
+                .then(function (response) {
+                    console.log(response.data.items);
+                    vm.items = vm.items.concat(response.data.items);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        window.onscroll = function(ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+                axios.get('/api/load/')
+                    .then(function (response) {
+                        console.log(response.data.items);
+                        vm.items = vm.items.concat(response.data.items);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            }
+        }
         </script>
     </body>
 </html>

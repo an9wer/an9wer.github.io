@@ -3,9 +3,11 @@ html {
 }
 
 body {
+    height: 1000px;
     color: white;
     width: 60%;
     margin: 0 auto;
+    overflow-y: scroll;
 }
 
 header{
@@ -17,9 +19,9 @@ header h1 {
 }
 
 main {
-    width: 60%;
-    height: 100%;
-    position: absolute;
+    width: 100%;
+    //min-height: 100%;
+    position: relative;
 }
 
 main::before {
