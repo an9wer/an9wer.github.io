@@ -18,6 +18,8 @@ def load():
             {"datetime": "2017-11-30", "mind": "demo it."},
             {"datetime": "2017-12-03", "mind": "dame cool."},
             {"datetime": "2017-12-05", "mind": "scroll to bottom load more"},
+            {"datetime": "2017-12-07", "mind": "css transition"},
+            {"datetime": "2017-12-08", "mind": "ease loading"}
         ]
     }
 
