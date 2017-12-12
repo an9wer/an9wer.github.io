@@ -1,16 +1,16 @@
-from bottle import (
-    Bottle, route, run, template, get, post, request, static_file)
+from bottle import Bottle, static_file
 
+app = Bottle()
 
-@route("/")
+@app.route("/")
 def index():
-    return static_file("time-show.html", root="./")
+    return static_file("timeshow.html", root="./timeshow/templates/")
 
-@route("/static/<path:path>")
+@app.route("/static/<path:path>")
 def static(path):
-    return static_file(path, root="./static/")
+    return static_file(path, root="./timeshow/static/")
 
-@route("/api/load/")
+@app.route("/api/load/")
 def load():
     return {
         "items": [
@@ -21,8 +21,6 @@ def load():
             {"datetime": "2017-12-07", "mind": "css transition"},
             {"datetime": "2017-12-08", "mind": "ease loading"},
             {"datetime": "2017-12-10", "mind": "transform"},
+            {"datetime": "2017-12-12", "mind": "reconstitute"},
         ]
     }
-
-if __name__ == "__main__":
-    run(host="0.0.0.0", port="8080", debug=True)
