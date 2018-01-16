@@ -20,7 +20,6 @@ def _generate_key(passwd=None):
         backend=default_backend(),
     )
 
-    passwd = "111"
     if not passwd:
         # get passwd from input
         passwd = getpass.getpass("password: ")
@@ -29,6 +28,7 @@ def _generate_key(passwd=None):
         passwd = bytes(passwd, encoding="utf-8")
 
     assert isinstance(passwd, bytes)
+
     key = base64.urlsafe_b64encode(kdf.derive(passwd))
     return key
 
@@ -41,19 +41,11 @@ class Engima:
         self._cipher = Fernet(key)
         del key
 
-    def __repr__(self):
-        return ""
-
     def encrypt(self, plaintext, encoding="utf-8"):
         if isinstance(plaintext, str):
             plaintext = bytes(plaintext, encoding)
         return self._cipher.encrypt(plaintext)
 
     def decrypt(self, ciphertext, encoding="utf-8"):
-        if isinstance(ciphertext, str):
-            ciphertext = bytes(ciphtertext, encoding)
-        return self._cipher.decrypt(ciphertext)
-
-
-if __name__ == "__main__":
-    pass
+        assert isinstance(ciphertext, bytes)
+        return str(self._cipher.decrypt(ciphertext), encoding)
