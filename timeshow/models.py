@@ -1,12 +1,10 @@
 import datetime
 import sqlite3
 
+from .config import CONFIG
 from .utils.crypto import Engima
 
-engima = Engima()
-
-#con = sqlite3.connect("timeshow.db", detect_types=sqlite3.PARSE_DECLTYPES)
-#cur = con.cursor()
+engima = Engima(CONFIG["app"]["secret_key"])
 
 def adapt_datetime(dt):
     """
@@ -22,8 +20,8 @@ def convert_datetime(ec_dt):
     under which data type you sent the value to SQLite. So we need to decode
     it here.
     """
-    dt = engima.decrypt(ec_dt)
-    return datetime.datetime.strptime(dt, "%Y-%m-%d %H:%M:%S.%f")
+    return datetime.datetime.strptime(engima.decrypt(ec_dt),
+                                      "%Y-%m-%d %H:%M:%S.%f")
 
 sqlite3.register_adapter(datetime.datetime, adapt_datetime)
 sqlite3.register_converter("datetime", convert_datetime)
@@ -43,3 +41,7 @@ def convert_text(ec_tt):
 
 sqlite3.register_adapter(str, adapt_text)
 sqlite3.register_converter("text", convert_text)
+
+#con = sqlite3.connect("timeshow.db", detect_types=sqlite3.PARSE_DECLTYPES)
+#cur = con.cursor()
+

@@ -1,10 +1,12 @@
 """ unit testing
 """
 
+from .config import CONFIG
+
 
 def test_crypto():
     from .utils.crypto import Engima
-    engima = Engima("passwd")
+    engima = Engima(CONFIG["app"]["secret_key"])
     text = "some text"
     ciphertext = engima.encrypt(text)
     assert isinstance(ciphertext, bytes)
@@ -16,12 +18,16 @@ def test_crypto():
 def test_models():
     import datetime
     from .models import sqlite3
-    con = sqlite3.connect("timeshow.db", detect_types=sqlite3.PARSE_DECLTYPES)
+    con = sqlite3.connect(":memory:", detect_types=sqlite3.PARSE_DECLTYPES)
     cur = con.cursor()
-    values = (datetime.datetime.now(), "whatever")
-    cur.execute("delete from timeshow")
+    cur.execute(
+        """CREATE table timeshow (
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
+             created DATETIME NOT NULL,
+             mind TEXT NOT NULL)"""
+    )
+    values = (datetime.datetime.now(), "some minds")
     cur.execute("insert into timeshow(created, mind) values(?, ?)", values)
-    con.commit()
     cur.execute("select created, mind from timeshow")
     assert cur.fetchone() == values
     con.close()

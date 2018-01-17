@@ -16,6 +16,6 @@
 
 ## TODO
 
--   config
+-   model class
 
 -   gevent
