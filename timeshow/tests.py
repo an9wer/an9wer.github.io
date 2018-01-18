@@ -33,6 +33,22 @@ def test_models():
     con.close()
 
 
+def test_new_models():
+    import datetime
+    from .models import TimeShow
+    ts = TimeShow("timeshow")
+    ts.drop_table()
+    ts.create_table()
+    value1 = (datetime.datetime.now(), "some minds")
+    value2 = (datetime.datetime.now(), "some other minds")
+    ts["new"] = value1
+    ts["new"] = value2
+    assert [value[1:] for value in ts["all"]] == [value1, value2]
+    del ts[1]
+    assert [value[1:] for value in ts["all"]] == [value2]
+
+
 if __name__ == "__main__":
-    test_crypto()
-    test_models()
+    #test_crypto()
+    #test_models()
+    test_new_models()
