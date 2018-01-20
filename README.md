@@ -16,6 +16,6 @@
 
 ## TODO
 
--   model class
+-   __getitem__ slice
 
 -   gevent

@@ -17,26 +17,8 @@ def test_crypto():
 
 def test_models():
     import datetime
-    from .models import sqlite3
-    con = sqlite3.connect(":memory:", detect_types=sqlite3.PARSE_DECLTYPES)
-    cur = con.cursor()
-    cur.execute(
-        """CREATE table timeshow (
-             id INTEGER PRIMARY KEY AUTOINCREMENT,
-             created DATETIME NOT NULL,
-             mind TEXT NOT NULL)"""
-    )
-    values = (datetime.datetime.now(), "some minds")
-    cur.execute("insert into timeshow(created, mind) values(?, ?)", values)
-    cur.execute("select created, mind from timeshow")
-    assert cur.fetchone() == values
-    con.close()
-
-
-def test_new_models():
-    import datetime
     from .models import TimeShow
-    ts = TimeShow("timeshow")
+    ts = TimeShow("test")
     ts.drop_table()
     ts.create_table()
     value1 = (datetime.datetime.now(), "some minds")
@@ -49,6 +31,5 @@ def test_new_models():
 
 
 if __name__ == "__main__":
-    #test_crypto()
-    #test_models()
-    test_new_models()
+    test_crypto()
+    test_models()
