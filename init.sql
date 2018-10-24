@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS timeshow;
-
-CREATE TABLE timeshow (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    created DATETIME NOT NULL,
-    mind TEXT NOT NULL
-);
