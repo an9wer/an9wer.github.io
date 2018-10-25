@@ -1,10 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../../../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="headerHolder">
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="../../../index.html">an9wer's blog</a></div>
+                <div id="signature">just stick to it :)</div>
+            </div>
+            <div id="headerRight">
+                <div id="avatar">
+                    <a href="https://github.com/an9wer" target="_blank"><img src="../../../statics/images/avatar.jpg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contentHolder">
+        <div id="title">记：这个博客的搭建</div>
+        <div id="content">
+<p>
 首先，今天日子不错（10.24），就把今天定为是这个博客的 birthday。
+</p>
 
+<p>
 这个博客的目的是记录一下平日的一些感想、笔记等。主要做个备忘，以后翻翻当初写下
 的东西，应该还挺有意思的。
+</p>
 
+<p>
 好了，讲一下今天的主题，这个博客是如何搭建的?
+</p>
 
+<p>
 其实早就有这个想法了，之前也有做实践，当时的构思是后台用 bottle，前台用 vue，数
 据库用 sqlite，并且数据库中所有数据做加密处理，因为数据库本身也不大，这样可以将
 整个数据库连同项目一起 commit 到 github 上，并且定时备份。照这个思路写了一段时
@@ -12,18 +45,24 @@
 ，自动加载下一页的数据。后来项目就太监了。主要是因为越写越觉得前端不是我的兴趣
 所在，js 特效和 css 样式的组合花样繁多，知识点太零碎，每次有问题 google 一下基
 本可以解决，但是不成体系。而且整这么花里胡哨干嘛呢，字符界面才是我的菜啊。
+</p>
 
+<p>
 后来项目就一直搁置了，但是最近搭博客的想法又冒出来了，因为平时总会瞎折腾，想着
 能不能把这些东西记录下来。这次我决定找个现成的方案，怎么简单怎么来。说实话，平
 时瞎看一些杂七杂八的东西也是挺有好处的，之前看 awesome bash 的时候看过过一个叫
 bashblog 的项目，当初只是简单看了一下介绍，好像是用来搭建博客的，于是这次找到这
 个项目的主页，仔细看了一下介绍，把项目下载下来，跑了一遍，还真是可以，而且 blog
 风格也比较简洁，是我的 style。关键只用 bash 命令就可以搞定了，非常 geek 。
+</p>
 
+<p>
  下面讲一下 bashblog 这个项目，与我之前的思路不同，它搭建的是一个静态博客，包含
  index 页面，标签页面，并且集成了 disqus，google analytics。这样我就不需要写任
  何前后台代码，只要一个 http server 就可以部署运行。
+</p>
 
+<p>
 这么 geek 的项目，我当然要好好研究一下，然后重写一遍，发扬我抄轮子的精神。也就
 是在重写的过程中，遇到了一个非常纠结的问题，用哪个 markdown parser 比较好？
 google 一番，看到了这篇文章，原来各家的 markdown parser 都有一些差异（也许
@@ -33,7 +72,20 @@ CommonMark 才是最终的解决方案），那我不管用哪个似乎都不太
 vimwiki 的 :Vimwiki2HTML 命令可以直接将 vimwiki 格式的文件直接转化成 html，完全
 可以替代 bashblog 这个工具。额，没想到搞了半天最终又回到了我一直在用的 vimwiki
 。之前怎么没发现 vimwiki 还有这功能呢。
+</p>
 
+<p>
 以上，虽然折腾了半天好像什么都没做，但这个简陋的博客不是搭建起来了吗。
+</p>
 
+<p>
 Thanks for reading :)
+</p>
+</div>
+    </div>
+    <div id="footer">
+        powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

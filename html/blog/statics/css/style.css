@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color: #F3F3F3;
+    font-weight: 300;
+}
+
+#main {
+    width: 100%;
+    max-width: 874px;
+    margin: 24px auto;
+}
+
+#headerHolder {
+    border-bottom: solid 1px #999;
+}
+
+#header {
+    height: 130px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0px auto;
+    padding-top: 24px;
+}
+
+#headerLeft {
+    float: left;
+    width: 80%;
+    font-family:Georgia,"Times New Roman",Times,serif;
+}
+
+#headerRight {
+    float: right;
+    width: 20%;
+}
+
+#header #name {
+    height: 90px;
+    font-size: 2.5em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+#header #signature {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+#header #avatar {
+    width: 120px;
+    height: 120px;
+}
+
+#header #avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+}
+
+#contentHolder {
+    top: 0;
+    padding: 24px 48px 24px 48px;
+}
+
+#title {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#content {
+    margin-bottom: 5%;
+}
+
+#footer {
+    padding-top: 10px;
+    border-top: solid 1px #999;
+    color: #333;
+    text-align: center;
+    font-size: small;
+    font-family:"Courier New","Courier",monospace;
+}
+
+#header a {
+    text-decoration: none;
+    color: #000;
+}
+
+#header a:hover {
+    text-decoration: none;
+    color: #666;
+}
+
+#content a, #footer a {
+    text-decoration: none;
+    color: #336699;
+}
+
+#content a:hover, #footer a:hover {
+    text-decoration: none;
+    color: #8fbbe6;
+}
