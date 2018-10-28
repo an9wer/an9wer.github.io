@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color: #F3F3F3;
+    font-weight: 300;
+}
+
+#main {
+    width: 100%;
+    max-width: 874px;
+    margin: 24px auto;
+}
+
+
+/* header {{{ */
+#header {
+    height: 130px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0px auto;
+    padding-top: 24px;
+}
+
+#headerLeft {
+    float: left;
+    width: 80%;
+    font-family:Georgia,"Times New Roman",Times,serif;
+}
+
+#headerRight {
+    float: right;
+    width: 20%;
+}
+
+#header #name {
+    height: 90px;
+    font-size: 2.5em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+#header #signature {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+#header #avatar {
+    width: 120px;
+    height: 120px;
+}
+
+#header #avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+}
+
+#header a {
+    text-decoration: none;
+    color: #000;
+}
+
+#header a:hover {
+    text-decoration: none;
+    color: #666;
+}
+/* }}} header
+
+
+/* navbar {{{ */
+#navbar a {
+    display: block;
+    float: left;
+    width: 33%;
+    height: 2em;
+    text-align: center;
+    background-color: #DDD;
+    border: solid 0.5px #CCC;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: #000;
+}
+
+#navbar a:hover {
+    background-color: #8FBBE6;
+    border: solid 0.5px #8FBBE6;
+    color: #F3F3F3;;
+}
+
+#navbar .current {
+    color: #F3F3F3;
+    border: solid 0.5px #336699;
+    background-color: #336699;
+}
+
+#blog {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#about {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* }}} navbar */
+
+
+/* post {{{ */
+#post {
+    padding: 24px 48px 24px 48px;
+}
+
+#title {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#content {
+    margin-bottom: 5%;
+}
+
+#content a, #footer a {
+    text-decoration: none;
+    color: #336699;
+}
+
+#content a:hover, #footer a:hover {
+    text-decoration: none;
+    color: #8fbbe6;
+}
+/* }}} post */
+
+
+/* footer {{{ */
+#footer {
+    padding-top: 10px;
+    border-top: solid 1px #999;
+    color: #333;
+    text-align: center;
+    font-size: small;
+    font-family:"Courier New","Courier",monospace;
+}
+/* }}} footer */
