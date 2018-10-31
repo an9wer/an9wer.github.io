@@ -1,5 +1,8 @@
 %title All posts are listed here
 
+
+[[2018/10/30/suckless 的一天|2018/10/30 @ suckless 的一天]]
+
 [[2018/10/27/Categories of YouTube channels I am interested in|2018/10/27 @ Categories of YouTube channels I am interested in]]
 
 [[2018/10/24/记：这个博客的搭建|2018/10/24 @ 记：这个博客的搭建]]
