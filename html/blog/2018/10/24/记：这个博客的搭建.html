@@ -60,21 +60,22 @@ bashblog 的项目，当初只是简单看了一下介绍，好像是用来搭�
 </p>
 
 <p>
- 下面讲一下 bashblog 这个项目，与我之前的思路不同，它搭建的是一个静态博客，包含
- index 页面，标签页面，并且集成了 disqus，google analytics。这样我就不需要写任
- 何前后台代码，只要一个 http server 就可以部署运行。
+ 下面讲一下 <a href="https://github.com/cfenollosa/bashblog">bashblog</a> 这个项目，与我
+ 之前的思路不同，它搭建的是一个静态博客，包含 index 页面，标签页面，并且集成了
+ disqus，google analytics。这样我就不需要写任何前后台代码，只要一个 http server
+ 就可以部署运行。
 </p>
 
 <p>
 这么 geek 的项目，我当然要好好研究一下，然后重写一遍，发扬我抄轮子的精神。也就
 是在重写的过程中，遇到了一个非常纠结的问题，用哪个 markdown parser 比较好？
-google 一番，看到了这篇文章，原来各家的 markdown parser 都有一些差异（也许
-CommonMark 才是最终的解决方案），那我不管用哪个似乎都不太好。所以我决定应该用个
-标准统一的标记语言，而且语法最好也能相对简洁一点，我想到了 vimwiki，最重要的是
-我之前的一些笔记也是用 vimwiki 记录的，这样子兼容性也比较好。之后我又突然意识到
-vimwiki 的 :Vimwiki2HTML 命令可以直接将 vimwiki 格式的文件直接转化成 html，完全
-可以替代 bashblog 这个工具。额，没想到搞了半天最终又回到了我一直在用的 vimwiki
-。之前怎么没发现 vimwiki 还有这功能呢。
+google 一番，看到了 <a href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">这篇文章</a>，
+原来各家的 markdown parser 都有一些差异（也许 CommonMark 才是最终的解决方案）。
+所以我决定应该用个标准统一的标记语言，而且语法最好也能相对简洁一点，我想到了
+vimwiki，最重要的是我之前的一些笔记也是用 vimwiki 记录的，这样子兼容性也比较好
+。之后我又突然意识到 vimwiki 的 :Vimwiki2HTML 命令可以直接将 vimwiki 格式的文件
+直接转化成 html，完全可以替代 bashblog 这个工具。额，没想到搞了半天最终又回到了
+我一直在用的 vimwiki 。之前怎么没发现 vimwiki 还有这功能呢。
 </p>
 
 <p>
@@ -87,7 +88,7 @@ Thanks for reading :)
 </div>
     </div>
     <div id="footer">
-        powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
     </div>
 <div>
 </body>
