@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">ssh</div>
+        <div id="content">
+<div id="Generating SSH keys"><h2 id="Generating SSH keys">Generating SSH keys</h2></div>
+
+<pre>
+    ssh-keygen -f ~/.ssh/an9wer_rsa -o -a 100 -t rsa -b 4096 -C "an9wer@gmail.com"
+</pre>
+
+<ul>
+<li>
+  <code>-f</code>: specifies the filename of the key file.
+
+</ul>
+
+<ul>
+<li>
+  <code>-t</code>: specifies the type of key to create.
+
+</ul>
+
+<ul>
+<li>
+  <code>-b</code>: specifies the number of bits in the key to create.
+
+</ul>
+
+<ul>
+<li>
+  <code>-o</code>: saves private keys using the new OpenSSH format rather than the more
+
+</ul>
+<p>
+compatible PEM format. The new format has increased resistance to brute-force
+password cracking .
+</p>
+
+<ul>
+<li>
+  <code>-a</code>: specifies the number of KDF (key derivation function) rounds used.
+
+</ul>
+<p>
+Higher numbers result in slower passphrase verification and increased
+resistance to brute-force password cracking (should the keys be stolen).
+</p>
+
+<ul>
+<li>
+  <code>-C</code>: provides a new comment.
+
+</ul>
+
+<div id="Copy public key to remote server"><h2 id="Copy public key to remote server">Copy public key to remote server</h2></div>
+
+<pre>
+    ssh-copy-id -i ~/.ssh/an9wer_rsa.pub an9wer@example.com
+</pre>
+
+<ul>
+<li>
+  <code>-i</code>: specifies the public key to be sent to remote server.
+
+</ul>
+
+
+<div id="SSH agents"><h2 id="SSH agents">SSH agents</h2></div>
+
+<p>
+<span class="todo">TODO</span>
+</p>
+
+<div id="~/.ssh/config"><h2 id="~/.ssh/config">~/.ssh/config</h2></div>
+
+<p>
+If you want to setup aliases for servers you access often, you can create the
+file <code>~/.ssh/config</code> and specify each server in it. A simple example is as
+follows:
+</p>
+
+<pre>
+Host example0
+    HostName example0.com
+
+Host example1
+    HostName example1.com
+    LocalForward 80 example.com:80
+
+Host *
+    User an9wer
+    Port 22
+</pre>
+
+<div id="SSH tunnels"><h2 id="SSH tunnels">SSH tunnels</h2></div>
+
+<div id="SSH tunnels-Local port forwarding"><h3 id="Local port forwarding">Local port forwarding</h3></div>
+
+<p>
+The <code>-L</code> option of ssh binds the given port on local host to the given port on
+remote host. Here's some examples:
+</p>
+
+<pre>
+    ssh -fN -L 8000:github.com:80 user@example.com
+</pre>
+
+<p>
+In this example, the server <code>example.com</code> will forward any connections from
+port 8000 on local side to <code>github.com</code> at port 80. It's just like the server
+<code>example.com</code> makes a tunnel between local and <code>github.com</code>.
+</p>
+
+<pre>
+    ssh -fN -L 8000:localhost:80 user@example.com
+</pre>
+
+<p>
+The difference between this example and previous one is the remote host being
+changed to <code>localhost:80</code>. This means it will forward connectons from local
+port 8000 to port 80 on <code>localhost</code> of the server <code>example.com</code>.
+</p>
+
+<div id="SSH tunnels-Remote port forwarding"><h3 id="Remote port forwarding">Remote port forwarding</h3></div>
+
+<p>
+The <code>-R</code> option of ssh specifies that the connection to the given port on remote
+server will be forwarding to the local side.
+</p>
+
+<pre>
+    ssh -fN -R 80:localhost:8000 user@example.com
+</pre>
+
+<p>
+This command will forward connections from port 80 on <code>localhost</code> of the server
+<code>example.com</code> to port 8000 on local side.
+</p>
+
+
+<div id="Thanks"><h2 id="Thanks">Thanks</h2></div>
+
+<ul>
+<li>
+  <a href="https://wiki.archlinux.org/index.php/SSH_keys">https://wiki.archlinux.org/index.php/SSH_keys</a>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

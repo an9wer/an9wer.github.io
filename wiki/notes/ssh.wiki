@@ -1,0 +1,93 @@
+== Generating SSH keys ==
+
+{{{
+    ssh-keygen -f ~/.ssh/an9wer_rsa -o -a 100 -t rsa -b 4096 -C "an9wer@gmail.com"
+}}}
+
+-   `-f`: specifies the filename of the key file.
+
+-   `-t`: specifies the type of key to create.
+
+-   `-b`: specifies the number of bits in the key to create.
+
+-   `-o`: saves private keys using the new OpenSSH format rather than the more
+compatible PEM format. The new format has increased resistance to brute-force
+password cracking .
+
+-   `-a`: specifies the number of KDF (key derivation function) rounds used.
+Higher numbers result in slower passphrase verification and increased
+resistance to brute-force password cracking (should the keys be stolen).
+
+-   `-C`: provides a new comment.
+
+== Copy public key to remote server ==
+
+{{{
+    ssh-copy-id -i ~/.ssh/an9wer_rsa.pub an9wer@example.com
+}}}
+
+-   `-i`: specifies the public key to be sent to remote server.
+
+
+== SSH agents ==
+
+TODO
+
+== ~/.ssh/config  ==
+
+If you want to setup aliases for servers you access often, you can create the
+file `~/.ssh/config` and specify each server in it. A simple example is as
+follows:
+
+{{{
+Host example0
+    HostName example0.com
+
+Host example1
+    HostName example1.com
+    LocalForward 80 example.com:80
+
+Host *
+    User an9wer
+    Port 22
+}}}
+
+== SSH tunnels ==
+
+=== Local port forwarding ===
+
+The `-L` option of ssh binds the given port on local host to the given port on
+remote host. Here's some examples:
+
+{{{
+    ssh -fN -L 8000:github.com:80 user@example.com
+}}}
+
+In this example, the server `example.com` will forward any connections from
+port 8000 on local side to `github.com` at port 80. It's just like the server
+`example.com` makes a tunnel between local and `github.com`.
+
+{{{
+    ssh -fN -L 8000:localhost:80 user@example.com
+}}}
+
+The difference between this example and previous one is the remote host being
+changed to `localhost:80`. This means it will forward connectons from local
+port 8000 to port 80 on `localhost` of the server `example.com`.
+
+=== Remote port forwarding ===
+
+The `-R` option of ssh specifies that the connection to the given port on remote
+server will be forwarding to the local side.
+
+{{{
+    ssh -fN -R 80:localhost:8000 user@example.com
+}}}
+
+This command will forward connections from port 80 on `localhost` of the server
+`example.com` to port 8000 on local side.
+
+
+== Thanks ==
+
+-   [[https://wiki.archlinux.org/index.php/SSH_keys]]
