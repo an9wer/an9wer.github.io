@@ -10,13 +10,9 @@
 
 -   `-b`: specifies the number of bits in the key to create.
 
--   `-o`: saves private keys using the new OpenSSH format rather than the more
-compatible PEM format. The new format has increased resistance to brute-force
-password cracking .
+-   `-o`: saves private keys using the new OpenSSH format rather than the more compatible PEM format. The new format has increased resistance to brute-force password cracking .
 
--   `-a`: specifies the number of KDF (key derivation function) rounds used.
-Higher numbers result in slower passphrase verification and increased
-resistance to brute-force password cracking (should the keys be stolen).
+-   `-a`: specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen).
 
 -   `-C`: provides a new comment.
 
@@ -31,7 +27,33 @@ resistance to brute-force password cracking (should the keys be stolen).
 
 == SSH agents ==
 
-TODO
+Check whether SSH agent is started:
+
+{{{
+    echo $SSH_AGENT_PID
+}}}
+
+If some number display on the screen, it means the agent has been started.
+Otherwise, you should run the following command to start it:
+
+{{{
+    eval $(ssh-agent)
+}}}
+
+You can also kill the current agent:
+
+{{{
+    ssh-agent -k
+}}}
+
+== Add ssh key to agent ==
+
+This command will add private ssh key `~/.ssh/an9wer_rsa` into authentication
+agent.
+
+{{{
+    ssh-add ~/.ssh/an9wer_rsa
+}}}
 
 == ~/.ssh/config  ==
 

@@ -1,7 +1,8 @@
 %title All posts are listed here
 
+2018/11/11 @ [[2018/11/11/入手小米平板一代|入手小米平板一代]]
 
-2010/10/30 @ [[2018/10/30/suckless 的一天|suckless 的一天]]
+2018/10/30 @ [[2018/10/30/suckless 的一天|suckless 的一天]]
 
 2018/10/27 @ [[2018/10/27/Categories of YouTube channels I am interested in|Categories of YouTube channels I am interested in]]
 

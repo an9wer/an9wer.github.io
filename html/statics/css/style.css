@@ -12,6 +12,19 @@ body {
     margin: 24px auto;
 }
 
+code {
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    background-color: #ffffff;
+    padding: 2px 8px;
+}
+
+pre {
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    background-color: #ffffff;
+    padding: 5px 15px;
+}
 
 /* header {{{ */
 #header {

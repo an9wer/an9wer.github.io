@@ -25,7 +25,7 @@
         <a id="about" href="../about.html">About</a>
     </div>
     <div id="post">
-        <div id="title">ssh</div>
+        <div id="title">SSH</div>
         <div id="content">
 <div id="Generating SSH keys"><h2 id="Generating SSH keys">Generating SSH keys</h2></div>
 
@@ -53,23 +53,15 @@
 
 <ul>
 <li>
-  <code>-o</code>: saves private keys using the new OpenSSH format rather than the more
+  <code>-o</code>: saves private keys using the new OpenSSH format rather than the more compatible PEM format. The new format has increased resistance to brute-force password cracking .
 
 </ul>
-<p>
-compatible PEM format. The new format has increased resistance to brute-force
-password cracking .
-</p>
 
 <ul>
 <li>
-  <code>-a</code>: specifies the number of KDF (key derivation function) rounds used.
+  <code>-a</code>: specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen).
 
 </ul>
-<p>
-Higher numbers result in slower passphrase verification and increased
-resistance to brute-force password cracking (should the keys be stolen).
-</p>
 
 <ul>
 <li>
@@ -93,8 +85,40 @@ resistance to brute-force password cracking (should the keys be stolen).
 <div id="SSH agents"><h2 id="SSH agents">SSH agents</h2></div>
 
 <p>
-<span class="todo">TODO</span>
+Check whether SSH agent is started:
 </p>
+
+<pre>
+    echo $SSH_AGENT_PID
+</pre>
+
+<p>
+If some number display on the screen, it means the agent has been started.
+Otherwise, you should run the following command to start it:
+</p>
+
+<pre>
+    eval $(ssh-agent)
+</pre>
+
+<p>
+You can also kill the current agent:
+</p>
+
+<pre>
+    ssh-agent -k
+</pre>
+
+<div id="Add ssh key to agent"><h2 id="Add ssh key to agent">Add ssh key to agent</h2></div>
+
+<p>
+This command will add private ssh key <code>~/.ssh/an9wer_rsa</code> into authentication
+agent.
+</p>
+
+<pre>
+    ssh-add ~/.ssh/an9wer_rsa
+</pre>
 
 <div id="~/.ssh/config"><h2 id="~/.ssh/config">~/.ssh/config</h2></div>
 
