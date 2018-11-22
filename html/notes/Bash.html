@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">Bash</div>
+        <div id="content">
+<div id="Parameter Expansion"><h2 id="Parameter Expansion">Parameter Expansion</h2></div>
+
+<p>
+(see <a href="https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh">examples</a>)
+</p>
+
+<ul>
+<li>
+  <code>${parameter:offset}</code>
+    <code>${parameter:offset:length}</code>
+
+</ul>
+
+<p>
+It expands to the substring of the value of <code>parameter</code> starting at the
+character specified by <code>offset</code> and expanding to up to <code>length</code> characters.
+</p>
+
+<p>
+<code>offset</code> and <code>length</code> are arithmetic expressions. If <code>offset</code> or <code>length</code>
+evaluates to a number less than zero, the value is used as an offset in
+characters from the end of value of <code>parameter</code>.
+</p>
+
+<p>
+<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong> that a negative <code>offset</code> must be separated from the colon by at least
+one space to avoid being confused with the <code>:-</code> expansion. 
+</p>
+
+<p>
+When <code>parameter</code> is a variable whose value is string:
+</p>
+
+<pre>
+    $ string=0123456789
+    $ echo ${string:2}
+    23456789
+    $ echo ${string:2:4}
+    2345
+    $ echo ${string:2:-2}
+    234567
+    $ echo ${string: -4}
+    6789
+    $ echo ${string: -4:-2}
+    67
+</pre>
+
+<pre>
+    $ array[0]=0123456789
+    $ echo ${array[0]:2}
+    23456789
+    $ echo ${array[0]:2:4}
+    2345
+    $ echo ${array[0]:2:-2}
+    234567
+    $ echo ${array[0]: -4}
+    6789
+    $ echo ${array[0]: -4:-2}
+    67
+</pre>
+
+<p>
+When <code>parameter</code> is '@' (<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong>: it's an expansion error if <code>length</code> evaluates
+to number less than zero):
+</p>
+
+<pre>
+    $ set -- 0 1 2 3 4 5 6 7 8 9
+    $ echo ${@:2}
+    23456789
+    $ echo ${@:2:4}
+    2345
+    $ echo ${@:2:-2}
+    bash: -2: substring expression &lt; 0
+    $ echo ${@: -4}
+    6789
+    $ echo ${@: -4:-2}
+    bash: -2: substring expression &lt; 0
+</pre>
+
+<p>
+When <code>parameter</code> is an indexed array name subscripted by '@' or '*' (<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong>:
+it's an expansion error if <code>length</code> evaluates to number less than zero):
+</p>
+
+<pre>
+    $ array=(0 1 2 3 4 5 6 7 8 9)
+    $ echo ${array[@]:2}
+    23456789
+    $ echo ${array[@]:2:4}
+    2345
+    $ echo ${array[@]:2:-2}
+    bash: -2: substring expression &lt; 0
+    $ echo ${array[@]: -4}
+    6789
+    $ echo ${array[@]: -4:-2}
+    bash: -2: substring expression &lt; 0
+</pre>
+
+
+<div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
+
+<ul>
+<li>
+  <a href="https://www.gnu.org/software/bash/manual/bash.html">https://www.gnu.org/software/bash/manual/bash.html</a>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

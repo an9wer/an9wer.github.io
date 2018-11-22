@@ -110,6 +110,6 @@ This command will forward connections from port 80 on `localhost` of the server
 `example.com` to port 8000 on local side.
 
 
-== Thanks ==
+== Acknowledgements ==
 
 -   [[https://wiki.archlinux.org/index.php/SSH_keys]]
