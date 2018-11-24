@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">man</div>
+        <div id="content">
+<div id="man"><h2 id="man">man</h2></div>
+
+<pre>
+    man [options] [section] page ...
+</pre>
+
+<p>
+<code>man</code> will search for the desired manual pages within the index database
+caches. A <code>section</code>, if provided, will direct man to look only in that section
+of the manual. The default action is to search in all of the available sections
+following a pre-defined order ("1 n l  8  3  2  3posix  3pm 3perl  3am 5 4 9 6
+7" by default).
+</p>
+
+<ul>
+<li>
+  <code>-f</code>: Equivalent to whatis. Display a short description from the manual page, if available.
+
+</ul>
+
+<ul>
+<li>
+  <code>-k</code>: Equivalent to apropos. Search the short manual page descriptions for keywords and display any matches.
+
+</ul>
+
+<ul>
+<li>
+  <code>-K</code>: Search for text in all manual pages. This is a brute-force search, and is likely to take some time; if you can, you should specify a section to reduce the number of pages that need to be searched.
+
+</ul>
+
+<ul>
+<li>
+  <code>-w</code>: Don't actually display the manual pages, but do print the location(s) of the source nroff files that would be formatted.
+
+</ul>
+
+<ul>
+<li>
+  <code>-a</code>: By default, man will exit after displaying the most suitable manual page it finds. Using this option forces man to display all the manual pages with names that match the search criteria.
+
+</ul>
+
+<ul>
+<li>
+  <code>--regex</code>: Show all pages with any part of either their names or their descriptions matching each page argument as a regular expression, as with apropos(1).
+
+</ul>
+
+<ul>
+<li>
+  <code>--wildcard</code>: Show  all pages with any part of either their names or their descriptions matching each page argument using shell-style wildcards, as with apropos(1) --wildcard.
+
+</ul>
+
+<ul>
+<li>
+  <code>--names-only</code>: If the --regex or --wildcard option is used, match only page names, not page descriptions. Otherwise, no effect.
+
+</ul>
+
+<div id="mandb"><h2 id="mandb">mandb</h2></div>
+
+<p>
+<code>mandb</code> will create or update the manual page index cache.
+</p>
+
+<div id="manpath"><h2 id="manpath">manpath</h2></div>
+
+<p>
+The manpath configuration file (/etc/manpath.config) is used by the manual page
+utilities to assess users' manpaths at run time, to indicate which manual page
+hierarchies (manpaths) are to be treated as system hierarchies and to assign
+them directories to be used for storing cat files.
+</p>
+
+<p>
+If the environment variable $MANPATH is already set, the information contained
+within /etc/manpath.config will not override it.
+</p>
+
+<p>
+<span id="manpath-Note"></span><strong id="Note">Note</strong>: if path directory not in the manpath configuration file but is one of
+the elements in environment variable <code>PATH</code>, and also has <code>../man</code>, <code>man</code>,
+<code>../share/man</code> or <code>share/man</code> subdirectories, they will be added to manpath.
+(use <code>catman -d</code> to check it)
+</p>
+
+<div id="whatis"><h2 id="whatis">whatis</h2></div>
+
+<pre>
+    whatis [options] name ...
+</pre>
+
+<p>
+<code>whatis</code> display one-line manual page descriptions.
+</p>
+
+<p>
+Each manual page has a short description available within it. <code>whatis</code> searches
+the manual page names and displays the manual page descriptions of any name
+matched.  
+</p>
+
+<ul>
+<li>
+  <code>-r</code>: Interpret  each  name  as a regular expression.
+
+</ul>
+
+<ul>
+<li>
+  <code>-w</code>: Interpret each name as a pattern containing shell style wildcards.
+
+</ul>
+
+<div id="apropos"><h2 id="apropos">apropos</h2></div>
+
+<pre>
+    apropos [options] keyword ...
+</pre>
+
+<p>
+<code>apropos</code> search the manual page names and descriptions.
+</p>
+
+<p>
+Each manual page has a short description available within it. <code>apropos</code>
+searches the descriptions for instances of keyword.
+</p>
+
+<ul>
+<li>
+  <code>-r</code>: Interpret each keyword as a regular expression. This is the default behaviour. Each keyword will be matched against the page names and the descriptions independently.
+
+</ul>
+
+<ul>
+<li>
+  <code>-w</code>: Interpret each keyword as a pattern containing shell style wildcards. Each keyword will be matched against the page names and the descriptions independently.
+
+</ul>
+
+<ul>
+<li>
+  <code>-e</code>: Each keyword will be exactly matched against the page names and the descriptions.
+
+</ul>
+
+<ul>
+<li>
+  <code>-a</code>: Only display items that match all the supplied keywords. The default is to display items that match any keyword.
+
+</ul>
+
+<div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
+
+<ul>
+<li>
+  <a href="https://unix.stackexchange.com/a/63583">https://unix.stackexchange.com/a/63583</a>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

@@ -129,16 +129,16 @@ follows:
 </p>
 
 <pre>
-Host example0
-    HostName example0.com
+    Host example0
+        HostName example0.com
 
-Host example1
-    HostName example1.com
-    LocalForward 80 example.com:80
+    Host example1
+        HostName example1.com
+        LocalForward 80 example.com:80
 
-Host *
-    User an9wer
-    Port 22
+    Host *
+        User an9wer
+        Port 22
 </pre>
 
 <div id="SSH tunnels"><h2 id="SSH tunnels">SSH tunnels</h2></div>
@@ -182,16 +182,117 @@ server will be forwarding to the local side.
 </pre>
 
 <p>
-This command will forward connections from port 80 on <code>localhost</code> of the server
-<code>example.com</code> to port 8000 on local side.
+This command will forward connections from port 80 on the server <code>example.com</code>
+to port 8000 on local side.
 </p>
 
+<p>
+<span id="SSH tunnels-Remote port forwarding-Note"></span><strong id="Note">Note</strong>: SSH doesn’t by default allow remote hosts to forwarded ports. To enable
+this open <code>/etc/ssh/sshd_config</code> and add the following line somewhere in that
+config file.
+</p>
+
+<pre>
+    GatewayPorts yes
+</pre>
+
+<p>
+Then when you connect to example.com:80, it'll forward to localhost:8000 on
+local side. If you don't have <code>GatewayPorts yes</code> in your configuration file,
+it'll only forward localhost:80 on example.com to localhost:8000 on local side.
+</p>
+
+<div id="autossh"><h2 id="autossh">autossh</h2></div>
+
+<pre>
+    autossh [-M port[:echo_port]] [-f] [SSH_OPTIONS]
+</pre>
+
+<ul>
+<li>
+  <code>-M</code>: specifies the base monitoring port to use.
+
+</ul>
+
+<ul>
+<li>
+  <code>-f</code>: causes autossh to drop to the background before running ssh.
+
+</ul>
+
+<p>
+<span id="autossh-Note"></span><strong id="Note">Note</strong>: <code>-M 0</code> sets the monitor port to 0 turns the monitoring function off,
+and autossh will only restart ssh upon ssh's exit. For example, if you are
+using a recent version of OpenSSH, you may wish to explore using the
+<code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code> options to have the SSH client
+exit if it finds itself no longer connected to the server. In many ways this
+may be a better solution than the monitoring port.
+</p>
+
+<p>
+<span id="autossh-Note"></span><strong id="Note">Note</strong>: There is a crucial a difference between <code>-f</code> with autossh, and <code>-f</code>
+with ssh: when used with autossh ssh will be unable to ask for passwords or
+passphrases. 
+</p>
+
+<p>
+In the following example, autossh send data on port 20000 and receive it back
+on 20001:
+</p>
+
+<pre>
+    autossh -M 20000 -R 80:localhost:8000 an9wer@example.com
+</pre>
+
+<p>
+In the following example, we turn the autossh monitoring function off, instead,
+we use ssh built-in function to monitor connection:
+</p>
+
+<pre>
+    autossh -M 0 -o "ServerAliveInterval 240" -o "ServerAliveCountMax 12" -R 80:localhost:8000 an9wer@example.com
+</pre>
+
+<p>
+We can also write these options to <code>~/.ssh/config</code> file:
+</p>
+
+<pre>
+    Host example
+        HostName example.com
+        User an9wer
+        Port 22
+        IdentityFile ~/.ssh/an9wer_rsa
+        RemoteForward 80 localhost:8000
+        ServerAliveInterval 240
+        ServerAliveCountMax 12
+</pre>
+
+<p>
+And we can call it easily by the following command:
+</p>
+
+<pre>
+    autossh -M 0 -f -N example
+</pre>
 
 <div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
 
 <ul>
 <li>
-  <a href="https://wiki.archlinux.org/index.php/SSH_keys">https://wiki.archlinux.org/index.php/SSH_keys</a>
+  <a href="https://wiki.archlinux.org/index.php/SSH_keys">ssh key</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">ssh tunnel</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/">autossh</a>
 
 </ul>
 </div>

@@ -28,6 +28,10 @@ pre {
     overflow: auto;
 }
 
+strong {
+    font-weight: 600;
+}
+
 /* header {{{ */
 #header {
     height: 130px;

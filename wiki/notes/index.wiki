@@ -3,3 +3,5 @@
 -   [[Bash|Bash]]
 
 -   [[SSH|SSH]] 
+
+-   [[man|man]]
