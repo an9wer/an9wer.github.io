@@ -1,0 +1,139 @@
+{{{
+    rsync [options] src... dest
+}}}
+
+`rsync` copies files either to or from a remote host, or locally on the current
+host (it does not support copying files between two remote hosts).
+
+There  are  two  different  ways  for rsync to contact a remote system: using a
+remote-shell program as the transport (such as ssh or rsh) or contacting an
+rsync daemon directly via TCP. The remote-shell transport is used whenever the
+source or destination path contains a single colon (:) separator after a host
+specification. Contacting an rsync daemon directly happens when the source or
+destination path contains a double colon (::) separator after a host
+specification, or when an `rsync://` URL is specified.
+
+-   `-a`: This is equivalent to `-rlptgoD`. It is a quick way of saying you want recursion and want to preserve almost everything.
+    -   `-r`: This tells rsync to copy directories recursively.
+    -   `-l`: When symlinks are encountered, recreate the symlink on the destination.
+    -   `-p`: This option causes the receiving rsync to set the destination permissions to be the same as the source permissions.
+    -   `-g`: This option causes rsync to set the group of the destination file to be the same as the source file.
+    -   `-o`: This option causes rsync to set the owner of the destination file to be the same as the source file.
+    -   `-t`: This tells rsync to transfer modification times along with the files and update them on the remote system.
+    -   `-D`: The -D option is equivalent to `--devices --specials`.
+    -   `--devices`:  This option causes rsync to transfer character and block device files to the remote system to recreate these devices. This option has no effect if the receiving rsync is not run as the super-user (see also the --super and --fake-super options).
+    -   `--specials`: This option causes rsync to transfer special files such as named sockets and fifos.
+
+    *Note* that `-a` does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify `-H`.
+
+-   `-h`: Output numbers in a more human-readable format.
+
+-   `-v`: This option increases the amount of information you are given during the transfer. By default, rsync works silently.
+
+-   `-c`: This changes the way rsync checks if the files have been changed and are in need of a transfer. Without this option, rsync uses a "quick check" that (by default) checks if each file’s size  and time of last modification match between the sender and receiver. This option changes this to compare a MD5 checksum for each file that has a matching size.
+
+-   `-z`: With this option, rsync compresses the file data as it is sent to the destination machine, which reduces the amount of data being transmitted.
+    -   `--compress-level=NUM`: Explicitly set the compression level to use instead of letting it default. Allowed values for NUM are between 0 and 9; default when `-c` option is specified  is 6.
+
+-   `-P`: The -P option is equivalent to `--partial --progress`.  Its purpose is to make it much easier to specify these two options for a long transfer that may be interrupted.
+    -   `--partial`: By default, rsync will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files.  Using  the `--partial` option tells rsync to keep the partial file which should make a subsequent transfer of the rest of the file much faster.  
+    -   `--partial-dir=DIR`: A better way to keep partial files than the --partial option is to specify a DIR that will be used to hold the partial data (instead of writing it out to the destination file). On the next transfer, rsync will use a file found in this dir as data to speed up the resumption of the transfer and then delete it after it has served its purpose.
+    -   `--progress`: This option tells rsync to print information showing the progress of the transfer.
+
+-   `-u`: This forces rsync to skip any files which exist on the destination and have a modified time that is newer than the source file.  (If an existing destination file has a modification time equal to the source file’s, it will be updated if the sizes are different.)
+
+-   `--delete`: This tells rsync to delete extraneous files from the receiving side (ones that aren’t on the sending side), but only for the directories that are being synchronized.
+
+-   `--log-file=FILE`: This option causes rsync to log what it is doing to a file.
+
+-   `-n`: This makes rsync perform a trial run that doesn’t make any changes (and produces mostly the same output as a real run). It is most commonly used in combination with the -v, --verbose and/or -i, --itemize-changes options to see what an rsync command is going to do before one actually runs it.
+
+
+Let's see some examples:
+
+If a single source arg is specified without a destination, the files are listed
+in an output format similar to "ls -l".
+{{{
+    rsync host:/path/to/some/directory
+}}}
+
+Copy one single file to remote server:
+{{{
+    rsync -avchP /path/to/one/file host:/path/to/some/directory
+}}}
+
+Copy mutiple files to remote server:
+{{{
+    rsync -avchP /path/to/file1 /path/to/file2 host:/path/to/some/directory
+}}}
+
+If a file or directory doesn't exist at the source, but already exists at the
+destination, you might want to delete it on destionation side.
+{{{
+    rsync -avchP --delete /path/to/some/files host:/path/to/some/directory
+}}}
+
+Compress file before transfer:
+{{{
+    rsync -avchP -z /path/to/some/files host:/path/to/some/directory
+}}}
+
+Only transfer file newer than it on destiation side:
+{{{
+    rsync -avchP -u /path/to/some/files host:/path/to/some/directory
+}}}
+
+Double-check your arguments before executing an rsync command:
+{{{
+    rsync -avchP -n /path/to/some/files host:/path/to/some/directory
+}}}
+
+Save all information to log file while transfering:
+{{{
+    rsync -avchP --log-file=rsync.log /path/to/some/files host:/path/to/some/directory
+}}}
+
+*Note*: A trailing slash on the source will change the behavior of rsync:
+
+{{{
+    rsync -avchP /local/directory remote:/remote/directory
+}}}
+
+This copies the whole directory itself to remote server include its name, so
+the result is all files in `/local/directory` will be copied into
+`/remote/direcotry/diretory`.
+
+{{{
+    rsync -avchP /local/directory/ host:/remote/directory
+}}}
+
+Notice the trailing slash on the source portion of the command, this copies
+all files in `/local/directory` to `/remote/directory` in remote server, so the
+file structure of `/local/directory` is same as `/remote/directory`.
+
+*Note*: If the destionation is a directory, it doesn't matter whether a
+trailing slash is on the destination.
+
+so the command:
+
+{{{
+    rsync -avchP /local/directory/ host:/remote/directory
+}}}
+
+is same as the command:
+
+{{{
+    rsync -avchP /local/directory/ host:/remote/directory/
+}}}
+
+*Note*: If the filename of source and destiation are same, but the filetype of
+source is directory and it is a regular file in destination, the rsync command
+will raise an error: *destination must be a directory when copying more than 1 file*
+
+== TODO ==
+
+rsync server
+
+== Acknowledgements ==
+
+-   [[https://rsync.samba.org/documentation.html]]

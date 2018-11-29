@@ -169,7 +169,7 @@ We can also write these options to `~/.ssh/config` file:
         ServerAliveCountMax 12
 }}}
 
-And we can call it easily by the following command:
+And we can run it easily by the following command:
 
 {{{
     autossh -M 0 -f -N example

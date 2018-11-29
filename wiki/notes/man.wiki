@@ -32,18 +32,18 @@ following a pre-defined order ("1 n l  8  3  2  3posix  3pm 3perl  3am 5 4 9 6
 
 == manpath ==
 
-The manpath configuration file (/etc/manpath.config) is used by the manual page
+The manpath configuration file `/etc/manpath.config` is used by the manual page
 utilities to assess users' manpaths at run time, to indicate which manual page
 hierarchies (manpaths) are to be treated as system hierarchies and to assign
 them directories to be used for storing cat files.
 
-If the environment variable $MANPATH is already set, the information contained
-within /etc/manpath.config will not override it.
+If the environment variable `$MANPATH` is already set, the information contained
+within `/etc/manpath.config` will not override it.
 
-*Note*: if path directory not in the manpath configuration file but is one of
-the elements in environment variable `PATH`, and also has `../man`, `man`,
-`../share/man` or `share/man` subdirectories, they will be added to manpath.
-(use `catman -d` to check it)
+*Note*: If path directory not in the manpath configuration file but is one of
+the elements in environment variable `PATH`, and if any of the `../man`, `man`,
+`../share/man` or `share/man` subdirectories exists, they will be added to
+manpath.  (use `catman -d` to check it)
 
 == whatis ==
 

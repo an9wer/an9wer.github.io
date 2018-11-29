@@ -98,22 +98,22 @@ following a pre-defined order ("1 n l  8  3  2  3posix  3pm 3perl  3am 5 4 9 6
 <div id="manpath"><h2 id="manpath">manpath</h2></div>
 
 <p>
-The manpath configuration file (/etc/manpath.config) is used by the manual page
+The manpath configuration file <code>/etc/manpath.config</code> is used by the manual page
 utilities to assess users' manpaths at run time, to indicate which manual page
 hierarchies (manpaths) are to be treated as system hierarchies and to assign
 them directories to be used for storing cat files.
 </p>
 
 <p>
-If the environment variable $MANPATH is already set, the information contained
-within /etc/manpath.config will not override it.
+If the environment variable <code>$MANPATH</code> is already set, the information contained
+within <code>/etc/manpath.config</code> will not override it.
 </p>
 
 <p>
-<span id="manpath-Note"></span><strong id="Note">Note</strong>: if path directory not in the manpath configuration file but is one of
-the elements in environment variable <code>PATH</code>, and also has <code>../man</code>, <code>man</code>,
-<code>../share/man</code> or <code>share/man</code> subdirectories, they will be added to manpath.
-(use <code>catman -d</code> to check it)
+<span id="manpath-Note"></span><strong id="Note">Note</strong>: If path directory not in the manpath configuration file but is one of
+the elements in environment variable <code>PATH</code>, and if any of the <code>../man</code>, <code>man</code>,
+<code>../share/man</code> or <code>share/man</code> subdirectories exists, they will be added to
+manpath.  (use <code>catman -d</code> to check it)
 </p>
 
 <div id="whatis"><h2 id="whatis">whatis</h2></div>

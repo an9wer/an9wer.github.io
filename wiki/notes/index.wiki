@@ -1,7 +1,9 @@
 %title Archives
 
+-   [[rsync|rsync]]
+
+-   [[man|man]]
+
 -   [[Bash|Bash]]
 
 -   [[SSH|SSH]] 
-
--   [[man|man]]
