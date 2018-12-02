@@ -1,5 +1,9 @@
 %title Archives
 
+2018/12/01 @ [[2018/12/01/Essential Phone PH-1 入手|Essential Phone PH-1 入手|]]
+
+2018/11/28 @ [[2018/11/28/Nubia Z11 mini 刷机|Nubia Z11 mini 刷机]]
+
 2018/11/11 @ [[2018/11/11/小米平板一代入手|小米平板一代入手]]
 
 2018/10/30 @ [[2018/10/30/suckless 的一天|suckless 的一天]]
