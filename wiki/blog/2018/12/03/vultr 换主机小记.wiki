@@ -1,0 +1,56 @@
+大概一个多月前，我发现 Vultr 上新增了 3.5 美金每月的主机，但是日本和洛杉矶线路
+都没货，心想真是可惜，这么便宜的主机等到被我发现时早就被一抢而空了。可是最近，
+也就是大半个月前，我又突然发现 3.5 美金每月的主机居然有货了，于是赶紧准备入手一
+台。
+
+先说明一下，我一直在使用的是一台 5 美金每月的主机，主要是用来搭建 Shadowsocks，
+偶尔会跑一些小任务，但依然感觉有些浪费，而这新出的 3.5 美金每月的主机虽然只有
+512 M 的内存（前者是 1G 的内存），但足以满足我的需求，所以为了省下这 1.5 美金每
+月的开支，我决定重新部署一台 Shadowsocks 服务器。
+
+首先，我需要在 Vultr 上新建一台主机，机房当然是选择日本，镜像的话我选择 debian
+，之后就开始创建主机，这一切都是由 Vultr 自动完成的，这个过程非常快，大概只需要
+一分钟，之后主机就已经建好了，同时也会得到一个公网 ip。这之后我做的第一件事情就
+是 ping 一下这个 ip 是否被墙（因为之前有过被封 ip 的经历，而且 Vultr 确实也存在
+很多被封的 ip，如果发现 ip 被封了，也很简单，只需要重建一个主机，就会得到一个新
+的 ip，如此往复，总会得到一个没有被封的 ip），当然 ping ip 的另一个目的是测算一
+下网速。
+
+按照这个步骤，我同时新建了大概有六台主机，其中为了校验是否贵的主机网速会比较好
+，我还特意新建了一台 20 美金每月的主机（结果发现速度和 3.5 美金每月的主机差不多
+）。之后用 ping 简单测了一下网速，陆续关闭了网速相对较慢的主机，最后只剩下两台
+主机，连同我之间的那台主机一共三台。之后为了进一步筛选出一台网速较快的主机，我
+用家里的树莓派服务器针对这三台主机连续 ping 了一天一夜，最后计算了一下平均值，
+结果发现是原来的那台主机网速最快为 198 ms，而另两台 3.5 美金/每月的主机中较快的
+一台是 199ms，想想慢了这 1ms，却可以每月剩下 1.5 美金，还是值得的。
+
+选择好主机之后，我又无意中发现 Vultr 提供了自定义镜像的功能，也就是在除官方提供
+的 Debian, Ubuntu, CentOS, Fedora 镜像之外可以选择其他的发行版，包含了 Alpine，
+Arch，FreeBSD 等，我毫不犹豫地选择了 Arch，因为 Arch 是滚动更新，之后就不需要考
+虑服务器系统版本老化的问题了。
+
+在参考网上的相关教程，并结合自己之前在笔记本上安装 Arch 的经验之后，我成功地在
+Vultr 服务器上安装好了 Arch。之后使用我最近写的一个[[https://github.com/an9wer/ssd|项目]]，
+很快速地部署了 Shadowsocks 。最后，为服务器开启 BBR，进一步提高网速。
+
+Thanks for reading :)
+
+## Acknowledgement
+
+How to deploy Arch on vultr?
+
+-   [[https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server]] 
+
+-   [[https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting]]
+
+-   [[https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c]]
+
+How to enable BBR on Linux?
+
+-   [[https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/]]
+
+-   [[https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/]]
+
+-   [[https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308]]
+
+-   [[https://marskid.net/2017/12/03/arch-linux-open-google-bbr/]]

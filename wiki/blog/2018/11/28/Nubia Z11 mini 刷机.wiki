@@ -58,3 +58,12 @@ fastboot 模式下使用 `fastboot devices` 命令时一直发现不了我的手
 总结一下，这次折腾对安卓的刷机有了更深一步的了解（刷机需谨慎）。
 
 Thanks for reading :)
+
+## Acknowledgement
+
+-   [[https://www.getdroidtips.com/unlock-bootloader-zte/|Nubia Z11 mini unlock bootloader]]
+
+-   [[https://www.gizdev.com/install-twrp-3-0-gapps-root-nubia-z11-mini/|Nubia Z11 mini install TWRP]] 
+
+-   [[https://forum.xda-developers.com/android/development/recovery-unofficial-twrp-3-0-2-zte-t3550995|Nubia Z11 mini install TWRP]]
+-   [[https://androidfilehost.com/?w=files&flid=122024|Nubia Z11 mini CUOCU92 ROM]]
