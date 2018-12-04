@@ -1,6 +1,6 @@
 %title Archives
 
-2018/12/03 @ [[2018/12/03/vultr 换主机小记|vultr 换主机小记]]
+2018/12/03 @ [[2018/12/03/Vultr 换主机小记|Vultr 换主机小记]]
 
 2018/12/01 @ [[2018/12/01/Essential Phone PH-1 入手|Essential Phone PH-1 入手]]
 
@@ -8,7 +8,7 @@
 
 2018/11/11 @ [[2018/11/11/小米平板一代入手|小米平板一代入手]]
 
-2018/10/30 @ [[2018/10/30/suckless 的一天|suckless 的一天]]
+2018/10/30 @ [[2018/10/30/Suckless 的一天|Suckless 的一天]]
 
 2018/10/27 @ [[2018/10/27/Categories of YouTube channels I have subscribed|Categories of YouTube channels I have subscribed]]
 
