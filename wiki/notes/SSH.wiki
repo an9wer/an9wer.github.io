@@ -72,6 +72,8 @@ follows:
     Host *
         User an9wer
         Port 22
+        ServerAliveInterval 240
+        ServerAliveCountMax 3
 }}}
 
 == SSH tunnels ==
@@ -120,6 +122,18 @@ config file.
 Then when you connect to example.com:80, it'll forward to localhost:8000 on
 local side. If you don't have `GatewayPorts yes` in your configuration file,
 it'll only forward localhost:80 on example.com to localhost:8000 on local side.
+
+=== socks proxy ===
+
+The `-D` option of ssh can set up a local socks proxy, which supports socks4
+and socks5 protocols.
+
+{{{
+    ssh -fN -D 1080 user@example.com
+}}}
+
+This command will make a local socks proxy on localhost:1080, you can check it
+by the command `curl --socks5 1080 google.com`.
 
 == autossh ==
 
@@ -180,5 +194,7 @@ And we can run it easily by the following command:
 -   [[https://wiki.archlinux.org/index.php/SSH_keys|ssh key]]
 
 -   [[https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html|ssh tunnel]]
+
+-   [[https://dltj.org/article/ssh-as-socks-proxy/|ssh socks proxy]]
 
 -   [[https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/|autossh]]

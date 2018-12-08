@@ -139,6 +139,8 @@ follows:
     Host *
         User an9wer
         Port 22
+        ServerAliveInterval 240
+        ServerAliveCountMax 3
 </pre>
 
 <div id="SSH tunnels"><h2 id="SSH tunnels">SSH tunnels</h2></div>
@@ -200,6 +202,22 @@ config file.
 Then when you connect to example.com:80, it'll forward to localhost:8000 on
 local side. If you don't have <code>GatewayPorts yes</code> in your configuration file,
 it'll only forward localhost:80 on example.com to localhost:8000 on local side.
+</p>
+
+<div id="SSH tunnels-socks proxy"><h3 id="socks proxy">socks proxy</h3></div>
+
+<p>
+The <code>-D</code> option of ssh can set up a local socks proxy, which supports socks4
+and socks5 protocols.
+</p>
+
+<pre>
+    ssh -fN -D 1080 user@example.com
+</pre>
+
+<p>
+This command will make a local socks proxy on localhost:1080, you can check it
+by the command <code>curl --socks5 1080 google.com</code>.
 </p>
 
 <div id="autossh"><h2 id="autossh">autossh</h2></div>
@@ -287,6 +305,12 @@ And we can run it easily by the following command:
 <ul>
 <li>
   <a href="https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">ssh tunnel</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://dltj.org/article/ssh-as-socks-proxy/">ssh socks proxy</a>
 
 </ul>
 
