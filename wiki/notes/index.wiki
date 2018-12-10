@@ -1,5 +1,7 @@
 %title Archives
 
+-   [[git|git]]
+
 -   [[rsync|rsync]]
 
 -   [[man|man]]

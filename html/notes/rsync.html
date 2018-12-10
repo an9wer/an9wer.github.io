@@ -48,40 +48,51 @@ specification, or when an <code>rsync://</code> URL is specified.
 
 <ul>
 <li>
-  <code>-a</code>: This is equivalent to <code>-rlptgoD</code>. It is a quick way of saying you want recursion and want to preserve almost everything.
+  <code>-a</code>: This is equivalent to <code>-rlptgoD</code>. It is a quick way of saying you
+    want recursion and want to preserve almost everything.
 
 <ul>
 <li>
   <code>-r</code>: This tells rsync to copy directories recursively.
 
 <li>
-  <code>-l</code>: When symlinks are encountered, recreate the symlink on the destination.
+  <code>-l</code>: When symlinks are encountered, recreate the symlink on the
+        destination.
 
 <li>
-  <code>-p</code>: This option causes the receiving rsync to set the destination permissions to be the same as the source permissions.
+  <code>-p</code>: This option causes the receiving rsync to set the destination
+        permissions to be the same as the source permissions.
 
 <li>
-  <code>-g</code>: This option causes rsync to set the group of the destination file to be the same as the source file.
+  <code>-g</code>: This option causes rsync to set the group of the destination file
+        to be the same as the source file.
 
 <li>
-  <code>-o</code>: This option causes rsync to set the owner of the destination file to be the same as the source file.
+  <code>-o</code>: This option causes rsync to set the owner of the destination file
+        to be the same as the source file.
 
 <li>
-  <code>-t</code>: This tells rsync to transfer modification times along with the files and update them on the remote system.
+  <code>-t</code>: This tells rsync to transfer modification times along with the
+        files and update them on the remote system.
 
 <li>
   <code>-D</code>: The -D option is equivalent to <code>--devices --specials</code>.
 
 <li>
-  <code>--devices</code>:  This option causes rsync to transfer character and block device files to the remote system to recreate these devices. This option has no effect if the receiving rsync is not run as the super-user (see also the --super and --fake-super options).
+  <code>--devices</code>:  This option causes rsync to transfer character and block
+        device files to the remote system to recreate these devices. This
+        option has no effect if the receiving rsync is not run as the
+        super-user (see also the --super and --fake-super options).
 
 <li>
-  <code>--specials</code>: This option causes rsync to transfer special files such as named sockets and fifos.
+  <code>--specials</code>: This option causes rsync to transfer special files such
+        as named sockets and fifos.
 
 </ul>
 </ul>
 <blockquote>
-<span id="-Note"></span><strong id="Note">Note</strong> that <code>-a</code> does not preserve hardlinks, because finding multiply-linked files is expensive. You must separately specify <code>-H</code>.
+<span id="-Note"></span><strong id="Note">Note</strong> that <code>-a</code> does not preserve hardlinks, because finding
+multiply-linked files is expensive. You must separately specify <code>-H</code>.
 </blockquote>
 
 <ul>
@@ -92,65 +103,95 @@ specification, or when an <code>rsync://</code> URL is specified.
 
 <ul>
 <li>
-  <code>-v</code>: This option increases the amount of information you are given during the transfer. By default, rsync works silently.
+  <code>-v</code>: This option increases the amount of information you are given during
+    the transfer. By default, rsync works silently.
 
 </ul>
 
 <ul>
 <li>
-  <code>-c</code>: This changes the way rsync checks if the files have been changed and are in need of a transfer. Without this option, rsync uses a "quick check" that (by default) checks if each file’s size  and time of last modification match between the sender and receiver. This option changes this to compare a MD5 checksum for each file that has a matching size.
+  <code>-c</code>: This changes the way rsync checks if the files have been changed and
+    are in need of a transfer. Without this option, rsync uses a "quick check"
+    that (by default) checks if each file’s size  and time of last modification
+    match between the sender and receiver. This option changes this to compare
+    a MD5 checksum for each file that has a matching size.
 
 </ul>
 
 <ul>
 <li>
-  <code>-z</code>: With this option, rsync compresses the file data as it is sent to the destination machine, which reduces the amount of data being transmitted.
+  <code>-z</code>: With this option, rsync compresses the file data as it is sent to the
+    destination machine, which reduces the amount of data being transmitted.
 
 <ul>
 <li>
-  <code>--compress-level=NUM</code>: Explicitly set the compression level to use instead of letting it default. Allowed values for NUM are between 0 and 9; default when <code>-c</code> option is specified  is 6.
-
-</ul>
-</ul>
-
-<ul>
-<li>
-  <code>-P</code>: The -P option is equivalent to <code>--partial --progress</code>.  Its purpose is to make it much easier to specify these two options for a long transfer that may be interrupted.
-
-<ul>
-<li>
-  <code>--partial</code>: By default, rsync will delete any partially transferred file if the transfer is interrupted. In some circumstances it is more desirable to keep partially transferred files.  Using  the <code>--partial</code> option tells rsync to keep the partial file which should make a subsequent transfer of the rest of the file much faster.  
-
-<li>
-  <code>--partial-dir=DIR</code>: A better way to keep partial files than the --partial option is to specify a DIR that will be used to hold the partial data (instead of writing it out to the destination file). On the next transfer, rsync will use a file found in this dir as data to speed up the resumption of the transfer and then delete it after it has served its purpose.
-
-<li>
-  <code>--progress</code>: This option tells rsync to print information showing the progress of the transfer.
+  <code>--compress-level=NUM</code>: Explicitly set the compression level to use
+        instead of letting it default. Allowed values for NUM are between 0 and
+        9; default when <code>-c</code> option is specified  is 6.
 
 </ul>
 </ul>
 
 <ul>
 <li>
-  <code>-u</code>: This forces rsync to skip any files which exist on the destination and have a modified time that is newer than the source file.  (If an existing destination file has a modification time equal to the source file’s, it will be updated if the sizes are different.)
+  <code>-P</code>: The -P option is equivalent to <code>--partial --progress</code>.  Its purpose
+    is to make it much easier to specify these two options for a long transfer
+    that may be interrupted.
+
+<ul>
+<li>
+  <code>--partial</code>: By default, rsync will delete any partially transferred
+        file if the transfer is interrupted. In some circumstances it is more
+        desirable to keep partially transferred files.  Using  the <code>--partial</code>
+        option tells rsync to keep the partial file which should make a
+        subsequent transfer of the rest of the file much faster.  
+
+<li>
+  <code>--partial-dir=DIR</code>: A better way to keep partial files than the
+        --partial option is to specify a DIR that will be used to hold the
+        partial data (instead of writing it out to the destination file). On
+        the next transfer, rsync will use a file found in this dir as data to
+        speed up the resumption of the transfer and then delete it after it has
+        served its purpose.
+
+<li>
+  <code>--progress</code>: This option tells rsync to print information showing the
+        progress of the transfer.
+
+</ul>
+</ul>
+
+<ul>
+<li>
+  <code>-u</code>: This forces rsync to skip any files which exist on the destination
+    and have a modified time that is newer than the source file.  (If an
+    existing destination file has a modification time equal to the source file’
+    s, it will be updated if the sizes are different.)
 
 </ul>
 
 <ul>
 <li>
-  <code>--delete</code>: This tells rsync to delete extraneous files from the receiving side (ones that aren’t on the sending side), but only for the directories that are being synchronized.
+  <code>--delete</code>: This tells rsync to delete extraneous files from the receiving
+    side (ones that aren’t on the sending side), but only for the directories
+    that are being synchronized.
 
 </ul>
 
 <ul>
 <li>
-  <code>--log-file=FILE</code>: This option causes rsync to log what it is doing to a file.
+  <code>--log-file=FILE</code>: This option causes rsync to log what it is doing to a
+    file.
 
 </ul>
 
 <ul>
 <li>
-  <code>-n</code>: This makes rsync perform a trial run that doesn’t make any changes (and produces mostly the same output as a real run). It is most commonly used in combination with the -v, --verbose and/or -i, --itemize-changes options to see what an rsync command is going to do before one actually runs it.
+  <code>-n</code>: This makes rsync perform a trial run that doesn’t make any changes
+    (and produces mostly the same output as a real run). It is most commonly
+    used in combination with the -v, --verbose and/or -i, --itemize-changes
+    options to see what an rsync command is going to do before one actually
+    runs it.
 
 </ul>
 
@@ -159,68 +200,83 @@ specification, or when an <code>rsync://</code> URL is specified.
 Let's see some examples:
 </p>
 
-<p>
-If a single source arg is specified without a destination, the files are listed
-in an output format similar to "ls -l".
-</p>
+<ul>
+<li>
+  If a single source arg is specified without a destination, the files are
+    listed in an output format similar to "ls -l".
 <pre>
-    rsync host:/path/to/some/directory
+        rsync host:/path/to/some/directory
 </pre>
 
-<p>
-Copy one single file to remote server:
-</p>
+</ul>
+
+<ul>
+<li>
+  Copy one single file to remote server:
 <pre>
-    rsync -avchP /path/to/one/file host:/path/to/some/directory
+        rsync -avchP /path/to/one/file host:/path/to/some/directory
 </pre>
 
-<p>
-Copy mutiple files to remote server:
-</p>
+</ul>
+
+<ul>
+<li>
+  Copy mutiple files to remote server:
 <pre>
-    rsync -avchP /path/to/file1 /path/to/file2 host:/path/to/some/directory
+        rsync -avchP /path/to/file1 /path/to/file2 host:/path/to/some/directory
 </pre>
 
-<p>
-If a file or directory doesn't exist at the source, but already exists at the
-destination, you might want to delete it on destionation side.
-</p>
+</ul>
+
+<ul>
+<li>
+  If a file or directory doesn't exist at the source, but already exists at
+    the destination, you might want to delete it on destionation side.
 <pre>
-    rsync -avchP --delete /path/to/some/files host:/path/to/some/directory
+        rsync -avchP --delete /path/to/some/files host:/path/to/some/directory
 </pre>
 
-<p>
-Compress file before transfer:
-</p>
+</ul>
+
+<ul>
+<li>
+  Compress file before transfer:
 <pre>
-    rsync -avchP -z /path/to/some/files host:/path/to/some/directory
+        rsync -avchP -z /path/to/some/files host:/path/to/some/directory
 </pre>
 
-<p>
-Only transfer file newer than it on destiation side:
-</p>
+</ul>
+
+<ul>
+<li>
+  Only transfer file newer than it on destiation side:
 <pre>
-    rsync -avchP -u /path/to/some/files host:/path/to/some/directory
+        rsync -avchP -u /path/to/some/files host:/path/to/some/directory
 </pre>
 
-<p>
-Double-check your arguments before executing an rsync command:
-</p>
+</ul>
+
+<ul>
+<li>
+  Double-check your arguments before executing an rsync command:
 <pre>
-    rsync -avchP -n /path/to/some/files host:/path/to/some/directory
+        rsync -avchP -n /path/to/some/files host:/path/to/some/directory
 </pre>
 
-<p>
-Save all information to log file while transfering:
-</p>
+</ul>
+
+<ul>
+<li>
+  Save all information to log file while transfering:
 <pre>
-    rsync -avchP --log-file=rsync.log /path/to/some/files host:/path/to/some/directory
+        rsync -avchP --log-file=rsync.log /path/to/some/files host:/path/to/some/directory
 </pre>
+
+</ul>
 
 <p>
 <span id="-Note"></span><strong id="Note">Note</strong>: A trailing slash on the source will change the behavior of rsync:
 </p>
-
 <pre>
     rsync -avchP /local/directory remote:/remote/directory
 </pre>

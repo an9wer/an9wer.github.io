@@ -1,0 +1,34 @@
+== git symbolic-ref ==
+
+{{{
+    git symbolic-ref [-q] [--short] <name>
+    git symbolic-ref [-m <reason>] <name> <ref>
+    git symbolic-ref --delete [-q] <name>
+}}}
+
+-   When given on argument, reads which branch head the given symbolic refers
+    to and outputs its path, relative to the `.git` directory.
+    {{{
+        git symbolic-ref HEAD
+    }}}
+
+    This will output the path refered by the symbolic ref `HEAD`.
+
+-   When given two arguments, creates or updates a symbolic ref `name` to point
+    at the given branch `ref`
+    {{{
+        git symbolic-ref DEV refs/heads/dev
+    }}}
+
+    In this command, if the symbolic ref `DEV` doesn't exist, it will create a
+    symbolic ref named with `DEV`, then refers it to `refs/heads/dev`.
+    Otherwise it will just update the content of symbolic ref `DEV` to
+    `refs/heads/dev`.
+
+-   When given `--delete` and an additional argument, deletes the given
+    symbolic ref.
+    {{{
+        git symbolic-ref --delete DEV
+    }}}
+
+    This command will delete symbolic ref `DEV` created before.

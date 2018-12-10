@@ -25,38 +25,57 @@
         <a id="about" href="../about.html">About</a>
     </div>
     <div id="post">
-        <div id="title">Archives</div>
+        <div id="title">git</div>
         <div id="content">
+<div id="git symbolic-ref"><h2 id="git symbolic-ref">git symbolic-ref</h2></div>
+
+<pre>
+    git symbolic-ref [-q] [--short] &lt;name&gt;
+    git symbolic-ref [-m &lt;reason&gt;] &lt;name&gt; &lt;ref&gt;
+    git symbolic-ref --delete [-q] &lt;name&gt;
+</pre>
 
 <ul>
 <li>
-  <a href="git.html">git</a>
+  When given on argument, reads which branch head the given symbolic refers
+    to and outputs its path, relative to the <code>.git</code> directory.
+<pre>
+        git symbolic-ref HEAD
+</pre>
 
 </ul>
+<blockquote>
+This will output the path refered by the symbolic ref <code>HEAD</code>.
+</blockquote>
 
 <ul>
 <li>
-  <a href="rsync.html">rsync</a>
+  When given two arguments, creates or updates a symbolic ref <code>name</code> to point
+    at the given branch <code>ref</code>
+<pre>
+        git symbolic-ref DEV refs/heads/dev
+</pre>
 
 </ul>
+<blockquote>
+In this command, if the symbolic ref <code>DEV</code> doesn't exist, it will create a
+symbolic ref named with <code>DEV</code>, then refers it to <code>refs/heads/dev</code>.
+Otherwise it will just update the content of symbolic ref <code>DEV</code> to
+<code>refs/heads/dev</code>.
+</blockquote>
 
 <ul>
 <li>
-  <a href="man.html">man</a>
+  When given <code>--delete</code> and an additional argument, deletes the given
+    symbolic ref.
+<pre>
+        git symbolic-ref --delete DEV
+</pre>
 
 </ul>
-
-<ul>
-<li>
-  <a href="Bash.html">Bash</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="SSH.html">SSH</a> 
-
-</ul>
+<blockquote>
+This command will delete symbolic ref <code>DEV</code> created before.
+</blockquote>
 </div>
     </div>
     <div id="footer">
