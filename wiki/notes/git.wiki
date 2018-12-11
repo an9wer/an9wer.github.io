@@ -1,3 +1,45 @@
+There are three main components of a Git project:
+
+1.  `Working tree`: or working directory, consists of files that you are
+    currently working on. The state of files in working tree is `modified`.
+2.  `Index`: or staging area, is where commits are prepared. The state of files
+    in index is `staged` or `tracked`.
+3.  `Repository`: or repo, is the container that tracks the changes to your
+    project files. It holds all the commits that have been made. The state of
+    fils in repository is `committed`.
+
+{{{
+    working tree --(git add)-> index --(git commit)-> repository
+}}}
+            
+
+== git status ==
+
+{{{
+    git status [<options>...] [--] [<pathspec>...]
+}}}
+
+-   `-s`: Give the output in the short-format.
+
+-   `-b`: Show the branch and tracking info even in short-format.
+
+-   `--porcelain[=version]`: Given the output in an easy-to-parse-format for
+    scripts.The version parameter is used to specify the format version, which
+    value is v1 (default) or v2.
+
+-   `--long`: Give the output in the long-format. This is the default.
+
+-   `-u[<mode>]`: Show untracked files. The mode parameter is used to
+    specificed the handling of untracked files, if specified, it must be stuck
+    to the option(e.g. `-uno`, but not `-u no`).
+    `no`: Show no untracked files.
+    `normal`: Show untracked files and directories.
+    `all`: Also show individual files in untracked directories. (default)
+
+-   `--ignored`: Show ignored files as well.
+
+
+
 == git symbolic-ref ==
 
 {{{
@@ -32,3 +74,6 @@
     }}}
 
     This command will delete symbolic ref `DEV` created before.
+
+*Note*: The position of symbolic ref is located in `.git` directory (e.g.
+`.git/HEAD`).

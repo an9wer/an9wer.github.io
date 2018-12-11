@@ -27,6 +27,82 @@
     <div id="post">
         <div id="title">git</div>
         <div id="content">
+<p>
+There are three main components of a Git project:
+</p>
+
+<ol>
+<li>
+ <code>Working tree</code>: or working directory, consists of files that you are
+    currently working on. The state of files in working tree is <code>modified</code>.
+
+<li>
+ <code>Index</code>: or staging area, is where commits are prepared. The state of files
+    in index is <code>staged</code> or <code>tracked</code>.
+
+<li>
+ <code>Repository</code>: or repo, is the container that tracks the changes to your
+    project files. It holds all the commits that have been made. The state of
+    fils in repository is <code>committed</code>.
+
+</ol>
+
+<pre>
+    working tree --(git add)-&gt; index --(git commit)-&gt; repository
+</pre>
+            
+
+<div id="git status"><h2 id="git status">git status</h2></div>
+
+<pre>
+    git status [&lt;options&gt;...] [--] [&lt;pathspec&gt;...]
+</pre>
+
+<ul>
+<li>
+  <code>-s</code>: Give the output in the short-format.
+
+</ul>
+
+<ul>
+<li>
+  <code>-b</code>: Show the branch and tracking info even in short-format.
+
+</ul>
+
+<ul>
+<li>
+  <code>--porcelain[=version]</code>: Given the output in an easy-to-parse-format for
+    scripts.The version parameter is used to specify the format version, which
+    value is v1 (default) or v2.
+
+</ul>
+
+<ul>
+<li>
+  <code>--long</code>: Give the output in the long-format. This is the default.
+
+</ul>
+
+<ul>
+<li>
+  <code>-u[&lt;mode&gt;]</code>: Show untracked files. The mode parameter is used to
+    specificed the handling of untracked files, if specified, it must be stuck
+    to the option(e.g. <code>-uno</code>, but not <code>-u no</code>).
+    <code>no</code>: Show no untracked files.
+    <code>normal</code>: Show untracked files and directories.
+    <code>all</code>: Also show individual files in untracked directories. (default)
+
+</ul>
+
+<ul>
+<li>
+  <code>--ignored</code>: Show ignored files as well.
+
+</ul>
+
+
+
 <div id="git symbolic-ref"><h2 id="git symbolic-ref">git symbolic-ref</h2></div>
 
 <pre>
@@ -76,6 +152,11 @@ Otherwise it will just update the content of symbolic ref <code>DEV</code> to
 <blockquote>
 This command will delete symbolic ref <code>DEV</code> created before.
 </blockquote>
+
+<p>
+<span id="git symbolic-ref-Note"></span><strong id="Note">Note</strong>: The position of symbolic ref is located in <code>.git</code> directory (e.g.
+<code>.git/HEAD</code>).
+</p>
 </div>
     </div>
     <div id="footer">
