@@ -1,5 +1,7 @@
 %title Archives
 
+== Shell ==
+
 -   [[xmodmap|xmodmap]]
 
 -   [[git|git]]
@@ -8,6 +10,6 @@
 
 -   [[man|man]]
 
--   [[Bash|Bash]]
+-   [[ssh|ssh]] 
 
--   [[SSH|SSH]] 
+-   [[Bash|Bash]]

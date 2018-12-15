@@ -1,3 +1,70 @@
+== Variables ==
+
+`PROMPT_COMMAND`: If set, the value is executed as a command prior to issuing
+each primary prompt.
+
+== $'string' ==
+
+(see [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|examples]])
+
+Words of the form $'string' are treated specially. The word expands to string,
+with backslash-escaped characters replaced as specified  by the ANSI C
+standard. Backslash escape sequences, if present, are decoded as follows:
+
+{{{
+    \a             alert (bell)
+    \b             backspace
+    \e
+    \E             an escape character
+    \f             form feed
+    \n             new line
+    \r             carriage return
+    \t             horizontal tab
+    \v             vertical tab
+    \\             backslash
+    \'             single quote
+    \"             double quote
+    \?             question mark
+    \nnn           the eight-bit character whose value is the octal value nnn (one to three digits)
+    \xHH           the eight-bit character whose value is the hexadecimal value HH (one or two hex digits)
+    \uHHHH         the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHH (one to four hex digits)
+    \UHHHHHHHH     the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHHHHHH (one to eight hex digits)
+    \cx            a control-x character
+}}}
+
+The expanded result is single-quoted, as if the dollar sign had not been
+present. For example:
+
+{{{
+    $ echo abc$'\b'd
+    abd
+}}}
+{{{
+    $ echo 123$'\n'321
+    123
+    321
+}}}
+
+== $"string" ==
+
+(see [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|examples]])
+
+A double-quoted string preceded by a dollar sign `$"string"` will cause the
+string to be translated according to the current locale.  If the current locale
+is C or POSIX, the dollar sign is ignored.  If the string is translated and
+replaced, the replacement is double-quoted. For example:
+
+{{{
+    $ echo abc$"\b"d
+    abc\bd
+}}}
+{{{
+    $ echo 123$"\n"321
+    123\n321
+}}}
+
+
+
 == Parameter Expansion ==
 
 (see [[https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh|examples]])
@@ -83,3 +150,5 @@ it's an expansion error if `length` evaluates to number less than zero):
 == Acknowledgements ==
 
 -   [[https://www.gnu.org/software/bash/manual/bash.html]]
+
+-   `man bash`
