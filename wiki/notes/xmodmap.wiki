@@ -1,7 +1,9 @@
 There are two types of keyboard values in Xorg: keycodes and keysyms.
 
--   `keycode`: The keycode is the numeric representation received by the kernel
-    when a key or a mouse button is pressed.
+-   `keycode`: The keycode is the numeric representation (which may be
+    specified in decimal, hex or octal and can be determined by running the
+    `xev` program) received by the kernel when a key or a mouse button is
+    pressed.
     
 -   `keysym`: The keysym is the value assigned to the keycode. For example,
     pressing 'a' generates the keycode 38, which is mapped to the keysym 0x61,

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../../../../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="../../../index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../../../../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" class="current" href="../../../index.html">Blog</a>
+        <a id="notes" href="../../../../notes/index.html">Notes</a>
+        <a id="about" href="../../../../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">Caps Lock 键修改小记</div>
+        <div id="content">
+<p>
+大概是在两年前，刷知乎的时候看到用手掌外侧按 Ctrl 键的方法，当时刚学 Linux，此
+方法在 Linux 下简直就是神技，因为在 Shell 中默认使用了 Emacs 的模式进行命令的编
+辑，例如：Ctrl-a 将光标移动到行首，Ctrl-e 将光标移动到行末，Ctrl-b 将光标往左移
+动一个字母等等。甚至在 Vim 里面也经常会用到 Ctrl 的组合键，例如：Ctrl-[ 退出插
+入模式，其作用相当于 Esc 键。使用 Ctrl 的组合键的好处除了其本身代表的功能外，还
+有重要的一点是提高打字的效率，我们的双手可以始终保持在键盘中心区域，而不需要为
+了按个 Esc 键还得抬一下手。
+</p>
+
+<p>
+这么好的技能，其实也有一些缺点。最近我也是饱受苦恼，因为左 Ctrl 键处于键盘的左
+下角边缘，长时间使用手掌外侧按压，其方正的棱角会导致我的手掌渐渐产生疼痛感。
+</p>
+
+<p>
+那有没有什么好的办法能解决这个问题呢？这一点的话 Emacs 用户应该是比较有心得的（
+因为他们经常要按 Ctrl 键，呵呵）。其实关于这个问题我早就了解过，Emacs 用户一般
+都是将 Caps_Lock 键与 Ctrl 键互换，毕竟小拇指按 Caps_Lock 还是比较舒服的。
+Richard Stallman 用的就是 HHKB 这种 Ctrl 在 Caps_Lock 位置的键盘。
+</p>
+
+<p>
+当然我肯定不会为了这个而买一把 2000 多人民币的 HHKB。在 Linux 下有个 xmodmap 命
+令，可以修改键位。于是花了点时间了解了下这条命令，发现还是挺简单的，只需新建一
+个 <code>~/.Xmodpad</code> 文件，在里面写入如下内容：
+</p>
+
+<pre>
+    clear Lock
+    keysym Caps_Lock = Control_L
+    add Control = Control_L
+</pre>
+
+<p>
+然后执行 <code>xmodmap ~/.Xmodpad</code> 命令之后，Caps_Lock 键就变成了 Ctrl 键，之前的
+Ctrl 也保留了下来。
+</p>
+
+<p>
+不过，这样以后，我就得适应 Caps_Lock 的按键方法了。今天尝试了一天，经常会和
+Shift 键搞混在一起，看来得适应一段时间了，呵呵。
+</p>
+
+<p>
+Thanks for reading :)
+</p>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>
