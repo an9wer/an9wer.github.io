@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">xmodmap</div>
+        <div id="content">
+<p>
+There are two types of keyboard values in Xorg: keycodes and keysyms.
+</p>
+
+<ul>
+<li>
+  <code>keycode</code>: The keycode is the numeric representation received by the kernel
+    when a key or a mouse button is pressed.
+
+</ul>
+    
+<ul>
+<li>
+  <code>keysym</code>: The keysym is the value assigned to the keycode. For example,
+    pressing 'a' generates the keycode 38, which is mapped to the keysym 0x61,
+    which matches a in the ASCII table. The keysyms are managed by Xorg in a
+    table of keycodes defining the keycode-keysym relations, which is called
+    the keymap table. This can be shown by running xmodmap.
+
+</ul>
+
+<div id="Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-e expression</code>: This option specifies an expression to be executed. Any
+    number of expressions may be specified from the command line.
+
+</ul>
+
+<ul>
+<li>
+  <code>-pm</code>: This option indicates that the current modifier map should be
+    printed on the standard output. This is the default mode of operation if no
+    other mode options are specified.
+
+</ul>
+
+<ul>
+<li>
+  <code>-pke</code>: This option indicates that the current keymap table should be
+    printed on the standard output in the form of  expres‐ sions that can be
+    fed back to xmodmap.
+
+</ul>
+
+<div id="Expressions"><h2 id="Expressions">Expressions</h2></div>
+
+<p>
+There are two vital expressions which have the same effect, they all assign the
+list of keysyms to the indicated keycode:
+</p>
+
+<pre>
+    keycode NUMBER = KEYSYMNAME ...
+</pre>
+
+<pre>
+    keysym KEYSYMNAME = KEYSYMNAME ...
+</pre>
+
+<p>
+<span id="Expressions-Note"></span><strong id="Note">Note</strong>: In the second expression, The KEYSYMNAME on the left hand side is
+translated into matching keycodes used to perform the corresponding  set  of
+keycode  expressions. 
+</p>
+
+<p>
+<span id="Expressions-Note"></span><strong id="Note">Note</strong>: In all expressions, Keysyms on the left hand side of the = sign are
+looked up before any changes are made. This makes it possible to swap modifier
+keys.
+</p>
+
+<div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
+
+<ul>
+<li>
+  <a href="https://wiki.archlinux.org/index.php/xmodmap">https://wiki.archlinux.org/index.php/xmodmap</a>
+
+</ul>
+
+<ul>
+<li>
+  <code>man xmodmap</code>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

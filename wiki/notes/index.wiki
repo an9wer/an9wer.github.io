@@ -1,5 +1,7 @@
 %title Archives
 
+-   [[xmodmap|xmodmap]]
+
 -   [[git|git]]
 
 -   [[rsync|rsync]]

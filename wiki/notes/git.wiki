@@ -32,9 +32,9 @@ There are three main components of a Git project:
 -   `-u[<mode>]`: Show untracked files. The mode parameter is used to
     specificed the handling of untracked files, if specified, it must be stuck
     to the option(e.g. `-uno`, but not `-u no`).
-    `no`: Show no untracked files.
-    `normal`: Show untracked files and directories.
-    `all`: Also show individual files in untracked directories. (default)
+    -   `no`: Show no untracked files.
+    -   `normal`: Show untracked files and directories.
+    -   `all`: Also show individual files in untracked directories. (default)
 
 -   `--ignored`: Show ignored files as well.
 
