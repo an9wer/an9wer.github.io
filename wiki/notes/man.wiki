@@ -10,21 +10,33 @@ of the manual. The default action is to search in all of the available sections
 following a pre-defined order ("1 n l  8  3  2  3posix  3pm 3perl  3am 5 4 9 6
 7" by default).
 
--   `-f`: Equivalent to whatis. Display a short description from the manual page, if available.
+-   `-f`: Equivalent to whatis. Display a short description from the manual
+    page, if available.
 
--   `-k`: Equivalent to apropos. Search the short manual page descriptions for keywords and display any matches.
+-   `-k`: Equivalent to apropos. Search the short manual page descriptions for
+    keywords and display any matches.
 
--   `-K`: Search for text in all manual pages. This is a brute-force search, and is likely to take some time; if you can, you should specify a section to reduce the number of pages that need to be searched.
+-   `-K`: Search for text in all manual pages. This is a brute-force search,
+    and is likely to take some time; if you can, you should specify a section
+    to reduce the number of pages that need to be searched.
 
--   `-w`: Don't actually display the manual pages, but do print the location(s) of the source nroff files that would be formatted.
+-   `-w`: Don't actually display the manual pages, but do print the location(s)
+    of the source nroff files that would be formatted.
 
--   `-a`: By default, man will exit after displaying the most suitable manual page it finds. Using this option forces man to display all the manual pages with names that match the search criteria.
+-   `-a`: By default, man will exit after displaying the most suitable manual
+    page it finds. Using this option forces man to display all the manual pages
+    with names that match the search criteria.
 
--   `--regex`: Show all pages with any part of either their names or their descriptions matching each page argument as a regular expression, as with apropos(1).
+-   `--regex`: Show all pages with any part of either their names or their
+    descriptions matching each page argument as a regular expression, as with
+    apropos(1).
 
--   `--wildcard`: Show  all pages with any part of either their names or their descriptions matching each page argument using shell-style wildcards, as with apropos(1) --wildcard.
+-   `--wildcard`: Show  all pages with any part of either their names or their
+    descriptions matching each page argument using shell-style wildcards, as
+    with apropos(1) --wildcard.
 
--   `--names-only`: If the --regex or --wildcard option is used, match only page names, not page descriptions. Otherwise, no effect.
+-   `--names-only`: If the --regex or --wildcard option is used, match only
+    page names, not page descriptions. Otherwise, no effect.
 
 == mandb ==
 
