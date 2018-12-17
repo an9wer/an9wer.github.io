@@ -1,6 +1,8 @@
 %title Archives
 
-2018/12/15 @ [[2018/12/15/Caps Lock 键修改小记|Caps Lock 键修改小记]]
+2018/12/17 @ [[2018/12/17/Rapoo V500 换键帽|Rapoo V500 换键帽]]
+
+2018/12/15 @ [[2018/12/15/Caps_Lock key 重绑定|Caps_Lock key 重绑定]]
 
 2018/12/13 @ [[2018/12/13/MuPDF 使用小记|MuPDF 使用小记]]
 

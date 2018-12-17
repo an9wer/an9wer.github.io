@@ -25,7 +25,7 @@
         <a id="about" href="../../../../about.html">About</a>
     </div>
     <div id="post">
-        <div id="title">Caps Lock 键修改小记</div>
+        <div id="title">Caps_Lock key 重绑定</div>
         <div id="content">
 <p>
 大概是在两年前，刷知乎的时候看到用手掌外侧按 Ctrl 键的方法，当时刚学 Linux，此
@@ -51,8 +51,8 @@ Richard Stallman 用的就是 HHKB 这种 Ctrl 在 Caps_Lock 位置的键盘。
 
 <p>
 当然我肯定不会为了这个而买一把 2000 多人民币的 HHKB。在 Linux 下有个 xmodmap 命
-令，可以修改键位。于是花了点时间了解了下这条命令，发现还是挺简单的，只需新建一
-个 <code>~/.Xmodpad</code> 文件，在里面写入如下内容：
+令，可以修改键位。于是花了点时间了解了下这条命令，发现其语法规则还是挺简单的，
+新建一个 <code>~/.Xmodpad</code> 文件，在里面写入如下内容：
 </p>
 
 <pre>
@@ -62,14 +62,65 @@ Richard Stallman 用的就是 HHKB 这种 Ctrl 在 Caps_Lock 位置的键盘。
 </pre>
 
 <p>
-然后执行 <code>xmodmap ~/.Xmodpad</code> 命令之后，Caps_Lock 键就变成了 Ctrl 键，之前的
-Ctrl 也保留了下来。
+该命令表示取消 Caps_Lock 键原有的功能，将其重新绑定到 Control 键。之后执行
+<code>xmodmap ~/.Xmodpad</code> 命令，键位即修改成功。不过，这样以后，我就得适应 Caps_Lock
+的按键方法。今天尝试了一天，经常会和 Shift 键搞混在一起，看来得适应一段时间了，
+呵呵。
 </p>
 
 <p>
-不过，这样以后，我就得适应 Caps_Lock 的按键方法了。今天尝试了一天，经常会和
-Shift 键搞混在一起，看来得适应一段时间了，呵呵。
+<span id="-Edit (2018/12/17)"></span><strong id="Edit (2018/12/17)">Edit (2018/12/17)</strong>:
 </p>
+
+<p>
+在知乎看到了
+<a href="https://www.zhihu.com/question/22127282/answer/42905465">这篇回答 </a>，发现还真
+是个好办法，于是这两天又用 xmodmap 重新将键位映射了一遍，现在被我修改的键位如下
+：
+</p>
+
+<table>
+<tr>
+<th>
+&nbsp;
+</th>
+<th>
+bind to
+</th>
+</tr>
+<tr>
+<td>
+Caps_Lock
+</td>
+<td>
+Control_L
+</td>
+</tr>
+<tr>
+<td>
+Alt_R
+</td>
+<td>
+BackSpace
+</td>
+</tr>
+<tr>
+<td>
+Menu
+</td>
+<td>
+blackslash
+</td>
+</tr>
+<tr>
+<td>
+Super_R
+</td>
+<td>
+Escape
+</td>
+</tr>
+</table>
 
 <p>
 Thanks for reading :)

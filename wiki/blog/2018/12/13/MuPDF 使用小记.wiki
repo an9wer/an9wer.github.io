@@ -27,14 +27,14 @@ geek。当然，成为骆驼背上最后一根羽毛的是我发现之前用 Fox
 
 今天还了解了 Linux 下其他的 PDF 阅读器，这边也做个总结吧：
 
-|                | Bookmark | Annotation                     |
-| -------------- | -------- | ------------------------------ |
-| FoxitReader    | yes      | yes                            |
-| mupdf          | no       | yes                            |
-| evince         | no       | yes                            |
-| Okular         | no       | yes                            |
-| zathura        | no       | no                             |
-| llpp           | no       | kind of (shift + mouse right)  |
+|             | Bookmark   | Annotation                    |
+|-------------|------------|-------------------------------|
+| FoxitReader | yes        | yes                           |
+| mupdf       | no         | yes                           |
+| evince      | no         | yes                           |
+| Okular      | no         | yes                           |
+| zathura     | no         | no                            |
+| llpp        | no         | kind of (shift + mouse right) |
 
 （注：这里的 Bookmark 表示是否可以修改 PDF 目录，Annotation 表示是否可以添加编
 辑注释）
