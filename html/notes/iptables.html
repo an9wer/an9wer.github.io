@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">iptables</div>
+        <div id="content">
+<div id="Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-t table</code>: This option specifies the packet matching table  which the
+    command should operate on. If the kernel is configured with automatic
+    module loading, an attempt will be made to load the appropriate module for
+    that table if it is not already there. The tables contain <code>filter</code>
+    (default), <code>nat</code>, <code>mangle</code>, <code>raw</code> and <code>security</code>.
+
+</ul>
+
+<ul>
+<li>
+  <code>-A chain rule-specification</code>: Append one or more rules to the end of the
+    selected chain. When the source and/or destiation names resolve the more
+    than one address, a rule will be added for each possible address
+    combination.
+
+</ul>
+
+<ul>
+<li>
+  <code>-C chain rule-specification</code>: Check whether a rule matching the
+    specification does exist in the selected chain. This command uses the same
+    logic as <code>-D</code> to find a matching entry, but does not alter the existing
+    iptables configuration and uses its exit code to indicate success or
+    failure.
+
+</ul>
+
+<ul>
+<li>
+  <code>-D chain rule-specification|rulenum</code>: Delete one or more rules from the
+    selected chain. There are two verisons of this command: the rule can be
+    specified as a number in the chain (starting at 1 for the first rule) or a
+    rule to match.
+
+</ul>
+
+<ul>
+<li>
+  <code>-I chain [rulenum] rule-specification</code>: Insert one or more rules in the
+    selected chain as the given rule number. So, if the rule number is 1, the
+    rule or rules are inserted at the head of the chain. This is also the
+    default if no rule number is specified.
+
+</ul>
+
+<ul>
+<li>
+  <code>-R chain rulenum rule-specification</code>: Replace a rule in the selected
+    chain. If the source and/or destination names resolve to multiple address,
+    the command will fail. Rule are numbered starting at 1.
+
+</ul>
+
+<ul>
+<li>
+  <code>-L [chain]</code>: List all rules in the selected chain. If no chain is selecte,
+    all chains are listed. 
+
+</ul>
+
+<ul>
+<li>
+  <code>-S [chain]</code>: Print all rules in the selected chain. If no chain is
+    selected, all chains are printed like iptables-save.
+
+</ul>
+
+<ul>
+<li>
+  <code>-F [chain]</code>: Flush the selected chain. This is equivalent to delete all
+    the rules one by one.
+
+</ul>
+
+<ul>
+<li>
+  <code>-Z [chain [rulenum]]</code>: Zero the packet and byte counters in all chains, or
+    only the given chain, or only the given rule in a chain.
+
+</ul>
+
+<ul>
+<li>
+  <code>-v</code>: Verbose output.
+
+</ul>
+
+<ul>
+<li>
+  <code>-n</code>: Numeric output. IP address and port numbers will be printed in
+    numeric format.
+
+</ul>
+
+<ul>
+<li>
+  <code>-x</code>: Expand numbers. Display the exact value of the packet and byte
+    counters, instead of only the rounded number in K's (multiples of 1000) M's
+    (Multiples of 1000K) or G's (multiples of 1000M). This option is only
+    relevant for the <code>-L</code> option.
+
+</ul>
+
+<ul>
+<li>
+  <code>--line-numbers</code>: When listing rules, add line numbers to the beginning of
+    each rule, corresponding to that rule's position in the chain.
+
+</ul>
+
+<div id="Parameters"><h2 id="Parameters">Parameters</h2></div>
+
+<ul>
+<li>
+  <code>[!] -p protocol</code>: The protocol of the rule or of the packet to check. The
+    specified protocol can be one of tcp, udp, udplite, icmp, icmpv6, esp, ah,
+    sctp, mh or the special keyword "all", or it can be a numeric value,
+    representing one of these protocols or a different one. A prottocal name
+    from <code>/etc/protocols</code> is also allowed. A "!" argument before the protocol
+    inverts the test. The number zero is equivalent to "all". "all" will match
+    with all protocols and is taken as default when this option is ommited.
+
+</ul>
+
+
+<ul>
+<li>
+  <code>[!] -s address[/mask][,...]</code>: Source specification. Address can be either
+    a network name, a hostname, a network IP address (with /mask), or a plain
+    IP address. Hostname will be resolved once only, before the rule is
+    submitted to the kernel. A "!" argument before the address specification
+    inverts the sense of the address. Multiple address can be specified, but
+    this will expand to multiple rules.
+
+</ul>
+
+<ul>
+<li>
+  <code>[!] -d address[/mask][,...]</code>: Destination specification. (similar to <code>-s</code>
+    option)
+
+</ul>
+
+<ul>
+<li>
+  <code>-m match</code>: Specifies a match to use, that is, an extension module that
+    test for a specific property.
+
+</ul>
+
+<ul>
+<li>
+  <code>-j target</code>: Specifies the target of the rule; i.e., what to do if the
+    packet matches it. The target can be a user-defined chain (other than the
+    one this rule is in), one of the special builtin targets (ACCEPT, DROP,
+    REJECT ...) which decide the fate of the packet immediately, or an
+    extension. If this option is omitted in a rule, then matching the rule will
+    have no effect on the packet's fate, but the counters on the rule will be
+    increment.
+
+</ul>
+
+<div id="Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  List all rules in <code>INPUT</code> chain of <code>filter</code> table.
+<pre>
+        sudo iptables -nvL INPUT
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  List all rules in <code>INPUT</code> chain of <code>filter</code> table with line numbers.
+<pre>
+        sudo iptables -nvL INPUT --line-numbers
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Clear byte counters in <code>OUTPUT</code> chain of `filter table.
+<pre>
+        sudo iptables -Z OUTPUT
+</pre>
+
+</ul>
+
+
+<div id="References"><h2 id="References">References</h2></div>
+
+<ul>
+<li>
+  <code>man iptables</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man iptables-extensions</code>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://wiki.archlinux.org/index.php/iptables">archwiki iptables</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://netfilter.org/index.html">netfilter</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html">iptables tutorial</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://opensource.com/article/18/9/linux-iptables-firewalld">difference between iptables and firewalld</a>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>
