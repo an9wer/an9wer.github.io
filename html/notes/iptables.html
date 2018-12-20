@@ -27,7 +27,9 @@
     <div id="post">
         <div id="title">iptables</div>
         <div id="content">
-<div id="Options"><h2 id="Options">Options</h2></div>
+<div id="iptables"><h1 id="iptables">iptables</h1></div>
+
+<div id="iptables-Options"><h2 id="Options">Options</h2></div>
 
 <ul>
 <li>
@@ -141,7 +143,11 @@
 
 </ul>
 
-<div id="Parameters"><h2 id="Parameters">Parameters</h2></div>
+<p>
+Find more in <code>man iptbales</code>.
+</p>
+
+<div id="iptables-Parameters"><h2 id="Parameters">Parameters</h2></div>
 
 <ul>
 <li>
@@ -193,7 +199,27 @@
 
 </ul>
 
-<div id="Examples"><h2 id="Examples">Examples</h2></div>
+<ul>
+<li>
+  <code>-c packets bytes</code>: Enables the administrator to initialize the packet and
+    byte counters of a rule.
+
+</ul>
+
+<p>
+Find more in <code>man iptbales</code>.
+</p>
+
+<div id="iptables-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  Print all rules in <code>INPUT</code> chain of <code>filter</code> table.
+<pre>
+        sudo iptables -vS INPUT
+</pre>
+
+</ul>
 
 <ul>
 <li>
@@ -215,15 +241,252 @@
 
 <ul>
 <li>
-  Clear byte counters in <code>OUTPUT</code> chain of `filter table.
+  Allow a single IP address for incomming connection.
+<pre>
+        sudo iptables -A INPUT -s 10.10.10.10  -j ACCEPT
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Allow a range of IP addresses for incomming connection.
+<pre>
+        sudo iptables -A INPUT -s 10.10.10.0/24 -j ACCEPT
+</pre>
+    Or
+<pre>
+        sudo iptables -A INPUT -s 10.10.10.0/255.255.255.0 -j ACCEPT
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Block a specific port for incomming connection from any IP address.
+<pre>
+        sudo iptables -A INPUT -p tcp -m tcp --dport 8000 -j DROP
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Block a specific port for incomming connection from a specific IP address.
+<pre>
+        sudo iptables -A INPUT -s 10.10.10.10 -p tcp -m tcp --dport 8000 -j DROP
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Block to connect to a specific ip:port.
+<pre>
+        sudo iptables -A OUTPUT -d 10.10.10.10 -p tcp -m tcp --dport 8000 -j DROP
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Block to connect from a specific ip:port.
+<pre>
+        sudo iptables -A INPUT -s 10.10.10.10 -p tcp -m tcp --sport 8000 -j DROP
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Flush all rules in <code>INPUT</code> chain of filter table.
+<pre>
+        sudo iptable -F INPUT
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Delete a specified rule by a rule number in <code>OUTPUT</code> chain of <code>filter</code>
+    table.
+<pre>
+        sudo iptables -D OUTPUT 2
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Clear byte counters in <code>OUTPUT</code> chain of <code>filter</code> table.
 <pre>
         sudo iptables -Z OUTPUT
 </pre>
 
 </ul>
 
+<p>
+<span id="iptables-Examples-Note"></span><strong id="Note">Note</strong>:
+</p>
 
-<div id="References"><h2 id="References">References</h2></div>
+<p>
+A lot of protocols are going to require two-way communication. For
+example, if you want to allow SSH connections to your system, the input and
+output chains are going to need a rule added to them. But, what if you only
+want SSH coming into your system to be allowed? Won’t adding a rule to the
+output chain also allow outgoing SSH attempts? That’s where connection states
+come in, which give you the capability you’d need to allow two way
+communication but only allow one way connections to be established.
+</p>
+
+<p>
+Take a look at this example, where SSH connections FROM 10.10.10.10 are
+permitted, but SSH connections TO 10.10.10.10 are not. However, the system is
+permitted to send back information over SSH as long as the session has already
+been established, which makes SSH communication possible between these two
+hosts.
+</p>
+<pre>
+    sudo iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -m state --state NEW,ESTABLISHED -j ACCEPT
+    sudo iptables -A OUTPUT -p tcp --sport 22 -d 10.10.10.10 -m state --state ESTABLISHED -j ACCEPT
+</pre>
+
+<p>
+<span id="iptables-Examples-Note"></span><strong id="Note">Note</strong>:
+</p>
+
+<p>
+To monitor a specific port for incomming connection from any IP address.
+</p>
+<pre>
+    sudo iptabels -A INPUT -p tcp -m tcp --dport 10000
+    sudo watch -n 1 iptables -vnL INPUT
+</pre>
+
+<p>
+To monitor a specific port for outgoing connection to any IP address.
+</p>
+<pre>
+    sudo iptables -A OUTPUT -p tcp -m tcp --sport 10000
+    sudo watch -n 1 iptables -vnL OUTPUT
+</pre>
+
+
+
+<div id="iptables-save"><h1 id="iptables-save">iptables-save</h1></div>
+
+<div id="iptables-save-Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-t tablename</code>: Restrict output to only one table. If not specified, output
+    include all avilable tables.
+
+</ul>
+
+<div id="iptables-save-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  Save current rules to rule file.
+<pre>
+        sudo iptables-save &gt; /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Save only <code>filter</code> table rule to rule file.
+<pre>
+        sudo iptables-save -t filter &gt; /path/to/iptables.rules
+</pre>
+
+</ul>
+    
+<div id="iptables-restore"><h1 id="iptables-restore">iptables-restore</h1></div>
+
+<div id="iptables-restore-Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-c</code>: Restore the values of all packet and byte counters.
+
+</ul>
+
+<ul>
+<li>
+  <code>-n</code>: Don't flush the previous contents of the table. If no specified, both
+    commands flush al previous contents of the respective table.
+
+</ul>
+
+<ul>
+<li>
+  <code>-t</code>: Only parse and construct the ruleset, but do not commit it.
+
+</ul>
+
+<ul>
+<li>
+  <code>-T table</code>: Restore only the named table even if the input stream contains
+    other ones.
+
+</ul>
+
+<p>
+Find more in <code>man iptbales-restore</code>.
+</p>
+
+<div id="iptables-restore-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  Check all rules in rule file.
+<pre>
+        sudo iptables-restore -t /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Flush the previous rules and restore all rules from rule file.
+<pre>
+        sudo iptables-restore /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Do not flush the previous rules but only restore all rules from rule file.
+<pre>
+        sudo iptables-restore -n /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Restore only the <code>filter</code> table rules from rule file.
+<pre>
+        sudo iptables-restore -T filter /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Do not flush the previous rules but only restore the <code>filter</code> table rules
+    form rule file.
+<pre>
+        sudo iptables-restore -n -T filter /path/to/iptables.rules
+</pre>
+
+</ul>
+
+<div id="References"><h1 id="References">References</h1></div>
 
 <ul>
 <li>

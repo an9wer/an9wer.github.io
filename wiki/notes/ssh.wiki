@@ -1,4 +1,4 @@
-== Generating SSH keys ==
+= Generating SSH keys =
 
 {{{
     ssh-keygen -f ~/.ssh/an9wer_rsa -o -a 100 -t rsa -b 4096 -C "an9wer@gmail.com"
@@ -16,7 +16,7 @@
 
 -   `-C`: provides a new comment.
 
-== Copy public key to remote server ==
+= Copy public key to remote server =
 
 {{{
     ssh-copy-id -i ~/.ssh/an9wer_rsa.pub an9wer@example.com
@@ -25,7 +25,7 @@
 -   `-i`: specifies the public key to be sent to remote server.
 
 
-== SSH agents ==
+= SSH agents =
 
 Check whether SSH agent is started:
 
@@ -46,7 +46,7 @@ You can also kill the current agent:
     ssh-agent -k
 }}}
 
-== Add ssh key to agent ==
+= Add ssh key to agent =
 
 This command will add private ssh key `~/.ssh/an9wer_rsa` into authentication
 agent.
@@ -55,7 +55,7 @@ agent.
     ssh-add ~/.ssh/an9wer_rsa
 }}}
 
-== ~/.ssh/config  ==
+= ~/.ssh/config =
 
 If you want to setup aliases for servers you access often, you can create the
 file `~/.ssh/config` and specify each server in it. A simple example is as
@@ -76,9 +76,9 @@ follows:
         ServerAliveCountMax 3
 }}}
 
-== SSH tunnels ==
+= SSH tunnels =
 
-=== Local port forwarding ===
+== Local port forwarding ==
 
 The `-L` option of ssh binds the given port on local host to the given port on
 remote host. Here's some examples:
@@ -99,7 +99,7 @@ The difference between this example and previous one is the remote host being
 changed to `localhost:80`. This means it will forward connectons from local
 port 8000 to port 80 on `localhost` of the server `example.com`.
 
-=== Remote port forwarding ===
+== Remote port forwarding ==
 
 The `-R` option of ssh specifies that the connection to the given port on remote
 server will be forwarding to the local side.
@@ -123,7 +123,7 @@ Then when you connect to example.com:80, it'll forward to localhost:8000 on
 local side. If you don't have `GatewayPorts yes` in your configuration file,
 it'll only forward localhost:80 on example.com to localhost:8000 on local side.
 
-=== socks proxy ===
+== socks proxy ==
 
 The `-D` option of ssh can set up a local socks proxy, which supports socks4
 and socks5 protocols.
@@ -135,7 +135,7 @@ and socks5 protocols.
 This command will make a local socks proxy on localhost:1080, you can check it
 by the command `curl --socks5 1080 google.com`.
 
-== autossh ==
+= autossh =
 
 {{{
     autossh [-M port[:echo_port]] [-f] [SSH_OPTIONS]
@@ -189,7 +189,7 @@ And we can run it easily by the following command:
     autossh -M 0 -f -N example
 }}}
 
-== Acknowledgements ==
+= Reference =
 
 -   [[https://wiki.archlinux.org/index.php/SSH_keys|ssh key]]
 

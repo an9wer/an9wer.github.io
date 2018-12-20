@@ -45,8 +45,8 @@ keycode  expressions.
 looked up before any changes are made. This makes it possible to swap modifier
 keys.
 
-== Acknowledgements ==
+= References =
 
--   [[https://wiki.archlinux.org/index.php/xmodmap]]
+-   [[https://wiki.archlinux.org/index.php/xmodmap|archwiki modmap]]
 
 -   `man xmodmap`

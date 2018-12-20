@@ -13,7 +13,7 @@ There are three main components of a Git project:
 }}}
             
 
-== git status ==
+= git status =
 
 {{{
     git status [<options>...] [--] [<pathspec>...]
@@ -39,8 +39,7 @@ There are three main components of a Git project:
 -   `--ignored`: Show ignored files as well.
 
 
-
-== git symbolic-ref ==
+= git symbolic-ref =
 
 {{{
     git symbolic-ref [-q] [--short] <name>

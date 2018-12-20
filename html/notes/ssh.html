@@ -27,7 +27,7 @@
     <div id="post">
         <div id="title">ssh</div>
         <div id="content">
-<div id="Generating SSH keys"><h2 id="Generating SSH keys">Generating SSH keys</h2></div>
+<div id="Generating SSH keys"><h1 id="Generating SSH keys">Generating SSH keys</h1></div>
 
 <pre>
     ssh-keygen -f ~/.ssh/an9wer_rsa -o -a 100 -t rsa -b 4096 -C "an9wer@gmail.com"
@@ -69,7 +69,7 @@
 
 </ul>
 
-<div id="Copy public key to remote server"><h2 id="Copy public key to remote server">Copy public key to remote server</h2></div>
+<div id="Copy public key to remote server"><h1 id="Copy public key to remote server">Copy public key to remote server</h1></div>
 
 <pre>
     ssh-copy-id -i ~/.ssh/an9wer_rsa.pub an9wer@example.com
@@ -82,7 +82,7 @@
 </ul>
 
 
-<div id="SSH agents"><h2 id="SSH agents">SSH agents</h2></div>
+<div id="SSH agents"><h1 id="SSH agents">SSH agents</h1></div>
 
 <p>
 Check whether SSH agent is started:
@@ -109,7 +109,7 @@ You can also kill the current agent:
     ssh-agent -k
 </pre>
 
-<div id="Add ssh key to agent"><h2 id="Add ssh key to agent">Add ssh key to agent</h2></div>
+<div id="Add ssh key to agent"><h1 id="Add ssh key to agent">Add ssh key to agent</h1></div>
 
 <p>
 This command will add private ssh key <code>~/.ssh/an9wer_rsa</code> into authentication
@@ -120,7 +120,7 @@ agent.
     ssh-add ~/.ssh/an9wer_rsa
 </pre>
 
-<div id="~/.ssh/config"><h2 id="~/.ssh/config">~/.ssh/config</h2></div>
+<div id="~/.ssh/config"><h1 id="~/.ssh/config">~/.ssh/config</h1></div>
 
 <p>
 If you want to setup aliases for servers you access often, you can create the
@@ -143,9 +143,9 @@ follows:
         ServerAliveCountMax 3
 </pre>
 
-<div id="SSH tunnels"><h2 id="SSH tunnels">SSH tunnels</h2></div>
+<div id="SSH tunnels"><h1 id="SSH tunnels">SSH tunnels</h1></div>
 
-<div id="SSH tunnels-Local port forwarding"><h3 id="Local port forwarding">Local port forwarding</h3></div>
+<div id="SSH tunnels-Local port forwarding"><h2 id="Local port forwarding">Local port forwarding</h2></div>
 
 <p>
 The <code>-L</code> option of ssh binds the given port on local host to the given port on
@@ -172,7 +172,7 @@ changed to <code>localhost:80</code>. This means it will forward connectons from
 port 8000 to port 80 on <code>localhost</code> of the server <code>example.com</code>.
 </p>
 
-<div id="SSH tunnels-Remote port forwarding"><h3 id="Remote port forwarding">Remote port forwarding</h3></div>
+<div id="SSH tunnels-Remote port forwarding"><h2 id="Remote port forwarding">Remote port forwarding</h2></div>
 
 <p>
 The <code>-R</code> option of ssh specifies that the connection to the given port on remote
@@ -204,7 +204,7 @@ local side. If you don't have <code>GatewayPorts yes</code> in your configuratio
 it'll only forward localhost:80 on example.com to localhost:8000 on local side.
 </p>
 
-<div id="SSH tunnels-socks proxy"><h3 id="socks proxy">socks proxy</h3></div>
+<div id="SSH tunnels-socks proxy"><h2 id="socks proxy">socks proxy</h2></div>
 
 <p>
 The <code>-D</code> option of ssh can set up a local socks proxy, which supports socks4
@@ -220,7 +220,7 @@ This command will make a local socks proxy on localhost:1080, you can check it
 by the command <code>curl --socks5 1080 google.com</code>.
 </p>
 
-<div id="autossh"><h2 id="autossh">autossh</h2></div>
+<div id="autossh"><h1 id="autossh">autossh</h1></div>
 
 <pre>
     autossh [-M port[:echo_port]] [-f] [SSH_OPTIONS]
@@ -294,7 +294,7 @@ And we can run it easily by the following command:
     autossh -M 0 -f -N example
 </pre>
 
-<div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
+<div id="Reference"><h1 id="Reference">Reference</h1></div>
 
 <ul>
 <li>

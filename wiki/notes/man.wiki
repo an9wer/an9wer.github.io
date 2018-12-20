@@ -1,4 +1,4 @@
-== man ==
+= man =
 
 {{{
     man [options] [section] page ...
@@ -38,11 +38,11 @@ following a pre-defined order ("1 n l  8  3  2  3posix  3pm 3perl  3am 5 4 9 6
 -   `--names-only`: If the --regex or --wildcard option is used, match only
     page names, not page descriptions. Otherwise, no effect.
 
-== mandb ==
+= mandb =
 
 `mandb` will create or update the manual page index cache.
 
-== manpath ==
+= manpath =
 
 The manpath configuration file `/etc/manpath.config` is used by the manual page
 utilities to assess users' manpaths at run time, to indicate which manual page
@@ -57,7 +57,7 @@ the elements in environment variable `PATH`, and if any of the `../man`, `man`,
 `../share/man` or `share/man` subdirectories exists, they will be added to
 manpath.  (use `catman -d` to check it)
 
-== whatis ==
+= whatis =
 
 {{{
     whatis [options] name ...
@@ -73,7 +73,7 @@ matched.
 
 -   `-w`: Interpret each name as a pattern containing shell style wildcards.
 
-== apropos ==
+= apropos =
 
 {{{
     apropos [options] keyword ...
@@ -84,14 +84,20 @@ matched.
 Each manual page has a short description available within it. `apropos`
 searches the descriptions for instances of keyword.
 
--   `-r`: Interpret each keyword as a regular expression. This is the default behaviour. Each keyword will be matched against the page names and the descriptions independently.
+-   `-r`: Interpret each keyword as a regular expression. This is the default
+    behaviour. Each keyword will be matched against the page names and the
+    descriptions independently.
 
--   `-w`: Interpret each keyword as a pattern containing shell style wildcards. Each keyword will be matched against the page names and the descriptions independently.
+-   `-w`: Interpret each keyword as a pattern containing shell style wildcards.
+    Each keyword will be matched against the page names and the descriptions
+    independently.
 
--   `-e`: Each keyword will be exactly matched against the page names and the descriptions.
+-   `-e`: Each keyword will be exactly matched against the page names and the
+    descriptions.
 
--   `-a`: Only display items that match all the supplied keywords. The default is to display items that match any keyword.
+-   `-a`: Only display items that match all the supplied keywords. The default
+    is to display items that match any keyword.
 
-== Acknowledgements ==
+= Acknowledgements =
 
 -   [[https://unix.stackexchange.com/a/63583]]
