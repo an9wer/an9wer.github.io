@@ -1,3 +1,8 @@
+@font-face {
+    font-family: knewave;
+    src: url(../fonts/knewave.ttf);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -16,7 +21,7 @@ body {
 }
 
 #title, h1, h2, h3, h4, h5, h6, strong, b {
-    font-family: sans-serif;
+    font-family: Georgia,"Times New Roman",Times,serif;
     line-height: 1.1;
 }
 
@@ -70,7 +75,7 @@ th {
 #headerLeft {
     float: left;
     width: 80%;
-    font-family:Georgia,"Times New Roman",Times,serif;
+    font-family: knewave;
 }
 
 #headerRight {
@@ -80,14 +85,13 @@ th {
 
 #header #name {
     height: 90px;
-    font-size: 2.5em;
-    font-weight: 600;
+    font-size: 2.8rem;
     display: flex;
     align-items: center;
 }
 
 #header #signature {
-    font-size: 1.2em;
+    font-size: 1rem;
     display: flex;
     align-items: center;
 }
