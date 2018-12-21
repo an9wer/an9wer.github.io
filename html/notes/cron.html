@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">cron</div>
+        <div id="content">
+<div id="Which cron is right for the job?"><h1 id="Which cron is right for the job?">Which cron is right for the job?</h1></div>
+
+<ul>
+<li>
+  <code>vixie-cron</code>: Vixie-cron is a full featured cron implementation based on
+    SysV cron. Each user has his own crontab and is allowed to specify
+    environment variables within that crontab. Unlike the other cron variants,
+    it also offers support for SELinux and PAM. It supports fewer architectures
+    than Dcron, but more than Fcron. Latest version is 4.1 released on January
+
+<ol>
+<li>
+
+
+</ol>
+</ul>
+
+<ul>
+<li>
+  <code>cronie</code>: Cronie (sys-process/cronie) is a fork of vixie-cron done by
+    Fedora. Because of it being a fork it has the same feature set the original
+    vixie-cron provides. Additionally cronie comes with an anacron
+    implementation which must be enabled through the anacron USE flag. 
+
+</ul>
+
+<ul>
+<li>
+  <code>dcron</code>: Dcron aims to be a simple, elegant and secure implementation of
+    cron. It does not allow the specification of environment variables in
+    crontabs and all cron-jobs are run from /bin/sh. Like vixie-cron, each user
+    has his own crontab. As of version 4 it contains anacron-like features. 
+
+</ul>
+
+<ul>
+<li>
+  <code>fcron</code>: Fcron aims at replacing vixie-cron and anacron. It is designed to
+    work on systems that are not continuously running and it is packed with
+    extra features. It has job startup constraints, job serialization controls,
+    the ability to assign nice values to jobs and the ability to schedule jobs
+    to run at system startup. See fcron's home page for more information. 
+
+</ul>
+
+<ul>
+<li>
+  <code>bcron</code>: Bcron is a new cron system designed with secure operations in
+    mind. To do this, the system is divided into several separate programs,
+    each responsible for a separate task, with strictly controlled
+    communications between them. The user interface is a drop-in replacement
+    for similar systems (such as vixie-cron), but the internals differ greatly.
+
+</ul>
+
+<ul>
+<li>
+  <code>anacron</code>: Anacron is not a cron daemon, it is something that usually works
+    in conjunction with one. It executes commands at intervals specified in
+    days and it does not assume that the system is running continuously; it
+    will run jobs that were missed while the system was down. Anacron usually
+    relies on a cron daemon to run it each day. 
+
+</ul>
+
+<div id="crontab (cronie)"><h1 id="crontab (cronie)">crontab (cronie)</h1></div>
+
+<p>
+Running cron jobs can be allowed or disallowed for different users. For this
+purpose, use the <code>/etc/cron.allow</code> and <code>/etc/cron.deny</code> files. If the
+<code>/etc/cron.allow</code> file exists, a user must be listed in it to be allowed to use
+cron. If the <code>/etc/cron.allow</code> file does not exist but the <code>/etc/cron.deny</code>
+file does exist, then a user must not be listed in the <code>/etc/cron.deny</code> file in
+order to use cron. If neither of these files exists, only the super user is
+allowed to use cron.
+</p>
+
+<div id="crontab (cronie)-Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-u</code>: Appends the name of the user whose crontab is to be modified. If this
+    option is not used, crontab examines "your" crontab, i.e. the crontab of
+    the person executing the command. If no crontab exists for a particular
+    user, it is create for him the first time the <code>crontab -u</code> command is used
+    under his username.
+
+</ul>
+
+<ul>
+<li>
+  <code>-l</code>: Displays the current crontab on the standard output.
+
+</ul>
+
+<ul>
+<li>
+  <code>-r</code>: Remove the current crontab.
+
+</ul>
+
+<ul>
+<li>
+  <code>-e</code>: Edits the current crontab using the editor specified by the VISUAL or
+    EDITOR environment variables.
+
+</ul>
+
+<ul>
+<li>
+  <code>-i</code>: This option modifies the <code>-r</code> option to prompt the user for a 'y/Y'
+    response before actually removing the crontab.
+
+</ul>
+
+<p>
+Find more in <code>man crontab</code>.
+</p>
+
+<div id="crontab (cronie)-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  Write an9wer's crontab loading from an existing crontab file (This will
+    override rules already in crontab)
+<pre>
+        crontab -u an9wer /path/to/crontab
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  List an9wer's crontab:
+<pre>
+        crontab -u an9wer -l
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Edit an9wer's crontab:
+<pre>
+        crontab -u an9wer -e
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Remove an9wer's crontab:
+
+</ul>
+<p>
+`   {{{
+</p>
+<blockquote>
+crontab -u an9wer -r
+}}}
+</blockquote>
+
+<ul>
+<li>
+  Remove an9wer's crontab with prompt:
+<pre>
+        crontab -u an9wer -ri
+</pre>
+
+</ul>
+
+<div id="Syntax of crontab (cronie)"><h1 id="Syntax of crontab (cronie)">Syntax of crontab (cronie)</h1></div>
+
+<p>
+Blank lines, leading spaces, and tabs are ignored. Lines whose  first
+non-white space  character  is  a pound-sign (#) are comments, and are not
+processed.  Note that comments are not allowed on the same line as cron
+commands, since  they  are considered  a  part  of  the command.  Similarly,
+comments are not allowed on the same line as environment variable settings.  
+</p>
+
+<p>
+An active line in a crontab is either an environment settings or a cron
+command. An environment setting is of the form:
+</p>
+<pre>
+    name = value
+</pre>
+
+<p>
+Where the white spaces around the equal-sign (=) are optional, and any
+subsequent non-leading white spaces in value is a part of the value assigned to
+name. The value string may be placed in quotes (singal or double, but matching)
+to preserve leading or trailing white spaces.
+</p>
+
+<p>
+Several environment variables are set up automatically by the cron daemon.
+</p>
+
+<ul>
+<li>
+  <code>SHELL</code>: Which by default is <code>/bin/sh</code>.
+
+</ul>
+
+<ul>
+<li>
+  <code>LOGNAME</code>: Which is <code>/etc/passwd</code>. It can not be overridden by settings in
+    the crontab.
+
+</ul>
+
+<ul>
+<li>
+  <code>HOME</code>: Which by default is the crontab's owner.
+
+</ul>
+
+<ul>
+<li>
+  <code>MAILTO</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>CRON_TZ</code>: Specifies the time zone used by the crontab. Note: the Time used
+    for writting into a log file is taken from the local time zone, where the
+    daemon is running.
+
+</ul>
+
+<ul>
+<li>
+  <code>MSL_LEVEL</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>CONTENT_TYPE</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>CONTENT_TRANSFER_ENCODING</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>RANDOM_DELAY</code>: Allows delaying job startups by random amount of minutes
+    with upper limit specified by the variable. The random scaling factor is
+    determined during the cron daemon startup so it remains constant for the
+    whole run time of the daemon.
+
+</ul>
+
+<p>
+The format of a cron command contains five time-and-date fields followed by a
+username (if this is the system crontab file), and followed by a command.
+</p>
+
+<table>
+<tr>
+<th>
+field
+</th>
+<th>
+allowed values
+</th>
+</tr>
+<tr>
+<td>
+minute
+</td>
+<td>
+0-59
+</td>
+</tr>
+<tr>
+<td>
+hour
+</td>
+<td>
+0-23
+</td>
+</tr>
+<tr>
+<td>
+day of month
+</td>
+<td>
+1-31
+</td>
+</tr>
+<tr>
+<td>
+month
+</td>
+<td>
+1-12 (or names)
+</td>
+</tr>
+<tr>
+<td>
+day of week
+</td>
+<td>
+0-7 (0 or 7 is Sunday, or use names)
+</td>
+</tr>
+</table>
+
+<p>
+<span id="Syntax of crontab (cronie)-Note"></span><strong id="Note">Note</strong>: A field my contain an asterisk (*), which always stands for
+"first-last".
+</p>
+
+<p>
+<span id="Syntax of crontab (cronie)-Note"></span><strong id="Note">Note</strong>: Non-existent times will case jobs scheduled not to run.
+</p>
+
+<p>
+<span id="Syntax of crontab (cronie)-Note"></span><strong id="Note">Note</strong>: The day of a command's execution can be specified in the following two
+fields -- 'day of month', and 'day of week'. If both fields are restricted
+(i.e. do not contain the "*" character), the command will be run when either
+field matches the current time. For example, "30 4 1 * 5" would cause a
+command to be run at 4:30 am on the 1st of each month, plus every Friday.
+</p>
+
+<p>
+Lists are allowed. A list is a set of numbers (or ranges) seperated by commas.
+Examples: "1,2,5,9", "0-4,8-12".
+</p>
+
+<p>
+Ranges of numbers are allowed. Range are two numbers seperated with a hyphen.
+The specified range is inclusive. For example, 8-11 or an 'hour' entry
+specifies execution at hours 8, 9, 10, and 11. The first number must be less
+than or equal to the second one.
+</p>
+
+<p>
+Step values can be used in conjunction with ranges. Following a range with
+"/&lt;number&gt;" specifies skips of the number's value through the range. For
+example, "0-23/2" can be used in the 'hours' field to specify command execution
+for every other hour. Step values are also permitted after an asterisk, so if
+specifying a job to be run every two hours, you can use "*/2".
+</p>
+
+<p>
+Name can also be used for the 'month' and 'day of week' fields. Use the first
+three letters of the particular day or month (case does not matter). Ranges or
+lists of names are not allowed.
+</p>
+
+<p>
+The command portion of the line, up to a newline or a "%" character, will be
+executed by SHELL variable of the crontab file. A "%" character in the command,
+unless escaped with a backslash (\), will be changed into newline characters,
+and all data after the first % wil be sent to the command as standard input.
+</p>
+
+<p>
+<span id="Syntax of crontab (cronie)-Note"></span><strong id="Note">Note</strong>: If the UID of the owner is 0 (root), the first character of a crontab
+entry can be "-" character. This will prevent cron from writing a syslog
+message about the command being executed.
+</p>
+
+<div id="Syntax of crontab (cronie)-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  Run 23 minutes after midn, 2am, 4am ... (step by 2 hour), everyday:
+<pre>
+        23 0-23/2 * * * echo Hello world!
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Run at 2min, 5min, 10min ... 30min (step by 3 minutes), and 56min, every
+    hour.
+<pre>
+        2,5,10-30/3,56 * * * * date &gt;&gt; /tmp/date
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Write "an9wer:\n  Hello world!\n" to '/tmp/greet` file after midnight, every
+    day:
+<pre>
+        5 0 * * * cat &gt; /tmp/greet %an9wer:%  Hello world!%
+</pre>
+
+</ul>
+
+<p>
+Find more in <code>man 5 crontab</code>.
+</p>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

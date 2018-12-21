@@ -98,6 +98,6 @@ searches the descriptions for instances of keyword.
 -   `-a`: Only display items that match all the supplied keywords. The default
     is to display items that match any keyword.
 
-= Acknowledgements =
+= References =
 
 -   [[https://unix.stackexchange.com/a/63583]]

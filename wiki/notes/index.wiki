@@ -2,6 +2,8 @@
 
 == Shell ==
 
+-   [[cron|cron]]
+
 -   [[iptables|iptables]]
 
 -   [[xmodmap|xmodmap]]
