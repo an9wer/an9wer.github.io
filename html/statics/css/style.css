@@ -20,9 +20,14 @@ body {
     line-height: 1.8;
 }
 
-#title, h1, h2, h3, h4, h5, h6, strong, b {
+#title, h1, h2, h3, h4, h5, h6 {
     font-family: Georgia,"Times New Roman",Times,serif;
     line-height: 1.1;
+}
+
+strong, b {
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 1.2rem;
 }
 
 h1 {
@@ -31,17 +36,18 @@ h1 {
 }
 
 code {
-    border: solid 1px #ddd;
+    border: solid 1px #CCC;
     border-radius: 3px;
-    background-color: #ffffff;
-    padding: 1px 4px;
+    background-color: #DDD;
+    padding: 0px 5px;
+    margin: 0px 2px;
 }
 
 pre {
-    border: solid 1px #ddd;
+    border: solid 1px #CCC;
     border-radius: 3px;
-    background-color: #ffffff;
-    padding: 5px 15px;
+    background-color: #DDD;
+    padding: 5px 10px;
     overflow: auto;
 }
 
@@ -50,17 +56,27 @@ strong {
 }
 
 table {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    //margin-top: 1em;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #CCC;
-    padding: 0.3em 1em;
+    text-align: left;
+    border: 1px solid #999;
+    padding: 0.2em 1em;
+    font-size: 0.8rem;
 }
 
 th {
-    background-color: #DDD;
+    border-top: 2px solid #666;
+    border-bottom: 2px solid #666;
+    font-width: 600;
+}
+
+tr:nth-child(odd) {
+    background: #CCC;
 }
 
 /* header {{{ */
