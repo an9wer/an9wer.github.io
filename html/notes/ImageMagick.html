@@ -25,62 +25,45 @@
         <a id="about" href="../about.html">About</a>
     </div>
     <div id="post">
-        <div id="title">Archives</div>
+        <div id="title">ImageMagick</div>
         <div id="content">
-
-<div id="Shell"><h2 id="Shell">Shell</h2></div>
+<p>
+With ImageMagick version 6, the operators will always be applied in the command
+line order as given by the user. For example:
+</p>
 
 <ul>
 <li>
-  <a href="ImageMagick.html">ImageMagick</a>
+  Rotate two input image first, then append them together.
+<pre>
+        convert -size 40x20 xc:red  xc:blue -rotate 90 -append out.gif
+</pre>
 
 </ul>
 
 <ul>
 <li>
-  <a href="cron.html">cron</a>
+  Append two input image first, then rotate them.
+<pre>
+        convert -size 40x20 xc:red  xc:blue -append -rotate 90 out.gif
+</pre>
 
 </ul>
 
-<ul>
-<li>
-  <a href="iptables.html">iptables</a>
-
-</ul>
+<div id="convert"><h1 id="convert">convert</h1></div>
 
 <ul>
 <li>
-  <a href="xmodmap.html">xmodmap</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="git.html">git</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="rsync.html">rsync</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="man.html">man</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="ssh.html">ssh</a> 
-
-</ul>
-
-<ul>
-<li>
-  <a href="Bash.html">Bash</a>
+  <code>-append</code>: Creates a single longer image, by joining all the current images
+    in sequence top-to-bottom. Use <code>+append</code> to stack images left-to-right. 
+<pre>
+        convert -size 50x50 xc:red xc:blue -append append1.gif
+</pre>
+    <img src="../statics/images/ImageMagick/append1.gif" />
+<pre>
+        convert -size 50x50 xc:red xc:blue +append append2.gif
+</pre>
+    <img src="../statics/images/ImageMagick/append2.gif" />
 
 </ul>
 </div>

@@ -187,6 +187,11 @@ th {
     text-decoration: none;
     color: #8fbbe6;
 }
+
+#content img{
+    display: block;
+    margin: 0px auto;
+}
 /* }}} post */
 
 

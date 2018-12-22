@@ -1,0 +1,25 @@
+With ImageMagick version 6, the operators will always be applied in the command
+line order as given by the user. For example:
+
+-   Rotate two input image first, then append them together.
+    {{{
+        convert -size 40x20 xc:red  xc:blue -rotate 90 -append out.gif
+    }}}
+
+-   Append two input image first, then rotate them.
+    {{{
+        convert -size 40x20 xc:red  xc:blue -append -rotate 90 out.gif
+    }}}
+
+= convert =
+
+-   `-append`: Creates a single longer image, by joining all the current images
+    in sequence top-to-bottom. Use `+append` to stack images left-to-right. 
+    {{{
+        convert -size 50x50 xc:red xc:blue -append append1.gif
+    }}}
+    {{../../html/statics/images/ImageMagick/append1.gif}}
+    {{{
+        convert -size 50x50 xc:red xc:blue +append append2.gif
+    }}}
+    {{../../html/statics/images/ImageMagick/append2.gif}}

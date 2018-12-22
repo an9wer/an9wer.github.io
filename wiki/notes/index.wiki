@@ -2,6 +2,8 @@
 
 == Shell ==
 
+-   [[ImageMagick|ImageMagick]]
+
 -   [[cron|cron]]
 
 -   [[iptables|iptables]]
