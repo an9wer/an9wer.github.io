@@ -1,11 +1,38 @@
-== Variables ==
+= Options =
+
+== -c option ==
+
+`-c`: If the `-c` option is present, then command are read from the *first*
+non-option argument command string. If there are arguments after the command
+string, the first argument is assigned to $0 and any remaining arguments are
+assigned to the positional parameters. The assignment to $0 sets the name of
+the shell, which is used in warning and error messages. 
+
+-   The command below will display 123:
+    {{{
+        $ bash -c "echo 123"
+        123
+    }}}
+
+-   *Note*: It only treat the first non-option argument as command string, so
+    the following command won't display 123:
+    {{{
+        $ bash -c echo 123
+
+    }}}
+
+*Note*: By default, bash will read commands from some file. Use `-c` option
+can make bash to execute command from string.
+
+
+= Variables =
 
 `PROMPT_COMMAND`: If set, the value is executed as a command prior to issuing
 each primary prompt.
 
-== $'string' ==
+= Quoting =
 
-(see [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|examples]])
+== $'string' ==
 
 Words of the form $'string' are treated specially. The word expands to string,
 with backslash-escaped characters replaced as specified  by the ANSI C
@@ -45,9 +72,9 @@ present. For example:
     321
 }}}
 
-== $"string" ==
+(Find example code in [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|here]])
 
-(see [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|examples]])
+== $"string" ==
 
 A double-quoted string preceded by a dollar sign `$"string"` will cause the
 string to be translated according to the current locale.  If the current locale
@@ -63,14 +90,146 @@ replaced, the replacement is double-quoted. For example:
     123\n321
 }}}
 
+(Find example code in [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|here]])
+
+= Parameters =
+
+== Special parameters ==
 
 
-== Parameter Expansion ==
+=== parametedr * ===
 
-(see [[https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh|examples]])
+`*`: Expands to the positional paramters, starting from one. When the expansion
+is `not` within double quotes, each positional parameters expands to a separate
+word. In contexts where it is performed, those words are subject to further
+word splitting and pathname expansion. When the expansion occurs within double
+quotes, it expands to a single word with the value of each parameter separated
+by the first character of the `IFS` special variable. That is, `"$*"` is
+equivalent to `"$1c$2c.."`, where c is the first character of the value of the
+IFS variable. If `IFS` is unset, the parameters are separated by spaces. If
+`IFS` is null, the parameters are joined without intervening separators.
 
--   `${parameter:offset}`
-    `${parameter:offset:length}`
+Let's see how `IFS` makes effect.
+
+First create a function which displays `$*`:
+{{{
+    $ function func() { echo $*; }
+}}}
+
+Then:
+{{{
+    $ func 1 2 3
+    1 2 3
+}}}
+
+Then set IFS to other value:
+{{{
+    $ IFS=a func 1 2 3
+    1a2a3
+}}}
+
+Then unset IFS:
+{{{
+    $ unset IFS; func 1 2 3
+    1 2 3
+}}}
+
+Also, let's check the length of `$*`:
+{{{
+    $ function func() { echo ${#*}; }
+    $ func 1 2 3
+}}}
+
+Let's see the difference between `$*` and `"$*"`.
+
+First create a function to display the elements in `$*` and `"$*"`:
+{{{
+    function func() { local a=($*) b=("$*"); declare -p a b; }
+}}}
+
+Then:
+{{{
+    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1 2 3")
+}}}
+
+We can find out that `$*` expands each parameter to a separate word, but `"$*"`
+expands each parameter to one word.
+
+=== Parameter @ ===
+
+`@`: Expands to the positional parameters, starting from one. When the
+expansion occurs within double quotes, each parameter expands to a separate
+word. That is, `"$@"` is equivalent to `"$1" "$2" ...`. If the double-quoted
+expansion occurs within a word, the expansion of the first parameter is joined
+with the beginning part of the original word, and the expansion of the last
+parameter is joined with the last part of the original word. When there are no
+posisional parameters, `"$@"` and `$@`  expand to nothing.
+
+Let's see the difference between `$@` and `"$@"`.
+
+First create a function to display the elements in `$@` and `"$@"`:
+{{{
+    function func() { local a=($@) b=("$@"); declare -p a b; }
+}}}
+
+Then:
+{{{
+    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1" [1]="2" [2]="3")
+}}}
+
+We can find out that `$@` and `"$@"` are same.
+
+= Parameter Expansion =
+
+== Use default values ==
+
+{{{
+    ${parameter:-word}
+}}}
+
+If parameter is unset or null, the expansion of word is substituted. Otherwise,
+the value of parameter is substituted.
+
+{{{
+    $ unset a
+    $ echo ${a:-123}
+    123
+    $ echo ${a}
+
+}}}
+
+
+== Assign default values ==
+
+{{{
+    ${parameters:=word}
+}}}
+
+If parameter is unset or null, the expansion of word is assigned to parameter.
+The value of parameter is then substituted. 
+
+*Note*: Positional parameters and special parameters may not be assigned to in
+this way.
+
+{{{
+    $ unset a
+    $ echo ${a:=123}
+    123
+    $ echo ${a}
+    123
+}}}
+
+
+== Substring expansion ==
+
+{{{
+    ${parameter:offset}
+    ${parameter:offset:length}
+}}}
 
 It expands to the substring of the value of `parameter` starting at the
 character specified by `offset` and expanding to up to `length` characters.
@@ -146,9 +305,36 @@ it's an expansion error if `length` evaluates to number less than zero):
     bash: -2: substring expression < 0
 }}}
 
+(Find example code in [[https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh|here]])
 
-== Acknowledgements ==
 
--   [[https://www.gnu.org/software/bash/manual/bash.html]]
+= Built-in =
+
+== : ==
+
+{{{
+    : [arguments]
+}}}
+
+Do noting beyond expanding arguments and performing redirections. The return
+status is zero.
+
+-   Do expand arguments:
+    {{{
+        $ : ${a:=123}
+        $ echo $a
+        123
+    }}}
+
+-   Do flush file content:
+    {{{
+        $ :>/path/to/file
+        $ cat /path/to/file
+
+    }}}
+
+== References ==
+
+-   [[https://www.gnu.org/software/bash/manual/bash.html|GNU bash manual]]
 
 -   `man bash`

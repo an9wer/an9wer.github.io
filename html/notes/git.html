@@ -58,33 +58,23 @@ There are three main components of a Git project:
     git status [&lt;options&gt;...] [--] [&lt;pathspec&gt;...]
 </pre>
 
+<div id="git status-Options"><h2 id="Options">Options</h2></div>
+
 <ul>
 <li>
   <code>-s</code>: Give the output in the short-format.
 
-</ul>
-
-<ul>
 <li>
   <code>-b</code>: Show the branch and tracking info even in short-format.
 
-</ul>
-
-<ul>
 <li>
   <code>--porcelain[=version]</code>: Given the output in an easy-to-parse-format for
     scripts.The version parameter is used to specify the format version, which
     value is v1 (default) or v2.
 
-</ul>
-
-<ul>
 <li>
   <code>--long</code>: Give the output in the long-format. This is the default.
 
-</ul>
-
-<ul>
 <li>
   <code>-u[&lt;mode&gt;]</code>: Show untracked files. The mode parameter is used to
     specificed the handling of untracked files, if specified, it must be stuck
@@ -101,9 +91,6 @@ There are three main components of a Git project:
   <code>all</code>: Also show individual files in untracked directories. (default)
 
 </ul>
-</ul>
-
-<ul>
 <li>
   <code>--ignored</code>: Show ignored files as well.
 
@@ -118,52 +105,50 @@ There are three main components of a Git project:
     git symbolic-ref --delete [-q] &lt;name&gt;
 </pre>
 
-<ul>
-<li>
-  When given on argument, reads which branch head the given symbolic refers
-    to and outputs its path, relative to the <code>.git</code> directory.
-<pre>
-        git symbolic-ref HEAD
-</pre>
+<p>
+When given on argument, reads which branch head the given symbolic refers to
+and outputs its path, relative to the <code>.git</code> directory.
+</p>
 
-</ul>
-<blockquote>
-This will output the path refered by the symbolic ref <code>HEAD</code>.
-</blockquote>
+<p>
+When given two arguments, creates or updates a symbolic ref <code>name</code> to point at
+the given branch <code>ref</code>.
+</p>
 
-<ul>
-<li>
-  When given two arguments, creates or updates a symbolic ref <code>name</code> to point
-    at the given branch <code>ref</code>
-<pre>
-        git symbolic-ref DEV refs/heads/dev
-</pre>
-
-</ul>
-<blockquote>
-In this command, if the symbolic ref <code>DEV</code> doesn't exist, it will create a
-symbolic ref named with <code>DEV</code>, then refers it to <code>refs/heads/dev</code>.
-Otherwise it will just update the content of symbolic ref <code>DEV</code> to
-<code>refs/heads/dev</code>.
-</blockquote>
-
-<ul>
-<li>
-  When given <code>--delete</code> and an additional argument, deletes the given
-    symbolic ref.
-<pre>
-        git symbolic-ref --delete DEV
-</pre>
-
-</ul>
-<blockquote>
-This command will delete symbolic ref <code>DEV</code> created before.
-</blockquote>
+<p>
+When given <code>--delete</code> and an additional argument, deletes the given symbolic
+ref.
+</p>
 
 <p>
 <span id="git symbolic-ref-Note"></span><strong id="Note">Note</strong>: The position of symbolic ref is located in <code>.git</code> directory (e.g.
 <code>.git/HEAD</code>).
 </p>
+
+<div id="git symbolic-ref-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Output the path refered by the symbolic ref <code>HEAD</code>.  
+</p>
+<pre>
+    git symbolic-ref HEAD
+</pre>
+
+<p>
+Create a symbolic ref named with <code>DEV</code>, then refers it to <code>refs/heads/dev</code>, if
+the symbolic ref <code>DEV</code> doesn't exist.  Otherwise it will just update the
+content of symbolic ref <code>DEV</code> to <code>refs/heads/dev</code>.
+</p>
+<pre>
+    git symbolic-ref DEV refs/heads/dev
+</pre>
+
+<p>
+Delete symbolic ref <code>DEV</code> created before.
+</p>
+<pre>
+    git symbolic-ref --delete DEV
+</pre>
 </div>
     </div>
     <div id="footer">

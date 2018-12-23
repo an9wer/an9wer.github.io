@@ -27,18 +27,55 @@
     <div id="post">
         <div id="title">Bash</div>
         <div id="content">
-<div id="Variables"><h2 id="Variables">Variables</h2></div>
+<div id="Options"><h1 id="Options">Options</h1></div>
+
+<div id="Options--c option"><h2 id="-c option">-c option</h2></div>
+
+<p>
+<code>-c</code>: If the <code>-c</code> option is present, then command are read from the <span id="Options--c option-first"></span><strong id="first">first</strong>
+non-option argument command string. If there are arguments after the command
+string, the first argument is assigned to $0 and any remaining arguments are
+assigned to the positional parameters. The assignment to $0 sets the name of
+the shell, which is used in warning and error messages. 
+</p>
+
+<ul>
+<li>
+  The command below will display 123:
+<pre>
+        $ bash -c "echo 123"
+        123
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  <span id="Options--c option-Note"></span><strong id="Note">Note</strong>: It only treat the first non-option argument as command string, so
+    the following command won't display 123:
+<pre>
+        $ bash -c echo 123
+
+</pre>
+
+</ul>
+
+<p>
+<span id="Options--c option-Note"></span><strong id="Note">Note</strong>: By default, bash will read commands from some file. Use <code>-c</code> option
+can make bash to execute command from string.
+</p>
+
+
+<div id="Variables"><h1 id="Variables">Variables</h1></div>
 
 <p>
 <code>PROMPT_COMMAND</code>: If set, the value is executed as a command prior to issuing
 each primary prompt.
 </p>
 
-<div id="$'string'"><h2 id="$'string'">$'string'</h2></div>
+<div id="Quoting"><h1 id="Quoting">Quoting</h1></div>
 
-<p>
-(see <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">examples</a>)
-</p>
+<div id="Quoting-$'string'"><h2 id="$'string'">$'string'</h2></div>
 
 <p>
 Words of the form $'string' are treated specially. The word expands to string,
@@ -82,11 +119,11 @@ present. For example:
     321
 </pre>
 
-<div id="$&quot;string&quot;"><h2 id="$&quot;string&quot;">$"string"</h2></div>
-
 <p>
-(see <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">examples</a>)
+(Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)
 </p>
+
+<div id="Quoting-$&quot;string&quot;"><h2 id="$&quot;string&quot;">$"string"</h2></div>
 
 <p>
 A double-quoted string preceded by a dollar sign <code>$"string"</code> will cause the
@@ -104,20 +141,186 @@ replaced, the replacement is double-quoted. For example:
     123\n321
 </pre>
 
-
-
-<div id="Parameter Expansion"><h2 id="Parameter Expansion">Parameter Expansion</h2></div>
-
 <p>
-(see <a href="https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh">examples</a>)
+(Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)
 </p>
 
-<ul>
-<li>
-  <code>${parameter:offset}</code>
-    <code>${parameter:offset:length}</code>
+<div id="Parameters"><h1 id="Parameters">Parameters</h1></div>
 
-</ul>
+<div id="Parameters-Special parameters"><h2 id="Special parameters">Special parameters</h2></div>
+
+
+<div id="Parameters-Special parameters-parametedr *"><h3 id="parametedr *">parametedr *</h3></div>
+
+<p>
+<code>*</code>: Expands to the positional paramters, starting from one. When the expansion
+is <code>not</code> within double quotes, each positional parameters expands to a separate
+word. In contexts where it is performed, those words are subject to further
+word splitting and pathname expansion. When the expansion occurs within double
+quotes, it expands to a single word with the value of each parameter separated
+by the first character of the <code>IFS</code> special variable. That is, <code>"$*"</code> is
+equivalent to <code>"\(1c\)2c.."</code>, where c is the first character of the value of the
+IFS variable. If <code>IFS</code> is unset, the parameters are separated by spaces. If
+<code>IFS</code> is null, the parameters are joined without intervening separators.
+</p>
+
+<p>
+Let's see how <code>IFS</code> makes effect.
+</p>
+
+<p>
+First create a function which displays <code>$*</code>:
+</p>
+<pre>
+    $ function func() { echo $*; }
+</pre>
+
+<p>
+Then:
+</p>
+<pre>
+    $ func 1 2 3
+    1 2 3
+</pre>
+
+<p>
+Then set IFS to other value:
+</p>
+<pre>
+    $ IFS=a func 1 2 3
+    1a2a3
+</pre>
+
+<p>
+Then unset IFS:
+</p>
+<pre>
+    $ unset IFS; func 1 2 3
+    1 2 3
+</pre>
+
+<p>
+Also, let's check the length of <code>$*</code>:
+</p>
+<pre>
+    $ function func() { echo ${#*}; }
+    $ func 1 2 3
+</pre>
+
+<p>
+Let's see the difference between <code>\(*</code> and <code>"\)*"</code>.
+</p>
+
+<p>
+First create a function to display the elements in <code>\(*</code> and <code>"\)*"</code>:
+</p>
+<pre>
+    function func() { local a=($*) b=("$*"); declare -p a b; }
+</pre>
+
+<p>
+Then:
+</p>
+<pre>
+    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1 2 3")
+</pre>
+
+<p>
+We can find out that <code>\(*</code> expands each parameter to a separate word, but <code>"\)*"</code>
+expands each parameter to one word.
+</p>
+
+<div id="Parameters-Special parameters-Parameter @"><h3 id="Parameter @">Parameter @</h3></div>
+
+<p>
+<code>@</code>: Expands to the positional parameters, starting from one. When the
+expansion occurs within double quotes, each parameter expands to a separate
+word. That is, <code>"\(@"</code> is equivalent to <code>"\)1" "$2" ...</code>. If the double-quoted
+expansion occurs within a word, the expansion of the first parameter is joined
+with the beginning part of the original word, and the expansion of the last
+parameter is joined with the last part of the original word. When there are no
+posisional parameters, <code>"\(@"</code> and <code>\)@</code>  expand to nothing.
+</p>
+
+<p>
+Let's see the difference between <code>\(@</code> and <code>"\)@"</code>.
+</p>
+
+<p>
+First create a function to display the elements in <code>\(@</code> and <code>"\)@"</code>:
+</p>
+<pre>
+    function func() { local a=($@) b=("$@"); declare -p a b; }
+</pre>
+
+<p>
+Then:
+</p>
+<pre>
+    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1" [1]="2" [2]="3")
+</pre>
+
+<p>
+We can find out that <code>\(@</code> and <code>"\)@"</code> are same.
+</p>
+
+<div id="Parameter Expansion"><h1 id="Parameter Expansion">Parameter Expansion</h1></div>
+
+<div id="Parameter Expansion-Use default values"><h2 id="Use default values">Use default values</h2></div>
+
+<pre>
+    ${parameter:-word}
+</pre>
+
+<p>
+If parameter is unset or null, the expansion of word is substituted. Otherwise,
+the value of parameter is substituted.
+</p>
+
+<pre>
+    $ unset a
+    $ echo ${a:-123}
+    123
+    $ echo ${a}
+
+</pre>
+
+
+<div id="Parameter Expansion-Assign default values"><h2 id="Assign default values">Assign default values</h2></div>
+
+<pre>
+    ${parameters:=word}
+</pre>
+
+<p>
+If parameter is unset or null, the expansion of word is assigned to parameter.
+The value of parameter is then substituted. 
+</p>
+
+<p>
+<span id="Parameter Expansion-Assign default values-Note"></span><strong id="Note">Note</strong>: Positional parameters and special parameters may not be assigned to in
+this way.
+</p>
+
+<pre>
+    $ unset a
+    $ echo ${a:=123}
+    123
+    $ echo ${a}
+    123
+</pre>
+
+
+<div id="Parameter Expansion-Substring expansion"><h2 id="Substring expansion">Substring expansion</h2></div>
+
+<pre>
+    ${parameter:offset}
+    ${parameter:offset:length}
+</pre>
 
 <p>
 It expands to the substring of the value of <code>parameter</code> starting at the
@@ -131,7 +334,7 @@ characters from the end of value of <code>parameter</code>.
 </p>
 
 <p>
-<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong> that a negative <code>offset</code> must be separated from the colon by at least
+<span id="Parameter Expansion-Substring expansion-Note"></span><strong id="Note">Note</strong> that a negative <code>offset</code> must be separated from the colon by at least
 one space to avoid being confused with the <code>:-</code> expansion. 
 </p>
 
@@ -168,7 +371,7 @@ When <code>parameter</code> is a variable whose value is string:
 </pre>
 
 <p>
-When <code>parameter</code> is '@' (<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong>: it's an expansion error if <code>length</code> evaluates
+When <code>parameter</code> is '@' (<span id="Parameter Expansion-Substring expansion-Note"></span><strong id="Note">Note</strong>: it's an expansion error if <code>length</code> evaluates
 to number less than zero):
 </p>
 
@@ -187,7 +390,7 @@ to number less than zero):
 </pre>
 
 <p>
-When <code>parameter</code> is an indexed array name subscripted by '@' or '*' (<span id="Parameter Expansion-Note"></span><strong id="Note">Note</strong>:
+When <code>parameter</code> is an indexed array name subscripted by '@' or '*' (<span id="Parameter Expansion-Substring expansion-Note"></span><strong id="Note">Note</strong>:
 it's an expansion error if <code>length</code> evaluates to number less than zero):
 </p>
 
@@ -205,12 +408,51 @@ it's an expansion error if <code>length</code> evaluates to number less than zer
     bash: -2: substring expression &lt; 0
 </pre>
 
+<p>
+(Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh">here</a>)
+</p>
 
-<div id="Acknowledgements"><h2 id="Acknowledgements">Acknowledgements</h2></div>
+
+<div id="Built-in"><h1 id="Built-in">Built-in</h1></div>
+
+<div id="Built-in-:"><h2 id=":">:</h2></div>
+
+<pre>
+    : [arguments]
+</pre>
+
+<p>
+Do noting beyond expanding arguments and performing redirections. The return
+status is zero.
+</p>
 
 <ul>
 <li>
-  <a href="https://www.gnu.org/software/bash/manual/bash.html">https://www.gnu.org/software/bash/manual/bash.html</a>
+  Do expand arguments:
+<pre>
+        $ : ${a:=123}
+        $ echo $a
+        123
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Do flush file content:
+<pre>
+        $ :&gt;/path/to/file
+        $ cat /path/to/file
+
+</pre>
+
+</ul>
+
+<div id="Built-in-References"><h2 id="References">References</h2></div>
+
+<ul>
+<li>
+  <a href="https://www.gnu.org/software/bash/manual/bash.html">GNU bash manual</a>
 
 </ul>
 

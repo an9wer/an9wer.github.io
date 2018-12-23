@@ -19,23 +19,20 @@ There are three main components of a Git project:
     git status [<options>...] [--] [<pathspec>...]
 }}}
 
+== Options ==
+
 -   `-s`: Give the output in the short-format.
-
 -   `-b`: Show the branch and tracking info even in short-format.
-
 -   `--porcelain[=version]`: Given the output in an easy-to-parse-format for
     scripts.The version parameter is used to specify the format version, which
     value is v1 (default) or v2.
-
 -   `--long`: Give the output in the long-format. This is the default.
-
 -   `-u[<mode>]`: Show untracked files. The mode parameter is used to
     specificed the handling of untracked files, if specified, it must be stuck
     to the option(e.g. `-uno`, but not `-u no`).
     -   `no`: Show no untracked files.
     -   `normal`: Show untracked files and directories.
     -   `all`: Also show individual files in untracked directories. (default)
-
 -   `--ignored`: Show ignored files as well.
 
 
@@ -47,32 +44,33 @@ There are three main components of a Git project:
     git symbolic-ref --delete [-q] <name>
 }}}
 
--   When given on argument, reads which branch head the given symbolic refers
-    to and outputs its path, relative to the `.git` directory.
-    {{{
-        git symbolic-ref HEAD
-    }}}
+When given on argument, reads which branch head the given symbolic refers to
+and outputs its path, relative to the `.git` directory.
 
-    This will output the path refered by the symbolic ref `HEAD`.
+When given two arguments, creates or updates a symbolic ref `name` to point at
+the given branch `ref`.
 
--   When given two arguments, creates or updates a symbolic ref `name` to point
-    at the given branch `ref`
-    {{{
-        git symbolic-ref DEV refs/heads/dev
-    }}}
-
-    In this command, if the symbolic ref `DEV` doesn't exist, it will create a
-    symbolic ref named with `DEV`, then refers it to `refs/heads/dev`.
-    Otherwise it will just update the content of symbolic ref `DEV` to
-    `refs/heads/dev`.
-
--   When given `--delete` and an additional argument, deletes the given
-    symbolic ref.
-    {{{
-        git symbolic-ref --delete DEV
-    }}}
-
-    This command will delete symbolic ref `DEV` created before.
+When given `--delete` and an additional argument, deletes the given symbolic
+ref.
 
 *Note*: The position of symbolic ref is located in `.git` directory (e.g.
 `.git/HEAD`).
+
+== Examples ==
+
+Output the path refered by the symbolic ref `HEAD`.  
+{{{
+    git symbolic-ref HEAD
+}}}
+
+Create a symbolic ref named with `DEV`, then refers it to `refs/heads/dev`, if
+the symbolic ref `DEV` doesn't exist.  Otherwise it will just update the
+content of symbolic ref `DEV` to `refs/heads/dev`.
+{{{
+    git symbolic-ref DEV refs/heads/dev
+}}}
+
+Delete symbolic ref `DEV` created before.
+{{{
+    git symbolic-ref --delete DEV
+}}}

@@ -4,8 +4,7 @@
     SysV cron. Each user has his own crontab and is allowed to specify
     environment variables within that crontab. Unlike the other cron variants,
     it also offers support for SELinux and PAM. It supports fewer architectures
-    than Dcron, but more than Fcron. Latest version is 4.1 released on January
-    2004. 
+    than Dcron, but more than Fcron. Latest version is 4.1 released on January 2004. 
 
 -   `cronie`: Cronie (sys-process/cronie) is a fork of vixie-cron done by
     Fedora. Because of it being a fork it has the same feature set the original
@@ -84,7 +83,7 @@ Find more in `man crontab`.
     }}}
 
 -   Remove an9wer's crontab:
-`   {{{
+    {{{
         crontab -u an9wer -r
     }}}
 
