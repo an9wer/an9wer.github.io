@@ -70,7 +70,7 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 
 Thanks for reading :)
 
-== Acknowledgement ==
+== References ==
 
 How to deploy Arch on vultr?
 
