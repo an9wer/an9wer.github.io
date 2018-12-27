@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">make</div>
+        <div id="content">
+<div id="Variable"><h1 id="Variable">Variable</h1></div>
+
+<div id="Variable assignment"><h1 id="Variable assignment">Variable assignment</h1></div>
+
+<p>
+<code>=</code>: Creates recursive variables. It is expanded immediately.
+</p>
+
+<p>
+<code>:=</code>: Creates simple variables. It is deferred until is used.
+</p>
+
+<p>
+<code>?=</code>: Creates variable only if the variable does not yet have a value. It is
+deferred until is used.
+</p>
+
+<p>
+<code>+=</code>: Appends text to a variable. If the lefthand side was originally defined
+as a simple variable, it is expanded immediately. Otherwise, its evaluation is
+deffered.
+</p>
+
+<table>
+<tr>
+<th>
+Definition
+</th>
+<th>
+Expansion of a
+</th>
+<th>
+Expansion of b
+</th>
+</tr>
+<tr>
+<td>
+a = b
+</td>
+<td>
+Immediate
+</td>
+<td>
+Deferred
+</td>
+</tr>
+<tr>
+<td>
+a :=b
+</td>
+<td>
+Immediate
+</td>
+<td>
+Immediate
+</td>
+</tr>
+<tr>
+<td>
+a ?= b
+</td>
+<td>
+Immediate
+</td>
+<td>
+Deferred
+</td>
+</tr>
+<tr>
+<td>
+a += b
+</td>
+<td>
+Immediate
+</td>
+<td>
+Immediate or Deferred
+</td>
+</tr>
+</table>
+
+<div id="Variable assignment-Variable overriding"><h2 id="Variable overriding">Variable overriding</h2></div>
+
+<div id="Variable assignment-Variable overriding-Environment"><h3 id="Environment">Environment</h3></div>
+
+<p>
+All the variables from environment are automatically defined as make variables
+when make starts. These variables have very low precedence, so assignments
+within the makefile or command-line arguments will override the value of an
+environment variable. You can cause environment variables to override
+makefile variable using the <code>-e</code> command-line option.
+</p>
+
+<div id="Variable assignment-Variable overriding-Command line"><h3 id="Command line">Command line</h3></div>
+
+<p>
+Variables can be defined or redifined directly from the make command line:
+</p>
+<pre>
+    make CFLAGS=-g CPPFLAGS='-DBSD -DDEBUG'
+</pre>
+
+<p>
+An assignment of a variable on the command line overrides any value from the
+environment and any assignment in the makefile.
+</p>
+
+<p>
+Command-line assignments can set either simple or recursive variable by using
+<code>:=</code> or <code>=</code>, respecitively.
+</p>
+
+<p>
+It's possible using the <code>override</code> directive to allow a makefile assignment to
+be used instead of a command-line assignment.
+</p>
+
+<div id="References"><h1 id="References">References</h1></div>
+
+<ul>
+<li>
+  Managing Projects with GNU Make (Third Edition)
+
+</ul>
+
+<ul>
+<li>
+  <code>man make</code>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

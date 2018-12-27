@@ -1,0 +1,51 @@
+= sadc =
+
+{{{
+    /usr/lib/sa/sadc [options] [interval [count]] [outfile]
+}}}
+
+*Note*: If outfile is set to `-`, then sadc uses the standard system activity
+daily data file (by default `/var/log/sa/saDD`). In this case, if the file
+already exists, sadc will overwrite it if it is from a previous month.
+
+*Note*: When the count parameter is not specified, sadc rites its data
+endlessly. When both interval and count are not specified, and optioin -C is
+not used, a dummy record, which is used at system startup to mark the time when
+the counter restarts from 0, will be written. For example, one of the system
+startup script may write the restart mark to the daily data file by the command
+entry: `/usr/lib/sa/sadc -`.
+
+== Options ==
+
+-   `-C comment`: When neither the interval nor the count parameters are
+    specified, this option tells sadc to write a dummy record containing the
+    specified comment string. This comment can then be displayed with option
+    `-C` of sar.
+
+-   `-D`: Use saYYYYMMDD instead of saDD as the standard system activity daily
+    data file name.
+
+-   `-F`: The creation of outfile will be forced. If the file already exists
+    and has a format unknown to sadc then it will be truncated. This may be
+    useful for daily data files created by an older version of sadc and whose
+    format is no longer compatible with current one.
+
+-   `-L`: sadc will try to get an exclusive lock on the outfile before writing
+    to it or truncating it.
+
+-   `-S activities`: Specify which optional activities should be collected by
+    sadc. some activities are optional to prevent data files from growing too
+    large. The activity can be can be DISK, INT, IPV6, POWRE, SNMP or XDISK.
+    The activity ALL is equivalent to DISK, INT, IPV6, POWER and SNMP. The
+    activity XALL is equivalent to DISK, INT, IPV6, POWER, SNMP and XDISK.
+    *Note* that the activities saved in an existing data file prevail over
+    those selected with option `-S`. As a consequence, appending data to an
+    existing data file will result in option `-S` be ignored.
+
+(Find more in `man sadc`.)
+
+== Examples ==
+
+{{{
+    sudo sadc 1 10 
+}}}

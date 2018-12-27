@@ -190,13 +190,18 @@ message about the command being executed.
 
 -   Run 23 minutes after midn, 2am, 4am ... (step by 2 hour), everyday:
     {{{
-        23 0-23/2 * * * echo Hello world!
+        23 0-23/2 * * * date >> /tmp/date
     }}}
 
 -   Run at 2min, 5min, 10min ... 40min (step by 3 minutes), and 56min, every
     hour.
     {{{
         2,5,10-40/3,56 * * * * date >> /tmp/date
+    }}}
+
+-   Run every 10 minutes:
+    {{{
+        */10 * * * * date >> /tmp/date
     }}}
 
 -   Write "an9wer:\n  Hello world!\n" to '/tmp/greet` file after midnight, every

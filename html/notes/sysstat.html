@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">sysstat</div>
+        <div id="content">
+<div id="sadc"><h1 id="sadc">sadc</h1></div>
+
+<pre>
+    /usr/lib/sa/sadc [options] [interval [count]] [outfile]
+</pre>
+
+<p>
+<span id="sadc-Note"></span><strong id="Note">Note</strong>: If outfile is set to <code>-</code>, then sadc uses the standard system activity
+daily data file (by default <code>/var/log/sa/saDD</code>). In this case, if the file
+already exists, sadc will overwrite it if it is from a previous month.
+</p>
+
+<p>
+<span id="sadc-Note"></span><strong id="Note">Note</strong>: When the count parameter is not specified, sadc rites its data
+endlessly. When both interval and count are not specified, and optioin -C is
+not used, a dummy record, which is used at system startup to mark the time when
+the counter restarts from 0, will be written. For example, one of the system
+startup script may write the restart mark to the daily data file by the command
+entry: <code>/usr/lib/sa/sadc -</code>.
+</p>
+
+<div id="sadc-Options"><h2 id="Options">Options</h2></div>
+
+<ul>
+<li>
+  <code>-C comment</code>: When neither the interval nor the count parameters are
+    specified, this option tells sadc to write a dummy record containing the
+    specified comment string. This comment can then be displayed with option
+    <code>-C</code> of sar.
+
+</ul>
+
+<ul>
+<li>
+  <code>-D</code>: Use saYYYYMMDD instead of saDD as the standard system activity daily
+    data file name.
+
+</ul>
+
+<ul>
+<li>
+  <code>-F</code>: The creation of outfile will be forced. If the file already exists
+    and has a format unknown to sadc then it will be truncated. This may be
+    useful for daily data files created by an older version of sadc and whose
+    format is no longer compatible with current one.
+
+</ul>
+
+<ul>
+<li>
+  <code>-L</code>: sadc will try to get an exclusive lock on the outfile before writing
+    to it or truncating it.
+
+</ul>
+
+<ul>
+<li>
+  <code>-S activities</code>: Specify which optional activities should be collected by
+    sadc. some activities are optional to prevent data files from growing too
+    large. The activity can be can be DISK, INT, IPV6, POWRE, SNMP or XDISK.
+    The activity ALL is equivalent to DISK, INT, IPV6, POWER and SNMP. The
+    activity XALL is equivalent to DISK, INT, IPV6, POWER, SNMP and XDISK.
+    <span id="sadc-Options-Note"></span><strong id="Note">Note</strong> that the activities saved in an existing data file prevail over
+    those selected with option <code>-S</code>. As a consequence, appending data to an
+    existing data file will result in option <code>-S</code> be ignored.
+
+</ul>
+
+<p>
+(Find more in <code>man sadc</code>.)
+</p>
+
+<div id="sadc-Examples"><h2 id="Examples">Examples</h2></div>
+
+<pre>
+    sudo sadc 1 10 
+</pre>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

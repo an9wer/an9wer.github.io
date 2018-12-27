@@ -396,7 +396,7 @@ message about the command being executed.
 <li>
   Run 23 minutes after midn, 2am, 4am ... (step by 2 hour), everyday:
 <pre>
-        23 0-23/2 * * * echo Hello world!
+        23 0-23/2 * * * date &gt;&gt; /tmp/date
 </pre>
 
 </ul>
@@ -407,6 +407,15 @@ message about the command being executed.
     hour.
 <pre>
         2,5,10-40/3,56 * * * * date &gt;&gt; /tmp/date
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  Run every 10 minutes:
+<pre>
+        */10 * * * * date &gt;&gt; /tmp/date
 </pre>
 
 </ul>

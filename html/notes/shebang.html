@@ -25,96 +25,78 @@
         <a id="about" href="../about.html">About</a>
     </div>
     <div id="post">
-        <div id="title">Archives</div>
+        <div id="title">shebang</div>
         <div id="content">
+<div id="shebang"><h1 id="shebang">shebang</h1></div>
 
-<div id="Shell"><h2 id="Shell">Shell</h2></div>
+<pre>
+    #!interpreter [argument]
+</pre>
 
 <ul>
 <li>
-  <a href="shebang.html">shebang</a>
+  Interpreter must be an <span id="shebang-absolute path"></span><strong id="absolute path">absolute path</strong> to an executable program.
 
 </ul>
 
 <ul>
 <li>
-  <a href="env.html">env</a>
+  Arguments, if exists, should be combined into one word without any embedded
+    whitespace (e.g. -a, -ab or -abc). Otherwise, it will cause to errors.
 
 </ul>
 
 <ul>
 <li>
-  <a href="xmodmap.html">xmodmap</a>
+  For portability, use the program <code>/usr/bin/env</code> to find the right absolute
+    path to interpreter. The <code>-S</code> option of this program can also resolve the
+    issue above about multiple arguments.
+
+</ul>
+
+<div id="shebang-Examples"><h2 id="Examples">Examples</h2></div>
+
+<ul>
+<li>
+  The following shebang is invalid for multiple arguments:
+<pre>
+        #!/usr/bin/python -t -b
+</pre>
 
 </ul>
 
 <ul>
 <li>
-  <a href="man.html">man</a>
+  The right way is to combine all arguments into one:
+<pre>
+        #!/usr/bin/python -tb
+</pre>
 
 </ul>
 
 <ul>
 <li>
-  <a href="ssh.html">ssh</a> 
+  The following shebang is invalid for multiple arguments:
+<pre>
+        #!/usr/bin/env python -t -b
+</pre>
 
 </ul>
 
 <ul>
 <li>
-  <a href="Bash.html">Bash</a>
+  The right way is to use <code>-S</code> option of env:
+<pre>
+        #!/usr/bin/env -S python -t -b
+</pre>
 
 </ul>
 
-<div id="Development"><h2 id="Development">Development</h2></div>
+<div id="References"><h1 id="References">References</h1></div>
 
 <ul>
 <li>
-  <a href="git.html">git</a>
-
-</ul>
-
-<div id="Synchronous"><h2 id="Synchronous">Synchronous</h2></div>
-
-<ul>
-<li>
-  <a href="rsync.html">rsync</a>
-
-</ul>
-
-<div id="System"><h2 id="System">System</h2></div>
-
-<ul>
-<li>
-  <a href="sysstat.html">sysstat</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="iptables.html">iptables</a>
-
-</ul>
-
-<ul>
-<li>
-  <a href="cron.html">cron</a>
-
-</ul>
-
-<div id="Image"><h2 id="Image">Image</h2></div>
-
-<ul>
-<li>
-  <a href="ImageMagick.html">ImageMagick</a>
-
-</ul>
-
-<div id="Build"><h2 id="Build">Build</h2></div>
-
-<ul>
-<li>
-  <a href="make.html">make</a>
+  <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Wikipedia shebang</a>
 
 </ul>
 </div>

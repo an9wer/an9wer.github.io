@@ -1,0 +1,40 @@
+= shebang =
+
+{{{
+    #!interpreter [argument]
+}}}
+
+-   Interpreter must be an *absolute path* to an executable program.
+
+-   Arguments, if exists, should be combined into one word without any embedded
+    whitespace (e.g. -a, -ab or -abc). Otherwise, it will cause to errors.
+
+-   For portability, use the program `/usr/bin/env` to find the right absolute
+    path to interpreter. The `-S` option of this program can also resolve the
+    issue above about multiple arguments.
+
+== Examples ==
+
+-   The following shebang is invalid for multiple arguments:
+    {{{
+        #!/usr/bin/python -t -b
+    }}}
+
+-   The right way is to combine all arguments into one:
+    {{{
+        #!/usr/bin/python -tb
+    }}}
+
+-   The following shebang is invalid for multiple arguments:
+    {{{
+        #!/usr/bin/env python -t -b
+    }}}
+
+-   The right way is to use `-S` option of env:
+    {{{
+        #!/usr/bin/env -S python -t -b
+    }}}
+
+= References =
+
+-   [[https://en.wikipedia.org/wiki/Shebang_(Unix)|Wikipedia shebang]]
