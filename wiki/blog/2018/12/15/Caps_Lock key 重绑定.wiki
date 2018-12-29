@@ -30,20 +30,20 @@ Richard Stallman 用的就是 HHKB 这种 Ctrl 在 Caps_Lock 位置的键盘。
 的按键方法。今天尝试了一天，经常会和 Shift 键搞混在一起，看来得适应一段时间了，
 呵呵。
 
-*Edit (2018/12/17)*:
+*Edit (2018/12/24)*:
 
 在知乎看到了
 [[https://www.zhihu.com/question/22127282/answer/42905465|这篇回答 ]]，将键帽反
 过来装在键盘上，发现还真是个好办法，于是这两天又用 xmodmap 重新将键位映射了一遍
 ，现在被我修改的键位如下：
 
-|           | Bind to    |
-|-----------|------------|
-| Caps_Lock | Control_L  |
-| Alt_R     | BackSpace  |
-| Menu      | blackslash |
-| Super_R   | Escape     |
+|           | Bind to   |
+|-----------|-----------|
+| Caps_Lock | Return    |
+| Alt_R     | backslash |
+| Menu      | BackSpace |
+| Super_R   | Escape    |
 
-配置详见[[https://github.com/an9wer/werice/blob/master/bash/.Xmodmap|.Xmodmap]]
+配置详见[[https://github.com/an9wer/werice/blob/master/bash/.rapoo_V500.Xmodmap|.Xmodmap]]
 
 Thanks for reading :)
