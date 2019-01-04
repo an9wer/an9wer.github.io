@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">gpg</div>
+        <div id="content">
+<div id="List keys"><h2 id="List keys">List keys</h2></div>
+
+<div id="List keys-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>-k --list-keys --list-public-keys</code>: List the specified keys. If no keys are
+specified, then all keys from the configured public keyrings are listed.
+</p>
+
+<p>
+<code>-K --list-secret-keys</code>: List the specified secret keys. If no keys are
+specified, then all known secret keys are listed.
+</p>
+
+<div id="List keys-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+List all public keys:
+</p>
+<pre>
+    gpg -k
+</pre>
+
+<p>
+List an9wer's public keys:
+</p>
+<pre>
+    gpg -k an9wer
+</pre>
+
+<p>
+List all secret keys:
+</p>
+<pre>
+    gpg -K
+</pre>
+
+<p>
+List an9wer's secret keys:
+</p>
+<pre>
+    gpg -K an9wer
+</pre>
+
+<div id="Generate and delete key"><h2 id="Generate and delete key">Generate and delete key</h2></div>
+
+<div id="Generate and delete key-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--generate-key</code>: Generate a new key pair using the current default parameters.
+This is the standard command to create a new key. In addition to the key a
+revocation certificate is created and stored in the 'openpgp-revocs.d'
+directory below the GnuPG home directory.
+</p>
+
+<p>
+<code>--full-generate-key</code>: Generate a new key pair with dialogs for all options.
+This is an extended version of --generate-key. There is also a feature which
+allows you to create keys in batch mode.
+</p>
+
+<p>
+<code>--delete-secret-keys name</code>: Remove ke from the secret keyring.
+</p>
+
+<p>
+<code>--delete-keys name</code>: Remove key from the public keyring.
+</p>
+
+<div id="Generate and delete key-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Generate a new key pair:
+</p>
+<pre>
+    gpg --full-generate-key
+</pre>
+
+<p>
+Delete secret key:
+</p>
+<pre>
+    gpg --delete-secret-keys an9wer
+</pre>
+
+<p>
+Delete public key (<span id="Generate and delete key-Examples-Note"></span><strong id="Note">Note</strong>: must delete secret key first):
+</p>
+<pre>
+    gpg --delete-keys an9wer
+</pre>
+
+<div id="Encrypt and decrypt"><h2 id="Encrypt and decrypt">Encrypt and decrypt</h2></div>
+
+<div id="Encrypt and decrypt-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>-e --encrypt</code>: Encrypt data to one or more public keys. This command may be
+combined with <code>--sign</code>, <code>--symmetric</code>, or <code>--sign</code> and <code>--symmetric</code> together.
+<code>--recipient</code> and related options specify which public keys to use for
+encryption.
+</p>
+
+<p>
+<code>-d --decrypt</code>: Decrypt the file given on the command line (or STDIN if no file
+is specified) and write it to STDOUT (or the file specified with <code>--output</code>).
+If the decrypted file is signed, the signature is also verified.
+</p>
+
+<p>
+<code>-c --symmetric</code>: Entrypt with a symmetric cipher using a passphrase.
+</p>
+
+<p>
+<code>-r --recipient name</code>: Encrypt for user id. If this option or
+<code>--hidden-recipient</code> is not specified, GnuPG asks for the user-id unless
+<code>--default-recipient</code> is given.
+</p>
+
+<div id="Encrypt and decrypt-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Use an9wer's public key to encrypt some file (the default name of encrypted
+file is the origin file name suffixed with '.gpg', but can be change by the
+<code>-o</code> option):
+</p>
+<pre>
+    gpg -e -r an9wer /path/to/file
+</pre>
+
+<p>
+Decrypt file:
+</p>
+<pre>
+    gpg -d /path/to/file.gpg
+</pre>
+
+<div id="Sign and verify"><h2 id="Sign and verify">Sign and verify</h2></div>
+
+<div id="Sign and verify-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>-s --sign</code>: Sign a message. This command may be combined with <code>--encrypt</code>,
+<code>--symmetric</code>, or both <code>--encrypt</code> and <code>--symmetric</code>. The signing key is chosen
+by default or can be set explicitly using the <code>--local-user</code> and
+<code>--default-key</code> options.
+</p>
+
+<p>
+<code>--clearsign</code>: Make a cleartext signature. The content in a cleartext signature
+is readable without any special software. OpenPGP software is only needed to
+verify the signature. The signing key is chosen by default or can be set
+explicitly using the <code>--local-user</code> and <code>--deafult-key</code>.
+</p>
+
+<p>
+<code>-b --detach-sign</code>: Make a detached signature.
+</p>
+
+<p>
+<code>--verify</code>: Assume that the first argument is a signed file and verify it
+without generating any output. With no arguments, the signature packet is read
+from STDIN. If only one argument is given, the specified file is expected to
+include a complete signature. With more than one argument, the first argument
+should specify a file with a detached signature and the remaining files should
+contain the signed data. To read the signed data from STDIN, use '-' as teh
+second filename. For security reasons, a detached signature will not read the
+signed material from STDIN if not explicitly specified.
+</p>
+
+<div id="Sign and verify-Examples"><h3 id="Examples">Examples</h3></div>
+
+<pre>
+    gpg --sign --local-user an9wer /path/to/file
+</pre>
+
+<pre>
+    gpg --clearsign --local-user an9wer /path/to/file
+</pre>
+
+<pre>
+    gpg --detach-sign --local-user an9wer /path/to/file
+</pre>
+
+<pre>
+    gpg --verify  /path/to/file.gpg
+</pre>
+
+<div id="TODO"><h1 id="TODO"><span class="todo">TODO</span></h1></div>
+
+<ol>
+<li>
+subkeys
+
+</ol>
+
+<div id="References"><h1 id="References">References</h1></div>
+
+<ul>
+<li>
+  <code>man gpg</code>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

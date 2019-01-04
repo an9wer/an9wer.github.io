@@ -2,6 +2,8 @@
 
 == Shell ==
 
+-   [[gpg|gpg]]
+
 -   [[shebang|shebang]]
 
 -   [[env|env]]
@@ -14,14 +16,6 @@
 
 -   [[Bash|Bash]]
 
-== Development ==
-
--   [[git|git]]
-
-== Synchronous ==
-
--   [[rsync|rsync]]
-
 == System ==
 
 -   [[sysstat|sysstat]]
@@ -30,10 +24,18 @@
 
 -   [[cron|cron]]
 
-== Image ==
+== Development ==
 
--   [[ImageMagick|ImageMagick]]
+-   [[git|git]]
 
 == Build ==
 
 -   [[make|make]]
+
+== Synchronous ==
+
+-   [[rsync|rsync]]
+
+== Image ==
+
+-   [[ImageMagick|ImageMagick]]

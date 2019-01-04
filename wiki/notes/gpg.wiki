@@ -1,0 +1,149 @@
+== List keys ==
+
+=== Options ===
+
+`-k --list-keys --list-public-keys`: List the specified keys. If no keys are
+specified, then all keys from the configured public keyrings are listed.
+
+`-K --list-secret-keys`: List the specified secret keys. If no keys are
+specified, then all known secret keys are listed.
+
+=== Examples ===
+
+List all public keys:
+{{{
+    gpg -k
+}}}
+
+List an9wer's public keys:
+{{{
+    gpg -k an9wer
+}}}
+
+List all secret keys:
+{{{
+    gpg -K
+}}}
+
+List an9wer's secret keys:
+{{{
+    gpg -K an9wer
+}}}
+
+== Generate and delete key ==
+
+=== Options ===
+
+`--generate-key`: Generate a new key pair using the current default parameters.
+This is the standard command to create a new key. In addition to the key a
+revocation certificate is created and stored in the 'openpgp-revocs.d'
+directory below the GnuPG home directory.
+
+`--full-generate-key`: Generate a new key pair with dialogs for all options.
+This is an extended version of --generate-key. There is also a feature which
+allows you to create keys in batch mode.
+
+`--delete-secret-keys name`: Remove ke from the secret keyring.
+
+`--delete-keys name`: Remove key from the public keyring.
+
+=== Examples ===
+
+Generate a new key pair:
+{{{
+    gpg --full-generate-key
+}}}
+
+Delete secret key:
+{{{
+    gpg --delete-secret-keys an9wer
+}}}
+
+Delete public key (*Note*: must delete secret key first):
+{{{
+    gpg --delete-keys an9wer
+}}}
+
+== Encrypt and decrypt ==
+
+=== Options ===
+
+`-e --encrypt`: Encrypt data to one or more public keys. This command may be
+combined with `--sign`, `--symmetric`, or `--sign` and `--symmetric` together.
+`--recipient` and related options specify which public keys to use for
+encryption.
+
+`-d --decrypt`: Decrypt the file given on the command line (or STDIN if no file
+is specified) and write it to STDOUT (or the file specified with `--output`).
+If the decrypted file is signed, the signature is also verified.
+
+`-c --symmetric`: Entrypt with a symmetric cipher using a passphrase.
+
+`-r --recipient name`: Encrypt for user id. If this option or
+`--hidden-recipient` is not specified, GnuPG asks for the user-id unless
+`--default-recipient` is given.
+
+=== Examples ===
+
+Use an9wer's public key to encrypt some file (the default name of encrypted
+file is the origin file name suffixed with '.gpg', but can be change by the
+`-o` option):
+{{{
+    gpg -e -r an9wer /path/to/file
+}}}
+
+Decrypt file:
+{{{
+    gpg -d /path/to/file.gpg
+}}}
+
+== Sign and verify==
+
+=== Options ===
+
+`-s --sign`: Sign a message. This command may be combined with `--encrypt`,
+`--symmetric`, or both `--encrypt` and `--symmetric`. The signing key is chosen
+by default or can be set explicitly using the `--local-user` and
+`--default-key` options.
+
+`--clearsign`: Make a cleartext signature. The content in a cleartext signature
+is readable without any special software. OpenPGP software is only needed to
+verify the signature. The signing key is chosen by default or can be set
+explicitly using the `--local-user` and `--deafult-key`.
+
+`-b --detach-sign`: Make a detached signature.
+
+`--verify`: Assume that the first argument is a signed file and verify it
+without generating any output. With no arguments, the signature packet is read
+from STDIN. If only one argument is given, the specified file is expected to
+include a complete signature. With more than one argument, the first argument
+should specify a file with a detached signature and the remaining files should
+contain the signed data. To read the signed data from STDIN, use '-' as teh
+second filename. For security reasons, a detached signature will not read the
+signed material from STDIN if not explicitly specified.
+
+=== Examples ===
+
+{{{
+    gpg --sign --local-user an9wer /path/to/file
+}}}
+
+{{{
+    gpg --clearsign --local-user an9wer /path/to/file
+}}}
+
+{{{
+    gpg --detach-sign --local-user an9wer /path/to/file
+}}}
+
+{{{
+    gpg --verify  /path/to/file.gpg
+}}}
+
+= TODO =
+
+1. subkeys
+
+= References =
+
+-   `man gpg`
