@@ -27,7 +27,221 @@
     <div id="post">
         <div id="title">gpg</div>
         <div id="content">
+<div id="Basic"><h2 id="Basic">Basic</h2></div>
+
+<div id="Basic-How to specify a user id"><h3 id="How to specify a user id">How to specify a user id</h3></div>
+
+<p>
+<code>By key Id</code>: This format is deduced from the length of the string and its
+content or the '0x' prefix. An exclamation mark (!) may be appended to force
+using the specified primary or secondary key and not to try and calculate which
+primary or secondary key to use.
+</p>
+<pre>
+    662E8566
+    0662E8566
+    0x662E8566
+
+    DB4A58F6662E8566
+    0DB4A58F6662E8566
+    0xDB4A58F6662E8566
+</pre>
+
+<p>
+<code>By fingerprint</code>: This format is deduced from the length of the string and its
+content or the '0x' prefix. An exclamation mark (!) may be append to force
+using the specified primary or secondary key and not to try and calculate
+which primary or secondary key to use.
+</p>
+<pre>
+    85295C7BBFCDF3C1061BE107A358019FB93DD1F4
+    085295C7BBFCDF3C1061BE107A358019FB93DD1F4
+    0x85295C7BBFCDF3C1061BE107A358019FB93DD1F4
+</pre>
+
+<p>
+<code>By exact match on OpenPGP user ID</code>: This is denoted by a leading euqal sign.
+</p>
+<pre>
+    =an9wer &lt;an9wer@gmail.com&gt;
+</pre>
+
+<p>
+<code>By exact match on an email address</code>: This is indicated by enclosing the email
+address in the usual way in with left and right angles.
+</p>
+<pre>
+    &lt;an9wer@gmail.com&gt;
+</pre>
+
+<p>
+<code>By partial match on an email address</code>: This is indicated by prefixing the
+search string with an @. This uses a substring search but considers only the
+mail address.
+</p>
+<pre>
+    @9
+</pre>
+
+<p>
+<code>By substirng match</code>: This is the default mode but applications may want to
+explicitly indicate this by putting the asterisk in frot. Match is not case
+sensitive.
+</p>
+<pre>
+    9
+    *9
+</pre>
+
+
+<div id="Common"><h2 id="Common">Common</h2></div>
+
+<div id="Common-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--homedir dir</code>: Set the name of the home directory to dir. If this option is
+not used, the home directory defaults to <code>~/.gnupg</code>. It is only recognized when
+given on the command line. It also overrides any home directory stated throuth
+the environment variable <code>GNUPGHOME</code>.
+</p>
+
+<p>
+<code>--keyid-format {none|short|0xshort|long|0xlong}</code>: Select how to display key
+IDs. "none" does not show the key ID at all but shows the fingerprint in a
+separate line. "short" is the traditional 8-character key ID. "long" is the
+more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
+the beginning of the key ID, as in 0x99242560. Note that this option is ignored
+if the option <code>--with-colons</code> is used.
+</p>
+
+<div id="Common-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+List all public keys located in specified home directory:
+</p>
+<pre>
+    gpg --homedir /path/to/homdir -k
+</pre>
+
+<p>
+List all public keys with 16-character key ID:
+</p>
+<pre>
+    gpg --keyid-format long -k
+</pre>
+
 <div id="List keys"><h2 id="List keys">List keys</h2></div>
+
+<p>
+When listing secret keys with <code>gpg -K</code>, keys are marked with either sec or ssb.
+When listing public keys with <code>gpg -k</code>, keys are marked with either pub or sub.
+</p>
+
+<table>
+<tr>
+<th>
+&nbsp;
+</th>
+<th>
+Explanation
+</th>
+</tr>
+<tr>
+<td>
+sec
+</td>
+<td>
+secret key
+</td>
+</tr>
+<tr>
+<td>
+ssb
+</td>
+<td>
+secret subkey
+</td>
+</tr>
+<tr>
+<td>
+pub
+</td>
+<td>
+public key
+</td>
+</tr>
+<tr>
+<td>
+sub
+</td>
+<td>
+public subkey
+</td>
+</tr>
+</table>
+
+<p>
+When listing either secret keys or public keys, each key has a role and is
+represented by a character:
+</p>
+
+<table>
+<tr>
+<th>
+Character
+</th>
+<th>
+Constant
+</th>
+<th>
+Explanation
+</th>
+</tr>
+<tr>
+<td>
+S
+</td>
+<td>
+PUBKEY_USAGE_SIG
+</td>
+<td>
+key is good for signing
+</td>
+</tr>
+<tr>
+<td>
+C
+</td>
+<td>
+PUBKEY_USAGE_CERT
+</td>
+<td>
+key is good for certifying other signatures
+</td>
+</tr>
+<tr>
+<td>
+E
+</td>
+<td>
+PUBKEY_USAGE-ENC
+</td>
+<td>
+key is good for encryption
+</td>
+</tr>
+<tr>
+<td>
+A
+</td>
+<td>
+PUBKEY_USAGE_AUTH
+</td>
+<td>
+key is good for authentication
+</td>
+</tr>
+</table>
 
 <div id="List keys-Options"><h3 id="Options">Options</h3></div>
 
@@ -41,6 +255,13 @@ specified, then all keys from the configured public keyrings are listed.
 specified, then all known secret keys are listed.
 </p>
 
+<p>
+<code>--fingerprint</code>: List all keys (or the specified ones) along with their
+fingerprints. This is the same output as <code>--list-keys</code> but with additional
+output of a line with the finterprint. May also be combined with <code>--list-sigs</code>
+or <code>--check-sigs</code>.
+</p>
+
 <div id="List keys-Examples"><h3 id="Examples">Examples</h3></div>
 
 <p>
@@ -51,10 +272,10 @@ List all public keys:
 </pre>
 
 <p>
-List an9wer's public keys:
+List all public keys specified by user id:
 </p>
 <pre>
-    gpg -k an9wer
+    gpg -k {user-id}
 </pre>
 
 <p>
@@ -65,10 +286,10 @@ List all secret keys:
 </pre>
 
 <p>
-List an9wer's secret keys:
+List all secret keys specified by user id:
 </p>
 <pre>
-    gpg -K an9wer
+    gpg -K {user-id}
 </pre>
 
 <div id="Generate and delete key"><h2 id="Generate and delete key">Generate and delete key</h2></div>
@@ -106,18 +327,242 @@ Generate a new key pair:
 </pre>
 
 <p>
-Delete secret key:
+Delete secret keys:
 </p>
 <pre>
-    gpg --delete-secret-keys an9wer
+    gpg --delete-secret-keys {user-id}
 </pre>
 
 <p>
-Delete public key (<span id="Generate and delete key-Examples-Note"></span><strong id="Note">Note</strong>: must delete secret key first):
+Delete public key (<span id="Generate and delete key-Examples-Note"></span><strong id="Note">Note</strong>: It is needed to delete secret keys first):
 </p>
 <pre>
-    gpg --delete-keys an9wer
+    gpg --delete-keys {user-id}
 </pre>
+
+<div id="Revoke key"><h2 id="Revoke key">Revoke key</h2></div>
+
+<div id="Revoke key-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--gen-revoke name</code>: Generate a revocation certificate for the complete key. To
+only revoke a subkey or a key signature, use the <code>--edit</code> option. This command
+merely created the revocation certificate so that it can be used to revoke the
+key if that is ever needed. To actually revoke a key that created revocation
+certificate needs to be merged with the key to revoke. This is done by
+importing the revocation certificate using the <code>--import</code> command. Then the
+revoked key needs to be published, which is best done by sending the key to a
+keyserver (--send-key) and by exporting (--export) it to a file which is then
+send to frequent communication partners.
+</p>
+
+<div id="Revoke key-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Generate a revocation:
+</p>
+<pre>
+    gpg --gen-revoke {user-id}
+</pre>
+
+<p>
+Revoke:
+</p>
+<pre>
+    gpg --import /path/to/file.rev
+</pre>
+
+<div id="Export key"><h2 id="Export key">Export key</h2></div>
+
+<div id="Export key-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>-a --armor</code>: Create ASCII armored output. The default is to create the binary
+OpenPGP format.
+</p>
+
+<p>
+<code>-o --output file</code>: Write output to file.
+</p>
+
+<p>
+<code>--export</code>: Either export all keys from all keyrings, or if at least one name
+is given, those of the given name. The exported keys are written to STDOUT or
+to the file given with option <code>--output</code>. 
+</p>
+
+<p>
+<code>--export-secret-keys</code>: Same as <code>--export</code>, but exports the secret keys
+instead.
+</p>
+
+<p>
+<code>--export-secret-subkeys</code>: This is a GNU extension to OpenPGP and other
+implementations can not be expected to successfully import such a key. Its
+intended use is to generated a full key with an additional signing subkey on a
+dedicated machine and then using this option to export the key without the
+primary key to the main machine.
+</p>
+
+<div id="Export key-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Export all public keys specified by user id:
+</p>
+<pre>
+    gpg -a --export {user-id}
+</pre>
+
+<p>
+Export all secret keys specified by user id:
+</p>
+<pre>
+    gpg -a --export-secret-keys {user-id}
+</pre>
+
+<p>
+Export subkeys (see below).
+</p>
+
+<div id="Edit key"><h2 id="Edit key">Edit key</h2></div>
+
+<p>
+<code>--list-sigs</code>: Same as <code>--list-keys</code>, but the signatures are listed too. This
+command has the same effect as using <code>--list-keys</code> with <code>--with-sig-list</code>. For
+each signature listed, there are several flags in between the 'sig' tag and
+keyid. These flags give additional information about each signature. From left
+to right, they are the numbers 1-3 for certificate check level (see
+<code>--ask-cert-level</code>), 'L' for a local or non-exportable signature (see
+<code>--lsign-key</code>), 'R' for a non-revocable signature (see the <code>--edit-key</code> command
+'nrsing'), 'P' for a signature that contains a policy URL (see
+<code>--cert-policy-url</code>), 'N' for a signature that contains a notation (see
+<code>--cert-notation</code>), 'X' for a expired signature (see <code>--ask-cert-expire</code>), and
+the number 1-9 or 'T' for 10 and above to indicate trust signature levels (see
+the <code>--edit-key</code> command 'tsign').
+</p>
+
+<p>
+<code>--check-sigs</code>: Same as <code>--list-sigs</code>, but signatures are verified. Note that
+for performancce reasons the revocation status of a signing key is not shown.
+This command has the same effect as using <code>--list-keys</code> with
+<code>--with-sig-check</code>. The status of the verification is indicated by a flag
+directly following the 'sig' tag. A '!' indicated that the signature has been
+successfully verified, a '-' ddenotes a bad signaturee and a '%' is used if an
+error occurred while checking the signature (e.g. a non supported algorithm).
+</p>
+
+<p>
+<code>--edit-key</code>: Present a menu which enables you to do most of hte key management
+related tasks. It expects the specification of a key on the command line.
+</p>
+<ul>
+<li>
+  <code>uid n</code>: Toggle selection of user ID or photographic user ID with index n.
+    Use * to select all and 0 to deselect all.
+
+<li>
+  <code>key n</code>: Toggle selection of subkey with index n or key ID n. Use * to
+    select all and 0 to deselect all.
+
+<li>
+  <code>sign</code>: Make a signature on key of user name If the key is not yet signed
+    by the default user (or the users given with <code>-u</code>), the program displays
+    the information of the key again, together with its fingerprint and asks
+    whether it should be signed. This question is repeated for all users
+    specified with <code>-u</code>.
+
+<li>
+  <code>lsign</code>: Same as "sign" but the signature is marked as non-exporteable and
+    will therefore never be used by others. This may be used to make keys valid
+    only in the local environment.
+
+<li>
+  <code>nrsing</code>: Same as "sign" but the signature is marked as non-revocable and
+    can thereforce never be revoked.
+
+<li>
+  <code>tsign</code>: Make a trust signature. This is a signature that combines the
+    notions of certification (like a regular signature), and trust (like the
+    "trust" command). It is generally only useful in distinct communities or
+    groups.
+
+<li>
+  <code>delsig</code>: Delete a signature. Note that it is not possible to retract a
+    signature, once it has been send to the public (i.e. to a key server). In
+    that case you better use revsig.
+
+<li>
+  <code>revsig</code>: Revoke a signature. For every signature which has been generated
+    by one of the secret keys, GnuPG asks whether a revocation certificate
+    should be generated.
+
+<li>
+  <code>check</code>: Check the signatures on all selected user IDs. With the extra
+    selfsig only self-signatures are shown.
+
+<li>
+  <code>adduid</code>: Create an additional user ID.
+
+<li>
+  <code>deluid</code>: Delete a user ID or photographic user ID. Note that it is not
+    possible to retract a user id, once it has been send to the public (i.e. to
+    a key server). In that case you better use revuid.
+
+<li>
+  <code>revuid</code>: Revoke a user ID or photographic user ID.
+
+<li>
+  <code>primary</code>: Flag the current user id as the primary one, removes the primary
+    user id flag from all other ids and sets the timestamp of all affected
+    self-signatures one second ahead.
+
+<li>
+  <code>addkey</code>: Add a subkey to this key.
+
+<li>
+  <code>delkey</code>: Remove a subkey (secondary key). Note that it is not possible to
+    retract a subkey, once it has been send to the public (i.e. to a
+    keyserver). In that case you better use revkey.
+
+<li>
+  <code>revkey</code>: Revoke a subkey.
+
+<li>
+  <code>expire</code>: Change the key or subkey expiration time. If a subkey is
+    selected, the expiration time of this subkey will be changed. With no
+    selection, the key expiration of the primary key is changed.
+
+<li>
+  <code>trust</code>: Change the owner trust value for the key. This updates the
+    trust-db immediately and no save is required.
+
+<li>
+  <code>disable enable</code>: Disable or enable an entire key. A disable key can not
+    normally be used for encryption.
+
+<li>
+  <code>addrevoker</code>: Add a designated revoker to the key. This takes one optional
+    argument: "sensitive". If a designated revoker is marked as sensitive, it
+    will not be exported by default.
+
+<li>
+  <code>passwd</code>: Change the passphrase of the secret key.
+
+<li>
+  <code>save</code>: Save all changes to the key rings and quit.
+
+<li>
+  <code>quit</code>: Quit the program without updating the key rings.
+
+</ul>
+
+<p>
+<span id="Edit key-Note"></span><strong id="Note">Note</strong>: "l" (for local/non-exportable), "nr" (for non-revocable), and "t" (for
+trust) may be freely mixed and prefixed to "sign" to create a signature of any
+type desired.
+</p>
+
+
 
 <div id="Encrypt and decrypt"><h2 id="Encrypt and decrypt">Encrypt and decrypt</h2></div>
 
@@ -149,12 +594,12 @@ If the decrypted file is signed, the signature is also verified.
 <div id="Encrypt and decrypt-Examples"><h3 id="Examples">Examples</h3></div>
 
 <p>
-Use an9wer's public key to encrypt some file (the default name of encrypted
-file is the origin file name suffixed with '.gpg', but can be change by the
+Use a specific public key to encrypt some file (the default name of encrypted
+file is the original filename suffixed with '.gpg', but can be change by the
 <code>-o</code> option):
 </p>
 <pre>
-    gpg -e -r an9wer /path/to/file
+    gpg -e -r {user-id} /path/to/file
 </pre>
 
 <p>
@@ -215,6 +660,109 @@ signed material from STDIN if not explicitly specified.
     gpg --verify  /path/to/file.gpg
 </pre>
 
+<div id="Subkeys"><h2 id="Subkeys">Subkeys</h2></div>
+
+<div id="Subkeys-Create subkeys"><h3 id="Create subkeys">Create subkeys</h3></div>
+
+<p>
+First, enter edit-key menu of some user:
+</p>
+<pre>
+    gpg --edit-key {user-id}
+</pre>
+
+<p>
+Then, use addkey command and follow the promption to create a subkey:
+</p>
+<pre>
+    gpg&gt; addkey
+</pre>
+
+<div id="Subkeys-Delete subkeys"><h3 id="Delete subkeys">Delete subkeys</h3></div>
+
+<p>
+First, enter edit-key menu specified by user id:
+</p>
+<pre>
+    gpg --edit-key {user-id}
+</pre>
+
+<p>
+Then, use positive number to select key:
+</p>
+<pre>
+    gpg&gt; key {number}
+</pre>
+
+<p>
+Last, use delkey command to delete that key:
+</p>
+<pre>
+    gpg&gt; delkey
+</pre>
+
+<div id="Subkeys-Export subkeys"><h3 id="Export subkeys">Export subkeys</h3></div>
+
+<p>
+Export all subkeys specified by user id:
+</p>
+<pre>
+    gpg --armor --export-secret-subkeys {user-id}
+</pre>
+
+<p>
+Export a specific subkey which can be displayed by the
+<code>gpg --keyid-format long -K {user-id}</code> command. Note that the subkey id should
+be suffixed with exclamation mark:
+</p>
+<pre>
+    gpg --armor --export-secret-subkeys {subkey-id}!
+</pre>
+
+<div id="Subkeys-Encrypt and decrypt"><h3 id="Encrypt and decrypt">Encrypt and decrypt</h3></div>
+
+<p>
+Encrypt by a specific subkey:
+</p>
+<pre>
+    gpg -r {subkey-id}! -e /path/to/file
+</pre>
+
+<p>
+Decrypt:
+</p>
+<pre>
+    gpg -d /path/to/file.gpg
+</pre>
+
+<p>
+<span id="Subkeys-Encrypt and decrypt-Note"></span><strong id="Note">Note</strong>: When using a specific (public) subkey to encrypt files, only the
+corresponding (secret) subkey can decrypt them.
+</p>
+
+<div id="Subkeys-Revoke subkeys"><h3 id="Revoke subkeys">Revoke subkeys</h3></div>
+
+<p>
+First, enter edit-key menu specified by user id:
+</p>
+<pre>
+    gpg --edit-key {user id}
+</pre>
+
+<p>
+Then, use key command to select key:
+</p>
+<pre>
+    gpg&gt; key {number}
+</pre>
+
+<p>
+Last, use revkey command to delete that key:
+</p>
+<pre>
+    gpg&gt; revkey
+</pre>
+
 <div id="TODO"><h1 id="TODO"><span class="todo">TODO</span></h1></div>
 
 <ol>
@@ -223,11 +771,35 @@ subkeys
 
 </ol>
 
+<ol>
+<li>
+fingerprint
+
+</ol>
+
+<ol>
+<li>
+ssh &amp; gpg
+
+</ol>
+
+<ol>
+<li>
+edit key
+
+</ol>
+
 <div id="References"><h1 id="References">References</h1></div>
 
 <ul>
 <li>
   <code>man gpg</code>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://wiki.debian.org/Subkeys">Debian wiki subkeys</a>
 
 </ul>
 </div>
