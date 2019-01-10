@@ -93,7 +93,6 @@ sensitive.
     *9
 </pre>
 
-
 <div id="Common"><h2 id="Common">Common</h2></div>
 
 <div id="Common-Options"><h3 id="Options">Options</h3></div>
@@ -105,15 +104,6 @@ given on the command line. It also overrides any home directory stated throuth
 the environment variable <code>GNUPGHOME</code>.
 </p>
 
-<p>
-<code>--keyid-format {none|short|0xshort|long|0xlong}</code>: Select how to display key
-IDs. "none" does not show the key ID at all but shows the fingerprint in a
-separate line. "short" is the traditional 8-character key ID. "long" is the
-more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
-the beginning of the key ID, as in 0x99242560. Note that this option is ignored
-if the option <code>--with-colons</code> is used.
-</p>
-
 <div id="Common-Examples"><h3 id="Examples">Examples</h3></div>
 
 <p>
@@ -121,13 +111,6 @@ List all public keys located in specified home directory:
 </p>
 <pre>
     gpg --homedir /path/to/homdir -k
-</pre>
-
-<p>
-List all public keys with 16-character key ID:
-</p>
-<pre>
-    gpg --keyid-format long -k
 </pre>
 
 <div id="List keys"><h2 id="List keys">List keys</h2></div>
@@ -426,30 +409,7 @@ Export subkeys (see below).
 
 <div id="Edit key"><h2 id="Edit key">Edit key</h2></div>
 
-<p>
-<code>--list-sigs</code>: Same as <code>--list-keys</code>, but the signatures are listed too. This
-command has the same effect as using <code>--list-keys</code> with <code>--with-sig-list</code>. For
-each signature listed, there are several flags in between the 'sig' tag and
-keyid. These flags give additional information about each signature. From left
-to right, they are the numbers 1-3 for certificate check level (see
-<code>--ask-cert-level</code>), 'L' for a local or non-exportable signature (see
-<code>--lsign-key</code>), 'R' for a non-revocable signature (see the <code>--edit-key</code> command
-'nrsing'), 'P' for a signature that contains a policy URL (see
-<code>--cert-policy-url</code>), 'N' for a signature that contains a notation (see
-<code>--cert-notation</code>), 'X' for a expired signature (see <code>--ask-cert-expire</code>), and
-the number 1-9 or 'T' for 10 and above to indicate trust signature levels (see
-the <code>--edit-key</code> command 'tsign').
-</p>
-
-<p>
-<code>--check-sigs</code>: Same as <code>--list-sigs</code>, but signatures are verified. Note that
-for performancce reasons the revocation status of a signing key is not shown.
-This command has the same effect as using <code>--list-keys</code> with
-<code>--with-sig-check</code>. The status of the verification is indicated by a flag
-directly following the 'sig' tag. A '!' indicated that the signature has been
-successfully verified, a '-' ddenotes a bad signaturee and a '%' is used if an
-error occurred while checking the signature (e.g. a non supported algorithm).
-</p>
+<div id="Edit key-Options"><h3 id="Options">Options</h3></div>
 
 <p>
 <code>--edit-key</code>: Present a menu which enables you to do most of hte key management
@@ -557,12 +517,99 @@ related tasks. It expects the specification of a key on the command line.
 </ul>
 
 <p>
-<span id="Edit key-Note"></span><strong id="Note">Note</strong>: "l" (for local/non-exportable), "nr" (for non-revocable), and "t" (for
+<span id="Edit key-Options-Note"></span><strong id="Note">Note</strong>: "l" (for local/non-exportable), "nr" (for non-revocable), and "t" (for
 trust) may be freely mixed and prefixed to "sign" to create a signature of any
 type desired.
 </p>
 
+<p>
+<code>--list-sigs</code>: Same as <code>--list-keys</code>, but the signatures are listed too. This
+command has the same effect as using <code>--list-keys</code> with <code>--with-sig-list</code>. For
+each signature listed, there are several flags in between the 'sig' tag and
+keyid. These flags give additional information about each signature. From left
+to right, they are the numbers 1-3 for certificate check level (see
+<code>--ask-cert-level</code>), 'L' for a local or non-exportable signature (see
+<code>--lsign-key</code>), 'R' for a non-revocable signature (see the <code>--edit-key</code> command
+'nrsing'), 'P' for a signature that contains a policy URL (see
+<code>--cert-policy-url</code>), 'N' for a signature that contains a notation (see
+<code>--cert-notation</code>), 'X' for a expired signature (see <code>--ask-cert-expire</code>), and
+the number 1-9 or 'T' for 10 and above to indicate trust signature levels (see
+the <code>--edit-key</code> command 'tsign').
+</p>
 
+<p>
+<code>--check-sigs</code>: Same as <code>--list-sigs</code>, but signatures are verified. Note that
+for performancce reasons the revocation status of a signing key is not shown.
+This command has the same effect as using <code>--list-keys</code> with
+<code>--with-sig-check</code>. The status of the verification is indicated by a flag
+directly following the 'sig' tag. A '!' indicated that the signature has been
+successfully verified, a '-' ddenotes a bad signaturee and a '%' is used if an
+error occurred while checking the signature (e.g. a non supported algorithm).
+</p>
+
+<div id="Edit key-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Trust key:
+</p>
+<pre>
+    gpg&gt; trust
+</pre>
+
+
+<p>
+Make signature for all users:
+</p>
+<pre>
+    gpg&gt; sign
+</pre>
+
+<p>
+Make signaturefor a specific user:
+</p>
+<pre>
+    gpg&gt; uid {number}
+    gpg&gt; sign
+</pre>
+
+<p>
+Delete signature:
+</p>
+<pre>
+    gpg&gt; uid {number}
+    gpg&gt; delsig
+</pre>
+
+<p>
+Add user:
+</p>
+<pre>
+    gpg&gt; adduid
+</pre>
+
+<p>
+Delete user:
+</p>
+<pre>
+    gpg&gt; uid {number}
+    gpg&gt; deluid
+</pre>
+
+<p>
+Revoke user:
+</p>
+<pre>
+    gpg&gt; uid {number}
+    gpg&gt; revuid
+</pre>
+
+<p>
+Set primary user:
+</p>
+<pre>
+    gpg&gt; uid {number}
+    gpg&gt; primary
+</pre>
 
 <div id="Encrypt and decrypt"><h2 id="Encrypt and decrypt">Encrypt and decrypt</h2></div>
 
@@ -611,6 +658,17 @@ Decrypt file:
 
 <div id="Sign and verify"><h2 id="Sign and verify">Sign and verify</h2></div>
 
+<p>
+The difference between the results by using <code>--sign</code> and <code>--clearsign</code> is that
+the data type of the former is binary but the latter is ascii.
+</p>
+
+<p>
+Ths difference between the results by using <code>--sign</code> and <code>--detach-sign</code> is
+that the content of the former contains the original data, but the latter does
+not.
+</p>
+
 <div id="Sign and verify-Options"><h3 id="Options">Options</h3></div>
 
 <p>
@@ -644,20 +702,43 @@ signed material from STDIN if not explicitly specified.
 
 <div id="Sign and verify-Examples"><h3 id="Examples">Examples</h3></div>
 
+<p>
+Sign a message to raw binary data file:
+</p>
 <pre>
-    gpg --sign --local-user an9wer /path/to/file
+    gpg --sign --default-key {user-id} /path/to/file
+</pre>
+<p>
+The signed file by default is suffixed with <code>.gpg</code>, and can be verified by:
+</p>
+<pre>
+    gpg --verify /path/to/file.gpg
 </pre>
 
+<p>
+Sign a message to ascii data file:
+</p>
 <pre>
-    gpg --clearsign --local-user an9wer /path/to/file
+    gpg --clearsign --default-key {user-id} /path/to/file
+</pre>
+<p>
+The signed file by default is suffixed with <code>.asc</code>, and can be verified by:
+</p>
+<pre>
+    gpg --verify /path/to/file.asc
 </pre>
 
+<p>
+Sign a message to raw binary data file but abandon original data content.
+</p>
 <pre>
-    gpg --detach-sign --local-user an9wer /path/to/file
+    gpg --detach-sign --default-key {user-id} /path/to/file
 </pre>
-
+<p>
+The signed file by default is suffixed with <code>.gpg</code>, and can be verified by:
+</p>
 <pre>
-    gpg --verify  /path/to/file.gpg
+    gpg --verify  /path/to/file.gpg /path/to/file
 </pre>
 
 <div id="Subkeys"><h2 id="Subkeys">Subkeys</h2></div>
@@ -711,13 +792,15 @@ Export all subkeys specified by user id:
 </pre>
 
 <p>
-Export a specific subkey which can be displayed by the
-<code>gpg --keyid-format long -K {user-id}</code> command. Note that the subkey id should
-be suffixed with exclamation mark:
+Export a specific subkey (can be displayed by the
+<code>gpg --keyid-format long -K {user-id}</code> command).
 </p>
 <pre>
     gpg --armor --export-secret-subkeys {subkey-id}!
 </pre>
+<p>
+<span id="Subkeys-Export subkeys-Note"></span><strong id="Note">Note</strong>: The subkey-id should be suffixed with exclamation mark (!).
+</p>
 
 <div id="Subkeys-Encrypt and decrypt"><h3 id="Encrypt and decrypt">Encrypt and decrypt</h3></div>
 
@@ -763,31 +846,176 @@ Last, use revkey command to delete that key:
     gpg&gt; revkey
 </pre>
 
+<div id="Ownertrust"><h2 id="Ownertrust">Ownertrust</h2></div>
+
+<div id="Ownertrust-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--export-ownertrust</code>: Send the ownertrust values to STDOUT. This is useful for
+backup purposes as these values are the only ones which can't be re-created
+from a corrupted trustdb.
+</p>
+
+<p>
+<code>--import-ownertrust</code>: Update the trustdb with the ownertrust values stored in
+files (or STDIN if not given); existing values will be overwritten.
+</p>
+
+<div id="Ownertrust-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Export ownertrust:
+</p>
+<pre>
+    gpg --export-ownertrust &gt; /path/to/ownertrust.txt
+</pre>
+
+<p>
+Import ownertrust:
+</p>
+<pre>
+    gpg --import-ownertrust &lt; /path/to/ownertrust.txt
+</pre>
+
+<div id="gpg.conf"><h2 id="gpg.conf">gpg.conf</h2></div>
+
+<p>
+<code>gpg.conf</code> is an options file which by default is located in <code>~/.gnupg/</code>. Long
+options can be put in options file. Short option names will not work - for
+example, "armor" is a valid option for the options file, while "a" is not. Do
+not write the 2 dashes, but simply the name of the option and any required
+arguments. Lines with a hash ('#') as the first non-white-space character are
+ignored. Commands may be put in this file too, but that is not generally useful
+as the command will execute automatically with every execution of gpg.
+</p>
+
+<div id="gpg.conf-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--default-key name</code>: Use name as the default key to sign with. If this option
+is not used, the default key is the first key found in the secret keyring. Note
+that the <code>-u</code> or <code>--local-user</code> overrides this option. This option may be given
+multiple times. In this case, the last key for which a secret key is available
+is used. If there is no secret key available for any of the specified values,
+GnuPG will not emit an error message but continue as if this option wasn't
+given.
+</p>
+
+<p>
+<code>--default-recipient name</code>: Use name as default recipient if option
+<code>--recipient</code> is not used and don't ask if this is a valid one.
+</p>
+
+<p>
+<code>--default-recipient-self</code>: Use the default key as default recipient if option
+<code>--recipient</code> is not used and don't ask if this is a valid one. The default key
+is the first one from the secret keyring or the one set with <code>--default-key</code>.
+</p>
+
+<p>
+<code>--no-default-recipient</code>: Reset <code>--default-recipient</code> and
+<code>--default-recipient-self</code>.
+</p>
+
+<p>
+<code>--keyid-format {none|short|0xshort|long|0xlong}</code>: Select how to display key
+IDs. "none" does not show the key ID at all but shows the fingerprint in a
+separate line. "short" is the traditional 8-character key ID. "long" is the
+more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
+the beginning of the key ID, as in 0x99242560. Note that this option is ignored
+if the option <code>--with-colons</code> is used.
+</p>
+
+<p>
+<code>--with-fingerprint</code>: Same as the command <code>--finterprint</code> but chagnes only the
+format of the output and may be used together with another command.
+</p>
+
+<p>
+<code>--with-subkey-fingerprint</code>: If a fingerprint is printed for the primary key,
+this option forces printing of the fingerprint for all subkeys.
+</p>
+
+<div id="Keyserver"><h2 id="Keyserver">Keyserver</h2></div>
+
+<div id="Keyserver-Options"><h3 id="Options">Options</h3></div>
+
+<p>
+<code>--keyserver name</code>: Use name as your keyserver. This is the server that
+<code>--recv-keys</code>, <code>--send-keys</code>, and <code>--search-keys</code> will communicate with to
+receive keys from, send keys to, and search for keys on. (Note that this
+options is deprecated, use the --keyserver in 'dirmngr.conf' instead.)
+</p>
+
+<p>
+<code>--recv-keys key-ids</code> Import the keys with the given key IDs from a keyserver.
+</p>
+
+<p>
+<code>--refresh-keys</code>: Request updates from a keyserver for keys that already exist
+on the local keyring. This is useful for updating a key with the latest
+signatures, user IDs, etc.
+</p>
+
+<p>
+<code>--search-keys names</code>: Search the keyserver for the given names. Multiple names
+given here will be joined togther to create the search string for the
+keyserver.
+</p>
+
+<p>
+<code>--send-keys key-ids</code>: similar to <code>--export</code> but sends the key to a keyserver.
+Fingerprints may be used instead of key IDs.
+</p>
+
+<div id="Keyserver-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Send keys to keyserver:
+</p>
+<pre>
+    gpg --keyserver {server} --send-keys {key-ids}
+</pre>
+
+<p>
+Receive keys from keyserver:
+</p>
+<pre>
+    gpg --keysever {server} --recv-keys {key-ids}
+</pre>
+
+<p>
+Update keys from keyserver:
+</p>
+<pre>
+    gpg --keyserver {server} --refresh-keys
+</pre>
+
 <div id="TODO"><h1 id="TODO"><span class="todo">TODO</span></h1></div>
 
-<ol>
+<ul>
 <li>
-subkeys
+  keyserver &amp; dirmngr
 
-</ol>
+</ul>
 
-<ol>
+<ul>
 <li>
-fingerprint
+  key expire &amp; revoke
 
-</ol>
+</ul>
 
-<ol>
+<ul>
 <li>
-ssh &amp; gpg
+  gpg-agent
 
-</ol>
+</ul>
 
-<ol>
+<ul>
 <li>
-edit key
+  ssh &amp; gpg
 
-</ol>
+</ul>
 
 <div id="References"><h1 id="References">References</h1></div>
 
@@ -800,6 +1028,30 @@ edit key
 <ul>
 <li>
   <a href="https://wiki.debian.org/Subkeys">Debian wiki subkeys</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://www.gnupg.org/gph/en/manual/x135.html">Make signatures 1</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://www.tutonics.com/2012/11/gpg-encryption-guide-part-3-digital.html">Make signatures 2</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://www.gnupg.org/gph/en/manual/x334.html">Validate key</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Public key fingerprint</a>
 
 </ul>
 </div>

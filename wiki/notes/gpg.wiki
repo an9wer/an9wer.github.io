@@ -52,7 +52,6 @@ sensitive.
     *9
 }}}
 
-
 == Common ==
 
 === Options ===
@@ -62,23 +61,11 @@ not used, the home directory defaults to `~/.gnupg`. It is only recognized when
 given on the command line. It also overrides any home directory stated throuth
 the environment variable `GNUPGHOME`.
 
-`--keyid-format {none|short|0xshort|long|0xlong}`: Select how to display key
-IDs. "none" does not show the key ID at all but shows the fingerprint in a
-separate line. "short" is the traditional 8-character key ID. "long" is the
-more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
-the beginning of the key ID, as in 0x99242560. Note that this option is ignored
-if the option `--with-colons` is used.
-
 === Examples ===
 
 List all public keys located in specified home directory:
 {{{
     gpg --homedir /path/to/homdir -k
-}}}
-
-List all public keys with 16-character key ID:
-{{{
-    gpg --keyid-format long -k
 }}}
 
 == List keys ==
@@ -236,26 +223,7 @@ Export subkeys (see below).
 
 == Edit key ==
 
-`--list-sigs`: Same as `--list-keys`, but the signatures are listed too. This
-command has the same effect as using `--list-keys` with `--with-sig-list`. For
-each signature listed, there are several flags in between the 'sig' tag and
-keyid. These flags give additional information about each signature. From left
-to right, they are the numbers 1-3 for certificate check level (see
-`--ask-cert-level`), 'L' for a local or non-exportable signature (see
-`--lsign-key`), 'R' for a non-revocable signature (see the `--edit-key` command
-'nrsing'), 'P' for a signature that contains a policy URL (see
-`--cert-policy-url`), 'N' for a signature that contains a notation (see
-`--cert-notation`), 'X' for a expired signature (see `--ask-cert-expire`), and
-the number 1-9 or 'T' for 10 and above to indicate trust signature levels (see
-the `--edit-key` command 'tsign').
-
-`--check-sigs`: Same as `--list-sigs`, but signatures are verified. Note that
-for performancce reasons the revocation status of a signing key is not shown.
-This command has the same effect as using `--list-keys` with
-`--with-sig-check`. The status of the verification is indicated by a flag
-directly following the 'sig' tag. A '!' indicated that the signature has been
-successfully verified, a '-' ddenotes a bad signaturee and a '%' is used if an
-error occurred while checking the signature (e.g. a non supported algorithm).
+=== Options ===
 
 `--edit-key`: Present a menu which enables you to do most of hte key management
 related tasks. It expects the specification of a key on the command line.
@@ -316,7 +284,74 @@ related tasks. It expects the specification of a key on the command line.
 trust) may be freely mixed and prefixed to "sign" to create a signature of any
 type desired.
 
+`--list-sigs`: Same as `--list-keys`, but the signatures are listed too. This
+command has the same effect as using `--list-keys` with `--with-sig-list`. For
+each signature listed, there are several flags in between the 'sig' tag and
+keyid. These flags give additional information about each signature. From left
+to right, they are the numbers 1-3 for certificate check level (see
+`--ask-cert-level`), 'L' for a local or non-exportable signature (see
+`--lsign-key`), 'R' for a non-revocable signature (see the `--edit-key` command
+'nrsing'), 'P' for a signature that contains a policy URL (see
+`--cert-policy-url`), 'N' for a signature that contains a notation (see
+`--cert-notation`), 'X' for a expired signature (see `--ask-cert-expire`), and
+the number 1-9 or 'T' for 10 and above to indicate trust signature levels (see
+the `--edit-key` command 'tsign').
 
+`--check-sigs`: Same as `--list-sigs`, but signatures are verified. Note that
+for performancce reasons the revocation status of a signing key is not shown.
+This command has the same effect as using `--list-keys` with
+`--with-sig-check`. The status of the verification is indicated by a flag
+directly following the 'sig' tag. A '!' indicated that the signature has been
+successfully verified, a '-' ddenotes a bad signaturee and a '%' is used if an
+error occurred while checking the signature (e.g. a non supported algorithm).
+
+=== Examples ===
+
+Trust key:
+{{{
+    gpg> trust
+}}}
+
+
+Make signature for all users:
+{{{
+    gpg> sign
+}}}
+
+Make signaturefor a specific user:
+{{{
+    gpg> uid {number}
+    gpg> sign
+}}}
+
+Delete signature:
+{{{
+    gpg> uid {number}
+    gpg> delsig
+}}}
+
+Add user:
+{{{
+    gpg> adduid
+}}}
+
+Delete user:
+{{{
+    gpg> uid {number}
+    gpg> deluid
+}}}
+
+Revoke user:
+{{{
+    gpg> uid {number}
+    gpg> revuid
+}}}
+
+Set primary user:
+{{{
+    gpg> uid {number}
+    gpg> primary
+}}}
 
 == Encrypt and decrypt ==
 
@@ -353,6 +388,13 @@ Decrypt file:
 
 == Sign and verify==
 
+The difference between the results by using `--sign` and `--clearsign` is that
+the data type of the former is binary but the latter is ascii.
+
+Ths difference between the results by using `--sign` and `--detach-sign` is
+that the content of the former contains the original data, but the latter does
+not.
+
 === Options ===
 
 `-s --sign`: Sign a message. This command may be combined with `--encrypt`,
@@ -378,20 +420,31 @@ signed material from STDIN if not explicitly specified.
 
 === Examples ===
 
+Sign a message to raw binary data file:
 {{{
-    gpg --sign --local-user an9wer /path/to/file
+    gpg --sign --default-key {user-id} /path/to/file
+}}}
+The signed file by default is suffixed with `.gpg`, and can be verified by:
+{{{
+    gpg --verify /path/to/file.gpg
 }}}
 
+Sign a message to ascii data file:
 {{{
-    gpg --clearsign --local-user an9wer /path/to/file
+    gpg --clearsign --default-key {user-id} /path/to/file
+}}}
+The signed file by default is suffixed with `.asc`, and can be verified by:
+{{{
+    gpg --verify /path/to/file.asc
 }}}
 
+Sign a message to raw binary data file but abandon original data content.
 {{{
-    gpg --detach-sign --local-user an9wer /path/to/file
+    gpg --detach-sign --default-key {user-id} /path/to/file
 }}}
-
+The signed file by default is suffixed with `.gpg`, and can be verified by:
 {{{
-    gpg --verify  /path/to/file.gpg
+    gpg --verify  /path/to/file.gpg /path/to/file
 }}}
 
 == Subkeys ==
@@ -432,12 +485,12 @@ Export all subkeys specified by user id:
     gpg --armor --export-secret-subkeys {user-id}
 }}}
 
-Export a specific subkey which can be displayed by the
-`gpg --keyid-format long -K {user-id}` command. Note that the subkey id should
-be suffixed with exclamation mark:
+Export a specific subkey (can be displayed by the
+`gpg --keyid-format long -K {user-id}` command).
 {{{
     gpg --armor --export-secret-subkeys {subkey-id}!
 }}}
+*Note*: The subkey-id should be suffixed with exclamation mark (!).
 
 === Encrypt and decrypt ===
 
@@ -471,18 +524,131 @@ Last, use revkey command to delete that key:
     gpg> revkey
 }}}
 
+== Ownertrust ==
+
+=== Options ===
+
+`--export-ownertrust`: Send the ownertrust values to STDOUT. This is useful for
+backup purposes as these values are the only ones which can't be re-created
+from a corrupted trustdb.
+
+`--import-ownertrust`: Update the trustdb with the ownertrust values stored in
+files (or STDIN if not given); existing values will be overwritten.
+
+=== Examples ===
+
+Export ownertrust:
+{{{
+    gpg --export-ownertrust > /path/to/ownertrust.txt
+}}}
+
+Import ownertrust:
+{{{
+    gpg --import-ownertrust < /path/to/ownertrust.txt
+}}}
+
+== gpg.conf ==
+
+`gpg.conf` is an options file which by default is located in `~/.gnupg/`. Long
+options can be put in options file. Short option names will not work - for
+example, "armor" is a valid option for the options file, while "a" is not. Do
+not write the 2 dashes, but simply the name of the option and any required
+arguments. Lines with a hash ('#') as the first non-white-space character are
+ignored. Commands may be put in this file too, but that is not generally useful
+as the command will execute automatically with every execution of gpg.
+
+=== Options ===
+
+`--default-key name`: Use name as the default key to sign with. If this option
+is not used, the default key is the first key found in the secret keyring. Note
+that the `-u` or `--local-user` overrides this option. This option may be given
+multiple times. In this case, the last key for which a secret key is available
+is used. If there is no secret key available for any of the specified values,
+GnuPG will not emit an error message but continue as if this option wasn't
+given.
+
+`--default-recipient name`: Use name as default recipient if option
+`--recipient` is not used and don't ask if this is a valid one.
+
+`--default-recipient-self`: Use the default key as default recipient if option
+`--recipient` is not used and don't ask if this is a valid one. The default key
+is the first one from the secret keyring or the one set with `--default-key`.
+
+`--no-default-recipient`: Reset `--default-recipient` and
+`--default-recipient-self`.
+
+`--keyid-format {none|short|0xshort|long|0xlong}`: Select how to display key
+IDs. "none" does not show the key ID at all but shows the fingerprint in a
+separate line. "short" is the traditional 8-character key ID. "long" is the
+more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
+the beginning of the key ID, as in 0x99242560. Note that this option is ignored
+if the option `--with-colons` is used.
+
+`--with-fingerprint`: Same as the command `--finterprint` but chagnes only the
+format of the output and may be used together with another command.
+
+`--with-subkey-fingerprint`: If a fingerprint is printed for the primary key,
+this option forces printing of the fingerprint for all subkeys.
+
+== Keyserver ==
+
+=== Options ===
+
+`--keyserver name`: Use name as your keyserver. This is the server that
+`--recv-keys`, `--send-keys`, and `--search-keys` will communicate with to
+receive keys from, send keys to, and search for keys on. (Note that this
+options is deprecated, use the --keyserver in 'dirmngr.conf' instead.)
+
+`--recv-keys key-ids` Import the keys with the given key IDs from a keyserver.
+
+`--refresh-keys`: Request updates from a keyserver for keys that already exist
+on the local keyring. This is useful for updating a key with the latest
+signatures, user IDs, etc.
+
+`--search-keys names`: Search the keyserver for the given names. Multiple names
+given here will be joined togther to create the search string for the
+keyserver.
+
+`--send-keys key-ids`: similar to `--export` but sends the key to a keyserver.
+Fingerprints may be used instead of key IDs.
+
+=== Examples ===
+
+Send keys to keyserver:
+{{{
+    gpg --keyserver {server} --send-keys {key-ids}
+}}}
+
+Receive keys from keyserver:
+{{{
+    gpg --keysever {server} --recv-keys {key-ids}
+}}}
+
+Update keys from keyserver:
+{{{
+    gpg --keyserver {server} --refresh-keys
+}}}
+
 = TODO =
 
-1. subkeys
+-   keyserver & dirmngr
 
-2. fingerprint
+-   key expire & revoke
 
-3. ssh & gpg
+-   gpg-agent
 
-4. edit key
+-   ssh & gpg
 
 = References =
 
 -   `man gpg`
 
 -   [[https://wiki.debian.org/Subkeys|Debian wiki subkeys]]
+
+-   [[https://www.gnupg.org/gph/en/manual/x135.html|Make signatures 1]]
+
+-   [[https://www.tutonics.com/2012/11/gpg-encryption-guide-part-3-digital.html|Make signatures 2]]
+
+-   [[https://www.gnupg.org/gph/en/manual/x334.html|Validate key]]
+
+-   [[https://en.wikipedia.org/wiki/Public_key_fingerprint|Public key fingerprint]]
