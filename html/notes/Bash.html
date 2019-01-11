@@ -142,7 +142,7 @@ replaced, the replacement is double-quoted. For example:
 </pre>
 
 <p>
-(Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)
+(Find example in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)
 </p>
 
 <div id="Parameters"><h1 id="Parameters">Parameters</h1></div>
@@ -412,6 +412,39 @@ it's an expansion error if <code>length</code> evaluates to number less than zer
 (Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh">here</a>)
 </p>
 
+<div id="Conditional expressions"><h1 id="Conditional expressions">Conditional expressions</h1></div>
+
+<p>
+Conditional expressions are used by the <code>[[</code> compound command and the <code>test</code>
+and <code>[</code> builtin commands to test file attributes and perform string and
+arithmetic comparisons.
+</p>
+
+<pre>
+    string1 == string2
+    string1 = string2
+</pre>
+<p>
+True if the strings are equal. <code>=</code> should be used with the <code>test</code> command for
+POSIX conformance.
+</p>
+
+<pre>
+    string1 != string2
+</pre>
+<p>
+True if strings are not equal.
+</p>
+
+<pre>
+    arg1 OP arg2
+</pre>
+<p>
+<code>OP</code> is one of <code>-eq, -ne, -lt, -le, -gt or -ge</code>. These arithmetic binary
+operators return true if arg1 is euqal to, not equal to, less than, less than
+or equal to, greater than, or greater than or equal to arg2, respectively. Arg1
+and arg2 may be positive or negative integers.
+</p>
 
 <div id="Built-in"><h1 id="Built-in">Built-in</h1></div>
 
@@ -447,6 +480,91 @@ status is zero.
 </pre>
 
 </ul>
+
+<div id="Built-in-[["><h2 id="[[">[[</h2></div>
+
+<pre>
+    [[ expression ]]
+</pre>
+
+<p>
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Word splitting and pathname expansion are not performed on the
+words between the <code>[[</code> and <code>]]</code> (<span id="Built-in-[[-Note"></span><strong id="Note">Note</strong>: This will expand in <code>test</code> and <code>[</code>,
+see <a href="https://stackoverflow.com/questions/669452/is-double-square-brackets-preferable-over-single-square-brackets-in-ba">this</a>);
+tilde expansion, parameter and varibale expansion, arithmetic expansion,
+command substitution, process substitution, and quote removal are performed.
+</p>
+
+<p>
+<span id="Built-in-[[-Note"></span><strong id="Note">Note</strong>: When used with <code>[[</code>, the <code>&lt;</code> and <code>&gt;</code> operators sort lexicographically
+using the current locale.
+</p>
+
+<p>
+Expression may be combined using the following operators, listed in descreasing
+order of precedence:
+</p>
+
+<pre>
+    ( expr )       | used to override the normal precedence of operators
+    ! expr         | True if expression is false
+    expr1 &amp;&amp; expr2 | True if both expr1 and expr2 are true
+    expr1 || expr2 | True if either expr1 and expr2 is true
+</pre>
+
+<p>
+<span id="Built-in-[[-Note"></span><strong id="Note">Note</strong>: Operator <code>&amp;&amp;</code> and <code>||</code> can not be used in <code>test</code> and <code>[</code>.
+</p>
+
+<ul>
+<li>
+  If file <code>abc</code> is in the current directory, then <code>test</code> and <code>[</code> will expand
+    it first:
+<pre>
+        $ [ a = a* ] &amp;&amp; echo gotcha    # equals to: [ a = abc ] &amp;&amp; echo gotcha
+        $ 
+</pre>
+
+</ul>
+
+<ul>
+<li>
+  But it doesn't matter when using <code>[[</code>:
+<pre>
+        $ [[ a == a* ]] &amp;&amp; echo gotcha
+        $ gotcha
+</pre>
+
+</ul>
+
+<div id="Built-in-test ["><h2 id="test [">test [</h2></div>
+
+<pre>
+    test expression
+    [ expression ]
+</pre>
+
+<p>
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Each operator and operand must be a seperate argument.
+</p>
+
+<p>
+Expression may be combined using the following operators, listed in decreasing
+order of precedence:
+</p>
+
+<pre>
+    ! expr         | True if expr is false
+    ( expr )       | Used to override the normal precedence of operators
+    expr1 -a expr2 | True if both expr1 and expr2 are true
+    expr1 -o expr2 | True if either expr1 or expr2 is true
+</pre>
+
+<p>
+<span id="Built-in-test [-Note"></span><strong id="Note">Note</strong>: Operator <code>-a</code> and <code>-o</code> can not be used in <code>[[</code>.
+</p>
 
 <div id="Built-in-References"><h2 id="References">References</h2></div>
 

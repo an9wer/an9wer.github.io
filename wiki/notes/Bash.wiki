@@ -90,7 +90,7 @@ replaced, the replacement is double-quoted. For example:
     123\n321
 }}}
 
-(Find example code in [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|here]])
+(Find example in [[https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh|here]])
 
 = Parameters =
 
@@ -307,6 +307,31 @@ it's an expansion error if `length` evaluates to number less than zero):
 
 (Find example code in [[https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh|here]])
 
+= Conditional expressions =
+
+Conditional expressions are used by the `[[` compound command and the `test`
+and `[` builtin commands to test file attributes and perform string and
+arithmetic comparisons.
+
+{{{
+    string1 == string2
+    string1 = string2
+}}}
+True if the strings are equal. `=` should be used with the `test` command for
+POSIX conformance.
+
+{{{
+    string1 != string2
+}}}
+True if strings are not equal.
+
+{{{
+    arg1 OP arg2
+}}}
+`OP` is one of `-eq, -ne, -lt, -le, -gt or -ge`. These arithmetic binary
+operators return true if arg1 is euqal to, not equal to, less than, less than
+or equal to, greater than, or greater than or equal to arg2, respectively. Arg1
+and arg2 may be positive or negative integers.
 
 = Built-in =
 
@@ -332,6 +357,69 @@ status is zero.
         $ cat /path/to/file
 
     }}}
+
+== [[ ==
+
+{{{
+    [[ expression ]]
+}}}
+
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Word splitting and pathname expansion are not performed on the
+words between the `[[` and `]]` (*Note*: This will expand in `test` and `[`,
+see [[https://stackoverflow.com/questions/669452/is-double-square-brackets-preferable-over-single-square-brackets-in-ba|this]]);
+tilde expansion, parameter and varibale expansion, arithmetic expansion,
+command substitution, process substitution, and quote removal are performed.
+
+*Note*: When used with `[[`, the `<` and `>` operators sort lexicographically
+using the current locale.
+
+Expression may be combined using the following operators, listed in descreasing
+order of precedence:
+
+{{{
+    ( expr )       | used to override the normal precedence of operators
+    ! expr         | True if expression is false
+    expr1 && expr2 | True if both expr1 and expr2 are true
+    expr1 || expr2 | True if either expr1 and expr2 is true
+}}}
+
+*Note*: Operator `&&` and `||` can not be used in `test` and `[`.
+
+-   If file `abc` is in the current directory, then `test` and `[` will expand
+    it first:
+    {{{
+        $ [ a = a* ] && echo gotcha    # equals to: [ a = abc ] && echo gotcha
+        $ 
+    }}}
+
+-   But it doesn't matter when using `[[`:
+    {{{
+        $ [[ a == a* ]] && echo gotcha
+        $ gotcha
+    }}}
+
+== test [ ==
+
+{{{
+    test expression
+    [ expression ]
+}}}
+
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Each operator and operand must be a seperate argument.
+
+Expression may be combined using the following operators, listed in decreasing
+order of precedence:
+
+{{{
+    ! expr         | True if expr is false
+    ( expr )       | Used to override the normal precedence of operators
+    expr1 -a expr2 | True if both expr1 and expr2 are true
+    expr1 -o expr2 | True if either expr1 or expr2 is true
+}}}
+
+*Note*: Operator `-a` and `-o` can not be used in `[[`.
 
 == References ==
 
