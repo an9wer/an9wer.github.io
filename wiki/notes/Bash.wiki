@@ -138,6 +138,7 @@ Also, let's check the length of `$*`:
 {{{
     $ function func() { echo ${#*}; }
     $ func 1 2 3
+    3
 }}}
 
 Let's see the difference between `$*` and `"$*"`.
