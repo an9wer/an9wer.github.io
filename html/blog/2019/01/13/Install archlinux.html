@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../../../../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="../../../index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../../../../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" class="current" href="../../../index.html">Blog</a>
+        <a id="notes" href="../../../../notes/index.html">Notes</a>
+        <a id="about" href="../../../../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">Install archlinux</div>
+        <div id="content">
+<p>
+wifi-menu
+timedatectl set-ntp true
+fdisk /dev/sda
+</p>
+<blockquote>
+g
+n +512M     # for /efi
+n +8192M    # for swap
+n +remain   # for /
+t 1 1       # for EFI System
+t 2 19      # for Linux swap
+t 3 20      # for Linux filesystem
+w           # write
+</blockquote>
+
+<p>
+mkfs.fat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+</p>
+
+<p>
+mount /dev/sda3 /mnt
+mkdir /mnt/efi
+mount /dev/sda1 /mnt/efi
+</p>
+
+<p>
+pacstrap /mnt base base-devel vim
+</p>
+
+<p>
+genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</p>
+
+<p>
+arch-chroot /mnt
+</p>
+
+<p>
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc
+</p>
+
+<p>
+vim /etc/locale.gen
+</p>
+<blockquote>
+uncomment en_US.UTF-8 UTF-8
+</blockquote>
+<p>
+local-gen
+vim /etc/locale.conf
+</p>
+<blockquote>
+LANG=en_UF.UTF-8
+</blockquote>
+
+<p>
+vim /etc/hostname
+</p>
+<blockquote>
+peace
+</blockquote>
+
+<p>
+pacman -S networkmanager
+systemctl enable NetworkManager
+</p>
+
+<p>
+useradd -m -g wheel an9wer
+passwd an9wer
+visudo
+</p>
+<blockquote>
+uncomment %wheel ALL=(ALL) NOPASSWD: ALL
+useradd -m -g wheel an9wer
+passwd an9wer
+</blockquote>
+
+<p>
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+</p>
+
+<p>
+exit
+umount -R /mnt
+</p>
+
+<p>
+reboot
+</p>
+
+
+<p>
+sudo pacman -Syu
+sudo pacman -S xorg xorg-xinit
+</p>
+<blockquote>
+xorg, which contains xorg-server, is needed by dwm and i3.
+</blockquote>
+
+<p>
+git clone <a href="https://git.suckless.org/dwm">https://git.suckless.org/dwm</a>
+sudo pacman -S libx11 libxft libxinerama
+make &amp;&amp; sudo make install
+</p>
+
+<p>
+git clone <a href="https://git.suckless.org/st">https://git.suckless.org/st</a>
+make &amp;&amp; sudo make install
+</p>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>
