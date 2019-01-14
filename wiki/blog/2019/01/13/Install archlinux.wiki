@@ -69,4 +69,20 @@ make && sudo make install
 
 git clone https://git.suckless.org/st
 make && sudo make install
+
+sudo pacman -S adobe-source-code-pro-fonts
+    for terminal
+sudo pacman -S noto-fonts noto-fonts-cjk
+    for firefox
+
+sudo pacman -S firefox flashplugin
+    Preferences->General->Fonts:
+        Serif: Noto Serif
+        Sans-serif: Noto Sans
+        Monospace: Noto Sans Mono
+
+sudo pacman -S shadowsocks-qt5
+
+sudo pacman -S xdg-user-dirs
+    xdg-user-dirs-update
 }}}
