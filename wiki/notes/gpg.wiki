@@ -353,6 +353,12 @@ Set primary user:
     gpg> primary
 }}}
 
+Set expire time (If key is expired, it cannot be used anymore.):
+{{{
+    gpg> key {number}
+    gpg> expire
+}}}
+
 == Encrypt and decrypt ==
 
 === Options ===

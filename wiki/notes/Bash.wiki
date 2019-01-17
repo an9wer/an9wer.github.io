@@ -516,6 +516,49 @@ order of precedence:
 
 *Note*: Operator `-a` and `-o` can not be used in `[[`.
 
+== shopt ==
+
+{{{
+    shopt [-pqsu] [-o] [optname ...]
+}}}
+
+`-s`: Enable (set) each optname.
+
+`-u`: Disable (unset) each optname.
+
+`-q`: Supresses normal output (quiet mode); the return status indicates whether
+the optname is set or unset. If multiple optname arguments are given with `-q`,
+the return status is zero if all optnames are enabled; non-zero otherwise.
+
+`-o`: Restrict optname to those defined for use with `set -o`.
+
+If either `-s` or `-u` is used with no optname arguments, shopt shows only
+those options which are set or unset, respectively. Unless otherwise noted, the
+shopt options are disabled by default.
+
+Display all options:
+{{{
+    shopt
+}}}
+
+Only display enabled options:
+{{{
+    shopt -s
+}}}
+
+Only display disabled options:
+{{{
+    shopt -u
+}}}
+
+Display options defined by `set -o`:
+{{{
+    shotp -o
+}}}
+
+`dotglob`: If set, bash includes filename beginning with a '.' in the results
+of pathname expansion.
+
 == References ==
 
 -   [[https://www.gnu.org/software/bash/manual/bash.html|GNU bash manual]]

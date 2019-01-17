@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">fc</div>
+        <div id="content">
+<div id="fc-cache"><h1 id="fc-cache">fc-cache</h1></div>
+
+<pre>
+    fc-cache [options] [dir...]
+</pre>
+
+<p>
+<code>fc-cache</code> scans the font directories on the system and builds font information
+cache files for applications using fontconfig for their font handing.
+</p>
+
+<div id="fc-cache-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-f</code>: Force re-generation of apparently up-to-date cache files, overriding the
+timestamp checking.
+</p>
+
+<p>
+<code>-r</code>: Erase all existing cache files and rescan.
+</p>
+
+<p>
+<code>-s</code>: Only scan system-wide directories, omitting the places located in the
+user's home directory.
+</p>
+
+<p>
+<code>-v</code>: Display status information while busy.
+</p>
+
+<p>
+<code>dir</code>: Directory to scan for fonts.
+</p>
+
+<div id="fc-list"><h1 id="fc-list">fc-list</h1></div>
+
+<pre>
+    fc-list [options] [pattern [element...]]
+</pre>
+
+<p>
+fc-list lists fonts and styles available on the system for applications using
+fontconfig.
+</p>
+
+<div id="fc-list-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-v</code>: Print verbose output of the whole font pattern for each match, or
+elements if any is provided.
+</p>
+
+<p>
+<code>-q</code>: Suppress all normal output. return 1 as the error code if no fonts
+matched.
+</p>
+
+<p>
+<code>-f --format format</code>: Format output according to the format specifier format.
+</p>
+
+<p>
+<code>pattern</code>: If set, only fonts matching pattern are displayed.
+</p>
+
+<p>
+<code>element</code>: If set, the element property is displayed for matching fonts
+</p>
+
+<div id="fc-list-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Display all fonts:
+</p>
+<pre>
+    fc-list
+</pre>
+
+<p>
+or:
+</p>
+<pre>
+    fc-list :
+</pre>
+
+<p>
+Display fonts whose family is "Source Code Pro":
+</p>
+<pre>
+    fc-list ":family=Source Code Pro"
+</pre>
+
+<p>
+Display fonts whose family is "Source Code pro" and weight is 50:
+</p>
+<pre>
+    fc-list ":family=Source Code Pro:weight=50"
+</pre>
+
+<p>
+Display the lang of fonts whose family is "Source Code pro":
+</p>
+<pre>
+    fc-list ":family=Source Code Pro"  lang
+</pre>
+
+<p>
+Display fonts, whose family is "Source Code pro", by specific format:
+</p>
+<pre>
+    fc-list -f "%{file}: %{weight}\n" ":family=Source Code Pro"
+</pre>
+
+<div id="fc-match"><h1 id="fc-match">fc-match</h1></div>
+
+<pre>
+    fc-math [options] [pattern [element...] ]
+</pre>
+
+<p>
+<code>fc-match</code> matches pattern (empty pattern by default) using the normal
+fontconfig matching rules to find the best font available. If <code>-s --sort</code> is
+given, the sorted list of best matching fonts is displayed. The <code>-a --all</code>
+option works like <code>--sort</code> except that no pruning is done on the list of fonts.
+</p>
+
+<div id="fc-match-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-a</code>: Displays sorted list of best matching fonts, but do not do any pruning on
+the list.
+</p>
+
+<p>
+<code>-s</code>: Displays sorted list of the best matching fonts.
+</p>
+
+<p>
+<code>-v</code>: Print verbose output of the whole font pattern for each match, or
+elements if any is provided.
+</p>
+
+<p>
+<code>-f --format fomrat</code>: Format output according to the format specifier format.
+</p>
+
+<p>
+<code>pattern</code>: Display fonts matching pattern.
+</p>
+
+<p>
+<code>element</code>: If set, the element property is displayed for matching fonts.
+</p>
+
+<div id="fc-match-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Display fonts matched by family field:
+</p>
+<pre>
+    fc-match ":family=Source Code Pro"
+</pre>
+
+<p>
+Display sorted list of best matching fonts matched by family field:
+</p>
+<pre>
+    fc-match ":family=Source Code Pro" -a
+</pre>
+
+<p>
+Display sorted list of the best matching fonts matched by family field, but
+pruning one the list:
+</p>
+<pre>
+    fc-match ":family=Source Code Pro" -s
+</pre>
+
+<div id="fc-query"><h1 id="fc-query">fc-query</h1></div>
+
+<pre>
+    fc-query [options] font-file...
+</pre>
+
+<p>
+<code>fc-query</code> queries font-file using the normal fontconfig rules and prints out
+font pattern for each face found. If <code>-i -index</code> is given, only one face of
+each file is querie, otherwise all faces are queried.
+</p>
+
+<div id="fc-query-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-b</code>: Ignore blanks to compute languages
+</p>
+
+<p>
+<code>-i --index index</code>: Only query face indexed index of each line
+</p>
+
+<p>
+<code>-f --format format</code>: Format output according to the format specifier format
+(same as fc-list).
+</p>
+
+<p>
+<code>font-file</code>: Query font-file for font faces.
+</p>
+
+<div id="fc-query-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Display information of font-file:
+</p>
+<pre>
+    fc-query /path/to/font.ttf
+</pre>
+
+<p>
+Display information of font-file by specific format.
+</p>
+<pre>
+    fc-query -f "%{style}" /path/to/font.ttf
+</pre>
+
+<div id="fc-scan"><h1 id="fc-scan">fc-scan</h1></div>
+
+<pre>
+    fc-scan [option] file...
+</pre>
+
+<p>
+<code>fc-scan</code> scans files recursively and prints out font pattern for each face
+found.
+</p>
+
+<div id="fc-scan-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-b</code>: Ignore blanks to compute languages.
+</p>
+
+<p>
+<code>-f --format format</code>: Format output according to the format.
+</p>
+
+<p>
+<code>file</code>: Scan file recursively for font faces.
+</p>
+
+<div id="fc-scan-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Dispaly information of fonts scaned in some directory:
+</p>
+<pre>
+    fc-scan /path/to/font-dir
+</pre>
+
+<p>
+Dispaly information of fonts scaned in some directory by specific format:
+</p>
+<pre>
+    fc-scan -f "%{file} %{style}\n" /path/to/font-dir
+</pre>
+
+<div id="fc-validate"><h1 id="fc-validate">fc-validate</h1></div>
+
+<pre>
+    fc-validate [options] font-file...
+</pre>
+
+<p>
+<code>fc-validate</code> validates font-file if each fonts satisfies the language coverage
+according to the orthography files in fontconfig. If <code>-i --index</code> is given,
+only one face of each file is validated, otherwise all faces are validated.
+</p>
+
+<div id="fc-validate-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>-i --index index</code>: Only query face indexed index of each file.
+</p>
+
+<p>
+<code>-l --lang lang</code>: Set lang as a language instead of current locale.
+</p>
+
+<p>
+<code>-v</code>: Show more detailed information.
+</p>
+
+<p>
+<code>font-file</code>: Query font-file for font faces.
+</p>
+
+<div id="fc-validate-Examples"><h2 id="Examples">Examples</h2></div>
+
+<p>
+Validate fonts whether satisfy the language set by locale:
+</p>
+<pre>
+    fc-validate /path/to/font.ttf
+</pre>
+
+<p>
+Validate fonts whether satisfy the language set by the option <code>-l</code>:
+</p>
+<pre>
+    fc-validate -l zh-cn /path/to/font.ttf
+</pre>
+
+<div id="TODO"><h1 id="TODO"><span class="todo">TODO</span></h1></div>
+
+<ul>
+<li>
+  fc-cat
+
+</ul>
+
+<div id="References"><h1 id="References">References</h1></div>
+
+<ul>
+<li>
+  <code>man fc-cache</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man fc-list</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man fc-query</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man fc-scan</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man fc-validate</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man FcPatternFormat</code> to see format used by <code>fc-list -f</code>
+
+</ul>
+
+<ul>
+<li>
+  <a href="file:///usr/share/doc/fontconfig/fontconfig-user.html">file:///usr/share/doc/fontconfig/fontconfig-user.html</a>
+
+</ul>
+
+<ul>
+<li>
+  <a href="http://samwhelp.github.io/book-ubuntu-qna/read/howto/configure-font/fontconfig/util/fc-list">如何使用「fc-list」這個指令</a>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

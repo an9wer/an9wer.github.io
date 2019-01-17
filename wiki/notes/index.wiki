@@ -4,40 +4,40 @@
 
 -   [[fc]]
 
--   [[gpg|gpg]]
+-   [[gpg]]
 
--   [[shebang|shebang]]
+-   [[shebang]]
 
--   [[env|env]]
+-   [[env]]
 
--   [[xmodmap|xmodmap]]
+-   [[xmodmap]]
 
--   [[man|man]]
+-   [[man]]
 
--   [[ssh|ssh]] 
+-   [[ssh]] 
 
--   [[Bash|Bash]]
+-   [[Bash]]
 
 == System ==
 
--   [[sysstat|sysstat]]
+-   [[sysstat]]
 
--   [[iptables|iptables]]
+-   [[iptables]]
 
--   [[cron|cron]]
+-   [[cron]]
 
 == Development ==
 
--   [[git|git]]
+-   [[git]]
 
 == Build ==
 
--   [[make|make]]
+-   [[make]]
 
 == Synchronous ==
 
--   [[rsync|rsync]]
+-   [[rsync]]
 
 == Image ==
 
--   [[ImageMagick|ImageMagick]]
+-   [[ImageMagick]]

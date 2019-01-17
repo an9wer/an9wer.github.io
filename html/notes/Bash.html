@@ -671,6 +671,69 @@ order of precedence:
 <span id="Built-in-test [-Note"></span><strong id="Note">Note</strong>: Operator <code>-a</code> and <code>-o</code> can not be used in <code>[[</code>.
 </p>
 
+<div id="Built-in-shopt"><h2 id="shopt">shopt</h2></div>
+
+<pre>
+    shopt [-pqsu] [-o] [optname ...]
+</pre>
+
+<p>
+<code>-s</code>: Enable (set) each optname.
+</p>
+
+<p>
+<code>-u</code>: Disable (unset) each optname.
+</p>
+
+<p>
+<code>-q</code>: Supresses normal output (quiet mode); the return status indicates whether
+the optname is set or unset. If multiple optname arguments are given with <code>-q</code>,
+the return status is zero if all optnames are enabled; non-zero otherwise.
+</p>
+
+<p>
+<code>-o</code>: Restrict optname to those defined for use with <code>set -o</code>.
+</p>
+
+<p>
+If either <code>-s</code> or <code>-u</code> is used with no optname arguments, shopt shows only
+those options which are set or unset, respectively. Unless otherwise noted, the
+shopt options are disabled by default.
+</p>
+
+<p>
+Display all options:
+</p>
+<pre>
+    shopt
+</pre>
+
+<p>
+Only display enabled options:
+</p>
+<pre>
+    shopt -s
+</pre>
+
+<p>
+Only display disabled options:
+</p>
+<pre>
+    shopt -u
+</pre>
+
+<p>
+Display options defined by <code>set -o</code>:
+</p>
+<pre>
+    shotp -o
+</pre>
+
+<p>
+<code>dotglob</code>: If set, bash includes filename beginning with a '.' in the results
+of pathname expansion.
+</p>
+
 <div id="Built-in-References"><h2 id="References">References</h2></div>
 
 <ul>
