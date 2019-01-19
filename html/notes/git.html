@@ -58,6 +58,12 @@ There are three main components of a Git project:
     git status [&lt;options&gt;...] [--] [&lt;pathspec&gt;...]
 </pre>
 
+<p>
+Displays paths that have differences between the index file and the current
+HEAD commit, paths that have differences between the working tree and the index
+file, and paths in the working tree that are not tracked by Git.
+</p>
+
 <div id="git status-Options"><h2 id="Options">Options</h2></div>
 
 <ul>
@@ -152,6 +158,20 @@ Delete symbolic ref <code>DEV</code> created before.
 
 <div id="git submodule"><h1 id="git submodule">git submodule</h1></div>
 
+<div id="git submodule-Options"><h2 id="Options">Options</h2></div>
+
+<p>
+<code>--cached</code>: This option is only valid for status and summary commands. These
+commands typically use the commit found in the submodule HEAD, but with this
+option, the commit stored in the index is used instead.
+</p>
+
+<p>
+<code>--files</code>: This option is only valid for the summary command. This command
+compares the commit in the index with that in the submodule HEAD when this
+option is used.
+</p>
+
 <div id="git submodule-git submodule add"><h2 id="git submodule add">git submodule add</h2></div>
 
 <pre>
@@ -186,6 +206,16 @@ The given URL is recorded into <code>.gitmodules</code> for use by subsequent us
 cloning the superproject.
 </p>
 
+<div id="git submodule-git submodule add-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Add a repository as a submodule at the given path, note that it can also be an
+existed path.
+</p>
+<pre>
+    git submodule add {repository url} /path/to/submodule
+</pre>
+
 <div id="git submodule-git submodule status"><h2 id="git submodule status">git submodule status</h2></div>
 
 <pre>
@@ -205,6 +235,22 @@ the SHA-1 found in the index of the containing repository and 'U' if the
 submoudle has merge conflicts.
 </p>
 
+<div id="git submodule-git submodule status-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Show the status of the currently checked out commit for each submodule:
+</p>
+<pre>
+    git submodule status
+</pre>
+
+<p>
+Show the status of the indexed commit for each submodule:
+</p>
+<pre>
+    git submodule status --cached
+</pre>
+
 <div id="git submodule-git submodule init"><h2 id="git submodule init">git submodule init</h2></div>
 
 <pre>
@@ -223,6 +269,15 @@ configured to be active will be initialized, otherwise all submodules are
 initialized.
 </p>
 
+<div id="git submodule-git submodule init-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Add submodule configuration in <code>.git/config</code>:
+</p>
+<pre>
+    git submodule init /path/to/submodule
+</pre>
+
 <div id="git submodule-git submodule deinit"><h2 id="git submodule deinit">git submodule deinit</h2></div>
 
 <pre>
@@ -240,6 +295,23 @@ skip any unregistered submodules until they are initialized again.o
 <span id="git submodule-git submodule deinit-Note"></span><strong id="Note">Note</strong>: If you really want to remove a submodule from the repository and commit
 that use <code>git rm</code> instead.
 </p>
+
+<div id="git submodule-git submodule deinit-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Remove submodule configuration in <code>.git/config</code>:
+</p>
+<pre>
+    git submodule deinit /path/to/submodule
+</pre>
+
+<p>
+Remove submodule in superproject, this will also remove the configuration in
+<code>.gitmodule</code> and <code>.git/config</code>:
+</p>
+<pre>
+    git rm /path/to/submoudle
+</pre>
 
 <div id="git submodule-git submodule update"><h2 id="git submodule update">git submodule update</h2></div>
 
@@ -296,13 +368,112 @@ The following update procedures are only available via the
 
 </ul>
 
-<div id="git submodule-git submodule summary"><h2 id="git submodule summary">git submodule summary</h2></div>
+<div id="git submodule-git submodule update-Examples"><h3 id="Examples">Examples</h3></div>
 
 <p>
-<span class="todo">TODO</span>
+Update submodule to match what the superproject expects. By default, it will
+create a detached branch for missing commits:
+</p>
+<pre>
+    git submodule update /path/to/submodule
+</pre>
+<p>
+or:
+</p>
+<pre>
+    git submodule update --checkout /path/to/submodule
+</pre>
+
+<p>
+Update submodule to match what the superproject expects. It will rebase missing
+commits to current branch:
+</p>
+<pre>
+    git submodule update --rebase /path/to/submodule
+</pre>
+
+<p>
+Update submodule to match what the superproject expects. It will merge missing
+commits to current branch:
+</p>
+<pre>
+    git submodule update --merge /path/to/submodule
+</pre>
+
+<div id="git submodule-git submodule summary"><h2 id="git submodule summary">git submodule summary</h2></div>
+
+<pre>
+    git submodule summary [--cached|--files] [(-n|--summary-limit) &lt;n&gt;]
+        [commit] [--] [&lt;path&gt;...]
+</pre>
+
+<p>
+Show commit summary between the given commit (defaults to HEAD) and working
+tree/index. For a submodule in question, a series of commits in the submodule
+between the given super project commit and the index or working tree (switched
+by <code>--cached</code>) are shown. If the option <code>--files</code> is given, show the series of
+commits in the submodule between the index of the super project and the working
+tree.
 </p>
 
+<div id="git submodule-git submodule summary-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Show the summary of the currently checked out commit for each submodule:
+</p>
+<pre>
+    git submodule summary
+</pre>
+
+<p>
+Show the summary of the indexed commit for each submodule:
+</p>
+<pre>
+    git submodule summary --cached
+</pre>
+
 <div id="git submodule-git submodule foreach"><h2 id="git submodule foreach">git submodule foreach</h2></div>
+
+<pre>
+    git submodule foreach [--recursive] &lt;command&gt;
+</pre>
+
+<p>
+Evalutes an arbitrary shell command in each checked out submodule. The command
+has access to the variables:
+</p>
+
+<ul>
+<li>
+  <code>$name</code>: The name of the relevant submodule section in <code>.gitmodules</code>.
+
+<li>
+  <code>$path</code>: The name of the submodule directory relative to the superproject.
+
+<li>
+  <code>$sha1</code>: The commit as recorded in the superproject.
+
+<li>
+  <code>$toplevel</code>: The absolute path ot the top-level of the superproject.
+
+</ul>
+
+<p>
+Any submodules defined in the superproject but not checked out are ignored by
+this command.
+</p>
+
+<p>
+Unless given <code>--quiet</code>, foreach prints the name of each submodule before
+evaluating the command.
+</p>
+
+<p>
+A non-zero return from the command in any submodule causes the processing to
+terminate. This can be overridden by adding <code>||</code> <code>:</code> to the end of the command.
+</p>
+
+<div id="git submodule-git submodule foreach-Examples"><h3 id="Examples">Examples</h3></div>
 
 <p>
 <span class="todo">TODO</span>
@@ -321,6 +492,15 @@ have a URL entry in <code>.git/config</code> (that is the case when they are ini
 or freshly added). This is useful when submodule URLs change upstream and you
 need to update your local repositories accordingly.
 </p>
+
+<div id="git submodule-git submodule sync-Examples"><h3 id="Examples">Examples</h3></div>
+
+<p>
+Copy the URL entry in <code>.gitmodules</code> to <code>.git/config</code>:
+</p>
+<pre>
+    git submodule sync /path/to/submodule
+</pre>
 </div>
     </div>
     <div id="footer">
