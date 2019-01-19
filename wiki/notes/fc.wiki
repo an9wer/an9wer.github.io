@@ -79,7 +79,7 @@ Display fonts, whose family is "Source Code pro", by specific format:
 = fc-match =
 
 {{{
-    fc-math [options] [pattern [element...] ]
+    fc-match [options] [pattern [element...] ]
 }}}
 
 `fc-match` matches pattern (empty pattern by default) using the normal
@@ -225,6 +225,8 @@ Validate fonts whether satisfy the language set by the option `-l`:
 
 -   `man fc-list`
 
+-   `man fc-match`
+
 -   `man fc-query`
 
 -   `man fc-scan`
@@ -233,6 +235,6 @@ Validate fonts whether satisfy the language set by the option `-l`:
 
 -   `man FcPatternFormat` to see format used by `fc-list -f`
 
--   file:///usr/share/doc/fontconfig/fontconfig-user.html
+-   [[http://freedesktop.org/software/fontconfig/fontconfig-user.html|fontconfig-user]]
 
 -   [[http://samwhelp.github.io/book-ubuntu-qna/read/howto/configure-font/fontconfig/util/fc-list|如何使用「fc-list」這個指令]]
