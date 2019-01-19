@@ -255,6 +255,11 @@ commits to current branch:
     git submodule update --merge /path/to/submodule
 }}}
 
+Update submodule which hasn't been initialized:
+{{{
+    git submodule update --init /path/to/submodule
+}}}
+
 == git submodule summary ==
 
 {{{
