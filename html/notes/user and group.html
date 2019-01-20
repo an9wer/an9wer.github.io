@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">user and group</div>
+        <div id="content">
+<div id="/etc/passwd"><h1 id="/etc/passwd">/etc/passwd</h1></div>
+
+<p>
+<code>/etc/passwd</code> contains one line for each user account, which seven fields
+delimited by colons (":"). These fields are:
+</p>
+
+<ol>
+<li>
+ login name
+
+<li>
+ optional encrypted password
+
+<li>
+ numberical user ID
+
+<li>
+ numberical group ID
+
+<li>
+ user name or comment field
+
+<li>
+ user home directory
+
+<li>
+ optional user command interpreter
+
+</ol>
+
+<p>
+The encrypted passwrod field may be blank, in which case no password is
+required to authenticate as the specified login name. However, some
+applications which read the <code>/etc/passwd</code> file may decide not to permit any
+access at all if the password field is blank. If the password field is a
+lower-case "x", then the encrypted password is actually stored in the shadow
+file, or else the user account is invalid. If the password field is any other
+string, then it will be treated as an encrypted password, as specified by
+crypt.
+</p>
+
+<p>
+The comment field is used by various system utilities, such as finger.
+</p>
+
+<p>
+The home directory field provides the name of the initial working directory.
+The login program uses this information to set the value of the $HOME
+environmental varibale.
+</p>
+
+<p>
+The command interpreter field provides the name of the user's command language
+interpreter, or the name of the initial program to execute. The login program
+uses this information to set the value of the $SHELL environment variable. If
+this field is empty, it defaults to the value <code>/bin/sh</code>.
+</p>
+
+<div id="/etc/group"><h1 id="/etc/group">/etc/group</h1></div>
+
+<p>
+The <code>/etc/group</code> file is a text file that defines the groups on the system.
+There is one entry per line, with the following fields:
+</p>
+
+<ol>
+<li>
+ group name
+
+<li>
+ group password
+
+<li>
+ group id
+
+<li>
+ list of the usernames that are members of this group, separated by commas.
+
+</ol>
+
+<div id="/etc/shadow"><h1 id="/etc/shadow">/etc/shadow</h1></div>
+
+<p>
+<code>/etc/shadow</code> is a file which contains the password information for the
+system's accounts and optional aging information.
+</p>
+
+<p>
+This file must not be readable by regular users if password security is to be
+maintained.
+</p>
+
+<p>
+Each line of this file contains 9 fields, separated by colons (":"), in the
+following order:
+</p>
+
+<ol>
+<li>
+ login name
+
+<li>
+ encrypted password
+
+<li>
+ date of last password change
+
+<li>
+ minimum password age
+
+<li>
+ maximum password age
+
+<li>
+ password warning period
+
+<li>
+ password inactivity period
+
+<li>
+ account expiration date
+
+<li>
+ reserved field
+
+</ol>
+
+<div id="/etc/shadow-Login name"><h2 id="Login name">Login name</h2></div>
+
+<p>
+It must be a valid account name, which exist on the system.
+</p>
+
+<div id="/etc/shadow-Encrypted password"><h2 id="Encrypted password">Encrypted password</h2></div>
+
+<p>
+Refer to crypt for details on how this string is interpreted.
+</p>
+
+<p>
+If the password field contains some string that is not a valid result of crypt,
+for instance ! or *, the suer will not be able to use a unix password to log in
+(but the user may log in the system by other means).
+</p>
+
+<p>
+This field may be empty, in which case no passwords are required to
+authenticate as the specified login name. However, some applications which read
+the <code>/etc/shadow</code> file may decide not to permit any access at all if the
+password field is empty.
+</p>
+
+<p>
+A password field which starts with a exclamation mark means that the password
+is locked. The remaining characters on the line represent the password field
+before the password was locked.
+</p>
+
+<div id="/etc/shadow-Date of last password change"><h2 id="Date of last password change">Date of last password change</h2></div>
+
+<p>
+The date of the last password change, expressed as the number of days since Jan
+1, 1970.
+</p>
+
+<p>
+The value 0 has special meaning, which is that the user should change her
+password the next time she will log in the system.
+</p>
+
+<p>
+An empyt field means that password aging features are disabled.
+</p>
+
+<div id="/etc/shadow-Minimum password age"><h2 id="Minimum password age">Minimum password age</h2></div>
+
+<p>
+The minimum password age is the number of days the user will have to wait
+before she will be allowed to change her password again.
+</p>
+
+<p>
+An empty field and value 0 mean that there are no minimum password age.
+</p>
+
+<div id="/etc/shadow-Maximum password age"><h2 id="Maximum password age">Maximum password age</h2></div>
+
+<p>
+The maximum password age is the number of days after which the user will have
+to change her password.
+</p>
+
+<p>
+After this number of days is elapsed, the password may still be valid. The user
+should be asked to change her password the next time she will log in.
+</p>
+
+<p>
+An empty field means that there are no maximum password age, no password
+warning period, and no password inactivity period.
+</p>
+
+<p>
+if the maximum password age is lower than the minimum password age, the suer
+cannot change her password.
+</p>
+
+<div id="/etc/shadow-Password warning period"><h2 id="Password warning period">Password warning period</h2></div>
+
+<p>
+The number of days before a password is going to expire during which the user
+should be warned.
+</p>
+
+<p>
+An empty field and value 0 mean that there are no password warning period.
+</p>
+
+<div id="/etc/shadow-password inactivity period"><h2 id="password inactivity period">password inactivity period</h2></div>
+
+<p>
+The number of days after a password has expired (see the maximum password age
+above) during which the password should still be accepted.
+</p>
+
+<p>
+After expiration of the password and this expiration period is elapsed, no
+login is possible using the current user's password. The user should contact
+her administrator.
+</p>
+
+<p>
+An empty field means that there are no enforcement of an inactivity period.
+</p>
+
+<div id="/etc/shadow-Account expiration date"><h2 id="Account expiration date">Account expiration date</h2></div>
+
+<p>
+The date of expiration of the account, expressed as the number of days since
+Jan 1, 1970.
+</p>
+
+<p>
+Note that an account expiration differs from a password expiration. In case of
+an account expiration, the user shall not be allowed to login. In case of a
+password expiration, the user is not allowed to login using her password.
+</p>
+
+<p>
+An empty field means that the account will never expire.
+</p>
+
+<p>
+The value 0 should not be used as it is interpreted as either an account with
+no expiration, or as an expiration on Jan 1, 1970.
+</p>
+
+<div id="/etc/shadow-Reserved field"><h2 id="Reserved field">Reserved field</h2></div>
+
+<p>
+This field is reserved for future use.
+</p>
+
+<div id="Reference"><h1 id="Reference">Reference</h1></div>
+
+<ul>
+<li>
+  <code>man 5 passwd</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man 5 group</code>
+
+</ul>
+
+<ul>
+<li>
+  <code>man 5 shadow</code>
+
+</ul>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>

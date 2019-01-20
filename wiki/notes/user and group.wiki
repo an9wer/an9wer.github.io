@@ -1,0 +1,159 @@
+= /etc/passwd =
+
+`/etc/passwd` contains one line for each user account, which seven fields
+delimited by colons (":"). These fields are:
+
+1.  login name
+2.  optional encrypted password
+3.  numberical user ID
+4.  numberical group ID
+5.  user name or comment field
+6.  user home directory
+7.  optional user command interpreter
+
+The encrypted passwrod field may be blank, in which case no password is
+required to authenticate as the specified login name. However, some
+applications which read the `/etc/passwd` file may decide not to permit any
+access at all if the password field is blank. If the password field is a
+lower-case "x", then the encrypted password is actually stored in the shadow
+file, or else the user account is invalid. If the password field is any other
+string, then it will be treated as an encrypted password, as specified by
+crypt.
+
+The comment field is used by various system utilities, such as finger.
+
+The home directory field provides the name of the initial working directory.
+The login program uses this information to set the value of the $HOME
+environmental varibale.
+
+The command interpreter field provides the name of the user's command language
+interpreter, or the name of the initial program to execute. The login program
+uses this information to set the value of the $SHELL environment variable. If
+this field is empty, it defaults to the value `/bin/sh`.
+
+= /etc/group =
+
+The `/etc/group` file is a text file that defines the groups on the system.
+There is one entry per line, with the following fields:
+
+1.  group name
+2.  group password
+3.  group id
+4.  list of the usernames that are members of this group, separated by commas.
+
+= /etc/shadow =
+
+`/etc/shadow` is a file which contains the password information for the
+system's accounts and optional aging information.
+
+This file must not be readable by regular users if password security is to be
+maintained.
+
+Each line of this file contains 9 fields, separated by colons (":"), in the
+following order:
+
+1.  login name
+2.  encrypted password
+3.  date of last password change
+4.  minimum password age
+5.  maximum password age
+6.  password warning period
+7.  password inactivity period
+8.  account expiration date
+9.  reserved field
+
+== Login name ==
+
+It must be a valid account name, which exist on the system.
+
+== Encrypted password ==
+
+Refer to crypt for details on how this string is interpreted.
+
+If the password field contains some string that is not a valid result of crypt,
+for instance ! or *, the suer will not be able to use a unix password to log in
+(but the user may log in the system by other means).
+
+This field may be empty, in which case no passwords are required to
+authenticate as the specified login name. However, some applications which read
+the `/etc/shadow` file may decide not to permit any access at all if the
+password field is empty.
+
+A password field which starts with a exclamation mark means that the password
+is locked. The remaining characters on the line represent the password field
+before the password was locked.
+
+== Date of last password change ==
+
+The date of the last password change, expressed as the number of days since Jan
+1, 1970.
+
+The value 0 has special meaning, which is that the user should change her
+password the next time she will log in the system.
+
+An empyt field means that password aging features are disabled.
+
+== Minimum password age ==
+
+The minimum password age is the number of days the user will have to wait
+before she will be allowed to change her password again.
+
+An empty field and value 0 mean that there are no minimum password age.
+
+== Maximum password age ==
+
+The maximum password age is the number of days after which the user will have
+to change her password.
+
+After this number of days is elapsed, the password may still be valid. The user
+should be asked to change her password the next time she will log in.
+
+An empty field means that there are no maximum password age, no password
+warning period, and no password inactivity period.
+
+if the maximum password age is lower than the minimum password age, the suer
+cannot change her password.
+
+== Password warning period ==
+
+The number of days before a password is going to expire during which the user
+should be warned.
+
+An empty field and value 0 mean that there are no password warning period.
+
+== password inactivity period ==
+
+The number of days after a password has expired (see the maximum password age
+above) during which the password should still be accepted.
+
+After expiration of the password and this expiration period is elapsed, no
+login is possible using the current user's password. The user should contact
+her administrator.
+
+An empty field means that there are no enforcement of an inactivity period.
+
+== Account expiration date ==
+
+The date of expiration of the account, expressed as the number of days since
+Jan 1, 1970.
+
+Note that an account expiration differs from a password expiration. In case of
+an account expiration, the user shall not be allowed to login. In case of a
+password expiration, the user is not allowed to login using her password.
+
+An empty field means that the account will never expire.
+
+The value 0 should not be used as it is interpreted as either an account with
+no expiration, or as an expiration on Jan 1, 1970.
+
+== Reserved field ==
+
+This field is reserved for future use.
+
+= Reference =
+
+-   `man 5 passwd`
+
+-   `man 5 group`
+
+-   `man 5 shadow`
