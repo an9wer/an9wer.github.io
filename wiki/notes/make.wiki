@@ -1,3 +1,7 @@
+= Options =
+
+`-B --always-make`: Unconditionally make all targets.
+
 = Variable =
 
 = Variable assignment =
