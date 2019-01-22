@@ -93,4 +93,6 @@ sudo pacman -S tamsyn-font terminus-font
 
 sudo pacman -S alsa-utils
     amixer sset Master unmute
+
+sudo pacman -S dunst libnotify
 }}}

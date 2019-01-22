@@ -55,8 +55,14 @@ strong {
     font-weight: 600;
 }
 
+blockquote{
+    background-color: #DDD;
+    border-left:solid 4px #999;
+    margin-left: 12px;
+    padding: 12px 12px 12px 24px;
+}
+
 table {
-    //margin-top: 1em;
     width: 100%;
     margin-bottom: 1rem;
     border-collapse: collapse;
@@ -139,7 +145,7 @@ tr:nth-child(odd) {
 #navbar a {
     display: block;
     float: left;
-    width: 33%;
+    width: 24.5%;
     height: 2em;
     text-align: center;
     background-color: #DDD;
