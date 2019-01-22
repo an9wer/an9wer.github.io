@@ -18,6 +18,8 @@
 
 -   [[ssh]] 
 
+-   [[bash completion]]
+
 -   [[Bash]]
 
 == System ==
