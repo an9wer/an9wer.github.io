@@ -1,0 +1,80 @@
+{{{
+    install [OPTION]... [-T] SOURCE DEST
+    install [OPTION]... SOURCE... DIRECTORY
+    install [OPTION]... -t DIRECTORY SOURCE...
+    install [OPTION]... -d DIRECTORY...
+}}}
+
+In the first three forms, copy SOURCE to DEST or multiple SOURCE to the
+existing DIRECTORY, while setting permission modes and owner/group. In the 4th
+form, create all components of the given DIRECTORY(ies).
+
+= Options =
+
+`-d --directory`: treat all arguments as directory names; create all components
+of the specified directories.
+
+`-D`: create all leading components of DEST except the last, or all components
+of `--target-directory`, then copy SOURCE to DEST.
+
+`-g --group=GROUP`: set group ownership, instead of process' current group.
+
+`-m --mode=MODE`: set permission mode (as in chmod), instead of `rwxr-xr-x`.
+
+`-o, --owner=OWNER`: set ownership (superuser only).
+
+`-p --preserve-timestamps`: apply access/modification times of SOURCE files to
+corresponding destination files.
+
+`-t -target-directory=DIRECTORY`: copy all SOURCE arguments into DIRECTORY.
+
+`-T --no-target-directory`: treat DEST as a normal file.
+
+(find more options in `man install`)
+
+= Examples =
+
+Copy one file (SOURCE) to another file (DEST):
+{{{
+    install /path/to/source /path/to/dest
+}}}
+or:
+{{{
+    install -T /path/to/source  /path/to/dest
+}}}
+
+Copy one file (SOURCE) to some directory (DEST):
+{{{
+    install /path/to/source  /path/to/dest/
+}}}
+or:
+{{{
+    install -t /path/to/dest  /path/to/source
+}}}
+
+Copy multiple files (SOURCE) to some directory (DEST):
+{{{
+    install /path/to/source1 /path/to/source2  /path/to/dest
+}}}
+or:
+{{{
+    install -t /path/to/dest  /path/to/source1 /path/to/source2
+}}}
+
+Create directories; If parent directories doesn't exist, create them as well:
+{{{
+    install -d /path/to/dest1  /path/to/dest2/
+}}}
+*Note*: Whether appending the trailing slash will do the same effect.
+
+Copy one file (SOURCE) to another file (DEST), If the parent directory
+of DEST doesn't exist, create them at the same time:
+{{{
+    install -D /path/to/source  /path/to/dest
+}}}
+
+Copy multiple files (SOURCE) to some directory (DEST), and set the permission
+mode which by default is 755:
+{{{
+    install -m 644 /path/to/source1 /path/to/source2 /path/to/dest
+}}}
