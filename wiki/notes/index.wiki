@@ -20,7 +20,9 @@
 
 -   [[ssh]] 
 
--   [[bash completion]]
+-   [[Bash completion]]
+
+-   [[Bash pathname expansion]]
 
 -   [[Bash]]
 

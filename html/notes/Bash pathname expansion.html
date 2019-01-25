@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>an9wer's blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css" />
+    <link rel="icon" href="../statics/images/icon.jpg" type="image/jpeg" size="32x32"/>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="headerLeft">
+            <div id="name"><a href="index.html">an9wer's blog</a></div>
+            <div id="signature">just stick to it :)</div>
+        </div>
+        <div id="headerRight">
+            <div id="avatar">
+                <a href="https://github.com/an9wer" target="_blank"><img src="../statics/images/avatar.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div id="navbar">
+        <a id="blog" href="../blog/index.html">Blog</a>
+        <a id="notes" class="current" href="index.html">Notes</a>
+        <a id="tweet" href="../tweet/index.html">Tweet</a>
+        <a id="about" href="../about.html">About</a>
+    </div>
+    <div id="post">
+        <div id="title">Bash pathname expansion</div>
+        <div id="content">
+<p>
+After word splitting, unless the <code>-f</code> option has been set, bash scans each word
+for the characters <code>*</code>, <code>?</code>, and <code>[</code>. If one of these characters appears, then
+the word is regarded as a pattern, and replaced with an alphabetically sorted
+list of fileames matching the pattern. If no matching filnames are found, and
+the shell option <code>nullglob</code> is not enabled, the word is left unchanged. If the
+<code>nullglob</code> option is set, and no matches are found, the word is removed. If the
+<code>failglob</code> shell option is set, and no matches are found, an error message is
+printed and the command is not executed. If the shell option <code>nocaseglob</code> is
+enabled, the match is performed without regard to the case of alphabetic
+characters. When a pattern is used for pathname expansion, the character "."
+at the start of a name or immediately following a slash must be matched
+explicitly, unless the shell option <code>dotglob</code> is set. The filename "." and ".."
+must always be matched explicitly, even if <code>dotglob</code> is set. In other cases,
+the "." character is not treated specially. When matching a pathname, the slash
+character must always be matched explicitly by a slash in the pattern. but in
+other matching contexts it can be matched by a special pattern character.
+</p>
+
+<p>
+The <code>GLOBIGNORE</code> shell variable may be used to restrict the set of file names
+matching a pattern. If <code>GLOBIGNORE</code> is set, each matching file name that also
+matched one of the patterns in <code>GLOBIGNORE</code> is removed from the list of
+matches. If the <code>nocaseglob</code> option is set, the matching against the pattern in
+<code>GLOBIGNORE</code> is performed without regard to case. The filenames "." and ".."
+are always ignored when <code>GLOBIGNORE</code> is set and not null. However, setting
+<code>GLOBIGNORE</code> to a non-null value has the effect of enabling the <code>dotglob</code> shell
+option, so all other filenames beginnig with a "." will match. To get the old
+behavior of ignoring filenames beginning with a ".", make ".*" one of the
+patterns in <code>GLOBIGNORE</code>. the <code>dotglob</code> option is disabled when <code>GLOBIGNORE</code> is
+unset. The pattern matching honors the setting of the <code>extglob</code> shell option.
+</p>
+
+<div id="Pattern Matching"><h1 id="Pattern Matching">Pattern Matching</h1></div>
+
+<p>
+Any character that appears in a pattern, other than the special pattern
+characters described below, matches itself. The NUL character may not occor in
+a pattern. A backslash escapes the following character; the escaping backslash
+is discarded when matching.
+</p>
+
+<p>
+The special pattern characters have the following meanings:
+</p>
+
+<ul>
+<li>
+  <code>*</code>: Matches any string, including the null string. When the <code>globstar</code> is
+    enabled, and * is used in a pathname expansion context, two adjacent *s
+    used as a single pattern will match all files and zero or more directories
+    and subdirectories. If followed by a /, two adjacent *s will match only
+    directories and subdirectories.
+
+<li>
+  <code>?</code>: Matches any single character.
+
+<li>
+  <code>[...]</code>: Matches any one of the enclosed characters. A pair of characters
+    spearated by a hyphen denotes a range expression; any character that falls
+    between those two characters, inclusive, using the current locale's
+    collating sequence and character set, is matched. If the first character
+    following the <code>[</code> is a <code>!</code> or a <code>^</code> then any character not enclosed is
+    matched. The sorting order of characters in range expressions is determined
+    by the current locale and the values of the of the <code>LC_COLLATE</code> or <code>LC_ALL</code>
+    shell variables, if set. To obtain the traditional interpretation of range
+    expressions, where [a-d] is equivalent ot [abcd], set value of the <code>LC_ALL</code>
+    shell variable to C, or enable the <code>globasciiranges</code> shell option. A <code>-</code>
+    may be matched by including it as the first or last character in the set. A
+    <code>]</code> may be matched by including it as the first character in the set.
+
+</ul>
+<blockquote>
+Within <code>[</code> and <code>]</code>, character classes can be specified using the syntax
+<code>[:class:]</code>, where class is one of the following classes defined in the
+POSIX standard: alnum alpha ascii blank cntrl digit graph lower print punct
+space upper word xdigit. A character class matches any character belonging
+to that class. The word character class matches letters, digits, and the
+character _.
+</blockquote>
+<blockquote>
+Within <code>[</code> and <code>]</code>, an equivalence class can be specified using the syntax
+<code>[=c=]</code>, which matches all characters with the same collation weight (as
+defined by the current locale) as teh character c.
+</blockquote>
+<blockquote>
+Within <code>[</code> and <code>]</code>, the syntax <code>[.symbol.]</code> matches the collating symbol
+symbol.
+</blockquote>
+    
+<p>
+If the <code>extglob</code> shell option is enabled using the <code>shopt</code> builtin, several
+extended pattern matching operators are recognized. In the following
+description, a pattern-list is a list of one or more patterns separated by a
+<code>|</code>. Composite patterns may be formed using one or more of the following
+<code>sub-patterns</code>:
+</p>
+
+<p>
+<code>?(pattern-list)</code>: Matches zero or one occurence of the given patterns.
+</p>
+
+<p>
+<code>*(pattern-list)</code>: Matches zero or more occurrences of the given patterns.
+</p>
+
+<p>
+<code>+(pattern-list)</code>: Matches one or more occurrences of the given patterns.
+</p>
+
+<p>
+<code>@(pattern-list)</code>: Matches one of the given patterns.
+</p>
+
+<p>
+<code>!(pattern-list)</code>: Matches anything except one of the given patterns.
+</p>
+
+<p>
+Complicated extended pattern matching against long string is slow, especially
+when the patterns contain alternations and the string contain multiple matches.
+Using separate matches against shorter strings, or using arrays of strings
+instead of a single long string, may be faster.
+</p>
+</div>
+    </div>
+    <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/vimwiki/vimwiki" target="_blank">vimwiki</a>
+    </div>
+<div>
+</body>
+</html>
