@@ -20,7 +20,9 @@
 
 -   [[ssh]] 
 
--   [[Bash completion]]
+-   [[bash completion]]
+
+-   [[Bash word splitting ]]
 
 -   [[Bash pathname expansion]]
 
