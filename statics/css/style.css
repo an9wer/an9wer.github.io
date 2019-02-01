@@ -55,7 +55,7 @@ strong {
     font-weight: 600;
 }
 
-blockquote{
+.quoteblock, blockquote{
     background-color: #DDD;
     border-left:solid 4px #999;
     margin-left: 12px;
