@@ -1,0 +1,47 @@
+-   2019/01/31
+
+____
+Communication can make our hearts open.
+____
+
+
+-   2019/01/29
+
+____
+今天在 build asciidoc-py3 的时候遇到了问题，于是提了这个
+https://github.com/asciidoc/asciidoc-py3/issues/58[issue] ，很快就得到了某个
+contributer 的回答，且非常详尽，甚是感激。
+____
+                
+
+-   2019/01/28
+
+____
+这两天 github 上莫名奇妙地连续冒出几个 follower，也不知到他们为啥突然关注我，但
+还是挺开心的。
+____
+                
+
+-   2019/01/26
+
+____
+Cooking with a christian, feeling great!
+____
+
+
+-   2019/01/19
+
+____
+Today, a christian told me: "跳出那个限制自己的圈子，你会发现很不一样的世界".
+____
+    
+
+-   2019/01/04
+
+_______
+Today, when visited the Stack Exchange site, I was so excited to find out
+that I had acquired my first 10 reputation for
+https://askubuntu.com/a/1105061/908203[this answer] on askubuntu
+community.
+_______
+

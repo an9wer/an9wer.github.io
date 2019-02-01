@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog" class="TODO" href="/blog.html">Blog</a>
+<a id="notes" href="/notes.html">Notes</a>
+<a id="tweet" href="/tweet.html">Tweet</a>
+<a id="about" href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">Archlinux installation</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_system_installation">System installation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Partition and mount:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    wifi-menu
+    timedatectl set-ntp true
+    fdisk /dev/sda
+        g
+        n +512M     # for /efi
+        n +8192M    # for swap
+        n +remain   # for /
+        t 1 1       # for EFI System
+        t 2 19      # for Linux swap
+        t 3 20      # for Linux filesystem
+        w           # write
+
+    mkfs.fat -F32 /dev/sda1
+    mkswap /dev/sda2
+    swapon /dev/sda2
+    mkfs.ext4 /dev/sda3
+
+    mount /dev/sda3 /mnt
+    mkdir /mnt/efi
+    mount /dev/sda1 /mnt/efi
+
+    pacstrap /mnt base base-devel vim
+
+    genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+
+    arch-chroot /mnt</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Datetime:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    hwclock --systohc</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Locale:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    vim /etc/locale.gen
+        uncomment en_US.UTF-8 UTF-8
+    local-gen
+    vim /etc/locale.conf
+        LANG=en_UF.UTF-8</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Hostname:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    vim /etc/hostname
+        peace</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Network:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    pacman -S networkmanager
+    systemctl enable NetworkManager</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Create user:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    useradd -m -g wheel an9wer
+    passwd an9wer
+    visudo
+        uncomment %wheel ALL=(ALL) NOPASSWD: ALL
+        useradd -m -g wheel an9wer
+        passwd an9wer</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Bootloader:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    pacman -S grub efibootmgr
+    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+    grub-mkconfig -o /boot/grub/grub.cfg</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Exit and reboot:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    exit
+    umount -R /mnt
+
+    reboot</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tools_installation">Tools installation</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Update system:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -Syu</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install xorg:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S xorg xorg-xinit
+        xorg, which contains xorg-server, is needed by dwm and i3.</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install suckless tools:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S libx11 libxft libxinerama
+
+    git clone https://git.suckless.org/dwm
+    make &amp;&amp; sudo make install
+
+    git clone https://git.suckless.org/st
+    make &amp;&amp; sudo make install</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install fonts:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family
+        for terminal
+    sudo pacman -S noto-fonts noto-fonts-cjk
+        for firefox</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install virtual console font:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S tamsyn-font terminus-font</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install firefox:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S firefox flashplugin
+        Preferences-&gt;General-&gt;Fonts:
+            Serif: Noto Serif
+            Sans-serif: Noto Sans
+            Monospace: Noto Sans Mono</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install basic tools:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S openssh
+    sudo pacman -S bash-completion
+    sudo pacman -S shadowsocks-qt5
+
+    sudo pacman -S xdg-user-dirs
+        xdg-user-dirs-update</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install alsa:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S alsa-utils
+        amixer sset Master unmute</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install dunst:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S dunst libnotify</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Install fcitx:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S fcitx fcitx-im fcitx-configtool
+        run 'fcitx-configtool'</pre>
+</div></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

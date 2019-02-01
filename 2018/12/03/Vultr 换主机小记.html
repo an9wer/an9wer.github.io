@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog" class="TODO" href="/blog.html">Blog</a>
+<a id="notes" href="/notes.html">Notes</a>
+<a id="tweet" href="/tweet.html">Tweet</a>
+<a id="about" href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">Vultr 换主机小记</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>大概一个多月前，我发现 Vultr 上新增了 3.5 美金每月的主机，但是日本和洛杉矶线路
+都没货，心想真是可惜，这么便宜的主机肯定是很抢手吧。可是最近，也就是大半个月前
+，我突然发现 3.5 美金每月的主机居然又有货了，于是赶紧准备入手一台。</p></div>
+<div class="paragraph"><p>先说明一下，我目前一直在使用的是一台 5 美金每月的主机，主要是用来搭建
+Shadowsocks，偶尔会跑一些小任务，但依然感觉有些浪费。而这新出的 3.5 美金每月的
+主机虽然只有 512 M 的内存（前者是 1G 的内存），但足以满足我的需求，所以为了省下
+这 1.5 美金每月的开支，我决定重新部署一台 Shadowsocks 服务器。</p></div>
+<div class="paragraph"><p>首先，在 Vultr 网站上新建一台主机，机房选择日本，镜像选择 debian，点击确认之后
+主机就开始创建了，这个过程非常快，大概一分钟左右主机就创建好了，同时也会获得一
+个公网 ip。接下来要做的事情就是用 ping 试一下这个 ip 是否被墙（因为之前有过被封
+ip 的经历，而且 Vultr 存在很多至今都还被封的 ip。如果拿到了这样的 ip，也很简单
+，只需要重建一个主机，就会得到一个新的 ip，如此往复，总会得到一个没有被封的 ip
+），当然 ping ip 还同时可以测算网速的快慢。这之后最好再用 ssh 命令登录主机在确
+认一下，避免端口被墙的问题（之前也遇到过这种情况，ip 没有被墙，ssh 端口却被墙了
+）。这样一台新的主机就算创建完成了。</p></div>
+<div class="paragraph"><p>按照这个步骤，我同时新建了大概有六台主机，其中为了校验是否价格更贵的主机网速会
+比较好，我还特意新建了一台 20 美金每月的主机，结果发现速度和 3.5 美金每月的主机
+差不多。之后用 ping 简单测了一下网速，陆续关闭了网速相对较慢的主机，最后只剩下
+两台主机，连同我之间的那台主机一共三台。之后为了进一步筛选出一台网速较快的主机
+，我用家中的树莓派搭建的小服务器针对这三台主机连续 ping 了 24 小时，最后计算网
+速的平均值，结果发现是还原来的那台主机网速最快，为 198 ms，而另两台 3.5 美金/
+每月的主机中较快的一台是 199ms，想想慢了这 1ms，却可以每月剩下 1.5 美金，还是值
+得的。</p></div>
+<div class="paragraph"><p>选择好主机之后，我无意中发现 Vultr 提供了自定义镜像的功能，也就是在除官方提供的
+Debian, Ubuntu, CentOS, Fedora 镜像之外可以选择其它的 Linux 发行版，包含了
+Alpine， Arch，FreeBSD 等，我毫不犹豫地选择了 Arch，因为 Arch 是滚动更新，之后
+就不需要考虑服务器系统版本老化的问题了。</p></div>
+<div class="paragraph"><p>在参考 Vultr 官方提供的安装教程（文末列出），并结合自己之前在笔记本上安装 Arch
+的经验，我也是成功地安装好了 Arch 系统。之后考虑到安全问题，在新系统中新建一个
+用户，并只允许用户使用 ssh key 登录，同时禁用 root 远程登录。然后使用最近写的一
+个快速部署 Shadowsocks 的项目 —— <a href="https://github.com/an9wer/ssd">ssd</a>，在服务器
+上部署好 Shadowsocks。最后，为服务器开启 BBR（文末列出），进一步提高网速。</p></div>
+<div class="paragraph"><p>至此，有关 Vultr 换主机总算告一段落，接下来的重点就是关注服务器的稳定性，好在
+Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁盘等进行监控。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_相关命令">相关命令</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>用 root 身份创建用户，之后可以用 <span class="monospaced">visudo</span> 命令为用户添加免密使用 <span class="monospaced">sudo</span> 的权限：</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    pacman -S sudo
+    useradd -m -g wheel an9wer</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">/etc/sshd/config</span> 的相关配置如下（注意，在这之前最好先将 ssh public key 用
+<span class="monospaced">ssh-copy-id</span> 命令复制到服务器上）：</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    PermitRootLogin no
+    PasswordAuthentication no</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_2018_12_11">Edit (2018/12/11)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
+<span class="monospaced">sudo crontab -e</span> 命令，添加了如下内容：</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    0 5 * * * /usr/bin/pacman -Syu --noconfirm &amp;&amp; /sbin/shutdown -r +5</pre>
+</div></div>
+<div class="paragraph"><p>这条命令会让服务器在每天凌晨五点的时候进行系统更新（服务器是日本的，所以相当于
+北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
+需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在
+<span class="monospaced">sudo docker run</span> 命令运行容器时加上 <span class="monospaced">--restart unless-stopped</span> 选项。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_2018_02_01">Edit (2018/02/01)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>在 github 上新建了一个项目 ——
+<a href="https://github.com/an9wer/verice">verice</a>，写了一些脚本专门用来管理服务器。</p></div>
+<div class="paragraph"><p>Thanks for reading :)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>How to deploy Arch on vultr?</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server">https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting">https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c">https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>How to enable BBR on Linux?</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/">https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/">https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308">https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://marskid.net/2017/12/03/arch-linux-open-google-bbr/">https://marskid.net/2017/12/03/arch-linux-open-google-bbr/</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

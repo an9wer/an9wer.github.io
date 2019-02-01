@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+IN_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
+OUT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/..")
+
+usage() {
+  cat <<EOF
+build [<args>] [<adoc>...]
+
+Arguments:
+  -a, --all  Build all adoc files
+EOF
+}
+
+build() {
+  local adoc html
+  set -e
+  for adoc in "$@"; do
+    adoc=$(realpath "$adoc")
+    if [[ ! -f $adoc ]]; then
+      echo "Unexisted file '$adoc'."
+      continue
+    fi
+    if [[ ! $adoc =~ \.adoc$ ]]; then
+      echo "Unkonwn filetype '$1'."
+      continue
+    fi
+
+    html=$(sed -nE 's@.*(201[89]/[01][0-9]/[0-3][0-9]/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
+    [[ -z $html ]] && html=$(sed -nE 's@.*/(notes/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
+    [[ -z $html ]] && html=$(sed -nE 's@.*/([^/]+\.adoc)@\1@p' <(echo "$adoc"))
+    [[ -z $html ]] && { echo "Some error happened."; exit 1; }
+
+    html=$OUT_DIR/${html%\.adoc}.html
+    mkdir -p "$(dirname "$html")"
+    asciidoc -b html5 -f "$IN_DIR/html5.conf" -o "$html" "$adoc"
+    echo "'$adoc' -> '$html'"
+  done
+  set +e
+}
+
+build_all() {
+  local IFS=$'\n'
+  build $(find "$IN_DIR" -type f -name "*.adoc")
+}
+
+# main
+case $1 in
+  -a|--all ) build_all ;;
+  *.adoc   ) build "$@" ;;
+  *        ) usage ;;
+esac
