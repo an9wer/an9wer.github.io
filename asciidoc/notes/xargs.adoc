@@ -1,0 +1,146 @@
+= xargs
+
+Build and execute command lines from standard input.
+
+== Options
+
+-   Use `man xargs` to find more options.
+
+`-0, --null`: Input items are terminated by a null character instead of by
+whitespace, and the quotes and backslash are not special. Disables the end of
+file string, which is treated like any other argument. Useful when input items
+might contain white space, quote marks, or backslashed.
+
+`-a file, --arg-file=file`: Read items from file instead of standard input. If
+you use this option, stdin remains unchanged when commands are run. Otherwise,
+stdin iss redirected from /dev/null.
+
+`-d delim, --delimiter=delim`: Input items are terminated by the specified
+character. The specified delimiter may be a single characer, a C-style
+character escape such as \n, or an octal or hexadecimal escape code. Octal and
+hexadecimal escape codes are understood as for the printf command. Multibyte
+characters are not supported. When processing the input, quotes and backslash
+are not special; every character in the input is taken literally. The -d option
+disables any end-of-file string, which is treated like any other argument.
+
+`-E eof-str`: Set the end of file string to eof-str. If the end of file string
+occurs as a line of input, the rest of the input is ignored. If neither -E nor
+-e is used, no end of file string is used.
+
+`-I replace-str`: Replace occurrences of replace-str in the initial-arguments
+with names read from standard input. Also, unquoted blanks do not terminate
+input items; instead *the seperator is the new line character*.
+
+`-L max-lines`: Use at most max-lines nonblank input lines per command.
+Trailing blanks cause an input line to be logically continued on the next input
+line.
+
+`-n max-args, --max-args=max-args`: Use at most max-args arguments per command
+line. Fewer than max-args arguments will be used if the size (see the -s
+option) is exceeded, unless the -x option is given, in which case xargs will
+exit.
+
+`-s max-chars, --max-chars=max-chars`: Use at most max-chars characters per
+command line, including the command and initial-arguments and the terminating
+nulls at the ends of the argument strings. The largest allowed value is
+system-dependent, and is calculated as the argument length limit for exec, less
+the size of your environment, less 2048 bytes of headroom. If this value is
+more than 128KiB, 128Kib is used as the default value; otherwise, the default
+value is the maximum. 1KiB is 1024 bytes.
+
+`-x, --exit`: Exit if the size (see the -s option) is exceeded.
+
+`-t, --verbose`: Print the command line on the standard error output before
+executing it.
+
+
+== Examples
+
+=== `-n` option
+
+----
+    $ echo 1 2 3 4 | xarg -n1
+    1
+    2
+    3
+    4
+----
+
+----
+    $ echo 1 2 3 4 | xargs -n2
+    1 2
+    3 4
+----
+
+----
+    $ echo 1 2 3 4 | xargs -n3
+    1 2 3
+    4
+----
+
+=== `-L` option
+
+----
+    $ echo -e '1\n2\n3\n4\n' | xargs -L1
+    1
+    2
+    3
+    4
+----
+
+----
+    $ echo -e '1\n2\n3\n4\n' | xargs -L2
+    1 2
+    3 4
+----
+
+----
+    $ echo -e '1\n2\n3\n4\n' | xargs -L3
+    1 2 4
+    4
+----
+
+=== `-d` option
+
+----
+    $ echo '1@2@3@4@' | xargs -d@
+    1 2 3 4
+----
+
+=== `-I` option
+
+Note that when use `-I` option, the seperator of input is newline, so the
+output of the following two examples are different:
+
+----
+    $ echo 1 2 3 4 | xargs -I{} echo {}a
+    1 2 3 4a
+----
+
+----
+    $ echo -e '1\n2\n3\n4\n' | xargs -I{} echo {}a
+    1a
+    2a
+    3a
+    4a
+----
+
+=== `-E` option
+
+----
+    $ echo 1 2 3 4 | xargs -E2
+    1
+----
+
+----
+    $ echo 1 2 3 4 | xargs -E3
+    1 2
+----
+
+=== `-t` option
+
+Use `-t` option to trace the process of xargs command:
+
+----
+    $ echo 1 2 3 4 | xargs -t
+----
