@@ -190,3 +190,9 @@
     sudo pacman -S fcitx fcitx-im fcitx-configtool
         run 'fcitx-configtool'
 ----
+
+-   Install mupdf:
+
+----
+    sudo pacman -S mupdf-gl
+----
