@@ -196,3 +196,9 @@
 ----
     sudo pacman -S mupdf-gl
 ----
+
+-   Install imagemagick:
+
+----
+    sudo pacman -S imagemagick
+----
