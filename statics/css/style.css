@@ -73,15 +73,16 @@ th, td {
     border: 1px solid #999;
     padding: 0.2em 1em;
     font-size: 0.8rem;
+    white-space: nowrap;
 }
 
 th {
-    border-top: 2px solid #666;
-    border-bottom: 2px solid #666;
+    border: 2px solid #666;
+    /* border-bottom: 2px solid #666; */
     font-width: 600;
 }
 
-tr:nth-child(odd) {
+tbody tr:nth-child(odd) {
     background: #CCC;
 }
 
@@ -210,9 +211,12 @@ tr:nth-child(odd) {
     color: #8fbbe6;
 }
 
-#content img{
+#content .imageblock img{
     display: block;
     margin: 0px auto;
+}
+
+#content .image {
 }
 /* }}} post */
 

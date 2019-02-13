@@ -13,7 +13,7 @@ EOF
 }
 
 build() {
-  local adoc html
+  local adoc html category
   set -e
   for adoc in "$@"; do
     adoc=$(realpath "$adoc")
@@ -26,14 +26,40 @@ build() {
       continue
     fi
 
+    # Blog
     html=$(sed -nE 's@.*(201[89]/[01][0-9]/[0-3][0-9]/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
-    [[ -z $html ]] && html=$(sed -nE 's@.*/(notes/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
-    [[ -z $html ]] && html=$(sed -nE 's@.*/([^/]+\.adoc)@\1@p' <(echo "$adoc"))
+    category=blog
+
+    # Notes
+    if [[ -z $html ]]; then
+      html=$(sed -nE 's@.*/(notes/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
+      category=notes
+    fi
+
+    # Index
+    if [[ -z $html ]]; then
+      html=$(sed -nE 's@.*/([^/]+\.adoc)@\1@p' <(echo "$adoc"))
+      if [[ $html == blog.adoc ]]; then
+        category=blog
+      elif [[ $html == notes.adoc ]]; then
+        category=notes
+      elif [[ $html == tweet.adoc ]]; then
+        category=tweet
+      elif [[ $html == about.adoc ]]; then
+        category=about
+      else
+        echo "Unknown file '$adoc'."
+        continue
+      fi
+    fi
+
+    # Error
     [[ -z $html ]] && { echo "Some error happened."; exit 1; }
+
 
     html=$OUT_DIR/${html%\.adoc}.html
     mkdir -p "$(dirname "$html")"
-    asciidoc -b html5 -f "$IN_DIR/html5.conf" -o "$html" "$adoc"
+    asciidoc -b html5 -a "category=$category" -f "$IN_DIR/html5.conf" -o "$html" "$adoc"
     echo "'$adoc' -> '$html'"
   done
   set +e
