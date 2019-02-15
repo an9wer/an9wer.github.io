@@ -2,6 +2,14 @@
 
 -   link:notes/xargs.html[xargs]
 
-== Image
-
 -   link:notes/ImageMagick.html[ImageMagick]
+
+-   link:notes/Bash%20Parameters.html[Bash Parameters]
+
+-   link:notes/Bash%20Expansion.html[Bash Expansion]
+
+-   link:notes/Bash%20Builtin.html[Bash Builtin]
+
+== Miscellaneous
+
+-   link:notes/English%20Tips.html[English Tips]

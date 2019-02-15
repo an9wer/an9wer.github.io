@@ -23,6 +23,7 @@ body {
 #title, h1, h2, h3, h4, h5, h6 {
     font-family: Georgia,"Times New Roman",Times,serif;
     line-height: 1.1;
+    margin-top: 30px;
 }
 
 strong, b {
@@ -57,7 +58,7 @@ strong {
 
 .quoteblock, blockquote{
     background-color: #DDD;
-    border-left:solid 4px #999;
+    border-left: solid 4px #999;
     margin-left: 12px;
     padding: 12px 12px 12px 24px;
 }
@@ -217,6 +218,22 @@ tbody tr:nth-child(odd) {
 }
 
 #content .image {
+}
+
+.admonitionblock {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.admonitionblock .icon i {
+    font-size: 2.25em;
+    margin-right: 0.5em;
+}
+
+.admonitionblock .content {
+    border-left: solid 2px #999;
+    padding: 3px 0px 3px 24px;
 }
 /* }}} post */
 

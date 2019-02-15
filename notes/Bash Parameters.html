@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">Bash Parameters</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>A variable may be assigned to by a statement of the form:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    name=[value]</pre>
+</div></div>
+<div class="paragraph"><p>If value is not given, the variable is assigned the null string. All values
+undergo tilde expansion, parameter and variable expansion, command
+substitution, arithmetic expansion, and quote removal.</p></div>
+<div class="paragraph"><p>In the context where an assignment statement is assigning a value to a shell
+variable or array index, the += operator can be used to append to or add to the
+variable&#8217;s previous value. When += is applied to a variable for which the
+integer attribute has been set, value is evaluated as an arithmetic expression
+and added to the variable&#8217;s current value, which is also evaluated. When += is
+applied to an array variable using compound assignment, the variable&#8217;s value is
+not unset (as it is when using =), and new values are appended to the array
+beginning at one greater then the array&#8217;s maximum index (for indexed arrays) or
+added as additional key-value pairs in an associative array. When applied to a
+string-valued variable, value is expanded and appended to the variable&#8217;s value.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ declare -i var=1+2
+    $ var+=3
+    $ declare -p var
+    declare -i var="6"</pre>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ declare -a var=(1 2)
+    $ var+=3
+    $ declare -p var
+    declare -a var=([0]="13" [1]="2")</pre>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ declare -a var=(1 2)
+    $ var+=(3)
+    $ declare -p var
+    declare -a var=([0]="1" [1]="2" [2]="3")</pre>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ declare -- var="12"
+    $ var+=3
+    $ declare -p var
+    declare -- var="123"</pre>
+</div></div>
+<div class="paragraph"><p>Assign multiple variables splitting by whitespace in one line:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ a=1 b=2 c=3</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_positional_parameters">Positional Parameters</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>TODO</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_special_parameters">Special Parameters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_parametedr">parametedr *</h3>
+<div class="paragraph"><p><span class="monospaced">*</span>: Expands to the positional paramters, starting from one. When the expansion
+is <span class="monospaced">not</span> within double quotes, each positional parameters expands to a separate
+word. In contexts where it is performed, those words are subject to further
+word splitting and pathname expansion. When the expansion occurs within double
+quotes, it expands to a single word with the value of each parameter separated
+by the first character of the <span class="monospaced">IFS</span> special variable. That is, &#8220;$*&#8221; is
+equivalent to &#8220;$1c$2c..&#8221;, where c is the first character of the value of the
+IFS variable. If <span class="monospaced">IFS</span> is unset, the parameters are separated by spaces. If
+<span class="monospaced">IFS</span> is null, the parameters are joined without intervening separators.</p></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-location-arrow"></i>
+</div>
+<div class="content">Let&#8217;s see how <span class="monospaced">IFS</span> makes effect.</div>
+</div>
+<div class="paragraph"><p>First create a function which displays <span class="monospaced">$*</span>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ function func() { echo $*; }</pre>
+</div></div>
+<div class="paragraph"><p>Then:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ func 1 2 3
+    1 2 3</pre>
+</div></div>
+<div class="paragraph"><p>Then set <span class="monospaced">IFS</span> to some value:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ IFS=a func 1 2 3
+    1a2a3</pre>
+</div></div>
+<div class="paragraph"><p>Then unset IFS:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ unset IFS
+    $ func 1 2 3
+    1 2 3</pre>
+</div></div>
+<div class="paragraph"><p>Also, the length of <span class="monospaced">$*</span>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ function func() { echo ${#*}; }
+    $ func 1 2 3
+    3</pre>
+</div></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-location-arrow"></i>
+</div>
+<div class="content">Let&#8217;s take a look at the difference between <span class="monospaced">$*</span> and <span class="monospaced">"$*"</span>:</div>
+</div>
+<div class="paragraph"><p>First create a function to display the elements in <span class="monospaced">$*</span> and <span class="monospaced">"$*"</span>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    function func() { local a=($*) b=("$*"); declare -p a b; }</pre>
+</div></div>
+<div class="paragraph"><p>Then:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1 2 3")</pre>
+</div></div>
+<div class="paragraph"><p>We can find out that <span class="monospaced">$*</span> expands each parameter to a separate word, but <span class="monospaced">"$*"</span>
+expands each parameter to one word.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parameter">Parameter @</h3>
+<div class="paragraph"><p><span class="monospaced">@</span>: Expands to the positional parameters, starting from one. When the
+expansion occurs within double quotes, each parameter expands to a separate
+word. That is, &#8220;$@&#8221; is equivalent to &#8220;$1" "$2" &#8230;&#8221;. If the double-quoted
+expansion occurs within a word, the expansion of the first parameter is joined
+with the beginning part of the original word, and the expansion of the last
+parameter is joined with the last part of the original word. When there are no
+posisional parameters, <span class="monospaced">"$@"</span> and <span class="monospaced">$@</span>  expand to nothing.</p></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-location-arrow"></i>
+</div>
+<div class="content">Let&#8217;s take a look at the difference between <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span>.</div>
+</div>
+<div class="paragraph"><p>First create a function to display the elements in <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    function func() { local a=($@) b=("$@"); declare -p a b; }</pre>
+</div></div>
+<div class="paragraph"><p>Then:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ func 1 2 3
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1" [1]="2" [2]="3")</pre>
+</div></div>
+<div class="paragraph"><p>We can find out that <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span> are same.</p></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">
+<div class="title">A NOTE admonition block</div>
+<div class="paragraph"><p>Qui in magna commodo, est labitur dolorum an. Est ne magna primis
+adolescens.</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Fusce euismod commodo velit.
+</p>
+</li>
+<li>
+<p>
+Vivamus fringilla mi eu lacus.
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+Fusce euismod commodo velit.
+</p>
+</li>
+<li>
+<p>
+Vivamus fringilla mi eu lacus.
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+Donec eget arcu bibendum
+      nunc consequat lobortis.
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">
+<div class="title">whtat</div>What lovely war.</div>
+</div>
+</div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

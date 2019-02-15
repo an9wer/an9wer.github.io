@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="content">
+<div class="sect1">
+<h2 id="_options">Options</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_c_option">-c option</h3>
+<div class="paragraph"><p><span class="monospaced">-c</span>: If the <span class="monospaced">-c</span> option is present, then command are read from the <strong>first</strong>
+non-option argument command string. If there are arguments after the command
+string, the first argument is assigned to $0 and any remaining arguments are
+assigned to the positional parameters. The assignment to $0 sets the name of
+the shell, which is used in warning and error messages.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The command below will display 123:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ bash -c "echo 123"
+    123</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Note</strong>: It only treat the first non-option argument as command string, so
+    the following command won&#8217;t display 123:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ bash -c echo 123</pre>
+</div></div>
+<div class="paragraph"><p><strong>Note</strong>: By default, bash will read commands from some file. Use <span class="monospaced">-c</span> option
+can make bash to execute command from string.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_variables">Variables</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">PROMPT_COMMAND</span>: If set, the value is executed as a command prior to issuing
+each primary prompt.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quoting">Quoting</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_em_string_em">$<em>string</em></h3>
+<div class="paragraph"><p>Words of the form $<em>string</em> are treated specially. The word expands to string,
+with backslash-escaped characters replaced as specified  by the ANSI C
+standard. Backslash escape sequences, if present, are decoded as follows:</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\a</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">alert (bell)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\b</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">backspace</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\e \E</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">an escape character</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\f</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">form feed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\n</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">new line</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\r</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">carriage return</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\t</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">horizontal tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\v</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">vertical tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\\</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">backslash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\'</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">single quote</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\"</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">double quote</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\?</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">question mark</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\nnn</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">the eight-bit character whose value is the octal value nnn (one to three digits)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\xHH</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">the eight-bit character whose value is the hexadecimal value HH (one or two hex digits)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\uHHHH</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHH (one to four hex digits)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\UHHHHHHHH</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHHHHHH (one to eight hex digits)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">\cx</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">a control-x character</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph"><p>The expanded result is single-quoted, as if the dollar sign had not been
+present. For example:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ echo abc$'\b'd
+    abd</pre>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ echo 123$'\n'321
+    123
+    321</pre>
+</div></div>
+<div class="paragraph"><p>(Find example code in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)</p></div>
+</div>
+<div class="sect2">
+<h3 id="_string">$"string"</h3>
+<div class="paragraph"><p>A double-quoted string preceded by a dollar sign $"string" will cause the
+string to be translated according to the current locale.  If the current locale
+is C or POSIX, the dollar sign is ignored.  If the string is translated and
+replaced, the replacement is double-quoted. For example:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ echo abc$"\b"d
+    abc\bd</pre>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ echo 123$"\n"321
+    123\n321</pre>
+</div></div>
+<div class="paragraph"><p>(Find example in <a href="https://github.com/an9wer/ltips/blob/master/Bash/quoting.sh">here</a>)</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_array">Array</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Any element of an array may be referenced using <span class="monospaced">${name[subscript]}</span>. The
+braces are required to avoid conflicts with pathname expansion. If subscript is
+@ or *, the word expansion to all members of name. These subscripts differ only
+when the word appears whin double quotes. If the word is double-quoted,
+<span class="monospaced">${name[*]}</span> expands to a single word with the value of each array member
+separated by the first character of the <span class="monospaced">IFS</span> special variable, and
+<span class="monospaced">${name[@]}</span> expands each element of name to a separate word.</p></div>
+<div class="paragraph"><p>{{{
+    $ var=(1 2 3)
+    $ a=(${var[@]})
+    $ b=("${var[@]}")
+    $ declare -p a b
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1" [1]="2" [2]="3")
+    declare&#8201;&#8212;&#8201;a="1 2 3"
+    declare&#8201;&#8212;&#8201;b="1 2 3"
+}}}</p></div>
+<div class="paragraph"><p>{{{
+    $ var=(1 2 3)
+    $ a=(${var[<strong>]})
+    $ b=("${var[</strong>]}")
+    $ declare -p a b
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1 2 3")
+}}}</p></div>
+<div class="paragraph"><p>{{{
+    $ IFS=- var=(1 2 3)
+    $ a=(${var[<strong>]})
+    $ b=("${var[</strong>]}")
+    $ declare -p a b
+    declare -a a=([0]="1" [1]="2" [2]="3")
+    declare -a b=([0]="1-2-3")
+}}}</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditional_expressions">Conditional expressions</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Conditional expressions are used by the <span class="monospaced">[[</span> compound command and the <span class="monospaced">test</span>
+and <span class="monospaced">[</span> builtin commands to test file attributes and perform string and
+arithmetic comparisons.</p></div>
+<div class="paragraph"><p>{{{
+    string1 == string2
+    string1 = string2
+}}}
+True if the strings are equal. <span class="monospaced">=</span> should be used with the <span class="monospaced">test</span> command for
+POSIX conformance.</p></div>
+<div class="paragraph"><p>{{{
+    string1 != string2
+}}}
+True if strings are not equal.</p></div>
+<div class="paragraph"><p>{{{
+    arg1 OP arg2
+}}}
+<span class="monospaced">OP</span> is one of <span class="monospaced">-eq, -ne, -lt, -le, -gt or -ge</span>. These arithmetic binary
+operators return true if arg1 is euqal to, not equal to, less than, less than
+or equal to, greater than, or greater than or equal to arg2, respectively. Arg1
+and arg2 may be positive or negative integers.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+[[<a href="https://www.gnu.org/software/bash/manual/bash.html|GNU">https://www.gnu.org/software/bash/manual/bash.html|GNU</a> bash manual]]
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">man bash</span>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

@@ -1,0 +1,130 @@
+= Bash Expansion
+
+== Parameter Expansion
+
+=== Use default values
+
+----
+    ${parameter:-word}
+----
+
+If parameter is unset or null, the expansion of word is substituted. Otherwise,
+the value of parameter is substituted.
+
+----
+    $ unset a
+    $ echo ${a:-123}
+    123
+    $ echo ${a}
+
+----
+
+
+=== Assign default values
+
+----
+    ${parameters:=word}
+----
+
+If parameter is unset or null, the expansion of word is assigned to parameter.
+The value of parameter is then substituted. 
+
+----
+    $ unset a
+    $ echo ${a:=123}
+    123
+    $ echo ${a}
+    123
+----
+
+[NOTE]
+Positional parameters and special parameters may not be assigned to in
+this way.
+
+
+=== Substring Expansion
+
+----
+    ${parameter:offset}
+    ${parameter:offset:length}
+----
+
+It expands to the substring of the value of `parameter` starting at the
+character specified by `offset` and expanding to up to `length` characters.
+
+`offset` and `length` are arithmetic expressions. If `offset` or `length`
+evaluates to a number less than zero, the value is used as an offset in
+characters from the end of value of `parameter`.
+
+[NOTE]
+A negative `offset` must be separated from the colon by at least
+one space to avoid being confused with the `:-` expansion. 
+
+[TIP]
+When `parameter` is a variable whose value is string:
+
+----
+    $ string=0123456789
+    $ echo ${string:2}
+    23456789
+    $ echo ${string:2:4}
+    2345
+    $ echo ${string:2:-2}
+    234567
+    $ echo ${string: -4}
+    6789
+    $ echo ${string: -4:-2}
+    67
+----
+
+----
+    $ array[0]=0123456789
+    $ echo ${array[0]:2}
+    23456789
+    $ echo ${array[0]:2:4}
+    2345
+    $ echo ${array[0]:2:-2}
+    234567
+    $ echo ${array[0]: -4}
+    6789
+    $ echo ${array[0]: -4:-2}
+    67
+----
+
+[TIP]
+When +parameter+ is `@' (*Note*: It's an expansion error if +length+ evaluates
+to number less than zero):
+
+----
+    $ set -- 0 1 2 3 4 5 6 7 8 9
+    $ echo ${@:2}
+    23456789
+    $ echo ${@:2:4}
+    2345
+    $ echo ${@:2:-2}
+    bash: -2: substring expression < 0
+    $ echo ${@: -4}
+    6789
+    $ echo ${@: -4:-2}
+    bash: -2: substring expression < 0
+----
+
+[TIP]
+When +parameter+ is an indexed array name subscripted by `@' or `\*' (*Note*:
+It's an expansion error if +length+ evaluates to number less than zero):
+
+----
+    $ array=(0 1 2 3 4 5 6 7 8 9)
+    $ echo ${array[@]:2}
+    23456789
+    $ echo ${array[@]:2:4}
+    2345
+    $ echo ${array[@]:2:-2}
+    bash: -2: substring expression < 0
+    $ echo ${array[@]: -4}
+    6789
+    $ echo ${array[@]: -4:-2}
+    bash: -2: substring expression < 0
+----
+
+(Find example code in https://github.com/an9wer/ltips/blob/master/Bash/parameter_expansion.sh[here])

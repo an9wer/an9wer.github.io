@@ -32,6 +32,34 @@ Nubia Z11 mini 之后。而且这款手机刷机方便，可刷的 ROM 也非常
 
 大概我过一阵就会将该机作为日常使用吧，呵呵！
 
-image:statics/images/2018/12/01/essential_phone.jpg[essential phone]
+== 刷机命令
+
+Reboot to bootloader:
+
+----
+    adb reboot bootloader
+----
+
+Check unlock state:
+
+----
+    sudo fastboot oem device-info
+----
+
+Unlock bootloader:
+
+----
+    sudo fastboot flash unlock
+    sudo fastboot flashing unlock_critical
+----
+
+Download and flash factory image which can be found
+https://www.essential.com/developer/current-builds[here]:
+
+----
+    sudo flashall.sh
+----
+
+image:/statics/images/2018/12/01/essential_phone.jpg[essential phone]
 
 Thanks for reading :)

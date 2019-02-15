@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">Bash Builtin</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_">:</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>{{{
+    : [arguments]
+}}}</p></div>
+<div class="paragraph"><p>Do noting beyond expanding arguments and performing redirections. The return
+status is zero.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Do expand arguments:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ : ${a:=123}
+    $ echo $a
+    123</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Do flush file content:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ :&gt;/path/to/file
+    $ cat /path/to/file</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__2">[[</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    [[ expression ]]</pre>
+</div></div>
+<div class="paragraph"><p>Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Word splitting and pathname expansion are not performed on the
+words between the <span class="monospaced">[[</span> and <span class="monospaced">]]</span> (<strong>Note</strong>: This will expand in <span class="monospaced">test</span> and <span class="monospaced">[</span>,
+see
+<a href="https://stackoverflow.com/questions/669452/is-double-square-brackets-preferable-over-single-square-brackets-in-ba">this</a>);
+tilde expansion, parameter and varibale expansion, arithmetic expansion,
+command substitution, process substitution, and quote removal are performed.</p></div>
+<div class="paragraph"><p><strong>Note</strong>: When used with <span class="monospaced">[[</span>, the <span class="monospaced">&lt;</span> and <span class="monospaced">&gt;</span> operators sort lexicographically
+using the current locale.</p></div>
+<div class="paragraph"><p>Expression may be combined using the following operators, listed in descreasing
+order of precedence:</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">( expr )</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">used to override the normal precedence of operators</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">! expr</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if expression is false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">expr1 &amp;&amp; expr2</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if both expr1 and expr2 are true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">expr1</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">expr2</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if either expr1 and expr2 is true</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph"><p><strong>Note</strong>: Operator <span class="monospaced">&amp;&amp;</span> and <span class="monospaced">||</span> can not be used in <span class="monospaced">test</span> and <span class="monospaced">[</span>.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+If file <span class="monospaced">abc</span> is in the current directory, then <span class="monospaced">test</span> and <span class="monospaced">[</span> will expand
+    it first:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ [ a = a* ] &amp;&amp; echo gotcha    # equals to: [ a = abc ] &amp;&amp; echo gotcha
+    $</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+But it doesn&#8217;t matter when using <span class="monospaced">[[</span>:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ [[ a == a* ]] &amp;&amp; echo gotcha
+    $ gotcha</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test">test [</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    test expression
+    [ expression ]</pre>
+</div></div>
+<div class="paragraph"><p>Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Each operator and operand must be a seperate argument.</p></div>
+<div class="paragraph"><p>Expression may be combined using the following operators, listed in decreasing
+order of precedence:</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">! expr</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if expr is false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">( expr )</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Used to override the normal precedence of operators</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">expr1 -a expr2</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if both expr1 and expr2 are true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">expr1 -o expr2</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">True if either expr1 or expr2 is true</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph"><p><strong>Note</strong>: Operator <span class="monospaced">-a</span> and <span class="monospaced">-o</span> can not be used in <span class="monospaced">[[</span>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shopt">shopt</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>{{{
+    shopt [-pqsu] [-o] [optname &#8230;]
+}}}</p></div>
+<div class="paragraph"><p><span class="monospaced">-s</span>: Enable (set) each optname.</p></div>
+<div class="paragraph"><p><span class="monospaced">-u</span>: Disable (unset) each optname.</p></div>
+<div class="paragraph"><p><span class="monospaced">-q</span>: Supresses normal output (quiet mode); the return status indicates whether
+the optname is set or unset. If multiple optname arguments are given with <span class="monospaced">-q</span>,
+the return status is zero if all optnames are enabled; non-zero otherwise.</p></div>
+<div class="paragraph"><p><span class="monospaced">-o</span>: Restrict optname to those defined for use with <span class="monospaced">set -o</span>.</p></div>
+<div class="paragraph"><p>If either <span class="monospaced">-s</span> or <span class="monospaced">-u</span> is used with no optname arguments, shopt shows only
+those options which are set or unset, respectively. Unless otherwise noted, the
+shopt options are disabled by default.</p></div>
+<div class="paragraph"><p>Display all options:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    shopt</pre>
+</div></div>
+<div class="paragraph"><p>Only display enabled options:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    shopt -s</pre>
+</div></div>
+<div class="paragraph"><p>Only display disabled options:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    shopt -u</pre>
+</div></div>
+<div class="paragraph"><p>Display options defined by <span class="monospaced">set -o</span>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    shotp -o</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">dotglob</span>: If set, bash includes filename beginning with a <em>.</em> in the results
+of pathname expansion.</p></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

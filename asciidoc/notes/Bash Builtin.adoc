@@ -1,0 +1,135 @@
+= Bash Builtin
+
+== :
+
+{{{
+    : [arguments]
+}}}
+
+Do noting beyond expanding arguments and performing redirections. The return
+status is zero.
+
+-   Do expand arguments:
+----
+    $ : ${a:=123}
+    $ echo $a
+    123
+----
+
+-   Do flush file content:
+----
+    $ :>/path/to/file
+    $ cat /path/to/file
+
+----
+
+== [[
+
+----
+    [[ expression ]]
+----
+
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Word splitting and pathname expansion are not performed on the
+words between the `[[` and `]]` (*Note*: This will expand in `test` and `[`,
+see
+https://stackoverflow.com/questions/669452/is-double-square-brackets-preferable-over-single-square-brackets-in-ba[this]);
+tilde expansion, parameter and varibale expansion, arithmetic expansion,
+command substitution, process substitution, and quote removal are performed.
+
+*Note*: When used with `[[`, the `<` and `>` operators sort lexicographically
+using the current locale.
+
+Expression may be combined using the following operators, listed in descreasing
+order of precedence:
+
+|===
+| ( expr )       | used to override the normal precedence of operators
+| ! expr         | True if expression is false
+| expr1 && expr2 | True if both expr1 and expr2 are true
+| expr1 || expr2 | True if either expr1 and expr2 is true
+|===
+
+*Note*: Operator `&&` and `||` can not be used in `test` and `[`.
+
+-   If file `abc` is in the current directory, then `test` and `[` will expand
+    it first:
+----
+    $ [ a = a* ] && echo gotcha    # equals to: [ a = abc ] && echo gotcha
+    $ 
+----
+
+-   But it doesn't matter when using `[[`:
+----
+    $ [[ a == a* ]] && echo gotcha
+    $ gotcha
+----
+
+== test [
+
+----
+    test expression
+    [ expression ]
+----
+
+Return a status of 0 or 1 depending on the evaluation of the conditional
+expression. Each operator and operand must be a seperate argument.
+
+Expression may be combined using the following operators, listed in decreasing
+order of precedence:
+
+|===
+| ! expr         | True if expr is false
+| ( expr )       | Used to override the normal precedence of operators
+| expr1 -a expr2 | True if both expr1 and expr2 are true
+| expr1 -o expr2 | True if either expr1 or expr2 is true
+|===
+
+*Note*: Operator `-a` and `-o` can not be used in `[[`.
+
+== shopt
+
+{{{
+    shopt [-pqsu] [-o] [optname ...]
+}}}
+
+`-s`: Enable (set) each optname.
+
+`-u`: Disable (unset) each optname.
+
+`-q`: Supresses normal output (quiet mode); the return status indicates whether
+the optname is set or unset. If multiple optname arguments are given with `-q`,
+the return status is zero if all optnames are enabled; non-zero otherwise.
+
+`-o`: Restrict optname to those defined for use with `set -o`.
+
+If either `-s` or `-u` is used with no optname arguments, shopt shows only
+those options which are set or unset, respectively. Unless otherwise noted, the
+shopt options are disabled by default.
+
+Display all options:
+
+----
+    shopt
+----
+
+Only display enabled options:
+
+----
+    shopt -s
+----
+
+Only display disabled options:
+
+----
+    shopt -u
+----
+
+Display options defined by `set -o`:
+
+----
+    shotp -o
+----
+
+`dotglob`: If set, bash includes filename beginning with a '.' in the results
+of pathname expansion.

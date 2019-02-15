@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.10" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
 <body>
 <div id="main">
@@ -58,8 +59,35 @@ href="/about.html">About</a>
 Nubia Z11 mini 之后。而且这款手机刷机方便，可刷的 ROM 也非常多，可玩性非常高，
 适合我日常搞机。</p></div>
 <div class="paragraph"><p>大概我过一阵就会将该机作为日常使用吧，呵呵！</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_刷机命令">刷机命令</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Reboot to bootloader:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    adb reboot bootloader</pre>
+</div></div>
+<div class="paragraph"><p>Check unlock state:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo fastboot oem device-info</pre>
+</div></div>
+<div class="paragraph"><p>Unlock bootloader:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo fastboot flash unlock
+    sudo fastboot flashing unlock_critical</pre>
+</div></div>
+<div class="paragraph"><p>Download and flash factory image which can be found
+<a href="https://www.essential.com/developer/current-builds">here</a>:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo flashall.sh</pre>
+</div></div>
 <div class="paragraph"><p><span class="image">
-<img src="statics/images/2018/12/01/essential_phone.jpg" alt="essential phone">
+<img src="/statics/images/2018/12/01/essential_phone.jpg" alt="essential phone">
 </span></p></div>
 <div class="paragraph"><p>Thanks for reading :)</p></div>
 </div>
