@@ -64,7 +64,7 @@ TODO
 === parametedr *
 
 `*`: Expands to the positional paramters, starting from one. When the expansion
-is `not` within double quotes, each positional parameters expands to a separate
+is *not* within double quotes, each positional parameters expands to a separate
 word. In contexts where it is performed, those words are subject to further
 word splitting and pathname expansion. When the expansion occurs within double
 quotes, it expands to a single word with the value of each parameter separated
@@ -113,9 +113,9 @@ Also, the length of `$*`:
 ----
 
 [TIP]
-Let's take a look at the difference between `$*` and `"$*"`:
+Let's take a look at the difference between $* and ``$*'':
 
-First create a function to display the elements in `$*` and `"$*"`:
+First create a function to display the elements in $* and ``$*'':
 
 ----
     function func() { local a=($*) b=("$*"); declare -p a b; }
@@ -124,28 +124,28 @@ First create a function to display the elements in `$*` and `"$*"`:
 Then:
 
 ----
-    $ func 1 2 3
-    declare -a a=([0]="1" [1]="2" [2]="3")
-    declare -a b=([0]="1 2 3")
+    $ func 1 2 "3 4"
+    declare -a a=([0]="1" [1]="2" [2]="3" [3]="4")
+    declare -a b=([0]="1 2 3 4")
 ----
 
-We can find out that `$*` expands each parameter to a separate word, but `"$*"`
+We can find out that $* expands each parameter to a separate word, but ``$*''
 expands each parameter to one word.
 
 === Parameter @
 
 `@`: Expands to the positional parameters, starting from one. When the
 expansion occurs within double quotes, each parameter expands to a separate
-word. That is, ``$@'' is equivalent to ``$1" "$2" ...''. If the double-quoted
+word. That is, ``$@'' is equivalent to ``$1'' ``$2'' .... If the double-quoted
 expansion occurs within a word, the expansion of the first parameter is joined
 with the beginning part of the original word, and the expansion of the last
 parameter is joined with the last part of the original word. When there are no
-posisional parameters, `"$@"` and `$@`  expand to nothing.
+posisional parameters, ``$@'' and $@  expand to nothing.
 
 [TIP]
-Let's take a look at the difference between `$@` and `"$@"`.
+Let's take a look at the difference between $@ and ``$@''.
 
-First create a function to display the elements in `$@` and `"$@"`:
+First create a function to display the elements in $@ and ``$@'':
 
 ----
     function func() { local a=($@) b=("$@"); declare -p a b; }
@@ -154,9 +154,7 @@ First create a function to display the elements in `$@` and `"$@"`:
 Then:
 
 ----
-    $ func 1 2 3
-    declare -a a=([0]="1" [1]="2" [2]="3")
-    declare -a b=([0]="1" [1]="2" [2]="3")
+    $ func 1 2 "3 4"
+    declare -a a=([0]="1" [1]="2" [2]="3" [3]="4")
+    declare -a b=([0]="1" [1]="2" [2]="3 4")
 ----
-
-We can find out that `$@` and `"$@"` are same.

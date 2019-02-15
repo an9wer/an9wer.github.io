@@ -98,7 +98,7 @@ string-valued variable, value is expanded and appended to the variable&#8217;s v
 <div class="sect2">
 <h3 id="_parametedr">parametedr *</h3>
 <div class="paragraph"><p><span class="monospaced">*</span>: Expands to the positional paramters, starting from one. When the expansion
-is <span class="monospaced">not</span> within double quotes, each positional parameters expands to a separate
+is <strong>not</strong> within double quotes, each positional parameters expands to a separate
 word. In contexts where it is performed, those words are subject to further
 word splitting and pathname expansion. When the expansion occurs within double
 quotes, it expands to a single word with the value of each parameter separated
@@ -147,9 +147,9 @@ IFS variable. If <span class="monospaced">IFS</span> is unset, the parameters ar
 <div class="icon">
 <i class="icofont-location-arrow"></i>
 </div>
-<div class="content">Let&#8217;s take a look at the difference between <span class="monospaced">$*</span> and <span class="monospaced">"$*"</span>:</div>
+<div class="content">Let&#8217;s take a look at the difference between $* and &#8220;$*&#8221;:</div>
 </div>
-<div class="paragraph"><p>First create a function to display the elements in <span class="monospaced">$*</span> and <span class="monospaced">"$*"</span>:</p></div>
+<div class="paragraph"><p>First create a function to display the elements in $* and &#8220;$*&#8221;:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>    function func() { local a=($*) b=("$*"); declare -p a b; }</pre>
@@ -157,29 +157,29 @@ IFS variable. If <span class="monospaced">IFS</span> is unset, the parameters ar
 <div class="paragraph"><p>Then:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
-<pre>    $ func 1 2 3
-    declare -a a=([0]="1" [1]="2" [2]="3")
-    declare -a b=([0]="1 2 3")</pre>
+<pre>    $ func 1 2 "3 4"
+    declare -a a=([0]="1" [1]="2" [2]="3" [3]="4")
+    declare -a b=([0]="1 2 3 4")</pre>
 </div></div>
-<div class="paragraph"><p>We can find out that <span class="monospaced">$*</span> expands each parameter to a separate word, but <span class="monospaced">"$*"</span>
+<div class="paragraph"><p>We can find out that $* expands each parameter to a separate word, but &#8220;$*&#8221;
 expands each parameter to one word.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_parameter">Parameter @</h3>
 <div class="paragraph"><p><span class="monospaced">@</span>: Expands to the positional parameters, starting from one. When the
 expansion occurs within double quotes, each parameter expands to a separate
-word. That is, &#8220;$@&#8221; is equivalent to &#8220;$1" "$2" &#8230;&#8221;. If the double-quoted
+word. That is, &#8220;$@&#8221; is equivalent to &#8220;$1&#8221; &#8220;$2&#8221; &#8230;. If the double-quoted
 expansion occurs within a word, the expansion of the first parameter is joined
 with the beginning part of the original word, and the expansion of the last
 parameter is joined with the last part of the original word. When there are no
-posisional parameters, <span class="monospaced">"$@"</span> and <span class="monospaced">$@</span>  expand to nothing.</p></div>
+posisional parameters, &#8220;$@&#8221; and $@  expand to nothing.</p></div>
 <div class="admonitionblock">
 <div class="icon">
 <i class="icofont-location-arrow"></i>
 </div>
-<div class="content">Let&#8217;s take a look at the difference between <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span>.</div>
+<div class="content">Let&#8217;s take a look at the difference between $@ and &#8220;$@&#8221;.</div>
 </div>
-<div class="paragraph"><p>First create a function to display the elements in <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span>:</p></div>
+<div class="paragraph"><p>First create a function to display the elements in $@ and &#8220;$@&#8221;:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>    function func() { local a=($@) b=("$@"); declare -p a b; }</pre>
@@ -187,58 +187,10 @@ posisional parameters, <span class="monospaced">"$@"</span> and <span class="mon
 <div class="paragraph"><p>Then:</p></div>
 <div class="listingblock">
 <div class="content monospaced">
-<pre>    $ func 1 2 3
-    declare -a a=([0]="1" [1]="2" [2]="3")
-    declare -a b=([0]="1" [1]="2" [2]="3")</pre>
+<pre>    $ func 1 2 "3 4"
+    declare -a a=([0]="1" [1]="2" [2]="3" [3]="4")
+    declare -a b=([0]="1" [1]="2" [2]="3 4")</pre>
 </div></div>
-<div class="paragraph"><p>We can find out that <span class="monospaced">$@</span> and <span class="monospaced">"$@"</span> are same.</p></div>
-<div class="admonitionblock">
-<div class="icon">
-<i class="icofont-ui-note"></i>
-</div>
-<div class="content">
-<div class="title">A NOTE admonition block</div>
-<div class="paragraph"><p>Qui in magna commodo, est labitur dolorum an. Est ne magna primis
-adolescens.</p></div>
-<div class="olist arabic"><ol class="arabic">
-<li>
-<p>
-Fusce euismod commodo velit.
-</p>
-</li>
-<li>
-<p>
-Vivamus fringilla mi eu lacus.
-</p>
-<div class="olist loweralpha"><ol class="loweralpha">
-<li>
-<p>
-Fusce euismod commodo velit.
-</p>
-</li>
-<li>
-<p>
-Vivamus fringilla mi eu lacus.
-</p>
-</li>
-</ol></div>
-</li>
-<li>
-<p>
-Donec eget arcu bibendum
-      nunc consequat lobortis.
-</p>
-</li>
-</ol></div>
-</div>
-</div>
-<div class="admonitionblock">
-<div class="icon">
-<i class="icofont-ui-note"></i>
-</div>
-<div class="content">
-<div class="title">whtat</div>What lovely war.</div>
-</div>
 </div>
 </div>
 </div>
