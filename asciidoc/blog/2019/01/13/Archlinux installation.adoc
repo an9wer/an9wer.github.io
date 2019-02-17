@@ -202,3 +202,9 @@
 ----
     sudo pacman -S imagemagick
 ----
+
+-   Install telegram:
+
+----
+    sudo pacman -S telegram-desktop
+----
