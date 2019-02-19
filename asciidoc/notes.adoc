@@ -10,6 +10,10 @@
 
 -   link:notes/Bash%20Builtin.html[Bash Builtin]
 
+== Development
+
+-   link:notes/make.html[make]
+
 == Miscellaneous
 
 -   link:notes/English%20Tips.html[English Tips]

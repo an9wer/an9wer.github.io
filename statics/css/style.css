@@ -78,8 +78,8 @@ th, td {
 }
 
 th {
-    border: 2px solid #666;
-    /* border-bottom: 2px solid #666; */
+    border-bottom: 2px solid #666;
+    border-top: 2px solid #666;
     font-width: 600;
 }
 
