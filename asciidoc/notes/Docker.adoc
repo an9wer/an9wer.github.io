@@ -1,0 +1,9 @@
+= Docker
+
+-   https://docs.docker.com/config/containers/logging/[Logging]
+
+-   https://docs.docker.com/config/containers/logging/configure/[Logging drivers]
+
+-   https://docs.docker.com/develop/develop-images/multistage-build/[Multi-stage build]
+
+-   https://stackoverflow.com/a/23938978/8956133[Copy docker images from one host to another]
