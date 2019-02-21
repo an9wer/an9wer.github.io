@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+class="current"
+href="/blog.html">Blog</a>
+<a id="notes"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">Shadowsocks 连接异常小记</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>年后来公司，发现我自己的两台 shadowsocks 代理连接异常，主要表现是代理连接上之后
+几秒钟就会断掉，过了大概五分钟之后又恢复正常，再次连接后又出现这种情况。后来查
+看了 shadowsocks 项目主页，发现有人和我遇到了一样的情况，具体请看
+<a href="https://github.com/shadowsocks/shadowsocks/issues/1393">这个 issue</a>，回答中有人
+给出了一种解决方案：在 shadowsocks 外面包一层 kcptun。</p></div>
+<div class="paragraph"><p>但当时还是有点不以为意，因为公司同事的代理还能用，我猜测可能是临时的网络抽风，
+或者是 Vultr 主机出现了网络问题，等修复好就行了。可是接下去两天问题依然存在，而
+且我在 YouTube 上看到了 <a href="https://www.youtube.com/watch?v=uL5HTRHrxzk">这个视频</a>
+，我突然意识到可能是 GFW 升级导致了 shadowsocks 代理异常。</p></div>
+<div class="paragraph"><p>于是我才决定在服务器上部署 kcptun，同时为了搭建方便，顺便写了个
+<a href="https://github.com/an9wer/bpd">Dockerfile</a>.</p></div>
+<div class="paragraph"><p>Thanks for reading :)</p></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>
