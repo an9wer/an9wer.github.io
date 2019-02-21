@@ -27,7 +27,7 @@ build() {
     fi
 
     # Blog
-    html=$(sed -nE 's@.*(201[89]/[01][0-9]/[0-3][0-9]/[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
+    html=$(sed -nE 's@.*(201[89]/[01][0-9]/[0-3][0-9]_[^/]+\.adoc$)@\1@p' <(echo "$adoc"))
     category=blog
 
     # Notes
