@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">ssh</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_generating_ssh_keys">Generating SSH keys</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh-keygen -f ~/.ssh/an9wer_rsa -o -a 100 -t rsa -b 4096 -C "an9wer@gmail.com"</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">-f</span>: specifies the filename of the key file.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-t</span>: specifies the type of key to create.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-b</span>: specifies the number of bits in the key to create.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-o</span>: saves private keys using the new OpenSSH format rather than the more compatible PEM format. The new format has increased resistance to brute-force password cracking .
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-a</span>: specifies the number of KDF (key derivation function) rounds used. Higher numbers result in slower passphrase verification and increased resistance to brute-force password cracking (should the keys be stolen).
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-C</span>: provides a new comment.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_copy_public_key_to_remote_server">Copy public key to remote server</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh-copy-id -i ~/.ssh/an9wer_rsa.pub an9wer@example.com</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">-i</span>: specifies the public key to be sent to remote server.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ssh_agents">SSH agents</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Check whether SSH agent is started:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    echo $SSH_AGENT_PID</pre>
+</div></div>
+<div class="paragraph"><p>If some number display on the screen, it means the agent has been started.
+Otherwise, you should run the following command to start it:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    eval $(ssh-agent)</pre>
+</div></div>
+<div class="paragraph"><p>You can also kill the current agent:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh-agent -k</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_add_ssh_key_to_agent">Add ssh key to agent</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This command will add private ssh key <span class="monospaced">~/.ssh/an9wer_rsa</span> into authentication
+agent.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh-add ~/.ssh/an9wer_rsa</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ssh_config">~/.ssh/config</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>If you want to setup aliases for servers you access often, you can create the
+file <span class="monospaced">~/.ssh/config</span> and specify each server in it. A simple example is as
+follows:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    Host example0
+        HostName example0.com
+
+    Host example1
+        HostName example1.com
+        LocalForward 80 example.com:80
+
+    Host *
+        User an9wer
+        Port 22
+        ServerAliveInterval 240
+        ServerAliveCountMax 3</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ssh_tunnels">SSH tunnels</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_local_port_forwarding">Local port forwarding</h3>
+<div class="paragraph"><p>The <span class="monospaced">-L</span> option of ssh binds the given port on local host to the given port on
+remote host. Here&#8217;s some examples:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh -fN -L 8000:github.com:80 user@example.com</pre>
+</div></div>
+<div class="paragraph"><p>In this example, the server <span class="monospaced">example.com</span> will forward any connections from
+port 8000 on local side to <span class="monospaced">github.com</span> at port 80. It&#8217;s just like the server
+<span class="monospaced">example.com</span> makes a tunnel between local and <span class="monospaced">github.com</span>.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh -fN -L 8000:localhost:80 user@example.com</pre>
+</div></div>
+<div class="paragraph"><p>The difference between this example and previous one is the remote host being
+changed to <span class="monospaced">localhost:80</span>. This means it will forward connectons from local
+port 8000 to port 80 on <span class="monospaced">localhost</span> of the server <span class="monospaced">example.com</span>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_remote_port_forwarding">Remote port forwarding</h3>
+<div class="paragraph"><p>The <span class="monospaced">-R</span> option of ssh specifies that the connection to the given port on remote
+server will be forwarding to the local side.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh -fN -R 80:localhost:8000 user@example.com</pre>
+</div></div>
+<div class="paragraph"><p>This command will forward connections from port 80 on the server <span class="monospaced">example.com</span>
+to port 8000 on local side.</p></div>
+<div class="paragraph"><p><strong>Note</strong>: SSH doesn’t by default allow remote hosts to forwarded ports. To enable
+this open <span class="monospaced">/etc/ssh/sshd_config</span> and add the following line somewhere in that
+config file.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    GatewayPorts yes</pre>
+</div></div>
+<div class="paragraph"><p>Then when you connect to example.com:80, it&#8217;ll forward to localhost:8000 on
+local side. If you don&#8217;t have <span class="monospaced">GatewayPorts yes</span> in your configuration file,
+it&#8217;ll only forward localhost:80 on example.com to localhost:8000 on local side.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_socks_proxy">socks proxy</h3>
+<div class="paragraph"><p>The <span class="monospaced">-D</span> option of ssh can set up a local socks proxy, which supports socks4
+and socks5 protocols.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ssh -fN -D 1080 user@example.com</pre>
+</div></div>
+<div class="paragraph"><p>This command will make a local socks proxy on localhost:1080, you can check it
+by the command <span class="monospaced">curl --socks5 1080 google.com</span>.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_autossh">autossh</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    autossh [-M port[:echo_port]] [-f] [SSH_OPTIONS]</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">-M</span>: specifies the base monitoring port to use.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">-f</span>: causes autossh to drop to the background before running ssh.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><strong>Note</strong>: <span class="monospaced">-M 0</span> sets the monitor port to 0 turns the monitoring function off,
+and autossh will only restart ssh upon ssh&#8217;s exit. For example, if you are
+using a recent version of OpenSSH, you may wish to explore using the
+<span class="monospaced">ServerAliveInterval</span> and <span class="monospaced">ServerAliveCountMax</span> options to have the SSH client
+exit if it finds itself no longer connected to the server. In many ways this
+may be a better solution than the monitoring port.</p></div>
+<div class="paragraph"><p><strong>Note</strong>: There is a crucial a difference between <span class="monospaced">-f</span> with autossh, and <span class="monospaced">-f</span>
+with ssh: when used with autossh ssh will be unable to ask for passwords or
+passphrases.</p></div>
+<div class="paragraph"><p>In the following example, autossh send data on port 20000 and receive it back
+on 20001:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    autossh -M 20000 -R 80:localhost:8000 an9wer@example.com</pre>
+</div></div>
+<div class="paragraph"><p>In the following example, we turn the autossh monitoring function off, instead,
+we use ssh built-in function to monitor connection:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    autossh -M 0 -o "ServerAliveInterval 240" -o "ServerAliveCountMax 12" -R 80:localhost:8000 an9wer@example.com</pre>
+</div></div>
+<div class="paragraph"><p>We can also write these options to <span class="monospaced">~/.ssh/config</span> file:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    Host example
+        HostName example.com
+        User an9wer
+        Port 22
+        IdentityFile ~/.ssh/an9wer_rsa
+        RemoteForward 80 localhost:8000
+        ServerAliveInterval 240
+        ServerAliveCountMax 12</pre>
+</div></div>
+<div class="paragraph"><p>And we can run it easily by the following command:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    autossh -M 0 -f -N example</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://wiki.archlinux.org/index.php/SSH_keys">ssh key</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">ssh tunnel</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://dltj.org/article/ssh-as-socks-proxy/">ssh socks proxy</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/">autossh</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

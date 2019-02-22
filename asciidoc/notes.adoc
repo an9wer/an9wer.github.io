@@ -1,8 +1,26 @@
-== Shell
+== Shell commands
+
+-   link:notes/fc.html[fc]
+
+-   link:notes/xmodmap.html[xmodmap]
+
+-   link:notes/install.html[install]
 
 -   link:notes/xargs.html[xargs]
 
--   link:notes/ImageMagick.html[ImageMagick]
+-   link:notes/cron.html[cron]
+
+-   link:notes/gpg.html[gpg]
+
+-   link:notes/ssh.html[ssh]
+
+-   link:notes/env.html[env]
+
+-   link:notes/man.html[man]
+
+== Bash
+
+-   link:notes/shebang.html[Shebang]
 
 -   link:notes/Bash%20Parameters.html[Bash Parameters]
 
@@ -10,15 +28,31 @@
 
 -   link:notes/Bash%20Builtin.html[Bash Builtin]
 
+-   link:notes/Bash%20completion.html[Bash completion]
+
 == Development
+
+-   link:notes/git.html[git]
 
 -   link:notes/make.html[make]
 
-== Container
-
 -   link:notes/Docker.html[Docker]
 
+== Network
+
+-   link:notes/iptables.html[iptables]
+
+== Tools
+
+-   link:notes/rsync.html[rsync]
+
+-   link:notes/sysstat.html[sysstat]
+
 == Miscellaneous
+
+-   link:notes/user%20and%20group.html[User and group]
+
+-   link:notes/ImageMagick.html[ImageMagick]
 
 -   link:notes/English%20Tips.html[English Tips]
 

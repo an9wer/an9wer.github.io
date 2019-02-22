@@ -1,0 +1,54 @@
+= xmodmap
+
+There are two types of keyboard values in Xorg: keycodes and keysyms.
+
+-   `keycode`: The keycode is the numeric representation (which may be
+    specified in decimal, hex or octal and can be determined by running the
+    `xev` program) received by the kernel when a key or a mouse button is
+    pressed.
+    
+-   `keysym`: The keysym is the value assigned to the keycode. For example,
+    pressing 'a' generates the keycode 38, which is mapped to the keysym 0x61,
+    which matches a in the ASCII table. The keysyms are managed by Xorg in a
+    table of keycodes defining the keycode-keysym relations, which is called
+    the keymap table. This can be shown by running xmodmap.
+
+== Options
+
+-   `-e expression`: This option specifies an expression to be executed. Any
+    number of expressions may be specified from the command line.
+
+-   `-pm`: This option indicates that the current modifier map should be
+    printed on the standard output. This is the default mode of operation if no
+    other mode options are specified.
+
+-   `-pke`: This option indicates that the current keymap table should be
+    printed on the standard output in the form of  expres‐ sions that can be
+    fed back to xmodmap.
+
+== Expressions
+
+There are two vital expressions which have the same effect, they all assign the
+list of keysyms to the indicated keycode:
+
+----
+    keycode NUMBER = KEYSYMNAME ...
+----
+
+----
+    keysym KEYSYMNAME = KEYSYMNAME ...
+----
+
+*Note*: In the second expression, The KEYSYMNAME on the left hand side is
+translated into matching keycodes used to perform the corresponding  set  of
+keycode  expressions. 
+
+*Note*: In all expressions, Keysyms on the left hand side of the = sign are
+looked up before any changes are made. This makes it possible to swap modifier
+keys.
+
+== References
+
+-   https://wiki.archlinux.org/index.php/xmodmap[archwiki modmap]
+
+-   `man xmodmap`

@@ -32,7 +32,9 @@ ____
 -   2019/01/28
 
 ____
-这两天 github 上莫名其妙地多出几个 follower，我表示很惊喜。
+这两天 github 上莫名其妙地多出几个 follower。
+
+What a surprise!
 ____
                 
 

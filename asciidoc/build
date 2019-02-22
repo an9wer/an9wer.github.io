@@ -59,8 +59,12 @@ build() {
 
     html=$OUT_DIR/${html%\.adoc}.html
     mkdir -p "$(dirname "$html")"
-    asciidoc -b html5 -a "category=$category" -f "$IN_DIR/html5.conf" -o "$html" "$adoc"
-    echo "'$adoc' -> '$html'"
+    #  Only build when html doesn't exist or mtime of adoc is updated.
+    if [[ ! -f $html ]] ||
+        ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$adoc") ))); then
+      asciidoc -b html5 -a "category=$category" -f "$IN_DIR/html5.conf" -o "$html" "$adoc"
+      echo -e "'$adoc'\n->\t'$html'"
+    fi
   done
   set +e
 }

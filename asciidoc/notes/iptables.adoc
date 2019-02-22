@@ -1,0 +1,300 @@
+= iptables
+
+== Options
+
+-   `-t table`: This option specifies the packet matching table  which the
+    command should operate on. If the kernel is configured with automatic
+    module loading, an attempt will be made to load the appropriate module for
+    that table if it is not already there. The tables contain `filter`
+    (default), `nat`, `mangle`, `raw` and `security`.
+
+-   `-A chain rule-specification`: Append one or more rules to the end of the
+    selected chain. When the source and/or destiation names resolve the more
+    than one address, a rule will be added for each possible address
+    combination.
+
+-   `-C chain rule-specification`: Check whether a rule matching the
+    specification does exist in the selected chain. This command uses the same
+    logic as `-D` to find a matching entry, but does not alter the existing
+    iptables configuration and uses its exit code to indicate success or
+    failure.
+
+-   `-D chain rule-specification|rulenum`: Delete one or more rules from the
+    selected chain. There are two verisons of this command: the rule can be
+    specified as a number in the chain (starting at 1 for the first rule) or a
+    rule to match.
+
+-   `-I chain [rulenum] rule-specification`: Insert one or more rules in the
+    selected chain as the given rule number. So, if the rule number is 1, the
+    rule or rules are inserted at the head of the chain. This is also the
+    default if no rule number is specified.
+
+-   `-R chain rulenum rule-specification`: Replace a rule in the selected
+    chain. If the source and/or destination names resolve to multiple address,
+    the command will fail. Rule are numbered starting at 1.
+
+-   `-L [chain]`: List all rules in the selected chain. If no chain is selecte,
+    all chains are listed. 
+
+-   `-S [chain]`: Print all rules in the selected chain. If no chain is
+    selected, all chains are printed like iptables-save.
+
+-   `-F [chain]`: Flush the selected chain. This is equivalent to delete all
+    the rules one by one.
+
+-   `-Z [chain [rulenum]]`: Zero the packet and byte counters in all chains, or
+    only the given chain, or only the given rule in a chain.
+
+-   `-v`: Verbose output.
+
+-   `-n`: Numeric output. IP address and port numbers will be printed in
+    numeric format.
+
+-   `-x`: Expand numbers. Display the exact value of the packet and byte
+    counters, instead of only the rounded number in K's (multiples of 1000) M's
+    (Multiples of 1000K) or G's (multiples of 1000M). This option is only
+    relevant for the `-L` option.
+
+-   `--line-numbers`: When listing rules, add line numbers to the beginning of
+    each rule, corresponding to that rule's position in the chain.
+
+Find more in `man iptbales`.
+
+== Parameters
+
+-   `[!] -p protocol`: The protocol of the rule or of the packet to check. The
+    specified protocol can be one of tcp, udp, udplite, icmp, icmpv6, esp, ah,
+    sctp, mh or the special keyword "all", or it can be a numeric value,
+    representing one of these protocols or a different one. A prottocal name
+    from `/etc/protocols` is also allowed. A "!" argument before the protocol
+    inverts the test. The number zero is equivalent to "all". "all" will match
+    with all protocols and is taken as default when this option is ommited.
+
+
+-   `[!] -s address[/mask][,...]`: Source specification. Address can be either
+    a network name, a hostname, a network IP address (with /mask), or a plain
+    IP address. Hostname will be resolved once only, before the rule is
+    submitted to the kernel. A "!" argument before the address specification
+    inverts the sense of the address. Multiple address can be specified, but
+    this will expand to multiple rules.
+
+-   `[!] -d address[/mask][,...]`: Destination specification. (similar to `-s`
+    option)
+
+-   `-m match`: Specifies a match to use, that is, an extension module that
+    test for a specific property.
+
+-   `-j target`: Specifies the target of the rule; i.e., what to do if the
+    packet matches it. The target can be a user-defined chain (other than the
+    one this rule is in), one of the special builtin targets (ACCEPT, DROP,
+    REJECT ...) which decide the fate of the packet immediately, or an
+    extension. If this option is omitted in a rule, then matching the rule will
+    have no effect on the packet's fate, but the counters on the rule will be
+    increment.
+
+-   `-c packets bytes`: Enables the administrator to initialize the packet and
+    byte counters of a rule.
+
+Find more in `man iptbales`.
+
+== Examples
+
+Print all rules in `INPUT` chain of `filter` table.
+
+----
+    sudo iptables -vS INPUT
+----
+
+List all rules in `INPUT` chain of `filter` table.
+
+----
+    sudo iptables -nvL INPUT
+----
+
+List all rules in `INPUT` chain of `filter` table with line numbers.
+
+----
+    sudo iptables -nvL INPUT --line-numbers
+----
+
+Allow a single IP address for incomming connection.
+
+----
+    sudo iptables -A INPUT -s 10.10.10.10  -j ACCEPT
+----
+
+Allow a range of IP addresses for incomming connection.
+
+----
+    sudo iptables -A INPUT -s 10.10.10.0/24 -j ACCEPT
+----
+
+Or:
+
+----
+    sudo iptables -A INPUT -s 10.10.10.0/255.255.255.0 -j ACCEPT
+----
+
+Block a specific port for incomming connection from any IP address.
+
+----
+    sudo iptables -A INPUT -p tcp -m tcp --dport 8000 -j DROP
+----
+
+Block a specific port for incomming connection from a specific IP address.
+----
+    sudo iptables -A INPUT -s 10.10.10.10 -p tcp -m tcp --dport 8000 -j DROP
+----
+
+Block to connect to a specific ip:port.
+----
+    sudo iptables -A OUTPUT -d 10.10.10.10 -p tcp -m tcp --dport 8000 -j DROP
+----
+
+Block to connect from a specific ip:port.
+
+----
+    sudo iptables -A INPUT -s 10.10.10.10 -p tcp -m tcp --sport 8000 -j DROP
+----
+
+Flush all rules in `INPUT` chain of filter table.
+
+----
+    sudo iptable -F INPUT
+----
+
+Delete a specified rule by a rule number in `OUTPUT` chain of `filter` table.
+
+----
+    sudo iptables -D OUTPUT 2
+----
+
+Clear byte counters in `OUTPUT` chain of `filter` table.
+
+----
+    sudo iptables -Z OUTPUT
+----
+
+*Note*:
+
+A lot of protocols are going to require two-way communication. For
+example, if you want to allow SSH connections to your system, the input and
+output chains are going to need a rule added to them. But, what if you only
+want SSH coming into your system to be allowed? Won’t adding a rule to the
+output chain also allow outgoing SSH attempts? That’s where connection states
+come in, which give you the capability you’d need to allow two way
+communication but only allow one way connections to be established.
+
+Take a look at this example, where SSH connections FROM 10.10.10.10 are
+permitted, but SSH connections TO 10.10.10.10 are not. However, the system is
+permitted to send back information over SSH as long as the session has already
+been established, which makes SSH communication possible between these two
+hosts.
+
+----
+    sudo iptables -A INPUT -p tcp --dport ssh -s 10.10.10.10 -m state --state NEW,ESTABLISHED -j ACCEPT
+    sudo iptables -A OUTPUT -p tcp --sport 22 -d 10.10.10.10 -m state --state ESTABLISHED -j ACCEPT
+----
+
+*Note*:
+
+To monitor a specific port for incomming connection from any IP address.
+
+----
+    sudo iptabels -A INPUT -p tcp -m tcp --dport 10000
+    sudo watch -n 1 iptables -vnL INPUT
+----
+
+To monitor a specific port for outgoing connection to any IP address.
+
+----
+    sudo iptables -A OUTPUT -p tcp -m tcp --sport 10000
+    sudo watch -n 1 iptables -vnL OUTPUT
+----
+
+
+
+== iptables-save
+
+=== Options
+
+-   `-t tablename`: Restrict output to only one table. If not specified, output
+    include all avilable tables.
+
+=== Examples ==
+
+Save current rules to rule file:
+
+----
+    sudo iptables-save > /path/to/iptables.rules
+----
+
+Save only `filter` table rule to rule file:
+
+----
+    sudo iptables-save -t filter > /path/to/iptables.rules
+----
+    
+== iptables-restore
+
+=== Options
+
+-   `-c`: Restore the values of all packet and byte counters.
+
+-   `-n`: Don't flush the previous contents of the table. If no specified, both
+    commands flush al previous contents of the respective table.
+
+-   `-t`: Only parse and construct the ruleset, but do not commit it.
+
+-   `-T table`: Restore only the named table even if the input stream contains
+    other ones.
+
+Find more in `man iptbales-restore`.
+
+=== Examples
+
+Check all rules in rule file.
+
+----
+    sudo iptables-restore -t /path/to/iptables.rules
+----
+
+Flush the previous rules and restore all rules from rule file.
+
+----
+    sudo iptables-restore /path/to/iptables.rules
+----
+
+Do not flush the previous rules but only restore all rules from rule file.
+
+----
+    sudo iptables-restore -n /path/to/iptables.rules
+----
+
+Restore only the `filter` table rules from rule file.
+
+----
+    sudo iptables-restore -T filter /path/to/iptables.rules
+----
+
+Do not flush the previous rules but only restore the `filter` table rules form
+rule file.
+
+----
+    sudo iptables-restore -n -T filter /path/to/iptables.rules
+----
+
+== References
+
+-   `man iptables`
+
+-   `man iptables-extensions`
+
+-   https://wiki.archlinux.org/index.php/iptables[archwiki iptables]
+
+-   https://netfilter.org/index.html[netfilter]
+
+-   https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html[iptables tutorial]
+
+-   https://opensource.com/article/18/9/linux-iptables-firewalld[difference between iptables and firewalld]
+

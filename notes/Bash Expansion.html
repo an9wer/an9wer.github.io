@@ -173,6 +173,117 @@ It&#8217;s an expansion error if <span class="monospaced">length</span> evaluate
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_pathname_expansion">Pathname Expansion</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>After word splitting, unless the <span class="monospaced">-f</span> option has been set, bash scans each word
+for the characters <span class="monospaced">*</span>, <span class="monospaced">?</span>, and <span class="monospaced">[</span>. If one of these characters appears, then
+the word is regarded as a pattern, and replaced with an alphabetically sorted
+list of fileames matching the pattern. If no matching filnames are found, and
+the shell option <span class="monospaced">nullglob</span> is not enabled, the word is left unchanged. If the
+<span class="monospaced">nullglob</span> option is set, and no matches are found, the word is removed. If the
+<span class="monospaced">failglob</span> shell option is set, and no matches are found, an error message is
+printed and the command is not executed. If the shell option <span class="monospaced">nocaseglob</span> is
+enabled, the match is performed without regard to the case of alphabetic
+characters. When a pattern is used for pathname expansion, the character "."
+at the start of a name or immediately following a slash must be matched
+explicitly, unless the shell option <span class="monospaced">dotglob</span> is set. The filename "." and ".."
+must always be matched explicitly, even if <span class="monospaced">dotglob</span> is set. In other cases,
+the "." character is not treated specially. When matching a pathname, the slash
+character must always be matched explicitly by a slash in the pattern. but in
+other matching contexts it can be matched by a special pattern character.</p></div>
+<div class="paragraph"><p>The <span class="monospaced">GLOBIGNORE</span> shell variable may be used to restrict the set of file names
+matching a pattern. If <span class="monospaced">GLOBIGNORE</span> is set, each matching file name that also
+matched one of the patterns in <span class="monospaced">GLOBIGNORE</span> is removed from the list of
+matches. If the <span class="monospaced">nocaseglob</span> option is set, the matching against the pattern in
+<span class="monospaced">GLOBIGNORE</span> is performed without regard to case. The filenames "." and ".."
+are always ignored when <span class="monospaced">GLOBIGNORE</span> is set and not null. However, setting
+<span class="monospaced">GLOBIGNORE</span> to a non-null value has the effect of enabling the <span class="monospaced">dotglob</span> shell
+option, so all other filenames beginnig with a "." will match. To get the old
+behavior of ignoring filenames beginning with a ".", make ".*" one of the
+patterns in <span class="monospaced">GLOBIGNORE</span>. the <span class="monospaced">dotglob</span> option is disabled when <span class="monospaced">GLOBIGNORE</span> is
+unset. The pattern matching honors the setting of the <span class="monospaced">extglob</span> shell option.</p></div>
+<div class="sect2">
+<h3 id="_pattern_matching">Pattern Matching</h3>
+<div class="paragraph"><p>Any character that appears in a pattern, other than the special pattern
+characters described below, matches itself. The NUL character may not occor in
+a pattern. A backslash escapes the following character; the escaping backslash
+is discarded when matching.</p></div>
+<div class="paragraph"><p>The special pattern characters have the following meanings:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">*</span>: Matches any string, including the null string. When the <span class="monospaced">globstar</span> is
+    enabled, and * is used in a pathname expansion context, two adjacent *s
+    used as a single pattern will match all files and zero or more directories
+    and subdirectories. If followed by a /, two adjacent *s will match only
+    directories and subdirectories.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">?</span>: Matches any single character.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">[...]</span>: Matches any one of the enclosed characters. A pair of characters
+    spearated by a hyphen denotes a range expression; any character that falls
+    between those two characters, inclusive, using the current locale&#8217;s
+    collating sequence and character set, is matched. If the first character
+    following the <span class="monospaced">[</span> is a <span class="monospaced">!</span> or a <span class="monospaced">^</span> then any character not enclosed is
+    matched. The sorting order of characters in range expressions is determined
+    by the current locale and the values of the of the <span class="monospaced">LC_COLLATE</span> or <span class="monospaced">LC_ALL</span>
+    shell variables, if set. To obtain the traditional interpretation of range
+    expressions, where [a-d] is equivalent ot [abcd], set value of the <span class="monospaced">LC_ALL</span>
+    shell variable to C, or enable the <span class="monospaced">globasciiranges</span> shell option. A <span class="monospaced">-</span>
+    may be matched by including it as the first or last character in the set. A
+    <span class="monospaced">]</span> may be matched by including it as the first character in the set.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Within <span class="monospaced">[</span> and <span class="monospaced">]</span>, character classes can be specified using the syntax
+    <span class="monospaced">[:class:]</span>, where class is one of the following classes defined in the
+    POSIX standard: alnum alpha ascii blank cntrl digit graph lower print punct
+    space upper word xdigit. A character class matches any character belonging
+    to that class. The word character class matches letters, digits, and the
+    character _.
+</p>
+</li>
+<li>
+<p>
+Within <span class="monospaced">[</span> and <span class="monospaced">]</span>, an equivalence class can be specified using the syntax
+    <span class="monospaced">[=c=]</span>, which matches all characters with the same collation weight (as
+    defined by the current locale) as teh character c.
+</p>
+</li>
+<li>
+<p>
+Within <span class="monospaced">[</span> and <span class="monospaced">]</span>, the syntax <span class="monospaced">[.symbol.]</span> matches the collating symbol
+    symbol.
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>If the <span class="monospaced">extglob</span> shell option is enabled using the <span class="monospaced">shopt</span> builtin, several
+extended pattern matching operators are recognized. In the following
+description, a pattern-list is a list of one or more patterns separated by a
+<span class="monospaced">|</span>. Composite patterns may be formed using one or more of the following
+<span class="monospaced">sub-patterns</span>:</p></div>
+<div class="paragraph"><p><span class="monospaced">?(pattern-list)</span>: Matches zero or one occurence of the given patterns.</p></div>
+<div class="paragraph"><p><span class="monospaced">*(pattern-list)</span>: Matches zero or more occurrences of the given patterns.</p></div>
+<div class="paragraph"><p><span class="monospaced">+(pattern-list)</span>: Matches one or more occurrences of the given patterns.</p></div>
+<div class="paragraph"><p><span class="monospaced">@(pattern-list)</span>: Matches one of the given patterns.</p></div>
+<div class="paragraph"><p><span class="monospaced">!(pattern-list)</span>: Matches anything except one of the given patterns.</p></div>
+<div class="paragraph"><p>Complicated extended pattern matching against long string is slow, especially
+when the patterns contain alternations and the string contain multiple matches.
+Using separate matches against shorter strings, or using arrays of strings
+instead of a single long string, may be faster.</p></div>
+</div>
+</div>
+</div>
 </div> <!-- content -->
 </div> <!-- post -->
 <div id="footer">

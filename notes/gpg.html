@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">gpg</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_basic">Basic</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_how_to_specify_a_user_id">How to specify a user id</h3>
+<div class="paragraph"><p><span class="monospaced">By key Id</span>: This format is deduced from the length of the string and its
+content or the <em>0x</em> prefix. An exclamation mark (!) may be appended to force
+using the specified primary or secondary key and not to try and calculate which
+primary or secondary key to use.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    662E8566
+    0662E8566
+    0x662E8566
+
+    DB4A58F6662E8566
+    0DB4A58F6662E8566
+    0xDB4A58F6662E8566</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">By fingerprint</span>: This format is deduced from the length of the string and its
+content or the <em>0x</em> prefix. An exclamation mark (!) may be append to force
+using the specified primary or secondary key and not to try and calculate
+which primary or secondary key to use.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    85295C7BBFCDF3C1061BE107A358019FB93DD1F4
+    085295C7BBFCDF3C1061BE107A358019FB93DD1F4
+    0x85295C7BBFCDF3C1061BE107A358019FB93DD1F4</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">By exact match on OpenPGP user ID</span>: This is denoted by a leading euqal sign.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    =an9wer &lt;an9wer@gmail.com&gt;</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">By exact match on an email address</span>: This is indicated by enclosing the email
+address in the usual way in with left and right angles.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    &lt;an9wer@gmail.com&gt;</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">By partial match on an email address</span>: This is indicated by prefixing the
+search string with an @. This uses a substring search but considers only the
+mail address.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    @9</pre>
+</div></div>
+<div class="paragraph"><p><span class="monospaced">By substirng match</span>: This is the default mode but applications may want to
+explicitly indicate this by putting the asterisk in frot. Match is not case
+sensitive.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    9
+    *9</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_common">Common</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--homedir dir</span>: Set the name of the home directory to dir. If this option is
+not used, the home directory defaults to <span class="monospaced">~/.gnupg</span>. It is only recognized when
+given on the command line. It also overrides any home directory stated throuth
+the environment variable <span class="monospaced">GNUPGHOME</span>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="paragraph"><p>List all public keys located in specified home directory:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --homedir /path/to/homdir -k</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_list_keys">List keys</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>When listing secret keys with <span class="monospaced">gpg -K</span>, keys are marked with either sec or ssb.
+When listing public keys with <span class="monospaced">gpg -k</span>, keys are marked with either pub or sub.</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:50%;">
+<col style="width:50%;">
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" >     </th>
+<th class="tableblock halign-left valign-top" > Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">sec</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">secret key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">ssb</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">secret subkey</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">pub</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">public key</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">sub</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">public subkey</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph"><p>When listing either secret keys or public keys, each key has a role and is
+represented by a character:</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;">
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" > Character </th>
+<th class="tableblock halign-left valign-top" > Constant          </th>
+<th class="tableblock halign-left valign-top" > Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">S</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">PUBKEY_USAGE_SIG</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">key is good for signing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">PUBKEY_USAGE_CERT</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">key is good for certifying other signatures</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">E</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">PUBKEY_USAGE-ENC</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">key is good for encryption</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">PUBKEY_USAGE_AUTH</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">key is good for authentication</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_options_2">Options</h3>
+<div class="paragraph"><p><span class="monospaced">-k --list-keys --list-public-keys</span>: List the specified keys. If no keys are
+specified, then all keys from the configured public keyrings are listed.</p></div>
+<div class="paragraph"><p><span class="monospaced">-K --list-secret-keys</span>: List the specified secret keys. If no keys are
+specified, then all known secret keys are listed.</p></div>
+<div class="paragraph"><p><span class="monospaced">--fingerprint</span>: List all keys (or the specified ones) along with their
+fingerprints. This is the same output as <span class="monospaced">--list-keys</span> but with additional
+output of a line with the finterprint. May also be combined with <span class="monospaced">--list-sigs</span>
+or <span class="monospaced">--check-sigs</span>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_2">Examples</h3>
+<div class="paragraph"><p>List all public keys:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -k</pre>
+</div></div>
+<div class="paragraph"><p>List all public keys specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -k {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>List all secret keys:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -K</pre>
+</div></div>
+<div class="paragraph"><p>List all secret keys specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -K {user-id}</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generate_and_delete_key">Generate and delete key</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_3">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--generate-key</span>: Generate a new key pair using the current default parameters.
+This is the standard command to create a new key. In addition to the key a
+revocation certificate is created and stored in the <em>openpgp-revocs.d</em>
+directory below the GnuPG home directory.</p></div>
+<div class="paragraph"><p><span class="monospaced">--full-generate-key</span>: Generate a new key pair with dialogs for all options.
+This is an extended version of --generate-key. There is also a feature which
+allows you to create keys in batch mode.</p></div>
+<div class="paragraph"><p><span class="monospaced">--delete-secret-keys name</span>: Remove ke from the secret keyring.</p></div>
+<div class="paragraph"><p><span class="monospaced">--delete-keys name</span>: Remove key from the public keyring.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_3">Examples</h3>
+<div class="paragraph"><p>Generate a new key pair:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --full-generate-key</pre>
+</div></div>
+<div class="paragraph"><p>Delete secret keys:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --delete-secret-keys {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Delete public key (<strong>Note</strong>: It is needed to delete secret keys first):</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --delete-keys {user-id}</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revoke_key">Revoke key</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_option">Option</h3>
+<div class="paragraph"><p><span class="monospaced">--gen-revoke name</span>: Generate a revocation certificate for the complete key. To
+only revoke a subkey or a key signature, use the <span class="monospaced">--edit</span> option. This command
+merely created the revocation certificate so that it can be used to revoke the
+key if that is ever needed. To actually revoke a key that created revocation
+certificate needs to be merged with the key to revoke. This is done by
+importing the revocation certificate using the <span class="monospaced">--import</span> command. Then the
+revoked key needs to be published, which is best done by sending the key to a
+keyserver (--send-key) and by exporting (--export) it to a file which is then
+send to frequent communication partners.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_4">Examples</h3>
+<div class="paragraph"><p>Generate a revocation:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --gen-revoke {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Revoke:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --import /path/to/file.rev</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_export_key">Export key</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_4">Options</h3>
+<div class="paragraph"><p><span class="monospaced">-a --armor</span>: Create ASCII armored output. The default is to create the binary
+OpenPGP format.</p></div>
+<div class="paragraph"><p><span class="monospaced">-o --output file</span>: Write output to file.</p></div>
+<div class="paragraph"><p><span class="monospaced">--export</span>: Either export all keys from all keyrings, or if at least one name
+is given, those of the given name. The exported keys are written to STDOUT or
+to the file given with option <span class="monospaced">--output</span>.</p></div>
+<div class="paragraph"><p><span class="monospaced">--export-secret-keys</span>: Same as <span class="monospaced">--export</span>, but exports the secret keys
+instead.</p></div>
+<div class="paragraph"><p><span class="monospaced">--export-secret-subkeys</span>: This is a GNU extension to OpenPGP and other
+implementations can not be expected to successfully import such a key. Its
+intended use is to generated a full key with an additional signing subkey on a
+dedicated machine and then using this option to export the key without the
+primary key to the main machine.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_5">Examples</h3>
+<div class="paragraph"><p>Export all public keys specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -a --export {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Export all secret keys specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -a --export-secret-keys {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Export subkeys (see below).</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_key">Edit key</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_5">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--edit-key</span>: Present a menu which enables you to do most of hte key management
+related tasks. It expects the specification of a key on the command line.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">uid n</span>: Toggle selection of user ID or photographic user ID with index n.
+    Use * to select all and 0 to deselect all.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">key n</span>: Toggle selection of subkey with index n or key ID n. Use * to
+    select all and 0 to deselect all.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">sign</span>: Make a signature on key of user name If the key is not yet signed
+    by the default user (or the users given with <span class="monospaced">-u</span>), the program displays
+    the information of the key again, together with its fingerprint and asks
+    whether it should be signed. This question is repeated for all users
+    specified with <span class="monospaced">-u</span>.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">lsign</span>: Same as "sign" but the signature is marked as non-exporteable and
+    will therefore never be used by others. This may be used to make keys valid
+    only in the local environment.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">nrsing</span>: Same as "sign" but the signature is marked as non-revocable and
+    can thereforce never be revoked.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">tsign</span>: Make a trust signature. This is a signature that combines the
+    notions of certification (like a regular signature), and trust (like the
+    "trust" command). It is generally only useful in distinct communities or
+    groups.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">delsig</span>: Delete a signature. Note that it is not possible to retract a
+    signature, once it has been send to the public (i.e. to a key server). In
+    that case you better use revsig.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">revsig</span>: Revoke a signature. For every signature which has been generated
+    by one of the secret keys, GnuPG asks whether a revocation certificate
+    should be generated.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">check</span>: Check the signatures on all selected user IDs. With the extra
+    selfsig only self-signatures are shown.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">adduid</span>: Create an additional user ID.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">deluid</span>: Delete a user ID or photographic user ID. Note that it is not
+    possible to retract a user id, once it has been send to the public (i.e. to
+    a key server). In that case you better use revuid.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">revuid</span>: Revoke a user ID or photographic user ID.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">primary</span>: Flag the current user id as the primary one, removes the primary
+    user id flag from all other ids and sets the timestamp of all affected
+    self-signatures one second ahead.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">addkey</span>: Add a subkey to this key.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">delkey</span>: Remove a subkey (secondary key). Note that it is not possible to
+    retract a subkey, once it has been send to the public (i.e. to a
+    keyserver). In that case you better use revkey.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">revkey</span>: Revoke a subkey.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">expire</span>: Change the key or subkey expiration time. If a subkey is
+    selected, the expiration time of this subkey will be changed. With no
+    selection, the key expiration of the primary key is changed.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">trust</span>: Change the owner trust value for the key. This updates the
+    trust-db immediately and no save is required.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">disable enable</span>: Disable or enable an entire key. A disable key can not
+    normally be used for encryption.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">addrevoker</span>: Add a designated revoker to the key. This takes one optional
+    argument: "sensitive". If a designated revoker is marked as sensitive, it
+    will not be exported by default.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">passwd</span>: Change the passphrase of the secret key.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">save</span>: Save all changes to the key rings and quit.
+</p>
+</li>
+<li>
+<p>
+<span class="monospaced">quit</span>: Quit the program without updating the key rings.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><strong>Note</strong>: "l" (for local/non-exportable), "nr" (for non-revocable), and "t" (for
+trust) may be freely mixed and prefixed to "sign" to create a signature of any
+type desired.</p></div>
+<div class="paragraph"><p><span class="monospaced">--list-sigs</span>: Same as <span class="monospaced">--list-keys</span>, but the signatures are listed too. This
+command has the same effect as using <span class="monospaced">--list-keys</span> with <span class="monospaced">--with-sig-list</span>. For
+each signature listed, there are several flags in between the <em>sig</em> tag and
+keyid. These flags give additional information about each signature. From left
+to right, they are the numbers 1-3 for certificate check level (see
+<span class="monospaced">--ask-cert-level</span>), <em>L</em> for a local or non-exportable signature (see
+<span class="monospaced">--lsign-key</span>), <em>R</em> for a non-revocable signature (see the <span class="monospaced">--edit-key</span> command
+<em>nrsing</em>), <em>P</em> for a signature that contains a policy URL (see
+<span class="monospaced">--cert-policy-url</span>), <em>N</em> for a signature that contains a notation (see
+<span class="monospaced">--cert-notation</span>), <em>X</em> for a expired signature (see <span class="monospaced">--ask-cert-expire</span>), and
+the number 1-9 or <em>T</em> for 10 and above to indicate trust signature levels (see
+the <span class="monospaced">--edit-key</span> command <em>tsign</em>).</p></div>
+<div class="paragraph"><p><span class="monospaced">--check-sigs</span>: Same as <span class="monospaced">--list-sigs</span>, but signatures are verified. Note that
+for performancce reasons the revocation status of a signing key is not shown.
+This command has the same effect as using <span class="monospaced">--list-keys</span> with
+<span class="monospaced">--with-sig-check</span>. The status of the verification is indicated by a flag
+directly following the <em>sig</em> tag. A <em>!</em> indicated that the signature has been
+successfully verified, a <em>-</em> ddenotes a bad signaturee and a <em>%</em> is used if an
+error occurred while checking the signature (e.g. a non supported algorithm).</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_6">Examples</h3>
+<div class="paragraph"><p>Trust key:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; trust</pre>
+</div></div>
+<div class="paragraph"><p>Make signature for all users:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; sign</pre>
+</div></div>
+<div class="paragraph"><p>Make signaturefor a specific user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; uid {number}
+    gpg&gt; sign</pre>
+</div></div>
+<div class="paragraph"><p>Delete signature:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; uid {number}
+    gpg&gt; delsig</pre>
+</div></div>
+<div class="paragraph"><p>Add user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; adduid</pre>
+</div></div>
+<div class="paragraph"><p>Delete user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; uid {number}
+    gpg&gt; deluid</pre>
+</div></div>
+<div class="paragraph"><p>Revoke user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; uid {number}
+    gpg&gt; revuid</pre>
+</div></div>
+<div class="paragraph"><p>Set primary user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; uid {number}
+    gpg&gt; primary</pre>
+</div></div>
+<div class="paragraph"><p>Set expire time (If key is expired, it cannot be used anymore.):</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; key {number}
+    gpg&gt; expire</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_encrypt_and_decrypt">Encrypt and decrypt</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_6">Options</h3>
+<div class="paragraph"><p><span class="monospaced">-e --encrypt</span>: Encrypt data to one or more public keys. This command may be
+combined with <span class="monospaced">--sign</span>, <span class="monospaced">--symmetric</span>, or <span class="monospaced">--sign</span> and <span class="monospaced">--symmetric</span> together.
+<span class="monospaced">--recipient</span> and related options specify which public keys to use for
+encryption.</p></div>
+<div class="paragraph"><p><span class="monospaced">-d --decrypt</span>: Decrypt the file given on the command line (or STDIN if no file
+is specified) and write it to STDOUT (or the file specified with <span class="monospaced">--output</span>).
+If the decrypted file is signed, the signature is also verified.</p></div>
+<div class="paragraph"><p><span class="monospaced">-c --symmetric</span>: Entrypt with a symmetric cipher using a passphrase.</p></div>
+<div class="paragraph"><p><span class="monospaced">-r --recipient name</span>: Encrypt for user id. If this option or
+<span class="monospaced">--hidden-recipient</span> is not specified, GnuPG asks for the user-id unless
+<span class="monospaced">--default-recipient</span> is given.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_7">Examples</h3>
+<div class="paragraph"><p>Use a specific public key to encrypt some file (the default name of encrypted
+file is the original filename suffixed with <em>.gpg</em>, but can be change by the
+<span class="monospaced">-o</span> option):</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -e -r {user-id} /path/to/file</pre>
+</div></div>
+<div class="paragraph"><p>Decrypt file:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -d /path/to/file.gpg</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sign_and_verify">Sign and verify</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The difference between the results by using <span class="monospaced">--sign</span> and <span class="monospaced">--clearsign</span> is that
+the data type of the former is binary but the latter is ascii.</p></div>
+<div class="paragraph"><p>Ths difference between the results by using <span class="monospaced">--sign</span> and <span class="monospaced">--detach-sign</span> is
+that the content of the former contains the original data, but the latter does
+not.</p></div>
+<div class="sect2">
+<h3 id="_options_7">Options</h3>
+<div class="paragraph"><p><span class="monospaced">-s --sign</span>: Sign a message. This command may be combined with <span class="monospaced">--encrypt</span>,
+<span class="monospaced">--symmetric</span>, or both <span class="monospaced">--encrypt</span> and <span class="monospaced">--symmetric</span>. The signing key is chosen
+by default or can be set explicitly using the <span class="monospaced">--local-user</span> and
+<span class="monospaced">--default-key</span> options.</p></div>
+<div class="paragraph"><p><span class="monospaced">--clearsign</span>: Make a cleartext signature. The content in a cleartext signature
+is readable without any special software. OpenPGP software is only needed to
+verify the signature. The signing key is chosen by default or can be set
+explicitly using the <span class="monospaced">--local-user</span> and <span class="monospaced">--deafult-key</span>.</p></div>
+<div class="paragraph"><p><span class="monospaced">-b --detach-sign</span>: Make a detached signature.</p></div>
+<div class="paragraph"><p><span class="monospaced">--verify</span>: Assume that the first argument is a signed file and verify it
+without generating any output. With no arguments, the signature packet is read
+from STDIN. If only one argument is given, the specified file is expected to
+include a complete signature. With more than one argument, the first argument
+should specify a file with a detached signature and the remaining files should
+contain the signed data. To read the signed data from STDIN, use <em>-</em> as teh
+second filename. For security reasons, a detached signature will not read the
+signed material from STDIN if not explicitly specified.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_8">Examples</h3>
+<div class="paragraph"><p>Sign a message to raw binary data file:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --sign --default-key {user-id} /path/to/file</pre>
+</div></div>
+<div class="paragraph"><p>The signed file by default is suffixed with <span class="monospaced">.gpg</span>, and can be verified by:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --verify /path/to/file.gpg</pre>
+</div></div>
+<div class="paragraph"><p>Sign a message to ascii data file:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --clearsign --default-key {user-id} /path/to/file</pre>
+</div></div>
+<div class="paragraph"><p>The signed file by default is suffixed with <span class="monospaced">.asc</span>, and can be verified by:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --verify /path/to/file.asc</pre>
+</div></div>
+<div class="paragraph"><p>Sign a message to raw binary data file but abandon original data content.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --detach-sign --default-key {user-id} /path/to/file</pre>
+</div></div>
+<div class="paragraph"><p>The signed file by default is suffixed with <span class="monospaced">.gpg</span>, and can be verified by:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --verify  /path/to/file.gpg /path/to/file</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_subkeys">Subkeys</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_subkeys">Create subkeys</h3>
+<div class="paragraph"><p>First, enter edit-key menu of some user:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --edit-key {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Then, use addkey command and follow the promption to create a subkey:
+{{{
+    gpg&gt; addkey
+}}}</p></div>
+</div>
+<div class="sect2">
+<h3 id="_delete_subkeys">Delete subkeys</h3>
+<div class="paragraph"><p>First, enter edit-key menu specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --edit-key {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Then, use positive number to select key:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; key {number}</pre>
+</div></div>
+<div class="paragraph"><p>Last, use delkey command to delete that key:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; delkey</pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_export_subkeys">Export subkeys</h3>
+<div class="paragraph"><p>Export all subkeys specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --armor --export-secret-subkeys {user-id}</pre>
+</div></div>
+<div class="paragraph"><p>Export a specific subkey (can be displayed by the
+<span class="monospaced">gpg --keyid-format long -K {user-id}</span> command).</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --armor --export-secret-subkeys {subkey-id}!</pre>
+</div></div>
+<div class="paragraph"><p><strong>Note</strong>: The subkey-id should be suffixed with exclamation mark (!).</p></div>
+</div>
+<div class="sect2">
+<h3 id="_encrypt_and_decrypt_2">Encrypt and decrypt</h3>
+<div class="paragraph"><p>Encrypt by a specific subkey:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -r {subkey-id}! -e /path/to/file</pre>
+</div></div>
+<div class="paragraph"><p>Decrypt:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg -d /path/to/file.gpg</pre>
+</div></div>
+<div class="paragraph"><p><strong>Note</strong>: When using a specific (public) subkey to encrypt files, only the
+corresponding (secret) subkey can decrypt them.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_revoke_subkeys">Revoke subkeys</h3>
+<div class="paragraph"><p>First, enter edit-key menu specified by user id:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --edit-key {user id}</pre>
+</div></div>
+<div class="paragraph"><p>Then, use key command to select key:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; key {number}</pre>
+</div></div>
+<div class="paragraph"><p>Last, use revkey command to delete that key:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg&gt; revkey</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ownertrust">Ownertrust</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_8">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--export-ownertrust</span>: Send the ownertrust values to STDOUT. This is useful for
+backup purposes as these values are the only ones which can&#8217;t be re-created
+from a corrupted trustdb.</p></div>
+<div class="paragraph"><p><span class="monospaced">--import-ownertrust</span>: Update the trustdb with the ownertrust values stored in
+files (or STDIN if not given); existing values will be overwritten.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_9">Examples</h3>
+<div class="paragraph"><p>Export ownertrust:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --export-ownertrust &gt; /path/to/ownertrust.txt</pre>
+</div></div>
+<div class="paragraph"><p>Import ownertrust:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --import-ownertrust &lt; /path/to/ownertrust.txt</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gpg_conf">gpg.conf</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">gpg.conf</span> is an options file which by default is located in <span class="monospaced">~/.gnupg/</span>. Long
+options can be put in options file. Short option names will not work - for
+example, "armor" is a valid option for the options file, while "a" is not. Do
+not write the 2 dashes, but simply the name of the option and any required
+arguments. Lines with a hash (<em>#</em>) as the first non-white-space character are
+ignored. Commands may be put in this file too, but that is not generally useful
+as the command will execute automatically with every execution of gpg.</p></div>
+<div class="sect2">
+<h3 id="_options_9">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--default-key name</span>: Use name as the default key to sign with. If this option
+is not used, the default key is the first key found in the secret keyring. Note
+that the <span class="monospaced">-u</span> or <span class="monospaced">--local-user</span> overrides this option. This option may be given
+multiple times. In this case, the last key for which a secret key is available
+is used. If there is no secret key available for any of the specified values,
+GnuPG will not emit an error message but continue as if this option wasn&#8217;t
+given.</p></div>
+<div class="paragraph"><p><span class="monospaced">--default-recipient name</span>: Use name as default recipient if option
+<span class="monospaced">--recipient</span> is not used and don&#8217;t ask if this is a valid one.</p></div>
+<div class="paragraph"><p><span class="monospaced">--default-recipient-self</span>: Use the default key as default recipient if option
+<span class="monospaced">--recipient</span> is not used and don&#8217;t ask if this is a valid one. The default key
+is the first one from the secret keyring or the one set with <span class="monospaced">--default-key</span>.</p></div>
+<div class="paragraph"><p><span class="monospaced">--no-default-recipient</span>: Reset <span class="monospaced">--default-recipient</span> and
+<span class="monospaced">--default-recipient-self</span>.</p></div>
+<div class="paragraph"><p><span class="monospaced">--keyid-format {none|short|0xshort|long|0xlong}</span>: Select how to display key
+IDs. "none" does not show the key ID at all but shows the fingerprint in a
+separate line. "short" is the traditional 8-character key ID. "long" is the
+more accurate 16-character key ID. Add an "0x" to either to include an "0x" at
+the beginning of the key ID, as in 0x99242560. Note that this option is ignored
+if the option <span class="monospaced">--with-colons</span> is used.</p></div>
+<div class="paragraph"><p><span class="monospaced">--with-fingerprint</span>: Same as the command <span class="monospaced">--finterprint</span> but chagnes only the
+format of the output and may be used together with another command.</p></div>
+<div class="paragraph"><p><span class="monospaced">--with-subkey-fingerprint</span>: If a fingerprint is printed for the primary key,
+this option forces printing of the fingerprint for all subkeys.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_keyserver">Keyserver</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_options_10">Options</h3>
+<div class="paragraph"><p><span class="monospaced">--keyserver name</span>: Use name as your keyserver. This is the server that
+<span class="monospaced">--recv-keys</span>, <span class="monospaced">--send-keys</span>, and <span class="monospaced">--search-keys</span> will communicate with to
+receive keys from, send keys to, and search for keys on. (Note that this
+options is deprecated, use the --keyserver in <em>dirmngr.conf</em> instead.)</p></div>
+<div class="paragraph"><p><span class="monospaced">--recv-keys key-ids</span> Import the keys with the given key IDs from a keyserver.</p></div>
+<div class="paragraph"><p><span class="monospaced">--refresh-keys</span>: Request updates from a keyserver for keys that already exist
+on the local keyring. This is useful for updating a key with the latest
+signatures, user IDs, etc.</p></div>
+<div class="paragraph"><p><span class="monospaced">--search-keys names</span>: Search the keyserver for the given names. Multiple names
+given here will be joined togther to create the search string for the
+keyserver.</p></div>
+<div class="paragraph"><p><span class="monospaced">--send-keys key-ids</span>: similar to <span class="monospaced">--export</span> but sends the key to a keyserver.
+Fingerprints may be used instead of key IDs.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_examples_10">Examples</h3>
+<div class="paragraph"><p>Send keys to keyserver:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --keyserver {server} --send-keys {key-ids}</pre>
+</div></div>
+<div class="paragraph"><p>Receive keys from keyserver:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --keysever {server} --recv-keys {key-ids}</pre>
+</div></div>
+<div class="paragraph"><p>Update keys from keyserver:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    gpg --keyserver {server} --refresh-keys</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_todo">TODO</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+keyserver &amp; dirmngr
+</p>
+</li>
+<li>
+<p>
+key expire &amp; revoke
+</p>
+</li>
+<li>
+<p>
+gpg-agent
+</p>
+</li>
+<li>
+<p>
+ssh &amp; gpg
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+<span class="monospaced">man gpg</span>
+</p>
+</li>
+<li>
+<p>
+<a href="https://wiki.debian.org/Subkeys">Debian wiki subkeys</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.gnupg.org/gph/en/manual/x135.html">Make signatures 1</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.tutonics.com/2012/11/gpg-encryption-guide-part-3-digital.html">Make signatures 2</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.gnupg.org/gph/en/manual/x334.html">Validate key</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Public key fingerprint</a>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>
