@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">mktemp</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    mktemp [OPTION]... [TEMPLATE]</pre>
+</div></div>
+<div class="paragraph"><p>Create a temporary file or directory, safely, and print its name. TEMPLATE must
+contain at least <strong>3</strong> consecutive &#8216;X&#8217; in last component. If TEMPLATE is not
+specified, use <em>tmp.XXXXXXXXXX</em>, and --tmpdir is implied. Files are created
+<em>u+rw</em>, and directories <em>u+rwx</em>, minus umask restrictions.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">Options</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">-d, --directory</span>: create a directory, not a file.</p></div>
+<div class="paragraph"><p><span class="monospaced">-u, --dry-run</span>: do not create anything; merely print a name (unsafe).</p></div>
+<div class="paragraph"><p><span class="monospaced">-q, --quiet</span>: suppress diagnostics about file/dir-creation failure.</p></div>
+<div class="paragraph"><p><span class="monospaced">--suffix=SUFF</span>: append SUFF to TEMPLATE; SUFF must not contain a slash. This
+option is implied is TEMPLATE does not end in X.</p></div>
+<div class="paragraph"><p><span class="monospaced">-p DIR, --tmpdir[=DIR]</span>: interpret TEMPLATE relative to DIR; if DIR is not
+specified, use $TMPDIR is set, else /tmp. With this option, TEMPLATE <strong>must not</strong>
+be absolute name; unlike with <em>-t</em>, TEMPLATE may contain slashed, but mktemp
+creates only the final component.</p></div>
+<div class="paragraph"><p><span class="monospaced">-t</span>: interpret TEMPLATE as a single file component (must not contain slash),
+relative to a directory: $TMPDIR, if set; else the directory specified via
+<em>-p</em>; else /tmp [decrecated].</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">Examples</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Create a temporary file without TEMPLATE:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp
+    /tmp/tmp.Im8N8padlx</pre>
+</div></div>
+<div class="paragraph"><p>Create a temporary file with a relative path TEMPLATE:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp ../template.XXX
+    ../template.tJt</pre>
+</div></div>
+<div class="paragraph"><p>Create a temporary file with an absolute path TEMPLATE:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp /tmp/template.XXX
+    /tmp/template.EGh</pre>
+</div></div>
+<div class="paragraph"><p>Create a temporary file with TEMPLATE appending suffix:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp --suffix=123 template.XXX
+    template.rvH.txt</pre>
+</div></div>
+<div class="paragraph"><p>Create a temporary file relative to a directory with a relative path TEMPLATE
+(dry-run, for the directory <em>a</em> in example doesn&#8217;t exit):</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp -u -p a/b/c d/template.XXX
+    a/b/c/d/template.R4o</pre>
+</div></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">DIR set by <em>-p</em> option can be a relative path or an absolute path.</div>
+</div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">When using <em>-p</em> option, TEMPLATE must not be an absolute path.</div>
+</div>
+<div class="paragraph"><p>Create a temporary file relative to a directory with TEMPLATE which is a single
+file name component.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ mktemp -u -p a/b/c -t template.XXX</pre>
+</div></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">When using <em>-t</em> option, TEMPLATE must not contain slash.</div>
+</div>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

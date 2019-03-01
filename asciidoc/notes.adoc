@@ -1,5 +1,7 @@
 == Shell commands
 
+-   link:notes/mktemp.html[mktemp]
+
 -   link:notes/fc.html[fc]
 
 -   link:notes/xmodmap.html[xmodmap]
