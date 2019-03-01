@@ -11,8 +11,13 @@ https://github.com/shadowsocks/shadowsocks/issues/1393[这个 issue]，回答中
 而且我在 YouTube 上看到了 https://www.youtube.com/watch?v=uL5HTRHrxzk[这个视频]
 ，我突然意识到可能是 GFW 升级导致了 shadowsocks 代理异常。
 
-于是我才决定在服务器上部署 kcptun，同时为了搭建方便，顺便写了个
-https://github.com/an9wer/bpd[Dockerfile].
+于是我才决定在服务器上部署 kcptun，同时为了下次搭建方便，顺便写了个
+https://github.com/an9wer/bpd[Dockerfile]。
 
 Thanks for reading :)
 
+== Edit 2019/02/28
+
+使用 traceroute 查了一下，消息应该是在 GFW 的某个路由处被绊了：
+
+image:/statics/images/2019/02/20_traceroute.jpg[traceroute.jpg]
