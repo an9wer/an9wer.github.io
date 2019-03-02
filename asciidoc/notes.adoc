@@ -1,5 +1,7 @@
 == Shell commands
 
+-   link:notes/getent.html[getent]
+
 -   link:notes/mktemp.html[mktemp]
 
 -   link:notes/fc.html[fc]

@@ -1,0 +1,46 @@
+= getent
+
+----
+    getent [option]... database [key]...
+----
+
+== Examples
+
+List all hosts:
+
+----
+    $ getent hosts
+----
+
+
+List all users:
+
+----
+    $ getent passwd
+----
+
+
+List all groups:
+
+----
+    $ getent group
+----
+
+
+List all services (may not be installed):
+
+----
+    $ getent services
+----
+
+
+== References
+
+-   https://en.wikipedia.org/wiki/Name_Service_Switch[Name Service Switch]
+
+-   https://www.gnu.org/software/libc/manual/html_node/Name-Service-Switch.html[System Databases and Name Service Switch]
+
+-   https://docs.oracle.com/cd/E19683-01/806-4077/index.html[System Administration Guide: Naming and Directory Services]
+
+-   man getent
+

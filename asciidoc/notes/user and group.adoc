@@ -73,7 +73,7 @@ It must be a valid account name, which exist on the system.
 Refer to crypt for details on how this string is interpreted.
 
 If the password field contains some string that is not a valid result of crypt,
-for instance ! or *, the suer will not be able to use a unix password to log in
+for instance ! or *, the user will not be able to use a unix password to log in
 (but the user may log in the system by other means).
 
 This field may be empty, in which case no passwords are required to

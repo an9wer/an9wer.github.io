@@ -107,6 +107,7 @@ option, if DIR is not set, then _$TMPDIR_, else _/tmp_.
 Create a temporary directory:
 
 ----
-    mktemp -d
+    $ mktemp -d
+    /tmp/tmp.nNpvFu9xfP
 ----
 
