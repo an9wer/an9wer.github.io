@@ -38,6 +38,7 @@ Create a temporary file without TEMPLATE:
     /tmp/tmp.Im8N8padlx
 ----
 
+
 Create a temporary file with a relative path TEMPLATE:
 
 ----
@@ -45,12 +46,14 @@ Create a temporary file with a relative path TEMPLATE:
     ../template.tJt
 ----
 
+
 Create a temporary file with an absolute path TEMPLATE:
 
 ----
     $ mktemp /tmp/template.XXX
     /tmp/template.EGh
 ----
+
 
 Create a temporary file with TEMPLATE appending suffix:
 
@@ -61,28 +64,49 @@ Create a temporary file with TEMPLATE appending suffix:
 
 
 Create a temporary file relative to a directory with a relative path TEMPLATE
-(dry-run, for the directory _a_ in example doesn't exit):
+(dry-run, for the directory _a/b/c_ in this example doesn't exit):
 
 ----
     $ mktemp -u -p a/b/c d/template.XXX
     a/b/c/d/template.R4o
 ----
-
 [NOTE]
 DIR set by _-p_ option can be a relative path or an absolute path.
-
 [NOTE]
 When using _-p_ option, TEMPLATE must not be an absolute path.
+[NOTE]
+DIR is required to be set when using _-p_ option, but not when using _--tmpdir_
+option.
+
 
 Create a temporary file relative to a directory with TEMPLATE which is a single
-file name component.
+file name component. (dry-run, for the directory _a/b/c_ in this example
+doesn't exit):
 
 ----
     $ mktemp -u -p a/b/c -t template.XXX
-
+    a/b/c/template.DvE
 ----
-
 [NOTE]
 When using _-t_ option, TEMPLATE must not contain slash.
 
+
+Create a temporary file relative to a directory implied by $TMPDIR (dry-run,
+for the directory _a/b/c_ in this example doesn't exit):
+ 
+----
+    $ export TMPDIR=a/b/c
+    $ mktemp -u
+    a/b/c/tmp.OZhYyUEQ9z
+----
+[NOTE]
+mktemp will create a file/directory relative to DIR set by _-p --tmpdir_
+option, if DIR is not set, then _$TMPDIR_, else _/tmp_.
+
+
+Create a temporary directory:
+
+----
+    mktemp -d
+----
 

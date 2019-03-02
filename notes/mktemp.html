@@ -88,7 +88,7 @@ relative to a directory: $TMPDIR, if set; else the directory specified via
     template.rvH.txt</pre>
 </div></div>
 <div class="paragraph"><p>Create a temporary file relative to a directory with a relative path TEMPLATE
-(dry-run, for the directory <em>a</em> in example doesn&#8217;t exit):</p></div>
+(dry-run, for the directory <em>a/b/c</em> in this example doesn&#8217;t exit):</p></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>    $ mktemp -u -p a/b/c d/template.XXX
@@ -106,11 +106,20 @@ relative to a directory: $TMPDIR, if set; else the directory specified via
 </div>
 <div class="content">When using <em>-p</em> option, TEMPLATE must not be an absolute path.</div>
 </div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">DIR is required to be set when using <em>-p</em> option, but not when using <em>--tmpdir</em>
+option.</div>
+</div>
 <div class="paragraph"><p>Create a temporary file relative to a directory with TEMPLATE which is a single
-file name component.</p></div>
+file name component. (dry-run, for the directory <em>a/b/c</em> in this example
+doesn&#8217;t exit):</p></div>
 <div class="listingblock">
 <div class="content monospaced">
-<pre>    $ mktemp -u -p a/b/c -t template.XXX</pre>
+<pre>    $ mktemp -u -p a/b/c -t template.XXX
+    a/b/c/template.DvE</pre>
 </div></div>
 <div class="admonitionblock">
 <div class="icon">
@@ -118,6 +127,26 @@ file name component.</p></div>
 </div>
 <div class="content">When using <em>-t</em> option, TEMPLATE must not contain slash.</div>
 </div>
+<div class="paragraph"><p>Create a temporary file relative to a directory implied by $TMPDIR (dry-run,
+for the directory <em>a/b/c</em> in this example doesn&#8217;t exit):</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ export TMPDIR=a/b/c
+    $ mktemp -u
+    a/b/c/tmp.OZhYyUEQ9z</pre>
+</div></div>
+<div class="admonitionblock">
+<div class="icon">
+<i class="icofont-ui-note"></i>
+</div>
+<div class="content">mktemp will create a file/directory relative to DIR set by <em>-p --tmpdir</em>
+option, if DIR is not set, then <em>$TMPDIR</em>, else <em>/tmp</em>.</div>
+</div>
+<div class="paragraph"><p>Create a temporary directory:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    mktemp -d</pre>
+</div></div>
 </div>
 </div>
 </div> <!-- content -->
