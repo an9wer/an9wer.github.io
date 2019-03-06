@@ -42,7 +42,7 @@ Copy one file (SOURCE) to another file (DEST):
     install /path/to/source /path/to/dest
 ----
 
-or:
+Or:
 
 ----
     install -T /path/to/source  /path/to/dest
@@ -54,7 +54,7 @@ Copy one file (SOURCE) to some directory (DEST):
     install /path/to/source  /path/to/dest/
 ----
 
-or:
+Or:
 
 ----
     install -t /path/to/dest  /path/to/source
@@ -66,22 +66,38 @@ Copy multiple files (SOURCE) to some directory (DEST):
     install /path/to/source1 /path/to/source2  /path/to/dest
 ----
 
-or:
+Or:
 
 ----
     install -t /path/to/dest  /path/to/source1 /path/to/source2
 ----
 
-Create directories; If parent directories doesn't exist, create them as well:
+Create a directory (DEST); If parent directories doesn't exist, create them as
+well:
 
 ----
     install -d /path/to/dest1  /path/to/dest2/
 ----
 
-*Note*: Whether appending the trailing slash will do the same effect.
+Or:
 
-Copy one file (SOURCE) to another file (DEST), If the parent directory
-of DEST doesn't exist, create them at the same time:
+----
+    install -d /path/to/dest1/
+----
+
+[NOTE]
+The trailing slash doesn't matter when use the _-p_ option.
+
+Create multiple directories (DEST) at the same time:
+
+----
+    install -d /path/to/dest1 /path/to/dest2
+----
+
+Create multiple 
+
+Copy one file (SOURCE) to another file (DEST), If parent directories of DEST
+doesn't exist, create them as well:
 
 ----
     install -D /path/to/source  /path/to/dest
