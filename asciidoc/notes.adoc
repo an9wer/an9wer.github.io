@@ -24,6 +24,8 @@
 
 == Bash
 
+-   link:notes/user%20and%20group.html[User and group]
+
 -   link:notes/shebang.html[Shebang]
 
 -   link:notes/Bash%20Parameters.html[Bash Parameters]
@@ -54,7 +56,7 @@
 
 == Miscellaneous
 
--   link:notes/user%20and%20group.html[User and group]
+-   link:notes/Web%20Security.html[Web Security]
 
 -   link:notes/ImageMagick.html[ImageMagick]
 
