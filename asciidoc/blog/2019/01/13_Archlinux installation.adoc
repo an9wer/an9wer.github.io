@@ -1,5 +1,11 @@
 = Archlinux installation
 
+== Flash iso
+
+----
+    $ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} status="progress"
+----
+
 == System installation
 
 -   Partition and mount:
