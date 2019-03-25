@@ -163,6 +163,12 @@
             Monospace: Noto Sans Mono
 ----
 
+-   Install chromium:
+
+----
+    sudo pacman -S chromium
+----
+
 
 -   Install basic tools:
 
@@ -214,3 +220,20 @@
 ----
     sudo pacman -S telegram-desktop
 ----
+
+-   Install virtualbox:
+
+----
+    sudo pacman -S virtualbox
+        When encounter "Kernel driver not installed (rc=-1908)"
+            sudo modprobe vboxdrv
+        When encounter the problem about Mouse disappearing
+            https://superuser.com/a/1390258
+----
+
+
+== Edit 2019/03/25
+
+When installing archlinux on acer, encounter the secure boot problem. To solve
+it: https://itsfoss.com/no-bootable-device-found-ubuntu/
+
