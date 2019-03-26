@@ -34,7 +34,9 @@
 
 -   link:notes/Bash%20Builtin.html[Bash Builtin]
 
--   link:notes/Bash%20completion.html[Bash completion]
+-   link:notes/Bash%20Completion.html[Bash Completion]
+
+-   link:notes/Bash%20Tricks.html[Bash Tricks]
 
 == Development
 

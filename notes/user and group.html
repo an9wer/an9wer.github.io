@@ -32,6 +32,49 @@ href="/about.html">About</a>
 <div id="title">User and group</div>
 <div id="content">
 <div class="sect1">
+<h2 id="_useradd">useradd</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">-b, --base-dir BASE_DIR</span>: The default base directory for the system if -d
+HOME_DIR is not specified. BASE_DIR is concatenated with the account name to
+define the home directory. If the <em>-m</em> option is not used, BASE_DIR must
+exist. If this option is not specified, useradd will be use the base directory
+speciifed by the HOME variable in <em>/etc/default/useradd</em>, or /home by default.</p></div>
+<div class="paragraph"><p><span class="monospaced">-d, --home-dir HOME_DIR</span>: The new user will be created using HOME_DIR as the
+value for the user&#8217;s login directory. The default is to append the LOGIN name
+to BASE_DIR and use that as the login directory name. The directory HOME_DIR
+does not have to exist but will not be created if it is missing.</p></div>
+<div class="paragraph"><p><span class="monospaced">-g, --gid GROUP</span>: The group name or number of the user&#8217;s initial login
+group. The group name must exist. A group number must refer to an already
+existing group.</p></div>
+<div class="paragraph"><p><span class="monospaced">-G, --groups GROUP1[,GROUP2,...[,GROUPN]]</span>: A list of supplementary groups
+with the user is also a member of. Each group is separated from the next by a
+comma, with no intervening whitespace. The groups are subject to the same
+restrictions as the group given with the <em>-g</em> option. The default is for the
+user to belong only to the initial group.</p></div>
+<div class="paragraph"><p><span class="monospaced">-r, --system</span>: Create a system account. System user will be created with no
+aging information in <em>/etc/shadow</em>, and their numeric identifiers are chosen in
+the SYS_UID_MIN-SYS_UID_MAX range, define in <em>/etc/login.defs</em>, instead of
+UID_MIN-UID_MAX (and their GID counterparts for the creation of groups). Note
+that useradd will not create a home directory for such a user, regardless of
+the default setting in <em>/etc/login.defs</em> (CREATE_HOME). You have to specify the
+<em>-m</em> options if you want a home directory for a system account to be created.</p></div>
+<div class="paragraph"><p><span class="monospaced">-m, --create-home</span>: Create the user&#8217;s home directory if it does not exist. The
+files and directories contained in the skeleton directory (which can be defined
+with the <em>-k</em> option) will be copied to the home directory. By default, if this
+option is not specified and CREATE_HOME is not enabled, no home directories are
+created.</p></div>
+<div class="sect2">
+<h3 id="_examples">Examples</h3>
+<div class="paragraph"><p>Create a user named with an9wer belongs to wheel group, and user&#8217;s home
+directory:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    $ useradd -m -g wheel an9wer</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_etc_passwd">/etc/passwd</h2>
 <div class="sectionbody">
 <div class="paragraph"><p><span class="monospaced">/etc/passwd</span> contains one line for each user account, which seven fields

@@ -1,0 +1,10 @@
+
+redirect output to log file and standard output
+thx: https://stackoverflow.com/a/3403786
+thx: https://stackoverflow.com/a/11886837
+
+----
+    exec > >(tee -ai ${ME_JOB_RCONLE_LOG})
+    exec 2>&1
+----
+

@@ -1,5 +1,51 @@
 = User and group
 
+== useradd
+
+`-b, --base-dir BASE_DIR`: The default base directory for the system if -d
+HOME_DIR is not specified. BASE_DIR is concatenated with the account name to
+define the home directory. If the _-m_ option is not used, BASE_DIR must
+exist. If this option is not specified, useradd will be use the base directory
+speciifed by the HOME variable in _/etc/default/useradd_, or /home by default.
+
+`-d, --home-dir HOME_DIR`: The new user will be created using HOME_DIR as the
+value for the user's login directory. The default is to append the LOGIN name
+to BASE_DIR and use that as the login directory name. The directory HOME_DIR
+does not have to exist but will not be created if it is missing.
+
+`-g, --gid GROUP`: The group name or number of the user's initial login
+group. The group name must exist. A group number must refer to an already
+existing group.
+
+`-G, --groups GROUP1[,GROUP2,...[,GROUPN]]`: A list of supplementary groups
+with the user is also a member of. Each group is separated from the next by a
+comma, with no intervening whitespace. The groups are subject to the same
+restrictions as the group given with the _-g_ option. The default is for the
+user to belong only to the initial group.
+
+`-r, --system`: Create a system account. System user will be created with no
+aging information in _/etc/shadow_, and their numeric identifiers are chosen in
+the SYS_UID_MIN-SYS_UID_MAX range, define in _/etc/login.defs_, instead of
+UID_MIN-UID_MAX (and their GID counterparts for the creation of groups). Note
+that useradd will not create a home directory for such a user, regardless of
+the default setting in _/etc/login.defs_ (CREATE_HOME). You have to specify the
+_-m_ options if you want a home directory for a system account to be created.
+
+`-m, --create-home`: Create the user's home directory if it does not exist. The
+files and directories contained in the skeleton directory (which can be defined
+with the _-k_ option) will be copied to the home directory. By default, if this
+option is not specified and CREATE_HOME is not enabled, no home directories are
+created.
+
+=== Examples
+
+Create a user named with an9wer belongs to wheel group, and user's home
+directory:
+
+----
+    $ useradd -m -g wheel an9wer 
+----
+
 == /etc/passwd
 
 `/etc/passwd` contains one line for each user account, which seven fields
