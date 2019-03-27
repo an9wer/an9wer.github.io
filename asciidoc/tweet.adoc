@@ -1,3 +1,11 @@
+-   2019/03/27
+
+____
+https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/[Tree Style Tab],
+A useful plugin for Firefox, which provides ability to operate tabs as "tree".
+____
+
+
 -   2019/03/24
 
 ____
@@ -17,6 +25,8 @@ ____
 
 ____
 平淡的一天。
+
+image:/statics/images/tweet/2019/03/normal_day1.jpg[Normal day]
 ____
 
 -   2019/03/01
@@ -37,7 +47,7 @@ ____
 ____
 融雪
 
-image:/statics/images/tweet/2019/02/11/drip.jpg[drip]
+image:/statics/images/tweet/2019/02/drip.jpg[Drip]
 ____
 
 
