@@ -29,15 +29,38 @@ href="/tweet.html">Tweet</a>
 href="/about.html">About</a>
 </div> <!-- navbar -->
 <div id="post">
+<div id="title">Bash Tricks</div>
 <div id="content">
-<div class="paragraph"><p>redirect output to log file and standard output
-thx: <a href="https://stackoverflow.com/a/3403786">https://stackoverflow.com/a/3403786</a>
-thx: <a href="https://stackoverflow.com/a/11886837">https://stackoverflow.com/a/11886837</a></p></div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Redirect output to log file and standard output:
+</p>
+</li>
+</ul></div>
 <div class="listingblock">
 <div class="content monospaced">
 <pre>    exec &gt; &gt;(tee -ai ${ME_JOB_RCONLE_LOG})
     exec 2&gt;&amp;1</pre>
 </div></div>
+<div class="paragraph"><p>thx: <a href="https://stackoverflow.com/a/3403786">https://stackoverflow.com/a/3403786</a></p></div>
+<div class="paragraph"><p>thx: <a href="https://stackoverflow.com/a/11886837">https://stackoverflow.com/a/11886837</a></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Compare two directory trees
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    diff -qr dir1/ dir2/</pre>
+</div></div>
+<div class="paragraph"><p>thx: <a href="https://stackoverflow.com/a/4997724">https://stackoverflow.com/a/4997724</a></p></div>
+</div>
+</div>
 </div> <!-- content -->
 </div> <!-- post -->
 <div id="footer">
