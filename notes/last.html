@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+<div id="main">
+<div id="header">
+<div id="headerLeft">
+<div id="name"><a href="/blog.html">an9wer's blog</a></div>
+<div id="signature">Just stick to it :)</div>
+</div> <!-- headerLeft -->
+<div id="headerRight">
+<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+</div> <!-- headerRight -->
+</div> <!-- header -->
+<div id="navbar">
+<a id="blog"
+href="/blog.html">Blog</a>
+<a id="notes"
+class="current"
+href="/notes.html">Notes</a>
+<a id="tweet"
+href="/tweet.html">Tweet</a>
+<a id="about"
+href="/about.html">About</a>
+</div> <!-- navbar -->
+<div id="post">
+<div id="title">last</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    last [options] [username...] [tty...]</pre>
+</div></div>
+<div class="paragraph"><p>Show a listing of last logged in users.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">Options</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">-a, --hostlast</span>: Display the hostname in the last column. Useful in
+combination with the <span class="monospaced">--dns</span> option.</p></div>
+<div class="paragraph"><p><span class="monospaced">-d, --dns</span>: For non-local logins, Linux stores not only the host name of the
+remote host, but its IP number as well. This option translates the IP number
+back into a hostname.</p></div>
+<div class="paragraph"><p><span class="monospaced">-f, --file file</span>: Tell last to use a specific file instead of <em>/var/log/wtmp</em>.
+The --file option can be given multiple times, and all of the specified files
+will be processed.</p></div>
+<div class="paragraph"><p><span class="monospaced">-F, --fulltimes</span>: Print full login and logout times and dates.</p></div>
+<div class="paragraph"><p><span class="monospaced">-i, --ip</span>: Like --dns, but displays the host&#8217;s IP number instead of the name.</p></div>
+<div class="paragraph"><p><span class="monospaced">-n, --limit number`</span>: Tell last how many lines to show.</p></div>
+<div class="paragraph"><p><span class="monospaced">-p, --present time</span>: Display the users who were present at the specified time.
+This is like using the options --since and --until together with the same time.</p></div>
+<div class="paragraph"><p><span class="monospaced">-R, --nohostname</span>: Suppresses the display of the hostname field.</p></div>
+<div class="paragraph"><p><span class="monospaced">-s, since time</span>: Display the state of logins since the specified time.</p></div>
+<div class="paragraph"><p><span class="monospaced">-t, --until time</span>: Display the state of login until the specified time.</p></div>
+<div class="paragraph"><p><span class="monospaced">--time-format format</span>: Define the output timestamp format to be one of
+<em>notime</em>, <em>short</em>, <em>full</em>, or <em>iso</em>.</p></div>
+<div class="paragraph"><p><span class="monospaced">-w, --fullnames</span>: Display full user names and domain names in the output.</p></div>
+<div class="paragraph"><p><span class="monospaced">-x, --system</span>: Display the system shutdown entries and run level changes.</p></div>
+<div class="paragraph"><p>The options that take the time argument understand the following formats:</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">YYYYMMDDhhmmss</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">YYYY-MM-DD hh:mm:ss</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">YYYY-MM-DD hh:mm</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(seconds will be set to 00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">YYYY-MM-DD</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(time will be set to 00:00:00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">hh:mm:ss</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(date will be set to today)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">hh:mm</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(date will be set to today, seconds to 00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">now</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">yesterday</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(time is set to 00:00:00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">today</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(time is set to 00:00:00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">tomorrow</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">(time is set to 00:00:00)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">+5min</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">-5days</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div> <!-- content -->
+</div> <!-- post -->
+<div id="footer">
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
+</div> <!-- footer -->
+</body>
+</html>

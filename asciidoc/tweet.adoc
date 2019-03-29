@@ -26,7 +26,7 @@ ____
 ____
 平淡的一天。
 
-image:/statics/images/tweet/2019/03/normal_day1.jpg[Normal day]
+image:/statics/images/tweet/2019/03/normal_day.jpg[Normal day]
 ____
 
 -   2019/03/01

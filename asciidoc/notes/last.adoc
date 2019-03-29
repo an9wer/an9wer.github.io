@@ -1,0 +1,60 @@
+= last
+
+----
+    last [options] [username...] [tty...]
+----
+
+Show a listing of last logged in users.
+
+== Options
+
+`-a, --hostlast`: Display the hostname in the last column. Useful in
+combination with the `--dns` option.
+
+`-d, --dns`: For non-local logins, Linux stores not only the host name of the
+remote host, but its IP number as well. This option translates the IP number
+back into a hostname.
+
+`-f, --file file`: Tell last to use a specific file instead of _/var/log/wtmp_.
+The --file option can be given multiple times, and all of the specified files
+will be processed.
+
+`-F, --fulltimes`: Print full login and logout times and dates.
+
+`-i, --ip`: Like --dns, but displays the host's IP number instead of the name.
+
+`-n, --limit number``: Tell last how many lines to show.
+
+`-p, --present time`: Display the users who were present at the specified time.
+This is like using the options --since and --until together with the same time.
+
+`-R, --nohostname`: Suppresses the display of the hostname field.
+
+`-s, since time`: Display the state of logins since the specified time.
+
+`-t, --until time`: Display the state of login until the specified time.
+
+`--time-format format`: Define the output timestamp format to be one of
+_notime_, _short_, _full_, or _iso_.
+
+`-w, --fullnames`: Display full user names and domain names in the output.
+
+`-x, --system`: Display the system shutdown entries and run level changes.
+
+The options that take the time argument understand the following formats:
+
+|====
+|YYYYMMDDhhmmss      |
+|YYYY-MM-DD hh:mm:ss |
+|YYYY-MM-DD hh:mm    | (seconds will be set to 00)
+|YYYY-MM-DD          | (time will be set to 00:00:00)
+|hh:mm:ss            | (date will be set to today)
+|hh:mm               | (date will be set to today, seconds to 00)
+|now                 |
+|yesterday           | (time is set to 00:00:00)
+|today               | (time is set to 00:00:00)
+|tomorrow            | (time is set to 00:00:00)
+|+5min
+|-5days
+|===
+

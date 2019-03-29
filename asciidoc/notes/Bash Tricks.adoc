@@ -11,7 +11,7 @@ thx: https://stackoverflow.com/a/3403786
 
 thx: https://stackoverflow.com/a/11886837
 
--   Compare two directory trees
+-   Compare two directory trees:
 
 ----
     diff -qr dir1/ dir2/
