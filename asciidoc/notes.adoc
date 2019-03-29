@@ -1,44 +1,44 @@
-== Shell commands
+== Commands/
 
--   link:notes/last.html[last]
+-   link:notes/Commands/last.html[last]
 
--   link:notes/getent.html[getent]
+-   link:notes/Commands/getent.html[getent]
 
--   link:notes/mktemp.html[mktemp]
+-   link:notes/Commands/mktemp.html[mktemp]
 
--   link:notes/fc.html[fc]
+-   link:notes/Commands/fc.html[fc]
 
--   link:notes/xmodmap.html[xmodmap]
+-   link:notes/Commands/xmodmap.html[xmodmap]
 
--   link:notes/install.html[install]
+-   link:notes/Commands/install.html[install]
 
--   link:notes/xargs.html[xargs]
+-   link:notes/Commands/xargs.html[xargs]
 
--   link:notes/cron.html[cron]
+-   link:notes/Commands/cron.html[cron]
 
--   link:notes/gpg.html[gpg]
+-   link:notes/Commands/gpg.html[gpg]
 
--   link:notes/ssh.html[ssh]
+-   link:notes/Commands/ssh.html[ssh]
 
--   link:notes/env.html[env]
+-   link:notes/Commands/env.html[env]
 
--   link:notes/man.html[man]
+-   link:notes/Commands/man.html[man]
 
 == Bash
 
 -   link:notes/user%20and%20group.html[User and group]
 
--   link:notes/shebang.html[Shebang]
+-   link:notes/Bash/shebang.html[Shebang]
 
--   link:notes/Bash%20Parameters.html[Bash Parameters]
+-   link:notes/Bash/Bash%20Parameters.html[Bash Parameters]
 
--   link:notes/Bash%20Expansion.html[Bash Expansion]
+-   link:notes/Bash/Bash%20Expansion.html[Bash Expansion]
 
--   link:notes/Bash%20Builtin.html[Bash Builtin]
+-   link:notes/Bash/Bash%20Builtin.html[Bash Builtin]
 
--   link:notes/Bash%20Completion.html[Bash Completion]
+-   link:notes/Bash/Bash%20Completion.html[Bash Completion]
 
--   link:notes/Bash%20Tricks.html[Bash Tricks]
+-   link:notes/Bash/Bash%20Tricks.html[Bash Tricks]
 
 == Development
 
