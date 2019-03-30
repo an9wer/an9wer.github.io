@@ -231,6 +231,13 @@
             https://superuser.com/a/1390258
 ----
 
+-   Fix tap-to-click for touchpad:
+
+----
+    sudo pacman -S xf86-input-synaptics
+       synclient TapButton1=1 TapButton2=3 TapButton3=2
+----
+
 
 == Edit 2019/03/25
 

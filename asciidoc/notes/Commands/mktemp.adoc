@@ -58,7 +58,7 @@ Create a temporary file with an absolute path TEMPLATE:
 Create a temporary file with TEMPLATE appending suffix:
 
 ----
-    $ mktemp --suffix=123 template.XXX
+    $ mktemp --suffix=.txt template.XXX
     template.rvH.txt
 ----
 
