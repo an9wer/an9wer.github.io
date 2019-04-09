@@ -38,6 +38,8 @@
 
 -   link:notes/Bash/Bash%20Completion.html[Bash Completion]
 
+-   link:notes/Bash/Bash_Word_Splitting.html[Bash Word Splitting]
+
 -   link:notes/Bash/Bash%20Tricks.html[Bash Tricks]
 
 == Development

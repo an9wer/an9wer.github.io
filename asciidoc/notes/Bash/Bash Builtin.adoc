@@ -2,9 +2,9 @@
 
 == :
 
-{{{
+----
     : [arguments]
-}}}
+----
 
 Do noting beyond expanding arguments and performing redirections. The return
 status is zero.
