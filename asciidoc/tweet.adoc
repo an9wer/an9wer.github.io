@@ -1,9 +1,17 @@
+-   2019/04/10 Wed
+
+____
+继昨天电脑没关，Chromium 又开了 n 个 tab 页就成这个样子了。
+image:/statics/images/tweet/2019/04/memory1.png[Memory1]
+____
+
+
 -   2019/04/09 Tue
 
 ____
 Virtualbox 开了两个虚拟机，Firefox 开了 n 个 tab 页就这样子了。
 
-image:/statics/images/tweet/2019/04/memory.png[Memory]
+image:/statics/images/tweet/2019/04/memory0.png[Memory0]
 ____
 
 -   2019/04/05 Fri
