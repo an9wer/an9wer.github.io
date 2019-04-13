@@ -231,6 +231,16 @@
             https://superuser.com/a/1390258
 ----
 
+-   Bluetooth:
+
+----
+    sudo pacman -S pulseaudio pluseaudio-bluetooth bluez bluez-utils
+        restart pulseaudio
+            pulseaudio --kill
+            pulseaudio --start
+        run bluetoothctl to connect device
+----
+
 -   Fix tap-to-click for touchpad:
 
 ----

@@ -372,6 +372,21 @@ Install virtualbox:
 <div class="ulist"><ul>
 <li>
 <p>
+Bluetooth:
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S pulseaudio pluseaudio-bluetooth bluez bluez-utils
+        restart pulseaudio
+            pulseaudio --kill
+            pulseaudio --start
+        run bluetoothctl to connect device</pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
 Fix tap-to-click for touchpad:
 </p>
 </li>
