@@ -330,7 +330,9 @@ Install mupdf:
 </ul></div>
 <div class="listingblock">
 <div class="content monospaced">
-<pre>    sudo pacman -S mupdf-gl</pre>
+<pre>    sudo pacman -S mupdf-gl
+        if some error of OpenGL happens, may need to install the appropriate dirver for graphic card.
+            sudo pacman -S nvidia*</pre>
 </div></div>
 <div class="ulist"><ul>
 <li>
@@ -401,8 +403,43 @@ Fix tap-to-click for touchpad:
 <div class="sect1">
 <h2 id="_edit_2019_03_25">Edit 2019/03/25</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>When installing archlinux on acer, encounter the secure boot problem. To solve
-it: <a href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p></div>
+<div class="paragraph"><p>When installing archlinux on ACER, encounter secure boot problem. Find a
+way to solve it: <a href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_2019_04_26">Edit 2019/04/26</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Disable nvidia graphic card:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo pacman -S bumblebee bbswitch
+    sudo pacman -S xf86-video-intel (I don't know is this pacakge required?)
+
+    vim /etc/modules-load.d/bbswitch.conf
+        bbswitch
+
+    vim /etc/modprobe.d/bbswitch.conf
+        options bbswitch load_state=0 unload_state=1
+
+    vim /etc/X11/xorg.conf.d/20-intel.conf
+        Section "Device"
+            Identifier  "Intel Graphics"
+            Driver      "intel"
+        EndSection
+
+    vim /etc/X11/xorg.conf.d/20-monitor.conf
+        Section "Monitor"
+            Identifier  "HDMI1"
+        EndSection
+        Section "Monitor"
+            Identifier  "eDP1"
+            Option      "LeftOf" "HDMI1"
+        EndSection
+
+    Then, reboot, run command `lspci -k` to find that the kernel driver of 3D
+    controller is not in use.</pre>
+</div></div>
 </div>
 </div>
 </div> <!-- content -->
