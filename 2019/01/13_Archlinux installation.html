@@ -437,8 +437,26 @@ way to solve it: <a href="https://itsfoss.com/no-bootable-device-found-ubuntu/">
             Option      "LeftOf" "HDMI1"
         EndSection
 
-    Then, reboot, run command `lspci -k` to find that the kernel driver of 3D
+    Then, reboot, run command `lspci -k` to check that the kernel driver of 3D
     controller is not in use.</pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_2019_05_02">Edit 2019/05/02</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Set tap button of touchpad:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    vim /etc/X11/xorg.conf.d/70-synaptics.conf
+        Section "InputClass"
+            Identifier "touchpad"
+            Driver "synaptics"
+            MatchIsTouchpad "on"
+                Option "TapButton1" "1"
+                Option "TapButton2" "3"
+                Option "TapButton3" "2"
+        EndSection</pre>
 </div></div>
 </div>
 </div>

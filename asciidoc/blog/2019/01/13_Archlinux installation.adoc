@@ -285,7 +285,22 @@ Disable nvidia graphic card:
             Option      "LeftOf" "HDMI1"
         EndSection
 
-    Then, reboot, run command `lspci -k` to find that the kernel driver of 3D
+    Then, reboot, run command `lspci -k` to check that the kernel driver of 3D
     controller is not in use.
 ----
 
+== Edit 2019/05/02
+
+Set tap button of touchpad:
+
+----
+    vim /etc/X11/xorg.conf.d/70-synaptics.conf
+        Section "InputClass"
+            Identifier "touchpad"
+            Driver "synaptics"
+            MatchIsTouchpad "on"
+                Option "TapButton1" "1"
+                Option "TapButton2" "3"
+                Option "TapButton3" "2"
+        EndSection
+----
