@@ -34,16 +34,12 @@ href="/about.html">About</a>
 <div class="sect1">
 <h2 id="_options">Options</h2>
 <div class="sectionbody">
+<div class="paragraph"><p><span class="monospaced">-t, --table table</span>: This option specifies the packet matching table which the
+command should operate on. If the kernel is configured with automatic module
+loading, an attempt will be made to load the appropriate module for that table
+if it is not already there. The tables contain <em>filter</em> (default), <em>nat</em>,
+<em>mangle</em>, <em>raw</em> and <em>security</em>.</p></div>
 <div class="ulist"><ul>
-<li>
-<p>
-<span class="monospaced">-t table</span>: This option specifies the packet matching table  which the
-    command should operate on. If the kernel is configured with automatic
-    module loading, an attempt will be made to load the appropriate module for
-    that table if it is not already there. The tables contain <span class="monospaced">filter</span>
-    (default), <span class="monospaced">nat</span>, <span class="monospaced">mangle</span>, <span class="monospaced">raw</span> and <span class="monospaced">security</span>.
-</p>
-</li>
 <li>
 <p>
 <span class="monospaced">-A chain rule-specification</span>: Append one or more rules to the end of the
@@ -86,12 +82,6 @@ href="/about.html">About</a>
 </li>
 <li>
 <p>
-<span class="monospaced">-L [chain]</span>: List all rules in the selected chain. If no chain is selecte,
-    all chains are listed.
-</p>
-</li>
-<li>
-<p>
 <span class="monospaced">-S [chain]</span>: Print all rules in the selected chain. If no chain is
     selected, all chains are printed like iptables-save.
 </p>
@@ -108,17 +98,13 @@ href="/about.html">About</a>
     only the given chain, or only the given rule in a chain.
 </p>
 </li>
-<li>
-<p>
-<span class="monospaced">-v</span>: Verbose output.
-</p>
-</li>
-<li>
-<p>
-<span class="monospaced">-n</span>: Numeric output. IP address and port numbers will be printed in
-    numeric format.
-</p>
-</li>
+</ul></div>
+<div class="paragraph"><p><span class="monospaced">-v, --verbose</span>: Verbose output.</p></div>
+<div class="paragraph"><p><span class="monospaced">-n, --numeric</span>: Numeric output. IP address and port numbers will be printed in
+numeric format.</p></div>
+<div class="paragraph"><p><span class="monospaced">-L, --list [chain]</span>: List all rules in the selected chain. If no chain is
+selected, all chains are listed.</p></div>
+<div class="ulist"><ul>
 <li>
 <p>
 <span class="monospaced">-x</span>: Expand numbers. Display the exact value of the packet and byte
@@ -134,57 +120,40 @@ href="/about.html">About</a>
 </p>
 </li>
 </ul></div>
+<div class="paragraph"><p><span class="monospaced">-P, --policy chain target</span>: Set the policy for the built-in chain to the given
+target. The policy target must be either ACCEPT or DROP.</p></div>
 <div class="paragraph"><p>Find more in <span class="monospaced">man iptbales</span>.</p></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_parameters">Parameters</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>Parameters make up a rule specification (as used in the add, delete, insert,
+replace and append commands).</p></div>
+<div class="paragraph"><p><span class="monospaced">[!] -p, --protocol protocol</span>: The protocol of the rule or of the packet to
+check. The specified protocol can be one of tcp, udp, udplite, icmp, icmpv6,
+esp, ah, sctp, mh or the special keyword "all", or it can be a numeric value,
+representing one of these protocols or a different one. A prottocal name from
+<em>/etc/protocols</em> is also allowed. A "!" argument before the protocol inverts
+the test. The number zero is equivalent to "all". "all" will match with all
+protocols and is taken as default when this option is ommited.</p></div>
+<div class="paragraph"><p><span class="monospaced">[!] -s address[/mask][,...]</span>: Source specification. Address can be either a
+network name, a hostname, a network IP address (with /mask), or a plain IP
+address. Hostname will be resolved once only, before the rule is submitted to
+the kernel. A "!" argument before the address specification inverts the sense
+of the address. Multiple address can be specified, but this will expand to
+multiple rules.</p></div>
+<div class="paragraph"><p><span class="monospaced">[!] -d address[/mask][,...]</span>: Destination specification. (similar to <em>-s</em>
+option)</p></div>
+<div class="paragraph"><p><span class="monospaced">-m, --match  match</span>: Specifies a match to use, that is, an extension module
+that test for a specific property.</p></div>
+<div class="paragraph"><p><span class="monospaced">-j, --jump target</span>: Specifies the target of the rule; i.e., what to do if the
+packet matches it. The target can be a user-defined chain (other than the one
+this rule is in), one of the special builtin targets (ACCEPT, DROP, REJECT &#8230;)
+which decide the fate of the packet immediately, or an extension. If this
+option is omitted in a rule, then matching the rule will have no effect on the
+packet&#8217;s fate, but the counters on the rule will be increment.</p></div>
 <div class="ulist"><ul>
-<li>
-<p>
-<span class="monospaced">[!] -p protocol</span>: The protocol of the rule or of the packet to check. The
-    specified protocol can be one of tcp, udp, udplite, icmp, icmpv6, esp, ah,
-    sctp, mh or the special keyword "all", or it can be a numeric value,
-    representing one of these protocols or a different one. A prottocal name
-    from <span class="monospaced">/etc/protocols</span> is also allowed. A "!" argument before the protocol
-    inverts the test. The number zero is equivalent to "all". "all" will match
-    with all protocols and is taken as default when this option is ommited.
-</p>
-</li>
-<li>
-<p>
-<span class="monospaced">[!] -s address[/mask][,...]</span>: Source specification. Address can be either
-    a network name, a hostname, a network IP address (with /mask), or a plain
-    IP address. Hostname will be resolved once only, before the rule is
-    submitted to the kernel. A "!" argument before the address specification
-    inverts the sense of the address. Multiple address can be specified, but
-    this will expand to multiple rules.
-</p>
-</li>
-<li>
-<p>
-<span class="monospaced">[!] -d address[/mask][,...]</span>: Destination specification. (similar to <span class="monospaced">-s</span>
-    option)
-</p>
-</li>
-<li>
-<p>
-<span class="monospaced">-m match</span>: Specifies a match to use, that is, an extension module that
-    test for a specific property.
-</p>
-</li>
-<li>
-<p>
-<span class="monospaced">-j target</span>: Specifies the target of the rule; i.e., what to do if the
-    packet matches it. The target can be a user-defined chain (other than the
-    one this rule is in), one of the special builtin targets (ACCEPT, DROP,
-    REJECT &#8230;) which decide the fate of the packet immediately, or an
-    extension. If this option is omitted in a rule, then matching the rule will
-    have no effect on the packet&#8217;s fate, but the counters on the rule will be
-    increment.
-</p>
-</li>
 <li>
 <p>
 <span class="monospaced">-c packets bytes</span>: Enables the administrator to initialize the packet and

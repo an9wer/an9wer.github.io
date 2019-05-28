@@ -1,3 +1,11 @@
+-   2019/05/28 Tue
+
+____
+深入体验了下  https://github.com/philc/vimium[vimium]，非常好用，尤其是 gi 键锁
+定 input 框，T 键搜索当前所有 tab 页，以及 search engine。
+____
+
+
 -   2019/05/03 Fri
 
 ____

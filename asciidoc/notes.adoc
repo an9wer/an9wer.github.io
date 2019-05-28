@@ -1,4 +1,6 @@
-== Commands/
+== Commands
+
+-   link:notes/Commands/chmod.html[chmod]
 
 -   link:notes/Commands/last.html[last]
 
@@ -61,6 +63,8 @@
 -   link:notes/sysstat.html[sysstat]
 
 == Miscellaneous
+
+-   link:notes/Deduplicate_and_compress.html[Deduplicate and compress]
 
 -   link:notes/Web%20Security.html[Web Security]
 
