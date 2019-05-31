@@ -98,9 +98,9 @@ github 上找到了 qmk 的官方项目，于是好好研究了一把。</p></di
 键都是向左错一位的，刚开始我以为是我键位修改有问题，后来又刷了 qmk 官方提供的键
 位（由于键位的修改，使用空格键加 b 键的方法已经不能进入 bootloader 模式了，只能
 将键盘整个拆下，短接主板背后的 reset 触点），结果还是存在这个问题，当时就怀疑起
-我这主板型号是不是 Satan 。于是又到淘宝和卖家理论，卖家承认这是 dz60 主板，又解
-释说发错货了等 balabala。于是我又新建了一套 dz60 的键位布局，刷入之后发现问题确
-实解决了，板子的型号还真的是 dz60。</p></div>
+我这主板型号不是 Satan 。于是又到淘宝和卖家理论，卖家承认这是 dz60 主板，又解释
+说发错货了等 balabala。于是我又新建了一套 dz60 的键位布局，刷入之后发现问题确实
+解决了，板子的型号还真的是 dz60。</p></div>
 <div class="paragraph"><p>之后解了下 dz60 这块板子，感觉差别也不是很大，而且这把键盘的做工还是比较令人满
 意的，所以我也不打算退换货了，卖家也返还了我 50 元人民币，此事也算告一段落。</p></div>
 <div class="paragraph"><p>这次折腾的过程中遇到了很多棘手的问题，我也一度很绝望。其实每一次的折腾都会有那
@@ -121,6 +121,28 @@ github 上找到了 qmk 的官方项目，于是好好研究了一把。</p></di
 <span class="image">
 <img src="/statics/images/2018/12/29/GH60_Satan2.jpg" alt="GH60_Satan2">
 </span></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_edit_2019_05_31">Edit 2019/05/31</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>今天突然心血来潮，修改了我的键盘布局。在这里重新整理下刷机命令：</p></div>
+<div class="paragraph"><p>Install requirements first:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    ./util/linux_install.sh</pre>
+</div></div>
+<div class="paragraph"><p>Modify keymaps.c (localted in ./keyboards/dz60/keymaps/an9wer/keymap.c), then
+build:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo make dz60:an9wer</pre>
+</div></div>
+<div class="paragraph"><p>Finally, flush it:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>    sudo make dz60:an9wer:dfu</pre>
+</div></div>
 <div class="paragraph"><p>Thanks for reading :)</p></div>
 </div>
 </div>
