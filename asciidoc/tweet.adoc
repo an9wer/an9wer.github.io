@@ -8,7 +8,7 @@ ____
 
 ____
 深入体验了下  https://github.com/philc/vimium[vimium]，意外发现 gi 键可以锁定
-input 框，T 键可以搜索当前所有 tab 页，以及强大的 search engine，真是好用。
+input 框，T 键用来搜索当前所有 tab 页，以及强大的 search engine 功能，真是好用。
 ____
 
 -   2019/05/22 Wed
