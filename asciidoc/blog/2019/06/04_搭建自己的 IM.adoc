@@ -77,18 +77,18 @@ your server ip address):
 
 8.  Register a user:
 
-    $ register_new_matrix_user -c /opt/synpase/homeserver.yaml https://localhost:8448
+    $ register_new_matrix_user -c /opt/synapse/homeserver.yaml https://localhost:8448
 
 9. Download https://about.riot.im/[riot.im] client, configure to login:
 
     Home Server URL: https://xxx.xxx.xxx.xxx:8448
     Identity Server URL: https://xxx.xxx.xxx.xxx:8448
 
-10. Invite user by matrix id in riot.im clinet:
+10. Invite user by matrix id in riot.im client:
 
     @username:synapse.me
 
-以上只是一个简单的部署及配置，剩下的当然还需再折腾。
+以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。
 
 Thanks for reading :)
 
