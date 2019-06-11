@@ -1,0 +1,113 @@
+搭建自己的 IM
+=============
+
+写在这个特别有历史意义的日子里。
+
+由于自己的两个梯子在六月一号同时被 ban，所以 telegram 暂时用不起来，因此临时用
+了两天微信。但因为顾及着聊天的安全性，在微信上发消息时刻都是小心翼翼地，着实难
+受。
+
+于是考虑使用开源方案，自己搭建一套 IM。看了 `相关文章
+<https://opensource.com/alternatives/slack>`_ ，结合自己的需求：
+
+1.  安全。
+2.  轻量。
+
+最终决定选择了 `Matrix Synapse <https://github.com/matrix-org/synapse>`_ 。
+
+接下来就是撸起袖子一把梭。
+
+正好这两天腾讯云有活动，以较低的价格入手了一台主机（1 核 1 G 的配置，价格 214
+元/ 半年）。
+
+参照官方教程在服务器（CentOS 7）上搭建 Synapse：
+
+1.  Install prerequisites
+
+    ::
+
+        $ yum groupinstall "Development Tools"
+        $ yum install libtiff-devel libjpeg-devel libzip-devel freetype-devel \
+            lcms2-devel libwebp-devel tcl-devel tk-devel redhat-rpm-config \
+            python-virtualenv libffi-devel openssl-devel
+
+2.  Install the Synapse
+
+    ::
+
+        $ mkdir -p /opt/synapse
+        $ python -m virtualenv /opt/synapse/env
+        $ source /opt/synapse/env/bin/activate
+
+        $ pip install --upgrade pip
+        $ pip install --upgrade setuptools
+        $ pip install matrix-synapse
+
+3.  Generate a confiuration file
+
+    ::
+
+        $ python -m synapse.app.homeserver \
+            --server-name synapse.me \
+            --config-path /opt/synapse/homeserver.yaml \
+            --generate-config \
+            --report-stats=yes
+
+4.  Generate certificate:
+
+    ::
+
+        $ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 99999 -nodes \
+            -out /opt/synapse/synapse.tls.crt \
+            -keyout /opt/synapse/synapse.tls.key
+
+5.  Confiure TLS certificates in configuration file,The relevant lines are like
+    this:
+
+    ::
+
+        - port: 8448
+          type: http
+          tls: true
+          resources:
+            - names: [client, federation]
+
+        tls_certificate_path: "/opt/synapse/synapse.tls.crt"
+        tls_private_key_path: "/opt/synapse/synapse.tls.key"
+
+6.  Add domain/ip map into `/etc/hosts` (required if you haven't bind domain to
+    your server ip address):
+
+    ::
+
+        xxx.xxx.xxx.xxx snapse.me
+
+7.  Start synapse service:
+
+    ::
+
+        $ synctl start
+
+8.  Register a user:
+
+    ::
+
+        $ register_new_matrix_user -c /opt/synapse/homeserver.yaml https://localhost:8448
+
+9.  Download `riot.im <https://about.riot.im/>`_ client, configure to login:
+
+    ::
+
+        Home Server URL: https://xxx.xxx.xxx.xxx:8448
+        Identity Server URL: https://xxx.xxx.xxx.xxx:8448
+
+10. Invite user by matrix id in riot.im client:
+
+    ::
+
+        @username:synapse.me
+
+以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。
+
+Thanks for reading :)
+

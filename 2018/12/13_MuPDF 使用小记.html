@@ -7,125 +7,121 @@
 <link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
 <body>
-<div id="main">
-<div id="header">
-<div id="headerLeft">
-<div id="name"><a href="/blog.html">an9wer's blog</a></div>
-<div id="signature">Just stick to it :)</div>
-</div> <!-- headerLeft -->
-<div id="headerRight">
-<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-</div> <!-- headerRight -->
-</div> <!-- header -->
-<div id="navbar">
-<a id="blog"
-class="current"
-href="/blog.html">Blog</a>
-<a id="notes"
-href="/notes.html">Notes</a>
-<a id="tweet"
-href="/tweet.html">Tweet</a>
-<a id="about"
-href="/about.html">About</a>
-</div> <!-- navbar -->
-<div id="post">
-<div id="title">MuPDF 使用小记</div>
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph"><p>昨天在 github 主页推送上看到了一个关于 MuPDF 的项目，出于好奇，点进去了解了下，
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="mupdf">
+<h1>MuPDF 使用小记</h1>
+<p>昨天在 github 主页推送上看到了一个关于 MuPDF 的项目，出于好奇，点进去了解了下，
 发现该项目其实是一个简单的脚本，实现的功能是每次使用 MuPDF 打开文件会定位到上次
 退出的地方。我当时第一反应是 MuPDF 不就是那款 vi 操作的 PDF 阅读软件么？（后来
-发现是我记错了，那个是 zathura）</p></div>
-<div class="paragraph"><p>于是出于好奇去 MuPDF 官网了解了下，按照官网描述的
-<a href="https://mupdf.com/docs/building.html">方法</a>，将下载的最新源码 build 了一遍，
-之后用其打开某个 PDF 文件开始体验一番。初看界面倒是挺简洁，其它没什么特别的。不
-过我还真不知道怎么操作它，瞎按了个 F1，还真跳出来个帮助界面。简单地看了下，发现
-它的操作命令很简单，加起来就一页，很容易就能掌握。但其实我最关心的是它能不能写
-注释，因为我在看 PDF 文档的时候经常会写注释。仔细在文档中找了下，发现按 a 就能
-呼出 annotation 面板，不过也是相当简陋，乍看一脸茫然，多次尝试之后才发现这个
+发现是我记错了，那个是 zathura）</p>
+<p>于是出于好奇去 MuPDF 官网了解了下，按照官网描述的 <a class="reference external" href="https://mupdf.com/docs/building.html">方法</a> ，将下载的最新源码 build 了一遍，之后
+用其打开某个 PDF 文件开始体验一番。初看界面倒是挺简洁，其它没什么特别的。不过我
+还真不知道怎么操作它，瞎按了个 F1，还真跳出来个帮助界面。简单地看了下，发现它的
+操作命令很简单，加起来就一页，很容易就能掌握。但其实我最关心的是它能不能写注释
+，因为我在看 PDF 文档的时候经常会写注释。仔细在文档中找了下，发现按 a 就能呼出
+annotation 面板，不过也是相当简陋，乍看一脸茫然，多次尝试之后才发现这个
 annotation 功能真是强大，包含了很多种类的标记方式：highlight, underscore,
 square, strikeout 等等，且可选颜色也非常多。唯一不足是一旦标记多了之后找起来非
-常麻烦，因为都密密麻麻挤在一块了。</p></div>
-<div class="paragraph"><p>要知道我现在一直在用的是 FoxitReader，功能非常强大，不过绝大多数的功能对我来说
+常麻烦，因为都密密麻麻挤在一块了。</p>
+<p>要知道我现在一直在用的是 FoxitReader，功能非常强大，不过绝大多数的功能对我来说
 好多都是不需要的，最常用的注释功能我一般只用其中的两种标记（也不能换颜色）。所
 以相对于 FoxitReader， MuPDF 最吸引我的地方是它的注释功能。再一点就是 MuPDF 比
 较轻量，操作方式也比较 geek。当然，成为骆驼背上的最后一根羽毛是我发现之前用
 FoxitReader 为 PDF 添加的注释在 MuPDF 中同样能显示。这就促使我全面投向 MuPDF 的
-怀抱。</p></div>
-<div class="paragraph"><p>今天一天使用下来，MuPDF 给我的感觉是简单实用，轻量，快。最后总结几个 MuPDF 不足
+怀抱。</p>
+<p>今天一天使用下来，MuPDF 给我的感觉是简单实用、轻量、快。最后总结几个 MuPDF 不足
 的地方：1. 不能用连续页查看 PDF，而是只能一页一页翻；2. 不能编辑书签；3. 之前提
 到的标记多了找起来比较麻烦。Anyway, 想要变得 geek 有时候也是需要妥协一下的（但
-是如果牛逼的话可以直接提交 patch）。</p></div>
-<div class="paragraph"><p>今天还了解了 Linux 下其他的 PDF 阅读器，这边也做个总结吧：</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;">
+是如果牛逼的话可以直接提交 patch）。</p>
+<p>今天还了解了 Linux 下其他的 PDF 阅读器，这边也做个总结吧：</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 22%" />
+<col style="width: 55%" />
+</colgroup>
 <thead>
-<tr>
-<th class="tableblock halign-left valign-top" >             </th>
-<th class="tableblock halign-left valign-top" > Bookmark   </th>
-<th class="tableblock halign-left valign-top" > Annotation</th>
+<tr><th class="head"></th>
+<th class="head"><p>Bookmark</p></th>
+<th class="head"><p>Annotation</p></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">FoxitReader</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">yes</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">yes</p></td>
+<tr><td><p>FoxitReader</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">mupdf</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">yes</p></td>
+<tr><td><p>mupdf</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">evince</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">yes</p></td>
+<tr><td><p>evince</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Okular</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">yes</p></td>
+<tr><td><p>Okular</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">zathura</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
+<tr><td><p>zathura</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">llpp</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">no</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">kind of (shift + mouse right)</p></td>
+<tr><td><p>llpp</p></td>
+<td><p>no</p></td>
+<td><p>kind of (shift + mouse right)</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph"><p>（注： Bookmark 表示是否可以修改 PDF 目录，Annotation 表示是否可以添加编
-辑注释）</p></div>
-<div class="paragraph"><p>Thanks for reading :)</p></div>
+<p>（注： Bookmark 表示是否可以修改 PDF 目录，Annotation 表示是否可以添加编
+辑注释）</p>
+<div class="section" id="references">
+<h2>References</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_PDF_software#Linux_and_Unix">List of PDF software in Linux</a></p></li>
+</ul>
+<p>Thanks for reading :)</p>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_references">References</h2>
-<div class="sectionbody">
-<div class="ulist"><ul>
-<li>
-<p>
-<a href="https://en.wikipedia.org/wiki/List_of_PDF_software#Linux_and_Unix">List of PDF software in Linux</a>
-</p>
-</li>
-</ul></div>
-</div>
-</div>
-</div> <!-- content -->
-</div> <!-- post -->
-<div id="footer">
-<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
-</div> <!-- footer -->
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
 </body>
 </html>

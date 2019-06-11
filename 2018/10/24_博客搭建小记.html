@@ -7,70 +7,82 @@
 <link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
 <body>
-<div id="main">
-<div id="header">
-<div id="headerLeft">
-<div id="name"><a href="/blog.html">an9wer's blog</a></div>
-<div id="signature">Just stick to it :)</div>
-</div> <!-- headerLeft -->
-<div id="headerRight">
-<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-</div> <!-- headerRight -->
-</div> <!-- header -->
-<div id="navbar">
-<a id="blog"
-class="current"
-href="/blog.html">Blog</a>
-<a id="notes"
-href="/notes.html">Notes</a>
-<a id="tweet"
-href="/tweet.html">Tweet</a>
-<a id="about"
-href="/about.html">About</a>
-</div> <!-- navbar -->
-<div id="post">
-<div id="content">
-<div class="paragraph"><p>首先，今天日子不错 —— 程序员节（10.24），就把今天定为是这个博客的 birthday。</p></div>
-<div class="paragraph"><p>搭建这个博客的目的是记录一下平日的一些感想、笔记等。主要做个备忘，以后翻翻当初
-写下的东西，应该还挺有意思的。</p></div>
-<div class="paragraph"><p>好了，讲一下今天的主题，这个博客是如何搭建的?</p></div>
-<div class="paragraph"><p>其实早在很久之前就有搭建个人博客的想法。当时的构思是后台用 bottle，前台用 vue，
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="id1">
+<h1>博客搭建小记</h1>
+<p>首先，今天日子不错 —— 程序员节（10.24），就把今天定为是这个博客的 birthday。</p>
+<p>搭建这个博客的目的是记录一下平日的一些感想、笔记等。主要做个备忘，以后翻翻当初
+写下的东西，应该还挺有意思的。</p>
+<p>好了，讲一下今天的主题，这个博客是如何搭建的?</p>
+<p>其实早在很久之前就有搭建个人博客的想法。当时的构思是后台用 bottle，前台用 vue，
 数据库用 sqlite，并且想着将数据库中所有数据做加密处理，因为数据库本身也不大，这
 样可以将整个数据库连同项目一起 commit 到 github 上，并且定时备份。照这个思路写
 了一段时间，实现了数据加密入库，解密出库，以及一个简单的 index.html，页面滚动到
 最底部时，自动加载下一页的数据。但后来项目也没能继续下去，主要是因为我对前端技
 术提不起很大的兴趣。原因在于 js 特效和 css 样式的组合花样繁多，知识点太零碎，每
 次有问题 google 一下基本可以解决，但是不成体系。最重要的一点是我认为皮肤特效等
-都是次要的，功能才是第一位的，就像简单实用的字符界面才是我的 style 啊。</p></div>
-<div class="paragraph"><p>但是最近这个的想法又冒了出来，因为平时总会瞎折腾，总想着有个平台能把这些东西都
+都是次要的，功能才是第一位的，就像简单实用的字符界面才是我的 style 啊。</p>
+<p>但是最近这个的想法又冒了出来，因为平时总会瞎折腾，总想着有个平台能把这些东西都
 记录下来。这次我决定找个现成的方案，开箱即用。说实话，平时瞎看一些杂七杂八的东
-西也是挺有好处的，之前看
-<a href="https://github.com/alebcay/awesome-shell">awesome shell</a> 的时候了解过一个叫
-<a href="https://github.com/cfenollosa/bashblog">bashblog</a> 的项目，当初只是简单看了一下介
+西也是挺有好处的，之前看 <a class="reference external" href="https://github.com/alebcay/awesome-shell">awesome shell</a> 的时候了解过一个叫 <a class="reference external" href="https://github.com/cfenollosa/bashblog">bashblog</a> 的项目，当初只是简单看了一下介
 绍，有那么点印象。于是这次找到这个项目的主页，仔细看了下介绍，并把项目下载下来
 跑了一遍，发现确实可行，而且 blog 风格也比较简洁。关键只用 bash 命令就可以搞定
-了，非常 geek 。</p></div>
-<div class="paragraph"><p>简单说下 bashblog，与我之前的思路不同，它搭建的是一个静态博客，用脚本自动生成
+了，非常 geek 。</p>
+<p>简单说下 bashblog，与我之前的思路不同，它搭建的是一个静态博客，用脚本自动生成
 index 页面，标签页面，并且集成了 disqus， google analytics 等功能。这样我就不需
-要写任何前后台代码，只要用它搭配一个 http server 就可以部署运行。</p></div>
-<div class="paragraph"><p>看到这么 geek 的项目，我当然得好好研究一下，然后参照着重写一遍，发扬我抄轮子的
+要写任何前后台代码，只要用它搭配一个 http server 就可以部署运行。</p>
+<p>看到这么 geek 的项目，我当然得好好研究一下，然后参照着重写一遍，发扬我抄轮子的
 精神。就是在重写的过程中，遇到了一个非常纠结的问题，用哪个 markdown parser 比较
-好？ google 一番，看到了
-<a href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">
-这篇文章</a>，才知道原来各家的 markdown parser 都有一些差异（文章中说 CommonMark
+好？ google 一番，看到了 <a class="reference external" href="http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">这篇文章</a>
+，才知道原来各家的 markdown parser 都有一些差异（文章中说 CommonMark
 会是一个比较好的解决方案）。但我认真思考后还是决定用个标准统一的标记语言，而且
-语法最好也能相对简洁一点，我脑海中突然想到了
-<a href="https://github.com/vimwiki/vimwiki">vimwiki</a> ，之前一直用它记笔记，语法类似
+语法最好也能相对简洁一点，我脑海中突然想到了 <a class="reference external" href="https://github.com/vimwiki/vimwiki">vimwiki</a> ，之前一直用它记笔记，语法类似
 markdown，不过标准统一（vimwiki 自己的一套标准）。突然，我又意识到 vimwiki 的
 :Vimwiki2HTML 命令可以直接将 vimwiki 格式的文件直接转化成 html，完全可以替代
 bashblog 这个工具。没想到折腾了半天最终又回到了我一直在用的 vimwiki 。之前怎么
-没发现 vimwiki 还有这中用法呢？</p></div>
-<div class="paragraph"><p>以上，虽然折腾了半天好像什么都没做，但这个简陋的博客不是搭建起来了吗？</p></div>
-<div class="paragraph"><p>Thanks for reading :)</p></div>
-</div> <!-- content -->
-</div> <!-- post -->
-<div id="footer">
-<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
-</div> <!-- footer -->
+没发现 vimwiki 还有这中用法呢？</p>
+<p>以上，虽然折腾了半天好像什么都没做，但这个简陋的博客不是搭建起来了吗？</p>
+<p>Thanks for reading :)</p>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
 </body>
 </html>

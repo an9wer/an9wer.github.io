@@ -189,19 +189,16 @@ tbody tr:nth-child(even) {
 /* }}} navbar */
 
 
-/* post {{{ */
-#post {
+/* content {{{ */
+#content {
     padding: 24px 48px 24px 48px;
+    margin-bottom: 5%;
 }
 
 #title {
     font-size: 2.375rem;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 5%;
-}
-
-#content {
     margin-bottom: 5%;
 }
 
@@ -238,7 +235,7 @@ tbody tr:nth-child(even) {
     border-left: solid 2px #999;
     padding: 3px 0px 3px 24px;
 }
-/* }}} post */
+/* }}} content */
 
 
 /* footer {{{ */

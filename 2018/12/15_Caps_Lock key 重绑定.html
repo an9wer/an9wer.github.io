@@ -7,107 +7,92 @@
 <link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
 <body>
-<div id="main">
-<div id="header">
-<div id="headerLeft">
-<div id="name"><a href="/blog.html">an9wer's blog</a></div>
-<div id="signature">Just stick to it :)</div>
-</div> <!-- headerLeft -->
-<div id="headerRight">
-<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-</div> <!-- headerRight -->
-</div> <!-- header -->
-<div id="navbar">
-<a id="blog"
-class="current"
-href="/blog.html">Blog</a>
-<a id="notes"
-href="/notes.html">Notes</a>
-<a id="tweet"
-href="/tweet.html">Tweet</a>
-<a id="about"
-href="/about.html">About</a>
-</div> <!-- navbar -->
-<div id="post">
-<div id="title">Caps_Lock key 重绑定</div>
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph"><p>大概是在两年前，刷知乎的时候看到用手掌外侧按 Ctrl 键的方法。当时刚学 Linux，此
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="caps-lock-key">
+<h1>Caps_Lock key 重绑定</h1>
+<p>大概是在两年前，刷知乎的时候看到用手掌外侧按 Ctrl 键的方法。当时刚学 Linux，此
 方法在 Linux 下简直就是神技，因为在 Shell 中默认使用了 Emacs 的模式进行命令的编
 辑，例如：Ctrl-a 将光标移动到行首，Ctrl-e 将光标移动到行末，Ctrl-b 将光标往左移
 动一个字母等等。甚至在 Vim 里面也经常会用到 Ctrl 的组合键，例如：Ctrl-[ 退出插
 入模式，其作用相当于 Esc 键。使用 Ctrl 的组合键的好处除了其本身的功能外，还有重
 要的一点就是提高打字的效率，我们的双手可以始终保持在键盘中心区域，避免抬手去按
-一些位置比较靠边的键。</p></div>
-<div class="paragraph"><p>这么好的技能，其实也有一个缺点，最近我也是深感苦恼。因为左 Ctrl 键处于键盘的左
+一些位置比较靠边的键。</p>
+<p>这么好的技能，其实也有一个缺点，最近我也是深感苦恼。因为左 Ctrl 键处于键盘的左
 下角边缘，长时间高频率使用手掌外侧按压，其方正的棱角会导致我的手掌逐渐产生疼痛
-感。</p></div>
-<div class="paragraph"><p>于是我想有没有什么好的办法能解决这个问题呢？这一点的话 Emacs 用户应该是比较有心
+感。</p>
+<p>于是我想有没有什么好的办法能解决这个问题呢？这一点的话 Emacs 用户应该是比较有心
 得的（因为他们经常要按 Ctrl 键，呵呵）。他们通常将 Caps_Lock 键与 Ctrl 键互换，
 毕竟小拇指按 Caps_Lock 还是比较舒服的。开源之父 Richard Stallman 用的就是 HHKB
-这种 Ctrl 在 Caps_Lock 位置的键盘。</p></div>
-<div class="paragraph"><p>当然我肯定不会为了这个而买一把 2000 多人民币的 HHKB。在 Linux 下有个 xmodmap 命
+这种 Ctrl 在 Caps_Lock 位置的键盘。</p>
+<p>当然我肯定不会为了这个而买一把 2000 多人民币的 HHKB。在 Linux 下有个 xmodmap 命
 令，可以修改键位。于是花了点时间了解了下这条命令，发现其语法规则还是挺简单的，
-新建 <span class="monospaced">~/.Xmodpad</span> 文件，在里面写入如下内容：</p></div>
-<div class="listingblock">
-<div class="content monospaced">
-<pre>    clear Lock
-    keysym Caps_Lock = Control_L
-    add Control = Control_L</pre>
-</div></div>
-<div class="paragraph"><p>该命令表示取消 Caps_Lock 键原有的功能，将其重新绑定到 Control 键。之后执行
-<span class="monospaced">xmodmap ~/.Xmodpad</span> 命令，键位即修改成功。不过，这样以后，我就得适应 Caps_Lock
+新建 <cite>~/.Xmodpad</cite> 文件，在里面写入如下内容：</p>
+<pre class="literal-block">clear Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L</pre>
+<p>该命令表示取消 Caps_Lock 键原有的功能，将其重新绑定到 Control 键。之后执行
+<cite>xmodmap ~/.Xmodpad</cite> 命令，键位即修改成功。不过，这样以后，我就得适应 Caps_Lock
 的按键方法。今天尝试了一天，经常会和 Shift 键搞混在一起，看来得适应一段时间了，
-呵呵。</p></div>
+呵呵。</p>
+<div class="section" id="edit-2018-12-24">
+<h2>Edit (2018/12/24)</h2>
+<p>在知乎看到了 <a class="reference external" href="https://www.zhihu.com/question/22127282/answer/42905465">这篇回答</a> ，将键帽反过来装在
+键盘上，发现还真是个好办法，于是这两天又用 xmodmap 重新将键位映射了一遍，现在被
+我修改的键位如下：</p>
+<p>+===========+===========+
+|           | Bind to   |
++-----------+-----------+
+| Caps_Lock | Return    |
++-----------+-----------+
+| Alt_R     | backslash |
++-----------+-----------+
+| Menu      | BackSpace |
++-----------+-----------+
+| Super_R   | Escape    |
++-----------+-----------+</p>
+<p>配置详见 <a class="reference external" href="https://github.com/an9wer/werice/tree/master/xmodmap">这里</a> 。</p>
+<p>Thanks for reading :)</p>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_edit_2018_12_24">Edit (2018/12/24)</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>在知乎看到了
-<a href="https://www.zhihu.com/question/22127282/answer/42905465">这篇回答</a>，将键帽反过
-来装在键盘上，发现还真是个好办法，于是这两天又用 xmodmap 重新将键位映射了一遍，
-现在被我修改的键位如下：</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
-<col style="width:50%;">
-<col style="width:50%;">
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top" >           </th>
-<th class="tableblock halign-left valign-top" > Bind to</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Caps_Lock</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Return</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Alt_R</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">backslash</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Menu</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">BackSpace</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Super_R</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Escape</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph"><p>配置详见 <a href="https://github.com/an9wer/werice/tree/master/xmodmap">这里</a>。</p></div>
-<div class="paragraph"><p>Thanks for reading :)</p></div>
-</div>
-</div>
-</div> <!-- content -->
-</div> <!-- post -->
-<div id="footer">
-<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
-</div> <!-- footer -->
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
 </body>
 </html>

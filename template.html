@@ -20,7 +20,7 @@
         </div> <!-- header -->
 
         <div id="navbar">
-            <a id="blog" class="current"
+            <a id="blog"
                 href="/blog.html">Blog</a>
             <a id="notes"
                 href="/notes.html">Notes</a>
@@ -31,25 +31,7 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="shadowsocks">
-<h1>Shadowsocks 连接异常小记</h1>
-<p>年后来公司，发现我自己的两台 shadowsocks 代理连接异常，主要表现是代理连接上之后
-几秒钟就会断掉，过了大概五分钟之后又恢复正常，再次连接后又出现这种情况。后来查
-看了 shadowsocks 项目主页，发现有人和我遇到了一样的情况，具体请看 <a class="reference external" href="https://github.com/shadowsocks/shadowsocks/issues/1393">这个issue</a> ，回答中有人给出了一
-种解决方案：在 shadowsocks 外面包一层 kcptun。</p>
-<p>但当时还是有点不以为意，因为公司同事的代理还能用，我猜测可能是临时的网络抽风，
-或者是 Vultr 主机出现了网络问题，等修复好就行了。可是接下去的两天问题依然存在，
-而且我在 YouTube 上看到了 <a class="reference external" href="https://www.youtube.com/watch?v=uL5HTRHrxzk">这个视频</a> ，我突然意识到可能是 GFW 升级导
-致了 shadowsocks 代理异常。</p>
-<p>于是我才决定在服务器上部署 kcptun，同时为了下次搭建方便，顺便写了个
-<a class="reference external" href="https://github.com/an9wer/bpd">Dockerfile</a> 。</p>
-<div class="section" id="edit-2019-02-28">
-<h2>Edit 2019/02/28</h2>
-<p>使用 traceroute 查了一下，消息应该是在 GFW 的某个路由处被绊了：</p>
-<img alt="Traceroute" src="/statics/images/2019/02/20_traceroute.jpg" />
-<p>Thanks for reading :)</p>
-</div>
-</div>
+%(body)s
         </div> <!-- content -->
 
         <div id="footer">

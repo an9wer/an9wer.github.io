@@ -7,183 +7,122 @@
 <link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
 <body>
-<div id="main">
-<div id="header">
-<div id="headerLeft">
-<div id="name"><a href="/blog.html">an9wer's blog</a></div>
-<div id="signature">Just stick to it :)</div>
-</div> <!-- headerLeft -->
-<div id="headerRight">
-<div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-</div> <!-- headerRight -->
-</div> <!-- header -->
-<div id="navbar">
-<a id="blog"
-class="current"
-href="/blog.html">Blog</a>
-<a id="notes"
-href="/notes.html">Notes</a>
-<a id="tweet"
-href="/tweet.html">Tweet</a>
-<a id="about"
-href="/about.html">About</a>
-</div> <!-- navbar -->
-<div id="post">
-<div id="title">搭建自己的 IM</div>
-<div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph"><p>写在这个特别有历史意义的日子里。</p></div>
-<div class="paragraph"><p>由于自己的两个梯子在六月一号同时被 ban，所以 telegram 暂时用不起来，因此临时用
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="im">
+<h1>搭建自己的 IM</h1>
+<p>写在这个特别有历史意义的日子里。</p>
+<p>由于自己的两个梯子在六月一号同时被 ban，所以 telegram 暂时用不起来，因此临时用
 了两天微信。但因为顾及着聊天的安全性，在微信上发消息时刻都是小心翼翼地，着实难
-受。</p></div>
-<div class="paragraph"><p>于是考虑使用开源方案，自己搭建一套 IM。看了
-<a href="https://opensource.com/alternatives/slack">相关的文章</a>，结合自己的需求：</p></div>
-<div class="olist arabic"><ol class="arabic">
-<li>
-<p>
-聊天数据安全。
-</p>
-</li>
-<li>
-<p>
-轻量。
-</p>
-</li>
-</ol></div>
-<div class="paragraph"><p>最终决定选择了 <a href="https://github.com/matrix-org/synapse">matrix synapse</a>。</p></div>
-<div class="paragraph"><p>接下来就是撸起袖子一把梭。</p></div>
-<div class="paragraph"><p>正好这两天腾讯云有活动，以较低的价格入手了一台主机（1 核 1 G 的配置，价格 214
-元/ 半年）。</p></div>
-<div class="paragraph"><p>参照官方教程在服务器（CentOS 7）上搭建 synapse：</p></div>
-<div class="olist arabic"><ol class="arabic">
-<li>
-<p>
-Install prerequisites
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ yum groupinstall "Development Tools"
+受。</p>
+<p>于是考虑使用开源方案，自己搭建一套 IM。看了 <a class="reference external" href="https://opensource.com/alternatives/slack">相关文章</a> ，结合自己的需求：</p>
+<ol class="arabic simple">
+<li><p>安全。</p></li>
+<li><p>轻量。</p></li>
+</ol>
+<p>最终决定选择了 <a class="reference external" href="https://github.com/matrix-org/synapse">Matrix Synapse</a> 。</p>
+<p>接下来就是撸起袖子一把梭。</p>
+<p>正好这两天腾讯云有活动，以较低的价格入手了一台主机（1 核 1 G 的配置，价格 214
+元/ 半年）。</p>
+<p>参照官方教程在服务器（CentOS 7）上搭建 Synapse：</p>
+<ol class="arabic">
+<li><p>Install prerequisites</p>
+<pre class="literal-block">$ yum groupinstall &quot;Development Tools&quot;
 $ yum install libtiff-devel libjpeg-devel libzip-devel freetype-devel \
     lcms2-devel libwebp-devel tcl-devel tk-devel redhat-rpm-config \
     python-virtualenv libffi-devel openssl-devel</pre>
-</div></div>
 </li>
-<li>
-<p>
-Install the Synapse
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ mkdir -p /opt/synapse
+<li><p>Install the Synapse</p>
+<pre class="literal-block">$ mkdir -p /opt/synapse
 $ python -m virtualenv /opt/synapse/env
-$ source /opt/synapse/env/bin/activate</pre>
-</div></div>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ pip install --upgrade pip
+$ source /opt/synapse/env/bin/activate
+
+$ pip install --upgrade pip
 $ pip install --upgrade setuptools
 $ pip install matrix-synapse</pre>
-</div></div>
 </li>
-<li>
-<p>
-Generate a confiuration file
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ python -m synapse.app.homeserver \
+<li><p>Generate a confiuration file</p>
+<pre class="literal-block">$ python -m synapse.app.homeserver \
     --server-name synapse.me \
     --config-path /opt/synapse/homeserver.yaml \
     --generate-config \
     --report-stats=yes</pre>
-</div></div>
 </li>
-<li>
-<p>
-Generate certificate:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 99999 -nodes \
+<li><p>Generate certificate:</p>
+<pre class="literal-block">$ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 99999 -nodes \
     -out /opt/synapse/synapse.tls.crt \
     -keyout /opt/synapse/synapse.tls.key</pre>
-</div></div>
 </li>
-<li>
-<p>
-Confiure TLS certificates in configuration file,The relevant lines are like
-this:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>----
-- port: 8448
+<li><p>Confiure TLS certificates in configuration file,The relevant lines are like
+this:</p>
+<pre class="literal-block">- port: 8448
   type: http
   tls: true
   resources:
     - names: [client, federation]
-tls_certificate_path: "/opt/synapse/synapse.tls.crt"
-tls_private_key_path: "/opt/synapse/synapse.tls.key"
-----</pre>
-</div></div>
+
+tls_certificate_path: &quot;/opt/synapse/synapse.tls.crt&quot;
+tls_private_key_path: &quot;/opt/synapse/synapse.tls.key&quot;</pre>
 </li>
-<li>
-<p>
-Add domain/ip map into <span class="monospaced">/etc/hosts</span> (required if you haven&#8217;t bind domain to
-your server ip address):
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>xxx.xxx.xxx.xxx snapse.me</pre>
-</div></div>
+<li><p>Add domain/ip map into <cite>/etc/hosts</cite> (required if you haven't bind domain to
+your server ip address):</p>
+<pre class="literal-block">xxx.xxx.xxx.xxx snapse.me</pre>
 </li>
-<li>
-<p>
-Start synapse service:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ synctl start</pre>
-</div></div>
+<li><p>Start synapse service:</p>
+<pre class="literal-block">$ synctl start</pre>
 </li>
-<li>
-<p>
-Register a user:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>$ register_new_matrix_user -c /opt/synapse/homeserver.yaml https://localhost:8448</pre>
-</div></div>
+<li><p>Register a user:</p>
+<pre class="literal-block">$ register_new_matrix_user -c /opt/synapse/homeserver.yaml https://localhost:8448</pre>
 </li>
-<li>
-<p>
-Download <a href="https://about.riot.im/">riot.im</a> client, configure to login:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>Home Server URL: https://xxx.xxx.xxx.xxx:8448
+<li><p>Download <a class="reference external" href="https://about.riot.im/">riot.im</a> client, configure to login:</p>
+<pre class="literal-block">Home Server URL: https://xxx.xxx.xxx.xxx:8448
 Identity Server URL: https://xxx.xxx.xxx.xxx:8448</pre>
-</div></div>
 </li>
-<li>
-<p>
-Invite user by matrix id in riot.im client:
-</p>
-<div class="literalblock">
-<div class="content monospaced">
-<pre>@username:synapse.me</pre>
-</div></div>
+<li><p>Invite user by matrix id in riot.im client:</p>
+<pre class="literal-block">&#64;username:synapse.me</pre>
 </li>
-</ol></div>
-<div class="paragraph"><p>以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。</p></div>
-<div class="paragraph"><p>Thanks for reading :)</p></div>
+</ol>
+<p>以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。</p>
+<p>Thanks for reading :)</p>
 </div>
-</div>
-</div> <!-- content -->
-</div> <!-- post -->
-<div id="footer">
-<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="https://github.com/asciidoc/asciidoc-py3" target="_blank">asciidoc-py3</a>
-</div> <!-- footer -->
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
 </body>
 </html>
