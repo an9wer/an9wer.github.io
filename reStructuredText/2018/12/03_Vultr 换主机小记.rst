@@ -45,15 +45,16 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 相关命令
 --------
 
-用 root 身份创建用户，之后可以用 `visudo` 命令为用户添加免密使用 `sudo` 的权限：
+用 root 身份创建用户，之后可以用 *visudo* 命令为用户添加免密使用 *sudo* 的权限
+：
 
 ::
 
     pacman -S sudo
     useradd -m -g wheel an9wer
 
-`/etc/sshd/config` 的相关配置如下（注意，在这之前最好先将 ssh public key 用
-`ssh-copy-id` 命令复制到服务器上）：
+*/etc/sshd/config* 的相关配置如下（注意，在这之前最好先将 ssh public key 用
+*ssh-copy-id* 命令复制到服务器上）：
 
 ::
 
@@ -64,7 +65,7 @@ Edit (2018/12/11)
 -----------------
 
 最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
-`sudo crontab -e` 命令，添加了如下内容：
+``sudo crontab -e`` 命令，添加了如下内容：
 
 ::
 
@@ -72,16 +73,14 @@ Edit (2018/12/11)
 
 这条命令会让服务器在每天凌晨五点的时候进行系统更新（服务器是日本的，所以相当于
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
-需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在
-`sudo docker run` 命令运行容器时加上 `--restart unless-stopped` 选项。
+需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 ``sudo
+docker run`` 命令运行容器时加上 ``--restart unless-stopped`` 选项。
 
 Edit (2018/02/01)
 -----------------
 
 在 github 上新建了一个项目 —— `verice <https://github.com/an9wer/verice>`_ ，写
 了一些脚本专门用来管理服务器。
-
-Thanks for reading :)
 
 References
 ----------
@@ -103,4 +102,6 @@ How to enable BBR on Linux?
 -   https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308
 
 -   https://marskid.net/2017/12/03/arch-linux-open-google-bbr/
+
+Thanks for reading :)
 

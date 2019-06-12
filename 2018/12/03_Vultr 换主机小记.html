@@ -69,29 +69,28 @@ Alpine， Arch，FreeBSD 等。我毫不犹豫地选择了 Arch，因为 Arch �
 Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁盘等进行监控。</p>
 <div class="section" id="id1">
 <h2>相关命令</h2>
-<p>用 root 身份创建用户，之后可以用 <cite>visudo</cite> 命令为用户添加免密使用 <cite>sudo</cite> 的权限：</p>
+<p>用 root 身份创建用户，之后可以用 <em>visudo</em> 命令为用户添加免密使用 <em>sudo</em> 的权限
+：</p>
 <pre class="literal-block">pacman -S sudo
 useradd -m -g wheel an9wer</pre>
-<p><cite>/etc/sshd/config</cite> 的相关配置如下（注意，在这之前最好先将 ssh public key 用
-<cite>ssh-copy-id</cite> 命令复制到服务器上）：</p>
+<p><em>/etc/sshd/config</em> 的相关配置如下（注意，在这之前最好先将 ssh public key 用
+<em>ssh-copy-id</em> 命令复制到服务器上）：</p>
 <pre class="literal-block">PermitRootLogin no
 PasswordAuthentication no</pre>
 </div>
 <div class="section" id="edit-2018-12-11">
 <h2>Edit (2018/12/11)</h2>
 <p>最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
-<cite>sudo crontab -e</cite> 命令，添加了如下内容：</p>
+<span class="docutils literal">sudo crontab <span class="pre">-e</span></span> 命令，添加了如下内容：</p>
 <pre class="literal-block">0 5 * * * /usr/bin/pacman -Syu --noconfirm &amp;&amp; /sbin/shutdown -r +5</pre>
 <p>这条命令会让服务器在每天凌晨五点的时候进行系统更新（服务器是日本的，所以相当于
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
-需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在
-<cite>sudo docker run</cite> 命令运行容器时加上 <cite>--restart unless-stopped</cite> 选项。</p>
+需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 <span class="docutils literal">sudo docker run</span> 命令运行容器时加上 <span class="docutils literal"><span class="pre">--restart</span> <span class="pre">unless-stopped</span></span> 选项。</p>
 </div>
 <div class="section" id="edit-2018-02-01">
 <h2>Edit (2018/02/01)</h2>
 <p>在 github 上新建了一个项目 —— <a class="reference external" href="https://github.com/an9wer/verice">verice</a> ，写
 了一些脚本专门用来管理服务器。</p>
-<p>Thanks for reading :)</p>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
@@ -108,6 +107,7 @@ PasswordAuthentication no</pre>
 <li><p><a class="reference external" href="https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308">https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308</a></p></li>
 <li><p><a class="reference external" href="https://marskid.net/2017/12/03/arch-linux-open-google-bbr/">https://marskid.net/2017/12/03/arch-linux-open-google-bbr/</a></p></li>
 </ul>
+<p>Thanks for reading :)</p>
 </div>
 </div>
         </div> <!-- content -->

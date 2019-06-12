@@ -49,14 +49,14 @@
 这种 Ctrl 在 Caps_Lock 位置的键盘。</p>
 <p>当然我肯定不会为了这个而买一把 2000 多人民币的 HHKB。在 Linux 下有个 xmodmap 命
 令，可以修改键位。于是花了点时间了解了下这条命令，发现其语法规则还是挺简单的，
-新建 <cite>~/.Xmodpad</cite> 文件，在里面写入如下内容：</p>
+新建 <em>~/.Xmodpad</em> 文件，在里面写入如下内容：</p>
 <pre class="literal-block">clear Lock
 keysym Caps_Lock = Control_L
 add Control = Control_L</pre>
 <p>该命令表示取消 Caps_Lock 键原有的功能，将其重新绑定到 Control 键。之后执行
-<cite>xmodmap ~/.Xmodpad</cite> 命令，键位即修改成功。不过，这样以后，我就得适应 Caps_Lock
-的按键方法。今天尝试了一天，经常会和 Shift 键搞混在一起，看来得适应一段时间了，
-呵呵。</p>
+<span class="docutils literal">xmodmap <span class="pre">~/.Xmodpad</span></span> 命令，键位即修改成功。不过，这样以后，我就得适应
+Caps_Lock 的按键方法。今天尝试了一天，经常会和 Shift 键搞混在一起，看来得适应一
+段时间了，呵呵。</p>
 <div class="section" id="edit-2018-12-24">
 <h2>Edit (2018/12/24)</h2>
 <p>在知乎看到了 <a class="reference external" href="https://www.zhihu.com/question/22127282/answer/42905465">这篇回答</a> ，将键帽反过来装在

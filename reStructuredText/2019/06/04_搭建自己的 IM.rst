@@ -75,7 +75,7 @@
         tls_certificate_path: "/opt/synapse/synapse.tls.crt"
         tls_private_key_path: "/opt/synapse/synapse.tls.key"
 
-6.  Add domain/ip map into `/etc/hosts` (required if you haven't bind domain to
+6.  Add domain/ip map into */etc/hosts* (required if you haven't bind domain to
     your server ip address):
 
     ::
