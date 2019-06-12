@@ -32,7 +32,7 @@ strong, b {
 }
 
 h1 {
-    border-bottom: 1px solid #DDD;
+    border-bottom: 2px solid #DDD;
     padding-bottom: 0.3em;
 }
 
@@ -218,6 +218,15 @@ tbody tr:nth-child(even) {
 }
 
 #content .image {
+}
+
+#content ul {
+    padding-left: 16px;
+}
+
+#content hr {
+    border-top: 1px;
+    color: #DDD;
 }
 
 .admonitionblock {

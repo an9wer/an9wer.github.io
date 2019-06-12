@@ -8,24 +8,28 @@ msg() {
 }
 
 comm_dir() {
-  # Neet to set $regex and $adoc before run this function
+  # Neet to set $regex and $rst before run this function
   OLD_IFS=$IFS
   IFS=$'\n'
 
   for subdir in $(find -type d -regex "$regex"); do
-    adoc_subdir=$adoc/$subdir
+    rst_subdir=$rst/$subdir
 
+    # Ensure $subdir is a directory
     if [[ ! -d $subdir ]]; then
       continue
     fi
 
-    if [[ ! -d $adoc_subdir ]]; then
+    # Ensure $rst_subdir is a directory
+    if [[ ! -d $rst_subdir ]]; then
       msg "$subdir"
       rm -rf "$subdir"
       continue
     fi
 
-    # File not suffixed with '.html'
+    # Then compare files in $subdir and $rst_subdir
+
+    # Delete files which are not suffixed with '.html' first
     for dedication in $(find "$subdir" -maxdepth 1 -type f); do
         if [[ ! $dedication =~ .html$ ]]; then
           msg "$dedication"
@@ -35,7 +39,7 @@ comm_dir() {
 
     for dedication in $(comm -23 \
         <(ls "$subdir" | sed -E 's@(.*)\.html@\1@' | sort) \
-        <(ls "$adoc_subdir" | sed -E 's@(.*)\.adoc@\1@') | sort); do
+        <(ls "$rst_subdir" | sed -E 's@(.*)\.rst@\1@') | sort); do
       # $dedication may be file or directory.
       if [[ -f $subdir/$dedication.html ]]; then
         dedication=$dedication.html
@@ -49,19 +53,19 @@ comm_dir() {
 }
 
 comm_blog_dir() {
-  adoc=$DIR/asciidoc/blog
+  rst=$DIR/reStructuredText
   regex="^./20[0-9][0-9].*"
   comm_dir
 }
 
 comm_notes_dir() {
-  adoc=$DIR/asciidoc
+  rst=$DIR/reStructuredText
   regex="^./notes.*"
   comm_dir
 }
 
 
-# Ensure in this script directory
+# Ensure we are in this script directory
 cd "$DIR"
 comm_blog_dir
 comm_notes_dir
