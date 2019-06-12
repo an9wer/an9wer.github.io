@@ -1,3 +1,10 @@
+2019/06/12 Wed
+
+    The more options you implement, the more flexible your program is, and the
+    more complicated its implementation becomes. -- From documentation of
+    Python's *optparse* module
+
+
 2019/06/08 Fir
 
     走在大马路上帮别人拍照，被旁边的一个老爷爷误认为是在给他拍照。他微笑着对我
