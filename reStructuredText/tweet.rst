@@ -1,8 +1,8 @@
 2019/06/12 Wed
 
     The more options you implement, the more flexible your program is, and the
-    more complicated its implementation becomes. -- From documentation of
-    Python's *optparse* module
+    more complicated its implementation becomes. -- *From documentation of
+    Python's optparse module*
 
 
 2019/06/08 Fir

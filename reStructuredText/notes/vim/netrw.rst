@@ -1,23 +1,47 @@
 netrw
 =====
 
-mf: mark file
+See *:h netrw*
 
-mF: unmark file
+mf
+    Mark file
 
-mx: run shell command on marked files
+mF
+    Unmark file
+
+mx
+    Run shell command on marked files
 
 ----
 
-gx: browsing with a special handler
+gx
+    Browsing with a special handler (web browser)
 
 ----
 
-t : enter the file/directory under the cursor in a new tab
+i
+    Change listing style
 
-d : make a directory
+t
+    Enter the file/directory under the cursor in a new tab
 
-% : open a new file in netrw's current directory
+\-
+    Go up a directory
 
-R : rename file or directory
+c
+    make browsing directory the current directory (use ``let g:netrw_keepdir =
+    0`` setting to keep the current directory the same as the browsing
+    directory)
+
+d
+    make a directory
+
+D
+    Delte a file or directory
+
+\%
+    open a new file in netrw's current directory
+
+R
+    rename file or directory
 

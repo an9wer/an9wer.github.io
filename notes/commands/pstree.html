@@ -31,16 +31,14 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="httpd">
-<h1>Httpd</h1>
-<p>How to configure httpd:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToConfigure.html">https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToConfigure.html</a></p></li>
-</ul>
-<p>Error &quot;Forbidden You don't have permission to access / on this server&quot;:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://stackoverflow.com/a/11289275">https://stackoverflow.com/a/11289275</a></p></li>
-</ul>
+<div class="section" id="pstree">
+<h1>Pstree</h1>
+<p>See <em>man pstree</em></p>
+<p>To show a tree of specified process, start from that specified process:</p>
+<pre class="literal-block">$ pstree pid</pre>
+<p>To show a tree of specified process, start from the most ancestor of that
+specified process:</p>
+<pre class="literal-block">$ pstree -s pid</pre>
 </div>
         </div> <!-- content -->
 
