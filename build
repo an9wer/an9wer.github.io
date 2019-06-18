@@ -39,6 +39,11 @@ build() {
       category=notes
     fi
 
+    # Skip `notes/ns` directory
+    if grep -Eq "^notes/ns/.+\.rst$" <(echo "$html"); then
+      continue
+    fi
+
     # Index
     if [[ -z $html ]]; then
       html=$(sed -nE 's@.*/([^/]+\.rst)@\1@p' <(echo "$rst"))

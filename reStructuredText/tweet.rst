@@ -1,3 +1,7 @@
+2019/06/17 Mon
+
+    君不见 Shadowsocks 代码仓库已然关闭了 issue。
+
 2019/06/12 Wed
 
     The more options you implement, the more flexible your program is, and the

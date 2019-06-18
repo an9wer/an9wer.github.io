@@ -2,6 +2,7 @@
     Commands
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
+        ./notes/commands/dmidecode.rst
     Vim
         ./notes/vim/netrw.rst
         ./notes/vim/window.rst
@@ -10,9 +11,13 @@
         ./notes/devops/puppet38.rst
     Storage
         ./notes/storage/glusterfs.rst
+    Database
+        ./notes/database/redis.rst
     Miscellaneous
-        ./notes/miscellaneous/httpd.rst
+        ./notes/miscellane ous/httpd.rst
         ./notes/miscellaneous/webdav.rst
+    NS
+        ./notes/ns/contentsrv.rst
     TODO
         ./notes/coreutils/seq.rst
 
@@ -21,6 +26,8 @@ Commands/
     `top </notes/commands/top.html>`_
 
     `pstree </notes/commands/pstree.html>`_
+
+    `dmidecode </notes/commands/dmidecode.html>`_
 
 Vim/
     `window </notes/vim/window.html>`_
@@ -34,6 +41,9 @@ DevOps/
 
 Storage/
     `glusterfs </notes/storage/glusterfs.html>`_
+
+Database/
+    `redis </notes/database/redis.html>`_
 
 Miscellaneous/
     `httpd </notes/miscellaneous/httpd.html>`_

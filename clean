@@ -12,7 +12,15 @@ comm_dir() {
   OLD_IFS=$IFS
   IFS=$'\n'
 
-  for subdir in $(find -type d -regex "$regex"); do
+  for subdir in $(find -type d -regex "$regex"  -printf '%P\n'); do
+    
+    # Skip `note/ns` directory
+    if grep -Eq "^notes/ns" <(echo "$subdir"); then
+      msg "$DIR/$subdir"
+      rm -rf "$DIR/$subdir"
+      continue
+    fi
+
     rst_subdir=$rst/$subdir
 
     # Ensure $subdir is a directory
