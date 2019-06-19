@@ -1,4 +1,6 @@
 ..
+    Awesome
+        ./notes/awesome/redshift.rst
     Commands
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
@@ -13,6 +15,8 @@
         ./notes/storage/glusterfs.rst
     Database
         ./notes/database/redis.rst
+    Hardware
+        ./notes/hardware/memory.rst
     Miscellaneous
         ./notes/miscellane ous/httpd.rst
         ./notes/miscellaneous/webdav.rst
@@ -21,6 +25,11 @@
     TODO
         ./notes/coreutils/seq.rst
 
+        https://wiki.archlinux.org/index.php/XScreenSaver
+        https://wiki.archlinux.org/index.php/Backlight
+
+Awesome/
+    `redshift </notes/awesome/redshift.html>`_
 
 Commands/
     `top </notes/commands/top.html>`_
@@ -44,6 +53,9 @@ Storage/
 
 Database/
     `redis </notes/database/redis.html>`_
+
+Hardware/
+    `memory </notes/hardware/memory.html>`_
 
 Miscellaneous/
     `httpd </notes/miscellaneous/httpd.html>`_

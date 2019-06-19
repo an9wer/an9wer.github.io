@@ -31,42 +31,32 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="redis">
-<h1>Redis</h1>
-<div class="section" id="redis-replication">
-<h2>Redis replication</h2>
-<p>Redis replication allows slave instances to be exact copies of master
-instances. When some errors happen, master will be replaced by one of slaves.</p>
-<div class="section" id="setup-redis-replication">
-<h3>Setup redis replication</h3>
-<p>To configure basic Redis replication, just add the following line to the slave
-configuration file:</p>
-<pre class="literal-block">slaveof &lt;ip/hostname&gt; &lt;port&gt;</pre>
-<p>Or run the following line in redis client interface of slave (this means we can
-set redis server to be a slave even when it is running):</p>
-<pre class="literal-block">&gt; SLAVEOF &lt;ip/hostname&gt; &lt;port&gt;</pre>
-<p>By default, slaves are read-only, which means you cannot modify any data of
-slaves by using <em>redis-cli</em>, but only master of slaves can, this behavior is
-controlled by the <em>slave-read-only</em> only option in the <em>redis.conf</em> file,</p>
+<div class="section" id="redshift">
+<h1>Redshift</h1>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<pre class="literal-block"># pacman -S redshift</pre>
 </div>
-<div class="section" id="turn-off-redis-replication">
-<h3>Turn off redis replication</h3>
-<p>To turn off redis replication or turn the slave into a master:</p>
-<pre class="literal-block">&gt; SLAVEOF NO ONE</pre>
-</div>
-<div class="section" id="set-slave-to-authenticate-to-a-master">
-<h3>Set slave to authenticate to a master</h3>
-<p>If master instance have a password via <em>reqirepass</em>:</p>
-<pre class="literal-block">&gt; CONFIG SET requirepass &lt;password&gt;</pre>
-<p>To synchronous data from master, slaves need to authenticate first:</p>
-<pre class="literal-block">&gt; CONFIG SET masterauth &lt;password&gt;</pre>
+<div class="section" id="usage">
+<h2>Usage</h2>
+<p>By default redshift will use <em>geoclue2</em> to get location information, but in my
+case, it stucks at <cite>Waiting for initial location to become available...</cite> when
+running without any arguments.</p>
+<p>So manually set my location and daytime and night tempurature:</p>
+<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt;</pre>
+<p>To only print (not run) parameter the redshif will execute:</p>
+<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt; -p</pre>
+<p>To instantly adjusts the color temperature:</p>
+<pre class="literal-block">$ redshift -P -O &lt;TEMPERATURE&gt;</pre>
+<p>To reset all:</p>
+<pre class="literal-block">$ redshift -x</pre>
 </div>
 <div class="section" id="references">
-<h3>References</h3>
+<h2>References</h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://redis.io/topics/replication">Redis official documentation: replication</a></p></li>
+<li><p><a class="reference external" href="http://jonls.dk/redshift/">Official website</a></p></li>
+<li><p><a class="reference external" href="https://wiki.archlinux.org/index.php/Redshift">Archwiki: redshift</a></p></li>
 </ul>
-</div>
 </div>
 </div>
         </div> <!-- content -->
