@@ -27,6 +27,8 @@
 
         https://wiki.archlinux.org/index.php/XScreenSaver
         https://wiki.archlinux.org/index.php/Backlight
+        https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+        https://www.jwz.org/xscreensaver/man1.html
 
 Awesome/
     `redshift </notes/awesome/redshift.html>`_

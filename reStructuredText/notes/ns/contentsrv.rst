@@ -7,6 +7,9 @@ Download eflasher img:
 
     nanopi-m1-plus_eflasher_debian-jessie_4.14_armhf_20190522.img.zip
 
+*Note*: This image uses lxde as desktop environment, so the following commands
+are base on it.
+
 Flash it into micro SD card:
 
 ::
@@ -60,5 +63,22 @@ Create desktop:
     Name=image_client
 
 *Note*: If need to start client automatically after booting system, you should
-copy above *.desktop" file into `~/.config/autostart` directory.
+copy above desktop file into `~/.config/autostart` directory.
+
+Close xscreensaver:
+
+Way 1: Install xscreenserver gui, run it and disable screen saver:
+
+::
+
+    # apt install xscreenserver   
+
+
+Way 2 (may not work): Modify settings of xscreenserver, Open *~/.xscreensaver*
+file, the change settings of xcreenserver to disable it:
+
+::
+
+    mode=off
+
 
