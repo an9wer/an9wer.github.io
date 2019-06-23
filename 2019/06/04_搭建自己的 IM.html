@@ -105,7 +105,16 @@ Identity Server URL: https://xxx.xxx.xxx.xxx:8448</pre>
 </li>
 </ol>
 <p>以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。</p>
+<div class="section" id="edit-2019-06-23">
+<h2>Edit 2019/06/23</h2>
+<p>To change user password:</p>
+<p>Create hashed password first:</p>
+<pre class="literal-block">$ hash_password</pre>
+<p>Update user's password with hashed password above:</p>
+<pre class="literal-block">$ sqlite3 homeserver.db
+&gt; update users set password_hash='xxxxxxx' where name='&#64;xxx:synapse.me';</pre>
 <p>Thanks for reading :)</p>
+</div>
 </div>
         </div> <!-- content -->
 

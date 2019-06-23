@@ -109,5 +109,23 @@
 
 以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。
 
+Edit 2019/06/23
+---------------
+
+To change user password:
+
+Create hashed password first:
+
+::
+
+    $ hash_password
+
+Update user's password with hashed password above:
+
+::
+
+    $ sqlite3 homeserver.db
+    > update users set password_hash='xxxxxxx' where name='@xxx:synapse.me';
+
 Thanks for reading :)
 
