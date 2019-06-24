@@ -1,11 +1,24 @@
 WebDAV
 ======
 
-What is WebDAV?
+Definition of WebDAV:
 
 -   https://en.wikipedia.org/wiki/WebDAV
 
-How to deploy it?
+Deploy WebDAV on CentOS 7:
+
+Install httpd and creat realated directory:
+
+::
+
+    # yum install httpd
+    # mkdir /var/www/webdav
+    # chown -R apache:apache /var/www/webdav
+
+
+
+
+
 
 -   https://wiki.archlinux.org/index.php/WebDAV
 

@@ -5,6 +5,8 @@
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
         ./notes/commands/dmidecode.rst
+    Git
+        ./notes/git/git_secret.rst
     Vim
         ./notes/vim/netrw.rst
         ./notes/vim/window.rst
@@ -46,6 +48,9 @@ Vim/
     `netrw </notes/vim/netrw.html>`_ 
 
     `various </notes/vim/various.html>`_
+
+Git/
+    `git secret </notes/git/git_secret.html>`_
 
 DevOps/
     `puppet3.8 </notes/devops/puppet38.html>`_
