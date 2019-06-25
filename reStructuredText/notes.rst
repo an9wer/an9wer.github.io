@@ -11,7 +11,7 @@
         ./notes/vim/netrw.rst
         ./notes/vim/window.rst
         ./notes/vim/various.rst
-    DevOps/
+    DevOps
         ./notes/devops/puppet38.rst
     Storage
         ./notes/storage/glusterfs.rst
@@ -19,9 +19,11 @@
         ./notes/database/redis.rst
     Hardware
         ./notes/hardware/memory.rst
-    Miscellaneous
-        ./notes/miscellane ous/httpd.rst
+    Server
+        ./notes/miscellaneous/httpd.rst
         ./notes/miscellaneous/webdav.rst
+    Misc
+        ./notes/miscellaneous/programming_language.rst
     NS
         ./notes/ns/contentsrv.rst
     TODO
@@ -64,8 +66,11 @@ Database/
 Hardware/
     `memory </notes/hardware/memory.html>`_
 
-Miscellaneous/
+Server/
     `httpd </notes/miscellaneous/httpd.html>`_
 
     `WebDAV </notes/miscellaneous/webdav.html>`_
+
+Misc/
+    `Programming language </notes/miscellaneous/programming_language.html>`_
 

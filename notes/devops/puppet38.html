@@ -33,13 +33,24 @@
         <div id="content">
 <div class="section" id="puppet3-8">
 <h1>Puppet3.8</h1>
+<p>Puppet is <strong>declarative</strong>, <strong>idempotent</strong>, and <strong>stateless</strong> by default.</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
 <p>Install puppet3.8 on CentOS7:</p>
-<ul>
-<li><p><a class="reference external" href="https://puppet.com/docs/puppet/3.8/install_el.html">https://puppet.com/docs/puppet/3.8/install_el.html</a></p>
-<pre class="literal-block">$ sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
-$ sudo yum install puppet</pre>
-</li>
-</ul>
+<pre class="literal-block"># rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+# yum install puppet</pre>
+<p><a class="reference external" href="https://puppet.com/docs/puppet/3.8/install_el.html">https://puppet.com/docs/puppet/3.8/install_el.html</a></p>
+</div>
+<div class="section" id="subcommands">
+<h2>Subcommands</h2>
+<div class="section" id="module">
+<h3>Module</h3>
+<p>Install a module:</p>
+<pre class="literal-block"># puppet module install &lt;module&gt;</pre>
+<p>Install a specified version of module:</p>
+<pre class="literal-block"># puppet module install -v &lt;version&gt; &lt;module&gt;</pre>
+</div>
+</div>
 </div>
         </div> <!-- content -->
 
