@@ -31,51 +31,26 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="top">
-<h1>top</h1>
-<div class="section" id="interactive-commands">
-<h2>Interactive commands</h2>
+<div class="section" id="tabpage">
+<h1>Tabpage</h1>
+<p>See <em>:h tabpage</em></p>
+<div class="section" id="commands">
+<h2>Commands</h2>
 <dl class="simple">
-<dt>1</dt>
-<dd><p>toggle between single cup states and separate cpu states</p>
+<dt>{count}gt | :{count}tabn[ext]</dt>
+<dd><p>Go to tab page {count}. The first tab page has number one.</p>
 </dd>
-<dt>E</dt>
-<dd><p>extend memory scale in summary area</p>
+<dt>{count}gT | :{count}tabp[revious]</dt>
+<dd><p>Go to the previous tab page.</p>
 </dd>
-<dt>e</dt>
-<dd><p>extend memory scale in task window</p>
-</dd>
-<dt>c</dt>
-<dd><p>toggle to view long command or not</p>
-</dd>
-<dt>f|F</dt>
-<dd><p>change which fields are displayed</p>
-</dd>
-<dt>V</dt>
-<dd><p>toggle between forest view mode and normal mode</p>
-</dd>
-<dt>i</dt>
-<dd><p>toggle between all tasks and just active tasks.</p>
-</dd>
-<dt>d</dt>
-<dd><p>change delay time interval</p>
+<dt>CTRL-W gf</dt>
+<dd><p>Open a new tab page and edit the file name under the cursor.</p>
 </dd>
 </dl>
-<hr class="docutils" />
-<dl class="simple">
-<dt>o|O</dt>
-<dd><p>(ignore case/case sensitive) filter which tasks will be shown in the current window</p>
-</dd>
-<dt>^O</dt>
-<dd><p>Show active filters</p>
-</dd>
-<dt>=</dt>
-<dd><p>reset filters in current window</p>
-</dd>
-<dt>+</dt>
-<dd><p>reset filters in all windows</p>
-</dd>
-</dl>
+</div>
+<div class="section" id="tabline">
+<h2>Tabline</h2>
+<p>See <em>:h setting-tabline</em></p>
 </div>
 </div>
         </div> <!-- content -->

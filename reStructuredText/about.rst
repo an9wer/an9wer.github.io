@@ -1,4 +1,6 @@
 Connect me: *blog.an9wer@gmail.com*
+    Parameter engineer
+
     Work for bread with Python
 
     Play for fun with C, Bash, VimL and also Python in free time

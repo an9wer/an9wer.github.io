@@ -1,15 +1,19 @@
 ..
-    Awesome
-        ./notes/awesome/redshift.rst
     Commands
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
         ./notes/commands/dmidecode.rst
+        ./notes/commands/ntp.rst
+    Package
+        ./notes/package/rpm.rst
+        ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
     Vim
         ./notes/vim/netrw.rst
         ./notes/vim/window.rst
+        ./notes/vim/tabpage.rst
+        ./notes/vim/repeat.rst
         ./notes/vim/various.rst
     DevOps
         ./notes/devops/puppet38.rst
@@ -22,6 +26,8 @@
     Server
         ./notes/miscellaneous/httpd.rst
         ./notes/miscellaneous/webdav.rst
+    Awesome
+        ./notes/awesome/redshift.rst
     Misc
         ./notes/miscellaneous/programming_language.rst
     NS
@@ -34,9 +40,6 @@
         https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
         https://www.jwz.org/xscreensaver/man1.html
 
-Awesome/
-    `redshift </notes/awesome/redshift.html>`_
-
 Commands/
     `top </notes/commands/top.html>`_
 
@@ -44,10 +47,21 @@ Commands/
 
     `dmidecode </notes/commands/dmidecode.html>`_
 
+    `ntp </notes/commands/ntp.html>`_
+
+Package/
+    `RPM </notes/package/rpm.html>`_
+
+    `fpm <notes/package/fpm.html>`_
+
 Vim/
     `window </notes/vim/window.html>`_
 
     `netrw </notes/vim/netrw.html>`_ 
+
+    `tabage </notes/vim/tabpage.html>`_
+
+    `repeat </notes/vim/repeat.html>`_
 
     `various </notes/vim/various.html>`_
 
@@ -70,6 +84,9 @@ Server/
     `httpd </notes/miscellaneous/httpd.html>`_
 
     `WebDAV </notes/miscellaneous/webdav.html>`_
+
+Awesome/
+    `redshift </notes/awesome/redshift.html>`_
 
 Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
