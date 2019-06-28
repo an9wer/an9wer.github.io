@@ -51,6 +51,25 @@
 <pre class="literal-block"># puppet module install -v &lt;version&gt; &lt;module&gt;</pre>
 </div>
 </div>
+<div class="section" id="resource">
+<h2>Resource</h2>
+</div>
+<div class="section" id="exec">
+<h2>Exec</h2>
+<dl>
+<dt>refreshonly</dt>
+<dd><p>When this attribute is set to <em>true</em>, the command should only be run when
+it is triggered by some resource it subscribes (by using <em>subscribe</em> or
+<em>notify</em> attribute, not <em>require</em> or <em>before</em>).</p>
+<pre class="literal-block">exec { &quot;some command&quot;:
+    refreshonly =&gt; only,
+    require =&gt; File['some file'],
+}</pre>
+<p>In this example, whether the required <em>file</em> resource is run, the <em>exec</em>
+resource will never be triggered.</p>
+</dd>
+</dl>
+</div>
 </div>
         </div> <!-- content -->
 

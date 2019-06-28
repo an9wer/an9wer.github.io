@@ -10,11 +10,13 @@
     Git
         ./notes/git/git_secret.rst
     Vim
-        ./notes/vim/netrw.rst
+        ./notes/vim/tricks.rst
+        ./notes/vim/options.rst
         ./notes/vim/window.rst
         ./notes/vim/tabpage.rst
         ./notes/vim/repeat.rst
         ./notes/vim/various.rst
+        ./notes/vim/netrw.rst
     DevOps
         ./notes/devops/puppet38.rst
     Storage
@@ -30,6 +32,7 @@
         ./notes/awesome/redshift.rst
     Misc
         ./notes/miscellaneous/programming_language.rst
+        ./notes/miscellaneous/operating_system.rst
     NS
         ./notes/ns/contentsrv.rst
     TODO
@@ -39,6 +42,10 @@
         https://wiki.archlinux.org/index.php/Backlight
         https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
         https://www.jwz.org/xscreensaver/man1.html
+
+        puppet: inherit and include
+        puppet: default resource
+        puppet: contain
 
 Commands/
     `top </notes/commands/top.html>`_
@@ -55,15 +62,19 @@ Package/
     `fpm <notes/package/fpm.html>`_
 
 Vim/
-    `window </notes/vim/window.html>`_
+    `tricks </notes/vim/tricks.html>`_
 
-    `netrw </notes/vim/netrw.html>`_ 
+    `options </notes/vim/options.html>`_
+
+    `window </notes/vim/window.html>`_
 
     `tabage </notes/vim/tabpage.html>`_
 
     `repeat </notes/vim/repeat.html>`_
 
     `various </notes/vim/various.html>`_
+
+    `netrw </notes/vim/netrw.html>`_ 
 
 Git/
     `git secret </notes/git/git_secret.html>`_
@@ -90,4 +101,6 @@ Awesome/
 
 Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
+
+    `Operating system </notes/miscellaneous/operating_system.html>`_
 

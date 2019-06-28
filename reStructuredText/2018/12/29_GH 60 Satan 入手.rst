@@ -106,7 +106,7 @@ build:
 
     sudo make dz60:an9wer
 
-Finally, flush it:
+Finally, enter reset mode and flush keymaps:
 
 ::
 

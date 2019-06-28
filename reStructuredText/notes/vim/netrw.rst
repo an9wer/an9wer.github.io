@@ -37,7 +37,7 @@ d
     make a directory
 
 D
-    Delte a file or directory
+    Delete a file or directory
 
 \%
     open a new file in netrw's current directory
