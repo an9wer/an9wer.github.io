@@ -31,17 +31,29 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="options">
-<h1>Options</h1>
+<div class="section" id="pattern">
+<h1>Pattern</h1>
+<p>See <em>:h pattern.txt</em></p>
 <dl class="simple">
-<dt>paste</dt>
-<dd><p>Put vim in paste mode. This will avoid unexpected effects when pasting text
-in insert mode.</p>
+<dt>g*</dt>
+<dd><p>Search forward for the word nearest to the cursor, like &quot;*&quot;, but don't put
+&quot;&lt;&quot; and &quot;&gt;&quot; around the word.</p>
+</dd>
+<dt>g#</dt>
+<dd><p>Search backword for the word nearst to the cursor, like &quot;#&quot;, but don't put
+&quot;&lt;&quot; and &quot;&gt;&quot; around the word.</p>
 </dd>
 </dl>
-<p>lhsearch</p>
-<p>shortmess</p>
-<p>regexpengine</p>
+<p>A pattern contains one or more branches (multiple branched are seperated by
+&quot;|&quot;). (see <em>:h /pattern</em>)</p>
+<p>a branch contains one or more contacts (multiple contacts are seperated by
+&quot;&amp;&quot;). (see <em>:h /branch</em>)</p>
+<p>a contact contains one or more pieces. (see <em>:h /contact</em>)</p>
+<p>a piece is an atom. (see <em>:h /piece</em>)</p>
+<p>an atom can be one of a long list of items (use &quot;(&quot; to group pattern into an
+atom). (see <em>:h /atom</em>)</p>
+<p>To clear last used search pattern:</p>
+<pre class="literal-block">:set &#64;/= &quot;&quot;</pre>
 </div>
         </div> <!-- content -->
 

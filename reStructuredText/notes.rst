@@ -12,6 +12,7 @@
     Vim
         ./notes/vim/tricks.rst
         ./notes/vim/options.rst
+        ./notes/vim/pattern.rst
         ./notes/vim/window.rst
         ./notes/vim/tabpage.rst
         ./notes/vim/repeat.rst
@@ -66,6 +67,8 @@ Vim/
 
     `options </notes/vim/options.html>`_
 
+    `pattern </notes/vim/pattern.html>`_
+
     `window </notes/vim/window.html>`_
 
     `tabage </notes/vim/tabpage.html>`_
@@ -103,4 +106,20 @@ Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
     `Operating system </notes/miscellaneous/operating_system.html>`_
+
+
+HowTo/
+
+Q : How to check CentOS version?
+
+A1:
+    ::
+
+        rpm -q centos-release
+
+A2:
+    ::
+
+        cat /etc/centos-release
+
 
