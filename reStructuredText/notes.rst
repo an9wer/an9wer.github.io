@@ -4,11 +4,16 @@
         ./notes/commands/pstree.rst
         ./notes/commands/dmidecode.rst
         ./notes/commands/ntp.rst
+    Coreutils
+        ./notes/coreutils/mktemp.rst
     Package
         ./notes/package/rpm.rst
         ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
+    Bash
+        ./notes/bash/variables.rst
+        ./notes/bash/expansion.rst
     Vim
         ./notes/vim/tricks.rst
         ./notes/vim/options.rst
@@ -34,6 +39,7 @@
     Misc
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
+        ./notes/miscellaneous/hardware.rst
     NS
         ./notes/ns/contentsrv.rst
     TODO
@@ -57,10 +63,18 @@ Commands/
 
     `ntp </notes/commands/ntp.html>`_
 
+Coreutils/
+    `mktemp </notes/coreutils/mktemp.html>`_
+
 Package/
     `RPM </notes/package/rpm.html>`_
 
     `fpm <notes/package/fpm.html>`_
+
+Bash/
+    `variables </notes/bash/variables.html>`_
+
+    `expansion </notes/bash/expansion.html>`_
 
 Vim/
     `tricks </notes/vim/tricks.html>`_
@@ -121,5 +135,11 @@ A2:
     ::
 
         cat /etc/centos-release
+
+----
+
+Q : How to apply a free doman name?
+
+A : `freenom <https://www.freenom.com/>_`
 
 
