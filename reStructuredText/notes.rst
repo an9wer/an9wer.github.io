@@ -1,5 +1,6 @@
 ..
     Commands
+        ./notes/commands/info.rst
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
         ./notes/commands/dmidecode.rst
@@ -54,7 +55,11 @@
         puppet: default resource
         puppet: contain
 
+        bash: $_
+
 Commands/
+    `info </notes/commands/info.html>`_
+
     `top </notes/commands/top.html>`_
 
     `pstree </notes/commands/pstree.html>`_
@@ -122,24 +127,51 @@ Misc/
     `Operating system </notes/miscellaneous/operating_system.html>`_
 
 
-HowTo/
+HowTo
+-----
 
 Q : How to check CentOS version?
 
 A1:
     ::
 
-        rpm -q centos-release
+        $ rpm -q centos-release
 
 A2:
     ::
 
-        cat /etc/centos-release
+        $ cat /etc/centos-release
 
 ----
 
 Q : How to apply a free doman name?
 
-A : `freenom <https://www.freenom.com/>_`
+A : `freenom <https://www.freenom.com/>`_
+
+----
+
+Q : How to find my public ip address?
+
+A1:
+    ::
+
+        $ dig +short myip.opendns.com @resolver1.opendns.com
+
+A2:
+    ::
+
+        $ dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+A3:
+    ::
+
+        $ curl ifconfig.me
+
+R :
+    `How to find my public ip address from command line?
+    <https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/>`_
+
+    `What is 'myip.opendns.com' doing?  <https://unix.stackexchange.com/a/335403>`_
+
 
 
