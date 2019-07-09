@@ -37,6 +37,7 @@
     ./notes/commands/pstree.rst
     ./notes/commands/dmidecode.rst
     ./notes/commands/ntp.rst
+    ./notes/commands/sed.rst
 Coreutils
     ./notes/coreutils/mktemp.rst
 Package
@@ -65,14 +66,15 @@ Database
 Hardware
     ./notes/hardware/memory.rst
 Server
-    ./notes/miscellaneous/httpd.rst
-    ./notes/miscellaneous/webdav.rst
+    ./notes/server/httpd.rst
+    ./notes/server/webdav.rst
 Awesome
     ./notes/awesome/redshift.rst
 Misc
     ./notes/miscellaneous/programming_language.rst
     ./notes/miscellaneous/operating_system.rst
     ./notes/miscellaneous/hardware.rst
+    ./notes/miscellaneous/regex.rst
 NS
     ./notes/ns/contentsrv.rst
 TODO
@@ -95,6 +97,7 @@ TODO
 <p><a class="reference external" href="/notes/commands/pstree.html">pstree</a></p>
 <p><a class="reference external" href="/notes/commands/dmidecode.html">dmidecode</a></p>
 <p><a class="reference external" href="/notes/commands/ntp.html">ntp</a></p>
+<p><a class="reference external" href="/notes/commands/sed.html">sed</a></p>
 </dd>
 <dt>Coreutils/</dt>
 <dd><p><a class="reference external" href="/notes/coreutils/mktemp.html">mktemp</a></p>
@@ -133,8 +136,8 @@ TODO
 <dd><p><a class="reference external" href="/notes/hardware/memory.html">memory</a></p>
 </dd>
 <dt>Server/</dt>
-<dd><p><a class="reference external" href="/notes/miscellaneous/httpd.html">httpd</a></p>
-<p><a class="reference external" href="/notes/miscellaneous/webdav.html">WebDAV</a></p>
+<dd><p><a class="reference external" href="/notes/server/httpd.html">httpd</a></p>
+<p><a class="reference external" href="/notes/server/webdav.html">WebDAV</a></p>
 </dd>
 <dt>Awesome/</dt>
 <dd><p><a class="reference external" href="/notes/awesome/redshift.html">redshift</a></p>
@@ -142,6 +145,8 @@ TODO
 <dt>Misc/</dt>
 <dd><p><a class="reference external" href="/notes/miscellaneous/programming_language.html">Programming language</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/operating_system.html">Operating system</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/hardware.html">Hardware</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/regex.html">regex</a></p>
 </dd>
 </dl>
 <div class="section" id="howto">
@@ -173,6 +178,17 @@ TODO
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/">How to find my public ip address from command line?</a></p>
 <p><a class="reference external" href="https://unix.stackexchange.com/a/335403">What is 'myip.opendns.com' doing?</a></p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>Q : How to trim leading and trailing white space from a string in Bash?</p>
+<dl>
+<dt>A :</dt>
+<dd><pre class="literal-block">$ echo &quot; some string  &quot; | xarg
+some string</pre>
+</dd>
+<dt>R :</dt>
+<dd><p><a class="reference external" href="https://stackoverflow.com/a/12973694">How to trim whitespace from a Bash variable?</a></p>
 </dd>
 </dl>
 </div>

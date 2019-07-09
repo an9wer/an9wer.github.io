@@ -31,32 +31,31 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="expansion">
-<h1>Expansion</h1>
-<div class="section" id="pathname-expansion">
-<h2>Pathname expansion</h2>
-<p><strong>Note</strong>: When in pathname matching context (pathname expansion), the slash
-character must always be matched explicitly by a slash in the pattern, but in
-other matching contexts (e.g. case statement, variable modification,
-HISTIGNORE) it can be matched by a special pattern character.</p>
-</div>
-<div class="section" id="porcess-substitution">
-<h2>Porcess substitution</h2>
-<p>The form <span class="docutils literal">&lt;(list)</span> is used as an input file. We need to treat it as a file
-when it is used as a command argument.</p>
-<pre class="literal-block">$ cat &lt;(echo 123)
-123</pre>
-<pre class="literal-block">$ echo &lt;(echo 123)
-/dev/fd/63</pre>
-<p>The form <span class="docutils literal">&gt;(list)</span> is used as an output file:</p>
-<pre class="literal-block">$ echo 123 &gt; &gt;(sed 's/123/321/')
-321</pre>
-<pre class="literal-block">$ echo 123 &gt;(sed 's/123/321/')
-123 /dev/fd/63</pre>
+<div class="section" id="regex">
+<h1>Regex</h1>
+<p><a class="reference external" href="https://www.regular-expressions.info/gnu.html">GNU regex</a></p>
+<div class="section" id="regex-engine">
+<h2>Regex engine</h2>
+<p>There are basically only two kinds of regular expression engines: text-directed
+engines, and regex-directed engines (NFA). Nearly all modern regex (DFA)
+flavors are based on <strong>regex-directed engines (NFA)</strong>.</p>
+<p>Regex engine is eager, this means it will stop searching as soon as it finds a
+valid match.</p>
 <div class="section" id="references">
 <h3>References</h3>
-<p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.regular-expressions.info/engine.html">https://www.regular-expressions.info/engine.html</a></p></li>
+<li><p><a class="reference external" href="https://se.ifmo.ru/~ad/Documentation/Mastering_RegExp/mastregex2-CHP-4-SECT-3.html">https://se.ifmo.ru/~ad/Documentation/Mastering_RegExp/mastregex2-CHP-4-SECT-3.html</a></p></li>
+</ul>
 </div>
+</div>
+<div class="section" id="backtracking-in-nfa">
+<h2>Backtracking in NFA</h2>
+<pre class="literal-block">$ echo &quot;abc 123d&quot; | sed -E 's/.*([0-9]+)/\1/'
+3d</pre>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.regular-expressions.info/repeat.html">https://www.regular-expressions.info/repeat.html</a></p></li>
+</ul>
 </div>
 </div>
         </div> <!-- content -->

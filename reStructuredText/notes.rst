@@ -5,6 +5,7 @@
         ./notes/commands/pstree.rst
         ./notes/commands/dmidecode.rst
         ./notes/commands/ntp.rst
+        ./notes/commands/sed.rst
     Coreutils
         ./notes/coreutils/mktemp.rst
     Package
@@ -33,14 +34,15 @@
     Hardware
         ./notes/hardware/memory.rst
     Server
-        ./notes/miscellaneous/httpd.rst
-        ./notes/miscellaneous/webdav.rst
+        ./notes/server/httpd.rst
+        ./notes/server/webdav.rst
     Awesome
         ./notes/awesome/redshift.rst
     Misc
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
         ./notes/miscellaneous/hardware.rst
+        ./notes/miscellaneous/regex.rst
     NS
         ./notes/ns/contentsrv.rst
     TODO
@@ -67,6 +69,8 @@ Commands/
     `dmidecode </notes/commands/dmidecode.html>`_
 
     `ntp </notes/commands/ntp.html>`_
+
+    `sed </notes/commands/sed.html>`_
 
 Coreutils/
     `mktemp </notes/coreutils/mktemp.html>`_
@@ -114,9 +118,9 @@ Hardware/
     `memory </notes/hardware/memory.html>`_
 
 Server/
-    `httpd </notes/miscellaneous/httpd.html>`_
+    `httpd </notes/server/httpd.html>`_
 
-    `WebDAV </notes/miscellaneous/webdav.html>`_
+    `WebDAV </notes/server/webdav.html>`_
 
 Awesome/
     `redshift </notes/awesome/redshift.html>`_
@@ -125,6 +129,10 @@ Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
     `Operating system </notes/miscellaneous/operating_system.html>`_
+
+    `Hardware </notes/miscellaneous/hardware.html>`_
+
+    `regex </notes/miscellaneous/regex.html>`_
 
 
 HowTo
@@ -173,5 +181,16 @@ R :
 
     `What is 'myip.opendns.com' doing?  <https://unix.stackexchange.com/a/335403>`_
 
+----
 
+Q : How to trim leading and trailing white space from a string in Bash?
+
+A :
+    ::
+
+        $ echo " some string  " | xarg
+        some string
+
+R :
+    `How to trim whitespace from a Bash variable? <https://stackoverflow.com/a/12973694>`_
 

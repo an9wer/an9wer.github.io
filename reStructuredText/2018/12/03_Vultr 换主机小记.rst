@@ -76,11 +76,21 @@ Edit (2018/12/11)
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 ``sudo
 docker run`` 命令运行容器时加上 ``--restart unless-stopped`` 选项。
 
-Edit (2018/02/01)
+Edit (2019/02/01)
 -----------------
 
 在 github 上新建了一个项目 —— `verice <https://github.com/an9wer/verice>`_ ，写
 了一些脚本专门用来管理服务器。
+
+Edit (2019/07/09)
+-----------------
+
+在服务端开启 tcp fast open:
+
+::
+
+    echo "net.ipv4.tcp_fastopen = 3" >> /etc/sysctl.d/tfo.conf
+
 
 References
 ----------

@@ -31,32 +31,44 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="expansion">
-<h1>Expansion</h1>
-<div class="section" id="pathname-expansion">
-<h2>Pathname expansion</h2>
-<p><strong>Note</strong>: When in pathname matching context (pathname expansion), the slash
-character must always be matched explicitly by a slash in the pattern, but in
-other matching contexts (e.g. case statement, variable modification,
-HISTIGNORE) it can be matched by a special pattern character.</p>
+<div class="section" id="sed">
+<h1>Sed</h1>
+<p>See <em>info sed</em></p>
+<p>'sed' commands follow this syntax:</p>
+<pre class="literal-block">[addr]X[options]</pre>
+<ul class="simple">
+<li><p>[addr]: is optional line address, it specify lines to be executed.</p></li>
+<li><p>X: is a single-letter 'sed' command.</p></li>
+<li><p>[options]: are used for some 'sed' commands.</p></li>
+</ul>
+<p><strong>Note</strong>: Commands within a SCRIPT or SCRIPT-FILE can be separated by
+semicolons (';') or newlines (ASCII 10).</p>
+<pre class="literal-block">sed '/^foo/d; s/hello/world/'</pre>
+<p>Equals to:</p>
+<pre class="literal-block">sed -e '/^foo/d' -e 's/hellow/world/'</pre>
+<p>Equals to:</p>
+<pre class="literal-block">sed -f &lt;(echo &quot;/^foo/d; s/hello/world/&quot;)</pre>
+<p>Equals to:</p>
+<pre class="literal-block">sed -f &lt;(echo -e &quot;/^foo/d\ns/hello/world/&quot;)</pre>
+<div class="section" id="basic-bre-and-extended-ere-regular-expression">
+<h2>Basic (BRE) and extended (ERE) regular expression</h2>
+<p>In GNU 'sed', the only difference between basic and extended regular
+expressions is in the behavior of a few special characters: '?', '+',
+parentheses, braces ('{}'), and '|'.</p>
+<p>With basic (BRE) syntax, these characters do not have special meaning
+unless prefixed with a backslash (''); While with extended (ERE) syntax
+it is reversed: these characters are special unless they are prefixed
+with backslash ('').</p>
 </div>
-<div class="section" id="porcess-substitution">
-<h2>Porcess substitution</h2>
-<p>The form <span class="docutils literal">&lt;(list)</span> is used as an input file. We need to treat it as a file
-when it is used as a command argument.</p>
-<pre class="literal-block">$ cat &lt;(echo 123)
-123</pre>
-<pre class="literal-block">$ echo &lt;(echo 123)
-/dev/fd/63</pre>
-<p>The form <span class="docutils literal">&gt;(list)</span> is used as an output file:</p>
-<pre class="literal-block">$ echo 123 &gt; &gt;(sed 's/123/321/')
-321</pre>
-<pre class="literal-block">$ echo 123 &gt;(sed 's/123/321/')
-123 /dev/fd/63</pre>
-<div class="section" id="references">
-<h3>References</h3>
-<p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>
-</div>
+<div class="section" id="named-classes-of-characters-in-bracket-expressions">
+<h2>Named classes of characters in bracket expressions</h2>
+<p><strong>Note</strong>: These named classes must be used <em>inside</em> brackets themselves.</p>
+<p>Correct usage:</p>
+<pre class="literal-block">$ echo 1 | sed 's/[[:digit:]]/X/'
+X</pre>
+<p>Incorrect usage:</p>
+<pre class="literal-block">$ echo 1 | sed 's/[:digit:]/X/'
+sed: character class syntax is [[:space:]], not [:space:]</pre>
 </div>
 </div>
         </div> <!-- content -->

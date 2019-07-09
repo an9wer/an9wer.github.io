@@ -87,10 +87,15 @@ PasswordAuthentication no</pre>
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 <span class="docutils literal">sudo docker run</span> 命令运行容器时加上 <span class="docutils literal"><span class="pre">--restart</span> <span class="pre">unless-stopped</span></span> 选项。</p>
 </div>
-<div class="section" id="edit-2018-02-01">
-<h2>Edit (2018/02/01)</h2>
+<div class="section" id="edit-2019-02-01">
+<h2>Edit (2019/02/01)</h2>
 <p>在 github 上新建了一个项目 —— <a class="reference external" href="https://github.com/an9wer/verice">verice</a> ，写
 了一些脚本专门用来管理服务器。</p>
+</div>
+<div class="section" id="edit-2019-07-09">
+<h2>Edit (2019/07/09)</h2>
+<p>在服务端开启 tcp fast open:</p>
+<pre class="literal-block">echo &quot;net.ipv4.tcp_fastopen = 3&quot; &gt;&gt; /etc/sysctl.d/tfo.conf</pre>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
