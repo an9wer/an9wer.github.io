@@ -31,25 +31,22 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="rpm">
-<h1>RPM</h1>
-<div class="section" id="query">
-<h2>Query</h2>
-<p>List all installed pacakges:</p>
-<pre class="literal-block">$ rpm -qa</pre>
-<p>Display information of specified installed pacakge:</p>
-<pre class="literal-block">$ rpm -qi &lt;package_name&gt;</pre>
-<p>List files of already installed pacakge:</p>
-<pre class="literal-block">$ rpm -ql &lt;package_file&gt;</pre>
-<p>List files of specified RPM package:</p>
-<pre class="literal-block">$ rpm -qlp &lt;package_file&gt;</pre>
+<div class="section" id="yum">
+<h1>Yum</h1>
+<div class="section" id="list">
+<h2>list</h2>
+<p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
+output is:</p>
+<pre class="literal-block">name.arch [epoch:]version-release  repo or &#64;installed-from-repo</pre>
+<p>List package(s) information from all (by default), available to be installed,
+availabe to be updated, installed, installed but not in yum repository listed
+in config file packages:</p>
+<pre class="literal-block"># yum list [all | available | updates | installed | extra ] [glob_exp ...]</pre>
+<p><em>glob_exp</em> is a package name which may contain star (*) to match fuzzily,
+sometimes you need quote it to avoid bash expanding.</p>
 </div>
-<div class="section" id="install">
-<h2>Install</h2>
-<p>Install pacakges:</p>
-<pre class="literal-block"># rpm -i &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
-<p>Reinstall packages:</p>
-<pre class="literal-block"># rpm -i --reinstall &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
+<div class="section" id="deplist">
+<h2>deplist</h2>
 </div>
 </div>
         </div> <!-- content -->

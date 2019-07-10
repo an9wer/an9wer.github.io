@@ -10,7 +10,7 @@ List all installed pacakges:
 
     $ rpm -qa
 
-Display information og specified pacakge:
+Display information of specified installed pacakge:
 
 ::
 

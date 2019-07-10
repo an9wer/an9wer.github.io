@@ -10,6 +10,7 @@
         ./notes/coreutils/mktemp.rst
     Package
         ./notes/package/rpm.rst
+        ./notes/package/yum.rst
         ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
@@ -36,11 +37,13 @@
     Server
         ./notes/server/httpd.rst
         ./notes/server/webdav.rst
+        ./notes/server/tigervnc.rst
     Awesome
         ./notes/awesome/redshift.rst
     Misc
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
+        ./notes/miscellaneous/desktop_environment.rst
         ./notes/miscellaneous/hardware.rst
         ./notes/miscellaneous/regex.rst
     NS
@@ -121,6 +124,8 @@ Server/
     `httpd </notes/server/httpd.html>`_
 
     `WebDAV </notes/server/webdav.html>`_
+
+    `TigerVNC </notes/server/tigervnc.html>`_
 
 Awesome/
     `redshift </notes/awesome/redshift.html>`_

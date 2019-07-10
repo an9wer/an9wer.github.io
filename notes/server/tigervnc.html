@@ -31,26 +31,11 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="rpm">
-<h1>RPM</h1>
-<div class="section" id="query">
-<h2>Query</h2>
-<p>List all installed pacakges:</p>
-<pre class="literal-block">$ rpm -qa</pre>
-<p>Display information of specified installed pacakge:</p>
-<pre class="literal-block">$ rpm -qi &lt;package_name&gt;</pre>
-<p>List files of already installed pacakge:</p>
-<pre class="literal-block">$ rpm -ql &lt;package_file&gt;</pre>
-<p>List files of specified RPM package:</p>
-<pre class="literal-block">$ rpm -qlp &lt;package_file&gt;</pre>
-</div>
-<div class="section" id="install">
-<h2>Install</h2>
-<p>Install pacakges:</p>
-<pre class="literal-block"># rpm -i &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
-<p>Reinstall packages:</p>
-<pre class="literal-block"># rpm -i --reinstall &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
-</div>
+<div class="section" id="tigervnc">
+<h1>TigerVNC</h1>
+<p>Install TigerVNC server on CentOS7:</p>
+<pre class="literal-block"># yum install epel-release
+# yum install tigervnc-server</pre>
 </div>
         </div> <!-- content -->
 
