@@ -56,7 +56,9 @@
         https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
         https://www.jwz.org/xscreensaver/man1.html
 
-        puppet: inherit and include
+        puppet: inherit and include (to get access to a variable that’s set in
+        a Puppet class, you have to declare the class (i.e. use the include()
+        function or inherit from that class).
         puppet: default resource
         puppet: contain
 
@@ -82,6 +84,8 @@ Package/
     `RPM </notes/package/rpm.html>`_
 
     `fpm <notes/package/fpm.html>`_
+
+    `yum <notes/package/yum.html>`_
 
 Bash/
     `variables </notes/bash/variables.html>`_
@@ -136,6 +140,8 @@ Misc/
     `Operating system </notes/miscellaneous/operating_system.html>`_
 
     `Hardware </notes/miscellaneous/hardware.html>`_
+
+    `Desktop environment </notes/miscellaneous/desktop_environment.html>`_
 
     `regex </notes/miscellaneous/regex.html>`_
 

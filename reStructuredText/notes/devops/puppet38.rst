@@ -37,7 +37,7 @@ Resource
 --------
 
 Exec
-----
+""""
 
 refreshonly
     When this attribute is set to *true*, the command should only be run when

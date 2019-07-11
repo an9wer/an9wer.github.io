@@ -33,20 +33,57 @@
         <div id="content">
 <div class="section" id="yum">
 <h1>Yum</h1>
+<p><strong>Note</strong>: All of the following <em>glob_exp</em> is a package name which may contain
+star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
+(*) to avoid bash expanding.</p>
 <div class="section" id="list">
 <h2>list</h2>
 <p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
 output is:</p>
 <pre class="literal-block">name.arch [epoch:]version-release  repo or &#64;installed-from-repo</pre>
+<p><strong>Note</strong>: The repo of installed package will be perfixed with '&#64;' symbol.</p>
 <p>List package(s) information from all (by default), available to be installed,
-availabe to be updated, installed, installed but not in yum repository listed
+availabe to be updated, installed or installed but not in yum repository listed
 in config file packages:</p>
 <pre class="literal-block"># yum list [all | available | updates | installed | extra ] [glob_exp ...]</pre>
-<p><em>glob_exp</em> is a package name which may contain star (*) to match fuzzily,
-sometimes you need quote it to avoid bash expanding.</p>
 </div>
 <div class="section" id="deplist">
 <h2>deplist</h2>
+</div>
+<div class="section" id="group">
+<h2>group</h2>
+<p>To view the number of installed groups, available groups, available environment
+groups, and both installed and available language groups:</p>
+<pre class="literal-block"># yum group summary</pre>
+<p>To list all package groups:</p>
+<pre class="literal-block"># yum group list</pre>
+<p>To list language, environment, installed or availabe package groups:</p>
+<pre class="literal-block"># yum group list [language | environment | installed | available]</pre>
+<p>To list packages contained in a particular group:</p>
+<pre class="literal-block"># yum group info glob_exp [...]</pre>
+<ul class="simple">
+<li><p>&quot; - &quot;: Package is not installed and it will not be installed as a part of
+the package group.</p></li>
+<li><p>&quot; + &quot;: Package is not installed but it will be installed on the next yum
+upgrade or yum group upgrade.</p></li>
+<li><p>&quot; = &quot;: Package is installed and it was installed as a part of the package
+group.</p></li>
+<li><p>&quot;no symbol&quot;: Package is installed but it was installed outside of the
+package group. This means that the yum group remove will not remove these
+packages.</p></li>
+</ul>
+<p>To install package groups:</p>
+<pre class="literal-block"># yum group install glob_exp [...]</pre>
+<p>To update package groups:</p>
+<pre class="literal-block"># yum group update glob_exp [...]</pre>
+<p>To uninstall package groups:</p>
+<pre class="literal-block"># yum group remove glob_exp [...]</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software">Redhat Doc: Installing and Managing Software</a></p></li>
+</ul>
 </div>
 </div>
         </div> <!-- content -->
