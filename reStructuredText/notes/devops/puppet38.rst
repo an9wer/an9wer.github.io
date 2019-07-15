@@ -18,7 +18,7 @@ https://puppet.com/docs/puppet/3.8/install_el.html
 Subcommands
 -----------
 
-Module
+module
 """"""
 
 Install a module:
@@ -32,6 +32,16 @@ Install a specified version of module:
 ::
 
     # puppet module install -v <version> <module>
+
+
+apply
+"""""
+
+Dry run:
+
+::
+
+    # puppet apply --noop <foo.pp>
 
 Resource
 --------
@@ -55,4 +65,7 @@ refreshonly
     resource will never be triggered.
 
 
+References
+----------
 
+https://elatov.github.io/2014/09/writing-better-puppet-modules/

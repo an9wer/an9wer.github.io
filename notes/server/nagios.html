@@ -31,53 +31,38 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="puppet3-8">
-<h1>Puppet3.8</h1>
-<p>Puppet is <strong>declarative</strong>, <strong>idempotent</strong>, and <strong>stateless</strong> by default.</p>
-<div class="section" id="installation">
-<h2>Installation</h2>
-<p>Install puppet3.8 on CentOS7:</p>
-<pre class="literal-block"># rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
-# yum install puppet</pre>
-<p><a class="reference external" href="https://puppet.com/docs/puppet/3.8/install_el.html">https://puppet.com/docs/puppet/3.8/install_el.html</a></p>
-</div>
-<div class="section" id="subcommands">
-<h2>Subcommands</h2>
-<div class="section" id="module">
-<h3>module</h3>
-<p>Install a module:</p>
-<pre class="literal-block"># puppet module install &lt;module&gt;</pre>
-<p>Install a specified version of module:</p>
-<pre class="literal-block"># puppet module install -v &lt;version&gt; &lt;module&gt;</pre>
-</div>
-<div class="section" id="apply">
-<h3>apply</h3>
-<p>Dry run:</p>
-<pre class="literal-block"># puppet apply --noop &lt;foo.pp&gt;</pre>
-</div>
-</div>
-<div class="section" id="resource">
-<h2>Resource</h2>
-<div class="section" id="exec">
-<h3>Exec</h3>
-<dl>
-<dt>refreshonly</dt>
-<dd><p>When this attribute is set to <em>true</em>, the command should only be run when
-it is triggered by some resource it subscribes (by using <em>subscribe</em> or
-<em>notify</em> attribute, not <em>require</em> or <em>before</em>).</p>
-<pre class="literal-block">exec { &quot;some command&quot;:
-    refreshonly =&gt; only,
-    require =&gt; File['some file'],
-}</pre>
-<p>In this example, whether the required <em>file</em> resource is run, the <em>exec</em>
-resource will never be triggered.</p>
-</dd>
-</dl>
-</div>
+<div class="section" id="nagios">
+<h1>Nagios</h1>
+<p>Install nagios on CentOS7:</p>
+<pre class="literal-block"># yum install epel-release
+# yum install nagios
+# yum install nagios-plugins-all</pre>
+<p>Start nagios service:</p>
+<pre class="literal-block"># systemctl start nagios</pre>
+<p>Install httpd server which has nagios configuration by default, so we just
+generate nagios user and password, and put them to <em>/etc/nagios</em> directory:</p>
+<pre class="literal-block"># yum install httpd
+# htpasswd -c /etc/nagios/passwd nagiosadmin</pre>
+<p><strong>Note</strong>: The authorized user is <em>nagiosadmin</em> here, which can be changed in
+<em>/etc/nagios/cgi.cfg</em> file.</p>
+<p>Start httpd service:</p>
+<pre class="literal-block"># systemctl start httpd</pre>
+<div class="section" id="nrpe">
+<h2>Nrpe</h2>
+<p>Install <em>check_nrpe</em> plugin on the monitoring machine:</p>
+<pre class="literal-block"># yum install epel-release
+# yum install nagios-plugins-nrpe</pre>
+<p>Install and start <em>nrpe</em> daemon on the remote machine:</p>
+<pre class="literal-block"># yum install epel-release
+# yum install nrpe
+# system start nrpe</pre>
+<p>Then, on the monitoring machine, run the following commmand to check remote
+machine:</p>
+<pre class="literal-block"># /usr/lib64/nagios/plugins/check_nrpe -H &lt;remote host&gt; -c &lt;command&gt;</pre>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://elatov.github.io/2014/09/writing-better-puppet-modules/">https://elatov.github.io/2014/09/writing-better-puppet-modules/</a></p>
+<p><a class="reference external" href="https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf">https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf</a></p>
 </div>
 </div>
         </div> <!-- content -->

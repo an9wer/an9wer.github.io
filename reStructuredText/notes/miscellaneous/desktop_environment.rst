@@ -21,7 +21,7 @@ Install xfce on CeontOS 7:
 ::
 
     # yum install epel-release
-    # yum groupinstall "X Window system"
+    # yum group install "X Window system"
     # yum group install xfce
 
 

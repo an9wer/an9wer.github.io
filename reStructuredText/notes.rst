@@ -38,6 +38,7 @@
         ./notes/server/httpd.rst
         ./notes/server/webdav.rst
         ./notes/server/tigervnc.rst
+        ./notes/server/nagios.rst
     Awesome
         ./notes/awesome/redshift.rst
     Misc
@@ -130,6 +131,8 @@ Server/
     `WebDAV </notes/server/webdav.html>`_
 
     `TigerVNC </notes/server/tigervnc.html>`_
+
+    `Nagios </notes/server/nagios.html>`_
 
 Awesome/
     `redshift </notes/awesome/redshift.html>`_
