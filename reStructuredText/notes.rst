@@ -8,6 +8,7 @@
         ./notes/commands/sed.rst
     Coreutils
         ./notes/coreutils/mktemp.rst
+        ./notes/coreutils/cut.rst
     Package
         ./notes/package/rpm.rst
         ./notes/package/yum.rst
@@ -52,6 +53,8 @@
     TODO
         ./notes/coreutils/seq.rst
 
+        ./notes/storage/nfs.rst
+
         https://wiki.archlinux.org/index.php/XScreenSaver
         https://wiki.archlinux.org/index.php/Backlight
         https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
@@ -81,12 +84,14 @@ Commands/
 Coreutils/
     `mktemp </notes/coreutils/mktemp.html>`_
 
+    `cut </notes/coreutils/cut.html>`_
+
 Package/
     `RPM </notes/package/rpm.html>`_
 
-    `fpm <notes/package/fpm.html>`_
-
     `yum <notes/package/yum.html>`_
+
+    `fpm <notes/package/fpm.html>`_
 
 Bash/
     `variables </notes/bash/variables.html>`_

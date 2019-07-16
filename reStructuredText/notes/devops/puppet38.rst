@@ -50,9 +50,9 @@ Exec
 """"
 
 refreshonly
-    When this attribute is set to *true*, the command should only be run when
-    it is triggered by some resource it subscribes (by using *subscribe* or
-    *notify* attribute, not *require* or *before*).
+    When this attribute is set to *true*, the command will be triggered by
+    resources it subscribes (by using *subscribe* or *notify* attribute, not
+    *require* or *before*).
 
     ::
 

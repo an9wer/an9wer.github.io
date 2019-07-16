@@ -62,9 +62,9 @@
 <h3>Exec</h3>
 <dl>
 <dt>refreshonly</dt>
-<dd><p>When this attribute is set to <em>true</em>, the command should only be run when
-it is triggered by some resource it subscribes (by using <em>subscribe</em> or
-<em>notify</em> attribute, not <em>require</em> or <em>before</em>).</p>
+<dd><p>When this attribute is set to <em>true</em>, the command will be triggered by
+resources it subscribes (by using <em>subscribe</em> or <em>notify</em> attribute, not
+<em>require</em> or <em>before</em>).</p>
 <pre class="literal-block">exec { &quot;some command&quot;:
     refreshonly =&gt; only,
     require =&gt; File['some file'],
