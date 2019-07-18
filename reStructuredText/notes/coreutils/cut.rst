@@ -46,6 +46,8 @@ Select fields delimited by white spece:
     123
     abc
 
+**Note**: The delimiter accept only one single character.
+
 Select fields delimited by which space but do not print lines not containing
 delimiters:
 

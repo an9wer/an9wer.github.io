@@ -58,6 +58,7 @@ abc</pre>
 <pre class="literal-block">$ echo -e '123 456\nabc def' | cut -d ' ' -f 1
 123
 abc</pre>
+<p><strong>Note</strong>: The delimiter accept only one single character.</p>
 <p>Select fields delimited by which space but do not print lines not containing
 delimiters:</p>
 <pre class="literal-block">$ echo -e '123 456\nabcdef' | cut -d ' ' -f 1 -s

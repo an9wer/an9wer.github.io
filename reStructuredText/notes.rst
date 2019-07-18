@@ -213,3 +213,25 @@ A :
 R :
     `How to trim whitespace from a Bash variable? <https://stackoverflow.com/a/12973694>`_
 
+----
+
+Q : How to get TX/RX ?
+
+A1:
+    ::
+
+        $ cat /proc/net/dev
+
+A2:
+    ::
+
+        $ ip -s link
+        
+A3:
+    ::
+
+        $ netstat -i
+
+R :
+    `How to get TX/RX bytes without ifconfig? <https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig>`_
+

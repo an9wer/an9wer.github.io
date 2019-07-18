@@ -205,6 +205,22 @@ some string</pre>
 <dd><p><a class="reference external" href="https://stackoverflow.com/a/12973694">How to trim whitespace from a Bash variable?</a></p>
 </dd>
 </dl>
+<hr class="docutils" />
+<p>Q : How to get TX/RX ?</p>
+<dl>
+<dt>A1:</dt>
+<dd><pre class="literal-block">$ cat /proc/net/dev</pre>
+</dd>
+<dt>A2:</dt>
+<dd><pre class="literal-block">$ ip -s link</pre>
+</dd>
+<dt>A3:</dt>
+<dd><pre class="literal-block">$ netstat -i</pre>
+</dd>
+<dt>R :</dt>
+<dd><p><a class="reference external" href="https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig">How to get TX/RX bytes without ifconfig?</a></p>
+</dd>
+</dl>
 </div>
         </div> <!-- content -->
 

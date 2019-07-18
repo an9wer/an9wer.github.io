@@ -42,6 +42,27 @@ in insert mode.</p>
 <p>lhsearch</p>
 <p>shortmess</p>
 <p>regexpengine</p>
+<dl class="simple">
+<dt>modeline</dt>
+<dd><p>If starting editing a new file, and the 'modeline' option is on, a number
+of lines at the beginning and end of the file are checked for modelines.</p>
+</dd>
+</dl>
+<div class="section" id="modline">
+<h2>Modline</h2>
+<p>There are two forms of modelines.</p>
+<pre class="literal-block">[text]{white}{vi:|vim:|ex:}[white]{options}</pre>
+<p>The <em>options</em> in this modeline are seperated with white space or ':', where
+each part between ':' is the argument for a &quot;:set&quot; command.</p>
+<pre class="literal-block">[text]{white}{vi:|vim:|Vim:|ex:}[white]se[t] {options}:[text]</pre>
+<p>The <em>option</em> in this modeline are seperated with white space, which is the
+argument for a &quot;:set&quot; command.</p>
+<p><strong>Note</strong>: If you want to include a ':' in a set command precede it with a '\'.
+The backslash in front of the ':' will be removed.</p>
+<pre class="literal-block">/* vi:set dir=c\:\tmp: */</pre>
+<p>This sets the 'dir' option to &quot;c:\tmp&quot;. Only a single backslash before the ':'
+is removed.  Thus to include &quot;\:&quot; you have to specify &quot;\\:&quot;.</p>
+</div>
 </div>
         </div> <!-- content -->
 
