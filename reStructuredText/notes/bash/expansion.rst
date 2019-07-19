@@ -3,7 +3,6 @@ Expansion
 
 Pathname expansion
 ------------------
-
 **Note**: When in pathname matching context (pathname expansion), the slash
 character must always be matched explicitly by a slash in the pattern, but in
 other matching contexts (e.g. case statement, variable modification,
@@ -41,5 +40,4 @@ The form ``>(list)`` is used as an output file:
 References
 """"""""""
 https://www.tldp.org/LDP/abs/html/process-sub.html
-
 

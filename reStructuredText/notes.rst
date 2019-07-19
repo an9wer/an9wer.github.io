@@ -15,9 +15,11 @@
         ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
+        ./notes/git/blackbox.rst
     Bash
-        ./notes/bash/variables.rst
+        ./notes/bash/parameters.rst
         ./notes/bash/expansion.rst
+        ./notes/bash/builtin.rst
     Vim
         ./notes/vim/tricks.rst
         ./notes/vim/options.rst
@@ -52,6 +54,9 @@
         ./notes/ns/contentsrv.rst
     TODO
         ./notes/coreutils/seq.rst
+        ./notes/coreutils/csplit.rst
+        
+        dirname
 
         ./notes/storage/nfs.rst
 
@@ -69,89 +74,93 @@
         bash: $_
 
 Commands/
-    `info </notes/commands/info.html>`_
+    `info       </notes/commands/info.html>`_
 
-    `top </notes/commands/top.html>`_
+    `top        </notes/commands/top.html>`_
 
-    `pstree </notes/commands/pstree.html>`_
+    `pstree     </notes/commands/pstree.html>`_
 
-    `dmidecode </notes/commands/dmidecode.html>`_
+    `dmidecode  </notes/commands/dmidecode.html>`_
 
-    `ntp </notes/commands/ntp.html>`_
+    `ntp        </notes/commands/ntp.html>`_
 
-    `sed </notes/commands/sed.html>`_
+    `sed        </notes/commands/sed.html>`_
 
 Coreutils/
-    `mktemp </notes/coreutils/mktemp.html>`_
+    `mktemp     </notes/coreutils/mktemp.html>`_
 
-    `cut </notes/coreutils/cut.html>`_
+    `cut        </notes/coreutils/cut.html>`_
 
 Package/
-    `RPM </notes/package/rpm.html>`_
+    `RPM        </notes/package/rpm.html>`_
 
-    `yum <notes/package/yum.html>`_
+    `yum        <notes/package/yum.html>`_
 
-    `fpm <notes/package/fpm.html>`_
+    `fpm        <notes/package/fpm.html>`_
 
 Bash/
-    `variables </notes/bash/variables.html>`_
+    `parameters </notes/bash/parameters.html>`_
 
-    `expansion </notes/bash/expansion.html>`_
+    `expansion  </notes/bash/expansion.html>`_
+
+    `builtin    </notes/bash/builtin.html>`_
 
 Vim/
-    `tricks </notes/vim/tricks.html>`_
+    `tricks     </notes/vim/tricks.html>`_
 
-    `options </notes/vim/options.html>`_
+    `options    </notes/vim/options.html>`_
 
-    `pattern </notes/vim/pattern.html>`_
+    `pattern    </notes/vim/pattern.html>`_
 
-    `window </notes/vim/window.html>`_
+    `window     </notes/vim/window.html>`_
 
-    `tabage </notes/vim/tabpage.html>`_
+    `tabage     </notes/vim/tabpage.html>`_
 
-    `repeat </notes/vim/repeat.html>`_
+    `repeat     </notes/vim/repeat.html>`_
 
-    `various </notes/vim/various.html>`_
+    `various    </notes/vim/various.html>`_
 
-    `netrw </notes/vim/netrw.html>`_ 
+    `netrw      </notes/vim/netrw.html>`_ 
 
 Git/
     `git secret </notes/git/git_secret.html>`_
 
+    `blackbox   </notes/git/blackbox.html>`_
+
 DevOps/
-    `puppet3.8 </notes/devops/puppet38.html>`_
+    `puppet3.8  </notes/devops/puppet38.html>`_
 
 Storage/
-    `glusterfs </notes/storage/glusterfs.html>`_
+    `glusterfs  </notes/storage/glusterfs.html>`_
 
 Database/
-    `redis </notes/database/redis.html>`_
+    `redis      </notes/database/redis.html>`_
 
 Hardware/
-    `memory </notes/hardware/memory.html>`_
+    `memory     </notes/hardware/memory.html>`_
 
 Server/
-    `httpd </notes/server/httpd.html>`_
+    `httpd      </notes/server/httpd.html>`_
 
-    `WebDAV </notes/server/webdav.html>`_
+    `WebDAV     </notes/server/webdav.html>`_
 
-    `TigerVNC </notes/server/tigervnc.html>`_
+    `TigerVNC   </notes/server/tigervnc.html>`_
 
-    `Nagios </notes/server/nagios.html>`_
+    `Nagios     </notes/server/nagios.html>`_
 
 Awesome/
-    `redshift </notes/awesome/redshift.html>`_
+    `redshift   </notes/awesome/redshift.html>`_
 
 Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
     `Operating system </notes/miscellaneous/operating_system.html>`_
 
-    `Hardware </notes/miscellaneous/hardware.html>`_
+    `Hardware   </notes/miscellaneous/hardware.html>`_
 
     `Desktop environment </notes/miscellaneous/desktop_environment.html>`_
 
-    `regex </notes/miscellaneous/regex.html>`_
+    `regex      </notes/miscellaneous/regex.html>`_
 
 
 HowTo

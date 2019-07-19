@@ -31,24 +31,32 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="tricks">
-<h1>Tricks</h1>
-<p>Q : How to turning off auto indent when pasting text into vim?</p>
+<div class="section" id="parameters">
+<h1>Parameters</h1>
 <dl>
-<dt>A1: <a class="reference external" href="https://stackoverflow.com/a/2514520">https://stackoverflow.com/a/2514520</a></dt>
-<dd><pre class="literal-block">:set paste</pre>
-</dd>
-<dt>A2: <a class="reference external" href="https://stackoverflow.com/a/2545242">https://stackoverflow.com/a/2545242</a></dt>
-<dd><pre class="literal-block">:r! cat</pre>
+<dt>-</dt>
+<dd><p>Expands to the current option flags as specified upon invocation, by the
+set builtin command, or those set by the shell itself (such as the <em>-i</em>
+option).</p>
+<p>In <em>bashrc</em>, if not running interactively, don't do anything:</p>
+<pre class="literal-block">[[ $- != *i* ]] &amp;&amp; return</pre>
 </dd>
 </dl>
-<hr class="docutils" />
-<p>Q : How to execute current line in bash from vim?</p>
+<div class="section" id="variables">
+<h2>Variables</h2>
 <dl>
-<dt>A<span class="classifier"><a class="reference external" href="https://stackoverflow.com/a/19883963">https://stackoverflow.com/a/19883963</a></span></dt>
-<dd><pre class="literal-block">:.w !bash</pre>
+<dt>RANDOM</dt>
+<dd><p>Each time this parameter is referenced, a random integer between 0 and
+32767 is generated.</p>
+</dd>
+<dt>BASH_SOURCE</dt>
+<dd><p>An array variable whose members are the source filenames. <cite>$BASH_SOURCE[0]</cite>
+is the current script name, sourced from <cite>$BASH_SOURCE[1]</cite>, and so on.</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/59895/get-the-source-directory-of-a-bash-script-from-within-the-script-itself">https://stackoverflow.com/questions/59895/get-the-source-directory-of-a-bash-script-from-within-the-script-itself</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/a/35006505">https://stackoverflow.com/a/35006505</a></p>
 </dd>
 </dl>
+</div>
 </div>
         </div> <!-- content -->
 

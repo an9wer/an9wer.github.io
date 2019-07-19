@@ -31,14 +31,28 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="variables">
-<h1>Variables</h1>
-<dl class="simple">
-<dt>RANDOM</dt>
-<dd><p>Each time this parameter is referenced, a random integer between 0 and
-32767 is generated.</p>
-</dd>
-</dl>
+<div class="section" id="blackbox">
+<h1>Blackbox</h1>
+<p>Install blackbox:</p>
+<pre class="literal-block">$ git clone https://github.com/StackExchange/blackbox.git
+$ cd blackbox
+$ sudo make symlinks-install</pre>
+<p>Init blackbox in a git repository:</p>
+<pre class="literal-block">$ blackbox_initialize
+$ git add .blackbox/.gitattributes
+$ git commit -m'INITIALIZE BLACKBOX' .blackbox .gitignore</pre>
+<p>Add gpg key to admin:</p>
+<pre class="literal-block">$ blackbox_addadmin &lt;keyname&gt;</pre>
+<p>Register a file (encrypt and commit):</p>
+<pre class="literal-block">$ blackbox_register_new_file &lt;file&gt;</pre>
+<p>View a encrypted file:</p>
+<pre class="literal-block">$ blackbox_view &lt;file.gpg&gt;</pre>
+<p>Edit a encrypted file (decrypt it first and encrypt it after editing):</p>
+<pre class="literal-block">$ blackbox_edit &lt;file.gpg&gt;</pre>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://github.com/StackExchange/blackbox">Official repository</a></p>
+</div>
 </div>
         </div> <!-- content -->
 
