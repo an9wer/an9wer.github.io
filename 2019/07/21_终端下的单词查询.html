@@ -20,40 +20,27 @@
         </div> <!-- header -->
 
         <div id="navbar">
-            <a id="blog"
+            <a id="blog" class="current"
                 href="/blog.html">Blog</a>
             <a id="tweet"
                 href="/tweet.html">Tweet</a>
-            <a id="notes" class="current"
+            <a id="notes"
                 href="/notes.html">Notes</a>
             <a id="about"
                 href="/about.html">About</a>
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="window">
-<h1>Window</h1>
-<p>See <em>:h windows.txt</em></p>
-<div class="section" id="moving-cursor">
-<h2>Moving cursor</h2>
-<dl class="simple">
-<dt>CTRL-W p | CTRL-W CTRL-P</dt>
-<dd><p>Go to previous (last accessed) window (or switch between windows)</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="window-resize">
-<h2>Window resize</h2>
-<p>See <em>:h window-resize</em></p>
-<dl class="simple">
-<dt>:resize [+|-][N]</dt>
-<dd><p>Resize current window height (default: hightest possible)</p>
-</dd>
-<dt>:vertical resize [+|-][N]</dt>
-<dd><p>Resize current window width (default: widest possible)</p>
-</dd>
-</dl>
-</div>
+<div class="section" id="id1">
+<h1>终端下的单词查询</h1>
+<p>我平时一直使用 cambridge dictionary 查询单词（这里向各位推荐一下，个人感觉对单
+词的注释，用例都是很全面，很到位的）。</p>
+<p>一般的话，都是通过它的网站，在浏览器里面操作，搜索目标单词。但我是一个终端控，
+所以一直想把它做成一个终端命令，通过命令行的操作来搜索单词，并且将搜索过的单词
+都记录下来，方便日后复习使用。</p>
+<p>一开始试过找 cambridge dictionary 官方提供的接口，但发现需要申请，申请之后也只
+有 30 天的使用时间，之后可能还需要付费。因此，调用 API 这条路似乎行不通。</p>
+<p>第二种方法，似乎也是最后一种方法，就是通过爬虫，将页面上单词的信息爬取下来。</p>
 </div>
         </div> <!-- content -->
 

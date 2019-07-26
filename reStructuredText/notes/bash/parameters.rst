@@ -1,6 +1,9 @@
 Parameters
 ==========
 
+Special parameters
+------------------
+
 \-
     Expands to the current option flags as specified upon invocation, by the
     set builtin command, or those set by the shell itself (such as the *-i*
@@ -10,6 +13,19 @@ Parameters
     ::
 
         [[ $- != *i* ]] && return
+        
+\$
+    Expands to the process ID of the shell.  In a () subshell, it expands to
+    the process ID of the current shell, not the subshell.
+
+    ::
+
+        $ echo $$
+        21514
+        $ echo $(echo $$)
+        21514
+        $ echo $(echo $(echo $$))
+        21514
 
 
 Variables

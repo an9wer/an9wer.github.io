@@ -17,6 +17,7 @@
         ./notes/git/git_secret.rst
         ./notes/git/blackbox.rst
     Bash
+        ./notes/bash/grammar.rst
         ./notes/bash/parameters.rst
         ./notes/bash/expansion.rst
         ./notes/bash/builtin.rst
@@ -24,10 +25,12 @@
         ./notes/vim/tricks.rst
         ./notes/vim/options.rst
         ./notes/vim/pattern.rst
+        ./notes/vim/editing.rst
         ./notes/vim/window.rst
         ./notes/vim/tabpage.rst
         ./notes/vim/repeat.rst
         ./notes/vim/various.rst
+        ./notes/vim/quickfix.rst
         ./notes/vim/netrw.rst
     DevOps
         ./notes/devops/puppet38.rst
@@ -52,11 +55,20 @@
         ./notes/miscellaneous/regex.rst
     NS
         ./notes/ns/contentsrv.rst
+        ./notes/ns/wordpress.rst
     TODO
         ./notes/coreutils/seq.rst
         ./notes/coreutils/csplit.rst
         
         dirname
+
+        fd (https://stackoverflow.com/a/2031100)
+
+        vim:quickfix
+        vim:buffer args
+        vim:fold
+        vim:netrw hide (a key)
+
 
         ./notes/storage/nfs.rst
 
@@ -99,6 +111,8 @@ Package/
     `fpm        <notes/package/fpm.html>`_
 
 Bash/
+    `grammar    </notes/bash/grammar.html>`_
+
     `parameters </notes/bash/parameters.html>`_
 
     `expansion  </notes/bash/expansion.html>`_
@@ -112,6 +126,8 @@ Vim/
 
     `pattern    </notes/vim/pattern.html>`_
 
+    `editing    </notes/vim/editing.html>`_
+
     `window     </notes/vim/window.html>`_
 
     `tabage     </notes/vim/tabpage.html>`_
@@ -119,6 +135,8 @@ Vim/
     `repeat     </notes/vim/repeat.html>`_
 
     `various    </notes/vim/various.html>`_
+
+    `quickfix   </notes/vim/quickfix.html>`_
 
     `netrw      </notes/vim/netrw.html>`_ 
 

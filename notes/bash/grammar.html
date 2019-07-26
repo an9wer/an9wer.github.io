@@ -31,26 +31,17 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="window">
-<h1>Window</h1>
-<p>See <em>:h windows.txt</em></p>
-<div class="section" id="moving-cursor">
-<h2>Moving cursor</h2>
-<dl class="simple">
-<dt>CTRL-W p | CTRL-W CTRL-P</dt>
-<dd><p>Go to previous (last accessed) window (or switch between windows)</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="window-resize">
-<h2>Window resize</h2>
-<p>See <em>:h window-resize</em></p>
-<dl class="simple">
-<dt>:resize [+|-][N]</dt>
-<dd><p>Resize current window height (default: hightest possible)</p>
-</dd>
-<dt>:vertical resize [+|-][N]</dt>
-<dd><p>Resize current window width (default: widest possible)</p>
+<div class="section" id="grammar">
+<h1>Grammar</h1>
+<div class="section" id="compound-commands">
+<h2>Compound commands</h2>
+<dl>
+<dt>[[ expression ]]</dt>
+<dd><p><em>Word splitting</em> and <em>pathname expansion</em> are not performed on the words
+between the '[[' and ']]'; <em>tilde expansion</em>, <em>parameter</em> and <em>variable
+expansion</em>, <em>arithmetic expansion</em>, <em>command substitution</em>,  <em>process
+substitution</em>, and <em>quote  removal</em> are performed.</p>
+<p><a class="reference external" href="https://mywiki.wooledge.org/BashPitfalls#A.5B_.24foo_.3D_.22bar.22_.5D">Bash pitfalls: [ $foo = &quot;bar&quot; ]</a></p>
 </dd>
 </dl>
 </div>

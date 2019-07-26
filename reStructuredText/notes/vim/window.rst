@@ -1,5 +1,13 @@
 Window
 ======
+See *:h windows.txt*
+
+Moving cursor
+-------------
+
+CTRL-W p | CTRL-W CTRL-P
+    Go to previous (last accessed) window (or switch between windows)
+
 
 Window resize
 -------------

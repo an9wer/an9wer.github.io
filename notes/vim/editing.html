@@ -31,28 +31,21 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="window">
-<h1>Window</h1>
-<p>See <em>:h windows.txt</em></p>
-<div class="section" id="moving-cursor">
-<h2>Moving cursor</h2>
-<dl class="simple">
-<dt>CTRL-W p | CTRL-W CTRL-P</dt>
-<dd><p>Go to previous (last accessed) window (or switch between windows)</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="window-resize">
-<h2>Window resize</h2>
-<p>See <em>:h window-resize</em></p>
-<dl class="simple">
-<dt>:resize [+|-][N]</dt>
-<dd><p>Resize current window height (default: hightest possible)</p>
-</dd>
-<dt>:vertical resize [+|-][N]</dt>
-<dd><p>Resize current window width (default: widest possible)</p>
-</dd>
-</dl>
+<div class="section" id="editing">
+<h1>Editing</h1>
+<p>see <em>:h editing.txt</em></p>
+<div class="section" id="file-searching">
+<h2>File searching</h2>
+<p>See <em>:h file-searching</em></p>
+<p>The file searching is currently used for the <em>path</em>, <em>cdpath</em> and <em>tags</em>
+options, for <cite>finddir()</cite> and <cite>findfile()</cite>.  Other commands use <cite>wildcards</cite>
+which is slightly different.</p>
+<p>There are three different types of searching:</p>
+<ol class="arabic simple">
+<li><p>Downward searching ('**', '*')</p></li>
+<li><p>Upward searching (';')</p></li>
+<li><p>Combined up/donwward searching ('**', '*', ';')</p></li>
+</ol>
 </div>
 </div>
         </div> <!-- content -->

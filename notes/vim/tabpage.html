@@ -36,7 +36,7 @@
 <p>See <em>:h tabpage</em></p>
 <div class="section" id="commands">
 <h2>Commands</h2>
-<dl class="simple">
+<dl>
 <dt>{count}gt | :{count}tabn[ext]</dt>
 <dd><p>Go to tab page {count}. The first tab page has number one.</p>
 </dd>
@@ -45,6 +45,26 @@
 </dd>
 <dt>CTRL-W gf</dt>
 <dd><p>Open a new tab page and edit the file name under the cursor.</p>
+</dd>
+<dt>:[count]tabnew</dt>
+<dd><p>Open a new tab page with an empty window.</p>
+<pre class="literal-block">:tabnew     &quot; opens tabpage after the current one
+:.tabnew    &quot; as above
+:+tabnew    &quot; opens tabpage after the next tab page, note: it is one further than :tabnew
+:-tabnew    &quot; opens tabpage before the current one
+:0tabnew    &quot; opens tabpage before the first one
+:$tabnew    &quot; opens tabpage after the last one</pre>
+</dd>
+<dt>:[N]tabm[ove] | :tabm[ove] [N]</dt>
+<dd><p>Move the current tab page to after tab page N.</p>
+<pre class="literal-block">:.tabmove       &quot; do nothing
+:-tabmove       &quot; move the tab page to the left
+:+tabmove       &quot; move the tab page to the right
+:0tabmove       &quot; move the tab page to the beginning of the tab list
+:tabmove 0      &quot; as above
+:tabmove        &quot; move the tab page to the last
+:$tabmove       &quot; as above
+:tabmove $      &quot; as above</pre>
 </dd>
 </dl>
 </div>
