@@ -3,9 +3,10 @@
         ./notes/commands/info.rst
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
-        ./notes/commands/dmidecode.rst
         ./notes/commands/ntp.rst
         ./notes/commands/sed.rst
+        ./notes/commands/dmidecode.rst
+        ./notes/commands/lsscsi.rst
     Coreutils
         ./notes/coreutils/mktemp.rst
         ./notes/coreutils/cut.rst
@@ -69,6 +70,7 @@
         vim:fold
         vim:netrw hide (a key)
 
+        sudo notifier
 
         ./notes/storage/nfs.rst
 
@@ -92,11 +94,13 @@ Commands/
 
     `pstree     </notes/commands/pstree.html>`_
 
-    `dmidecode  </notes/commands/dmidecode.html>`_
-
     `ntp        </notes/commands/ntp.html>`_
 
     `sed        </notes/commands/sed.html>`_
+
+    `dmidecode  </notes/commands/dmidecode.html>`_
+
+    `lsscsi     </notes/commands/lsscsi.html>`_
 
 Coreutils/
     `mktemp     </notes/coreutils/mktemp.html>`_
@@ -261,4 +265,16 @@ A3:
 
 R :
     `How to get TX/RX bytes without ifconfig? <https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig>`_
+
+----
+
+Q : How to set default web browser in X11?
+
+A :
+    ::
+
+        $ xdg-settings set default-web-browser <firefox.desktop|chromium.desktop>
+
+R:
+    `Archwiki: xdg-utils <https://wiki.archlinux.org/index.php/Xdg-utils>`_
 
