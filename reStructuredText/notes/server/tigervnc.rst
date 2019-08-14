@@ -52,6 +52,8 @@ Its default behavior is to prompt for a VNC password and then store an
 obfuscated version of this password to passwd-file (or to *$HOME/.vnc/passwd*
 if no password file is specified.)
 
+**Note**: Only the first eight characters of VNC password are significant.
+
 Editing the file *$HOME/.vnc/xstartup* allows you to change the applications run
 at startup (but note that this will not affect an existing VNC session.)
 

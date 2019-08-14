@@ -23,6 +23,22 @@ SCSI:
 
 -   `lsscsi </notes/commands/lsscsi.html>`_
 
+Baseboard management contruller (BCM):
+
+Embedded device or service. Typically an independent microprocessor or
+system-on-chip with associated firmware in a computer system that completes
+out-of-band systems monitoring and management-related task.
+
+-   `Wikipedia: IPMI <https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface>`_
+
+Out of band management (OOBM):
+
+By contrast, in-band management through VNC, SSH or even serial ports is based
+on in-band connectivity and software that must be installed on the remote
+system being managed and only works after the operating system has been booted.
+
+-   `Wikipedia: OOBM <https://en.wikipedia.org/wiki/Out-of-band_management>`_
+
 Platform Controller Hub (PCH)
 
 -   `Wikipedia: PCH <https://en.wikipedia.org/wiki/Platform_Controller_Hub>`_

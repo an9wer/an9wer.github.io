@@ -35,6 +35,7 @@
     ./notes/commands/info.rst
     ./notes/commands/top.rst
     ./notes/commands/pstree.rst
+    ./notes/commands/iptables.rst
     ./notes/commands/ntp.rst
     ./notes/commands/sed.rst
     ./notes/commands/dmidecode.rst
@@ -67,6 +68,7 @@ Vim
     ./notes/vim/netrw.rst
 DevOps
     ./notes/devops/puppet38.rst
+    ./notes/devops/docker.rst
 Storage
     ./notes/storage/glusterfs.rst
 Database
@@ -74,6 +76,7 @@ Database
 Hardware
     ./notes/hardware/memory.rst
 Server
+    ./notes/server/nginx.rst
     ./notes/server/httpd.rst
     ./notes/server/webdav.rst
     ./notes/server/tigervnc.rst
@@ -81,6 +84,9 @@ Server
 Awesome
     ./notes/awesome/redshift.rst
 Misc
+    ./notes/miscellaneous/tls_ssl.rst
+    ./notes/miscellaneous/linux_network.rst
+    ./notes/miscellaneous/linux_process.rst
     ./notes/miscellaneous/programming_language.rst
     ./notes/miscellaneous/operating_system.rst
     ./notes/miscellaneous/desktop_environment.rst
@@ -90,6 +96,19 @@ NS
     ./notes/ns/contentsrv.rst
     ./notes/ns/wordpress.rst
 TODO
+    [ ] CentOS: systemctl restart network
+    [ ] Docker 10.0.0.6:8080
+    [ ] What is ACME?
+    [ ] gmail: firefox network
+    [ ] tcpdump monitor tls/ssl
+    [ ] self-signed certificate (import and password)
+
+
+     sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
+     sudo ip route add 127.0.0.0/8 dev lo table e1
+     sudo ip rule add from 10.0.0.14 table e1
+
+
     ./notes/coreutils/seq.rst
     ./notes/coreutils/csplit.rst
 
@@ -101,6 +120,8 @@ TODO
     vim:buffer args
     vim:fold
     vim:netrw hide (a key)
+
+    bash: variable @ *
 
     sudo notifier
 
@@ -123,6 +144,7 @@ TODO
 <dd><p><a class="reference external" href="/notes/commands/info.html">info</a></p>
 <p><a class="reference external" href="/notes/commands/top.html">top</a></p>
 <p><a class="reference external" href="/notes/commands/pstree.html">pstree</a></p>
+<p><a class="reference external" href="/notes/commands/iptables.html">iptables</a></p>
 <p><a class="reference external" href="/notes/commands/ntp.html">ntp</a></p>
 <p><a class="reference external" href="/notes/commands/sed.html">sed</a></p>
 <p><a class="reference external" href="/notes/commands/dmidecode.html">dmidecode</a></p>
@@ -172,7 +194,8 @@ TODO
 <dd><p><a class="reference external" href="/notes/hardware/memory.html">memory</a></p>
 </dd>
 <dt>Server/</dt>
-<dd><p><a class="reference external" href="/notes/server/httpd.html">httpd</a></p>
+<dd><p><a class="reference external" href="notes/server/nginx.html">nginx</a></p>
+<p><a class="reference external" href="/notes/server/httpd.html">httpd</a></p>
 <p><a class="reference external" href="/notes/server/webdav.html">WebDAV</a></p>
 <p><a class="reference external" href="/notes/server/tigervnc.html">TigerVNC</a></p>
 <p><a class="reference external" href="/notes/server/nagios.html">Nagios</a></p>
@@ -181,7 +204,10 @@ TODO
 <dd><p><a class="reference external" href="/notes/awesome/redshift.html">redshift</a></p>
 </dd>
 <dt>Misc/</dt>
-<dd><p><a class="reference external" href="/notes/miscellaneous/programming_language.html">Programming language</a></p>
+<dd><p><a class="reference external" href="/notes/miscellaneous/tls_ssl.html">TLS/SSL</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/linux_network.html">Linux network</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/linux_process.html">Linux process</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/programming_language.html">Programming language</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/operating_system.html">Operating system</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/hardware.html">Hardware</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/desktop_environment.html">Desktop environment</a></p>

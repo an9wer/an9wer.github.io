@@ -3,6 +3,7 @@
         ./notes/commands/info.rst
         ./notes/commands/top.rst
         ./notes/commands/pstree.rst
+        ./notes/commands/iptables.rst
         ./notes/commands/ntp.rst
         ./notes/commands/sed.rst
         ./notes/commands/dmidecode.rst
@@ -35,6 +36,7 @@
         ./notes/vim/netrw.rst
     DevOps
         ./notes/devops/puppet38.rst
+        ./notes/devops/docker.rst
     Storage
         ./notes/storage/glusterfs.rst
     Database
@@ -42,6 +44,7 @@
     Hardware
         ./notes/hardware/memory.rst
     Server
+        ./notes/server/nginx.rst
         ./notes/server/httpd.rst
         ./notes/server/webdav.rst
         ./notes/server/tigervnc.rst
@@ -49,6 +52,9 @@
     Awesome
         ./notes/awesome/redshift.rst
     Misc
+        ./notes/miscellaneous/tls_ssl.rst
+        ./notes/miscellaneous/linux_network.rst
+        ./notes/miscellaneous/linux_process.rst
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
         ./notes/miscellaneous/desktop_environment.rst
@@ -58,6 +64,19 @@
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
     TODO
+        [ ] CentOS: systemctl restart network
+        [ ] Docker 10.0.0.6:8080
+        [ ] What is ACME?
+        [ ] gmail: firefox network
+        [ ] tcpdump monitor tls/ssl
+        [ ] self-signed certificate (import and password)
+        
+
+         sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
+         sudo ip route add 127.0.0.0/8 dev lo table e1
+         sudo ip rule add from 10.0.0.14 table e1
+
+
         ./notes/coreutils/seq.rst
         ./notes/coreutils/csplit.rst
         
@@ -69,6 +88,8 @@
         vim:buffer args
         vim:fold
         vim:netrw hide (a key)
+
+        bash: variable @ *
 
         sudo notifier
 
@@ -93,6 +114,8 @@ Commands/
     `top        </notes/commands/top.html>`_
 
     `pstree     </notes/commands/pstree.html>`_
+
+    `iptables   </notes/commands/iptables.html>`_
 
     `ntp        </notes/commands/ntp.html>`_
 
@@ -162,6 +185,8 @@ Hardware/
     `memory     </notes/hardware/memory.html>`_
 
 Server/
+    `nginx      <notes/server/nginx.html>`_
+
     `httpd      </notes/server/httpd.html>`_
 
     `WebDAV     </notes/server/webdav.html>`_
@@ -174,6 +199,12 @@ Awesome/
     `redshift   </notes/awesome/redshift.html>`_
 
 Misc/
+    `TLS/SSL    </notes/miscellaneous/tls_ssl.html>`_
+
+    `Linux network </notes/miscellaneous/linux_network.html>`_
+
+    `Linux process </notes/miscellaneous/linux_process.html>`_
+
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
     `Operating system </notes/miscellaneous/operating_system.html>`_

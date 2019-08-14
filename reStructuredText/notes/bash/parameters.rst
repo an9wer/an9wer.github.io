@@ -4,6 +4,23 @@ Parameters
 Special parameters
 ------------------
 
+\*
+    Expands to the positional parameters, starting from one.
+
+    When the expansion is not within double quotes, each positional parameter
+    expands to a separate word. In contexts where it is performed, those words
+    are subject to further word splitting and pathname expansion.
+
+    When the expansion occurs within double quotes, it expands to a single word
+    with the value of each parameter separated by the first character of the
+    IFS special variable. (If IFS is unset, the parameters are separated by
+    spaces.  If IFS is null, the parameters are joined without intervening
+    separators.)
+
+\@
+    Expands to the positional parameters, starting from one.
+
+
 \-
     Expands to the current option flags as specified upon invocation, by the
     set builtin command, or those set by the shell itself (such as the *-i*
@@ -26,7 +43,7 @@ Special parameters
         21514
         $ echo $(echo $(echo $$))
         21514
-
+        
 
 Variables
 ---------

@@ -36,6 +36,20 @@
 <div class="section" id="special-parameters">
 <h2>Special parameters</h2>
 <dl>
+<dt>*</dt>
+<dd><p>Expands to the positional parameters, starting from one.</p>
+<p>When the expansion is not within double quotes, each positional parameter
+expands to a separate word. In contexts where it is performed, those words
+are subject to further word splitting and pathname expansion.</p>
+<p>When the expansion occurs within double quotes, it expands to a single word
+with the value of each parameter separated by the first character of the
+IFS special variable. (If IFS is unset, the parameters are separated by
+spaces.  If IFS is null, the parameters are joined without intervening
+separators.)</p>
+</dd>
+<dt>&#64;</dt>
+<dd><p>Expands to the positional parameters, starting from one.</p>
+</dd>
 <dt>-</dt>
 <dd><p>Expands to the current option flags as specified upon invocation, by the
 set builtin command, or those set by the shell itself (such as the <em>-i</em>
