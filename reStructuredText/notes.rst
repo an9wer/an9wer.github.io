@@ -64,12 +64,13 @@
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
     TODO
+        [ ] shell scripts: cd (choice from a list)
         [ ] CentOS: systemctl restart network
         [ ] Docker 10.0.0.6:8080
         [ ] What is ACME?
         [ ] gmail: firefox network
         [ ] tcpdump monitor tls/ssl
-        [ ] self-signed certificate (import and password)
+        [-] self-signed certificate (import and password)
         
 
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1

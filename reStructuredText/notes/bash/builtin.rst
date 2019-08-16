@@ -14,6 +14,22 @@ pipefail
 Shopt
 -----
 
+Options
+"""""""
+
+`-p`
+    print each shell option with an indication of its status
+
+`-s`
+    enable OPTNAME
+
+`-u`
+    disable OPTNAME
+
+
+Optnames
+""""""""
+
 globstar
     If set, the pattern ** used in a pathname expansion context will match all
     files and zero or more directories and subdirectories.  If the pattern is
