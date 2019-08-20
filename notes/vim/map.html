@@ -34,10 +34,32 @@
 <div class="section" id="map">
 <h1>Map</h1>
 <p>See <cite>:h map.txt</cite></p>
+<dl>
+<dt>&lt;expr&gt;</dt>
+<dd><p>The expression is evaluated to obtain the {rhs} that is used.</p>
+<p>See <cite>:h map-&lt;expr&gt;</cite></p>
+</dd>
+<dt>&lt;buffer&gt;</dt>
+<dd><p>The mapping/abbreviation is effective in the current buffer only.</p>
+<p>See <cite>:h map-&lt;buffer&gt;</cite></p>
+</dd>
+</dl>
 <div class="section" id="abbreviations">
 <h2>Abbreviations</h2>
 <p>Abbreviations are used in Insert mode, Replace mode and Command-line mode.</p>
 <p>Abbreviations are never recursive.</p>
+<dl class="simple">
+<dt>:ab[breviate]</dt>
+<dd><p>List all abbreviations.</p>
+</dd>
+<dt>:ab[breviate] {lhs}</dt>
+<dd><p>List the abbreviations that start with {lhs}.</p>
+</dd>
+<dt>:ab[breviate] [&lt;expr&gt;] [&lt;buffer&gt;] {lhs} {rhs}</dt>
+<dd><p>Add abbrevia for {lhs} to {rhs}. If {lhs} already existed it is replaced
+with the new {rhs}. {rhs} may contain spaces.</p>
+</dd>
+</dl>
 </div>
 </div>
         </div> <!-- content -->
