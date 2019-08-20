@@ -1,0 +1,16 @@
+[ ] Vim abbreviate: date
+[ ] Update scripts of mysql slow query notifier
+[ ] Raspberry Pie: dhcpd
+[ ] Supervisord: event notifier
+[ ] CentOS: systemctl restart network
+[ ] Docker 10.0.0.6:8080
+[ ] What is ACME?
+[ ] Gmail: firefox network
+[ ] Tcpdump monitor tls/ssl
+[-] Self-signed certificate (import and password)
+
+2019/08/20
+    [ ] Learn mdadm
+    [ ] Bash scripts: cdf (change directory from a list)
+    [x] Check stderr of nagios plugin
+        -   Can write output to stderr in nagios plugin

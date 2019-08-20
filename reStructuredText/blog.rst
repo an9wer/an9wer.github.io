@@ -1,4 +1,6 @@
 ..
+    ./2019/08/20_TODO\ list.rst
+    ./2019/08/19_Raspberry\ Pi\ installation.rst
     ./2019/07/21_终端下的单词查询.rst
     ./2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
     ./2019/06/09_地铁轶事.rst
@@ -23,6 +25,10 @@
     ./2018/10/30_Suckless\ 的一天.rst
     ./2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
     ./2018/10/24_博客搭建小记.rst
+
+2019/08/20 @ `TODO list <2019/08/20_TODO%20list.html>`_
+
+2019/08/19 @ `Raspberry Pi installation <2019/08/19_Raspberry%20Pi%20installation>`_
 
 2019/07/21 @ `终端下的单词查询 <2019/07/21_终端下的单词查询.html>`_
 

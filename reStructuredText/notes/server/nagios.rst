@@ -9,15 +9,17 @@ Install nagios on CentOS7:
     # yum install nagios
     # yum install nagios-plugins-all
 
-Start nagios service:
+Start nagios service (disable selinux first):
 
 ::
 
+    # setenforce 0
     # systemctl start nagios
 
 
 Install httpd server which has nagios configuration by default, so we just
-generate nagios user and password, and put them to */etc/nagios* directory:
+generate password of nagios user (*nagiosadmin* here), and put them to
+*/etc/nagios* directory:
 
 ::
 
@@ -33,6 +35,13 @@ Start httpd service:
 ::
 
     # systemctl start httpd
+
+Then visit *http://xxx.xxx.xxx.xxx/nagios*.
+
+Nagios plugins
+--------------
+
+Nagios plugins directory: */usr/lib64/nagios/plugins*.
 
 
 Nrpe
@@ -65,5 +74,5 @@ machine:
 References
 ----------
 
-https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf
+-   `NRPE document <https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf>`_
 

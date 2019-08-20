@@ -33,6 +33,7 @@
         ./notes/vim/repeat.rst
         ./notes/vim/various.rst
         ./notes/vim/quickfix.rst
+        ./notes/vim/map.rst
         ./notes/vim/netrw.rst
     DevOps
         ./notes/devops/puppet38.rst
@@ -64,15 +65,6 @@
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
     TODO
-        [ ] shell scripts: cd (choice from a list)
-        [ ] CentOS: systemctl restart network
-        [ ] Docker 10.0.0.6:8080
-        [ ] What is ACME?
-        [ ] gmail: firefox network
-        [ ] tcpdump monitor tls/ssl
-        [-] self-signed certificate (import and password)
-        
-
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
          sudo ip route add 127.0.0.0/8 dev lo table e1
          sudo ip rule add from 10.0.0.14 table e1
@@ -165,6 +157,8 @@ Vim/
     `various    </notes/vim/various.html>`_
 
     `quickfix   </notes/vim/quickfix.html>`_
+
+    `map        </notes/vim/map.html>`_
 
     `netrw      </notes/vim/netrw.html>`_ 
 

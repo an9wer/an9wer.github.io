@@ -31,47 +31,13 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="nagios">
-<h1>Nagios</h1>
-<p>Install nagios on CentOS7:</p>
-<pre class="literal-block"># yum install epel-release
-# yum install nagios
-# yum install nagios-plugins-all</pre>
-<p>Start nagios service (disable selinux first):</p>
-<pre class="literal-block"># setenforce 0
-# systemctl start nagios</pre>
-<p>Install httpd server which has nagios configuration by default, so we just
-generate password of nagios user (<em>nagiosadmin</em> here), and put them to
-<em>/etc/nagios</em> directory:</p>
-<pre class="literal-block"># yum install httpd
-# htpasswd -c /etc/nagios/passwd nagiosadmin</pre>
-<p><strong>Note</strong>: The authorized user is <em>nagiosadmin</em> here, which can be changed in
-<em>/etc/nagios/cgi.cfg</em> file.</p>
-<p>Start httpd service:</p>
-<pre class="literal-block"># systemctl start httpd</pre>
-<p>Then visit <em>http://xxx.xxx.xxx.xxx/nagios</em>.</p>
-<div class="section" id="nagios-plugins">
-<h2>Nagios plugins</h2>
-<p>Nagios plugins directory: <em>/usr/lib64/nagios/plugins</em>.</p>
-</div>
-<div class="section" id="nrpe">
-<h2>Nrpe</h2>
-<p>Install <em>check_nrpe</em> plugin on the monitoring machine:</p>
-<pre class="literal-block"># yum install epel-release
-# yum install nagios-plugins-nrpe</pre>
-<p>Install and start <em>nrpe</em> daemon on the remote machine:</p>
-<pre class="literal-block"># yum install epel-release
-# yum install nrpe
-# system start nrpe</pre>
-<p>Then, on the monitoring machine, run the following commmand to check remote
-machine:</p>
-<pre class="literal-block"># /usr/lib64/nagios/plugins/check_nrpe -H &lt;remote host&gt; -c &lt;command&gt;</pre>
-</div>
-<div class="section" id="references">
-<h2>References</h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf">NRPE document</a></p></li>
-</ul>
+<div class="section" id="map">
+<h1>Map</h1>
+<p>See <cite>:h map.txt</cite></p>
+<div class="section" id="abbreviations">
+<h2>Abbreviations</h2>
+<p>Abbreviations are used in Insert mode, Replace mode and Command-line mode.</p>
+<p>Abbreviations are never recursive.</p>
 </div>
 </div>
         </div> <!-- content -->
