@@ -7,10 +7,25 @@
 [ ] (2019/08/20) Update scripts of mysql slow query notifier
 [ ] (2019/08/20) Raspberry Pie: dhcpd
 [ ] (2019/08/20) Supervisord: event notifier
+[ ] (2019/08/21) Readline mappings for command-line mode [https://github.com/ryvnf/readline.vim]
+[ ] (2019/08/21) RSS of my blog
+[ ] (2019/08/21) Command: csplit
+[ ] (2019/08/21) Nginx allow request only from domain
+[ ] (2019/08/21) Nginx log of everythingsearch.cn
+[ ] (2019/08/21) Play NixOS
+[ ] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
 
-2019/08/20
+2019/08/20 Tue
     [-] (2019/08/20) Learn mdadm
-    [x] (2019/08/20) Bash scripts: cdf (change directory from a list)
+    [x] (2019/08/20) Bash script: cdf (change directory from a list)
     [x] (2019/08/20) Check stderr of nagios plugin
-        -   Can write output to stderr in nagios plugin
+        *   Can write output to stderr in nagios plugin
     [x] (2019/08/20) Vim abbreviate: date
+
+2019/08/21 Wed
+    [-] (2019/08/21) Save all histories in bash
+        *   `shopt -s histappend` ?
+    [ ] (2019/08/21) Update nagios GlusterFS plugin
+    [x] (2019/08/21) Update nagios Redfish plugin
+    [x] (2019/08/21) Update nagios IPMI plugin: set mode of temorary directory to '0777'
+    [x] (2019/08/21) Update nagios IPMI plugin: add summary header
