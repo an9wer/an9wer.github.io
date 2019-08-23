@@ -73,3 +73,11 @@ Parallel vs serial
 
 -   `Communication Networks/Parallel vs Serial <https://en.wikibooks.org/wiki/Communication_Networks/Parallel_vs_Serial>`_
 
+
+Intel
+-----
+
+Intel Core M
+    https://en.wikipedia.org/wiki/List_of_Intel_Core_M_microprocessors
+
+    https://www.laptopmag.com/articles/intel-core-m-details

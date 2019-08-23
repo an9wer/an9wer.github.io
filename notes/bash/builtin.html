@@ -35,12 +35,51 @@
 <h1>Builtin</h1>
 <div class="section" id="set">
 <h2>set</h2>
+<pre class="literal-block">set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]</pre>
+<p><strong>Note</strong>: Using + rather than - causes these flags to be turned off.</p>
+<dl class="option-list">
+<dt><kbd><span class="option">-v</span></kbd></dt>
+<dd><p>Print shell input lines as they are read.</p>
+<pre class="literal-block">$ set -v
+
+$ cat &lt;&lt;EOF
+cat &lt;&lt;EOF
+&gt; 1
+1
+&gt; 2
+2
+&gt; EOF
+EOF
+1
+2</pre>
+</dd>
+<dt><kbd><span class="option">-x</span></kbd></dt>
+<dd><p>Print commands and their arguments as they are executed.</p>
+<pre class="literal-block">$ set -x
+
+$ echo 123
++ echo 123
+123
+
+$ cat &lt;&lt;EOF
+&gt; 1
+&gt; 2
+&gt; EOF
++ cat
+1
+2</pre>
+</dd>
+</dl>
 <dl class="simple">
 <dt>pipefail</dt>
-<dd><p>The return status of a pipeline is the exit status of the last command, un
-less the pipefail option is enabled. If pipefail is enabled, the pipeline's
-return status is the value of the last (rightmost) command  to exit with  a
-non-zero status, or zero if all commands exit successfully.</p>
+<dd><p>The return status of a pipeline is the exit status of the last command,
+unless the pipefail option is enabled. If pipefail is enabled, the
+pipeline's return status is the value of the last (rightmost) command  to
+exit with a non-zero status, or zero if all commands exit successfully.</p>
+</dd>
+<dt>--</dt>
+<dd><p>Assign any remaining arguments to the positional parameters. If there are
+no remaining arguments, the positional parameters are unset.</p>
 </dd>
 </dl>
 </div>

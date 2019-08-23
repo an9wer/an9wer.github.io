@@ -52,12 +52,51 @@ From client, mount remote glusterfs volume:
     # mount -t glusterfs <brick> <mount point>
 
 
+Command of gluster
+------------------
+
+List all volumes:
+
+::
+
+    # gluster volume list
+
+Display information (i.e. brick name) of volumes (all if not specified):
+
+::
+
+    # gluster volume info [<volume>]
+
+
+Display details/clients/memory of some brick of some volume:
+
+::
+
+    # gluster volume status <volume> <brick> detail|clients|mem
+
+
+Create volume:
+
+::
+
+    # TODO
+
+Start volume:
+
+::
+
+    # gluster volume start <volume>
+
+Stop volume, add the option 'force' at the end if need to force stoping it:
+
+::
+
+    # gluster volume stop <volume> [force]
+
+
 References:
 
 -   `CentOS Wiki: gluster quickstart <https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart>`_
 
 -   `Glusterfs Doc: quickstart <https://docs.gluster.org/en/latest/Quick-Start-Guide/Quickstart/>`_
-
-
-
 

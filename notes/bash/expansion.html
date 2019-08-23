@@ -53,6 +53,27 @@ when it is used as a command argument.</p>
 321</pre>
 <pre class="literal-block">$ echo 123 &gt;(sed 's/123/321/')
 123 /dev/fd/63</pre>
+</div>
+<div class="section" id="word-splitting">
+<h2>Word splitting</h2>
+<p>The shell scans the results of <em>parameter expansion</em>, <em>command substitution</em>,
+and <em>arithmetic expansion</em> that did not occur within double quotes for word
+splitting.</p>
+<p><strong>Note</strong> that if no expansion occurs, no splitting is performed.</p>
+<pre class="literal-block">$ a=&quot;1     2   3&quot;
+$ func() { echo ${#&#64;}; }
+
+$ func $a       # Word splitting is performed
+3
+
+$ func &quot;$a&quot;     # Word splitting is not performed
+1
+
+$ func &quot;1     2   3&quot;    # Word splitting is not performed
+1
+
+$ func 1     2   3      # Word splitting is not performed
+3</pre>
 <div class="section" id="references">
 <h3>References</h3>
 <p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>

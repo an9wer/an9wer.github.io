@@ -58,11 +58,26 @@
 <pre class="literal-block"># gluster volume create &lt;volume name&gt; &lt;volume type&gt; &lt;brick&gt;...</pre>
 <p>From client, mount remote glusterfs volume:</p>
 <pre class="literal-block"># mount -t glusterfs &lt;brick&gt; &lt;mount point&gt;</pre>
+<div class="section" id="command-of-gluster">
+<h2>Command of gluster</h2>
+<p>List all volumes:</p>
+<pre class="literal-block"># gluster volume list</pre>
+<p>Display information (i.e. brick name) of volumes (all if not specified):</p>
+<pre class="literal-block"># gluster volume info [&lt;volume&gt;]</pre>
+<p>Display details/clients/memory of some brick of some volume:</p>
+<pre class="literal-block"># gluster volume status &lt;volume&gt; &lt;brick&gt; detail|clients|mem</pre>
+<p>Create volume:</p>
+<pre class="literal-block"># TODO</pre>
+<p>Start volume:</p>
+<pre class="literal-block"># gluster volume start &lt;volume&gt;</pre>
+<p>Stop volume, add the option 'force' at the end if need to force stoping it:</p>
+<pre class="literal-block"># gluster volume stop &lt;volume&gt; [force]</pre>
 <p>References:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart">CentOS Wiki: gluster quickstart</a></p></li>
 <li><p><a class="reference external" href="https://docs.gluster.org/en/latest/Quick-Start-Guide/Quickstart/">Glusterfs Doc: quickstart</a></p></li>
 </ul>
+</div>
 </div>
         </div> <!-- content -->
 

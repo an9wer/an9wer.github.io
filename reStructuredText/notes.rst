@@ -8,6 +8,8 @@
         ./notes/commands/sed.rst
         ./notes/commands/dmidecode.rst
         ./notes/commands/lsscsi.rst
+        ./notes/commands/xclip.rst
+        ./notes/commands/xmodmap.rst
     Coreutils
         ./notes/coreutils/mktemp.rst
         ./notes/coreutils/cut.rst
@@ -20,6 +22,7 @@
         ./notes/git/blackbox.rst
     Bash
         ./notes/bash/grammar.rst
+        ./notes/bash/quoting.rst
         ./notes/bash/parameters.rst
         ./notes/bash/expansion.rst
         ./notes/bash/builtin.rst
@@ -118,6 +121,10 @@ Commands/
 
     `lsscsi     </notes/commands/lsscsi.html>`_
 
+    `xclip      </notes/commands/xclip.html>`_
+
+    `xmodmap    </notes/commands/xmodmap.html>`_
+
 Coreutils/
     `mktemp     </notes/coreutils/mktemp.html>`_
 
@@ -132,6 +139,8 @@ Package/
 
 Bash/
     `grammar    </notes/bash/grammar.html>`_
+
+    `quoting    </notes/bash/quoting.html>`_
 
     `parameters </notes/bash/parameters.html>`_
 

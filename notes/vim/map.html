@@ -48,6 +48,13 @@
 <h2>Abbreviations</h2>
 <p>Abbreviations are used in Insert mode, Replace mode and Command-line mode.</p>
 <p>Abbreviations are never recursive.</p>
+<p>To avoid the abbreviation in Insert mode: Type <em>CTRL-V</em> before the character
+that would trigger the abbreviation. (E.g. CTRL-V &lt;Space&gt;.  Or type part of
+the abbreviation, exit insert mode with &lt;Esc&gt;, re-enter insert mode with &quot;a&quot;
+and type the rest.)</p>
+<p>To avoid the abbreviation in Command-line mode: Type <em>CTRL-V</em> twice somewhere
+in the abbreviation to avoid it to be replaced.  A <em>CTRL-V</em> in front of a
+normal character is mostly ignored otherwise.</p>
 <dl class="simple">
 <dt>:ab[breviate]</dt>
 <dd><p>List all abbreviations.</p>
@@ -58,6 +65,12 @@
 <dt>:ab[breviate] [&lt;expr&gt;] [&lt;buffer&gt;] {lhs} {rhs}</dt>
 <dd><p>Add abbrevia for {lhs} to {rhs}. If {lhs} already existed it is replaced
 with the new {rhs}. {rhs} may contain spaces.</p>
+</dd>
+<dt>:ca[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Command-line mode only.</p>
+</dd>
+<dt>:ia[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Insert mode only.</p>
 </dd>
 </dl>
 </div>

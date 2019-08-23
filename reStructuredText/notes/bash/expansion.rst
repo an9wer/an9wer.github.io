@@ -37,6 +37,34 @@ The form ``>(list)`` is used as an output file:
     $ echo 123 >(sed 's/123/321/')
     123 /dev/fd/63
 
+
+Word splitting
+--------------
+
+The shell scans the results of *parameter expansion*, *command substitution*,
+and *arithmetic expansion* that did not occur within double quotes for word
+splitting.
+
+**Note** that if no expansion occurs, no splitting is performed.
+
+::
+
+    $ a="1     2   3"
+    $ func() { echo ${#@}; }
+
+    $ func $a       # Word splitting is performed
+    3
+
+    $ func "$a"     # Word splitting is not performed
+    1
+
+    $ func "1     2   3"    # Word splitting is not performed
+    1
+
+    $ func 1     2   3      # Word splitting is not performed
+    3
+
+
 References
 """"""""""
 https://www.tldp.org/LDP/abs/html/process-sub.html

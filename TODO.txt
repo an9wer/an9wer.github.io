@@ -11,9 +11,17 @@
 [ ] (2019/08/21) RSS of my blog
 [ ] (2019/08/21) Command: csplit
 [ ] (2019/08/21) Nginx allow request only from domain
-[ ] (2019/08/21) Nginx log of everythingsearch.cn
+[ ] (2019/08/21) Extract nginx log of everythingsearch.cn
 [ ] (2019/08/21) Play NixOS
-[ ] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
+[ ] (2019/08/22) ACL
+[ ] (2019/08/22) Learn GlusterFS RDMA
+[ ] (2019/08/22) Run fio of GlusterFS
+[ ] (2019/08/22) Learn gawk
+[ ] (2019/08/23) Learn date
+[ ] (2019/08/23) X11 Secondary selection [www.cs.man.ac.uk/~lindsec/secondary-selection.html] [www.cs.man.ac.uk/~lindsec/secondary.html]
+[ ] (2019/08/23) Blog of cdf
+[ ] (2019/08/23) Learn SMART
+[ ] (2019/08/23) Learn fail2ban
 
 2019/08/20 Tue
     [-] (2019/08/20) Learn mdadm
@@ -29,3 +37,13 @@
     [x] (2019/08/21) Update nagios Redfish plugin
     [x] (2019/08/21) Update nagios IPMI plugin: set mode of temorary directory to '0777'
     [x] (2019/08/21) Update nagios IPMI plugin: add summary header
+    
+2019/08/22 Thu
+    [ ] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
+    [-] (2019/08/21) Update nagios GlusterFS plugin
+    
+2019/08/23 Fri
+    [x] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
+    [ ] (2019/08/21) Update nagios GlusterFS plugin
+    [x] (2019/08/23) Let notebook connect to internet through mobile phone
+    [x] (2019/08/23) Note of xclip
