@@ -51,6 +51,23 @@ $ sudo wpa_cli -i wlan0 reconfigure</pre>
 
 $ sudo vim `/etc/apt/sources.list.d/raspi.list`
     deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</pre>
+<p>Config NIC eth0:</p>
+<pre class="literal-block">$ sudo vim /etc/network/interfaces.d/eth0
+    auto eth0
+    iface eth0 inet static
+        address 192.168.12.1/24</pre>
+<p>Install and config ISC dhcp server:</p>
+<pre class="literal-block">$ sudo apt install isc-dhcp-server
+
+$ sudo vim /etc/default/isc-dhcp-server
+    INTERFACESv4=&quot;eth0&quot;
+
+$ sudo vim /etc/dhcp/dhcpd.conf
+    subnet 192.168.12.0 netmast 255.255.255.0 {
+        range 192.168.12.10 192.168.12.250;
+    }</pre>
+<p>Install dnscrypt-proxy:</p>
+<pre class="literal-block">$ sudo apt install dnscrypt-proxy</pre>
 </div>
         </div> <!-- content -->
 

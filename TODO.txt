@@ -5,7 +5,6 @@
 [ ] Tcpdump monitor tls/ssl
 [-] Self-signed certificate (import and password)
 [ ] (2019/08/20) Update scripts of mysql slow query notifier
-[ ] (2019/08/20) Raspberry Pie: dhcpd
 [ ] (2019/08/20) Supervisord: event notifier
 [ ] (2019/08/21) Readline mappings for command-line mode [https://github.com/ryvnf/readline.vim]
 [ ] (2019/08/21) RSS of my blog
@@ -22,6 +21,8 @@
 [ ] (2019/08/23) Blog of cdf
 [ ] (2019/08/23) Learn SMART
 [ ] (2019/08/23) Learn fail2ban
+[ ] (2019/08/24) Learn ISC dhcp server
+[ ] (2019/08/24) Raspberry Pi: DNS
 
 2019/08/20 Tue
     [-] (2019/08/20) Learn mdadm
@@ -47,3 +48,7 @@
     [ ] (2019/08/21) Update nagios GlusterFS plugin
     [x] (2019/08/23) Let notebook connect to internet through mobile phone
     [x] (2019/08/23) Note of xclip
+
+2019/08/24 Sat
+    [x] (2019/08/20) Raspberry Pi: dhcpd
+    [ ] (2019/08/24) Crawler of pokeman
