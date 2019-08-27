@@ -5,4 +5,5 @@ Github
     (2019/08/23) A fast and simple framework for building and running distributed applications. [https://github.com/ray-project/ray]
     (2019/08/23) The Cloud Native Edge Router [https://traefik.io]
     (2019/08/23) An easy to use, scalable and secure web application framework for writing web APIs in C. [https://github.com/jorisvink/kore]
-    (2019/08/23) jorisvink's minimalistic X11 window manager. [https://github.com/jorisvink/coma]
+    (2019/08/23) Jorisvink's minimalistic X11 window manager. [https://github.com/jorisvink/coma]
+    (2019/08/26) Fast, cross-platform HTTP/2 web server with automatic HTTPS [https://github.com/caddyserver/caddy]

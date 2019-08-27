@@ -3,7 +3,7 @@
 [ ] What is ACME?
 [ ] Gmail: firefox network
 [ ] Tcpdump monitor tls/ssl
-[-] Self-signed certificate (import and password)
+[o] Self-signed certificate (import and password)
 [ ] (2019/08/20) Update scripts of mysql slow query notifier
 [ ] (2019/08/20) Supervisord: event notifier
 [ ] (2019/08/21) Readline mappings for command-line mode [https://github.com/ryvnf/readline.vim]
@@ -23,17 +23,18 @@
 [ ] (2019/08/23) Learn fail2ban
 [ ] (2019/08/24) Learn ISC dhcp server
 [ ] (2019/08/24) Raspberry Pi: DNS
+[ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
 
 2019/08/20 Tue
-    [-] (2019/08/20) Learn mdadm
+    [o] (2019/08/20) Learn mdadm
     [x] (2019/08/20) Bash script: cdf (change directory from a list)
     [x] (2019/08/20) Check stderr of nagios plugin
-        *   Can write output to stderr in nagios plugin
+        -   Can write output to stderr in nagios plugin
     [x] (2019/08/20) Vim abbreviate: date
 
 2019/08/21 Wed
-    [-] (2019/08/21) Save all histories in bash
-        *   `shopt -s histappend` ?
+    [o] (2019/08/21) Save all histories in bash
+        -   `shopt -s histappend` ?
     [ ] (2019/08/21) Update nagios GlusterFS plugin
     [x] (2019/08/21) Update nagios Redfish plugin
     [x] (2019/08/21) Update nagios IPMI plugin: set mode of temorary directory to '0777'
@@ -41,7 +42,7 @@
     
 2019/08/22 Thu
     [ ] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
-    [-] (2019/08/21) Update nagios GlusterFS plugin
+    [o] (2019/08/21) Update nagios GlusterFS plugin
     
 2019/08/23 Fri
     [x] (2019/08/21) Bash: difference between "${@}" and ${@}, "${*}" and $*
@@ -52,3 +53,15 @@
 2019/08/24 Sat
     [x] (2019/08/20) Raspberry Pi: dhcpd
     [ ] (2019/08/24) Crawler of pokeman
+
+2019/08/26 Mon
+    [ ] (2019/08/21) Update nagios GlusterFS plugin
+    [x] (2019/08/26) Install and config ss-local in Fedora
+        -   `sudo dnf enable librehat/shadowsocks`
+        -   `sudo dnf install shadowsocks-libev`
+    [x] (2019/08/26) Install IM in Fedora
+        -   Run `ibus-setup`
+            To enable input, add it to the *Input Sources section of the Region & Language* settings.
+        -   https://wiki.archlinux.org/index.php/IBus
+    [x] (2019/08/26) Nginx: disallow access to website by using ip address
+

@@ -33,6 +33,19 @@
         <div id="content">
 <div class="section" id="nginx">
 <h1>Nginx</h1>
+<p>FQA:</p>
+<p>Q: Do not allow access to a website by using ip address</p>
+<dl>
+<dt>A:</dt>
+<dd><pre class="literal-block">if ($host !~* ^(.+\.)?domain\.com$) {
+    return 444;
+}</pre>
+</dd>
+<dt>R:</dt>
+<dd><p><a class="reference external" href="https://blog.knoldus.com/nginx-disable-direct-access-via-http-and-https-to-a-website-using-ip/">Disable direct access (via http and https) to a website using IP address</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/39110609/nginx-domain-regex-to-include-wildcards">Nginx domain regex</a></p>
+</dd>
+</dl>
 <div class="section" id="client-side-certification">
 <h2>Client side certification</h2>
 <p><a class="reference external" href="https://fardog.io/blog/2017/12/30/client-side-certificate-authentication-with-nginx/">https://fardog.io/blog/2017/12/30/client-side-certificate-authentication-with-nginx/</a></p>

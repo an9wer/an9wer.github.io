@@ -42,3 +42,9 @@ o|O
 \+
     reset filters in all windows
 
+
+Reference
+---------
+
+`Wikipedia: hardware and softwre interrupts <https://en.wikipedia.org/wiki/Interrupt>`_
+

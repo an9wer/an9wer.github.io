@@ -43,6 +43,7 @@
         ./notes/devops/docker.rst
     Storage
         ./notes/storage/glusterfs.rst
+        ./notes/storage/lvm.rst
     Database
         ./notes/database/redis.rst
     Hardware
@@ -182,6 +183,8 @@ DevOps/
 Storage/
     `glusterfs  </notes/storage/glusterfs.html>`_
 
+    `lvm        </notes/storage/lvm.html>`_
+
 Database/
     `redis      </notes/database/redis.html>`_
 
@@ -310,6 +313,12 @@ A :
 
         $ xdg-settings set default-web-browser <firefox.desktop|chromium.desktop>
 
-R:
+R :
     `Archwiki: xdg-utils <https://wiki.archlinux.org/index.php/Xdg-utils>`_
 
+----
+
+Q : How to reset lost password in Linux?
+
+R :
+    `Archwiki: reset lost root password <https://wiki.archlinux.org/index.php/Reset_lost_root_password>`_
