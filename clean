@@ -8,7 +8,7 @@ msg() {
 }
 
 comm_dir() {
-  # Neet to set $regex and $rst before run this function
+  # Need to set $regex and $rst before run this function
   OLD_IFS=$IFS
   IFS=$'\n'
 
@@ -47,7 +47,7 @@ comm_dir() {
 
     for dedication in $(comm -23 \
         <(ls "$subdir" | sed -E 's@(.*)\.html@\1@' | sort) \
-        <(ls "$rst_subdir" | sed -E 's@(.*)\.rst@\1@') | sort); do
+        <(ls "$rst_subdir" | sed -E 's@(.*)\.rst@\1@' | sort)); do
       # $dedication may be file or directory.
       if [[ -f $subdir/$dedication.html ]]; then
         dedication=$dedication.html
