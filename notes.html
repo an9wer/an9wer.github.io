@@ -48,6 +48,7 @@ Coreutils
 Package
     ./notes/package/rpm.rst
     ./notes/package/yum.rst
+    ./notes/package/dnf.rst
     ./notes/package/fpm.rst
 Git
     ./notes/git/git_secret.rst
@@ -89,14 +90,17 @@ Server
 Awesome
     ./notes/awesome/redshift.rst
 Misc
-    ./notes/miscellaneous/tls_ssl.rst
     ./notes/miscellaneous/linux_network.rst
     ./notes/miscellaneous/linux_process.rst
+    ./notes/miscellaneous/linux_permissions.rst
+    ./notes/miscellaneous/linux_selinux.rst
+    ./notes/miscellaneous/linux_proc.rst
     ./notes/miscellaneous/programming_language.rst
     ./notes/miscellaneous/operating_system.rst
     ./notes/miscellaneous/desktop_environment.rst
     ./notes/miscellaneous/hardware.rst
     ./notes/miscellaneous/regex.rst
+    ./notes/miscellaneous/tls_ssl.rst
 NS
     ./notes/ns/contentsrv.rst
     ./notes/ns/wordpress.rst
@@ -104,7 +108,6 @@ TODO
      sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
      sudo ip route add 127.0.0.0/8 dev lo table e1
      sudo ip rule add from 10.0.0.14 table e1
-
 
     ./notes/coreutils/seq.rst
     ./notes/coreutils/csplit.rst
@@ -117,8 +120,6 @@ TODO
     vim:buffer args
     vim:fold
     vim:netrw hide (a key)
-
-    bash: variable @ *
 
     sudo notifier
 
@@ -206,14 +207,17 @@ TODO
 <dd><p><a class="reference external" href="/notes/awesome/redshift.html">redshift</a></p>
 </dd>
 <dt>Misc/</dt>
-<dd><p><a class="reference external" href="/notes/miscellaneous/tls_ssl.html">TLS/SSL</a></p>
-<p><a class="reference external" href="/notes/miscellaneous/linux_network.html">Linux network</a></p>
+<dd><p><a class="reference external" href="/notes/miscellaneous/linux_network.html">Linux network</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/linux_process.html">Linux process</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/linux_permissions.html">Linux permissions</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/linux_proc.html">Linux proc</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/linux_selinux.html">Linux SELinux</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/programming_language.html">Programming language</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/operating_system.html">Operating system</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/hardware.html">Hardware</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/desktop_environment.html">Desktop environment</a></p>
 <p><a class="reference external" href="/notes/miscellaneous/regex.html">regex</a></p>
+<p><a class="reference external" href="/notes/miscellaneous/tls_ssl.html">TLS/SSL</a></p>
 </dd>
 </dl>
 <div class="section" id="howto">
@@ -289,6 +293,15 @@ some string</pre>
 <dl class="simple">
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://wiki.archlinux.org/index.php/Reset_lost_root_password">Archwiki: reset lost root password</a></p>
+</dd>
+</dl>
+<hr class="docutils" />
+<p>Q : How to Check if Your Computer Uses UEFI or BIOS?</p>
+<dl class="simple">
+<dt>A :</dt>
+<dd><p>The easiest way to find out if you are running UEFI or BIOS is to look for
+a folder <em>/sys/firmware/efi</em>. The folder will be missing if your system is
+using BIOS.</p>
 </dd>
 </dl>
 </div>

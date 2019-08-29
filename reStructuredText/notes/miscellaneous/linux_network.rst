@@ -38,7 +38,15 @@ Arch:
 https://wiki.archlinux.org/index.php/Netctl
 
 
-TCP/IP
-------
+References
+----------
 
--   `Wikipedia: Internet layer <https://en.wikipedia.org/wiki/Internet_protocol_suite>`_
+`Wikipedia: TCP/IP <https://en.wikipedia.org/wiki/Internet_protocol_suite>`_
+
+`Wikipedia: Link layer <https://en.wikipedia.org/wiki/Link_layer>`_
+
+`Wikipedia: Network layer <https://en.wikipedia.org/wiki/Network_layer>`_
+
+
+
+

@@ -1,7 +1,7 @@
 Parameters
 ==========
 
- A variable may be assigned to by a statement of the form:
+A variable may be assigned to by a statement of the form:
 
 ::
 

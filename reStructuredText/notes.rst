@@ -16,6 +16,7 @@
     Package
         ./notes/package/rpm.rst
         ./notes/package/yum.rst
+        ./notes/package/dnf.rst
         ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
@@ -57,14 +58,17 @@
     Awesome
         ./notes/awesome/redshift.rst
     Misc
-        ./notes/miscellaneous/tls_ssl.rst
         ./notes/miscellaneous/linux_network.rst
         ./notes/miscellaneous/linux_process.rst
+        ./notes/miscellaneous/linux_permissions.rst
+        ./notes/miscellaneous/linux_selinux.rst
+        ./notes/miscellaneous/linux_proc.rst
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
         ./notes/miscellaneous/desktop_environment.rst
         ./notes/miscellaneous/hardware.rst
         ./notes/miscellaneous/regex.rst
+        ./notes/miscellaneous/tls_ssl.rst
     NS
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
@@ -72,7 +76,6 @@
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
          sudo ip route add 127.0.0.0/8 dev lo table e1
          sudo ip rule add from 10.0.0.14 table e1
-
 
         ./notes/coreutils/seq.rst
         ./notes/coreutils/csplit.rst
@@ -85,8 +88,6 @@
         vim:buffer args
         vim:fold
         vim:netrw hide (a key)
-
-        bash: variable @ *
 
         sudo notifier
 
@@ -206,11 +207,15 @@ Awesome/
     `redshift   </notes/awesome/redshift.html>`_
 
 Misc/
-    `TLS/SSL    </notes/miscellaneous/tls_ssl.html>`_
-
     `Linux network </notes/miscellaneous/linux_network.html>`_
 
     `Linux process </notes/miscellaneous/linux_process.html>`_
+
+    `Linux permissions </notes/miscellaneous/linux_permissions.html>`_
+
+    `Linux proc </notes/miscellaneous/linux_proc.html>`_
+
+    `Linux SELinux </notes/miscellaneous/linux_selinux.html>`_
 
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
@@ -221,6 +226,8 @@ Misc/
     `Desktop environment </notes/miscellaneous/desktop_environment.html>`_
 
     `regex      </notes/miscellaneous/regex.html>`_
+
+    `TLS/SSL    </notes/miscellaneous/tls_ssl.html>`_
 
 
 HowTo
@@ -322,3 +329,12 @@ Q : How to reset lost password in Linux?
 
 R :
     `Archwiki: reset lost root password <https://wiki.archlinux.org/index.php/Reset_lost_root_password>`_
+
+----
+
+Q : How to Check if Your Computer Uses UEFI or BIOS?
+
+A :
+    The easiest way to find out if you are running UEFI or BIOS is to look for
+    a folder */sys/firmware/efi*. The folder will be missing if your system is
+    using BIOS.

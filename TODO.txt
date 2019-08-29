@@ -1,4 +1,4 @@
-Low priority
+Low priority tasks
     [ ] CentOS: systemctl restart network
     [ ] Docker 10.0.0.6:8080
     [ ] What is ACME?
@@ -19,8 +19,9 @@ Low priority
     [ ] (2019/08/21) Readline mappings for command-line mode [https://github.com/ryvnf/readline.vim]
     [ ] (2019/08/27) Read source code of logrotate [https://github.com/logrotate/logrotate]
     [ ] (2019/08/27) Read source code of psmisc [https://gitlab.com/psmisc/psmisc]
+    [ ] (2019/08/28) Learn efibootmanager (change boot order)
 
-Medium priority
+Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
     [ ] (2019/08/23) X11 Secondary selection [www.cs.man.ac.uk/~lindsec/secondary-selection.html] [www.cs.man.ac.uk/~lindsec/secondary.html]
     [ ] (2019/08/21) Extract nginx log of everythingsearch.cn
@@ -28,17 +29,28 @@ Medium priority
     [ ] (2019/08/23) Blog of cdf
     [ ] (2019/08/27) Blog of swithing from fcitx to ibus
 
-High priority
+High priority tasks
     [ ] (2019/08/27) Learn dnf
     [ ] (2019/08/27) Read source code of nvchecker [https://github.com/lilydjwg/nvchecker]
     [ ] (2019/08/27) Plain text accounting [https://www.byvoid.com/zht/blog/beancount-bookkeeping-1]
     [ ] (2019/08/20) Supervisord: event notifier
     [ ] (2019/08/24) Raspberry Pi: dnscrypt-proxy
+    [ ] (2019/08/28) Systemd socket
+
+Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
     [ ] (2019/08/24) Crawler of pokeman
+    [ ] (2019/08/27) Learn iptables
+
+
+2019/08/29 Thu
+    [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
+    [ ] (2019/08/28) libpinyin vs rime
+    [ ] (2019/08/28) runuser vs su
 
 2019/08/28 Wed
-    [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
+    [o] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
+    [x] (2019/08/28) Learn Linux capabilities
 
 2019/08/27 Tue
     [x] (2019/08/21) Update nagios GlusterFS plugin
