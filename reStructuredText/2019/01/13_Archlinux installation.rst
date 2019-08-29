@@ -207,6 +207,12 @@ Install fcitx:
     sudo pacman -S fcitx fcitx-im fcitx-configtool
         run 'fcitx-configtool'
 
+Install ibus:
+
+::
+
+    $ sudo pacman -S ibus ibus-rime
+    $ ibus-setup
 
 Install mupdf:
 

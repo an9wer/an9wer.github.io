@@ -45,8 +45,8 @@ Recent unfinished tasks
 
 2019/08/29 Thu
     [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
-    [ ] (2019/08/28) libpinyin vs rime
     [ ] (2019/08/28) runuser vs su
+    [x] (2019/08/28) Try rime
 
 2019/08/28 Wed
     [o] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux

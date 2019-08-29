@@ -51,6 +51,15 @@ system, the access to resources is governed through a mandatory system that
 cannot be worked around from. With SELinux, this is the SELinux security
 subsystem running in the Linux kernel.</p>
 </dd>
+<dt><a class="reference external" href="https://wiki.gentoo.org/wiki/SELinux/Quick_introduction">Gentoo wiki: Introduction to SELinux</a></dt>
+<dd><p>It is important to understand that the SELinux permission check happens
+after the Linux DAC check. In other words, SELinux cannot be used to
+override access controls on the system.</p>
+<p>In SELinux, roles decide which types a process context can be in. The
+user_r role has the right to have processes run in the user_t type. Types
+for processes are also called <strong>domains</strong>. So the role-based access control
+decides which domains a role is allowed to have.</p>
+</dd>
 </dl>
 <p><a class="reference external" href="https://fedoraproject.org/wiki/SELinux">Fedora wiki: SELinux</a></p>
 </div>
