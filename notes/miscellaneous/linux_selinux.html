@@ -33,6 +33,25 @@
         <div id="content">
 <div class="section" id="linux-selinux">
 <h1>Linux SELinux</h1>
+<pre class="literal-block"># getenforce</pre>
+<pre class="literal-block"># setenforce [0|1]</pre>
+<pre class="literal-block"># sestatus</pre>
+<p>List available SELinux users:</p>
+<pre class="literal-block"># seinfo -u</pre>
+<p>List available SELinux roles:</p>
+<pre class="literal-block"># seinfo -r</pre>
+<pre class="literal-block"># semanage login -l</pre>
+<pre class="literal-block"># semanage permissive -l</pre>
+<pre class="literal-block"># semanage boolean -l</pre>
+<pre class="literal-block"># getsebool -a</pre>
+<pre class="literal-block"># setsebool -P httpd_can_network_connect_db on</pre>
+<p>SET Individual domains to permissive mode while the system runs in enforcing
+mode. For example, to make the httpd_t domain permissive:</p>
+<pre class="literal-block"># semanage permissive -a httpd_t</pre>
+<pre class="literal-block"># chcon -t bin_t /usr/sbin/httpd</pre>
+<p>Restores the default SELinux context for files:</p>
+<pre class="literal-block"># restorecon -v /usr/sbin/httpd</pre>
+<p>TODO: aureport ausearch</p>
 <div class="section" id="references">
 <h2>References</h2>
 <dl>
@@ -59,6 +78,30 @@ override access controls on the system.</p>
 user_r role has the right to have processes run in the user_t type. Types
 for processes are also called <strong>domains</strong>. So the role-based access control
 decides which domains a role is allowed to have.</p>
+<p>In permissive mode, SELinux will be consulted but will not enforce its
+decision. Instead, it will only log denials and still allow the action to
+continue. This is great for troubleshooting issues, as we can temporarily
+disable SELinux to see if it is really to blame, but also to convert a
+system to an SELinux system: we can verify that everything would work (no
+specific denials) after which we can enable SELinux.</p>
+</dd>
+<dt><a class="reference external" href="https://wiki.gentoo.org/wiki/SELinux/Users_and_logins">Gentoo wiki: SELinux users and logins</a></dt>
+<dd><p>A Linux account is mapped to one (and only one) SELinux user, whereas a
+SELinux user can be linked to multiple roles.</p>
+</dd>
+<dt><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:SELinux/Development">Gentoo wiki: SElinux development</a></dt>
+<dd><p>SELinux uses domains and types to differentiate its various security
+objects. A domain is usually referred to as the security context of a
+process (or group of processes) whereas a type is usually referred to as
+the label given to a particular resource (file, directory, network
+interface, socket, network port, ...).</p>
+<p>SELinux policies describe what interaction is allowed between a domain and
+the other domains and types it needs to work with. If no policy allows for
+a particular activity, then the activity is denied.</p>
+</dd>
+<dt><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/selinux_users_and_administrators_guide/index">Redhat doc: SELinux</a></dt>
+<dd><p>By default, newly-created files and directories inherit the SELinux type of
+their parent directories.</p>
 </dd>
 </dl>
 <p><a class="reference external" href="https://fedoraproject.org/wiki/SELinux">Fedora wiki: SELinux</a></p>

@@ -42,6 +42,10 @@ Recent unfinished tasks
     [ ] (2019/08/24) Crawler of pokeman
     [ ] (2019/08/27) Learn iptables
 
+2019/08/30 Fri
+    [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
+    [ ] (2019/08/28) runuser vs su
+    [ ] (2019/08/30) Key binding in dwm
 
 2019/08/29 Thu
     [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
