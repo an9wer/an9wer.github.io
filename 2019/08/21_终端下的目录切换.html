@@ -41,15 +41,15 @@
 <p>不过我在使用的过程中也发现了一些问题，下面列出两个我觉得最为突出的：</p>
 <ol class="arabic simple">
 <li><p>默认只能切换到 rank 值最高的目录，假设我想切换到 rank 值第二的目录就不行。</p></li>
-<li><p>摸不清楚它的脾气，例如 A 和 B 目录的路径都包含了关键字 foo，使用 <cite>z foo</cite> 命
-令会切换到目录 B（因为 rank 高？），但我明明想切换到目录 A，我怎么能提前知
-道 B 的 rank 值比 A 高呢？凭感觉？</p></li>
+<li><p>摸不清楚它的脾气，例如 A 和 B 目录的路径都包含了关键字 foo，使用 <span class="docutils literal">z foo</span>
+命令会切换到目录 B（因为 rank 高？），但我明明想切换到目录 A，我怎么能提前
+知道 B 的 rank 值比 A 高呢？凭感觉？</p></li>
 </ol>
 <p>其它的目录切换工具没有体验过，不过我觉得也都差不多吧？</p>
-<p>思来想去还是自己造轮子，灵感来源与 Vim 中的 <cite>:edit</cite> 命令中使用 ** 以及 * 来
-实现模糊匹配（参见 <cite>:h file-searching</cite> ）。</p>
-<p>其实在 Bash 中有一个选项名叫 globstar，用 <cite>shopt -o globstar</cite> 命令开启之后，也
-可以对路径进行模糊匹配：</p>
+<p>思来想去还是自己造轮子，灵感来源与 Vim 中的 <span class="docutils literal">:edit</span> 命令中使用 ** 以及 *
+来实现模糊匹配（参见 <span class="docutils literal">:h <span class="pre">file-searching</span></span> ）。</p>
+<p>其实在 Bash 中有一个选项名叫 globstar，用 <span class="docutils literal">shopt <span class="pre">-o</span> globstar</span> 命令开启之后，
+也可以对路径进行模糊匹配：</p>
 <blockquote>
 <p>If set, the pattern ** used in a pathname expansion context will match all
 files and zero or more directories and subdirectories. If the pattern is
@@ -57,16 +57,19 @@ followed by a /, only directories and subdirectories match.</p>
 </blockquote>
 <p>有了这个条件，我写了一个 cd from list 的工具，名为 <a class="reference external" href="https://github.com/an9wer/werice/blob/master/.bashrc.d/cd.sh">cdf</a> ( cd from 的缩
 写），可以从一系列的目录中选择想要的那个，进行切换。例如：</p>
-<pre class="literal-block">$ cdf **/werice
-
-切换到当前目录下以最后一层目录名为 werice 的文件夹</pre>
-<pre class="literal-block">$ cdf **/*github*
-
-切换到当前目录下最后一层目录名包含 github 的文件夹</pre>
-<pre class="literal-block">$ cdf /usr/**/riot
-
-切换到 /usr 目录下最后一层目录名为 riot 的文件夹</pre>
-<p>正所谓自己动手，丰衣足食，呵呵。</p>
+<ul>
+<li><p>切换到当前目录下以最后一层目录名为 werice 的文件夹：</p>
+<pre class="literal-block">$ cdf **/werice</pre>
+</li>
+<li><p>切换到当前目录下最后一层目录名包含 github 的文件夹：</p>
+<pre class="literal-block">$ cdf **/*github*</pre>
+</li>
+<li><p>切换到 /usr 目录下最后一层目录名为 riot 的文件夹：</p>
+<pre class="literal-block">$ cdf /usr/**/riot</pre>
+</li>
+</ul>
+<p>当然，这条命令使用起来要稍微麻烦一些，但是相比较 z 而言，我能明确得知道我最终要
+切换到的是那个目录，而不会出现按下回车之后发现自己来错地方了，呵呵。</p>
 <p>Thanks for reading :)</p>
 </div>
         </div> <!-- content -->

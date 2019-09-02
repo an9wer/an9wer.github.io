@@ -25,7 +25,7 @@
 到类似爬虫的效果吗？
 
 于是乎自己撸了一个 `脚本 <https://github.com/an9wer/werice/blob/master/.scripts/camdict>`_
-，简单粗暴，呵呵。
+，简单粗暴（详细用法可参见 ``camdict -h`` ）。
 
 Thanks for reading :)
 
