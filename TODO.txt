@@ -27,7 +27,6 @@ Medium priority tasks
     [ ] (2019/08/21) Extract nginx log of everythingsearch.cn
     [ ] (2019/08/20) Update scripts of mysql slow query notifier
     [ ] (2019/08/23) Blog of cdf
-    [ ] (2019/08/27) Blog of swithing from fcitx to ibus
 
 High priority tasks
     [ ] (2019/08/27) Learn dnf
@@ -43,13 +42,15 @@ Recent unfinished tasks
     [ ] (2019/08/24) Crawler of pokeman
     [ ] (2019/08/27) Learn iptables
     [ ] (2019/08/30) Key binding in dwm
+    [ ] (2019/08/28) runuser vs su
 
 
 2019/09/02 Mon
     [x] (2019/08/27) Puppet module dealing withe rabbitMQ logs not rotated properly caused by SELinux
     [ ] (2019/09/02) The way to debug anacron
     [ ] (2019/09/02) Learn SELinux
-    [ ] (2019/09/02) Dict of rime
+    [x] (2019/09/02) Dict of rime
+    [x] (2019/08/27) Blog of swithing from fcitx to ibus
 
 2019/08/30 Fri
     [x] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
