@@ -1,4 +1,5 @@
 ..
+    ./2019/09/02_Fcitx_VS_Ibus.rst
     ./2019/08/20_TODO\ list.rst
     ./2019/08/19_Raspberry\ Pi\ installation.rst
     ./2019/07/21_终端下的单词查询.rst
@@ -25,6 +26,8 @@
     ./2018/10/30_Suckless\ 的一天.rst
     ./2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
     ./2018/10/24_博客搭建小记.rst
+
+2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus>`_
 
 2019/08/20 @ `TODO list <2019/08/20_TODO%20list.html>`_
 
