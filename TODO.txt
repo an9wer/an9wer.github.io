@@ -25,7 +25,8 @@ Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
     [ ] (2019/08/23) X11 Secondary selection [www.cs.man.ac.uk/~lindsec/secondary-selection.html] [www.cs.man.ac.uk/~lindsec/secondary.html]
     [ ] (2019/08/21) Extract nginx log of everythingsearch.cn
-    [x] (2019/08/20) Update scripts of mysql slow query notifier
+    [ ] (2019/08/20) Update scripts of mysql slow query notifier
+    [ ] (2019/09/03) Learn syslog
 
 High priority tasks
     [ ] (2019/08/27) Learn dnf
@@ -33,20 +34,29 @@ High priority tasks
     [ ] (2019/08/27) Plain text accounting [https://www.byvoid.com/zht/blog/beancount-bookkeeping-1]
     [ ] (2019/08/20) Supervisord: event notifier
     [ ] (2019/08/24) Raspberry Pi: dnscrypt-proxy
-    [ ] (2019/08/28) Systemd socket
     [ ] (2019/09/02) Learn fuser
+    [ ] (2019/09/03) Make package of dwm
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
     [ ] (2019/08/24) Crawler of pokeman
     [ ] (2019/08/27) Learn iptables
-    [ ] (2019/08/30) Key binding in dwm
     [ ] (2019/08/28) runuser vs su
 
 
+2019/09/03 Tue
+    [o] (2019/09/03) Monitor the usage of jvm memory
+    [ ] (2019/09/02) Notes of debugging anacron
+    [ ] (2019/09/02) Learn SELinux
+    [x] (2019/08/28) Learn Systemd socket
+    [x] (2019/08/30) Key binding in dwm
+        -   <Mod Shift d> camdict
+        -   <Mod => aupcmd
+        -   <Mod -> adowncmd
+
 2019/09/02 Mon
     [x] (2019/08/27) Puppet module dealing withe rabbitMQ logs not rotated properly caused by SELinux
-    [ ] (2019/09/02) The way to debug anacron
+    [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
     [x] (2019/09/02) Dict of rime
     [x] (2019/08/27) Blog of swithing from fcitx to ibus
@@ -55,8 +65,7 @@ Recent unfinished tasks
 2019/08/30 Fri
     [x] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
     [ ] (2019/08/28) runuser vs su
-    [ ] (2019/08/30) Key binding in dwm
-
+    [ ] (2019/08/30) ) Notes of debugging 
 2019/08/29 Thu
     [ ] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
     [ ] (2019/08/28) runuser vs su
@@ -70,7 +79,7 @@ Recent unfinished tasks
     [x] (2019/08/21) Update nagios GlusterFS plugin
     [o] (2019/08/27) RabbitMQ logs are not rotated properly caused by SELinux
     [ ] (2019/08/27) Learn iptables
-    [x] (2019/08/27) How to use Lua scripts in ibus
+    [x] (2019/08/27) How to use Lua scripts in ibus-libpinyin
         -   In Full pinyin mode, type `i` then type command abbreviation to triger command defined in Lua scripts.
             Related code:
                 [https://github.com/libpinyin/ibus-libpinyin/blob/master/lua/base.lua#L247]

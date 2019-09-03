@@ -13,3 +13,8 @@ Interrupts:
 
     $ less /proc/interrupts
     
+Audio devices:
+
+::
+
+    $ cat /proc/asound/cards 

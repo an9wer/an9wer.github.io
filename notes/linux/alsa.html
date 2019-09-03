@@ -31,21 +31,43 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="memory">
-<h1>Memory</h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.hardwaresecrets.com/understanding-ram-timings/">Understanding RAM Timings</a></p></li>
-</ul>
-<p><strong>Q</strong>: If a motherboard/cpu doesn't explicitly support a RAM frequency, is still
-compatible?</p>
-<p><strong>A</strong>: If you buy a memory card whose speed faster than what your
-motherboard/cpu support, it will adjust the speeds down automatically to fit
-motherboard/cpu.</p>
-<p>References:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.avadirect.com/blog/memory-speed/">Does Memory Speed Make a Difference?</a></p></li>
-<li><p><a class="reference external" href="https://www.lifewire.com/will-my-computer-be-able-to-use-new-memory-833027">Will My Computer Be Able to User Newer and Faster Memory?</a></p></li>
-</ul>
+<div class="section" id="alsa">
+<h1>ALSA</h1>
+<div class="section" id="arecord-aplay">
+<h2>arecord &amp; aplay</h2>
+<p>List devices:</p>
+<pre class="literal-block">$ arecord -l</pre>
+</div>
+<div class="section" id="amixer">
+<h2>amixer</h2>
+<p>Show information of mixer devices:</p>
+<pre class="literal-block">$ amixer info</pre>
+<p>Show a complete list of mixer controls:</p>
+<pre class="literal-block">$ amixer scontrols</pre>
+<p>Show a complete list of mixer controls with contents:</p>
+<pre class="literal-block">$ amixer scontents</pre>
+<p>Show content of a specified mixer control:</p>
+<pre class="literal-block">$ amixer get &lt;control&gt;
+
+e.g.
+$ amixer get Master
+$ amixer get Headphone</pre>
+<p>Set content of a specified mixer control:</p>
+<pre class="literal-block">$ amixer set &lt;control&gt; &lt;parameter&gt; [...]
+
+e.g.
+$ amixer set Master 5%+
+$ amixer set Master 30%
+$ amixer set Master 5dB-
+$ amixer set Master mute
+$ amixer set Master unmute</pre>
+</div>
+<div class="section" id="reference">
+<h2>Reference</h2>
+<p><span class="docutils literal">man arecord</span></p>
+<p><span class="docutils literal">man amixer</span></p>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture">Arch wiki: ALSA</a></p>
+</div>
 </div>
         </div> <!-- content -->
 

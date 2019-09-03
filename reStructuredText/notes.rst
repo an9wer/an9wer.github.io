@@ -17,6 +17,7 @@
         ./notes/package/rpm.rst
         ./notes/package/yum.rst
         ./notes/package/dnf.rst
+        ./notes/package/pacman.rst
         ./notes/package/fpm.rst
     Git
         ./notes/git/git_secret.rst
@@ -39,30 +40,31 @@
         ./notes/vim/quickfix.rst
         ./notes/vim/map.rst
         ./notes/vim/netrw.rst
-    DevOps
-        ./notes/devops/puppet38.rst
-        ./notes/devops/docker.rst
+    Linux
+        ./notes/linux/network.rst
+        ./notes/linux/process.rst
+        ./notes/linux/permissions.rst
+        ./notes/linux/selinux.rst
+        ./notes/linux/systemd.rst
+        ./notes/linux/proc.rst
+        ./notes/linux/alsa.rst
     Storage
         ./notes/storage/glusterfs.rst
         ./notes/storage/lvm.rst
     Database
         ./notes/database/redis.rst
-    Hardware
-        ./notes/hardware/memory.rst
     Server
         ./notes/server/nginx.rst
         ./notes/server/httpd.rst
         ./notes/server/webdav.rst
         ./notes/server/tigervnc.rst
         ./notes/server/nagios.rst
+    DevOps
+        ./notes/devops/puppet38.rst
+        ./notes/devops/docker.rst
     Awesome
         ./notes/awesome/redshift.rst
     Misc
-        ./notes/miscellaneous/linux_network.rst
-        ./notes/miscellaneous/linux_process.rst
-        ./notes/miscellaneous/linux_permissions.rst
-        ./notes/miscellaneous/linux_selinux.rst
-        ./notes/miscellaneous/linux_proc.rst
         ./notes/miscellaneous/programming_language.rst
         ./notes/miscellaneous/operating_system.rst
         ./notes/miscellaneous/desktop_environment.rst
@@ -135,7 +137,11 @@ Coreutils/
 Package/
     `RPM        </notes/package/rpm.html>`_
 
-    `yum        <notes/package/yum.html>`_
+    `yum        </notes/package/yum.html>`_
+
+    `dnf        </notes/package/dnf.html>`_
+
+    `pacman     </notes/pacman/pacman.html>`_
 
     `fpm        <notes/package/fpm.html>`_
 
@@ -178,8 +184,20 @@ Git/
 
     `blackbox   </notes/git/blackbox.html>`_
 
-DevOps/
-    `puppet3.8  </notes/devops/puppet38.html>`_
+Linux/
+    `Linux network </notes/linux/network.html>`_
+
+    `Linux process </notes/linux/process.html>`_
+
+    `Linux permissions </notes/linux/permissions.html>`_
+
+    `Linux proc </notes/linux/proc.html>`_
+
+    `Linux SELinux  </notes/linux/selinux.html>`_
+
+    `Linux Systemd  </notes/linux/systemd.html>`_
+
+    `Linux ALSA     </notes/linux/alsa.html>`_
 
 Storage/
     `glusterfs  </notes/storage/glusterfs.html>`_
@@ -188,9 +206,6 @@ Storage/
 
 Database/
     `redis      </notes/database/redis.html>`_
-
-Hardware/
-    `memory     </notes/hardware/memory.html>`_
 
 Server/
     `nginx      <notes/server/nginx.html>`_
@@ -203,20 +218,13 @@ Server/
 
     `Nagios     </notes/server/nagios.html>`_
 
+DevOps/
+    `puppet3.8  </notes/devops/puppet38.html>`_
+
 Awesome/
     `redshift   </notes/awesome/redshift.html>`_
 
 Misc/
-    `Linux network </notes/miscellaneous/linux_network.html>`_
-
-    `Linux process </notes/miscellaneous/linux_process.html>`_
-
-    `Linux permissions </notes/miscellaneous/linux_permissions.html>`_
-
-    `Linux proc </notes/miscellaneous/linux_proc.html>`_
-
-    `Linux SELinux </notes/miscellaneous/linux_selinux.html>`_
-
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
     `Operating system </notes/miscellaneous/operating_system.html>`_
