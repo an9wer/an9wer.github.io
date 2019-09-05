@@ -21,6 +21,8 @@ Low priority tasks
     [ ] (2019/08/27) Read source code of psmisc [https://gitlab.com/psmisc/psmisc]
     [ ] (2019/08/28) Learn efibootmanager (change boot order)
     [ ] (2019/09/04) Try munin
+    [ ] (2019/09/05) Record Screen
+    [ ] (2019/09/05) Transfer data from smartphone to computer
 
 Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)

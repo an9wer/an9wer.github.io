@@ -62,6 +62,8 @@
     DevOps
         ./notes/devops/puppet38.rst
         ./notes/devops/docker.rst
+    Language
+        ./notes/language/java.rst
     Awesome
         ./notes/awesome/redshift.rst
     Misc
