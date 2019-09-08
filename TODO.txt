@@ -23,6 +23,9 @@ Low priority tasks
     [ ] (2019/09/04) Try munin
     [ ] (2019/09/05) Record Screen
     [ ] (2019/09/05) Transfer data from smartphone to computer
+    [ ] (2019/09/07) PXE
+    [ ] (2019/09/07) samba (like NFS)
+    [ ] (2019/09/07) lvs (load balance)
 
 Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
@@ -48,6 +51,9 @@ Recent unfinished tasks
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
 
+
+2019/09/05 Thu
+    [o] (2019/09/03) Monitor the usage of jvm memory
 
 2019/09/04 Wed
     [x] (2019/09/03) Make package of dwm

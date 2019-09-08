@@ -17,6 +17,7 @@
         ./notes/package/rpm.rst
         ./notes/package/yum.rst
         ./notes/package/dnf.rst
+        ./notes/package/dpkg.rst
         ./notes/package/pacman.rst
         ./notes/package/fpm.rst
     Git
@@ -222,6 +223,9 @@ Server/
 
 DevOps/
     `puppet3.8  </notes/devops/puppet38.html>`_
+
+Language/
+    `java       </notes/language/java.html>`_
 
 Awesome/
     `redshift   </notes/awesome/redshift.html>`_

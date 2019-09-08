@@ -33,10 +33,13 @@
         <div id="content">
 <div class="section" id="raspberry-pi-installation">
 <h1>Raspberry Pi installation</h1>
-<pre class="literal-block">$ unzip -p 2019-07-10-raspbian-buster-lite.zip | sudo dd of=/dev/sd&lt;X&gt;</pre>
+<p>Flash image:</p>
+<pre class="literal-block">$ unzip -p 2019-07-10-raspbian-buster-lite.zip | sudo dd of=/dev/sd&lt;X&gt; bs=4M conv=fsync status=progress</pre>
+<p>Set keyboard layout:</p>
 <pre class="literal-block">$ sudo vi /etc/default/keyboard
     XKBLAYOUT=&quot;us&quot;
 $ reboot</pre>
+<p>Add wifi configuration:</p>
 <pre class="literal-block">$ sudo iwlist wlan0 scan
 $ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
     network={
@@ -44,7 +47,8 @@ $ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
         psk=&quot;testingPassword&quot;
     }
 $ sudo wpa_cli -i wlan0 reconfigure</pre>
-<p>See <a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/</a></p>
+<p>Change repository source (see
+<a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/</a>):</p>
 <pre class="literal-block">$ sudo vim `/etc/apt/sources.list`
     deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
     deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
@@ -68,6 +72,8 @@ $ sudo vim /etc/dhcp/dhcpd.conf
     }</pre>
 <p>Install dnscrypt-proxy:</p>
 <pre class="literal-block">$ sudo apt install dnscrypt-proxy</pre>
+<p>Install autossh:</p>
+<pre class="literal-block">$ sudo atp install sutossh</pre>
 </div>
         </div> <!-- content -->
 

@@ -1,10 +1,14 @@
 Raspberry Pi installation
 =========================
 
+Flash image:
+
 ::
 
-    $ unzip -p 2019-07-10-raspbian-buster-lite.zip | sudo dd of=/dev/sd<X>
+    $ unzip -p 2019-07-10-raspbian-buster-lite.zip | sudo dd of=/dev/sd<X> bs=4M conv=fsync status=progress
 
+
+Set keyboard layout:
 
 ::
 
@@ -12,6 +16,8 @@ Raspberry Pi installation
         XKBLAYOUT="us"
     $ reboot
     
+
+Add wifi configuration:
 
 ::
 
@@ -23,7 +29,8 @@ Raspberry Pi installation
         }
     $ sudo wpa_cli -i wlan0 reconfigure
 
-See https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/
+Change repository source (see
+https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/):
 
 ::
 
@@ -64,4 +71,10 @@ Install dnscrypt-proxy:
 ::
 
     $ sudo apt install dnscrypt-proxy
+
+Install autossh:
+
+::
+
+    $ sudo atp install sutossh
 
