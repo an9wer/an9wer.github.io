@@ -51,7 +51,11 @@ Voltage regulator module (VRM)
 
 AHCI
 
--   `AHCI mode: <https://hetmanrecovery.com/recovery_news/how-to-enable-ahci-mode-for-sata-in-the-bios-without-reinstalling-windows.htm>`_
+-   `AHCI mode <https://hetmanrecovery.com/recovery_news/how-to-enable-ahci-mode-for-sata-in-the-bios-without-reinstalling-windows.htm>`_
+
+ACPI
+
+-   `What is ACPI and what does ACPI mean? <https://www.helpwithpcs.com/jargon/acpi.htm>`_
 
 Peripheral
 

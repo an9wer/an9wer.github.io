@@ -1,4 +1,7 @@
 ..
+    Coreutils
+        ./notes/coreutils/mktemp.rst
+        ./notes/coreutils/cut.rst
     Commands
         ./notes/commands/info.rst
         ./notes/commands/top.rst
@@ -10,9 +13,16 @@
         ./notes/commands/lsscsi.rst
         ./notes/commands/xclip.rst
         ./notes/commands/xmodmap.rst
-    Coreutils
-        ./notes/coreutils/mktemp.rst
-        ./notes/coreutils/cut.rst
+    Linux
+        ./notes/linux/network.rst
+        ./notes/linux/process.rst
+        ./notes/linux/permissions.rst
+        ./notes/linux/selinux.rst
+        ./notes/linux/systemd.rst
+        ./notes/linux/proc.rst
+        ./notes/linux/alsa.rst
+        ./notes/linux/kickstart.rst
+        ./notes/linux/networkmanager.rst
     Package
         ./notes/package/rpm.rst
         ./notes/package/yum.rst
@@ -41,14 +51,6 @@
         ./notes/vim/quickfix.rst
         ./notes/vim/map.rst
         ./notes/vim/netrw.rst
-    Linux
-        ./notes/linux/network.rst
-        ./notes/linux/process.rst
-        ./notes/linux/permissions.rst
-        ./notes/linux/selinux.rst
-        ./notes/linux/systemd.rst
-        ./notes/linux/proc.rst
-        ./notes/linux/alsa.rst
     Storage
         ./notes/storage/glusterfs.rst
         ./notes/storage/lvm.rst
@@ -111,6 +113,11 @@
 
         bash: $_
 
+Coreutils/
+    `mktemp     </notes/coreutils/mktemp.html>`_
+
+    `cut        </notes/coreutils/cut.html>`_
+
 Commands/
     `info       </notes/commands/info.html>`_
 
@@ -132,10 +139,24 @@ Commands/
 
     `xmodmap    </notes/commands/xmodmap.html>`_
 
-Coreutils/
-    `mktemp     </notes/coreutils/mktemp.html>`_
+Linux/
+    `Linux network </notes/linux/network.html>`_
 
-    `cut        </notes/coreutils/cut.html>`_
+    `Linux process </notes/linux/process.html>`_
+
+    `Linux permissions </notes/linux/permissions.html>`_
+
+    `Linux proc     </notes/linux/proc.html>`_
+
+    `Linux SELinux  </notes/linux/selinux.html>`_
+
+    `Linux Systemd  </notes/linux/systemd.html>`_
+
+    `Linux ALSA     </notes/linux/alsa.html>`_
+
+    `Linux kickstart </notes/linux/kickstart.html>`_
+
+    `Linux NetworkManager </notes/linux/networkmanager.html>`_
 
 Package/
     `RPM        </notes/package/rpm.html>`_
@@ -186,21 +207,6 @@ Git/
     `git secret </notes/git/git_secret.html>`_
 
     `blackbox   </notes/git/blackbox.html>`_
-
-Linux/
-    `Linux network </notes/linux/network.html>`_
-
-    `Linux process </notes/linux/process.html>`_
-
-    `Linux permissions </notes/linux/permissions.html>`_
-
-    `Linux proc </notes/linux/proc.html>`_
-
-    `Linux SELinux  </notes/linux/selinux.html>`_
-
-    `Linux Systemd  </notes/linux/systemd.html>`_
-
-    `Linux ALSA     </notes/linux/alsa.html>`_
 
 Storage/
     `glusterfs  </notes/storage/glusterfs.html>`_

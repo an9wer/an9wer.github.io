@@ -31,16 +31,17 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="linux-proc">
-<h1>Linux proc</h1>
-<p>Process file:</p>
-<pre class="literal-block">$ ls -l /proc/&lt;pid&gt;/exec</pre>
-<p>Interrupts:</p>
-<pre class="literal-block">$ less /proc/interrupts</pre>
-<p>Audio devices:</p>
-<pre class="literal-block">$ cat /proc/asound/cards</pre>
-<p>Speed of NIC:</p>
-<pre class="literal-block">$ cat /sys/class/net/&lt;interface&gt;/speed</pre>
+<div class="section" id="networkmanager">
+<h1>NetworkManager</h1>
+<p>In CentOS 7, when using <em>nmcli</em> command to create bridge connection, the
+configuration file will locate at <em>/etc/sysconfig/network-scripts/if-&lt;bridge&gt;</em>.</p>
+<p>In Archlinux, when using <em>nmcli</em> command to create bridge connection, the
+configuration file will locate at <em>/etc/NetworkManager/system-connections/</em>.</p>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/NetworkManager">Wikipedia: NetworkManager</a></p>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/NetworkManager">Archlinux wiki: NetworkManager</a></p>
+</div>
 </div>
         </div> <!-- content -->
 
