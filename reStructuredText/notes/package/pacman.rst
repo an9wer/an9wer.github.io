@@ -17,7 +17,7 @@ Display owners of files (path):
 
     $ pacman -Qo <file> [...]
 
-Display information of packages by query database:
+Display information (e.g. depends) of packages by query database:
 
 ::
 

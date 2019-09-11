@@ -77,6 +77,7 @@
         ./notes/miscellaneous/regex.rst
         ./notes/miscellaneous/tls_ssl.rst
     NS
+        ./notes/ns/deployment.rst
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
     TODO

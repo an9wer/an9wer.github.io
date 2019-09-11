@@ -34,6 +34,7 @@ Medium priority tasks
     [ ] (2019/08/20) Update scripts of mysql slow query notifier
     [ ] (2019/09/03) Learn syslog
     [ ] (2019/09/09) ethtool
+    [ ] (2019/09/11) tcpdump -i any prot 5201
 
 High priority tasks
     [ ] (2019/08/27) Learn dnf
@@ -51,6 +52,13 @@ Recent unfinished tasks
     [ ] (2019/08/28) runuser vs su
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
+
+2019/09/11 Wed
+    [x] (2019/09/11) Server Deployment: Memtest of 174 and 175
+    [o] (2019/09/11) Server Deployment: redfish
+    [ ] (2019/09/11) Server Deployment: iperf
+    [ ] (2019/09/10) Learn bridge
+
 
 2019/09/10 Tue
     [ ] (2019/09/10) Learn bridge
