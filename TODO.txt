@@ -33,7 +33,7 @@ Medium priority tasks
     [ ] (2019/08/21) Extract nginx log of everythingsearch.cn
     [ ] (2019/08/20) Update scripts of mysql slow query notifier
     [ ] (2019/09/03) Learn syslog
-    [ ] (2019/09/09) ethtool
+    [ ] (2019/09/09) Learn ethtool
     [ ] (2019/09/11) tcpdump -i any prot 5201
 
 High priority tasks
@@ -44,6 +44,7 @@ High priority tasks
     [ ] (2019/08/24) Raspberry Pi: dnscrypt-proxy
     [ ] (2019/09/02) Learn fuser
     [ ] (2019/09/04) Read source code of supervisord
+    [ ] (2019/09/12) Learn superblock
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -53,10 +54,19 @@ Recent unfinished tasks
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
 
+
+2019/09/12 Thu
+    [x] (2019/09/10) Learn bridge
+    [x] (2019/09/12) Server Deployment: install system of 166, 167, 174 and 175
+    [x] (2019/09/12) Server Deployment: network of 166, 167, 174 and 175
+    [x] (2019/09/12) Server Deployment: fio of 166, 167, 174 and 175
+    [ ] (2019/09/12) Server Deployment: iperf of 166, 167, 174 and 175
+
+
 2019/09/11 Wed
     [x] (2019/09/11) Server Deployment: Memtest of 174 and 175
     [o] (2019/09/11) Server Deployment: redfish
-    [ ] (2019/09/11) Server Deployment: iperf
+    [x] (2019/09/11) Server Deployment: iperf
     [ ] (2019/09/10) Learn bridge
 
 

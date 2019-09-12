@@ -4,6 +4,43 @@ Deployment
 Fio
 ---
 
+Fio Install
+"""""""""""
+
+::
+
+    # yum install fio
+
+Fio config
+""""""""""
+
+::
+
+    [global]
+    ioengine=libaio
+    direct=1
+    blocksize=1M
+    iodepth=32
+    verify=md5
+    do_verify=1
+    rw=write
+    group_reporting
+
+    [sda]
+    filename=/dev/sda
+
+    [sdb]
+    filename=/dev/sdb
+
+    ...
+
+Fio Usage
+"""""""""
+
+::
+
+    # fio <config file> --output <output file>
+
 IPMI
 ----
 
@@ -21,11 +58,12 @@ Enter BIOS and scroll to IPMI menu:
 IPMI Usage
 """"""""""
 
+Mount iso by samba:
 
+::
 
-Mount
-
-
+    10.220.0.121
+    \share\CentOS-7-x86_64-Minimal-1810.iso
 
 
 
@@ -66,7 +104,7 @@ Redfish API
 
 
 Iperf
-=====
+-----
 
 Iperf Installation
 """"""""""""""""""
@@ -77,6 +115,12 @@ Iperf Installation
 
 Iperf Usage
 """""""""""
+
+Allow port:
+
+::
+
+    # firewall-cmd --add-port 5201/tcp
 
 On node 1 (server):
 
@@ -90,3 +134,12 @@ On node 2 (client):
 
     # iperf3 -c <ip> --internal 0 --verbose --logfile <logfile>
 
+
+System Installation
+-------------------
+
+Erase superblock of disk:
+
+::
+
+    # dd if=/dev/zero of=/dev/sd<x> bs=1M count=1

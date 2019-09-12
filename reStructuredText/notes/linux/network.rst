@@ -38,6 +38,13 @@ Arch:
 https://wiki.archlinux.org/index.php/Netctl
 
 
+
+DNS Search Domain
+-----------------
+
+`What is DNS search domain <https://askubuntu.com/a/574111>`_
+
+
 References
 ----------
 
