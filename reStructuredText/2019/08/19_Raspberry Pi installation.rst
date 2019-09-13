@@ -78,3 +78,8 @@ Install autossh:
 
     $ sudo atp install sutossh
 
+
+References
+----------
+
+`RaspberryPi document: config.txt <https://www.raspberrypi.org/documentation/configuration/config-txt/>`_

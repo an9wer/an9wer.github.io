@@ -45,6 +45,7 @@ High priority tasks
     [ ] (2019/09/02) Learn fuser
     [ ] (2019/09/04) Read source code of supervisord
     [ ] (2019/09/12) Learn superblock
+    [ ] (2019/09/13) Scripts of noice: select, copy and move
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -55,13 +56,15 @@ Recent unfinished tasks
     [ ] (2019/09/02) Learn SELinux
 
 
+2019/09/13 Fri
+    [o] (2019/09/13) Make package of noice
+
 2019/09/12 Thu
     [x] (2019/09/10) Learn bridge
     [x] (2019/09/12) Server Deployment: install system of 166, 167, 174 and 175
     [x] (2019/09/12) Server Deployment: network of 166, 167, 174 and 175
     [x] (2019/09/12) Server Deployment: fio of 166, 167, 174 and 175
-    [ ] (2019/09/12) Server Deployment: iperf of 166, 167, 174 and 175
-
+    [x] (2019/09/12) Server Deployment: iperf of 166, 167, 174 and 175
 
 2019/09/11 Wed
     [x] (2019/09/11) Server Deployment: Memtest of 174 and 175

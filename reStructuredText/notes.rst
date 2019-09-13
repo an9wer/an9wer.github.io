@@ -15,6 +15,7 @@
         ./notes/commands/xmodmap.rst
     Linux
         ./notes/linux/network.rst
+        ./notes/linux/wireless.rst
         ./notes/linux/process.rst
         ./notes/linux/permissions.rst
         ./notes/linux/selinux.rst
@@ -142,6 +143,8 @@ Commands/
 
 Linux/
     `Linux network </notes/linux/network.html>`_
+
+    `Linux wireless </notes/linux/wireless.html>`_
 
     `Linux process </notes/linux/process.html>`_
 
