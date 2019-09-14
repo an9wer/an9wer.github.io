@@ -1,7 +1,7 @@
 netrw
 =====
 
-See *:h netrw*
+See ``:h netrw``
 
 mf
     Mark file
@@ -29,7 +29,7 @@ t
     Go up a directory
 
 c
-    make browsing directory the current directory (use ``let g:netrw_keepdir =
+    Make browsing directory the current directory (use ``let g:netrw_keepdir =
     0`` setting to keep the current directory the same as the browsing
     directory)
 
@@ -45,3 +45,25 @@ D
 R
     rename file or directory
 
+Netrw sorting
+-------------
+
+s
+   Select the sorting style by name, time, (file) size, or exten.
+
+r
+   Toggle between normal and reverse sorting order.
+
+Netrw hiding
+------------
+
+See ``:h netrw-hiding``
+
+a
+    Allow to use the hiding list in one of three ways: ignore it, hide files
+    which match, and show only those files which match.
+
+gh
+    A shortcut to toggle between hiding files which begin with a period (dot)
+    and not hiding them.
+    

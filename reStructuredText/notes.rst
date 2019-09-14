@@ -96,7 +96,6 @@
         vim:quickfix
         vim:buffer args
         vim:fold
-        vim:netrw hide (a key)
 
         sudo notifier
 

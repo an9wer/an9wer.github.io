@@ -45,7 +45,7 @@ High priority tasks
     [ ] (2019/09/02) Learn fuser
     [ ] (2019/09/04) Read source code of supervisord
     [ ] (2019/09/12) Learn superblock
-    [ ] (2019/09/13) Scripts of noice: select, copy and move
+    [ ] (2019/09/14) Notes of bash: $PPID, single quote
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -55,6 +55,9 @@ Recent unfinished tasks
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
 
+2019/09/14 Sun
+    [x] (2019/09/13) Make package of noice
+    [x] (2019/09/13) Scripts of noice: select, copy and move
 
 2019/09/13 Fri
     [o] (2019/09/13) Make package of noice
