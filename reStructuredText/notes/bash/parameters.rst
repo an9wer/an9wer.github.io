@@ -105,3 +105,5 @@ BASH_SOURCE
 
     https://stackoverflow.com/a/35006505
 
+PPID
+   The process ID of the shell's parent. 
