@@ -13,6 +13,7 @@
         ./notes/commands/lsscsi.rst
         ./notes/commands/xclip.rst
         ./notes/commands/xmodmap.rst
+        ./notes/commands/fio.rst
     Linux
         ./notes/linux/network.rst
         ./notes/linux/wireless.rst
@@ -139,6 +140,8 @@ Commands/
     `xclip      </notes/commands/xclip.html>`_
 
     `xmodmap    </notes/commands/xmodmap.html>`_
+
+    `fio        </notes/commands/fio.html>`_
 
 Linux/
     `Linux network </notes/linux/network.html>`_

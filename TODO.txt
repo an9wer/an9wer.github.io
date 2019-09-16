@@ -54,6 +54,19 @@ Recent unfinished tasks
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
 
+smartctl -a /dev/sd<x>
+1   Raw_Read_Error_Rate
+5   Realloacated_Sector_Ct
+7   Seek_Error_Rate
+196 Reallocated_Event_Count
+197 Current_Pending_Sector
+
+
+2019/09/16 Mon
+    [x] (2019/09/16) [NS] Check status of fio and iperf
+    [x] (2019/09/16) [NS] Deploy wordpress site: www.typora.net and www.tuxerantfsformac.com
+    [ ] (2019/09/16) [Notes] systemd user and environment
+    [ ] (2019/09/16) [Werice] Update install.sh and xinitrc
 
 2019/09/15 Sat
     [x] (2019/09/14) Notes of bash: $PPID, single quote

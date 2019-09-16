@@ -10,3 +10,4 @@ Github
     (2019/08/27) Distributed reliable key-value store for the most critical data of a distributed system [https://github.com/etcd-io/etcd]
     (2019/08/29) Linux distribution deployer and updater. [https://github.com/Nitrux/znx]
     (2019/09/09) A lightweight, X11 tiling window manager that behaves like vim  [https://github.com/HarveyHunt/howm]
+    (2019/09/16) A Vim-like web browser [https://github.com/fanglingsu/vimb]
