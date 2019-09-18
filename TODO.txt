@@ -26,6 +26,7 @@ Low priority tasks
     [ ] (2019/09/07) samba (like NFS)
     [ ] (2019/09/07) lvs (load balance)
     [ ] (2019/09/10) Learn dracut (https://fedoramagazine.org/initramfs-dracut-and-the-dracut-emergency-shell/)
+    [ ] (2019/09/17) DNS cname
 
 Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
@@ -35,6 +36,7 @@ Medium priority tasks
     [ ] (2019/09/03) Learn syslog
     [ ] (2019/09/09) Learn ethtool
     [ ] (2019/09/11) tcpdump -i any prot 5201
+    [ ] (2019/09/17) [Werice] uninstall.sh
 
 High priority tasks
     [ ] (2019/08/27) Learn dnf
@@ -45,6 +47,7 @@ High priority tasks
     [ ] (2019/09/02) Learn fuser
     [ ] (2019/09/04) Read source code of supervisord
     [ ] (2019/09/12) Learn superblock
+    [ ] (2019/09/18) [Notes] Bash: <<<
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -53,20 +56,28 @@ Recent unfinished tasks
     [ ] (2019/08/28) runuser vs su
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
+    [ ] (2019/09/16) [Notes] systemd user and environment
 
-smartctl -a /dev/sd<x>
-1   Raw_Read_Error_Rate
-5   Realloacated_Sector_Ct
-7   Seek_Error_Rate
-196 Reallocated_Event_Count
-197 Current_Pending_Sector
+
+2019/09/17 Wed
+    [ ]
+    [ ]
+    [ ] (2019/09/17) [Pkg] Add base16 package
+
+2019/09/17 Tue
+    [x] (2019/09/16) [Werice] Update install.sh and xinitrc
+    [x] (2019/09/16) [NS] Check status of fio and iperf
+        -   fio is ok
+    [o] (2019/09/18) [NS] Update firmware of redfish
+        -   Some errors happened
 
 
 2019/09/16 Mon
     [x] (2019/09/16) [NS] Check status of fio and iperf
+        -   iperf is ok
     [x] (2019/09/16) [NS] Deploy wordpress site: www.typora.net and www.tuxerantfsformac.com
     [ ] (2019/09/16) [Notes] systemd user and environment
-    [ ] (2019/09/16) [Werice] Update install.sh and xinitrc
+    [o] (2019/09/16) [Werice] Update install.sh and xinitrc
 
 2019/09/15 Sat
     [x] (2019/09/14) Notes of bash: $PPID, single quote

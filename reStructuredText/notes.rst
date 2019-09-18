@@ -15,6 +15,7 @@
         ./notes/commands/xmodmap.rst
         ./notes/commands/fio.rst
     Linux
+        ./notes/linux/filesystem_hierarchy.rst
         ./notes/linux/network.rst
         ./notes/linux/wireless.rst
         ./notes/linux/process.rst
@@ -41,6 +42,7 @@
         ./notes/bash/parameters.rst
         ./notes/bash/expansion.rst
         ./notes/bash/builtin.rst
+        ./notes/bash/function.rst
     Vim
         ./notes/vim/tricks.rst
         ./notes/vim/options.rst
@@ -82,6 +84,7 @@
         ./notes/ns/deployment.rst
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
+        ./notes/ns/npd.rst
     TODO
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
          sudo ip route add 127.0.0.0/8 dev lo table e1
@@ -144,6 +147,8 @@ Commands/
     `fio        </notes/commands/fio.html>`_
 
 Linux/
+    `Linux filesystem hierarchy </notes/linux/filesystem_hierarchy.html>`_
+
     `Linux network </notes/linux/network.html>`_
 
     `Linux wireless </notes/linux/wireless.html>`_
@@ -185,6 +190,8 @@ Bash/
     `expansion  </notes/bash/expansion.html>`_
 
     `builtin    </notes/bash/builtin.html>`_
+
+    `function   </notes/bash/function.html>`_
 
 Vim/
     `tricks     </notes/vim/tricks.html>`_

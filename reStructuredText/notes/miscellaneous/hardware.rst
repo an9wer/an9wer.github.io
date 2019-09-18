@@ -77,6 +77,9 @@ Parallel vs serial
 
 -   `Communication Networks/Parallel vs Serial <https://en.wikibooks.org/wiki/Communication_Networks/Parallel_vs_Serial>`_
 
+Disk enclosure:
+
+-   `Wikipedia: Disk Enclosure <https://en.wikipedia.org/wiki/Disk_enclosure>`_
 
 
 Intel
