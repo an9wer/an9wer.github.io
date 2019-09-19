@@ -23,6 +23,7 @@
         ./notes/linux/selinux.rst
         ./notes/linux/systemd.rst
         ./notes/linux/proc.rst
+        ./notes/linux/sys.rst
         ./notes/linux/alsa.rst
         ./notes/linux/kickstart.rst
         ./notes/linux/networkmanager.rst
@@ -69,6 +70,7 @@
     DevOps
         ./notes/devops/puppet38.rst
         ./notes/devops/docker.rst
+        ./notes/devops/vagrant.rst
     Language
         ./notes/language/java.rst
     Awesome
@@ -159,6 +161,8 @@ Linux/
 
     `Linux proc     </notes/linux/proc.html>`_
 
+    `Linux sys      </notes/linux/sys.html>`_
+
     `Linux SELinux  </notes/linux/selinux.html>`_
 
     `Linux Systemd  </notes/linux/systemd.html>`_
@@ -242,6 +246,10 @@ Server/
 
 DevOps/
     `puppet3.8  </notes/devops/puppet38.html>`_
+
+    `docker     </notes/devops/docker.html>`_
+
+    `vagrant    </notes/devops/vagrant.html>`_
 
 Language/
     `java       </notes/language/java.html>`_

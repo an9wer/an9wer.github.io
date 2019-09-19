@@ -31,14 +31,32 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="linux-proc">
-<h1>Linux proc</h1>
-<p>Process file:</p>
-<pre class="literal-block">$ ls -l /proc/&lt;pid&gt;/exec</pre>
-<p>Interrupts:</p>
-<pre class="literal-block">$ less /proc/interrupts</pre>
-<p>Audio devices:</p>
-<pre class="literal-block">$ cat /proc/asound/cards</pre>
+<div class="section" id="vagrant">
+<h1>Vagrant</h1>
+<div class="section" id="commands">
+<h2>Commands</h2>
+<p>Init <em>Vagrantfile</em>:</p>
+<pre class="literal-block">$ vagrant init [&lt;box name&gt;]</pre>
+<p>Create and configure guest machine according <em>Vagrantfile</em> (See <a class="reference external" href="https://stackoverflow.com/a/20431791">How to define
+a machine name in Vagrantfile</a>) :</p>
+<pre class="literal-block">$ vagrant up [&lt;machine name&gt;]</pre>
+<p>Shut down the running machine:</p>
+<pre class="literal-block">$ vagrant halt [&lt;machine name&gt;]</pre>
+<p>Reload (halt and up) machine:</p>
+<pre class="literal-block">$ vagrant reload [&lt;machine name&gt;]</pre>
+<p>Check the state of machine:</p>
+<pre class="literal-block">$ vagrant status [&lt;machine name&gt;]</pre>
+<p>Runs any configured provisioners in <em>Vagrantfile</em>:</p>
+<pre class="literal-block">$ vagrant provision [&lt;machine name&gt;]</pre>
+<p>Watch all local directories of any rsync synced folders and automatically
+initiates an rsync transfer when changes are detected. (This command does not
+exit until an interrupt is received.)</p>
+<pre class="literal-block">$ vagrant rsync-auto</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://www.vagrantup.com/docs/">Vagrant documentation</a></p>
+</div>
 </div>
         </div> <!-- content -->
 

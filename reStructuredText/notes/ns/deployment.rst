@@ -138,6 +138,13 @@ Redfish api:
 
     # curl -k https://<domain>/redfish/v1
 
+
+Redfish update firmware:
+
+::
+
+    # sg_ses_microcode /dev/sg<X> -m 0xe -N -b 4096 -I <filename> -vv
+
 Iperf
 -----
 
