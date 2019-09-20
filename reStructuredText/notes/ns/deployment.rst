@@ -145,6 +145,21 @@ Redfish update firmware:
 
     # sg_ses_microcode /dev/sg<X> -m 0xe -N -b 4096 -I <filename> -vv
 
+
+Check state of updating:
+
+::
+
+    # sg_ses /dev/sg<X> -p 0xe
+
+Verify OOBMs have IP addresses:
+
+::
+
+    # sg_ses /dev/sd<X> -p 0x7 | grep ESCE
+
+
+
 Iperf
 -----
 

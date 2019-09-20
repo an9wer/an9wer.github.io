@@ -37,6 +37,7 @@ Medium priority tasks
     [ ] (2019/09/09) Learn ethtool
     [ ] (2019/09/11) tcpdump -i any prot 5201
     [ ] (2019/09/17) [Werice] uninstall.sh
+    [ ] (2019/09/20) [OpenWRT] wireless router mode, repeater mode, access point mode
 
 High priority tasks
     [ ] (2019/08/27) Learn dnf
@@ -48,6 +49,8 @@ High priority tasks
     [ ] (2019/09/04) Read source code of supervisord
     [ ] (2019/09/12) Learn superblock
     [ ] (2019/09/18) [Notes] Bash: <<<
+    [ ] (2019/09/20) [Notes] Command br
+    [ ] (2019/09/20) [Werice] Scripts to convert hex to deciminal
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -59,10 +62,16 @@ Recent unfinished tasks
     [ ] (2019/09/16) [Notes] systemd user and environment
 
 
-2019/09/17 Wed
-    [ ]
-    [ ]
+2019/09/20 Fri
     [ ] (2019/09/17) [Pkg] Add base16 package
+    [x] (2019/09/20) [NS] Router DHCP setup
+    [x] (2019/09/20) [NS] Change warning and critical value of Redfish disk
+
+2019/09/18 Thu
+    [x] (2019/09/18) [NS] Add --exclude option to check_pys_nic script
+
+2019/09/17 Wed
+    [o] (2019/09/17) [Pkg] Add base16 package
 
 2019/09/17 Tue
     [x] (2019/09/16) [Werice] Update install.sh and xinitrc
@@ -70,7 +79,6 @@ Recent unfinished tasks
         -   fio is ok
     [o] (2019/09/18) [NS] Update firmware of redfish
         -   Some errors happened
-
 
 2019/09/16 Mon
     [x] (2019/09/16) [NS] Check status of fio and iperf
