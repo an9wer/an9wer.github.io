@@ -38,9 +38,10 @@ Medium priority tasks
     [ ] (2019/09/11) tcpdump -i any prot 5201
     [ ] (2019/09/17) [Werice] uninstall.sh
     [ ] (2019/09/20) [OpenWRT] wireless router mode, repeater mode, access point mode
+    [ ] (2019/09/21) [St] Set theme colors
+    [ ] (2019/09/21) [Werice] How neofetch get terminal theme colors
 
 High priority tasks
-    [ ] (2019/08/27) Learn dnf
     [ ] (2019/08/27) Read source code of nvchecker [https://github.com/lilydjwg/nvchecker]
     [ ] (2019/08/27) Plain text accounting [https://www.byvoid.com/zht/blog/beancount-bookkeeping-1]
     [ ] (2019/08/20) Supervisord: event notifier
@@ -51,6 +52,7 @@ High priority tasks
     [ ] (2019/09/18) [Notes] Bash: <<<
     [ ] (2019/09/20) [Notes] Command br
     [ ] (2019/09/20) [Werice] Scripts to convert hex to deciminal
+    [ ] (2019/09/21) [Notes] ANSI color
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -61,6 +63,10 @@ Recent unfinished tasks
     [ ] (2019/09/02) Learn SELinux
     [ ] (2019/09/16) [Notes] systemd user and environment
 
+2019/09/21 Sun
+    [x] (2019/09/21) [Notes] Hide banner of netrw
+        -   Type 'I' or set g:netrw_banner
+    [x] (2019/09/17) [Pkg] Add base16 package
 
 2019/09/20 Fri
     [ ] (2019/09/17) [Pkg] Add base16 package

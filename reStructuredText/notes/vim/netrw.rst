@@ -22,6 +22,9 @@ gx
 i
     Change listing style
 
+I
+    Toggle the displaying of the banner
+
 t
     Enter the file/directory under the cursor in a new tab
 

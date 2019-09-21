@@ -1,3 +1,7 @@
+2019/09/21 Sat
+
+    才发现 Github 可以认识 vim modeline 中设定的 filetype，不错哦。
+
 2019/09/13 Fri
 
     意思是不能用火狐喽？！
