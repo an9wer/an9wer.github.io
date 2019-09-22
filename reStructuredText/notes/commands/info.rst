@@ -4,6 +4,17 @@ Info
 **Note**: In the following keymaps, if two keys exist, which are splited by
 space, the left one is for emacs, and the right one is for vi.
 
+<space>
+    Scroll forward to next window
+
+<delete>
+    Scroll back to previous window
+
+n
+    Scroll forward to next node
+
+p
+    Scroll back to previous node
 
 l
     Follow back to the recently selected node.
