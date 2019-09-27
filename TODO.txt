@@ -27,6 +27,7 @@ Low priority tasks
     [ ] (2019/09/07) lvs (load balance)
     [ ] (2019/09/10) Learn dracut (https://fedoramagazine.org/initramfs-dracut-and-the-dracut-emergency-shell/)
     [ ] (2019/09/17) DNS cname
+    [ ] (2019/09/25) [Notes] keepalived
 
 Medium priority tasks
     [ ] (2019/08/26) Resize ext4 (e2fsck -f /dev/sdX && resize2fs /dev/sdX)
@@ -40,6 +41,7 @@ Medium priority tasks
     [ ] (2019/09/20) [OpenWRT] wireless router mode, repeater mode, access point mode
     [ ] (2019/09/21) [St] Set theme colors
     [ ] (2019/09/21) [Werice] How neofetch get terminal theme colors
+    [ ] (2019/09/25) [Notes] ipset test <ip>
 
 High priority tasks
     [ ] (2019/08/27) Read source code of nvchecker [https://github.com/lilydjwg/nvchecker]
@@ -49,9 +51,13 @@ High priority tasks
     [ ] (2019/09/02) Learn fuser
     [ ] (2019/09/04) Read source code of supervisord
     [ ] (2019/09/12) Learn superblock
-    [ ] (2019/09/18) [Notes] Bash: <<<
-    [ ] (2019/09/20) [Werice] Scripts to convert hex to deciminal
     [ ] (2019/09/21) [Notes] ANSI color
+    [ ] (2019/09/24) [Notes] man 3 crypt
+    [ ] (2019/09/24) [Notes] useradd groupadd usermod
+    [ ] (2019/09/25) [Notes] docker entrypoint
+    [ ] (2019/09/27) [Werice] bash_logout script to clean history
+    ~/.docker/config.json
+    bitnami
 
 Recent unfinished tasks
     [o] (2019/08/20) Learn mdadm
@@ -61,7 +67,30 @@ Recent unfinished tasks
     [ ] (2019/09/02) Notes of debugging anacron
     [ ] (2019/09/02) Learn SELinux
     [ ] (2019/09/16) [Notes] systemd user and environment
+    [ ] (2019/09/18) [Notes] Bash: <<<
+    [ ] (2019/09/20) [Werice] Scripts to convert hex to deciminal
+    需要改三个文件？ (FabricHostSettings.xml, FabricManifest.{current,1}.xml
+    如果有一个 node 出了问题，会影响全部吗？
+    telnet ip 1025
 
+
+2019/09/27 Fri
+    [x] (2019/09/09) [Notes] Tunnel of ssh
+
+2019/09/26 Thu
+    [o] (2019/09/20) [Werice] Scripts to convert hex to deciminal
+
+2019/09/25 Wed
+    [x] (2019/09/20) [NS] Change warning and critical threshold of Redfish disk
+    [x] (2019/09/20) [Notes] Command br
+    [ ] (2019/09/18) [Notes] Bash: <<<
+
+2019/09/24 Tue
+    [ ] (2019/09/20) [NS] Change warning and critical threshold of Redfish disk
+    [x] (2019/09/24) [NS] Systemctl start/enable certbot-renew.timer
+
+2019/09/23 Mon
+    [x] (2019/09/18) [NS] Update firmware of redfish
 
 2019/09/21 Sat
     [ ] (2019/09/20) [Notes] Command br
@@ -74,7 +103,8 @@ Recent unfinished tasks
 2019/09/20 Fri
     [ ] (2019/09/17) [Pkg] Add base16 package
     [x] (2019/09/20) [NS] Router DHCP setup
-    [x] (2019/09/20) [NS] Change warning and critical value of Redfish disk
+    [x] (2019/09/20) [NS] Change warning and critical threshold of Redfish disk
+        -   Find a way to do that
 
 2019/09/18 Thu
     [x] (2019/09/18) [NS] Add --exclude option to check_pys_nic script
@@ -127,7 +157,7 @@ Recent unfinished tasks
 
 2019/09/09 Mon
     [x] (2019/09/09) Try vagrant
-    [ ] (2019/09/09) Learn tunnel of ssh
+    [ ] (2019/09/09) [Notes] tunnel of ssh
     [ ] (2019/09/03) Monitor the usage of jvm memory
 
 2019/09/07 Sun

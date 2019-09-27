@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="ssh">
+<h1>SSH</h1>
+<div class="section" id="ssh-tunnel">
+<h2>SSH tunnel</h2>
+<pre class="literal-block">ssh -L [bind_address:]port:host:hostport destination
+ssh -R [bind_address:]port:host:hostport destination</pre>
+<p>In these commands, <em>destination</em> is like a bridge, it connects between local
+and remote side:</p>
+<ul class="simple">
+<li><p>-L: <em>port</em> is loacted at local side, <em>host</em> and <em>hostport</em> is used at
+remote side. The tunnel forwards remote <em>host:hostport</em> to local <em>port</em>,
+then we can visit remocal service locally through <em>127.0.0.1:port</em> (or
+other interface set by <em>bind_address</em>).</p></li>
+<li><p>-R: <em>port</em> is located at remote side. <em>host</em> and <em>hostport</em> is used at
+loacl side. The tunnel forwards local <em>host:hostport</em> to remote <em>port</em>,
+then remote host can visit local side service through <em>127.0.0.1:port</em> (or
+other interface set bhy <em>bind_address</em>).</p></li>
+</ul>
+<p>An empty <em>bind_address</em> indicates that it will listen to loopback interface
+(127.0.0.1), the address * means that it will listen to all interface
+(0.0.0.0). Specifying a <em>bind_address</em> will only succeed if the server's
+<em>GatewayPorts</em> option is enabled.</p>
+<dl class="simple">
+<dt>References</dt>
+<dd><p><a class="reference external" href="https://unix.stackexchange.com/a/115906">https://unix.stackexchange.com/a/115906</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="sshd-config">
+<h2>SSHD config</h2>
+<p>See <span class="docutils literal">man sshd_config</span></p>
+<dl>
+<dt>GatewayPorts</dt>
+<dd><p>Specify that sshd should allow remote port forwardings to bind to
+non-loopback addresses, thus allowing other hosts to connect.</p>
+<p>The argument may be <em>no</em> to force remote port forwardings to be available
+to the local host only, <em>yes</em> to force remote port forwardings to bind to
+the wildcard address.</p>
+</dd>
+</dl>
+<p>kill -9</p>
+<p>ps -efw</p>
+<p>mv /opt/microsoft/servicefabric{,.bak}
+mv /mnt/sfroot{,.bak}</p>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

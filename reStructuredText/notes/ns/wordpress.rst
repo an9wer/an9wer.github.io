@@ -17,3 +17,8 @@ Wordpress
         echo 'post_max_size = 2048M' >> /usr/local/etc/php/conf.d/upload.ini
     # docker restart <container>
         
+::
+
+    # yum install cerbot
+    # systemctl start certbot-renew.timer
+    # systemctl enable certbot-renew.timer

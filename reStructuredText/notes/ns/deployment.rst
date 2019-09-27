@@ -119,11 +119,27 @@ Check enclosure dev:
 
     # lsscsi -g | grep enc
 
+----
+
 Set ip address of redfish server:
 
 ::
 
     # nsd/storage/set-redfish-address.py --addr <address> --mask <mask> <dev>
+
+Check ip address of redfish server:
+
+::
+
+    # sg_ses /dev/sg<X> -p 0x7 | grep ESCE
+
+----
+
+Redfish api:
+
+::
+
+    # curl -k https://<domain>/redfish/v1
 
 Change administrator's password of redfish server:
 
@@ -132,14 +148,9 @@ Change administrator's password of redfish server:
     # curl -X PATCH --basic -v https://<ip>/redfish/v1/AccountService/Accounts/1 -H 'content-type: application/json; charset=utf-8' -u admin:admin --insecure -d '{"Password" : "adminadmin"  }'
 
     
-Redfish api:
+----
 
-::
-
-    # curl -k https://<domain>/redfish/v1
-
-
-Redfish update firmware:
+Update Redfish firmware:
 
 ::
 
@@ -152,12 +163,33 @@ Check state of updating:
 
     # sg_ses /dev/sg<X> -p 0xe
 
-Verify OOBMs have IP addresses:
+If fremware updating is done, reset and reboot refish server (**note**: this
+will also reset thermal threshold to default):
 
 ::
 
-    # sg_ses /dev/sd<X> -p 0x7 | grep ESCE
+    # sg_ses_microcode /dev/sg<X> -m 0xf
 
+----
+
+Output current thermal threshold:
+
+::
+
+    # sg_ses -p th --raw /dev/sg<X> > <output file>
+
+Change the threshold value in output file:
+
+::
+
+    # vim <output file>
+        4f 4c 1c 1a -> 46 41 1c 1a
+
+Write it back:
+
+::
+
+    # sg_ses -p th --control --data=- /dev/sg<X> < <output file>
 
 
 Iperf

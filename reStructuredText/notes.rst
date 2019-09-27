@@ -14,6 +14,8 @@
         ./notes/commands/xclip.rst
         ./notes/commands/xmodmap.rst
         ./notes/commands/fio.rst
+        ./notes/commands/bc.rst
+        ./notes/commands/ssh.rst
     Linux
         ./notes/linux/filesystem_hierarchy.rst
         ./notes/linux/network.rst
@@ -87,6 +89,8 @@
         ./notes/ns/contentsrv.rst
         ./notes/ns/wordpress.rst
         ./notes/ns/npd.rst
+        ./notes/ns/wh_route.rst
+        ./notes/ns/azure.rst
     TODO
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
          sudo ip route add 127.0.0.0/8 dev lo table e1
@@ -147,6 +151,10 @@ Commands/
     `xmodmap    </notes/commands/xmodmap.html>`_
 
     `fio        </notes/commands/fio.html>`_
+
+    `bc         </notes/commands/fio.html>`_
+
+    `ssh        </notes/commands/ssh.html>`_
 
 Linux/
     `Linux filesystem hierarchy </notes/linux/filesystem_hierarchy.html>`_
