@@ -1,6 +1,26 @@
+2019/09/26 Thu
+
+    Good luck, see you.
+
+    .. image:: /statics/images/tweet/2019/09/stand.jpg
+
+2019/09/25 Wed
+
+    .. image:: /statics/images/tweet/2019/09/sky.jpg
+
 2019/09/21 Sat
 
     才发现 Github 可以认识 vim modeline 中设定的 filetype，不错哦。
+
+2019/09/18 Wed
+
+    .. image:: /statics/images/tweet/2019/09/car.jpg
+
+2019/09/15 Sun
+
+    给侄女拼个积木，两百多个零件，这真的是六岁小孩的玩具？
+
+    .. image:: /statics/images/tweet/2019/09/toy.jpg
 
 2019/09/13 Fri
 
@@ -13,6 +33,12 @@
     很巧，今天的两顿饭都是十块钱：中午一碟长豆角炒肉丝，外加一份米饭；晚上一碗
     兰州拉面。
 
+2019/09/07 Sat
+
+    子弹头
+
+    .. image:: /statics/images/tweet/2019/09/train.jpg
+
 2019/09/06 Fri
 
     今天见识了好大的太阳雨。
@@ -22,10 +48,18 @@
     看了 Java tutorial，发现 Java 的语法还没有 Python 难呀，为啥大家都说 Python
     容易上手呢？
 
+    .. image:: /statics/images/tweet/2019/09/sunset.jpg
+
 2019/09/04 Wed
 
     今天同事和我讨论说他的 One Plus 马上会有 Android 10 的更新，结果中午我的
     Essential Phone 收到了 Android 10 的推送。
+
+    雨后初晴的小路
+
+    .. image:: /statics/images/tweet/2019/09/road.jpg
+
+    .. image:: /statics/images/tweet/2019/09/reflection.jpg
 
 2019/09/03 Tue
 
@@ -39,9 +73,30 @@
     吃饭的时候在一旁听到某个中年妇女讨论有关 GFW 以及最近香港问题，心里冒出三个
     字：小粉红。
 
+2019/08/14 Wed
+
+    小蜗牛
+
+    .. image:: /statics/images/tweet/2019/08/snail.jpg
+
 2019/08/02 Fri
 
     去年为漂流买的拖鞋，结果今年漂流给用上了，呵呵。
+
+2019/08/01 Thu
+
+    N:1
+
+    .. image:: /statics/images/tweet/2019/08/train.jpg
+
+
+2019/07/29 Mon
+
+    .. image:: /statics/images/tweet/2019/07/road.jpg
+
+2019/07/28 Sun
+
+    .. image:: /statics/images/tweet/2019/07/ceil.jpg
 
 2019/07/26 Thu
 
