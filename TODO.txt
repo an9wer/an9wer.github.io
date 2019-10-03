@@ -56,6 +56,7 @@ High priority tasks
     [ ] (2019/09/24) [Notes] useradd groupadd usermod
     [ ] (2019/09/25) [Notes] docker entrypoint
     [ ] (2019/09/27) [Werice] bash_logout script to clean history
+    [ ] (2019/10/03) [Werice] command bible
     ~/.docker/config.json
     bitnami
 
@@ -69,10 +70,26 @@ Recent unfinished tasks
     [ ] (2019/09/16) [Notes] systemd user and environment
     [ ] (2019/09/18) [Notes] Bash: <<<
     [ ] (2019/09/20) [Werice] Scripts to convert hex to deciminal
+    [ ] (2019/09/29) [NS] Azure deploy extension
     需要改三个文件？ (FabricHostSettings.xml, FabricManifest.{current,1}.xml
     如果有一个 node 出了问题，会影响全部吗？
     telnet ip 1025
+    mdadm --exmine
 
+2019/10/03 Thu
+    [ ] 
+
+2019/10/02 Wed
+    [x] (2019/10/02) [Notes] graphviz
+
+2019/09/30 Mon
+    [x] (2019/09/30) [NS] Azure deployment
+    [o] (2019/09/29) [NS] Azure deploy extension
+
+2019/09/29 Sun
+    [x] (2019/09/29) [NS] Write operator application for HLT
+    [x] (2019/09/29) [NS] Create jumperserver account for azure
+    [ ] (2019/09/29) [NS] Azure deploy extension
 
 2019/09/27 Fri
     [x] (2019/09/09) [Notes] Tunnel of ssh

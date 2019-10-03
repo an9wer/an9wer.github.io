@@ -1,33 +1,3 @@
-..
-    ./2019/09/02_Fcitx_VS_Ibus.rst
-    ./2019/08/21_终端下的目录切换.rst
-    ./2019/08/20_TODO\ list.rst
-    ./2019/08/19_Raspberry\ Pi\ installation.rst
-    ./2019/07/21_终端下的单词查询.rst
-    ./2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
-    ./2019/06/09_地铁轶事.rst
-    ./2019/06/04_搭建自己的\ IM.rst
-    ./2019/03/20_一大波面试.rst
-    ./2019/02/22_从\ Vimwiki\ 转投\ Asciidoc.rst
-    ./2019/02/20_Shadowsocks\ 连接异常小记.rst
-    ./2019/02/10_关于集福卡.rst
-    ./2019/02/09_关于五黑.rst
-    ./2019/01/13_Archlinux\ installation.rst
-    ./2018/12/29_GH\ 60\ Satan\ 入手.rst
-    ./2018/12/24_GANSS\ ALT\ 61\ 入手.rst
-    ./2018/12/17_Rapoo\ V500\ 换键帽.rst
-    ./2018/12/15_Caps_Lock\ key\ 重绑定.rst
-    ./2018/12/13_MuPDF\ 使用小记.rst
-    ./2018/12/08_RSS\ 订阅.rst
-    ./2018/12/05_OnePlus\ 5T\ 入手.rst
-    ./2018/12/03_Vultr\ 换主机小记.rst
-    ./2018/12/01_Essential\ Phone\ PH-1\ 入手.rst
-    ./2018/11/28_Nubia\ Z11\ mini\ 刷机.rst
-    ./2018/11/11_小米平板一代入手.rst
-    ./2018/10/30_Suckless\ 的一天.rst
-    ./2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
-    ./2018/10/24_博客搭建小记.rst
-
 2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus>`_
 
 2019/08/21 @ `终端下的目录切换 </2019/08/21_终端下的目录切换.html>`_

@@ -33,12 +33,41 @@
         <div id="content">
 <div class="section" id="expansion">
 <h1>Expansion</h1>
+<div class="section" id="parameter-expansion">
+<h2>Parameter expansion</h2>
+<dl>
+<dt>${parameter/pattern/string}</dt>
+<dd><p>If parameter is &#64; or *, the substitution operation is applied to each
+positional parameter in turn.</p>
+<p>If parameter is an array variable subscripted with &#64; or *, the
+substitution  operation  is  applied to each member of the array in turn.</p>
+<p>The pattern is expanded to produce a pattern just as in pathname expansion.</p>
+<p>Normally only the first match is replaced.</p>
+<p>If pattern begins with /, all matches of pattern are replaced with string.</p>
+<p>If pattern begins with #, it must match at the beginning of the expanded
+value of parameter.</p>
+<p>If pattern begins with %, it must match at the end of the expanded value of
+parameter.</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="pathname-expansion">
 <h2>Pathname expansion</h2>
 <p><strong>Note</strong>: When in pathname matching context (pathname expansion), the slash
 character must always be matched explicitly by a slash in the pattern, but in
 other matching contexts (e.g. case statement, variable modification,
 HISTIGNORE) it can be matched by a special pattern character.</p>
+<dl class="simple">
+<dt>*</dt>
+<dd><p>Matches any string, including the null string.</p>
+</dd>
+<dt>?</dt>
+<dd><p>Matches any single character.</p>
+</dd>
+<dt>[...]</dt>
+<dd><p>Matches any one of the enclosed characters.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="porcess-substitution">
 <h2>Porcess substitution</h2>

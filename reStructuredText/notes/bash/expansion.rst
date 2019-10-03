@@ -1,12 +1,45 @@
 Expansion
 =========
 
+Parameter expansion
+-------------------
+
+${parameter/pattern/string}
+    If parameter is @ or \*, the substitution operation is applied to each
+    positional parameter in turn.
+
+    If parameter is an array variable subscripted with @ or \*, the
+    substitution  operation  is  applied to each member of the array in turn.
+
+    The pattern is expanded to produce a pattern just as in pathname expansion.
+
+    Normally only the first match is replaced.
+
+    If pattern begins with /, all matches of pattern are replaced with string. 
+
+    If pattern begins with #, it must match at the beginning of the expanded
+    value of parameter.
+
+    If pattern begins with %, it must match at the end of the expanded value of
+    parameter.
+
 Pathname expansion
 ------------------
+
 **Note**: When in pathname matching context (pathname expansion), the slash
 character must always be matched explicitly by a slash in the pattern, but in
 other matching contexts (e.g. case statement, variable modification,
 HISTIGNORE) it can be matched by a special pattern character.
+
+\*
+    Matches any string, including the null string.
+
+\?
+    Matches any single character.
+
+[...]
+    Matches any one of the enclosed characters.
+
 
 Porcess substitution
 --------------------

@@ -1,129 +1,3 @@
-..
-    Coreutils
-        ./notes/coreutils/mktemp.rst
-        ./notes/coreutils/cut.rst
-    Commands
-        ./notes/commands/info.rst
-        ./notes/commands/top.rst
-        ./notes/commands/pstree.rst
-        ./notes/commands/iptables.rst
-        ./notes/commands/ntp.rst
-        ./notes/commands/sed.rst
-        ./notes/commands/dmidecode.rst
-        ./notes/commands/lsscsi.rst
-        ./notes/commands/xclip.rst
-        ./notes/commands/xmodmap.rst
-        ./notes/commands/fio.rst
-        ./notes/commands/bc.rst
-        ./notes/commands/ssh.rst
-    Linux
-        ./notes/linux/filesystem_hierarchy.rst
-        ./notes/linux/network.rst
-        ./notes/linux/wireless.rst
-        ./notes/linux/process.rst
-        ./notes/linux/permissions.rst
-        ./notes/linux/selinux.rst
-        ./notes/linux/systemd.rst
-        ./notes/linux/proc.rst
-        ./notes/linux/sys.rst
-        ./notes/linux/alsa.rst
-        ./notes/linux/kickstart.rst
-        ./notes/linux/networkmanager.rst
-    Package
-        ./notes/package/rpm.rst
-        ./notes/package/yum.rst
-        ./notes/package/dnf.rst
-        ./notes/package/dpkg.rst
-        ./notes/package/pacman.rst
-        ./notes/package/fpm.rst
-    Git
-        ./notes/git/git_secret.rst
-        ./notes/git/blackbox.rst
-    Bash
-        ./notes/bash/grammar.rst
-        ./notes/bash/quoting.rst
-        ./notes/bash/parameters.rst
-        ./notes/bash/expansion.rst
-        ./notes/bash/builtin.rst
-        ./notes/bash/function.rst
-    Vim
-        ./notes/vim/tricks.rst
-        ./notes/vim/options.rst
-        ./notes/vim/pattern.rst
-        ./notes/vim/editing.rst
-        ./notes/vim/window.rst
-        ./notes/vim/tabpage.rst
-        ./notes/vim/repeat.rst
-        ./notes/vim/various.rst
-        ./notes/vim/quickfix.rst
-        ./notes/vim/map.rst
-        ./notes/vim/netrw.rst
-    Storage
-        ./notes/storage/glusterfs.rst
-        ./notes/storage/lvm.rst
-    Database
-        ./notes/database/redis.rst
-    Server
-        ./notes/server/nginx.rst
-        ./notes/server/httpd.rst
-        ./notes/server/webdav.rst
-        ./notes/server/tigervnc.rst
-        ./notes/server/nagios.rst
-    DevOps
-        ./notes/devops/puppet38.rst
-        ./notes/devops/docker.rst
-        ./notes/devops/vagrant.rst
-    Language
-        ./notes/language/java.rst
-    Awesome
-        ./notes/awesome/redshift.rst
-    Misc
-        ./notes/miscellaneous/programming_language.rst
-        ./notes/miscellaneous/operating_system.rst
-        ./notes/miscellaneous/desktop_environment.rst
-        ./notes/miscellaneous/hardware.rst
-        ./notes/miscellaneous/regex.rst
-        ./notes/miscellaneous/tls_ssl.rst
-    NS
-        ./notes/ns/deployment.rst
-        ./notes/ns/contentsrv.rst
-        ./notes/ns/wordpress.rst
-        ./notes/ns/npd.rst
-        ./notes/ns/wh_route.rst
-        ./notes/ns/azure.rst
-    TODO
-         sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
-         sudo ip route add 127.0.0.0/8 dev lo table e1
-         sudo ip rule add from 10.0.0.14 table e1
-
-        ./notes/coreutils/seq.rst
-        ./notes/coreutils/csplit.rst
-        
-        dirname
-
-        fd (https://stackoverflow.com/a/2031100)
-
-        vim:quickfix
-        vim:buffer args
-        vim:fold
-
-        sudo notifier
-
-        ./notes/storage/nfs.rst
-
-        https://wiki.archlinux.org/index.php/XScreenSaver
-        https://wiki.archlinux.org/index.php/Backlight
-        https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-        https://www.jwz.org/xscreensaver/man1.html
-
-        puppet: inherit and include (to get access to a variable that’s set in
-        a Puppet class, you have to declare the class (i.e. use the include()
-        function or inherit from that class).
-        puppet: default resource
-        puppet: contain
-
-        bash: $_
-
 Coreutils/
     `mktemp     </notes/coreutils/mktemp.html>`_
 
@@ -155,6 +29,8 @@ Commands/
     `bc         </notes/commands/fio.html>`_
 
     `ssh        </notes/commands/ssh.html>`_
+
+    `lsof       </notes/commands/lsof.html>`_
 
 Linux/
     `Linux filesystem hierarchy </notes/linux/filesystem_hierarchy.html>`_
@@ -200,6 +76,8 @@ Bash/
     `parameters </notes/bash/parameters.html>`_
 
     `expansion  </notes/bash/expansion.html>`_
+
+    `redirection </notes/bash/redirection.html>`_
 
     `builtin    </notes/bash/builtin.html>`_
 
@@ -260,7 +138,11 @@ DevOps/
     `vagrant    </notes/devops/vagrant.html>`_
 
 Language/
-    `java       </notes/language/java.html>`_
+    `Java       </notes/language/java.html>`_
+
+    `EBNF       </notes/language/ebnf.html>`_
+
+    `Graphviz   </notes/language/grammar.html>`_
 
 Awesome/
     `redshift   </notes/awesome/redshift.html>`_

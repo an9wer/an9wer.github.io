@@ -31,7 +31,7 @@ Generate id and password:
 
 ::
 
-    ./azure_cr_create_service_principal.sh gifttasks "nutstore_acr_gifttasks_sp"
+    ./azure_cr_create_service_principal.sh gifttasks gifttasksSP
         service principal ID:
         service principal password:
 
@@ -41,3 +41,6 @@ About protal sfappgateway:
     HTTP setting (backend)
 
     Rules   (map frontend to backend)
+
+Service principal ID: 9a0392c5-0453-414a-aa0e-738719d7af34
+Service principal password: 60dc6b80-061e-451d-bfaa-c1130bc51eba

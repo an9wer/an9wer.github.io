@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="bash-redirection">
+<h1>Bash Redirection</h1>
+<div class="section" id="here-documents">
+<h2>Here documents</h2>
+<pre class="literal-block">[n]&lt;&lt;[-]word
+    here-document
+delimiter</pre>
+<p>All of the lines read up to delimiter are then used as the standard input (or
+file descriptor <span class="docutils literal">n</span> if <span class="docutils literal">n</span> is specified) for a command.</p>
+<p>If word is quoted, the delimiter is the result of quote removal on word, and
+the lines in the here-document are not expanded.</p>
+<p>If word is unquoted, all lines of the here-document are subjected to <em>parameter
+expansion</em>, <em>command substitution</em>, and <em>arithmetic expansion</em>, the character
+sequence &lt;newline&gt; is ignored, and must be used to quote the characters ,
+$, and `.</p>
+<p>If the redirection operator is <span class="docutils literal">&lt;&lt;-</span>,  then all leading tab characters are
+stripped from input lines and the line containing delimiter.</p>
+</div>
+<div class="section" id="here-strings">
+<h2>Here strings</h2>
+<pre class="literal-block">[n]&lt;&lt;&lt;word</pre>
+<p>The result is supplied as a single string, with a newline appended, to the
+command on its standard input (or file descriptor <span class="docutils literal">n</span> if <span class="docutils literal">n</span> is specified).</p>
+<p>The word undergoes <em>tilde expansion</em>, <em>parameter and variable expansion</em>,
+<em>command substitution</em>, <em>arithmetic expansion</em>, and <em>quote removal</em>. Pathname
+expansion and word splitting are not performed.</p>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>
