@@ -4,77 +4,72 @@
 DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
 
 msg() {
-  echo "D. " "$@"
+  echo "D. $@"
 }
 
-comm_dir() {
-  # Need to set $regex and $rst before run this function
+clean() {
+  local from=$1
+  local to=$2
+  local from_suffix=$3
+  local to_suffix=$4
+
   OLD_IFS=$IFS
   IFS=$'\n'
 
-  for subdir in $(find -type d -regex "$regex"  -printf '%P\n'); do
-    
-    # Skip `note/ns` directory
-    if grep -Eq "^notes/ns" <(echo "$subdir"); then
-      msg "$DIR/$subdir"
-      rm -rf "$DIR/$subdir"
+  for dir in $(find "$to" -type d  -printf '%P\n'); do
+    from_dir=$from/$dir
+    to_dir=$to/$dir
+
+    if [[ ! -d $from_dir ]]; then
+      msg "$DIR/$to_dir"
+      rm -rf "$DIR/$to_dir"
       continue
     fi
+  done
 
-    rst_subdir=$rst/$subdir
+  for file in $(find "$to" -type f -printf '%P\n'); do
+    from_file=$from/${file/%${to_suffix}/${from_suffix}}
+    to_file=$to/$file
 
-    # Ensure $subdir is a directory
-    if [[ ! -d $subdir ]]; then
+    if [[ ! -f $from_file ]]; then
+      msg "$DIR/$to_file"
+      rm "$DIR/$to_file"
       continue
     fi
-
-    # Ensure $rst_subdir is a directory
-    if [[ ! -d $rst_subdir ]]; then
-      msg "$subdir"
-      rm -rf "$subdir"
-      continue
-    fi
-
-    # Then compare files in $subdir and $rst_subdir
-
-    # Delete files which are not suffixed with '.html' first
-    for dedication in $(find "$subdir" -maxdepth 1 -type f); do
-        if [[ ! $dedication =~ .html$ ]]; then
-          msg "$dedication"
-          rm -rf "$dedication"
-        fi
-    done
-
-    for dedication in $(comm -23 \
-        <(ls "$subdir" | sed -E 's@(.*)\.html@\1@' | sort) \
-        <(ls "$rst_subdir" | sed -E 's@(.*)\.rst@\1@' | sort)); do
-      # $dedication may be file or directory.
-      if [[ -f $subdir/$dedication.html ]]; then
-        dedication=$dedication.html
-      fi
-      msg "$subdir/$dedication"
-      rm -rf "$subdir/$dedication"
-    done
   done
 
   IFS=$OLD_IFS
 }
 
-comm_blog_dir() {
-  rst=$DIR/reStructuredText
-  regex="^./20[0-9][0-9].*"
-  comm_dir
+clean_blog() {
+  local from to
+  local from_suffix=rst
+  local to_suffix=html
+  for to in $(ls -d 20[0-9][0-9]); do
+    from=reStructuredText/$to
+    clean "$from" "$to" "$from_suffix" "$to_suffix"
+  done
 }
 
-comm_notes_dir() {
-  rst=$DIR/reStructuredText
-  regex="^./notes.*"
-  comm_dir
+clean_notes() {
+  local from=reStructuredText/notes
+  local to=notes
+  local from_suffix=rst
+  local to_suffix=html
+  clean "$from" "$to" "$from_suffix" "$to_suffix"
+}
+
+clean_code() {
+  local from=graphviz
+  local to=code
+  local from_suffix=dot
+  local to_suffix=jpg
+  clean "$from" "$to" "$from_suffix" "$to_suffix"
 }
 
 
-# Ensure we are in this script directory
-cd "$DIR"
-comm_blog_dir
-comm_notes_dir
-
+# Main
+cd "$DIR"   # Ensure we are in the diectory of this script
+clean_blog
+clean_notes
+clean_code

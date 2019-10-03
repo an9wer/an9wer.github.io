@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 
+set -e
+
 PATH=venv/bin:$PATH
 
-IN_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/reStructuredText")
+RST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/reStructuredText")
+DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
 OUT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
 
 usage() {
   cat <<EOF
-build [<args>] [<rst>...]
-
-Arguments:
-  -a, --all  Build all adoc files
-
+build [<rst> ...] [<dot> ...]
 EOF
 }
 
-build() {
+build_rst() {
   local rst html category
-  set -e
   for rst in "$@"; do
     rst=$(realpath "$rst")
     if [[ ! -f $rst ]]; then
@@ -25,35 +23,34 @@ build() {
       continue
     fi
     if [[ ! $rst =~ \.rst$ ]]; then
-      echo "Unkonwn filetype '$1'."
+      echo "Unkonwn filetype '$rst'."
       continue
     fi
 
     # Blog
-    html=$(sed -nE 's@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+\.rst$)@\1@p' <(echo "$rst"))
+    html=$(sed -nE "s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
     category=blog
 
     # Notes
     if [[ -z $html ]]; then
-      html=$(sed -nE 's@.*/(notes/.+\.rst$)@\1@p' <(echo "$rst"))
+      # Skip `notes/ns` directory
+      if grep -Eq '.*/notes/ns/[^/]+\.rst$' <(echo "$rst"); then
+        continue
+      fi
+      html=$(sed -nE "s@.*/(notes/.+)\\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
       category=notes
-    fi
-
-    # Skip `notes/ns` directory
-    if grep -Eq "^notes/ns/.+\.rst$" <(echo "$html"); then
-      continue
     fi
 
     # Index
     if [[ -z $html ]]; then
-      html=$(sed -nE 's@.*/([^/]+\.rst)@\1@p' <(echo "$rst"))
-      if [[ $html == blog.rst ]]; then
+      html=$(sed -nE "s@.*/([^/]+)\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
+      if [[ $html =~ /blog.html$ ]]; then
         category=blog
-      elif [[ $html == notes.rst ]]; then
+      elif [[ $html =~ /notes.html$ ]]; then
         category=notes
-      elif [[ $html == tweet.rst ]]; then
+      elif [[ $html =~ /tweet.html$ ]]; then
         category=tweet
-      elif [[ $html == about.rst ]]; then
+      elif [[ $html =~ /about.html$ ]]; then
         category=about
       else
         echo "Unknown file '$rst'."
@@ -61,31 +58,73 @@ build() {
       fi
     fi
 
-    # Error
-    [[ -z $html ]] && { echo "Some error happened."; exit 1; }
+    # Missing
+    if [[ -z $html ]]; then
+      echo "Unknown file '$rst'."
+      continue
+    fi
 
-
-    html=$OUT_DIR/${html%\.rst}.html
     mkdir -p "$(dirname "$html")"
-    #  Only build when html doesn't exist or mtime of rst or template.html is updated.
+    #  Only build when html doesn't exist and mtime of rst or template.html is updated.
     if [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
-      rst2html5.py --strict --no-doc-title --no-doc-info --template <(sed -E "/id=\"$category\"/ s/$/ class=\"current\"/" "$OUT_DIR/template.html") "$rst" "$html"
+      rst2html5.py \
+        --strict \
+        --no-doc-title \
+        --no-doc-info \
+        --template <(sed -E "/id=\"$category\"/ s/$/ class=\"current\"/" "$OUT_DIR/template.html") \
+        "$rst" "$html"
       echo -e "'$rst'\n->\t'$html'"
     fi
   done
-  set +e
+}
+
+build_dot() {
+  local dot jpeg
+  for dot in "$@"; do
+    dot=$(realpath "$dot")
+    if [[ ! -f $dot ]]; then
+      echo "Unexisted file '$dot'."
+      continue
+    fi
+    if [[ ! $dot =~ \.dot$ ]]; then
+      echo "Unkonwn filetype '$dot'."
+      continue
+    fi
+
+    jpeg=$(sed -nE "s@.*/graphviz/(.+)\\.dot\$@$OUT_DIR/code/\1.jpg@p" <(echo "$dot"))
+    if [[ -z $jpeg ]]; then
+      echo "Unfound '$dot' in 'graphviz' directory."
+      continue
+    fi
+
+    mkdir -p "$(dirname "$jpeg")"
+    #  Only build when jpeg doesn't exist and mtime of dot is updated
+    if [[ ! -f $jpeg ]] ||
+        ([[ -f $jpeg ]] && (( $(stat -c "%Y" "$jpeg") <= $(stat -c "%Y" "$dot") ))); then
+      dot -Tjpeg "$dot" -o "$jpeg"
+      echo -e "'$dot'\n->\t'$jpeg'"
+    fi
+  done
 }
 
 build_all() {
   local IFS=$'\n'
-  build $(find "$IN_DIR" -type f -name "*.rst")
+  build_rst $(find "$RST_DIR" -type f -name "*.rst")
+  build_dot $(find "$DOT_DIR" -type f -name "*.dot")
 }
 
-# main
-case $1 in
-  -a|--all ) build_all ;;
-  *.rst    ) if [[ -n $1 ]]; then build "$@"; shift; fi ;;
-  *        ) usage ;;
-esac
+# Main
+if [[ -z $@ ]]; then
+  build_all
+else
+  while (( ${#@} > 0 )) ; do
+    case $1 in
+      *.rst     ) build_rst "$1" ;;
+      *.dot     ) build_dot "$1" ;;
+      *         ) usage ;;
+    esac
+    shift
+  done
+fi
