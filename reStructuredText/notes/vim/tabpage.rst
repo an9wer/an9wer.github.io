@@ -1,5 +1,5 @@
-Tabpage
-=======
+Vim Tabpage
+===========
 
 See *:h tabpage*
 

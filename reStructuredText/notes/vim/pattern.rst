@@ -1,5 +1,5 @@
-Pattern
-=======
+Vim Pattern
+===========
 
 See *:h pattern.txt*
 

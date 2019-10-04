@@ -1,5 +1,5 @@
-Map
-===
+Vim Map
+=======
 
 See `:h map.txt`
 

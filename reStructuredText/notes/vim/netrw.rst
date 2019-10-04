@@ -1,5 +1,5 @@
-netrw
-=====
+Vim netrw
+=========
 
 See ``:h netrw``
 

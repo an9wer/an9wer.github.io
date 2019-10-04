@@ -31,9 +31,30 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="editing">
-<h1>Editing</h1>
+<div class="section" id="vim-editing">
+<h1>Vim Editing</h1>
 <p>see <em>:h editing.txt</em></p>
+<div class="section" id="writing">
+<h2>Writing</h2>
+<dl class="simple">
+<dt>:[range]w[rite] [++opt] !{cmd}</dt>
+<dd><p>Execute {cmd} with [range] lines as standard input (note the space in front
+of the '!').</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="file-encryption">
+<h2>File encryption</h2>
+<p>See <em>:h encryption</em></p>
+<dl class="simple">
+<dt>:X</dt>
+<dd><p>Prompt for an encryption key.  The typing is done without showing the
+actual text, so that someone looking at the display won't see it.</p>
+</dd>
+</dl>
+<p>When you need to change encryption key, type <span class="docutils literal">:X</span> again and save file, the
+new key will work.</p>
+</div>
 <div class="section" id="file-searching">
 <h2>File searching</h2>
 <p>See <em>:h file-searching</em></p>

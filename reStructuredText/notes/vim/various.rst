@@ -1,5 +1,5 @@
-Various
-=======
+Vim Various
+===========
 
 See *:h various*
 

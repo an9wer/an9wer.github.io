@@ -1,0 +1,165 @@
+reStructuredText/notes.rst
+    Commands
+        reStructuredText/notes/commands/info.rst
+        reStructuredText/notes/commands/top.rst
+        reStructuredText/notes/commands/iptables.rst
+        reStructuredText/notes/commands/ntp.rst
+        reStructuredText/notes/commands/sed.rst
+        reStructuredText/notes/commands/dmidecode.rst
+        reStructuredText/notes/commands/lsscsi.rst
+        reStructuredText/notes/commands/xclip.rst
+        reStructuredText/notes/commands/xmodmap.rst
+        reStructuredText/notes/commands/fio.rst
+        reStructuredText/notes/commands/bc.rst
+        reStructuredText/notes/commands/ssh.rst
+        reStructuredText/notes/commands/lsof.rst
+    Coreutils
+        reStructuredText/notes/coreutils/mktemp.rst
+        reStructuredText/notes/coreutils/cut.rst
+    Psmisc
+        reStructuredText/notes/psmisc/pstree.rst
+    Linux
+        reStructuredText/notes/linux/filesystem_hierarchy.rst
+        reStructuredText/notes/linux/network.rst
+        reStructuredText/notes/linux/wireless.rst
+        reStructuredText/notes/linux/process.rst
+        reStructuredText/notes/linux/permissions.rst
+        reStructuredText/notes/linux/selinux.rst
+        reStructuredText/notes/linux/systemd.rst
+        reStructuredText/notes/linux/proc.rst
+        reStructuredText/notes/linux/sys.rst
+        reStructuredText/notes/linux/alsa.rst
+        reStructuredText/notes/linux/kickstart.rst
+        reStructuredText/notes/linux/networkmanager.rst
+    Package
+        reStructuredText/notes/package/rpm.rst
+        reStructuredText/notes/package/yum.rst
+        reStructuredText/notes/package/dnf.rst
+        reStructuredText/notes/package/dpkg.rst
+        reStructuredText/notes/package/pacman.rst
+        reStructuredText/notes/package/fpm.rst
+    Git
+        reStructuredText/notes/git/git_secret.rst
+        reStructuredText/notes/git/blackbox.rst
+    Bash
+        reStructuredText/notes/bash/grammar.rst
+        reStructuredText/notes/bash/quoting.rst
+        reStructuredText/notes/bash/parameters.rst
+        reStructuredText/notes/bash/expansion.rst
+        reStructuredText/notes/bash/redirection.rst
+        reStructuredText/notes/bash/builtin.rst
+        reStructuredText/notes/bash/function.rst
+    Vim
+        reStructuredText/notes/vim/tricks.rst
+        reStructuredText/notes/vim/options.rst
+        reStructuredText/notes/vim/pattern.rst
+        reStructuredText/notes/vim/editing.rst
+        reStructuredText/notes/vim/window.rst
+        reStructuredText/notes/vim/tabpage.rst
+        reStructuredText/notes/vim/repeat.rst
+        reStructuredText/notes/vim/various.rst
+        reStructuredText/notes/vim/quickfix.rst
+        reStructuredText/notes/vim/map.rst
+        reStructuredText/notes/vim/netrw.rst
+    Storage
+        reStructuredText/notes/storage/glusterfs.rst
+        reStructuredText/notes/storage/lvm.rst
+    Database
+        reStructuredText/notes/database/redis.rst
+    Server
+        reStructuredText/notes/server/nginx.rst
+        reStructuredText/notes/server/httpd.rst
+        reStructuredText/notes/server/webdav.rst
+        reStructuredText/notes/server/tigervnc.rst
+        reStructuredText/notes/server/nagios.rst
+    DevOps
+        reStructuredText/notes/devops/puppet38.rst
+        reStructuredText/notes/devops/docker.rst
+        reStructuredText/notes/devops/vagrant.rst
+    Language
+        reStructuredText/notes/language/java.rst
+        reStructuredText/notes/language/ebnf.rst
+        reStructuredText/notes/language/graphviz.rst
+    Awesome
+        reStructuredText/notes/awesome/redshift.rst
+    Misc
+        reStructuredText/notes/miscellaneous/programming_language.rst
+        reStructuredText/notes/miscellaneous/operating_system.rst
+        reStructuredText/notes/miscellaneous/desktop_environment.rst
+        reStructuredText/notes/miscellaneous/hardware.rst
+        reStructuredText/notes/miscellaneous/regex.rst
+        reStructuredText/notes/miscellaneous/tls_ssl.rst
+    NS
+        reStructuredText/notes/ns/deployment.rst
+        reStructuredText/notes/ns/contentsrv.rst
+        reStructuredText/notes/ns/wordpress.rst
+        reStructuredText/notes/ns/npd.rst
+        reStructuredText/notes/ns/wh_route.rst
+        reStructuredText/notes/ns/azure.rst
+
+    TODO
+         sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1
+         sudo ip route add 127.0.0.0/8 dev lo table e1
+         sudo ip rule add from 10.0.0.14 table e1
+
+        reStructuredText//notes/coreutils/seq.rst
+        reStructuredText//notes/coreutils/csplit.rst
+        
+        dirname
+
+        fd (https://stackoverflow.com/a/2031100)
+
+        vim:quickfix
+        vim:buffer args
+        vim:fold
+
+        sudo notifier
+
+        reStructuredText//notes/storage/nfs.rst
+
+        https://wiki.archlinux.org/index.php/XScreenSaver
+        https://wiki.archlinux.org/index.php/Backlight
+        https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+        https://www.jwz.org/xscreensaver/man1.html
+
+        puppet: inherit and include (to get access to a variable that’s set in
+        a Puppet class, you have to declare the class (i.e. use the include()
+        function or inherit from that class).
+        puppet: default resource
+        puppet: contain
+
+        bash: $_
+
+
+reStructuredText/blog.rst
+    reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
+    reStructuredText/2019/08/21_终端下的目录切换.rst
+    reStructuredText/2019/08/20_TODO\ list.rst
+    reStructuredText/2019/08/19_Raspberry\ Pi\ installation.rst
+    reStructuredText/2019/07/21_终端下的单词查询.rst
+    reStructuredText/2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
+    reStructuredText/2019/06/09_地铁轶事.rst
+    reStructuredText/2019/06/04_搭建自己的\ IM.rst
+    reStructuredText/2019/03/20_一大波面试.rst
+    reStructuredText/2019/02/22_从\ Vimwiki\ 转投\ Asciidoc.rst
+    reStructuredText/2019/02/20_Shadowsocks\ 连接异常小记.rst
+    reStructuredText/2019/02/10_关于集福卡.rst
+    reStructuredText/2019/02/09_关于五黑.rst
+    reStructuredText/2019/01/13_Archlinux\ installation.rst
+    reStructuredText/2018/12/29_GH\ 60\ Satan\ 入手.rst
+    reStructuredText/2018/12/24_GANSS\ ALT\ 61\ 入手.rst
+    reStructuredText/2018/12/17_Rapoo\ V500\ 换键帽.rst
+    reStructuredText/2018/12/15_Caps_Lock\ key\ 重绑定.rst
+    reStructuredText/2018/12/13_MuPDF\ 使用小记.rst
+    reStructuredText/2018/12/08_RSS\ 订阅.rst
+    reStructuredText/2018/12/05_OnePlus\ 5T\ 入手.rst
+    reStructuredText/2018/12/03_Vultr\ 换主机小记.rst
+    reStructuredText/2018/12/01_Essential\ Phone\ PH-1\ 入手.rst
+    reStructuredText/2018/11/28_Nubia\ Z11\ mini\ 刷机.rst
+    reStructuredText/2018/11/11_小米平板一代入手.rst
+    reStructuredText/2018/10/30_Suckless\ 的一天.rst
+    reStructuredText/2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
+    reStructuredText/2018/10/24_博客搭建小记.rst
+
+Dot:
+    graphviz/python/argparse.dot

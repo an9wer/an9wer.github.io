@@ -1,5 +1,5 @@
-Repeat
-======
+Vim Repeat
+==========
 
 See *:h repeat.txt*
 

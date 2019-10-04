@@ -31,12 +31,23 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="options">
-<h1>Options</h1>
+<div class="section" id="vim-options">
+<h1>Vim Options</h1>
 <dl class="simple">
 <dt>paste</dt>
 <dd><p>Put vim in paste mode. This will avoid unexpected effects when pasting text
 in insert mode.</p>
+</dd>
+<dt>cryptmethod cm</dt>
+<dd><p>Method used for encryption when the buffer is written to a file.</p>
+<ul class="simple">
+<li><p>zip: PkZip compatible method. A weak kind of encryption.</p></li>
+<li><p>blowfish: Blowfish method. Medium strong encryption but it has an
+implementation flaw.</p></li>
+<li><p>blowfish2: Blowfish method. Medium strong encryption. This adds a
+&quot;seed&quot; to the file, every time you write the file the encrypted bytes
+will be different.</p></li>
+</ul>
 </dd>
 </dl>
 <p>lhsearch</p>

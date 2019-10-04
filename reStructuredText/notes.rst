@@ -1,14 +1,7 @@
-Coreutils/
-    `mktemp     </notes/coreutils/mktemp.html>`_
-
-    `cut        </notes/coreutils/cut.html>`_
-
 Commands/
     `info       </notes/commands/info.html>`_
 
     `top        </notes/commands/top.html>`_
-
-    `pstree     </notes/commands/pstree.html>`_
 
     `iptables   </notes/commands/iptables.html>`_
 
@@ -31,6 +24,14 @@ Commands/
     `ssh        </notes/commands/ssh.html>`_
 
     `lsof       </notes/commands/lsof.html>`_
+
+Coreutils/
+    `mktemp     </notes/coreutils/mktemp.html>`_
+
+    `cut        </notes/coreutils/cut.html>`_
+
+Psmisc/
+    `pstree     </notes/psmisc/pstree.html>`_
 
 Linux/
     `Linux filesystem hierarchy </notes/linux/filesystem_hierarchy.html>`_
@@ -69,42 +70,42 @@ Package/
     `fpm        <notes/package/fpm.html>`_
 
 Bash/
-    `grammar    </notes/bash/grammar.html>`_
+    `Bash grammar    </notes/bash/grammar.html>`_
 
-    `quoting    </notes/bash/quoting.html>`_
+    `Bash quoting    </notes/bash/quoting.html>`_
 
-    `parameters </notes/bash/parameters.html>`_
+    `Bash parameters </notes/bash/parameters.html>`_
 
-    `expansion  </notes/bash/expansion.html>`_
+    `Bash expansion  </notes/bash/expansion.html>`_
 
-    `redirection </notes/bash/redirection.html>`_
+    `Bash redirection </notes/bash/redirection.html>`_
 
-    `builtin    </notes/bash/builtin.html>`_
+    `Bash builtin    </notes/bash/builtin.html>`_
 
-    `function   </notes/bash/function.html>`_
+    `Bash function   </notes/bash/function.html>`_
 
 Vim/
-    `tricks     </notes/vim/tricks.html>`_
+    `Vim tricks     </notes/vim/tricks.html>`_
 
-    `options    </notes/vim/options.html>`_
+    `Vim options    </notes/vim/options.html>`_
 
-    `pattern    </notes/vim/pattern.html>`_
+    `Vim pattern    </notes/vim/pattern.html>`_
 
-    `editing    </notes/vim/editing.html>`_
+    `Vim editing    </notes/vim/editing.html>`_
 
-    `window     </notes/vim/window.html>`_
+    `Vim window     </notes/vim/window.html>`_
 
-    `tabage     </notes/vim/tabpage.html>`_
+    `Vim tabage     </notes/vim/tabpage.html>`_
 
-    `repeat     </notes/vim/repeat.html>`_
+    `Vim repeat     </notes/vim/repeat.html>`_
 
-    `various    </notes/vim/various.html>`_
+    `Vim various    </notes/vim/various.html>`_
 
-    `quickfix   </notes/vim/quickfix.html>`_
+    `Vim quickfix   </notes/vim/quickfix.html>`_
 
-    `map        </notes/vim/map.html>`_
+    `Vim map        </notes/vim/map.html>`_
 
-    `netrw      </notes/vim/netrw.html>`_ 
+    `Vim netrw      </notes/vim/netrw.html>`_ 
 
 Git/
     `git secret </notes/git/git_secret.html>`_

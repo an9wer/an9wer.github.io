@@ -1,5 +1,5 @@
-Parameters
-==========
+Bash Parameters
+===============
 
 A variable may be assigned to by a statement of the form:
 

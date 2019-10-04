@@ -1,5 +1,5 @@
-Grammar
-=======
+Bash Grammar
+============
 
 Compound commands
 -----------------

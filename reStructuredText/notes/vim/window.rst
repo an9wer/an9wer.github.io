@@ -1,5 +1,6 @@
-Window
-======
+Vim Window
+==========
+
 See *:h windows.txt*
 
 Moving cursor

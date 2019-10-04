@@ -1,5 +1,5 @@
-Expansion
-=========
+Bash Expansion
+==============
 
 Parameter expansion
 -------------------
