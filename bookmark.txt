@@ -1,5 +1,6 @@
 reStructuredText/notes.rst
     Commands
+        reStructuredText/notes/commands/ledger.rst
         reStructuredText/notes/commands/info.rst
         reStructuredText/notes/commands/top.rst
         reStructuredText/notes/commands/iptables.rst

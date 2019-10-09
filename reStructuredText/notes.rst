@@ -1,4 +1,6 @@
 Commands/
+    `ledger     </notes/commands/ledger.html>`_
+
     `info       </notes/commands/info.html>`_
 
     `top        </notes/commands/top.html>`_

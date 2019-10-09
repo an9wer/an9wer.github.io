@@ -22,3 +22,20 @@ A \: https://stackoverflow.com/a/19883963
 
         :.w !bash
 
+----
+
+Q : How to reload current file in vim?
+
+A \: https://vi.stackexchange.com/a/445
+    ::
+
+        :e
+
+----
+
+Q : How to view full path of file in vim?
+
+A \: https://codeyarns.com/2014/02/13/how-to-view-full-path-of-file-in-vim/
+    ::
+
+        1CTRL-G

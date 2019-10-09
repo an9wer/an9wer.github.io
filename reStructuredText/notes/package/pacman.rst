@@ -130,6 +130,13 @@ Then install from custom repostiory:
 
     # pacman -Sy <package>
 
+Remove pacakge from database:
+
+::
+
+    $ repo-remove /home/an9wer/<custompkgs>/custom.db.tar.gz <package name>
+    $ rm </path/to/pkg.tar.xz> /home/an9wer/<custompkgs>
+
 
 References
 """"""""""

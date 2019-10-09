@@ -3,6 +3,13 @@ Vim Editing
 
 see *:h editing.txt*
 
+CTRL-G | :f[ile]
+    Prints the current file name
+
+{count}CTRL-G
+    Prints the current file name with full path. If the count is higher then 1,
+    the current buffer number is also given.
+
 
 Writing
 -------
