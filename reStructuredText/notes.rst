@@ -60,6 +60,8 @@ Linux/
 
     `Linux NetworkManager </notes/linux/networkmanager.html>`_
 
+    `Linux memtest86+   </notes/linux/memtest86+.html>`_
+
 Package/
     `RPM        </notes/package/rpm.html>`_
 

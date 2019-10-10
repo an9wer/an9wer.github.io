@@ -32,6 +32,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/alsa.rst
         reStructuredText/notes/linux/kickstart.rst
         reStructuredText/notes/linux/networkmanager.rst
+        reStructuredText/notes/linux/memtest86+.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/yum.rst

@@ -44,3 +44,37 @@ About protal sfappgateway:
 
 Service principal ID: 9a0392c5-0453-414a-aa0e-738719d7af34
 Service principal password: 60dc6b80-061e-451d-bfaa-c1130bc51eba
+
+Storage
+-------
+
+Generate container sas:
+
+::
+
+    az storage container generate-sas \
+        --account-name $scriptstorageaccount \
+        --name $containername \
+        --expiry $(date -u -d "60 minutes" '+%Y-%m-%dT%H:%MZ') \
+        --https-only \
+        -o tsv \
+        --permissions acdlrw
+
+VM Custom Extension
+-------------------
+
+Related files:
+    /var/lib/waagent/custom-script/download/<num>/
+    /var/log/waagent.log 
+    /var/log/azure/custom-script/handler.log
+
+Run extension:
+
+::
+
+    az vmss extension set  \
+        --resource-group nutstoresfstaging3 \
+        --vmss-name nt1vm \
+        --publisher Microsoft.Azure.Extensions \
+        --name customScript \
+        --settings ./script.json
