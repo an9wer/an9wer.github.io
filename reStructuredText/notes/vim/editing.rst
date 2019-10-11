@@ -18,6 +18,7 @@ Writing
     Execute {cmd} with [range] lines as standard input (note the space in front
     of the '!'). 
 
+The default [range] for the ":w" command is the whole buffer (1,$).
 
 
 File encryption
