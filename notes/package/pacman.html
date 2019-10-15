@@ -33,6 +33,23 @@
         <div id="content">
 <div class="section" id="pacman">
 <h1>Pacman</h1>
+<div class="section" id="related-files">
+<h2>Related files</h2>
+<dl class="simple">
+<dt>/var/lib/pacman/local/package-version/files</dt>
+<dd><p>Contains metadata about this package. If this file gets corrupted, is empty
+or goes missing, it results in file exists in filesystem errors when trying
+to update the package.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="s">
+<h2>S</h2>
+<p>Fix &quot;Failed to commit transaction (conflicting files)&quot; error:</p>
+<pre class="literal-block"># pacman -S --overwrite &lt;path&gt; &lt;pacakge&gt;</pre>
+<p>Display information of remote packages:</p>
+<pre class="literal-block">$ pacman -Si &lt;package&gt; [...]</pre>
+</div>
 <div class="section" id="q">
 <h2>Q</h2>
 <p>Query the package database. This operation allows you to view <strong>installed</strong>
