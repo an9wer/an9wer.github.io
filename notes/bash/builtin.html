@@ -130,11 +130,13 @@ doesn't reset OPTIND automatically; it must be manually reset.</p>
 <dt>OPTARG</dt>
 <dd><p>Stores the current argument.</p>
 </dd>
+<dt>Silent mode</dt>
+<dd><p>When the first character of 'optstring' is a <em>colon</em>, the getopt is silent.</p>
+</dd>
 </dl>
 <p>When the end of options is encountered, getopts exits with a return value
 greater than zero. 'OPTIND' is set to the index of the first non-option
 argument, and 'name' is set to ?.</p>
-<p>When the first character of 'optstring' is a <em>colon</em>, the getopt is silent.</p>
 <p>If an invalid option is seen, getopts places ? into 'name' and, if not silent,
 prints an message and unset OPTARG. if getopts is silent, the option character
 found is placed in 'OPTARG' and no diagnostic message is printed.</p>

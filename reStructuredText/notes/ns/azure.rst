@@ -78,3 +78,16 @@ Run extension:
         --publisher Microsoft.Azure.Extensions \
         --name customScript \
         --settings ./script.json
+
+
+References
+----------
+
+`Set up an encryption certificate and encrypt secrets on Linux clusters
+<https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-secret-management-linux>`_
+
+`Manage encrypted secrets in Service Fabric applications
+<https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-secret-management>`_
+
+`Azure Service Fabric security
+<https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-security>`_

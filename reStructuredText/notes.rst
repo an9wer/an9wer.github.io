@@ -69,6 +69,10 @@ Package/
 
     `dnf        </notes/package/dnf.html>`_
 
+    `dpkg       </notes/package/dpkg.html>`_
+
+    `apt        </notes/package/apt.html>`_
+
     `pacman     </notes/pacman/pacman.html>`_
 
     `fpm        <notes/package/fpm.html>`_

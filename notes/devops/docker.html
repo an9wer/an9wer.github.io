@@ -37,8 +37,28 @@
 <pre class="literal-block"># docker inspect &lt;container&gt;</pre>
 <pre class="literal-block"># docker network ls</pre>
 <pre class="literal-block"># docker network inspect &lt;network&gt;</pre>
+<div class="section" id="build">
+<h2>Build</h2>
+<p>Build from &lt;path&gt;/Dockerfile:</p>
+<pre class="literal-block"># docker build --name &lt;image&gt; &lt;path&gt;</pre>
+</div>
+<div class="section" id="run">
+<h2>Run</h2>
+<p>Run with arguments:</p>
+<pre class="literal-block"># docker run &lt;image&gt; &lt;arg&gt;...</pre>
+<p>Run interactively with shell, if no ENTRYPINT set in Dockerfile:</p>
+<pre class="literal-block"># docker run -it --name &lt;container&gt; &lt;image&gt; /bin/bash</pre>
+<p>Run interactively with shell, but ENTRYPINT set in Dockerfile:</p>
+<pre class="literal-block"># docker run -it --name &lt;container&gt; --entrypoint /bin/bash &lt;image&gt;
+
+or
+
+# docker run -it --name &lt;container&gt; --entrypoint &quot;&quot; &lt;image&gt; /bin/bash</pre>
+<p>Remove container after it exits:</p>
+<pre class="literal-block"># docker run -rm &lt;image&gt;</pre>
+</div>
 <div class="section" id="volume">
-<h2>volume</h2>
+<h2>Volume</h2>
 <pre class="literal-block"># docker volume ls</pre>
 <pre class="literal-block"># docker volume inspect &lt;volume&gt;</pre>
 <pre class="literal-block"># docker volume rm &lt;volume&gt;</pre>
@@ -59,6 +79,36 @@
 <pre class="literal-block"># docker-compose stop</pre>
 <p>remove all:</p>
 <pre class="literal-block"># docker-compose rm</pre>
+</div>
+</div>
+<div class="section" id="dockerfile">
+<h2>Dockerfile</h2>
+<div class="section" id="entrypoint">
+<h3>ENTRYPOINT</h3>
+<p>Exec form:</p>
+<pre class="literal-block">ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</pre>
+<p>Shell form:</p>
+<pre class="literal-block">ENTRYPOINT command param1 param2</pre>
+<p>An ENTRYPOINT allows you to configure a container that will run as an
+executable.</p>
+<p>Command line arguments to <span class="docutils literal">docker run &lt;image&gt;</span> will be appended after all
+elements in an exec form ENTRYPOINT, and will override all elements specified
+using CMD. i.e., <span class="docutils literal">docker run &lt;image&gt; <span class="pre">-d</span></span> will pass the -d argument to the
+entry point.</p>
+<p>You can override the ENTRYPOINT instruction using the <span class="docutils literal">docker run <span class="pre">--entrypoint</span></span> flag.</p>
+</div>
+<div class="section" id="cmd">
+<h3>CMD</h3>
+<p>As default parameters to ENTRYPOINT:</p>
+<pre class="literal-block">CMD [&quot;param1&quot;,&quot;param2&quot;]</pre>
+<p>Exec form:</p>
+<pre class="literal-block">CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</pre>
+<p>Shell form:</p>
+<pre class="literal-block">CMD command param1 param2</pre>
+<p>The main purpose of a CMD is to provide defaults for an executing container.
+These defaults can include an executable, or they can omit the executable, in
+which case you must specify an ENTRYPOINT instruction as well.</p>
+<p>If you list more than one CMD then only the last CMD will take effect.</p>
 </div>
 </div>
 </div>

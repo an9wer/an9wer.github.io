@@ -24,7 +24,8 @@
 使用终端浏览器（w3m, links 等）配合文本处理命令（sed, awk, cut) 等，不就可以做
 到类似爬虫的效果吗？
 
-于是乎自己撸了一个 `脚本 <https://github.com/an9wer/werice/blob/master/.scripts/camdict>`_
+于是乎自己撸了一个 `脚本
+<https://github.com/an9wer/werice/blob/aef3c56f398ace4184148c0de6fcfe9a7e152614/.scripts/camdict>`_
 ，简单粗暴（详细用法可参见 ``camdict -h`` ）。
 
 Thanks for reading :)

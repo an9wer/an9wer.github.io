@@ -10,7 +10,13 @@ Enter BIOS, scroll to IPMI menu and set:
 
     IPv4:    10.220.0.x
     Mask:    255.255.0.0
-    Gateway: 10.0.0.8
+    Gateway: 10.220.0.8
+
+Check IPMI ip config:
+
+::
+
+    $ ipmitool -I lan -H <ip> -U <username> -P <password> lan print
 
 Mount iso by samba:
 

@@ -106,11 +106,12 @@ OPTIND
 OPTARG
     Stores the current argument.
 
+Silent mode
+    When the first character of 'optstring' is a *colon*, the getopt is silent.
+
 When the end of options is encountered, getopts exits with a return value
 greater than zero. 'OPTIND' is set to the index of the first non-option
 argument, and 'name' is set to ?.
-
-When the first character of 'optstring' is a *colon*, the getopt is silent.
 
 If an invalid option is seen, getopts places ? into 'name' and, if not silent,
 prints an message and unset OPTARG. if getopts is silent, the option character

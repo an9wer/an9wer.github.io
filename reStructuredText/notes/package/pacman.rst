@@ -1,6 +1,27 @@
 Pacman
 ======
 
+
+Related files
+-------------
+
+/var/lib/pacman/local/package-version/files
+    Contains metadata about this package. If this file gets corrupted, is empty
+    or goes missing, it results in file exists in filesystem errors when trying
+    to update the package.
+
+S
+-
+
+Fix "Failed to commit transaction (conflicting files)" error: ::
+
+    # pacman -S --overwrite <path> <pacakge>
+
+
+Display information of remote packages: ::
+
+    $ pacman -Si <package> [...]
+
 Q
 -
 

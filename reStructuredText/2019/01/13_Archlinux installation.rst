@@ -325,3 +325,10 @@ Set tap button of touchpad:
                 Option "TapButton3" "2"
         EndSection
 
+
+Edit 2019/10/16
+---------------
+
+Install RDP client remmina: ::
+
+    # pacman -S remmina freerdp
