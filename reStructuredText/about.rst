@@ -9,11 +9,3 @@ Connect me: *blog.an9wer@gmail.com*
 
     A fan of `suckless <https://suckless.org>`_ (dwm, st, dmenu, noice,
     slstatus, and slock)
-
-::
-
-              ^__^
-              (oo)\_______
-              (__)\       )\/\
-                    ||----w |
-                    ||     ||

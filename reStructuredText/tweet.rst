@@ -1,6 +1,10 @@
+2019/10/22 Tue
+
+    Perl is awesome!!
+
 2019/09/26 Thu
 
-    Good luck, see you.
+    Good \*uck, see you.
 
     .. image:: /statics/images/tweet/2019/09/stand.jpg
 

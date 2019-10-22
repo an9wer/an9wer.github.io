@@ -78,6 +78,10 @@ The shell scans the results of *parameter expansion*, *command substitution*,
 and *arithmetic expansion* that did not occur within double quotes for word
 splitting.
 
+The  shell treats each character of **IFS** as a delimiter, and splits the
+results of the other expansions into words using these characters as field
+terminators.
+
 **Note** that if no expansion occurs, no splitting is performed.
 
 ::

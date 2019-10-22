@@ -24,23 +24,52 @@
                 href="/blog.html">Blog</a>
             <a id="tweet"
                 href="/tweet.html">Tweet</a>
-            <a id="notes"
+            <a id="notes" class="current"
                 href="/notes.html">Notes</a>
-            <a id="about" class="current"
+            <a id="about"
                 href="/about.html">About</a>
         </div> <!-- navbar -->
 
         <div id="content">
-<dl>
-<dt>Connect me: <em>blog.an9wer&#64;gmail.com</em></dt>
-<dd><p>Parameter engineer</p>
-<p>Work for bread with Python</p>
-<p>Play for fun with C, Bash, VimL and also Python in free time</p>
-<p>Love photo, phone, laptop, tablet, PC and Linux things</p>
-<p>A fan of <a class="reference external" href="https://suckless.org">suckless</a> (dwm, st, dmenu, noice,
-slstatus, and slock)</p>
+<div class="section" id="vim-cmdline">
+<h1>Vim cmdline</h1>
+<dl class="simple">
+<dt>{number}</dt>
+<dd><p>an absolute line number</p>
+</dd>
+<dt>.</dt>
+<dd><p>the current line</p>
+</dd>
+<dt>$</dt>
+<dd><p>the last line in the file</p>
+</dd>
+<dt>%</dt>
+<dd><p>equal to 1,$ (the entire file)</p>
+</dd>
+<dt>'t</dt>
+<dd><p>position of mark t (lowercase)</p>
+</dd>
+<dt>'T</dt>
+<dd><p>position of mark T (uppercase); when the mark is in another file it cannot
+be used in a range</p>
+</dd>
+<dt>/{pattern}[/]</dt>
+<dd><p>the next line where {pattern} matches</p>
+</dd>
+<dt>?{pattern}[?]</dt>
+<dd><p>the previous line where {pattern} matches</p>
+</dd>
+<dt>/</dt>
+<dd><p>the next line where the previously used search pattern matches</p>
+</dd>
+<dt>?</dt>
+<dd><p>the previous line where the previously used search pattern matches</p>
+</dd>
+<dt>&amp;</dt>
+<dd><p>the next line where the previously used substitute pattern matches</p>
 </dd>
 </dl>
+</div>
         </div> <!-- content -->
 
         <div id="footer">

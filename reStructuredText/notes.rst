@@ -62,6 +62,10 @@ Linux/
 
     `Linux memtest86+   </notes/linux/memtest86+.html>`_
 
+    `Linux openssl  </note/linux/openssl.html>`_
+
+    `Linux machine id   </notes/linux/machine_id.html>`_
+
 Package/
     `RPM        </notes/package/rpm.html>`_
 
@@ -98,6 +102,8 @@ Vim/
     `Vim options    </notes/vim/options.html>`_
 
     `Vim pattern    </notes/vim/pattern.html>`_
+
+    `Vim cmdline    </notes/vim/cmdline.html>`_
 
     `Vim editing    </notes/vim/editing.html>`_
 
@@ -153,6 +159,8 @@ Language/
 
     `Graphviz   </notes/language/grammar.html>`_
 
+    `Perl       </notes/language/perl.html>`_
+
 Awesome/
     `redshift   </notes/awesome/redshift.html>`_
 
@@ -168,6 +176,8 @@ Misc/
     `regex      </notes/miscellaneous/regex.html>`_
 
     `TLS/SSL    </notes/miscellaneous/tls_ssl.html>`_
+
+    `SAAS PAAS IAAS </notes/miscellaneous/saas_paas_iaas.html>`_
 
 
 HowTo
