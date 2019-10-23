@@ -7,8 +7,6 @@ Commands/
 
     `iptables   </notes/commands/iptables.html>`_
 
-    `ntp        </notes/commands/ntp.html>`_
-
     `sed        </notes/commands/sed.html>`_
 
     `dmidecode  </notes/commands/dmidecode.html>`_
@@ -31,6 +29,9 @@ Coreutils/
     `mktemp     </notes/coreutils/mktemp.html>`_
 
     `cut        </notes/coreutils/cut.html>`_
+
+Util-linux/
+    `hwclock    </notes/util-linux/hwclock.html>`_
 
 Psmisc/
     `pstree     </notes/psmisc/pstree.html>`_
@@ -65,6 +66,8 @@ Linux/
     `Linux openssl  </note/linux/openssl.html>`_
 
     `Linux machine id   </notes/linux/machine_id.html>`_
+
+    `Linux ntp      </notes/linux/ntp.html>`_
 
 Package/
     `RPM        </notes/package/rpm.html>`_
@@ -185,15 +188,13 @@ HowTo
 
 Q : How to check CentOS version?
 
-A1:
-    ::
+A1: ::
 
-        $ rpm -q centos-release
+    $ rpm -q centos-release
 
-A2:
-    ::
+A2: ::
 
-        $ cat /etc/centos-release
+    $ cat /etc/centos-release
 
 ----
 
@@ -205,20 +206,17 @@ A : `freenom <https://www.freenom.com/>`_
 
 Q : How to find my public ip address?
 
-A1:
-    ::
+A1: ::
 
-        $ dig +short myip.opendns.com @resolver1.opendns.com
+    $ dig +short myip.opendns.com @resolver1.opendns.com
 
-A2:
-    ::
+A2: ::
 
-        $ dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+    $ dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
 
-A3:
-    ::
+A3: ::
 
-        $ curl ifconfig.me
+    $ curl ifconfig.me
 
 R :
     `How to find my public ip address from command line?
@@ -230,11 +228,10 @@ R :
 
 Q : How to trim leading and trailing white space from a string in Bash?
 
-A :
-    ::
+A : ::
 
-        $ echo " some string  " | xarg
-        some string
+    $ echo " some string  " | xarg
+    some string
 
 R :
     `How to trim whitespace from a Bash variable? <https://stackoverflow.com/a/12973694>`_
@@ -243,20 +240,17 @@ R :
 
 Q : How to get TX/RX ?
 
-A1:
-    ::
+A1: ::
 
-        $ cat /proc/net/dev
+    $ cat /proc/net/dev
 
-A2:
-    ::
+A2: ::
 
-        $ ip -s link
+    $ ip -s link
         
-A3:
-    ::
+A3: ::
 
-        $ netstat -i
+    $ netstat -i
 
 R :
     `How to get TX/RX bytes without ifconfig? <https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig>`_
@@ -265,10 +259,9 @@ R :
 
 Q : How to set default web browser in X11?
 
-A :
-    ::
+A : ::
 
-        $ xdg-settings set default-web-browser <firefox.desktop|chromium.desktop>
+    $ xdg-settings set default-web-browser <firefox.desktop|chromium.desktop>
 
 R :
     `Archwiki: xdg-utils <https://wiki.archlinux.org/index.php/Xdg-utils>`_
@@ -288,3 +281,11 @@ A :
     The easiest way to find out if you are running UEFI or BIOS is to look for
     a folder */sys/firmware/efi*. The folder will be missing if your system is
     using BIOS.
+
+---
+
+Q: How to restart current shell after modify .bashrc or other rcfile?
+
+A: ::
+
+    $ exec $SHELL -l

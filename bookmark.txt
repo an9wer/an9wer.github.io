@@ -4,7 +4,6 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/info.rst
         reStructuredText/notes/commands/top.rst
         reStructuredText/notes/commands/iptables.rst
-        reStructuredText/notes/commands/ntp.rst
         reStructuredText/notes/commands/sed.rst
         reStructuredText/notes/commands/dmidecode.rst
         reStructuredText/notes/commands/lsscsi.rst
@@ -17,6 +16,8 @@ reStructuredText/notes.rst
     Coreutils
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
+    Util-linux
+        reStructuredText/notes/util-linux/hwclock.rst
     Psmisc
         reStructuredText/notes/psmisc/pstree.rst
     Linux
@@ -35,6 +36,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/memtest86+.rst
         reStructuredText/notes/linux/openssl.rst
         reStructuredText/notes/linux/machine_id.rst
+        reStructuredText/notes/linux/ntp.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/yum.rst
@@ -101,10 +103,10 @@ reStructuredText/notes.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst
-        reStructuredText/notes/ns/wordpress.rst
         reStructuredText/notes/ns/npd.rst
         reStructuredText/notes/ns/wh_route.rst
         reStructuredText/notes/ns/azure.rst
+        reStructuredText/notes/ns/gcloud.rst
 
     TODO
          sudo ip route add default via 10.0.0.1 dev eth1 src 10.0.0.14 table e1

@@ -37,7 +37,6 @@
 <p><a class="reference external" href="/notes/commands/info.html">info</a></p>
 <p><a class="reference external" href="/notes/commands/top.html">top</a></p>
 <p><a class="reference external" href="/notes/commands/iptables.html">iptables</a></p>
-<p><a class="reference external" href="/notes/commands/ntp.html">ntp</a></p>
 <p><a class="reference external" href="/notes/commands/sed.html">sed</a></p>
 <p><a class="reference external" href="/notes/commands/dmidecode.html">dmidecode</a></p>
 <p><a class="reference external" href="/notes/commands/lsscsi.html">lsscsi</a></p>
@@ -51,6 +50,9 @@
 <dt>Coreutils/</dt>
 <dd><p><a class="reference external" href="/notes/coreutils/mktemp.html">mktemp</a></p>
 <p><a class="reference external" href="/notes/coreutils/cut.html">cut</a></p>
+</dd>
+<dt>Util-linux/</dt>
+<dd><p><a class="reference external" href="/notes/util-linux/hwclock.html">hwclock</a></p>
 </dd>
 <dt>Psmisc/</dt>
 <dd><p><a class="reference external" href="/notes/psmisc/pstree.html">pstree</a></p>
@@ -71,6 +73,7 @@
 <p><a class="reference external" href="/notes/linux/memtest86+.html">Linux memtest86+</a></p>
 <p><a class="reference external" href="/note/linux/openssl.html">Linux openssl</a></p>
 <p><a class="reference external" href="/notes/linux/machine_id.html">Linux machine id</a></p>
+<p><a class="reference external" href="/notes/linux/ntp.html">Linux ntp</a></p>
 </dd>
 <dt>Package/</dt>
 <dd><p><a class="reference external" href="/notes/package/rpm.html">RPM</a></p>
@@ -149,29 +152,22 @@
 <div class="section" id="howto">
 <h1>HowTo</h1>
 <p>Q : How to check CentOS version?</p>
-<dl>
-<dt>A1:</dt>
-<dd><pre class="literal-block">$ rpm -q centos-release</pre>
-</dd>
-<dt>A2:</dt>
-<dd><pre class="literal-block">$ cat /etc/centos-release</pre>
-</dd>
-</dl>
+<p>A1:</p>
+<pre class="literal-block">$ rpm -q centos-release</pre>
+<p>A2:</p>
+<pre class="literal-block">$ cat /etc/centos-release</pre>
 <hr class="docutils" />
 <p>Q : How to apply a free doman name?</p>
 <p>A : <a class="reference external" href="https://www.freenom.com/">freenom</a></p>
 <hr class="docutils" />
 <p>Q : How to find my public ip address?</p>
+<p>A1:</p>
+<pre class="literal-block">$ dig +short myip.opendns.com &#64;resolver1.opendns.com</pre>
+<p>A2:</p>
+<pre class="literal-block">$ dig TXT +short o-o.myaddr.l.google.com &#64;ns1.google.com</pre>
+<p>A3:</p>
+<pre class="literal-block">$ curl ifconfig.me</pre>
 <dl>
-<dt>A1:</dt>
-<dd><pre class="literal-block">$ dig +short myip.opendns.com &#64;resolver1.opendns.com</pre>
-</dd>
-<dt>A2:</dt>
-<dd><pre class="literal-block">$ dig TXT +short o-o.myaddr.l.google.com &#64;ns1.google.com</pre>
-</dd>
-<dt>A3:</dt>
-<dd><pre class="literal-block">$ curl ifconfig.me</pre>
-</dd>
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/">How to find my public ip address from command line?</a></p>
 <p><a class="reference external" href="https://unix.stackexchange.com/a/335403">What is 'myip.opendns.com' doing?</a></p>
@@ -179,37 +175,32 @@
 </dl>
 <hr class="docutils" />
 <p>Q : How to trim leading and trailing white space from a string in Bash?</p>
-<dl>
-<dt>A :</dt>
-<dd><pre class="literal-block">$ echo &quot; some string  &quot; | xarg
+<p>A :</p>
+<pre class="literal-block">$ echo &quot; some string  &quot; | xarg
 some string</pre>
-</dd>
+<dl class="simple">
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://stackoverflow.com/a/12973694">How to trim whitespace from a Bash variable?</a></p>
 </dd>
 </dl>
 <hr class="docutils" />
 <p>Q : How to get TX/RX ?</p>
-<dl>
-<dt>A1:</dt>
-<dd><pre class="literal-block">$ cat /proc/net/dev</pre>
-</dd>
-<dt>A2:</dt>
-<dd><pre class="literal-block">$ ip -s link</pre>
-</dd>
-<dt>A3:</dt>
-<dd><pre class="literal-block">$ netstat -i</pre>
-</dd>
+<p>A1:</p>
+<pre class="literal-block">$ cat /proc/net/dev</pre>
+<p>A2:</p>
+<pre class="literal-block">$ ip -s link</pre>
+<p>A3:</p>
+<pre class="literal-block">$ netstat -i</pre>
+<dl class="simple">
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig">How to get TX/RX bytes without ifconfig?</a></p>
 </dd>
 </dl>
 <hr class="docutils" />
 <p>Q : How to set default web browser in X11?</p>
-<dl>
-<dt>A :</dt>
-<dd><pre class="literal-block">$ xdg-settings set default-web-browser &lt;firefox.desktop|chromium.desktop&gt;</pre>
-</dd>
+<p>A :</p>
+<pre class="literal-block">$ xdg-settings set default-web-browser &lt;firefox.desktop|chromium.desktop&gt;</pre>
+<dl class="simple">
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://wiki.archlinux.org/index.php/Xdg-utils">Archwiki: xdg-utils</a></p>
 </dd>
@@ -230,6 +221,10 @@ a folder <em>/sys/firmware/efi</em>. The folder will be missing if your system i
 using BIOS.</p>
 </dd>
 </dl>
+<p>---</p>
+<p>Q: How to restart current shell after modify .bashrc or other rcfile?</p>
+<p>A:</p>
+<pre class="literal-block">$ exec $SHELL -l</pre>
 </div>
         </div> <!-- content -->
 

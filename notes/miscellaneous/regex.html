@@ -37,10 +37,18 @@
 <div class="section" id="regex-engine">
 <h2>Regex engine</h2>
 <p>There are basically only two kinds of regular expression engines: text-directed
-engines, and regex-directed engines (NFA). Nearly all modern regex (DFA)
-flavors are based on <strong>regex-directed engines (NFA)</strong>.</p>
-<p>Regex engine is eager, this means it will stop searching as soon as it finds a
-valid match.</p>
+engines(<strong>DFA</strong>), and regex-directed engines (<strong>NFA</strong>). Nearly all modern regex
+flavors are based on regex-directed engines.</p>
+<ul class="simple">
+<li><p>A regex-directed engine walks through the regex, attempting to match the
+next token in the regex to the next character. If a match is found, the
+engine advances through the regex and the subject string. If a token fails
+to match, the engine backtracks to a previous position in the regex and the
+subject string where it can try a different path through the regex.</p></li>
+<li><p>A text-directed engine walks through the subject string, attempting all
+permutations of the regex before advancing to the next character in the
+string.  A text-directed engine never backtracks.</p></li>
+</ul>
 <div class="section" id="references">
 <h3>References</h3>
 <ul class="simple">
@@ -48,6 +56,17 @@ valid match.</p>
 <li><p><a class="reference external" href="https://se.ifmo.ru/~ad/Documentation/Mastering_RegExp/mastregex2-CHP-4-SECT-3.html">https://se.ifmo.ru/~ad/Documentation/Mastering_RegExp/mastregex2-CHP-4-SECT-3.html</a></p></li>
 </ul>
 </div>
+</div>
+<div class="section" id="attributes-of-regex-directed-engine">
+<h2>Attributes of regex-directed engine</h2>
+<dl class="simple">
+<dt>Eager</dt>
+<dd><p>It will stop searching as soon as it finds a valid match.</p>
+</dd>
+<dt>Backtracking</dt>
+<dd><p>Backtrack to a previous position in the regex if match fails.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="backtracking-in-nfa">
 <h2>Backtracking in NFA</h2>
