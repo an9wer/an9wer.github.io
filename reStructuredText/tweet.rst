@@ -1,3 +1,7 @@
+2019/10/28 Mon
+
+    Essential Phone 被磕碎两个角，心疼 T^T。
+
 2019/10/25 Fri
 
     发现 pacman 更新之后，居然舍弃了 -Fo 和 -Fs 选项。这么激进的吗？
