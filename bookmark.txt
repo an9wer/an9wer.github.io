@@ -7,9 +7,6 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/sed.rst
         reStructuredText/notes/commands/dmidecode.rst
         reStructuredText/notes/commands/lsscsi.rst
-        reStructuredText/notes/commands/xclip.rst
-        reStructuredText/notes/commands/xmodmap.rst
-        reStructuredText/notes/commands/fio.rst
         reStructuredText/notes/commands/bc.rst
         reStructuredText/notes/commands/ssh.rst
         reStructuredText/notes/commands/lsof.rst
@@ -20,6 +17,14 @@ reStructuredText/notes.rst
         reStructuredText/notes/util-linux/hwclock.rst
     Psmisc
         reStructuredText/notes/psmisc/pstree.rst
+    X11
+        reStructuredText/notes/X11/xclip.rst
+        reStructuredText/notes/X11/xmodmap.rst
+        reStructuredText/notes/X11/redshift.rst
+    Benchmarking
+        reStructuredText/notes/benchmarking/fio.rst
+    Monitor
+        reStructuredText/notes/monitor/collectd.rst
     Linux
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst
@@ -89,8 +94,6 @@ reStructuredText/notes.rst
         reStructuredText/notes/language/ebnf.rst
         reStructuredText/notes/language/graphviz.rst
         reStructuredText/notes/language/perl.rst
-    Awesome
-        reStructuredText/notes/awesome/redshift.rst
     Misc
         reStructuredText/notes/miscellaneous/programming_language.rst
         reStructuredText/notes/miscellaneous/operating_system.rst

@@ -1,6 +1,18 @@
 SSH
 ===
 
+-A
+    Enables forwarding of the authentication agent connection.
+
+    ::
+
+        $ eval ssh-agent $SHELL
+        $ ssh-add ~/.ssh/<destinationAB's private key>
+        $ # From host
+        $ ssh -A <destinationA>
+        $ # From destinationA
+        $ ssh <destinationB>
+
 SSH tunnel
 ----------
 

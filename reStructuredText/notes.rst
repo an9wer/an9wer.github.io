@@ -13,13 +13,7 @@ Commands/
 
     `lsscsi     </notes/commands/lsscsi.html>`_
 
-    `xclip      </notes/commands/xclip.html>`_
-
-    `xmodmap    </notes/commands/xmodmap.html>`_
-
-    `fio        </notes/commands/fio.html>`_
-
-    `bc         </notes/commands/fio.html>`_
+    `bc         </notes/commands/bc.html>`_
 
     `ssh        </notes/commands/ssh.html>`_
 
@@ -35,6 +29,20 @@ Util-linux/
 
 Psmisc/
     `pstree     </notes/psmisc/pstree.html>`_
+
+X11/
+    `xclip      </notes/X11/xclip.html>`_
+
+    `xmodmap    </notes/X11/xmodmap.html>`_
+
+    `redshift   </notes/X11/redshift.html>`_
+
+Benchmarking/
+
+    `fio        </notes/commands/fio.html>`_
+
+Monitor/
+    `collectd   </notes/monitor/collectd.html>`_
 
 Linux/
     `Linux filesystem hierarchy </notes/linux/filesystem_hierarchy.html>`_
@@ -164,9 +172,6 @@ Language/
 
     `Perl       </notes/language/perl.html>`_
 
-Awesome/
-    `redshift   </notes/awesome/redshift.html>`_
-
 Misc/
     `Programming language </notes/miscellaneous/programming_language.html>`_
 
@@ -289,3 +294,28 @@ Q: How to restart current shell after modify .bashrc or other rcfile?
 A: ::
 
     $ exec $SHELL -l
+
+---
+
+Q : How to disable root login?
+
+A1 : ::
+
+    Lock
+    # passwd -l root
+
+    Unlock
+    # passwd -u root
+
+A2 : ::
+
+    Lock
+    # vim /etc//shadow
+        root:!:12345::::::
+
+    Unlock
+    # passwd root
+
+R :
+
+    `Archwiki: disable root login <https://wiki.archlinux.org/index.php/Sudo#Disable_root_login>`_

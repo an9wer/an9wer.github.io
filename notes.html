@@ -40,10 +40,7 @@
 <p><a class="reference external" href="/notes/commands/sed.html">sed</a></p>
 <p><a class="reference external" href="/notes/commands/dmidecode.html">dmidecode</a></p>
 <p><a class="reference external" href="/notes/commands/lsscsi.html">lsscsi</a></p>
-<p><a class="reference external" href="/notes/commands/xclip.html">xclip</a></p>
-<p><a class="reference external" href="/notes/commands/xmodmap.html">xmodmap</a></p>
-<p><a class="reference external" href="/notes/commands/fio.html">fio</a></p>
-<p><a class="reference external" href="/notes/commands/fio.html">bc</a></p>
+<p><a class="reference external" href="/notes/commands/bc.html">bc</a></p>
 <p><a class="reference external" href="/notes/commands/ssh.html">ssh</a></p>
 <p><a class="reference external" href="/notes/commands/lsof.html">lsof</a></p>
 </dd>
@@ -56,6 +53,20 @@
 </dd>
 <dt>Psmisc/</dt>
 <dd><p><a class="reference external" href="/notes/psmisc/pstree.html">pstree</a></p>
+</dd>
+<dt>X11/</dt>
+<dd><p><a class="reference external" href="/notes/X11/xclip.html">xclip</a></p>
+<p><a class="reference external" href="/notes/X11/xmodmap.html">xmodmap</a></p>
+<p><a class="reference external" href="/notes/X11/redshift.html">redshift</a></p>
+</dd>
+</dl>
+<p>Benchmarking/</p>
+<blockquote>
+<p><a class="reference external" href="/notes/commands/fio.html">fio</a></p>
+</blockquote>
+<dl>
+<dt>Monitor/</dt>
+<dd><p><a class="reference external" href="/notes/monitor/collectd.html">collectd</a></p>
 </dd>
 <dt>Linux/</dt>
 <dd><p><a class="reference external" href="/notes/linux/filesystem_hierarchy.html">Linux filesystem hierarchy</a></p>
@@ -135,9 +146,6 @@
 <p><a class="reference external" href="/notes/language/ebnf.html">EBNF</a></p>
 <p><a class="reference external" href="/notes/language/grammar.html">Graphviz</a></p>
 <p><a class="reference external" href="/notes/language/perl.html">Perl</a></p>
-</dd>
-<dt>Awesome/</dt>
-<dd><p><a class="reference external" href="/notes/awesome/redshift.html">redshift</a></p>
 </dd>
 <dt>Misc/</dt>
 <dd><p><a class="reference external" href="/notes/miscellaneous/programming_language.html">Programming language</a></p>
@@ -225,6 +233,25 @@ using BIOS.</p>
 <p>Q: How to restart current shell after modify .bashrc or other rcfile?</p>
 <p>A:</p>
 <pre class="literal-block">$ exec $SHELL -l</pre>
+<p>---</p>
+<p>Q : How to disable root login?</p>
+<p>A1 :</p>
+<pre class="literal-block">Lock
+# passwd -l root
+
+Unlock
+# passwd -u root</pre>
+<p>A2 :</p>
+<pre class="literal-block">Lock
+# vim /etc//shadow
+    root:!:12345::::::
+
+Unlock
+# passwd root</pre>
+<p>R :</p>
+<blockquote>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Sudo#Disable_root_login">Archwiki: disable root login</a></p>
+</blockquote>
 </div>
         </div> <!-- content -->
 

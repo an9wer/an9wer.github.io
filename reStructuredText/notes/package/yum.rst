@@ -9,9 +9,7 @@ list
 ----
 
 ``yum list`` displays information on the version of the package, the format of
-output is:
-
-::
+output is: ::
 
     name.arch [epoch:]version-release  repo or @installed-from-repo
 
@@ -19,43 +17,37 @@ output is:
 
 List package(s) information from all (by default), available to be installed,
 availabe to be updated, installed or installed but not in yum repository listed
-in config file packages:
-
-::
+in config file packages: ::
 
     # yum list [all | available | updates | installed | extra ] [glob_exp ...]
 
 deplist
 -------
 
+List dependencies of packages: ::
+
+    $ yum deplist <package> [...]
+
 group
 -----
 
 To view the number of installed groups, available groups, available environment
-groups, and both installed and available language groups: 
-
-::
+groups, and both installed and available language groups: ::
 
     # yum group summary
 
 
-To list all package groups:
-
-::
+To list all package groups: ::
 
     # yum group list
 
-To list language, environment, installed or availabe package groups:
-
-::
+To list language, environment, installed or availabe package groups: ::
 
     # yum group list [language | environment | installed | available]
 
-To list packages contained in a particular group:
+To list packages contained in a particular group: ::
 
-::
-
-    # yum group info glob_exp [...]
+    # yum group info <glob_exp> [...]
 
 
 -   " - ": Package is not installed and it will not be installed as a part of
@@ -71,27 +63,20 @@ To list packages contained in a particular group:
     package group. This means that the yum group remove will not remove these
     packages. 
 
-To install package groups:
+To install package groups: ::
 
-::
+    # yum group install <glob_exp> [...]
 
-    # yum group install glob_exp [...]
+To update package groups: ::
 
-To update package groups:
+    # yum group update <glob_exp> [...]
 
-::
+To uninstall package groups: ::
 
-    # yum group update glob_exp [...]
-
-To uninstall package groups:
-
-::
-
-    # yum group remove glob_exp [...]
+    # yum group remove <glob_exp> [...]
 
 
 References
 ----------
 
 `Redhat Doc: Installing and Managing Software <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software>`_
-

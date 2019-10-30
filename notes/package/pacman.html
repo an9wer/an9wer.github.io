@@ -33,6 +33,34 @@
         <div id="content">
 <div class="section" id="pacman">
 <h1>Pacman</h1>
+<div class="section" id="handling-config-files">
+<h2>Handling config files</h2>
+<p>See <span class="docutils literal">man 8 pacman /HANDLING CONFIG FILES</span></p>
+<p>During an upgrade, three MD5 hashes are used for each backup file to determine
+the required action:</p>
+<dl class="simple">
+<dt>original=X, current=X, new=X</dt>
+<dd><p>Install the new file.</p>
+</dd>
+<dt>original=X, current=X, new=Y</dt>
+<dd><p>Install the new file.</p>
+</dd>
+<dt>original=X, current=Y, new=X</dt>
+<dd><p>Leave the current file in place.</p>
+</dd>
+<dt>original=X, current=Y, new=Y</dt>
+<dd><p>Install the new file.</p>
+</dd>
+<dt>original=X, current=Y, new=Z</dt>
+<dd><p>Install the new file with a .pacnew extension and warn the user. The user
+must then manually merge any necessary changes into the original file.</p>
+</dd>
+<dt>original=NULL, current=Y, new=Z</dt>
+<dd><p>Install the new file with a .pacnew extension and warn the user. The user
+must then manually merge any necessary changes into the original file.</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="related-files">
 <h2>Related files</h2>
 <dl class="simple">

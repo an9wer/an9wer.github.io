@@ -33,6 +33,17 @@
         <div id="content">
 <div class="section" id="ssh">
 <h1>SSH</h1>
+<dl class="option-list">
+<dt><kbd><span class="option">-A</span></kbd></dt>
+<dd><p>Enables forwarding of the authentication agent connection.</p>
+<pre class="literal-block">$ eval ssh-agent $SHELL
+$ ssh-add ~/.ssh/&lt;destinationAB's private key&gt;
+$ # From host
+$ ssh -A &lt;destinationA&gt;
+$ # From destinationA
+$ ssh &lt;destinationB&gt;</pre>
+</dd>
+</dl>
 <div class="section" id="ssh-tunnel">
 <h2>SSH tunnel</h2>
 <pre class="literal-block">ssh -L [bind_address:]port:host:hostport destination

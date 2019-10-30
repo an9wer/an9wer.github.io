@@ -1,6 +1,33 @@
 Pacman
 ======
 
+Handling config files
+---------------------
+
+See ``man 8 pacman /HANDLING CONFIG FILES``
+
+During an upgrade, three MD5 hashes are used for each backup file to determine
+the required action:
+
+original=X, current=X, new=X
+    Install the new file.
+
+original=X, current=X, new=Y
+    Install the new file.
+
+original=X, current=Y, new=X
+    Leave the current file in place.
+
+original=X, current=Y, new=Y
+    Install the new file.
+
+original=X, current=Y, new=Z
+    Install the new file with a .pacnew extension and warn the user. The user
+    must then manually merge any necessary changes into the original file.
+
+original=NULL, current=Y, new=Z
+    Install the new file with a .pacnew extension and warn the user. The user
+    must then manually merge any necessary changes into the original file.
 
 Related files
 -------------

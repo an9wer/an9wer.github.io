@@ -45,6 +45,12 @@ DNS Search Domain
 `What is DNS search domain <https://askubuntu.com/a/574111>`_
 
 
+CIDR
+----
+
+`Wikipedia: CIDR <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing>`_
+
+
 References
 ----------
 
@@ -53,7 +59,3 @@ References
 `Wikipedia: Link layer <https://en.wikipedia.org/wiki/Link_layer>`_
 
 `Wikipedia: Network layer <https://en.wikipedia.org/wiki/Network_layer>`_
-
-
-
-

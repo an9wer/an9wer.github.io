@@ -49,6 +49,8 @@ in config file packages:</p>
 </div>
 <div class="section" id="deplist">
 <h2>deplist</h2>
+<p>List dependencies of packages:</p>
+<pre class="literal-block">$ yum deplist &lt;package&gt; [...]</pre>
 </div>
 <div class="section" id="group">
 <h2>group</h2>
@@ -60,7 +62,7 @@ groups, and both installed and available language groups:</p>
 <p>To list language, environment, installed or availabe package groups:</p>
 <pre class="literal-block"># yum group list [language | environment | installed | available]</pre>
 <p>To list packages contained in a particular group:</p>
-<pre class="literal-block"># yum group info glob_exp [...]</pre>
+<pre class="literal-block"># yum group info &lt;glob_exp&gt; [...]</pre>
 <ul class="simple">
 <li><p>&quot; - &quot;: Package is not installed and it will not be installed as a part of
 the package group.</p></li>
@@ -73,11 +75,11 @@ package group. This means that the yum group remove will not remove these
 packages.</p></li>
 </ul>
 <p>To install package groups:</p>
-<pre class="literal-block"># yum group install glob_exp [...]</pre>
+<pre class="literal-block"># yum group install &lt;glob_exp&gt; [...]</pre>
 <p>To update package groups:</p>
-<pre class="literal-block"># yum group update glob_exp [...]</pre>
+<pre class="literal-block"># yum group update &lt;glob_exp&gt; [...]</pre>
 <p>To uninstall package groups:</p>
-<pre class="literal-block"># yum group remove glob_exp [...]</pre>
+<pre class="literal-block"># yum group remove &lt;glob_exp&gt; [...]</pre>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
