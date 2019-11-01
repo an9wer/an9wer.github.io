@@ -38,7 +38,6 @@ X11/
     `redshift   </notes/X11/redshift.html>`_
 
 Benchmarking/
-
     `fio        </notes/commands/fio.html>`_
 
 Monitor/
@@ -76,6 +75,8 @@ Linux/
     `Linux machine id   </notes/linux/machine_id.html>`_
 
     `Linux ntp      </notes/linux/ntp.html>`_
+
+    `Linux cgroups  </notes/linux/cgroups.html>`_
 
 Package/
     `RPM        </notes/package/rpm.html>`_
@@ -317,5 +318,4 @@ A2 : ::
     # passwd root
 
 R :
-
     `Archwiki: disable root login <https://wiki.archlinux.org/index.php/Sudo#Disable_root_login>`_

@@ -31,21 +31,13 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="openssl">
-<h1>Openssl</h1>
-<p>Display the content of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -text</pre>
-<p>Download certificate from a website:</p>
-<pre class="literal-block">$ echo -n | openssl s_client -connect &lt;HOST:PORT&gt; \
-    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' &gt;
-    &lt;certificate&gt;</pre>
-<p>Display fingerprint of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -fingerprint -noout</pre>
-<p>Display serial of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -serial -noout</pre>
+<div class="section" id="cgroups">
+<h1>Cgroups</h1>
+<pre class="literal-block">$ systemd-cgls</pre>
+<pre class="literal-block">$ systemd-cgtop</pre>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Wikipedia: public key fingerprint</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cgroups">Wikipedia: cgroups</a></p>
 </div>
 </div>
         </div> <!-- content -->

@@ -56,9 +56,32 @@ GatewayPorts
     to the local host only, *yes* to force remote port forwardings to bind to
     the wildcard address.
 
-kill -9 
+ssh-keygen
+----------
 
-ps -efw
+Generate the missing public key again from the private key: ::
 
-mv /opt/microsoft/servicefabric{,.bak}
-mv /mnt/sfroot{,.bak}
+    $ ssh-keygen -y -f <private key>
+
+Display fingerprint of public key: ::
+
+    $ ssh-keygen -l -f <private key or publick key>
+
+
+authorized_keys
+---------------
+
+See ``man sshd``
+
+Each line of the file contains one key (empty lines and lines starting with a
+"#" are ignored as comments). Public keys consist of the following
+space-separated fields: ::
+
+    [<options>] <keytype> <base64-encoded key> <comment>
+
+The keytype is “ecdsa-sha2-nistp256”, "ecdsa-sha2-nistp384",
+"ecdsa-sha2-nistp521", "ssh-ed25519", "ssh-dss" or "ssh-rsa";
+
+the comment field is not used for anything (but may be convenient for the user
+to identify the key).
+

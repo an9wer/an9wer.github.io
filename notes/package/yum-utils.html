@@ -31,22 +31,15 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="openssl">
-<h1>Openssl</h1>
-<p>Display the content of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -text</pre>
-<p>Download certificate from a website:</p>
-<pre class="literal-block">$ echo -n | openssl s_client -connect &lt;HOST:PORT&gt; \
-    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' &gt;
-    &lt;certificate&gt;</pre>
-<p>Display fingerprint of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -fingerprint -noout</pre>
-<p>Display serial of certificate:</p>
-<pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -serial -noout</pre>
-<div class="section" id="references">
-<h2>References</h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Wikipedia: public key fingerprint</a></p>
-</div>
+<div class="section" id="yum-utils">
+<h1>Yum-utils</h1>
+<pre class="literal-block"># yum install yum-utils</pre>
+<p>Download src.rpm:</p>
+<pre class="literal-block">$ yumdownloader --source &lt;package&gt;</pre>
+<p>Unpack src.rpm:</p>
+<pre class="literal-block">$ rpmd2cpio &lt;package.src.rpm&gt; | cpio -idmv</pre>
+<p>Extract spec file from src.rpm:</p>
+<pre class="literal-block">$ rpm2cpio &lt;package.src.rpm&gt; | cpio -civ '*.spec'</pre>
 </div>
         </div> <!-- content -->
 

@@ -33,10 +33,28 @@
         <div id="content">
 <div class="section" id="ntp">
 <h1>Ntp</h1>
-<p>pass</p>
+<p>Install and setup in Arch:</p>
+<pre class="literal-block"># pacman -S ntp
+
+# # Run at backgroud
+# systemctl start ntpd.service
+# systemctl enable ntpd.service
+or
+# # Run at boot time
+# systemctl start ntpdate.service
+# systemctl enable ntpdate.service</pre>
+<p>Install and setup in CentOS:</p>
+<pre class="literal-block"># yum install ntp
+
+# # Run at backgroud
+# systemctl start ntpd.service
+# systemctl enable ntpd.service
+or
+# # Run manually
+# ntpdate 0.centos.pool.ntp.org</pre>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://www.tecmint.com/synchronize-time-with-ntp-in-linux/">https://www.tecmint.com/synchronize-time-with-ntp-in-linux/</a></p>
+<p><a class="reference external" href="https://www.tecmint.com/synchronize-time-with-ntp-in-linux/">Synchronize time with ntp</a></p>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/Network_Time_Protocol_daemon">Archwiki: ntpd</a></p>
 </div>
 </div>

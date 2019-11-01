@@ -1,3 +1,8 @@
+2019/11/01 Fri
+
+    In Microsoft software, "thumbprint" is used instead of "fingerprint". --
+    From wikipedia public key fingerprint
+
 2019/10/28 Mon
 
     Essential Phone 被磕碎两个角，心疼 T^T。

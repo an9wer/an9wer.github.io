@@ -33,6 +33,19 @@
         <div id="content">
 <div class="section" id="bash-grammar">
 <h1>Bash Grammar</h1>
+<div class="section" id="simple-commands">
+<h2>Simple commands</h2>
+<p>A simple command is a sequence of optional variable assignments followed by
+blank-separated words and redirections, and terminated by a control operator.
+The first word specifies the command to be executed, and is passed as argument
+zero. The remaining words are passed as arguments to the invoked command.</p>
+<p>The environment for any simple command or function may be augmented temporarily
+by prefixing it with variable assignments. These assignment statements affect
+only the environment seen by that command.</p>
+<pre class="literal-block">$ [var=value ...] command [arg ...]</pre>
+<p>The return value of a simple command is its exit status, or 128+n if the
+command is terminated by signal n.</p>
+</div>
 <div class="section" id="compound-commands">
 <h2>Compound commands</h2>
 <dl>

@@ -82,10 +82,25 @@ to the local host only, <em>yes</em> to force remote port forwardings to bind to
 the wildcard address.</p>
 </dd>
 </dl>
-<p>kill -9</p>
-<p>ps -efw</p>
-<p>mv /opt/microsoft/servicefabric{,.bak}
-mv /mnt/sfroot{,.bak}</p>
+</div>
+<div class="section" id="ssh-keygen">
+<h2>ssh-keygen</h2>
+<p>Generate the missing public key again from the private key:</p>
+<pre class="literal-block">$ ssh-keygen -y -f &lt;private key&gt;</pre>
+<p>Display fingerprint of public key:</p>
+<pre class="literal-block">$ ssh-keygen -l -f &lt;private key or publick key&gt;</pre>
+</div>
+<div class="section" id="authorized-keys">
+<h2>authorized_keys</h2>
+<p>See <span class="docutils literal">man sshd</span></p>
+<p>Each line of the file contains one key (empty lines and lines starting with a
+&quot;#&quot; are ignored as comments). Public keys consist of the following
+space-separated fields:</p>
+<pre class="literal-block">[&lt;options&gt;] &lt;keytype&gt; &lt;base64-encoded key&gt; &lt;comment&gt;</pre>
+<p>The keytype is “ecdsa-sha2-nistp256”, &quot;ecdsa-sha2-nistp384&quot;,
+&quot;ecdsa-sha2-nistp521&quot;, &quot;ssh-ed25519&quot;, &quot;ssh-dss&quot; or &quot;ssh-rsa&quot;;</p>
+<p>the comment field is not used for anything (but may be convenient for the user
+to identify the key).</p>
 </div>
 </div>
         </div> <!-- content -->
