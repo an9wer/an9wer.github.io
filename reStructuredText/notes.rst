@@ -78,6 +78,8 @@ Linux/
 
     `Linux cgroups  </notes/linux/cgroups.html>`_
 
+    `Linux system installer </notes/linux/system_installer.html>`_
+
 Package/
     `RPM        </notes/package/rpm.html>`_
 
@@ -187,6 +189,8 @@ Misc/
     `TLS/SSL    </notes/miscellaneous/tls_ssl.html>`_
 
     `SAAS PAAS IAAS </notes/miscellaneous/saas_paas_iaas.html>`_
+
+    `Encryption and decryption </notes/miscellaneous/encryption_and_decryption.html>`_
 
 
 HowTo

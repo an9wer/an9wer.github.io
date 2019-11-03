@@ -44,6 +44,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/machine_id.rst
         reStructuredText/notes/linux/ntp.rst
         reStructuredText/notes/linux/cgroups.rst
+        reStructuredText/notes/linux/system_installer.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/yum.rst
@@ -106,6 +107,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/tls_ssl.rst
         reStructuredText/notes/miscellaneous/saas_paas_iaas.rst
         reStructuredText/notes/miscellaneous/precedence_associativity.rst
+        reStructuredText/notes/miscellaneous/encryption_and_decryption.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst
