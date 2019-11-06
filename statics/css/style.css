@@ -24,6 +24,8 @@ body {
     font-family: Georgia,"Times New Roman",Times,serif;
     line-height: 1.1;
     margin-top: 30px;
+    position: relative;
+    left: -30px;
 }
 
 strong, b {
@@ -32,8 +34,7 @@ strong, b {
 }
 
 h1 {
-    border-bottom: 2px solid #DDD;
-    padding-bottom: 0.3em;
+    padding-bottom: 0.5em;
 }
 
 span.literal, code {
