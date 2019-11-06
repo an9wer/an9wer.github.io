@@ -1,7 +1,7 @@
 Vim Pattern
 ===========
 
-See *:h pattern.txt*
+See ``:h pattern.txt``
 
 g*
     Search forward for the word nearest to the cursor, like "*", but don't put
@@ -13,17 +13,20 @@ g#
 
 
 A pattern contains one or more branches (multiple branched are seperated by
-"\|"). (see *:h /pattern*)
+"\|"). (see ``:h /pattern``)
 
 a branch contains one or more contacts (multiple contacts are seperated by
-"\&"). (see *:h /branch*)
+"\&"). (see ``:h /branch``)
 
-a contact contains one or more pieces. (see *:h /contact*)
+A concat is one or more pieces, concatenated. (see ``:h /contact``)
 
-a piece is an atom. (see *:h /piece*)
+A piece is an atom, possibly followed by a multi, an indication of how many
+times the atom can be matched. Example: "a*" matches any sequence of "a". (see
+``:h /piece``)
 
-an atom can be one of a long list of items (use "\(" to group pattern into an
-atom). (see *:h /atom*)
+An atom can be one of a long list of items (use "\(" to group pattern into an
+atom). Many atoms match one character in the text. It is often an ordinary
+character or a character class. (see ``:h /atom``)
 
 
 To clear last used search pattern:

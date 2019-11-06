@@ -31,9 +31,18 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="coreutils-mktemp">
-<h1>Coreutils mktemp</h1>
-<p>mktemp</p>
+<div class="section" id="procps-ng-pgrep">
+<h1>Procps-ng pgrep</h1>
+<p><span class="docutils literal">pgrep</span> and <span class="docutils literal">pkill</span> use the same options (the exceptions are <span class="docutils literal"><span class="pre">-l</span></span> and
+<span class="docutils literal"><span class="pre">-a</span></span> which can only be used by <span class="docutils literal">pgrep</span>).</p>
+<p>List the process name as well as the process id:</p>
+<pre class="literal-block">$ pgrep -l &lt;pattern&gt;</pre>
+<p>List hte full command line as well as the process id:</p>
+<pre class="literal-block">$ pgrep -a &lt;pattern&gt;</pre>
+<p>Ignore case when matching processes:</p>
+<pre class="literal-block">$ pgrep -i &lt;pattern&gt;</pre>
+<p>Set another string (by default a newline) to delimit process id:</p>
+<pre class="literal-block">$ pgrep -d &lt;delimiter&gt; &lt;pattern&gt;</pre>
 </div>
         </div> <!-- content -->
 

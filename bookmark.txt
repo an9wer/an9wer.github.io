@@ -14,16 +14,24 @@ reStructuredText/notes.rst
     Coreutils
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
+        reStructuredText/notes/coreutils/tr.rst
     Util-linux
         reStructuredText/notes/util-linux/hwclock.rst
+    Procps-ng
+        reStructuredText/notes/procps-ng/pgrep.rst
     Psmisc
         reStructuredText/notes/psmisc/pstree.rst
+    Iputils
+        reStructuredText/notes/iputils/ping.rst
+    Iproute2
+        reStructureText
     X11
         reStructuredText/notes/X11/xclip.rst
         reStructuredText/notes/X11/xmodmap.rst
         reStructuredText/notes/X11/redshift.rst
     Benchmarking
         reStructuredText/notes/benchmarking/fio.rst
+        reStructuredText/notes/benchmarking/iperf.rst
     Monitor
         reStructuredText/notes/monitor/collectd.rst
     Linux
@@ -70,6 +78,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/vim/options.rst
         reStructuredText/notes/vim/pattern.rst
         reStructuredText/notes/vim/cmdline.rst
+        reStructuredText/notes/vim/change.rst
         reStructuredText/notes/vim/editing.rst
         reStructuredText/notes/vim/window.rst
         reStructuredText/notes/vim/tabpage.rst

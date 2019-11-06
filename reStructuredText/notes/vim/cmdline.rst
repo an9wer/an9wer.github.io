@@ -1,9 +1,19 @@
 Vim cmdline
 ===========
 
+Range
+-----
+
+See ``:h [range]`` or ``:h cmdline-ranges``
 
 {number}
     an absolute line number
+
+0
+    The first line
+
+1
+    The first line
 
 \.
     the current line

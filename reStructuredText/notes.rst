@@ -24,11 +24,16 @@ Coreutils/
 
     `cut        </notes/coreutils/cut.html>`_
 
+    `tr         </notes/coreutils/tr.html>`_
+
 Util-linux/
     `hwclock    </notes/util-linux/hwclock.html>`_
 
 Psmisc/
     `pstree     </notes/psmisc/pstree.html>`_
+
+Iputils/
+    `ping       </notes/iputils/ping.html>`_
 
 X11/
     `xclip      </notes/X11/xclip.html>`_
@@ -38,7 +43,9 @@ X11/
     `redshift   </notes/X11/redshift.html>`_
 
 Benchmarking/
-    `fio        </notes/commands/fio.html>`_
+    `fio        </notes/benchmarking/fio.html>`_
+
+    `iperf      </notes/benchmarking/iperf.html>`_
 
 Monitor/
     `collectd   </notes/monitor/collectd.html>`_
@@ -118,6 +125,8 @@ Vim/
     `Vim pattern    </notes/vim/pattern.html>`_
 
     `Vim cmdline    </notes/vim/cmdline.html>`_
+
+    `Vim change     </notes/vim/change.html>`_
 
     `Vim editing    </notes/vim/editing.html>`_
 

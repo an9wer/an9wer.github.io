@@ -1,5 +1,5 @@
-Cut
----
+Coureutils cut
+--------------
 
 In following command, *LIST* is made up of one range, or many ranges separated
 by commas. Selected input is written in the same order that it is read, and is

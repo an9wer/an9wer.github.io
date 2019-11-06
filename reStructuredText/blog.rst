@@ -1,4 +1,4 @@
-2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus>`_
+2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus.html>`_
 
 2019/08/21 @ `终端下的目录切换 </2019/08/21_终端下的目录切换.html>`_
 
@@ -53,4 +53,3 @@
 2018/10/27 @ `Categories of YouTube channels I have subscribed <2018/10/27_Categories%20of%20YouTube%20channels%20I%20have%20subscribed.html>`_
 
 2018/10/24 @ `博客搭建小记 <2018/10/24_博客搭建小记.html>`_
-

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="iperf">
+<h1>Iperf</h1>
+<div class="section" id="iperf2">
+<h2>Iperf2</h2>
+<p>Start up a server and bind to specific interface:</p>
+<pre class="literal-block">$ iperf -s [-B &lt;interface&gt;]</pre>
+<p>Start up a client and bind to specific interface (if needed)::</p>
+<pre class="literal-block">$ iperf -c &lt;destination&gt; [-B &lt;interface&gt;]</pre>
+<p>Start up a client in dualtest mode, which running reverse test simultaneously:</p>
+<pre class="literal-block">$ iperf -c &lt;destination&gt; -d [-L &lt;port&gt;]</pre>
+<p>Start up a client in tradeoff mode, which runing reverse test individually:</p>
+<pre class="literal-block">$ iperf -c &lt;destination&gt; -r [-L &lt;port&gt;]</pre>
+<ul class="simple">
+<li><p>Reverse test will cause the server to connect back to the client on the
+port specified in the <em>-L</em> option (or defaults to the port the client
+connected to the server on).</p></li>
+</ul>
+<p>Set the client running time in second, default is 10:</p>
+<pre class="literal-block">$ iperf -c &lt;destination&gt; -t &lt;time&gt;</pre>
+</div>
+<div class="section" id="iperf3">
+<h2>Iperf3</h2>
+<p>Start up a server and bind to specific interface:</p>
+<pre class="literal-block">$ iperf3 -s [-B &lt;interface&gt;]</pre>
+<p>Start up a client and bind to specific interface (if needed):</p>
+<pre class="literal-block">$ iperf3 -c &lt;destination&gt; [-B &lt;interface&gt;]</pre>
+<p>Start up client in reverse mode (server sends data to client):</p>
+<pre class="literal-block">$ iperf3 -c &lt;destination&gt; -R</pre>
+<p>Set the client running time in seconds, default is 10:</p>
+<pre class="literal-block">$ iperf3 -c &lt;destination&gt; -t &lt;time&gt;</pre>
+<p>Set interval time in seconds between periodic, default is 1, use 0 to disable:</p>
+<pre class="literal-block">$ iperf3 -c &lt;destination&gt; -i &lt;time&gt;</pre>
+<ul class="simple">
+<li><p>The 'Retr' field in output is the number of TCP segments retransmitted.
+This can happen if TCP segments are lost in the network due to congestion
+or corruption.  (see <a class="reference external" href="https://github.com/esnet/iperf/issues/343">here</a>)</p></li>
+</ul>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

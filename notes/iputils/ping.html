@@ -31,9 +31,16 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="coreutils-mktemp">
-<h1>Coreutils mktemp</h1>
-<p>mktemp</p>
+<div class="section" id="ping">
+<h1>Ping</h1>
+<p>Stop after sending count ECHO_REQUEST packets:</p>
+<pre class="literal-block">$ ping -c &lt;count&gt; &lt;destionation&gt;</pre>
+<p>Stop when deadline expire:</p>
+<pre class="literal-block">$ ping -w &lt;time&gt; &lt;destionation&gt;</pre>
+<p>Quite mode, only display the summary lines:</p>
+<pre class="literal-block">$ ping -q &lt;destionation&gt;</pre>
+<p>Set TTL (time to live) for every queries:</p>
+<pre class="literal-block">$ ping -t &lt;ttl&gt; &lt;destionation&gt;</pre>
 </div>
         </div> <!-- content -->
 

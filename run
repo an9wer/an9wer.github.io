@@ -2,7 +2,7 @@
 
 python_version=$(python -c "import sys; print(sys.version_info[0])")
 
-firefox 127.0.0.1:8000/blog.html
+surf 127.0.0.1:8000/blog.html &
 
 if (( $python_version == 3 )); then
   python -m http.server 8000

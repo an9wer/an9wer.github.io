@@ -1,3 +1,8 @@
+2019/11/06 Wed
+
+    今天下午上班的时候忙里偷闲出来散步，走到半路被一只黑狗盯着狂吠，可恶！更可
+    恨的是回来的路上，它突然从汽车地下钻出来朝我吼叫，吓我一跳，好气！
+
 2019/11/01 Fri
 
     In Microsoft software, "thumbprint" is used instead of "fingerprint". --
