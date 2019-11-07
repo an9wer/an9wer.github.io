@@ -4,7 +4,15 @@ Vim cmdline
 Range
 -----
 
-See ``:h [range]`` or ``:h cmdline-ranges``
+See ``:h [range]`` or ``:h cmdline-ranges``.
+
+Range consists of one or more line specifiers, separated with ',' or ';'.
+
+When separated with ';' the cursor position will be set to that line before
+interpreting the next line specifier. This doesn't happen for ','.
+
+The default line specifier for most commands is the cursor position, but the
+ex commands ":write" and ":global" have the whole file (1,$) as default.
 
 {number}
     an absolute line number
@@ -32,10 +40,10 @@ See ``:h [range]`` or ``:h cmdline-ranges``
     be used in a range
 
 /{pattern}[/]
-    the next line where {pattern} matches
+    the next of current line where {pattern} matches
 
 ?{pattern}[?]
-    the previous line where {pattern} matches
+    the previous of current line where {pattern} matches
 
 \/
     the next line where the previously used search pattern matches

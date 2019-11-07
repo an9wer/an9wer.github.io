@@ -1,7 +1,7 @@
 Vim Pattern
 ===========
 
-See ``:h pattern.txt``
+See ``:h pattern.txt``.
 
 g*
     Search forward for the word nearest to the cursor, like "*", but don't put

@@ -31,32 +31,34 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="vim-pattern">
-<h1>Vim Pattern</h1>
-<p>See <span class="docutils literal">:h pattern.txt</span>.</p>
-<dl class="simple">
-<dt>g*</dt>
-<dd><p>Search forward for the word nearest to the cursor, like &quot;*&quot;, but don't put
-&quot;&lt;&quot; and &quot;&gt;&quot; around the word.</p>
-</dd>
-<dt>g#</dt>
-<dd><p>Search backword for the word nearst to the cursor, like &quot;#&quot;, but don't put
-&quot;&lt;&quot; and &quot;&gt;&quot; around the word.</p>
+<div class="section" id="traceroute">
+<h1>Traceroute</h1>
+<p>Set the number of probe packets per hop (by default is 3):</p>
+<pre class="literal-block"># traceroute -q &lt;number&gt; &lt;destionation&gt;</pre>
+<p>Use ICMP method for probes:</p>
+<pre class="literal-block"># traceroute -I|--icmp &lt;destionation&gt;</pre>
+<p>Use TCP SYN for probes:</p>
+<pre class="literal-block"># traceroute -T|--tcp &lt;destionation&gt;</pre>
+</div>
+<div class="section" id="methods">
+<h1>Methods</h1>
+<p>In the modern network environment the traditional traceroute methods can not be
+always applicable, because of widespread use of firewalls. Such firewalls
+filter the &quot;unlikely&quot; UDP ports, or even ICMP echoes. To solve this, some
+additional tracerouting methods are implemented (including tcp). Such methods
+try to use particular protocol and source/destination port, in order to bypass
+firewalls.</p>
+<dl>
+<dt>Default</dt>
+<dd><p>Probe packets are udp datagrams with so-called &quot;unlikely&quot; destination
+ports.</p>
+<p>The &quot;unlikely&quot; port of the first probe is 33434, then for each next probe
+it is incremented by  one.  Since the ports are expected to be unused,
+the destination host normally returns &quot;icmp unreach port&quot; as a final
+response. (Nobody knows what happens when some application listens for
+such ports, though).</p>
 </dd>
 </dl>
-<p>A pattern contains one or more branches (multiple branched are seperated by
-&quot;|&quot;). (see <span class="docutils literal">:h /pattern</span>)</p>
-<p>a branch contains one or more contacts (multiple contacts are seperated by
-&quot;&amp;&quot;). (see <span class="docutils literal">:h /branch</span>)</p>
-<p>A concat is one or more pieces, concatenated. (see <span class="docutils literal">:h /contact</span>)</p>
-<p>A piece is an atom, possibly followed by a multi, an indication of how many
-times the atom can be matched. Example: &quot;a*&quot; matches any sequence of &quot;a&quot;. (see
-<span class="docutils literal">:h /piece</span>)</p>
-<p>An atom can be one of a long list of items (use &quot;(&quot; to group pattern into an
-atom). Many atoms match one character in the text. It is often an ordinary
-character or a character class. (see <span class="docutils literal">:h /atom</span>)</p>
-<p>To clear last used search pattern:</p>
-<pre class="literal-block">:set &#64;/= &quot;&quot;</pre>
 </div>
         </div> <!-- content -->
 

@@ -11,6 +11,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/bc.rst
         reStructuredText/notes/commands/ssh.rst
         reStructuredText/notes/commands/lsof.rst
+        reStructuredText/notes/commands/traceroute.rst
     Coreutils
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
@@ -34,6 +35,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/benchmarking/iperf.rst
     Monitor
         reStructuredText/notes/monitor/collectd.rst
+    Systemd
+        reStructuredText/notes/systemd/hostnamectl.rst
     Linux
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst
@@ -53,6 +56,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/ntp.rst
         reStructuredText/notes/linux/cgroups.rst
         reStructuredText/notes/linux/system_installer.rst
+        reStructuredText/notes/linux/hostname.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/yum.rst

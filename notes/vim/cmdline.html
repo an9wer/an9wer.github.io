@@ -35,7 +35,12 @@
 <h1>Vim cmdline</h1>
 <div class="section" id="range">
 <h2>Range</h2>
-<p>See <span class="docutils literal">:h [range]</span> or <span class="docutils literal">:h <span class="pre">cmdline-ranges</span></span></p>
+<p>See <span class="docutils literal">:h [range]</span> or <span class="docutils literal">:h <span class="pre">cmdline-ranges</span></span>.</p>
+<p>Range consists of one or more line specifiers, separated with ',' or ';'.</p>
+<p>When separated with ';' the cursor position will be set to that line before
+interpreting the next line specifier. This doesn't happen for ','.</p>
+<p>The default line specifier for most commands is the cursor position, but the
+ex commands &quot;:write&quot; and &quot;:global&quot; have the whole file (1,$) as default.</p>
 <dl class="simple">
 <dt>{number}</dt>
 <dd><p>an absolute line number</p>
@@ -63,10 +68,10 @@
 be used in a range</p>
 </dd>
 <dt>/{pattern}[/]</dt>
-<dd><p>the next line where {pattern} matches</p>
+<dd><p>the next of current line where {pattern} matches</p>
 </dd>
 <dt>?{pattern}[?]</dt>
-<dd><p>the previous line where {pattern} matches</p>
+<dd><p>the previous of current line where {pattern} matches</p>
 </dd>
 <dt>/</dt>
 <dd><p>the next line where the previously used search pattern matches</p>

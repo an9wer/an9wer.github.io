@@ -1,6 +1,9 @@
 Vim Tricks
 ==========
 
+See ``:h index.txt``.
+
+
 Q : How to turning off auto indent when pasting text into vim?
 
 A1: https://stackoverflow.com/a/2514520
