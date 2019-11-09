@@ -31,21 +31,18 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="fpm">
-<h1>Fpm</h1>
-<div class="section" id="installation">
-<h2>Installation</h2>
-<p>Install on CentOS 7:</p>
-<pre class="literal-block"># yum install ruby-devel gcc make rpm-build rubygems
-# gem install --no-ri --no-rdoc fpm</pre>
-</div>
-<div class="section" id="usage">
-<h2>Usage</h2>
-<p>Create package from a single directory or multiple directories:</p>
-<pre class="literal-block">$ fpm -s dir -t &lt;target&gt; -v &lt;version&gt; [--iteration &lt;release&gt;] -n &lt;name&gt; &lt;directory&gt; [&lt;directory&gt; ...]</pre>
-<p>Create pacakge from a single directory, and specify prefix of target:</p>
-<pre class="literal-block">$ fpm -s dir -t &lt;target&gt; -v &lt;version&gt; [--iteration &lt;release&gt;] -n &lt;name&gt; --prefix &lt;prefix&gt; &lt;directory&gt;</pre>
-</div>
+<div class="section" id="iproute2-route">
+<h1>Iproute2 route</h1>
+<pre class="literal-block">ip route { add | del | change | append | replace } ROUTE
+
+ROUTE := NODE_SPEC [ INFO_SPEC ]
+
+NODE_SPEC := [ TYPE ] PREFIX [ tos TOS ] [ table TABLE_ID ] [ proto RTPROTO]
+  [ scope SCOPE ] [ metric METRIC ] [ ttl-propagate { enabled | disabled } ]
+
+INFO_SPEC := { NH | nhid ID } OPTIONS FLAGS [ nexthop NH ] ...</pre>
+<p><strong>Note</strong>: the braces indicate a choice list, and the fields in brackets are
+optional.</p>
 </div>
         </div> <!-- content -->
 

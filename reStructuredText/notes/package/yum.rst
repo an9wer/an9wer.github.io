@@ -79,4 +79,5 @@ To uninstall package groups: ::
 References
 ----------
 
-`Redhat Doc: Installing and Managing Software <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software>`_
+`Redhat Doc: Installing and Managing Software
+<https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software>`_
