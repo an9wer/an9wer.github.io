@@ -3,7 +3,6 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/rsync.rst
         reStructuredText/notes/commands/ledger.rst
         reStructuredText/notes/commands/info.rst
-        reStructuredText/notes/commands/top.rst
         reStructuredText/notes/commands/iptables.rst
         reStructuredText/notes/commands/sed.rst
         reStructuredText/notes/commands/dmidecode.rst
@@ -18,14 +17,18 @@ reStructuredText/notes.rst
         reStructuredText/notes/coreutils/tr.rst
     Util-linux
         reStructuredText/notes/util-linux/hwclock.rst
+        reStructuredText/notes/util-linux/mount.rst
+        reStructuredText/notes/util-linux/findmnt.rst
     Procps-ng
+        reStructuredText/notes/procps-ng/top.rst
         reStructuredText/notes/procps-ng/pgrep.rst
+        reStructuredText/notes/procps-ng/free.rst
     Psmisc
         reStructuredText/notes/psmisc/pstree.rst
     Iputils
         reStructuredText/notes/iputils/ping.rst
     Iproute2
-        reStructureText
+        reStructuredText/notes/iproute2/route.rst
     X11
         reStructuredText/notes/X11/xclip.rst
         reStructuredText/notes/X11/xmodmap.rst
@@ -121,6 +124,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/saas_paas_iaas.rst
         reStructuredText/notes/miscellaneous/precedence_associativity.rst
         reStructuredText/notes/miscellaneous/encryption_and_decryption.rst
+        reStructuredText/notes/miscellaneous/mebibyte_vs_megabyte.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst
@@ -160,6 +164,7 @@ reStructuredText/notes.rst
 
 
 reStructuredText/blog.rst
+    reStructuredText/2019/11/09_Build_raid1.rst
     reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
     reStructuredText/2019/08/21_终端下的目录切换.rst
     reStructuredText/2019/08/20_TODO\ list.rst

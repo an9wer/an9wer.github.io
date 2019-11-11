@@ -3,8 +3,6 @@ Commands/
         </notes/commands/ledger.html>`_
     -   `info
         </notes/commands/info.html>`_
-    -   `top
-        </notes/commands/top.html>`_
     -   `iptables
         </notes/commands/iptables.html>`_
     -   `sed
@@ -31,9 +29,15 @@ Coreutils/
 Util-linux/
     -   `hwclock
         </notes/util-linux/hwclock.html>`_
+    -   `mount
+        </notes/util-linux/mount.html>`_
 Procps-ng
+    -   `top
+        </notes/procps-ng/top.html>`_
     -   `pgrep
         </notes/procps-ng/pgrep.html>`_
+    -   `free
+        </notes/procps-ng/free.html>`_
 Psmisc/
     -   `pstree
         </notes/psmisc/pstree.html>`_
