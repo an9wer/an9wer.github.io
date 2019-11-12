@@ -11,6 +11,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/ssh.rst
         reStructuredText/notes/commands/lsof.rst
         reStructuredText/notes/commands/traceroute.rst
+        reStructuredText/notes/commands/tcpdump.rst
     Coreutils
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
@@ -125,6 +126,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/precedence_associativity.rst
         reStructuredText/notes/miscellaneous/encryption_and_decryption.rst
         reStructuredText/notes/miscellaneous/mebibyte_vs_megabyte.rst
+        reStructuredText/notes/miscellaneous/network.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst

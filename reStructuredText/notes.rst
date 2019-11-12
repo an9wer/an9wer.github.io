@@ -19,6 +19,8 @@ Commands/
         </notes/commands/lsof.html>`_
     -   `traceroute
         </notes/commands/traceroute.html>`_
+    -   `tcpdump
+        </notes/commands/tcpdump.html>`_
 Coreutils/
     -   `mktemp
         </notes/coreutils/mktemp.html>`_
@@ -31,6 +33,8 @@ Util-linux/
         </notes/util-linux/hwclock.html>`_
     -   `mount
         </notes/util-linux/mount.html>`_
+    -   `findmnt
+        </notes/util-linux/findmnt.html>`_
 Procps-ng
     -   `top
         </notes/procps-ng/top.html>`_

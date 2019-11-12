@@ -42,8 +42,8 @@ nodev
 user
     Allow an ordinary user to mount the file system.
 
-   **Note** that this option implies the options noexec, nosuid, and nodev,
-   unless overridden by subsequent options.
+    **Note** that this option implies the options noexec, nosuid, and nodev,
+    unless overridden by subsequent options.
     
 nouser
     Forbid an ordinary user to mount the filesystem.

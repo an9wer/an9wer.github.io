@@ -25,6 +25,8 @@ lat
 References
 ----------
 
-`Fio official document <https://fio.readthedocs.io/en/latest/fio_doc.html>`_
+`Fio official document
+<https://fio.readthedocs.io/en/latest/fio_doc.html>`_
 
-`Wikipedia: standard deviation <https://en.wikipedia.org/wiki/Standard_deviation>`_
+`Wikipedia: standard deviation
+<https://en.wikipedia.org/wiki/Standard_deviation>`_

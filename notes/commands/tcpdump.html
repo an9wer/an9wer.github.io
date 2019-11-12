@@ -31,20 +31,11 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="lsof">
-<h1>lsof</h1>
-<p>Scan directory (not descend the directory tree):</p>
-<pre class="literal-block"># lsof +d &lt;directory&gt;</pre>
-<p>Scan directory, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +d &lt;directory&gt; -x|-x l|-x f</pre>
-<p>Scan directory tree (include all subdirectories):</p>
-<pre class="literal-block"># lsof +D &lt;directory&gt;</pre>
-<p>Scan directory tree, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +D &lt;directory&gt; -x|-x l|-x f</pre>
-<p>Show all open socket file:</p>
-<pre class="literal-block"># lsof -i [46][protocol][&#64;hostname|&#64;hostaddr][:service|:port]</pre>
-<p>Show open socket file in specified state:</p>
-<pre class="literal-block"># lsof -i [46][TCP|UDP][&#64;hostname|&#64;hostaddr][:service|:port] -s TCP|UDP:ESTABLISHED|LISTEN</pre>
+<div class="section" id="tcpdump">
+<h1>Tcpdump</h1>
+<p>See <span class="docutils literal">man tcpdump</span> and <span class="docutils literal">man <span class="pre">pcap-filter</span></span>.</p>
+<p>Print absolute, rather than relative, TCP sequence numbers:</p>
+<pre class="literal-block"># tcpdump -S</pre>
 </div>
         </div> <!-- content -->
 

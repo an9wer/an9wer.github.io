@@ -31,20 +31,31 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="lsof">
-<h1>lsof</h1>
-<p>Scan directory (not descend the directory tree):</p>
-<pre class="literal-block"># lsof +d &lt;directory&gt;</pre>
-<p>Scan directory, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +d &lt;directory&gt; -x|-x l|-x f</pre>
-<p>Scan directory tree (include all subdirectories):</p>
-<pre class="literal-block"># lsof +D &lt;directory&gt;</pre>
-<p>Scan directory tree, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +D &lt;directory&gt; -x|-x l|-x f</pre>
-<p>Show all open socket file:</p>
-<pre class="literal-block"># lsof -i [46][protocol][&#64;hostname|&#64;hostaddr][:service|:port]</pre>
-<p>Show open socket file in specified state:</p>
-<pre class="literal-block"># lsof -i [46][TCP|UDP][&#64;hostname|&#64;hostaddr][:service|:port] -s TCP|UDP:ESTABLISHED|LISTEN</pre>
+<div class="section" id="network">
+<h1>Network</h1>
+<div class="section" id="tcp">
+<h2>TCP</h2>
+<p>Connection provided by the TCP/IP are full duplex. it consists of two
+independent streams flowing in opposite directions, with no apparent
+interaction. The stream service allows an application process to terminate flow
+in on direction while data continues to flow in teh other direction , making
+the connection half duplex.</p>
+<p>Positive acknowledgement with retransmission</p>
+<p>Segment</p>
+<dl class="simple">
+<dt>Error detection</dt>
+<dd><p>checksum</p>
+</dd>
+<dt>Receiver feedback</dt>
+<dd><p>ACK</p>
+</dd>
+</dl>
+<p>Retransmission</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">Wikipedia: TCP</a></p>
+</div>
 </div>
         </div> <!-- content -->
 
