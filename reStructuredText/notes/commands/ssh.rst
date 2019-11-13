@@ -32,15 +32,22 @@ and remote side:
 -   -R: *port* is located at remote side. *host* and *hostport* is used at
     loacl side. The tunnel forwards local *host:hostport* to remote *port*,
     then remote host can visit local side service through *127.0.0.1:port* (or
-    other interface set bhy *bind_address*).
+    other interface set by *bind_address*).
 
 An empty *bind_address* indicates that it will listen to loopback interface
 (127.0.0.1), the address \* means that it will listen to all interface
 (0.0.0.0). Specifying a *bind_address* will only succeed if the server's
 *GatewayPorts* option is enabled.
 
-References
-    https://unix.stackexchange.com/a/115906
+Use ``-fN`` option to make ssh port forwarding run at background: ::
+
+    ssh -fN -L|-R [bind_address:]port:host:hostport destination
+
+SSH tunnel references
+"""""""""""""""""""""
+
+`Stackoverflow: ssh forwarding
+<https://unix.stackexchange.com/a/115906>`_
 
 
 SSHD config
@@ -84,4 +91,3 @@ The keytype is “ecdsa-sha2-nistp256”, "ecdsa-sha2-nistp384",
 
 the comment field is not used for anything (but may be convenient for the user
 to identify the key).
-

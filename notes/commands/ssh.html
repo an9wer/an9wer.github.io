@@ -58,17 +58,18 @@ other interface set by <em>bind_address</em>).</p></li>
 <li><p>-R: <em>port</em> is located at remote side. <em>host</em> and <em>hostport</em> is used at
 loacl side. The tunnel forwards local <em>host:hostport</em> to remote <em>port</em>,
 then remote host can visit local side service through <em>127.0.0.1:port</em> (or
-other interface set bhy <em>bind_address</em>).</p></li>
+other interface set by <em>bind_address</em>).</p></li>
 </ul>
 <p>An empty <em>bind_address</em> indicates that it will listen to loopback interface
 (127.0.0.1), the address * means that it will listen to all interface
 (0.0.0.0). Specifying a <em>bind_address</em> will only succeed if the server's
 <em>GatewayPorts</em> option is enabled.</p>
-<dl class="simple">
-<dt>References</dt>
-<dd><p><a class="reference external" href="https://unix.stackexchange.com/a/115906">https://unix.stackexchange.com/a/115906</a></p>
-</dd>
-</dl>
+<p>Use <span class="docutils literal"><span class="pre">-fN</span></span> option to make ssh port forwarding run at background:</p>
+<pre class="literal-block">ssh -fN -L|-R [bind_address:]port:host:hostport destination</pre>
+<div class="section" id="ssh-tunnel-references">
+<h3>SSH tunnel references</h3>
+<p><a class="reference external" href="https://unix.stackexchange.com/a/115906">Stackoverflow: ssh forwarding</a></p>
+</div>
 </div>
 <div class="section" id="sshd-config">
 <h2>SSHD config</h2>

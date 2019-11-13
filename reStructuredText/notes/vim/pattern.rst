@@ -28,9 +28,25 @@ An atom can be one of a long list of items (use "\(" to group pattern into an
 atom). Many atoms match one character in the text. It is often an ordinary
 character or a character class. (see ``:h /atom``)
 
-
 To clear last used search pattern:
 
 ::
 
     :set @/= ""
+
+Magic
+-----
+
+\\m
+    magic mode.
+
+\\M
+    nomagic mode.
+
+\\v
+    very magic mode, means that after it, all ASCII characters except '0'-'9',
+    'a'-'z', 'A'-'Z' and '_' have special meaning.
+
+\\V
+    very nomagic mode, means that after it, only a backslash and terminating
+    character (usually / or ?) have special meaning.

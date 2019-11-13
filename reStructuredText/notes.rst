@@ -35,7 +35,7 @@ Util-linux/
         </notes/util-linux/mount.html>`_
     -   `findmnt
         </notes/util-linux/findmnt.html>`_
-Procps-ng
+Procps-ng/
     -   `top
         </notes/procps-ng/top.html>`_
     -   `pgrep
@@ -63,7 +63,7 @@ Benchmarking/
 Monitor/
     -   `collectd
         </notes/monitor/collectd.html>`_
-Systemd
+Systemd/
     -   `hostnamectl
         </notes/systemd/hostnamectl.html>`_
 Linux/

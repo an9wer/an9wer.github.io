@@ -26,6 +26,8 @@ regexpengine
 modeline
     If starting editing a new file, and the 'modeline' option is on, a number
     of lines at the beginning and end of the file are checked for modelines.
+
+magic
     
 Modline
 -------
