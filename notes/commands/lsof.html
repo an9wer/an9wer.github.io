@@ -36,15 +36,45 @@
 <p>Scan directory (not descend the directory tree):</p>
 <pre class="literal-block"># lsof +d &lt;directory&gt;</pre>
 <p>Scan directory, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +d &lt;directory&gt; -x|-x l|-x f</pre>
+<pre class="literal-block"># lsof +d &lt;directory&gt; &quot;-x|-x l|-x f&quot;</pre>
 <p>Scan directory tree (include all subdirectories):</p>
 <pre class="literal-block"># lsof +D &lt;directory&gt;</pre>
 <p>Scan directory tree, follow symbolic links and/or filesystems:</p>
-<pre class="literal-block"># lsof +D &lt;directory&gt; -x|-x l|-x f</pre>
+<pre class="literal-block"># lsof +D &lt;directory&gt; &quot;-x|-x l|-x f&quot;</pre>
 <p>Show all open socket file:</p>
 <pre class="literal-block"># lsof -i [46][protocol][&#64;hostname|&#64;hostaddr][:service|:port]</pre>
 <p>Show open socket file in specified state:</p>
 <pre class="literal-block"># lsof -i [46][TCP|UDP][&#64;hostname|&#64;hostaddr][:service|:port] -s TCP|UDP:ESTABLISHED|LISTEN</pre>
+<p>List files for specified processes:</p>
+<pre class="literal-block"># lsof -p &lt;pid&gt;[,&lt;pid&gt;...]</pre>
+<p>List all UNIX domain socket files:</p>
+<pre class="literal-block"># lsof -U</pre>
+<p>List UNIX domain socket files for specified processes (use <span class="docutils literal"><span class="pre">-a</span></span> option, see
+<a class="reference internal" href="#or-and">OR AND</a>):</p>
+<pre class="literal-block"># lsof -U -a -p &lt;pid&gt;[,&lt;pid&gt;...]</pre>
+<ul id="or-and">
+<li><p>OR AND:</p>
+<p>Normal list options of <span class="docutils literal">lsof</span> are ORed (i.e. specifying the <span class="docutils literal"><span class="pre">-i</span></span> option
+without an address and the <span class="docutils literal"><span class="pre">-ufoo</span></span> option produces a listiong of all
+network files OR files belonging to processes owned by user 'foo'). The
+exceptions are:</p>
+<ol class="arabic simple">
+<li><p>the <span class="docutils literal">^</span> (negated) login name or user ID (UID), specified with the <span class="docutils literal"><span class="pre">-u</span></span>
+option.</p></li>
+<li><p>the <span class="docutils literal">^</span> (negated) process ID (PID), specified with the <span class="docutils literal"><span class="pre">-p</span></span> option.</p></li>
+<li><p>the  <span class="docutils literal">^</span> (negated) process group ID (PGID), specified with the <span class="docutils literal"><span class="pre">-g</span></span>
+option.</p></li>
+<li><p>the <span class="docutils literal">^</span> (negated) command, specified with the <span class="docutils literal"><span class="pre">-c</span></span> option;</p></li>
+<li><p>the <span class="docutils literal">^</span> (negated) TCP or UDP protocol state names, specified with the
+<span class="docutils literal"><span class="pre">-s</span> [p:s]</span> option.</p></li>
+</ol>
+<p>The <span class="docutils literal"><span class="pre">-a</span></span> option may be used to AND the selections.</p>
+</li>
+</ul>
+<div class="section" id="references">
+<h2>References</h2>
+<p><span class="docutils literal">man lsof</span></p>
+</div>
 </div>
         </div> <!-- content -->
 

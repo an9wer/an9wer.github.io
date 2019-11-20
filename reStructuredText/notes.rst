@@ -21,6 +21,8 @@ Commands/
         </notes/commands/traceroute.html>`_
     -   `tcpdump
         </notes/commands/tcpdump.html>`_
+    -   `smartctl
+        </notes/commands/smartctl.html>`_
 Coreutils/
     -   `mktemp
         </notes/coreutils/mktemp.html>`_
@@ -48,6 +50,11 @@ Psmisc/
 Iputils/
     -   `ping
         </notes/iputils/ping.html>`_
+Iproute2
+    -   `ip route
+        </notes/iproute2/route.html>`_
+    -   `ss
+        </notes/iproute2/ss.html>`_
 X11/
     -   `xclip
         </notes/X11/xclip.html>`_
@@ -350,3 +357,25 @@ A2 : ::
 
 R :
     `Archwiki: disable root login <https://wiki.archlinux.org/index.php/Sudo#Disable_root_login>`_
+
+---
+
+Q : How To Check If A Linux System Is Physical Or Virtual Machine?
+
+A1: ::
+
+    $ hostnamectl | grep Virtualization
+
+A2: ::
+
+    $ systemd-detect-virt
+    
+A2: ::
+
+    # virt-what
+
+R :
+    `How To Check If A Linux System Is Physical Or Virtual Machine?  <https://www.ostechnix.com/check-linux-system-physical-virtual-machine/>`_
+
+
+

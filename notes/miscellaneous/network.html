@@ -33,20 +33,57 @@
         <div id="content">
 <div class="section" id="network">
 <h1>Network</h1>
+<div class="section" id="gateway">
+<h2>Gateway</h2>
+<dl>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/Gateway_%28telecommunications%29">Wikipedia: Gateway</a></dt>
+<dd><p>A network gateway is used as protocol translators (e.g. Python WSGI)</p>
+<p>On an Internet Protocol (IP) network, IP packets with a destination outside
+a given subnet mask are send to the network gateway.</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/0.0.0.0">Wikipedia: 0.0.0.0</a></dt>
+<dd><p>In the context of routing tables, a network destination of 0.0.0.0 is used
+with a network mask of 0 to depict the default route as a destination
+subnet.</p>
+<p>In routing tables, 0.0.0.0 can also appear in the gateway column. This
+generally means that no intermediate routing hops are necessary because the
+system is directly connected to the destination.</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Default_route">Wikipedia: default route</a></p>
+</div>
 <div class="section" id="broadcast">
 <h2>Broadcast</h2>
+<p>MAC broadcast address: FF-FF-FF-FF-FF-FF</p>
 <p><a class="reference external" href="http://www.firewall.cx/networking-topics/general-networking/109-network-broadcast.html">http://www.firewall.cx/networking-topics/general-networking/109-network-broadcast.html</a></p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrap_Protocol">Wikipedia: Bootstrap Protocol</a></p>
+<p>P344</p>
+<dl class="simple">
+<dt>IP broadcast address: 255.255.255.255</dt>
+<dd><p>When a host sends a datagram with broadcast address, the message is
+delivered to all hosts on the same subnet.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="link-layer">
 <h2>Link Layer</h2>
+<p>Ethernet uses frame.</p>
+<p>P445
+A point-to-point link (e.g. PPP, HDLC) consists of a single sendr at one end of
+the link and a single receiver at the other end of the link. A broadcast link
+(e.g. Etherne, wireless LAN), on the other hand, has multiple sending and
+receiving nodes all connected to the same, single, shared broadcast channel.</p>
+<p><span class="docutils literal">man 7 arp</span></p>
 <p>ARP resolves IP addresses only for hosts and router interfaces on the same
 subnet.</p>
 <p>Each host and router has an ARP table in its memory, which contains mappings of
 IP addresses to MAC address.</p>
 <p>The ARP table contains a time-to-live (TTL) value, which indicates when each
 mapping will be deleted from the table.</p>
-<p>P468</p>
+<p>P468
+To see send a network-layer datagram to another subnet across a router.</p>
+<p>For each router interface there is also an ARP module (in the router) and an
+adapter.</p>
 <p>LAN technologies:</p>
 <ul class="simple">
 <li><p>Ethernet</p></li>
@@ -56,22 +93,152 @@ mapping will be deleted from the table.</p>
 <p>Ethernet has been to local area networking what the internet has been to global
 networking.</p>
 <p>CRC (Cycli redundance check)</p>
+<dl class="simple">
+<dt>Ethernet CDMA/CD protocol</dt>
+<dd><p><a class="reference external" href="https://www.geeksforgeeks.org/collision-detection-csmacd/">https://www.geeksforgeeks.org/collision-detection-csmacd/</a></p>
+</dd>
+</dl>
+<p>P476
+Switch itself is transparent to the hosts and routers in the subnet; that is, a
+host/router addresses a frame to another host/router (rather than addressing
+the frame to the switch) and happily sends the frame into the LAN, unaware that
+a switch will be receiving the frame and forwarding it.</p>
+<p><strong>Filtering</strong> is the switch function that determines whether a frame should be
+forwarded to some interface or should just be dropped.</p>
+<p><strong>Forwarding</strong> is the switch function that determines the interfaces to which a
+frame should be directed, and then moves the frame to those interfaces.</p>
+<p>Switch filtering and forwarding are done with a <strong>switch table</strong>.</p>
+<p>Switch table contains (but not necessarily all):
+1.  MAC address
+2.  Switch interface that leads toward that MAC
+3.  Time at which the entry was placed in the table</p>
+<p>P478</p>
+<dl>
+<dt>Switches self-learn</dt>
+<dd><p>For each incoming frame received on an interfacce, the switch stores in its
+table :</p>
+<blockquote>
+<ol class="arabic simple">
+<li><p>MAC address in the frame's source address field.</p></li>
+<li><p>Interface from which frame arrived</p></li>
+<li><p>Current time</p></li>
+</ol>
+</blockquote>
+</dd>
+</dl>
+<p>P479
+Switches are also full-duplex, meaning any switch interface can send and
+receive at the same time.</p>
+<p>P480
+Switch sniff</p>
 </div>
 <div class="section" id="network-layer">
 <h2>Network Layer</h2>
-<p>Network lyer protocol:</p>
+<p>Internet Protocol (IP) uses datagram.</p>
+<p>Host-to-host commmunication</p>
+<p>Network layer protocol:</p>
 <ul class="simple">
 <li><p>IP</p></li>
 <li><p>IPX</p></li>
 <li><p>AppleTalk</p></li>
 </ul>
+<p>P313
+Computer networks that provide only a connection service at the network layer
+are called virtual-circuit (VC) networks (e.g. IP); computer networks that
+provide only a connectionless service at the network layer are called datagram
+networks (e.g.  ATM, frame relay).</p>
+<dl>
+<dt>IP (Internet Protocol)</dt>
+<dd><p>A best-effort delivery service, which means that IP makes its &quot;best effort&quot;
+to deliver segments between communication hosts, but it makes no
+guarantees. (P190)</p>
+</dd>
+<dt>MTU</dt>
+<dd><p>In computer networking, the maximum transmission unit (MTU) is the size of
+the largest protocol data unit (PDU) that can be communicated in a single
+network layer transaction. The MTU relates to, but is not identical to the
+maximum frame size that can be transported on the data link layer, e.g.
+Ethernet frame.</p>
+<p>Larger MTU is associated with reduced overhead. Smaller MTU values can
+reduce network delay.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_transmission_unit">https://en.wikipedia.org/wiki/Maximum_transmission_unit</a></p>
+</dd>
+</dl>
+<p>P318
+When there are multiple matches, the router uses the <strong>longest prefix
+matching</strong> rule; that is, it finds the longest matching entry in the table and
+forwards the packet to the link interface associated with the longest prefix
+match.</p>
+<p>P321
+If there are a 10 Gbps input link and a 64-byte IP datagram, the input port has
+only 51.2 ns to process the datagram berfore anotehr datagram may arrive.</p>
+<pre class="literal-block">1 / ( 10 * 1000 / 8 / 64)</pre>
+<p>P335
+IP Datagram Fragmentation</p>
+<p>P344</p>
+<dl class="simple">
+<dt>Classful addressing</dt>
+<dd><p>Use 8-, 16-, 24-bit subnet address, which are known as class A, B, and C
+networks, respectively.</p>
+</dd>
+<dt>Classless Interdomain Routing (CIDR)</dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Wikipedia: CIDR</a></p>
+</dd>
+</dl>
+<p>P346</p>
+<dl>
+<dt>DHCP</dt>
+<dd><p>A plug-and play protocol</p>
+<p>Address lease time is the amount of time for which the IP address will be
+valid.</p>
+<p>Use 255.255.255.255 as destination address to broadcast to all hosts in
+subnet.</p>
+</dd>
+</dl>
+<p>P353
+ICMP is often considered part of IP but architecturally it lies just above IP,
+as ICMP messages are carried inside IP datagram.</p>
+<p>The well-known ping program sends an ICMP type 8 code and 0 message to the
+specified host. The destination host, seeing the echo request, sends back a
+type 0 code 0 ICMP echo reply.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol">Wikipedia: ICMP</a></p>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc792">RFC 792: ICMP</a></p>
+<p>NAT
+<a class="reference external" href="https://www.slashroot.in/linux-nat-network-address-translation-router-explained">https://www.slashroot.in/linux-nat-network-address-translation-router-explained</a></p>
+<p><a class="reference external" href="https://serverfault.com/a/119374">https://serverfault.com/a/119374</a></p>
+<dl>
+<dt>Round-trip time</dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Round-trip_delay_time">Wikipedia: RTT</a></p>
+</dd>
+<dt>RIP, OSPF, BGP</dt>
+<dd><p><a class="reference external" href="http://sabercomlogica.com/en/ebook/intra-as-and-inter-as-routing/">http://sabercomlogica.com/en/ebook/intra-as-and-inter-as-routing/</a></p>
+</dd>
+<dt>Source routing</dt>
+<dd><blockquote>
+<p>Route packets using their source addresses.</p>
+</blockquote>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Source_routing">Wikipedia: source routing</a></p>
+</dd>
+<dt>Policy-based routing</dt>
+<dd><blockquote>
+<p>Route packets using their source addresses.</p>
+</blockquote>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Policy-based_routing">Wikipedia: policy-based routing</a></p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://learningnetwork.cisco.com/thread/86495">Source routing vs policy-based routing</a></p>
+</div>
+<div class="section" id="transport-layer">
+<h2>Transport Layer</h2>
+<p>Segment</p>
+<p>Process-to-process communication</p>
 </div>
 <div class="section" id="tcp">
 <h2>TCP</h2>
 <p>Connection provided by the TCP/IP are full duplex. it consists of two
 independent streams flowing in opposite directions, with no apparent
 interaction. The stream service allows an application process to terminate flow
-in on direction while data continues to flow in teh other direction , making
+in on direction while data continues to flow in the other direction , making
 the connection half duplex.</p>
 <p>Positive acknowledgement with retransmission</p>
 <p>Segment</p>
@@ -88,6 +255,7 @@ the connection half duplex.</p>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">Wikipedia: TCP</a></p>
+<p><a class="reference external" href="https://howdoesinternetwork.com/">How does internet work</a></p>
 </div>
 </div>
         </div> <!-- content -->

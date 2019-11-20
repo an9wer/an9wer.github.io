@@ -45,6 +45,7 @@
 <li><p><a class="reference external" href="/notes/commands/lsof.html">lsof</a></p></li>
 <li><p><a class="reference external" href="/notes/commands/traceroute.html">traceroute</a></p></li>
 <li><p><a class="reference external" href="/notes/commands/tcpdump.html">tcpdump</a></p></li>
+<li><p><a class="reference external" href="/notes/commands/smartctl.html">smartctl</a></p></li>
 </ul>
 </dd>
 <dt>Coreutils/</dt>
@@ -76,6 +77,12 @@
 <dt>Iputils/</dt>
 <dd><ul class="simple">
 <li><p><a class="reference external" href="/notes/iputils/ping.html">ping</a></p></li>
+</ul>
+</dd>
+<dt>Iproute2</dt>
+<dd><ul class="simple">
+<li><p><a class="reference external" href="/notes/iproute2/route.html">ip route</a></p></li>
+<li><p><a class="reference external" href="/notes/iproute2/ss.html">ss</a></p></li>
 </ul>
 </dd>
 <dt>X11/</dt>
@@ -311,6 +318,19 @@ Unlock
 <dl class="simple">
 <dt>R :</dt>
 <dd><p><a class="reference external" href="https://wiki.archlinux.org/index.php/Sudo#Disable_root_login">Archwiki: disable root login</a></p>
+</dd>
+</dl>
+<p>---</p>
+<p>Q : How To Check If A Linux System Is Physical Or Virtual Machine?</p>
+<p>A1:</p>
+<pre class="literal-block">$ hostnamectl | grep Virtualization</pre>
+<p>A2:</p>
+<pre class="literal-block">$ systemd-detect-virt</pre>
+<p>A2:</p>
+<pre class="literal-block"># virt-what</pre>
+<dl class="simple">
+<dt>R :</dt>
+<dd><p><a class="reference external" href="https://www.ostechnix.com/check-linux-system-physical-virtual-machine/">How To Check If A Linux System Is Physical Or Virtual Machine?</a></p>
 </dd>
 </dl>
 </div>

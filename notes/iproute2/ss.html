@@ -31,26 +31,10 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="ping">
-<h1>Ping</h1>
-<p>Stop after sending count ECHO_REQUEST packets:</p>
-<pre class="literal-block">$ ping -c &lt;count&gt; &lt;destionation&gt;</pre>
-<p>Stop when deadline expire:</p>
-<pre class="literal-block">$ ping -w &lt;time&gt; &lt;destionation&gt;</pre>
-<p>Quite mode, only display the summary lines:</p>
-<pre class="literal-block">$ ping -q &lt;destionation&gt;</pre>
-<p>Set TTL (time to live) for every queries:</p>
-<pre class="literal-block">$ ping -t &lt;ttl&gt; &lt;destionation&gt;</pre>
-<p>Flood ping:</p>
-<pre class="literal-block"># ping -f &lt;destionation&gt;</pre>
-<p>Set interval senconds between sending each packet. The default is to wait for
-on second between each packet normally, or not to wait in flood mode. Only
-super-user may set interval to values less than 0.2 seconds:</p>
-<pre class="literal-block">$ ping -i &lt;interval&gt; &lt;destionation&gt;</pre>
-<div class="section" id="references">
-<h2>References</h2>
-<p><span class="docutils literal">man ping</span></p>
-</div>
+<div class="section" id="iproute2-ss">
+<h1>Iproute2 ss</h1>
+<p>List UNIX domain sockets:</p>
+<pre class="literal-block">$ ss --unix</pre>
 </div>
         </div> <!-- content -->
 

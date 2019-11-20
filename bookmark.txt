@@ -12,6 +12,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/lsof.rst
         reStructuredText/notes/commands/traceroute.rst
         reStructuredText/notes/commands/tcpdump.rst
+        reStructuredText/notes/commands/smartctl.rst
     Coreutils
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
@@ -30,6 +31,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/iputils/ping.rst
     Iproute2
         reStructuredText/notes/iproute2/route.rst
+        reStructuredText/notes/iproute2/ss.rst
     X11
         reStructuredText/notes/X11/xclip.rst
         reStructuredText/notes/X11/xmodmap.rst

@@ -91,7 +91,6 @@ Usage
 
     # docker-compose rm <service>
 
-
 ::
 
     # docker-compose run <service> [<command> ...]
@@ -107,6 +106,14 @@ remove all:
 ::
 
     # docker-compose rm 
+
+Stop and remove container: ::
+
+    # docker-compose down
+
+Stop and remove container, volumes: ::
+
+    # docker-compose down --volume
 
 
 Dockerfile
