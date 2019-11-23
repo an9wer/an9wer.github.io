@@ -51,10 +51,17 @@ Iputils/
     -   `ping
         </notes/iputils/ping.html>`_
 Iproute2
+    -   `ip address
+        </notes/iproute2/address.html>`_
     -   `ip route
         </notes/iproute2/route.html>`_
     -   `ss
         </notes/iproute2/ss.html>`_
+E2fsprogs
+    -   `mke2fs
+        </notes/e2fsprogs/mke2fs>`_
+    -   `tune2fs
+        </notes/e2fsprogs/tune2fs>`_
 X11/
     -   `xclip
         </notes/X11/xclip.html>`_

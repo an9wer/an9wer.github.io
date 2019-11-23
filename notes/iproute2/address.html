@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="iproute2-address">
+<h1>Iproute2 address</h1>
+<p>Syntax of <span class="docutils literal">ip address</span>:</p>
+<pre class="literal-block">ip address &quot;add|change|replace&quot;
+  &lt;address&gt;/&lt;prefix&gt; [broadcast &lt;broadcast&gt;] [label &lt;label&gt;] [scope &lt;scope&gt;]
+  dev &lt;interface&gt; [valid_lft &lt;lifetime&gt;] [preferred_lft &lt;lifetime&gt;] [noprefixroute] [autojoin]</pre>
+<dl>
+<dt>noprefixroute</dt>
+<dd><p>By default, when adding a new ip address to an interface, a router rule for
+the network prefix of that added address will also be created, but use
+<span class="docutils literal">noprefixroute</span> will prevent this behavior, and don't search for one to
+delete when removing the address:</p>
+<pre class="literal-block"># ip address add 172.16.0.7/16 dev eth0 noprefixroute</pre>
+</dd>
+<dt>secondary</dt>
+<dd><p>When assigning more than one ip address to an interface and using the same
+prefix, the additional addresses are flagged secondary:</p>
+<pre class="literal-block"># ip address add 172.16.0.7/16 dev eth0
+# ip address add 172.16.0.8/16 dev eth0
+# ip address add 172.16.0.9/16 dev eth0</pre>
+</dd>
+</dl>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>
