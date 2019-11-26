@@ -24,6 +24,10 @@ Commands/
     -   `smartctl
         </notes/commands/smartctl.html>`_
 Coreutils/
+    -   `ls
+        </notes/coreutils/ls.html>`_
+    -   `du
+        </notes/coreutils/du.html>`_
     -   `mktemp
         </notes/coreutils/mktemp.html>`_
     -   `cut
@@ -37,6 +41,12 @@ Util-linux/
         </notes/util-linux/mount.html>`_
     -   `findmnt
         </notes/util-linux/findmnt.html>`_
+    -   `lsblk
+        </notes/util-linux/lsblk.html>`_
+    -   `lslocks
+        </notes/util-linux/lslocks.html>`_
+    -   `flock
+        </notes/util-linux/flock.html>`_
 Procps-ng/
     -   `top
         </notes/procps-ng/top.html>`_

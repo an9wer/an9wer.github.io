@@ -1,6 +1,24 @@
 lsof
 ====
 
+Command syntax: ::
+
+    lsof [options] [--] [[name] ...]
+
+----
+
+To find the process that has the specified file open: ::
+
+    # lsof <file>
+
+To list all open files on the mounted-on directory (e.g. /, /mnt): ::
+
+    # lsof <mounted-on directory>
+
+To list all open files on device (e.g. /dev/sda): ::
+
+    # lsof <device>
+
 Scan directory (not descend the directory tree): ::
 
     # lsof +d <directory>

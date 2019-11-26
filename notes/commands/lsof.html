@@ -33,6 +33,15 @@
         <div id="content">
 <div class="section" id="lsof">
 <h1>lsof</h1>
+<p>Command syntax:</p>
+<pre class="literal-block">lsof [options] [--] [[name] ...]</pre>
+<hr class="docutils" />
+<p>To find the process that has the specified file open:</p>
+<pre class="literal-block"># lsof &lt;file&gt;</pre>
+<p>To list all open files on the mounted-on directory (e.g. /, /mnt):</p>
+<pre class="literal-block"># lsof &lt;mounted-on directory&gt;</pre>
+<p>To list all open files on device (e.g. /dev/sda):</p>
+<pre class="literal-block"># lsof &lt;device&gt;</pre>
 <p>Scan directory (not descend the directory tree):</p>
 <pre class="literal-block"># lsof +d &lt;directory&gt;</pre>
 <p>Scan directory, follow symbolic links and/or filesystems:</p>

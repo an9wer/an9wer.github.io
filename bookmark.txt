@@ -14,6 +14,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/tcpdump.rst
         reStructuredText/notes/commands/smartctl.rst
     Coreutils
+        reStructuredText/notes/coreutils/ls.rst
+        reStructuredText/notes/coreutils/du.rst
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
         reStructuredText/notes/coreutils/tr.rst
@@ -21,6 +23,9 @@ reStructuredText/notes.rst
         reStructuredText/notes/util-linux/hwclock.rst
         reStructuredText/notes/util-linux/mount.rst
         reStructuredText/notes/util-linux/findmnt.rst
+        reStructuredText/notes/util-linux/lsblk.rst
+        reStructuredText/notes/util-linux/lslock.rst
+        reStructuredText/notes/util-linux/flock.rst
     Procps-ng
         reStructuredText/notes/procps-ng/top.rst
         reStructuredText/notes/procps-ng/pgrep.rst
@@ -121,6 +126,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/language/ebnf.rst
         reStructuredText/notes/language/graphviz.rst
         reStructuredText/notes/language/perl.rst
+    Hardware
+        reStructuredText/notes/hardware/disk.rst
     Misc
         reStructuredText/notes/miscellaneous/programming_language.rst
         reStructuredText/notes/miscellaneous/operating_system.rst
@@ -172,6 +179,7 @@ reStructuredText/notes.rst
 
 
 reStructuredText/blog.rst
+    reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
     reStructuredText/2019/11/09_Build_raid1.rst
     reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
     reStructuredText/2019/08/21_终端下的目录切换.rst

@@ -19,10 +19,6 @@ PCI-E:
 
 -   `How PCI Express Works <https://computer.howstuffworks.com/pci-express.htm>`_
 
-SCSI:
-
--   `lsscsi </notes/commands/lsscsi.html>`_
-
 Baseboard management contruller (BCM):
 
 Embedded device or service. Typically an independent microprocessor or
@@ -76,11 +72,6 @@ Parallel vs serial
     thus making it suitable for long distance communication. 
 
 -   `Communication Networks/Parallel vs Serial <https://en.wikibooks.org/wiki/Communication_Networks/Parallel_vs_Serial>`_
-
-Disk enclosure:
-
--   `Wikipedia: Disk Enclosure <https://en.wikipedia.org/wiki/Disk_enclosure>`_
-
 
 Intel
 -----

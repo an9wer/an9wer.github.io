@@ -23,7 +23,9 @@ References
 `SCSI Interfaces Guide
 <https://www.kernel.org/doc/html/v4.17/driver-api/scsi.html>`_
 
-`Wikipedia: scsi <https://en.wikipedia.org/wiki/SCSI>`_
+`Wikipedia: scsi
+<https://en.wikipedia.org/wiki/SCSI>`_
+
     SCSI is most commonly used for hard disk drives and tape drives, but it can
     connect a wide range of other devices, including scanners and CD drives,
     although not all controllers can handle all devices.
@@ -31,9 +33,12 @@ References
     SCSI, a parallel intgerface, is derived from SASI, and was gradually
     replaced by SAS (Serial Attached SCSI) since 2005.
     
-`How SCSI Works <https://computer.howstuffworks.com/scsi.htm>`_
+`How SCSI Works
+<https://computer.howstuffworks.com/scsi.htm>`_
 
-`What’s The Difference Between SATA And SAS Hard Drives?  <https://www.pickaweb.co.uk/kb/difference-between-sata-sas-hard-drives/>`_
+`What’s The Difference Between SATA And SAS Hard Drives? 
+<https://www.pickaweb.co.uk/kb/difference-between-sata-sas-hard-drives/>`_
+
     SAS drives tend to be used for Enterprise Computing where high speed and
     high availability are crucial such as banking transactions and Ecommerce.
 
@@ -42,7 +47,9 @@ References
 
     SAS drives are more reliable than SATA drives. 
 
-`Understanding SAS, SATA, SCSI and ATA <https://www.webopedia.com/DidYouKnow/Computer_Science/sas_sata.asp>`_
+`Understanding SAS, SATA, SCSI and ATA
+<https://www.webopedia.com/DidYouKnow/Computer_Science/sas_sata.asp>`_
+
     SCSI, short for small computer system interface, is a parallel interface
     standard used by Apple Macintosh computers, PCs and many UNIX systems for
     attaching peripheral devices to computers.
