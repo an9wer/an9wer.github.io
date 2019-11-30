@@ -46,5 +46,6 @@ Edit a encrypted file (decrypt it first and encrypt it after editing):
 References
 ----------
 
-`Official repository <https://github.com/StackExchange/blackbox>`_
+`Github repository of blackbox
+<https://github.com/StackExchange/blackbox>`_
 

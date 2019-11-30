@@ -1,4 +1,158 @@
 腾讯云低配服务器性能测试
 ========================
 
+S2.SMALL1(标准型S2,1核 1GB)
 
+::
+
+    [an9wer@VM_0_17_centos ~]$ sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+    sysbench 1.0.17 (using system LuaJIT 2.0.4)
+
+    Running the test with following options:
+    Number of threads: 1
+    Initializing random number generator from current time
+
+
+    Prime numbers limit: 10000000
+
+    Initializing worker threads...
+
+    Threads started!
+
+    CPU speed:
+        events per second:     0.06
+
+    General statistics:
+        total time:                          17.0830s
+        total number of events:              1
+
+    Latency (ms):
+             min:                                17082.84
+             avg:                                17082.84
+             max:                                17082.84
+             95th percentile:                    17124.84
+             sum:                                17082.84
+
+    Threads fairness:
+        events (avg/stddev):           1.0000/0.00
+        execution time (avg/stddev):   17.0828/0.00
+
+
+    [root@VM_0_3_centos ~]# lscpu
+    Architecture:          x86_64
+    CPU op-mode(s):        32-bit, 64-bit
+    Byte Order:            Little Endian
+    CPU(s):                1
+    On-line CPU(s) list:   0
+    Thread(s) per core:    1
+    Core(s) per socket:    1
+    Socket(s):             1
+    NUMA node(s):          1
+    Vendor ID:             GenuineIntel
+    CPU family:            6
+    Model:                 79
+    Model name:            Intel(R) Xeon(R) CPU E5-26xx v4
+    Stepping:              1
+    CPU MHz:               2394.454
+    BogoMIPS:              4788.90
+    Hypervisor vendor:     KVM
+    Virtualization type:   full
+    L1d cache:             32K
+    L1i cache:             32K
+    L2 cache:              4096K
+    NUMA node0 CPU(s):     0
+    Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx lm constant_tsc rep_good nopl eagerfpu pni pclmulqdq
+    ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch bmi1 avx2 bmi2 rdseed adx xsaveopt
+
+
+S5.SMALL2(标准型S5,1核 2GB) Intel Xeon Cascade Lake(2.5 G
+
+::
+
+    [an9wer@VM_0_17_centos ~]$  sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+    sysbench 1.0.17 (using system LuaJIT 2.0.4)
+
+    Running the test with following options:
+    Number of threads: 1
+    Initializing random number generator from current time
+
+
+    Prime numbers limit: 10000000
+
+    Initializing worker threads...
+
+    Threads started!
+
+    CPU speed:
+        events per second:     0.07
+
+    General statistics:
+        total time:                          14.5377s
+        total number of events:              1
+
+    Latency (ms):
+             min:                                14537.62
+             avg:                                14537.62
+             max:                                14537.62
+             95th percentile:                    14562.82
+             sum:                                14537.62
+
+    Threads fairness:
+        events (avg/stddev):           1.0000/0.00
+        execution time (avg/stddev):   14.5376/0.00
+
+::
+
+    (venv) [an9wer@VM_0_17_centos ~]$ speedtest
+    Retrieving speedtest.net configuration...
+    Testing from Tencent cloud computing (49.234.12.97)...
+    Retrieving speedtest.net server list...
+    Selecting best server based on ping...
+    Hosted by ChinaUnicom-5G (TianJin) [111.65 km]: 39.158 ms
+    Testing download speed................................................................................
+    Download: 81.11 Mbit/s
+    Testing upload speed......................................................................................................
+    Upload: 1.00 Mbit/s
+
+
+::
+
+    [root@VM_0_17_centos synapse]# sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+    sysbench 1.0.17 (using system LuaJIT 2.0.4)
+
+    Running the test with following options:
+    Number of threads: 1
+    Initializing random number generator from current time
+
+
+    Prime numbers limit: 10000000
+
+    Initializing worker threads...
+
+    Threads started!
+
+    CPU speed:
+        events per second:     0.07
+
+    General statistics:
+        total time:                          14.8113s
+        total number of events:              1
+
+    Latency (ms):
+             min:                                14811.16
+             avg:                                14811.16
+             max:                                14811.16
+             95th percentile:                    14827.42
+             sum:                                14811.16
+
+    Threads fairness:
+        events (avg/stddev):           1.0000/0.00
+        execution time (avg/stddev):   14.8112/0.00
+
+
+
+    Hosted by ChinaUnicom-5G (TianJin) [111.65 km]: 22.086 ms
+    Testing download speed................................................................................
+    Download: 83.78 Mbit/s
+    Testing upload speed......................................................................................................
+    Upload: 1.16 Mbit/s

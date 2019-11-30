@@ -1,3 +1,8 @@
+2019/11/30 Sat
+
+    Fedora 31 Firefox 居然从 X11 迁移到了 Wayland，装 adobe flash 的时候着实被
+    坑了一把！
+
 2019/11/22 Fri
 
     夏季的青草到了这个时节也开始渐渐发黄了。

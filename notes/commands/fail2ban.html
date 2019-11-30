@@ -20,30 +20,35 @@
         </div> <!-- header -->
 
         <div id="navbar">
-            <a id="blog" class="current"
+            <a id="blog"
                 href="/blog.html">Blog</a>
             <a id="tweet"
                 href="/tweet.html">Tweet</a>
-            <a id="notes"
+            <a id="notes" class="current"
                 href="/notes.html">Notes</a>
             <a id="about"
                 href="/about.html">About</a>
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="build-raid1">
-<h1>Build raid1</h1>
-<p>Create raid 1 device:</p>
-<pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
-<p>After that, check the process of creation command:</p>
-<pre class="literal-block"># cat /proc/mdstat</pre>
-<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, if it contains
-<em>resyncing</em>, then the creation is still being in work:</p>
-<pre class="literal-block"># mdadm --detail /dev/md1
-State: clean, resyncing</pre>
+<div class="section" id="fail2ban">
+<h1>Fail2ban</h1>
+<p>Check status of all jails:</p>
+<pre class="literal-block"># fail2ban-client status</pre>
+<p>Check status of specified jail:</p>
+<pre class="literal-block"># fail2ban-client status &lt;jail&gt;</pre>
+<p>List all actions of specified jail:</p>
+<pre class="literal-block"># fail2ban-client get &lt;jail&gt; actions</pre>
+<p>Get specified action of jail:</p>
+<pre class="literal-block"># fail2ban-client get &lt;jail&gt; action &lt;action&gt; &quot;actionstart|actionstop|actioncheck|actionban|actionunban|timeout&quot;</pre>
+<p>Get action properties of jail:</p>
+<pre class="literal-block"># fail2ban-client get &lt;jail&gt; actionproperties &lt;action&gt;</pre>
+<p>Unban ip address:</p>
+<pre class="literal-block"># fail2ban-client set &lt;jail&gt; unbanip &lt;ip&gt;</pre>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
+<p><span class="docutils literal">man <span class="pre">fail2ban-client</span></span></p>
+<p><span class="docutils literal">man jail.conf</span></p>
 </div>
 </div>
         </div> <!-- content -->

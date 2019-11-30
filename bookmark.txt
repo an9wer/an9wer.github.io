@@ -13,6 +13,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/traceroute.rst
         reStructuredText/notes/commands/tcpdump.rst
         reStructuredText/notes/commands/smartctl.rst
+        reStructuredText/notes/commands/fail2ban.rst
+        reStructuredText/notes/commands/mdadm.rst
     Coreutils
         reStructuredText/notes/coreutils/ls.rst
         reStructuredText/notes/coreutils/du.rst
@@ -52,6 +54,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/monitor/collectd.rst
     Systemd
         reStructuredText/notes/systemd/hostnamectl.rst
+        reStructuredText/notes/systemd/timedatectl.rst
+        reStructuredText/notes/systemd/exec.rst
     Linux
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst

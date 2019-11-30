@@ -23,6 +23,10 @@ Commands/
         </notes/commands/tcpdump.html>`_
     -   `smartctl
         </notes/commands/smartctl.html>`_
+    -   `fail2ban
+        </notes/commands/fail2ban.html>`_
+    -   `mdadm
+        </notes/commands/mdadm.html>`_
 Coreutils/
     -   `ls
         </notes/coreutils/ls.html>`_
@@ -90,6 +94,10 @@ Monitor/
 Systemd/
     -   `hostnamectl
         </notes/systemd/hostnamectl.html>`_
+    -   `timedatectl
+        </notes/systemd/timedatectl.html>`_
+    -   `exec
+        </notes/systemd/exec.html>`_
 Linux/
     -   `Linux filesystem hierarchy
         </notes/linux/filesystem_hierarchy.html>`_

@@ -20,31 +20,42 @@
         </div> <!-- header -->
 
         <div id="navbar">
-            <a id="blog" class="current"
+            <a id="blog"
                 href="/blog.html">Blog</a>
             <a id="tweet"
                 href="/tweet.html">Tweet</a>
-            <a id="notes"
+            <a id="notes" class="current"
                 href="/notes.html">Notes</a>
             <a id="about"
                 href="/about.html">About</a>
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="build-raid1">
-<h1>Build raid1</h1>
-<p>Create raid 1 device:</p>
-<pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
-<p>After that, check the process of creation command:</p>
-<pre class="literal-block"># cat /proc/mdstat</pre>
-<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, if it contains
-<em>resyncing</em>, then the creation is still being in work:</p>
-<pre class="literal-block"># mdadm --detail /dev/md1
-State: clean, resyncing</pre>
-<div class="section" id="references">
-<h2>References</h2>
-<p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
-</div>
+<div class="section" id="systemd-exec">
+<h1>Systemd exec</h1>
+<dl>
+<dt>EnvironmentFile</dt>
+<dd><p>Similar to Environment= but reads the environment variables from a text
+file.</p>
+<p>The argument passed should be an absolute filename or wildcard expression,
+optionally prefixed with &quot;-&quot;, which indicates that if the file does not
+exist, it will not be read and no error or warning message is logged.</p>
+<p>Example:</p>
+<pre class="literal-block"># cat /usr/lib/systemd/system/ntpd.service
+[Unit]
+Description=Network Time Service
+After=syslog.target ntpdate.service sntp.service
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/ntpd
+ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target</pre>
+</dd>
+</dl>
 </div>
         </div> <!-- content -->
 
