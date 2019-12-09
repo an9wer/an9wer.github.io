@@ -15,6 +15,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/smartctl.rst
         reStructuredText/notes/commands/fail2ban.rst
         reStructuredText/notes/commands/mdadm.rst
+        reStructuredText/notes/commands/conntrack.rst
     Coreutils
         reStructuredText/notes/coreutils/ls.rst
         reStructuredText/notes/coreutils/du.rst
@@ -32,6 +33,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/procps-ng/top.rst
         reStructuredText/notes/procps-ng/pgrep.rst
         reStructuredText/notes/procps-ng/free.rst
+        reStructuredText/notes/procps-ng/pidof.rst
     Psmisc
         reStructuredText/notes/psmisc/pstree.rst
     Iputils
@@ -43,6 +45,8 @@ reStructuredText/notes.rst
     E2fsprogs
         reStructuredText/notes/e2fsprogs/mke2fs.rst
         reStructuredText/notes/e2fsprogs/tune2fs.rst
+        reStructuredText/notes/e2fsprogs/e2fsck.rst
+        reStructuredText/notes/e2fsprogs/e4defrag.rst
     X11
         reStructuredText/notes/X11/xclip.rst
         reStructuredText/notes/X11/xmodmap.rst
@@ -78,6 +82,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/hostname.rst
     Package
         reStructuredText/notes/package/rpm.rst
+        reStructuredText/notes/package/rpm-packaging.rst
         reStructuredText/notes/package/yum.rst
         reStructuredText/notes/package/yum-utils.rst
         reStructuredText/notes/package/dnf.rst
@@ -144,6 +149,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/encryption_and_decryption.rst
         reStructuredText/notes/miscellaneous/mebibyte_vs_megabyte.rst
         reStructuredText/notes/miscellaneous/network.rst
+        reStructuredText/notes/miscellaneous/domain.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst
@@ -151,6 +157,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/ns/wh_route.rst
         reStructuredText/notes/ns/azure.rst
         reStructuredText/notes/ns/gcloud.rst
+        reStructuredText/notes/ns/edc.rst
 
     TODO
         reStructuredText//notes/coreutils/seq.rst

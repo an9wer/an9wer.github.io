@@ -31,23 +31,21 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="iproute2-route">
-<h1>Iproute2 route</h1>
-<pre class="literal-block">ip route { add | del | change | append | replace } ROUTE
+<div class="section" id="package-rpm-packaging">
+<h1>Package rpm-packaging</h1>
+<p>If you see an unfamiliar macro, you can evaluate it with:</p>
+<pre class="literal-block">$ rpm --eval %{&lt;macro&gt;}
 
-ROUTE := NODE_SPEC [ INFO_SPEC ]
-
-NODE_SPEC := [ TYPE ] PREFIX [ tos TOS ] [ table TABLE_ID ] [ proto RTPROTO]
-  [ scope SCOPE ] [ metric METRIC ] [ ttl-propagate { enabled | disabled } ]
-
-INFO_SPEC := { NH | nhid ID } OPTIONS FLAGS [ nexthop NH ] ...</pre>
-<p><strong>Note</strong>: The braces indicate a choice list, while the fields in brackets are
-optional.</p>
-<p>Add route to some table:</p>
-<pre class="literal-block">::</pre>
-<blockquote>
-<p># ip route add &lt;prefix&gt; table &lt;table&gt;</p>
-</blockquote>
+e.g.
+$ rpm --eval %{_bindir}
+/usr/bin
+$ rpm --eval %{_libexecdir}
+/usr/libexec</pre>
+<pre class="literal-block">$ rpmdev-setuptree
+$ cd rpmbuild/SPECS
+$ rpmdev-newspec &lt;pacakge&gt;
+$ vim &lt;package&gt;.spec
+$ yum-builddep &lt;package&gt;.spec</pre>
 </div>
         </div> <!-- content -->
 

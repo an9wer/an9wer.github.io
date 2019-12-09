@@ -12,5 +12,11 @@ Iproute2 route
 
     INFO_SPEC := { NH | nhid ID } OPTIONS FLAGS [ nexthop NH ] ...
 
-**Note**: the braces indicate a choice list, and the fields in brackets are
+**Note**: The braces indicate a choice list, while the fields in brackets are
 optional.
+
+Add route to some table: ::
+
+::
+
+    # ip route add <prefix> table <table>

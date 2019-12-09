@@ -15,6 +15,8 @@ Or use ``--detail`` option to get the state of raid device, if it contains
     # mdadm --detail /dev/md1
     State: clean, resyncing
 
+
+
 References
 ----------
 

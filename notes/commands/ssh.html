@@ -43,6 +43,12 @@ $ ssh -A &lt;destinationA&gt;
 $ # From destinationA
 $ ssh &lt;destinationB&gt;</pre>
 </dd>
+<dt><kbd><span class="option">-n</span></kbd></dt>
+<dd><p>Redirects stdin from /dev/null, prevents reading from stdin.</p>
+<pre class="literal-block">$ while read host; do
+&gt;   ssh -n $host &lt;command&gt;
+&gt; done &lt; &lt;/path/to/hostfile&gt;</pre>
+</dd>
 </dl>
 <div class="section" id="ssh-tunnel">
 <h2>SSH tunnel</h2>

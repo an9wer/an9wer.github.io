@@ -79,6 +79,11 @@ Install autossh:
     $ sudo atp install sutossh
 
 
+Edit 2019/12/08
+
+在淘宝上买了 USB 转 TTL 的线，参考 `教程 <https://www.bashpi.org/?page_id=354>`_
+，以后玩树莓排就不需要额外的显示器了。
+
 References
 ----------
 

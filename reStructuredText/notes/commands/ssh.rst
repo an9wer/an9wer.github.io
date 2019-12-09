@@ -13,6 +13,15 @@ SSH
         $ # From destinationA
         $ ssh <destinationB>
 
+-n
+    Redirects stdin from /dev/null, prevents reading from stdin.
+
+    ::
+
+        $ while read host; do
+        >   ssh -n $host <command>
+        > done < </path/to/hostfile>
+
 SSH tunnel
 ----------
 

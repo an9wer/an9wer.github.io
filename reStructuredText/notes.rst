@@ -27,6 +27,8 @@ Commands/
         </notes/commands/fail2ban.html>`_
     -   `mdadm
         </notes/commands/mdadm.html>`_
+    -   `conntrack
+        </notes/commands/conntrack>`_
 Coreutils/
     -   `ls
         </notes/coreutils/ls.html>`_

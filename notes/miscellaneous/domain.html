@@ -31,23 +31,14 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="iproute2-route">
-<h1>Iproute2 route</h1>
-<pre class="literal-block">ip route { add | del | change | append | replace } ROUTE
-
-ROUTE := NODE_SPEC [ INFO_SPEC ]
-
-NODE_SPEC := [ TYPE ] PREFIX [ tos TOS ] [ table TABLE_ID ] [ proto RTPROTO]
-  [ scope SCOPE ] [ metric METRIC ] [ ttl-propagate { enabled | disabled } ]
-
-INFO_SPEC := { NH | nhid ID } OPTIONS FLAGS [ nexthop NH ] ...</pre>
-<p><strong>Note</strong>: The braces indicate a choice list, while the fields in brackets are
-optional.</p>
-<p>Add route to some table:</p>
-<pre class="literal-block">::</pre>
-<blockquote>
-<p># ip route add &lt;prefix&gt; table &lt;table&gt;</p>
-</blockquote>
+<div class="section" id="domain">
+<h1>Domain</h1>
+<dl>
+<dt>TLD and SLD</dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Top-level_domain">TLD</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Second-level_domain">SLD</a></p>
+</dd>
+</dl>
 </div>
         </div> <!-- content -->
 

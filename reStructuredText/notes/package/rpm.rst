@@ -43,4 +43,3 @@ Reinstall packages:
 ::
 
     # rpm -i --reinstall <package_file> [<package_file> ...]
-
