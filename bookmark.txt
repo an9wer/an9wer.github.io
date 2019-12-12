@@ -16,6 +16,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/fail2ban.rst
         reStructuredText/notes/commands/mdadm.rst
         reStructuredText/notes/commands/conntrack.rst
+        reStructuredText/notes/commands/curl.rst
     Coreutils
         reStructuredText/notes/coreutils/ls.rst
         reStructuredText/notes/coreutils/du.rst
