@@ -43,6 +43,8 @@
 <pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -fingerprint -noout</pre>
 <p>Display serial of certificate:</p>
 <pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -serial -noout</pre>
+<p>Create pfx file from certificate and private key:</p>
+<pre class="literal-block">$ openssl pkcs12 -export -out &lt;pfx&gt; -inkey &lt;key&gt; -in &lt;certificate&gt;</pre>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Public_key_fingerprint">Wikipedia: public key fingerprint</a></p>

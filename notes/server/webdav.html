@@ -33,10 +33,6 @@
         <div id="content">
 <div class="section" id="webdav">
 <h1>WebDAV</h1>
-<p>Definition of WebDAV:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/WebDAV">Wikipedia: WebDAV</a></p></li>
-</ul>
 <p>Deploy WebDAV on CentOS 7:</p>
 <p>Install httpd and creat realated directory:</p>
 <pre class="literal-block"># yum install httpd
@@ -44,8 +40,7 @@
 # chown -R apache:apache /var/www/webdav</pre>
 <p>Generate authentication file:</p>
 <pre class="literal-block">htpasswd -c /etc/httpd/.passwd username</pre>
-<p>Confiure httpd configuration file (<em>/etc/httpd/conf.d/webdav.conf</em>),The
-relevant lines are like this:</p>
+<p>The relevant lines in <span class="docutils literal">/etc/httpd/conf.d/webdav.conf</span>) are like this:</p>
 <pre class="literal-block">DAVLockDB /var/lib/dav/DAVLock
 
 &lt;VirtualHost *:80&gt;
@@ -61,13 +56,14 @@ relevant lines are like this:</p>
         Require valid-user
     &lt;/Directory&gt;
 &lt;/VirtualHost&gt;</pre>
-<p><strong>References</strong>:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki.archlinux.org/index.php/WebDAV">Archwiki: WebDAV</a></p></li>
-<li><p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-configure-webdav-access-with-apache-on-ubuntu-14-04">how-to-configure-webdav-access-with-apache-on-ubuntu-14-04</a></p></li>
-<li><p><a class="reference external" href="https://www.joe0.com/2019/01/25/how-to-enable-webdav-on-apache-http-server-2-4-x/">how-to-enable-webdav-on-apache-http-server-2-4-x</a></p></li>
-<li><p><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/SSEP7J_10.2.2/com.ibm.swg.ba.cognos.inst_cr_winux.10.2.2.doc/t_enablewebdavforreportstudio.html">Configuring WebDAV on Apache server</a></p></li>
-</ul>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/WebDAV">Wikipedia: WebDAV</a></p>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/WebDAV">Archwiki: WebDAV</a></p>
+<p><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-configure-webdav-access-with-apache-on-ubuntu-14-04">How-to-configure-webdav-access-with-apache-on-ubuntu-14-04</a></p>
+<p><a class="reference external" href="https://www.joe0.com/2019/01/25/how-to-enable-webdav-on-apache-http-server-2-4-x/">how-to-enable-webdav-on-apache-http-server-2-4-x</a></p>
+<p><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/SSEP7J_10.2.2/com.ibm.swg.ba.cognos.inst_cr_winux.10.2.2.doc/t_enablewebdavforreportstudio.html">Configuring WebDAV on Apache server</a></p>
+</div>
 </div>
         </div> <!-- content -->
 

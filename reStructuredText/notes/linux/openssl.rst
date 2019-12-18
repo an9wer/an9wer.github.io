@@ -22,6 +22,10 @@ Display serial of certificate: ::
 
     $ openssl x509 -in <certificate> -serial -noout 
 
+Create pfx file from certificate and private key: ::
+
+    $ openssl pkcs12 -export -out <pfx> -inkey <key> -in <certificate>
+
 
 References
 ----------

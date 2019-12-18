@@ -142,6 +142,8 @@ Linux/
 Package/
     -   `RPM
         </notes/package/rpm.html>`_
+    -   `rpm-packaging
+        </notes/package/rpm-packaging.html>`_
     -   `yum
         </notes/package/yum.html>`_
     -   `dnf

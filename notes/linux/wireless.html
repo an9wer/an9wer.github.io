@@ -33,6 +33,76 @@
         <div id="content">
 <div class="section" id="linux-wireless">
 <h1>Linux wireless</h1>
+<div class="section" id="channel">
+<h2>Channel</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">Wikipedia: List of wlan channels</a></p>
+</div>
+<div class="section" id="transmission-power">
+<h2>Transmission power</h2>
+<p>The high TX power will extend the range for slower TX rates only, as faster
+rates are transmitted at a lower TX power, which is normal for ALL APs and
+devices.</p>
+</div>
+<div class="section" id="signal-level">
+<h2>Signal level</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 14%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr><th class="head"><p>Signal Strength</p></th>
+<th class="head"><p>TL;DR</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>-30 dBm</p></td>
+<td><p>Amazing</p></td>
+<td><p>Max achievable signal strength. The client can
+only be a few feet from the AP to achieve this.
+Not typical or desirable in the real world.</p></td>
+</tr>
+<tr><td><p>-67 dBm</p></td>
+<td><p>Very Good</p></td>
+<td><p>Minimum signal strength for applications that
+require very reliable, timely packet delivery.</p></td>
+</tr>
+<tr><td><p>-70 dBm</p></td>
+<td><p>Okay</p></td>
+<td><p>Minimum signal strength for reliable packet
+delivery.</p></td>
+</tr>
+<tr><td><p>-80 dBm</p></td>
+<td><p>Not Good</p></td>
+<td><p>Minimum signal strength for basic connectivity.
+Packet delivery may be unreliable.</p></td>
+</tr>
+<tr><td><p>-90 dBm</p></td>
+<td><p>Unusable</p></td>
+<td><p>Approaching or drowning in the noise floor. Any
+functionality is highly unlikely.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wireless-tools">
+<h2>wireless_tools</h2>
+<p>Get frequency (channel) of connected wireless:</p>
+<pre class="literal-block">$ iwconfig | grep Frequency</pre>
+<p>Get TX power of connected wireless:</p>
+<pre class="literal-block">$ iwconfig | grep Tx-Power</pre>
+<p>Get speed (bit rate) of connected wireless:</p>
+<pre class="literal-block">$ iwconfig | grep 'Bit Rate'</pre>
+<p>Get signal level of connected wireless:</p>
+<pre class="literal-block">$ iwconfig | grep 'Signal level'</pre>
+<p>List supported channel of wireless interface:</p>
+<pre class="literal-block">$ iwlist &lt;dev&gt; channel</pre>
+</div>
+<div class="section" id="iw">
+<h2>iw</h2>
+</div>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/Wireless_network_configuration">Arch wiki: wireless network configuration</a></p>

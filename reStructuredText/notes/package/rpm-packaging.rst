@@ -18,4 +18,5 @@ If you see an unfamiliar macro, you can evaluate it with: ::
     $ cd rpmbuild/SPECS
     $ rpmdev-newspec <pacakge>
     $ vim <package>.spec
+    # Install dependences
     $ yum-builddep <package>.spec
