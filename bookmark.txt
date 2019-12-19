@@ -23,6 +23,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/coreutils/mktemp.rst
         reStructuredText/notes/coreutils/cut.rst
         reStructuredText/notes/coreutils/tr.rst
+        reStructuredText/notes/coreutils/split.rst
     Util-linux
         reStructuredText/notes/util-linux/hwclock.rst
         reStructuredText/notes/util-linux/mount.rst

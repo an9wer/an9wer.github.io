@@ -22,11 +22,14 @@ List files of already installed pacakge:
 
     $ rpm -ql <package_file>
 
-List files of specified RPM package:
-
-::
+List files of specified RPM package: ::
 
     $ rpm -qlp <package_file>
+
+
+List reverse dependencies of package: ::
+
+    $ rpm -q --whatrequires <package_name>
 
 
 Install
