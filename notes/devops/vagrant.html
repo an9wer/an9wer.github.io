@@ -40,18 +40,22 @@
 <p>Create and configure guest machine according <em>Vagrantfile</em> (See <a class="reference external" href="https://stackoverflow.com/a/20431791">How to define
 a machine name in Vagrantfile</a>) :</p>
 <pre class="literal-block">$ vagrant up [&lt;machine name&gt;]</pre>
+<p>SSH into machine:</p>
+<pre class="literal-block">$ vagrant ssh</pre>
 <p>Shut down the running machine:</p>
 <pre class="literal-block">$ vagrant halt [&lt;machine name&gt;]</pre>
 <p>Reload (halt and up) machine:</p>
 <pre class="literal-block">$ vagrant reload [&lt;machine name&gt;]</pre>
 <p>Check the state of machine:</p>
 <pre class="literal-block">$ vagrant status [&lt;machine name&gt;]</pre>
-<p>Runs any configured provisioners in <em>Vagrantfile</em>:</p>
+<p>Run any configured provisioners in <em>Vagrantfile</em>:</p>
 <pre class="literal-block">$ vagrant provision [&lt;machine name&gt;]</pre>
 <p>Watch all local directories of any rsync synced folders and automatically
 initiates an rsync transfer when changes are detected. (This command does not
-exit until an interrupt is received.)</p>
+exit until an interrupt is received.):</p>
 <pre class="literal-block">$ vagrant rsync-auto</pre>
+<p>Install plugin:</p>
+<pre class="literal-block">$ vagrant plugin install &lt;plugin&gt;</pre>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
