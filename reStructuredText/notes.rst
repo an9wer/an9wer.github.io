@@ -29,6 +29,12 @@ Commands/
         </notes/commands/mdadm.html>`_
     -   `conntrack
         </notes/commands/conntrack>`_
+    -   `curl
+        </notes/commands/curl>`_
+    -   `autossh
+        </notes/commands/autossh>`_
+    -   `adb
+        </notes/commands/adb>`_
 Coreutils/
     -   `ls
         </notes/coreutils/ls.html>`_
@@ -40,6 +46,9 @@ Coreutils/
         </notes/coreutils/cut.html>`_
     -   `tr
         </notes/coreutils/tr.html>`_
+Findutils/
+    -   `find
+        </notes/findutils/find.html>`_
 Util-linux/
     -   `hwclock
         </notes/util-linux/hwclock.html>`_
@@ -139,6 +148,8 @@ Linux/
         </notes/linux/system_installer.html>`_
     -   `Linux hostname
         </notes/linux/hostname.html>`_
+    -   `Linux sysctl
+        </notes/linux/sysctl.html>`_
 Package/
     -   `RPM
         </notes/package/rpm.html>`_

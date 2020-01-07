@@ -31,32 +31,16 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="domain">
-<h1>Domain</h1>
-<dl>
-<dt>TLD and SLD</dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Top-level_domain">TLD</a></p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Second-level_domain">SLD</a></p>
-<p><a class="reference external" href="https://www.domainregistration.com.au/infocentre/info-domain-type.php">Types of domain name</a></p>
-</dd>
-</dl>
-<div class="section" id="certbot">
-<h2>Certbot</h2>
-<p>List all installed certificates:</p>
-<pre class="literal-block"># certbot certificates</pre>
-<p>Remove an installed certificat:</p>
-<pre class="literal-block"># certbot delete</pre>
-<p>Create a certificat for multiple domains:</p>
-<pre class="literal-block"># certbot certonly -d &lt;domain1&gt; -d &lt;domain2&gt; [-d &lt;domain3&gt; ...]</pre>
-<p>Create wildcard ssl certificate:</p>
-<pre class="literal-block"># certbot --server https://acme-v02.api.letsencrypt.org/directory \
-    -d &lt;*.example.com&gt; --manual --preferred-challenges dns-01 certonly
-
-Add a DNS record of your domain:
-    Type : TXT
-    Name : _acme-challenge
-    Value: &lt;acme-challenge-value&gt; (get from the command above)</pre>
-</div>
+<div class="section" id="adb">
+<h1>Adb</h1>
+<p>Start adb server:</p>
+<pre class="literal-block"># adb start-server</pre>
+<p>Kill adb server:</p>
+<pre class="literal-block"># adb kill-server</pre>
+<p>Adb connect to device:</p>
+<pre class="literal-block">$ adb devices</pre>
+<p>Write text to device:</p>
+<pre class="literal-block">$ adb shell input text &lt;text&gt;</pre>
 </div>
         </div> <!-- content -->
 

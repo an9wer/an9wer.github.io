@@ -16,11 +16,11 @@ duration of the various tests: ::
 
 Run self-test: ::
 
-    # smartctl -t short|long <device>
+    # smartctl -t "short|long" <device>
 
 Run self-test in captive mode [ATA], or in Foreground mode [SCSI]: ::
 
-    # smartctl -C -t short|long <device>
+    # smartctl -C -t "short|long" <device>
 
 Abort non-captive SMART self-test: ::
 

@@ -17,6 +17,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/mdadm.rst
         reStructuredText/notes/commands/conntrack.rst
         reStructuredText/notes/commands/curl.rst
+        reStructuredText/notes/commands/autossh.rst
+        reStructuredText/notes/commands/adb.rst
     Coreutils
         reStructuredText/notes/coreutils/ls.rst
         reStructuredText/notes/coreutils/du.rst
@@ -24,6 +26,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/coreutils/cut.rst
         reStructuredText/notes/coreutils/tr.rst
         reStructuredText/notes/coreutils/split.rst
+    Findutils
+        reStructuredText/notes/findutils/find.rst
     Util-linux
         reStructuredText/notes/util-linux/hwclock.rst
         reStructuredText/notes/util-linux/mount.rst
@@ -82,6 +86,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/cgroups.rst
         reStructuredText/notes/linux/system_installer.rst
         reStructuredText/notes/linux/hostname.rst
+        reStructuredText/notes/linux/sysctl.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst
@@ -192,6 +197,7 @@ reStructuredText/notes.rst
 
 
 reStructuredText/blog.rst
+    reStructuredText/2020/01/07_服务器被黑事件.rst
     reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
     reStructuredText/2019/11/09_Build_raid1.rst
     reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst

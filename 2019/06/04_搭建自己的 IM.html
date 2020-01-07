@@ -64,11 +64,7 @@ $ pip install --upgrade setuptools
 $ pip install matrix-synapse</pre>
 </li>
 <li><p>Generate a confiuration file</p>
-<pre class="literal-block">$ python -m synapse.app.homeserver \
-    --server-name synapse.me \
-    --config-path /opt/synapse/homeserver.yaml \
-    --generate-config \
-    --report-stats=yes</pre>
+<pre class="literal-block">$ python -m synapse.app.homeserver --server-name synapse.me --config-path /opt/synapse/homeserver.yaml --generate-config --report-stats=yes</pre>
 </li>
 <li><p>Generate certificate:</p>
 <pre class="literal-block">$ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 99999 -nodes \

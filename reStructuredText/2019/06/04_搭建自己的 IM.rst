@@ -47,11 +47,7 @@
 
     ::
 
-        $ python -m synapse.app.homeserver \
-            --server-name synapse.me \
-            --config-path /opt/synapse/homeserver.yaml \
-            --generate-config \
-            --report-stats=yes
+        $ python -m synapse.app.homeserver --server-name synapse.me --config-path /opt/synapse/homeserver.yaml --generate-config --report-stats=yes
 
 4.  Generate certificate:
 
