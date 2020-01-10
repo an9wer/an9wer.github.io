@@ -37,7 +37,7 @@
 star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
 (*) to avoid bash expanding.</p>
 <div class="section" id="list">
-<h2>list</h2>
+<h2>List</h2>
 <p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
 output is:</p>
 <pre class="literal-block">name.arch [epoch:]version-release  repo or &#64;installed-from-repo</pre>
@@ -48,12 +48,22 @@ in config file packages:</p>
 <pre class="literal-block"># yum list [all | available | updates | installed | extra ] [glob_exp ...]</pre>
 </div>
 <div class="section" id="deplist">
-<h2>deplist</h2>
+<h2>Deplist</h2>
 <p>List dependencies of packages:</p>
-<pre class="literal-block">$ yum deplist &lt;package&gt; [...]</pre>
+<pre class="literal-block"># yum deplist &lt;package&gt; [&lt;package&gt; ...]</pre>
+</div>
+<div class="section" id="provides">
+<h2>Provides</h2>
+<p>Find out which package provides a specific file or a file-glob-syntax
+wildcards:</p>
+<pre class="literal-block"># yum provides &lt;file&gt; [&lt;file&gt; ...]
+
+e.g.
+# yum provides /usr/bin/ps
+# yum provides '*/collectd2html.pl'</pre>
 </div>
 <div class="section" id="group">
-<h2>group</h2>
+<h2>Group</h2>
 <p>To view the number of installed groups, available groups, available environment
 groups, and both installed and available language groups:</p>
 <pre class="literal-block"># yum group summary</pre>

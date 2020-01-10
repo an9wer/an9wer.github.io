@@ -46,6 +46,10 @@ Coreutils/
         </notes/coreutils/cut.html>`_
     -   `tr
         </notes/coreutils/tr.html>`_
+    -   `split
+        </notes/coreutils/split.html>`_
+    -   `head
+        </notes/coreutils/head.html>`_
 Findutils/
     -   `find
         </notes/findutils/find.html>`_

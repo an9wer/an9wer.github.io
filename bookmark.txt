@@ -26,6 +26,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/coreutils/cut.rst
         reStructuredText/notes/coreutils/tr.rst
         reStructuredText/notes/coreutils/split.rst
+        reStructuredText/notes/coreutils/head.rst
     Findutils
         reStructuredText/notes/findutils/find.rst
     Util-linux

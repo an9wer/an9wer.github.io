@@ -31,12 +31,19 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="collectd">
-<h1>Collectd</h1>
-<p>Parse rrd to generate graphics and html in current directory:</p>
-<pre class="literal-block">$ perl /usr/share/collectd/collectd2html.pl</pre>
-<p>List all values available to the &quot;unixsock&quot; plugin:</p>
-<pre class="literal-block">$  collectdctl -s &lt;unixsock&gt; listval</pre>
+<div class="section" id="coreutils-head">
+<h1>Coreutils head</h1>
+<p>Print the first NUM lines, with the leading '-', print all but the last NUM
+lines:</p>
+<pre class="literal-block">$ head -n &lt;NUM&gt; &lt;file&gt; [&lt;file&gt; ...]
+
+e.g.
+$ head -n  1 /var/log/pacman.log
+$ head -n -1 /var/log/pacman.log</pre>
+<div class="section" id="references">
+<h2>References</h2>
+<p><span class="docutils literal">man head</span></p>
+</div>
 </div>
         </div> <!-- content -->
 

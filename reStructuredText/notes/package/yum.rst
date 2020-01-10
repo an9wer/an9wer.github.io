@@ -5,7 +5,7 @@ Yum
 star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
 (\*) to avoid bash expanding.
 
-list
+List
 ----
 
 ``yum list`` displays information on the version of the package, the format of
@@ -21,14 +21,29 @@ in config file packages: ::
 
     # yum list [all | available | updates | installed | extra ] [glob_exp ...]
 
-deplist
+
+Deplist
 -------
 
 List dependencies of packages: ::
 
-    $ yum deplist <package> [...]
+    # yum deplist <package> [<package> ...]
 
-group
+
+Provides
+--------
+
+Find out which package provides a specific file or a file-glob-syntax
+wildcards: ::
+
+    # yum provides <file> [<file> ...]
+
+    e.g.
+    # yum provides /usr/bin/ps
+    # yum provides '*/collectd2html.pl'
+
+
+Group
 -----
 
 To view the number of installed groups, available groups, available environment
