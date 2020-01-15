@@ -154,6 +154,8 @@ Linux/
         </notes/linux/hostname.html>`_
     -   `Linux sysctl
         </notes/linux/sysctl.html>`_
+    -   `Linux dhcp
+        </notes/linux/dhcp.html>`_
 Package/
     -   `RPM
         </notes/package/rpm.html>`_

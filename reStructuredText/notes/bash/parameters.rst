@@ -25,7 +25,7 @@ Special parameters
         $ set -- 1 2 " 3 4 "
         $ foo=( $* )
         $ declare -p foo
-        declare -a foo=([0]="=" [1]="1" [2]="2" [3]="3" [4]="4")
+        declare -a foo=([0]="1" [1]="2" [2]="3" [3]="4")
 
     When the expansion occurs within double quotes, it expands to a single word
     with the value of each parameter separated by the first character of the

@@ -47,7 +47,7 @@ are subject to further word splitting and pathname expansion.</p>
 <pre class="literal-block">$ set -- 1 2 &quot; 3 4 &quot;
 $ foo=( $* )
 $ declare -p foo
-declare -a foo=([0]=&quot;=&quot; [1]=&quot;1&quot; [2]=&quot;2&quot; [3]=&quot;3&quot; [4]=&quot;4&quot;)</pre>
+declare -a foo=([0]=&quot;1&quot; [1]=&quot;2&quot; [2]=&quot;3&quot; [3]=&quot;4&quot;)</pre>
 <p>When the expansion occurs within double quotes, it expands to a single word
 with the value of each parameter separated by the first character of the
 IFS special variable. (If IFS is unset, the parameters are separated by

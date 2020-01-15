@@ -70,17 +70,32 @@ Hostname:
         peace
 
 
-Network:
+Network
+"""""""
 
-::
+Use NetworkManager: ::
 
     pacman -S networkmanager
     systemctl enable NetworkManager
 
+Or use systemd-network: ::
 
-Create user:
+    vim /etc/systemd/network/<nic>.network
+        [Match]
+        Name=<nic>
+     
+        [Network]
+        DHCP=ipv4
+        EOF
+    systemctl enable systemd-networkd
+    systemctl enable systemd-resolved
+    ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
-::
+
+User account
+""""""""""""
+
+Create user: ::
 
     useradd -m -g wheel an9wer
     passwd an9wer
@@ -90,19 +105,24 @@ Create user:
         passwd an9wer
 
 
-Bootloader:
+Bootloader
+""""""""""
 
-::
+EFI Bootloader: ::
 
     pacman -S grub efibootmgr
     grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
     grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
     grub-mkconfig -o /boot/grub/grub.cfg
 
+Legency Bootloader: ::
+    
+    pacman -S grub
+    grub-install --target=i386-pc /dev/sda
+    grub-mkconfig -o /boot/grub/grub.cfg
 
-Exit and reboot:
 
-::
+Exit and reboot: ::
 
     exit
     umount -R /mnt

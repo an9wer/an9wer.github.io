@@ -78,9 +78,25 @@ vim /etc/locale.conf
 <p>Hostname:</p>
 <pre class="literal-block">vim /etc/hostname
     peace</pre>
-<p>Network:</p>
+<div class="section" id="network">
+<h3>Network</h3>
+<p>Use NetworkManager:</p>
 <pre class="literal-block">pacman -S networkmanager
 systemctl enable NetworkManager</pre>
+<p>Or use systemd-network:</p>
+<pre class="literal-block">vim /etc/systemd/network/&lt;nic&gt;.network
+    [Match]
+    Name=&lt;nic&gt;
+
+    [Network]
+    DHCP=ipv4
+    EOF
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</pre>
+</div>
+<div class="section" id="user-account">
+<h3>User account</h3>
 <p>Create user:</p>
 <pre class="literal-block">useradd -m -g wheel an9wer
 passwd an9wer
@@ -88,16 +104,24 @@ visudo
     uncomment %wheel ALL=(ALL) NOPASSWD: ALL
     useradd -m -g wheel an9wer
     passwd an9wer</pre>
-<p>Bootloader:</p>
+</div>
+<div class="section" id="bootloader">
+<h3>Bootloader</h3>
+<p>EFI Bootloader:</p>
 <pre class="literal-block">pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+grub-mkconfig -o /boot/grub/grub.cfg</pre>
+<p>Legency Bootloader:</p>
+<pre class="literal-block">pacman -S grub
+grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg</pre>
 <p>Exit and reboot:</p>
 <pre class="literal-block">exit
 umount -R /mnt
 
 reboot</pre>
+</div>
 </div>
 <div class="section" id="tools-installation">
 <h2>Tools installation</h2>
