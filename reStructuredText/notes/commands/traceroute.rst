@@ -7,11 +7,11 @@ Set the number of probe packets per hop (by default is 3): ::
 
 Use ICMP method for probes: ::
 
-    # traceroute -I|--icmp <destionation>
+    # traceroute "-I|--icmp" <destionation>
 
 Use TCP SYN for probes: ::
 
-    # traceroute -T|--tcp <destionation>
+    # traceroute "-T|--tcp" <destionation>
 
 
 Methods

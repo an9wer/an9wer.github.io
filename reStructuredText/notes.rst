@@ -156,6 +156,8 @@ Linux/
         </notes/linux/sysctl.html>`_
     -   `Linux dhcp
         </notes/linux/dhcp.html>`_
+    -   `Linux bbr
+        </notes/linux/bbr.html>`_
 Package/
     -   `RPM
         </notes/package/rpm.html>`_

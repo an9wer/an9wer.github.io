@@ -89,6 +89,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/hostname.rst
         reStructuredText/notes/linux/sysctl.rst
         reStructuredText/notes/linux/dhcp.rst
+        reStructuredText/notes/linux/bbr.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst

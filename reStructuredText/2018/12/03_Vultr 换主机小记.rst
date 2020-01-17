@@ -37,7 +37,12 @@ Alpine， Arch，FreeBSD 等。我毫不犹豫地选择了 Arch，因为 Arch �
 的经验，我也是成功地安装好了 Arch 系统。之后考虑到安全问题，在新系统中新建一个
 用户，并只允许用户使用 ssh key 登录，同时禁用 root 远程登录。然后使用最近写的一
 个快速部署 Shadowsocks 的项目 —— `ssd <https://github.com/an9wer/ssd>`_ ，在服
-务器上部署好 Shadowsocks。最后，为服务器开启 BBR（文末列出），进一步提高网速。
+务器上部署好 Shadowsocks。最后，为服务器开启 BBR，进一步提高网速：::
+
+    # sysctl net.core.default_qdisc=fq
+    # sysctl net.ipv4.tcp_congestion_control=bbr
+    # echo 'sysctl net.core.default_qdisc=fq' >> /etc/sysctl.d/bbr.sh
+    # echo 'sysctl net.ipv4.tcp_congestion_control=bbr' >> /etc/sysctl.d/bbr.sh
 
 至此，有关 Vultr 换主机总算告一段落，接下来的重点就是关注服务器的稳定性，好在
 Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁盘等进行监控。
@@ -46,23 +51,19 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 --------
 
 用 root 身份创建用户，之后可以用 *visudo* 命令为用户添加免密使用 *sudo* 的权限
-：
-
-::
+： ::
 
     pacman -S sudo
     useradd -m -g wheel an9wer
 
 */etc/sshd/config* 的相关配置如下（注意，在这之前最好先将 ssh public key 用
-*ssh-copy-id* 命令复制到服务器上）：
-
-::
+*ssh-copy-id* 命令复制到服务器上）： ::
 
     PermitRootLogin no
     PasswordAuthentication no
 
-Edit (2018/12/11)
------------------
+Update (2018/12/11)
+-------------------
 
 最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
 ``sudo crontab -e`` 命令，添加了如下内容：
@@ -76,18 +77,16 @@ Edit (2018/12/11)
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 ``sudo
 docker run`` 命令运行容器时加上 ``--restart unless-stopped`` 选项。
 
-Edit (2019/02/01)
------------------
+Update (2019/02/01)
+-------------------
 
 在 github 上新建了一个项目 —— `verice <https://github.com/an9wer/verice>`_ ，写
 了一些脚本专门用来管理服务器。
 
-Edit (2019/07/09)
------------------
+Update (2019/07/09)
+-------------------
 
-在服务端开启 tcp fast open:
-
-::
+在服务端开启 tcp fast open: ::
 
     echo "net.ipv4.tcp_fastopen = 3" >> /etc/sysctl.d/tfo.conf
 
@@ -102,16 +101,6 @@ How to deploy Arch on vultr?
 -   https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting
 
 -   https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c
-
-How to enable BBR on Linux?
-
--   https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/
-
--   https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/
-
--   https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308
-
--   https://marskid.net/2017/12/03/arch-linux-open-google-bbr/
 
 Thanks for reading :)
 

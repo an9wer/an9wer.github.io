@@ -36,7 +36,7 @@ Partition and mount:
     mkdir /mnt/efi
     mount /dev/sda1 /mnt/efi
 
-    pacstrap /mnt base base-devel vim
+    pacstrap /mnt base linux linux-firmware base-devel vim
 
     genfstab -U /mnt >> /mnt/etc/fstab
 

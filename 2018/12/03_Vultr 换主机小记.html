@@ -64,7 +64,11 @@ Alpine， Arch，FreeBSD 等。我毫不犹豫地选择了 Arch，因为 Arch �
 的经验，我也是成功地安装好了 Arch 系统。之后考虑到安全问题，在新系统中新建一个
 用户，并只允许用户使用 ssh key 登录，同时禁用 root 远程登录。然后使用最近写的一
 个快速部署 Shadowsocks 的项目 —— <a class="reference external" href="https://github.com/an9wer/ssd">ssd</a> ，在服
-务器上部署好 Shadowsocks。最后，为服务器开启 BBR（文末列出），进一步提高网速。</p>
+务器上部署好 Shadowsocks。最后，为服务器开启 BBR，进一步提高网速：:</p>
+<pre class="literal-block"># sysctl net.core.default_qdisc=fq
+# sysctl net.ipv4.tcp_congestion_control=bbr
+# echo 'sysctl net.core.default_qdisc=fq' &gt;&gt; /etc/sysctl.d/bbr.sh
+# echo 'sysctl net.ipv4.tcp_congestion_control=bbr' &gt;&gt; /etc/sysctl.d/bbr.sh</pre>
 <p>至此，有关 Vultr 换主机总算告一段落，接下来的重点就是关注服务器的稳定性，好在
 Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁盘等进行监控。</p>
 <div class="section" id="id1">
@@ -78,8 +82,8 @@ useradd -m -g wheel an9wer</pre>
 <pre class="literal-block">PermitRootLogin no
 PasswordAuthentication no</pre>
 </div>
-<div class="section" id="edit-2018-12-11">
-<h2>Edit (2018/12/11)</h2>
+<div class="section" id="update-2018-12-11">
+<h2>Update (2018/12/11)</h2>
 <p>最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
 <span class="docutils literal">sudo crontab <span class="pre">-e</span></span> 命令，添加了如下内容：</p>
 <pre class="literal-block">0 5 * * * /usr/bin/pacman -Syu --noconfirm &amp;&amp; /sbin/shutdown -r +5</pre>
@@ -87,13 +91,13 @@ PasswordAuthentication no</pre>
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 <span class="docutils literal">sudo docker run</span> 命令运行容器时加上 <span class="docutils literal"><span class="pre">--restart</span> <span class="pre">unless-stopped</span></span> 选项。</p>
 </div>
-<div class="section" id="edit-2019-02-01">
-<h2>Edit (2019/02/01)</h2>
+<div class="section" id="update-2019-02-01">
+<h2>Update (2019/02/01)</h2>
 <p>在 github 上新建了一个项目 —— <a class="reference external" href="https://github.com/an9wer/verice">verice</a> ，写
 了一些脚本专门用来管理服务器。</p>
 </div>
-<div class="section" id="edit-2019-07-09">
-<h2>Edit (2019/07/09)</h2>
+<div class="section" id="update-2019-07-09">
+<h2>Update (2019/07/09)</h2>
 <p>在服务端开启 tcp fast open:</p>
 <pre class="literal-block">echo &quot;net.ipv4.tcp_fastopen = 3&quot; &gt;&gt; /etc/sysctl.d/tfo.conf</pre>
 </div>
@@ -104,13 +108,6 @@ PasswordAuthentication no</pre>
 <li><p><a class="reference external" href="https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server">https://www.vultr.com/docs/installing-arch-linux-on-a-vultr-server</a></p></li>
 <li><p><a class="reference external" href="https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting">https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting</a></p></li>
 <li><p><a class="reference external" href="https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c">https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c</a></p></li>
-</ul>
-<p>How to enable BBR on Linux?</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/">https://www.tecmint.com/increase-linux-server-internet-speed-with-tcp-bbr/</a></p></li>
-<li><p><a class="reference external" href="https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/">https://www.techrepublic.com/article/how-to-enable-tcp-bbr-to-improve-network-speed-on-linux/</a></p></li>
-<li><p><a class="reference external" href="https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308">https://gist.github.com/sendya/36c2558b0a9d2b6c07a5c28f2c54e308</a></p></li>
-<li><p><a class="reference external" href="https://marskid.net/2017/12/03/arch-linux-open-google-bbr/">https://marskid.net/2017/12/03/arch-linux-open-google-bbr/</a></p></li>
 </ul>
 <p>Thanks for reading :)</p>
 </div>

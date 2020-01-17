@@ -31,34 +31,9 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="traceroute">
-<h1>Traceroute</h1>
-<p>Set the number of probe packets per hop (by default is 3):</p>
-<pre class="literal-block"># traceroute -q &lt;number&gt; &lt;destionation&gt;</pre>
-<p>Use ICMP method for probes:</p>
-<pre class="literal-block"># traceroute &quot;-I|--icmp&quot; &lt;destionation&gt;</pre>
-<p>Use TCP SYN for probes:</p>
-<pre class="literal-block"># traceroute &quot;-T|--tcp&quot; &lt;destionation&gt;</pre>
-</div>
-<div class="section" id="methods">
-<h1>Methods</h1>
-<p>In the modern network environment the traditional traceroute methods can not be
-always applicable, because of widespread use of firewalls. Such firewalls
-filter the &quot;unlikely&quot; UDP ports, or even ICMP echoes. To solve this, some
-additional tracerouting methods are implemented (including tcp). Such methods
-try to use particular protocol and source/destination port, in order to bypass
-firewalls.</p>
-<dl>
-<dt>Default</dt>
-<dd><p>Probe packets are udp datagrams with so-called &quot;unlikely&quot; destination
-ports.</p>
-<p>The &quot;unlikely&quot; port of the first probe is 33434, then for each next probe
-it is incremented by  one.  Since the ports are expected to be unused,
-the destination host normally returns &quot;icmp unreach port&quot; as a final
-response. (Nobody knows what happens when some application listens for
-such ports, though).</p>
-</dd>
-</dl>
+<div class="section" id="linux-bbr">
+<h1>Linux BBR</h1>
+<p><a class="reference external" href="https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/">https://blog.apnic.net/2017/05/09/bbr-new-kid-tcp-block/</a></p>
 </div>
         </div> <!-- content -->
 
