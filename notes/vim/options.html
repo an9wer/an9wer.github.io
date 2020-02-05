@@ -63,9 +63,11 @@ of lines at the beginning and end of the file are checked for modelines.</p>
 <div class="section" id="modline">
 <h2>Modline</h2>
 <p>There are two forms of modelines.</p>
+<p>Form 1:</p>
 <pre class="literal-block">[text]{white}{vi:|vim:|ex:}[white]{options}</pre>
 <p>The <em>options</em> in this modeline are seperated with white space or ':', where
 each part between ':' is the argument for a &quot;:set&quot; command.</p>
+<p>Form 2:</p>
 <pre class="literal-block">[text]{white}{vi:|vim:|Vim:|ex:}[white]se[t] {options}:[text]</pre>
 <p>The <em>option</em> in this modeline are seperated with white space, which is the
 argument for a &quot;:set&quot; command.</p>

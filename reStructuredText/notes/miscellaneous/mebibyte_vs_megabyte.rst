@@ -12,6 +12,8 @@ References
 
 https://www.lifewire.com/drive-storage-capacities-833435
 
+https://en.wikipedia.org/wiki/Kilobyte
+
 `Wikipedia: Mebibyte
 <https://en.wikipedia.org/wiki/Mebibyte>`_
 

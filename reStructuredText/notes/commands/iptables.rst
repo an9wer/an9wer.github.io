@@ -1,7 +1,6 @@
 iptables
 ========
 
-::
+Delete rules of chain by rule number: ::
 
-    sudo iptables -D INPUT <line number>
-
+    # iptables -D <chain> <rulenum>

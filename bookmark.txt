@@ -66,7 +66,9 @@ reStructuredText/notes.rst
     Systemd
         reStructuredText/notes/systemd/hostnamectl.rst
         reStructuredText/notes/systemd/timedatectl.rst
+        reStructuredText/notes/systemd/unit.rst
         reStructuredText/notes/systemd/exec.rst
+        reStructuredText/notes/systemd/target.rst
     Linux
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst

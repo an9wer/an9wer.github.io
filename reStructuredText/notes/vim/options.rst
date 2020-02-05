@@ -34,14 +34,14 @@ Modline
 
 There are two forms of modelines.
 
-::
+Form 1: ::
 
     [text]{white}{vi:|vim:|ex:}[white]{options}
 
 The *options* in this modeline are seperated with white space or ':', where
 each part between ':' is the argument for a ":set" command.
 
-::
+Form 2: ::
 
     [text]{white}{vi:|vim:|Vim:|ex:}[white]se[t] {options}:[text]
 

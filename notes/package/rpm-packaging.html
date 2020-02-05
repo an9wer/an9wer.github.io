@@ -33,6 +33,50 @@
         <div id="content">
 <div class="section" id="package-rpm-packaging">
 <h1>Package rpm-packaging</h1>
+<p>Install required packages:</p>
+<pre class="literal-block">Fedora:
+# dnf install rpm-build rpmdevtools
+
+CentOS
+# yum install rpm-build rpmdevtools</pre>
+<p>Create required directory structure in home directory:</p>
+<pre class="literal-block"># rpmdev-setuptree</pre>
+<p>Install build dependencies:</p>
+<pre class="literal-block">Fodora
+# dnf builddep &lt;spec file&gt;
+# dnf buildep &lt;src rpm file&gt;
+
+CentOS
+# yum-builddep &lt;spec file&gt;
+# yum-builddep &lt;src rpm file&gt;</pre>
+<p>Download rpm:</p>
+<pre class="literal-block">Fedora
+# dnf download &lt;package&gt;
+
+CentOS
+# yum install yum-utils
+# yumdownloader &lt;package&gt;</pre>
+<p>Download src rpm:</p>
+<pre class="literal-block">Fedora
+# dnf download --source &lt;package&gt;
+
+CentOS
+# yum install yum-utils
+# yumdownloader --source &lt;package&gt;</pre>
+<p>Unpack rpm or src rpm:</p>
+<pre class="literal-block"># rpm2cpio &lt;rpm file&gt; | cpio -idmv</pre>
+<p>List repo id and name of all repositories:</p>
+<pre class="literal-block"># dnf repolist</pre>
+<p>List all packages of a specified repository:</p>
+<pre class="literal-block"># dnf repository-packages &lt;repo id&gt; list</pre>
+<div class="section" id="debuginfo">
+<h2>Debuginfo</h2>
+<pre class="literal-block"># dnf debuginfo-install &lt;package&gt;
+
+Or
+
+# dnf install &lt;package&gt;-debuginfo</pre>
+<p><a class="reference external" href="https://fedoraproject.org/wiki/Packaging:Debuginfo">https://fedoraproject.org/wiki/Packaging:Debuginfo</a></p>
 <p>If you see an unfamiliar macro, you can evaluate it with:</p>
 <pre class="literal-block">$ rpm --eval %{&lt;macro&gt;}
 
@@ -47,6 +91,12 @@ $ rpmdev-newspec &lt;pacakge&gt;
 $ vim &lt;package&gt;.spec
 # Install dependences
 $ yum-builddep &lt;package&gt;.spec</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://docs.fedoraproject.org/en-US/packaging-guidelines/">https://docs.fedoraproject.org/en-US/packaging-guidelines/</a></p>
+<p><a class="reference external" href="http://ftp.rpm.org/max-rpm/index.html">http://ftp.rpm.org/max-rpm/index.html</a></p>
+</div>
 </div>
         </div> <!-- content -->
 

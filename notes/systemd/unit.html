@@ -31,33 +31,27 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="ntp">
-<h1>Ntp</h1>
-<p>Install and setup on Archlinux:</p>
-<pre class="literal-block"># pacman -S ntp
-
-# # Run at backgroud
-# systemctl start ntpd.service
-# systemctl enable ntpd.service
-or
-# # Run at boot time
-# systemctl start ntpdate.service
-# systemctl enable ntpdate.service</pre>
-<p>Install and setup on CentOS:</p>
-<pre class="literal-block"># yum install ntp
-
-# # Run at backgroud
-# systemctl start ntpd.service
-# systemctl enable ntpd.service
-or
-# # Run manually
-# ntpdate 0.centos.pool.ntp.org</pre>
+<div class="section" id="systemd-unit">
+<h1>Systemd unit</h1>
+<p>A unit file is a plain text ini-style file that encodes information about a
+service, a socket, a device, a mount point, an automount point, a swap file or
+partition, a start-up target, a watched file system path, a timer controlled
+and supervised by systemd, a resource management slice or a group of externally
+created processes.</p>
+<div class="section" id="unit-section">
+<h2>Unit section</h2>
+<p>&quot;[Unit]&quot; section carries generic information about the unit that is not
+dependent on the type of unit.</p>
+</div>
+<div class="section" id="install-section">
+<h2>Install section</h2>
+<p>&quot;[Install]&quot; section carries installation information for the unit. This section
+is not interpreted by systemd during runtime; it is used by the enable and
+disable commands of the systemctl tool during installation of a unit.</p>
+</div>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Wikipedia: ntp</a></p>
-<p><a class="reference external" href="https://www.tecmint.com/synchronize-time-with-ntp-in-linux/">Synchronize time with ntp</a></p>
-<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Network_Time_Protocol_daemon">Archwiki: ntpd</a></p>
-<p><a class="reference external" href="https://www.eecis.udel.edu/~mills/ntp/html/warp.html">How NTP Works</a></p>
+<p><span class="docutils literal">man systemd.unit</span></p>
 </div>
 </div>
         </div> <!-- content -->

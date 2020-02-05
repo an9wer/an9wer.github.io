@@ -31,33 +31,12 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="ntp">
-<h1>Ntp</h1>
-<p>Install and setup on Archlinux:</p>
-<pre class="literal-block"># pacman -S ntp
-
-# # Run at backgroud
-# systemctl start ntpd.service
-# systemctl enable ntpd.service
-or
-# # Run at boot time
-# systemctl start ntpdate.service
-# systemctl enable ntpdate.service</pre>
-<p>Install and setup on CentOS:</p>
-<pre class="literal-block"># yum install ntp
-
-# # Run at backgroud
-# systemctl start ntpd.service
-# systemctl enable ntpd.service
-or
-# # Run manually
-# ntpdate 0.centos.pool.ntp.org</pre>
+<div class="section" id="systemd-target">
+<h1>Systemd target</h1>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Wikipedia: ntp</a></p>
-<p><a class="reference external" href="https://www.tecmint.com/synchronize-time-with-ntp-in-linux/">Synchronize time with ntp</a></p>
-<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Network_Time_Protocol_daemon">Archwiki: ntpd</a></p>
-<p><a class="reference external" href="https://www.eecis.udel.edu/~mills/ntp/html/warp.html">How NTP Works</a></p>
+<p><span class="docutils literal">man systemd.target</span></p>
+<p><span class="docutils literal">man systemd.special</span></p>
 </div>
 </div>
         </div> <!-- content -->
