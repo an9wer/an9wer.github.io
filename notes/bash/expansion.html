@@ -36,6 +36,18 @@
 <div class="section" id="parameter-expansion">
 <h2>Parameter expansion</h2>
 <dl>
+<dt>${parameter:offset}  ${parameter:offset:length}</dt>
+<dd><p>Expands to up to <em>length</em> characters of the value of parameter starting at
+the character specified by <em>offset</em>. <em>length</em> and <em>offset</em> are arithmetic
+expressions.</p>
+<p>If <em>offset</em> evaluates to a number less than zero, the value is used as an
+<em>offset</em> in characters from the end of the value of parameter. If <em>length</em>
+evaluates to a number less than zero, it is interpreted as an <em>offset</em> in
+characters from the end of the value of parameter rather than a number of
+characters, and the expansion is the  characters between <em>offset</em> and that
+result. Note that a negative <em>offset</em> must be separated from the colon by
+at least one space to avoid being confused with the <span class="docutils literal">:-</span> expansion.</p>
+</dd>
 <dt>${parameter/pattern/string}</dt>
 <dd><p>If parameter is &#64; or *, the substitution operation is applied to each
 positional parameter in turn.</p>
@@ -106,10 +118,10 @@ $ func &quot;1     2   3&quot;    # Word splitting is not performed
 
 $ func 1     2   3      # Word splitting is not performed
 3</pre>
-<div class="section" id="references">
-<h3>References</h3>
-<p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>
 </div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>
 </div>
 </div>
         </div> <!-- content -->

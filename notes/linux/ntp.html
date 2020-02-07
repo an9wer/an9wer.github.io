@@ -33,6 +33,21 @@
         <div id="content">
 <div class="section" id="ntp">
 <h1>Ntp</h1>
+<div class="section" id="utilities">
+<h2>Utilities</h2>
+<dl class="simple">
+<dt>ntpd</dt>
+<dd><p>is an operating system daemon which sets and maintains the system time of
+day in synchronism with Internet standard time servers.</p>
+</dd>
+<dt>ntpdc</dt>
+<dd><p>is a utility program used to query ntpd about its current state and to
+request changes in that state. It is deprecated, use ntpq instead.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="usage">
+<h2>Usage</h2>
 <p>Install and setup on Archlinux:</p>
 <pre class="literal-block"># pacman -S ntp
 
@@ -52,6 +67,7 @@ or
 or
 # # Run manually
 # ntpdate 0.centos.pool.ntp.org</pre>
+</div>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Wikipedia: ntp</a></p>

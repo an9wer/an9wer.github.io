@@ -1,6 +1,20 @@
 Ntp
 ===
 
+Utilities
+---------
+
+ntpd
+    is an operating system daemon which sets and maintains the system time of
+    day in synchronism with Internet standard time servers.
+
+ntpdc
+    is a utility program used to query ntpd about its current state and to
+    request changes in that state. It is deprecated, use ntpq instead.
+
+Usage
+-----
+
 Install and setup on Archlinux: ::
 
     # pacman -S ntp

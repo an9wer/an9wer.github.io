@@ -4,6 +4,19 @@ Bash Expansion
 Parameter expansion
 -------------------
 
+${parameter:offset}  ${parameter:offset:length}
+    Expands to up to *length* characters of the value of parameter starting at
+    the character specified by *offset*. *length* and *offset* are arithmetic
+    expressions.
+
+    If *offset* evaluates to a number less than zero, the value is used as an
+    *offset* in characters from the end of the value of parameter. If *length*
+    evaluates to a number less than zero, it is interpreted as an *offset* in
+    characters from the end of the value of parameter rather than a number of
+    characters, and the expansion is the  characters between *offset* and that
+    result. Note that a negative *offset* must be separated from the colon by
+    at least one space to avoid being confused with the ``:-`` expansion.
+
 ${parameter/pattern/string}
     If parameter is @ or \*, the substitution operation is applied to each
     positional parameter in turn.
@@ -103,6 +116,7 @@ terminators.
 
 
 References
-""""""""""
+----------
+
 https://www.tldp.org/LDP/abs/html/process-sub.html
 
