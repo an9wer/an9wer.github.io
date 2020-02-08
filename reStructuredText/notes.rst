@@ -314,7 +314,8 @@ R :
     `How to find my public ip address from command line?
     <https://www.cyberciti.biz/faq/how-to-find-my-public-ip-address-from-command-line-on-a-linux/>`_
 
-    `What is 'myip.opendns.com' doing?  <https://unix.stackexchange.com/a/335403>`_
+    `What is 'myip.opendns.com' doing?
+    <https://unix.stackexchange.com/a/335403>`_
 
 ----
 
@@ -326,7 +327,8 @@ A : ::
     some string
 
 R :
-    `How to trim whitespace from a Bash variable? <https://stackoverflow.com/a/12973694>`_
+    `How to trim whitespace from a Bash variable?
+    <https://stackoverflow.com/a/12973694>`_
 
 ----
 
@@ -345,7 +347,8 @@ A3: ::
     $ netstat -i
 
 R :
-    `How to get TX/RX bytes without ifconfig? <https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig>`_
+    `How to get TX/RX bytes without ifconfig?
+    <https://serverfault.com/questions/533513/how-to-get-tx-rx-bytes-without-ifconfig>`_
 
 ----
 
@@ -363,7 +366,8 @@ R :
 Q : How to reset lost password in Linux?
 
 R :
-    `Archwiki: reset lost root password <https://wiki.archlinux.org/index.php/Reset_lost_root_password>`_
+    `Archwiki: reset lost root password
+    <https://wiki.archlinux.org/index.php/Reset_lost_root_password>`_
 
 ----
 
@@ -404,7 +408,8 @@ A2 : ::
     # passwd root
 
 R :
-    `Archwiki: disable root login <https://wiki.archlinux.org/index.php/Sudo#Disable_root_login>`_
+    `Archwiki: disable root login
+    <https://wiki.archlinux.org/index.php/Sudo#Disable_root_login>`_
 
 ---
 
@@ -423,7 +428,29 @@ A2: ::
     # virt-what
 
 R :
-    `How To Check If A Linux System Is Physical Or Virtual Machine?  <https://www.ostechnix.com/check-linux-system-physical-virtual-machine/>`_
+    `How To Check If A Linux System Is Physical Or Virtual Machine?
+    <https://www.ostechnix.com/check-linux-system-physical-virtual-machine/>`_
 
+---
 
+Q: How to quit bash without saving history?
 
+A1: ::
+
+    $ kill -9 $$
+
+A2: ::
+
+    $ history -c && exit
+
+A3: ::
+
+    $ unset HISTFILE && exit
+
+A4: ::
+
+    $ HISTSIZE=0 && exit
+
+R :
+    `Quit Bash Shell Without Saving Bash History
+    <https://www.if-not-true-then-false.com/2010/quit-bash-shell-without-saving-bash-history/>`_

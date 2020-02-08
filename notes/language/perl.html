@@ -35,27 +35,34 @@
 <h1>Perl</h1>
 <div class="section" id="context">
 <h2>Context</h2>
-<dl>
-<dt>Scalar, List and Void Context</dt>
-<dd><p>Assignment is a little bit special in that it uses its left argument to
-determine the context for the right argument. Assignment to a scalar
-evaluates the right-hand side in scalar context, while assignment to an
-array or hash evaluates the righthand side in list context. Assignment to a
-list (or slice, which is just a list anyway) also evaluates the right-hand
-side in list context.</p>
 <p><a class="reference external" href="https://perldoc.perl.org/perldata.html#Context">https://perldoc.perl.org/perldata.html#Context</a></p>
-</dd>
-</dl>
-<p>Scalar context</p>
-<p>List context</p>
 <dl>
+<dt>Scalar context</dt>
+<dd><p>Assignment to a scalar variable, or to a scalar element of an array or
+hash, evaluates the righthand side in a scalar context:</p>
+<pre class="literal-block">$x = func();
+$x[1] = func();
+$x{&quot;1&quot;} = func();</pre>
+</dd>
+<dt>List context</dt>
+<dd><p>Assignment to an array or a hash, or to a slice either, evaluates the
+righthand side in a list context, even if the slice picks out only on
+element:</p>
+<pre class="literal-block">&#64;x = func();
+&#64;x[1] = func();
+%x = func();</pre>
+<p>Assignment to a list of scalars also provides list context to the righthand
+side, even if there's only one element in the list:</p>
+<pre class="literal-block">($x, $y, $z) = func();
+($x) = func();</pre>
+</dd>
 <dt>Boolean Context</dt>
 <dd><p>A scalar value is true if it is not the null string &quot;&quot; or the number 0 (or
-its string equivalent, &quot;0&quot;).</p>
-<p>A reference is always true because it represent an address that is never 0.</p>
-<p>An undefined value (often called <span class="docutils literal">undef</span>) is always false because it
-looks like either &quot;&quot; or 0, depending on whether you treat it as a string or
-a number.</p>
+its string equivalent, &quot;0&quot;). A reference is always true because it
+represent an address that is never 0. An undefined value (often called
+<span class="docutils literal">undef</span>) is always false because it looks like either &quot;&quot; or 0, depending
+on whether you treat it as a string or a number.</p>
+<p>A list value is true if it  ther are any elements in it.</p>
 </dd>
 </dl>
 </div>

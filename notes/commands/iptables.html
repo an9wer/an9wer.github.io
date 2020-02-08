@@ -33,8 +33,44 @@
         <div id="content">
 <div class="section" id="iptables">
 <h1>iptables</h1>
+<p>A package has three direction ways:</p>
+<ol class="arabic simple">
+<li><p>Destination local host (from outside to localhost)</p></li>
+<li><p>Source local host (from localhost to outside)</p></li>
+<li><p>Forwarded packets (between interfaces)</p></li>
+</ol>
+<img alt="iptables" src="/statics/images/notes/iptables.jpg" />
 <p>Delete rules of chain by rule number:</p>
 <pre class="literal-block"># iptables -D &lt;chain&gt; &lt;rulenum&gt;</pre>
+<div class="section" id="extensions">
+<h2>Extensions</h2>
+<dl>
+<dt>tcp</dt>
+<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> tcp</span> is specified.</p>
+<pre class="literal-block"># iptables -A &lt;chain&gt; -p tcp --sport &lt;source port&gt;</pre>
+</dd>
+<dt>udp</dt>
+<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> udp</span> is specified.</p>
+<pre class="literal-block"># iptables -A &lt;chain&gt; -p upd --dport &lt;destionation port&gt;</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="targets">
+<h2>Targets</h2>
+<dl>
+<dt>LOG</dt>
+<dd><p>The Linux kernel will print some information on all matching packets via
+the kernel log (where it can be read with <span class="docutils literal">dmesg</span> or read in the syslog).</p>
+<pre class="literal-block"># iptables -A &lt;chain&gt; -j LOG</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><span class="docutils literal">man iptables</span></p>
+<p><span class="docutils literal">man <span class="pre">iptables-extensions</span></span></p>
+<p><a class="reference external" href="https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html">iptables tutorial</a></p>
+</div>
 </div>
         </div> <!-- content -->
 

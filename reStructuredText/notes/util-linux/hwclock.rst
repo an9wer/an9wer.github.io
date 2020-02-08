@@ -36,4 +36,5 @@ References
 
 ``man hwclock``
 
-`The hardware and system clocks <http://tldp.org/HOWTO/Clock-2.html>`_
+`The hardware and system clocks
+<http://tldp.org/HOWTO/Clock-2.html>`_

@@ -364,6 +364,21 @@ Unlock
 <dd><p><a class="reference external" href="https://www.ostechnix.com/check-linux-system-physical-virtual-machine/">How To Check If A Linux System Is Physical Or Virtual Machine?</a></p>
 </dd>
 </dl>
+<p>---</p>
+<p>Q: How to quit bash without saving history?</p>
+<p>A1:</p>
+<pre class="literal-block">$ kill -9 $$</pre>
+<p>A2:</p>
+<pre class="literal-block">$ history -c &amp;&amp; exit</pre>
+<p>A3:</p>
+<pre class="literal-block">$ unset HISTFILE &amp;&amp; exit</pre>
+<p>A4:</p>
+<pre class="literal-block">$ HISTSIZE=0 &amp;&amp; exit</pre>
+<dl class="simple">
+<dt>R :</dt>
+<dd><p><a class="reference external" href="https://www.if-not-true-then-false.com/2010/quit-bash-shell-without-saving-bash-history/">Quit Bash Shell Without Saving Bash History</a></p>
+</dd>
+</dl>
 </div>
         </div> <!-- content -->
 
