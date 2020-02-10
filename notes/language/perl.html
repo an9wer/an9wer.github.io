@@ -33,6 +33,51 @@
         <div id="content">
 <div class="section" id="perl">
 <h1>Perl</h1>
+<div class="section" id="data">
+<h2>Data</h2>
+<p>Perl has three built-in data types: scalars, arrays of scalars, and associative
+arrays of scalars, known as &quot;hashes&quot;.</p>
+<p>Values are usually referred to by name, or through a named reference. The first
+character of the name tells you to what sort of data structure it refers. The
+rest of the name tells you the particular value to which it refers.</p>
+<p>1. Scalar values are always named with '$', even when referring to a scalar
+that is part of an array or a hash.</p>
+<pre class="literal-block">$days           # the simple scalar value &quot;days&quot;
+$days[28]       # the 29th element of array &#64;days
+$days{'Feb'}    # the 'Feb' value from hash %days
+$#days          # the last index of array &#64;days</pre>
+<ol class="arabic">
+<li><p>Entire arrays (and slices of arrays and hashes) are denoted by '&#64;'.</p>
+<pre class="literal-block">&#64;days           # ($days[0], $days[1],... $days[n])
+&#64;days[3,4,5]    # same as ($days[3],$days[4],$days[5])
+&#64;days{'a','c'}  # same as ($days{'a'},$days{'c'}</pre>
+</li>
+</ol>
+<ol class="arabic">
+<li><p>Entire hashes are denoted by '%'.</p>
+<pre class="literal-block">%days           # (key1, val1, key2, val2 ...)</pre>
+</li>
+</ol>
+<p>1.  Subroutines are named with an initial '&amp;', though this is optional when
+unambiguous.</p>
+<ol class="arabic simple">
+<li><p>Symbol table entries can be named with an initial '*'.</p></li>
+</ol>
+<p>Perl arrays and hashes are internally one-dimensional. That is, their elements
+can hold only scalar values (string, numbers, and references). When we use a
+phrase like &quot;array of arrays&quot;, we really mean &quot;array of references to arrays&quot;,
+just as when we say &quot;hash of functions&quot;, we really mean &quot;hash of references to
+subroutines&quot;.</p>
+</div>
+<div class="section" id="interpolation">
+<h2>Interpolation</h2>
+<p>Array variables are interpolated into double-quote strings by joing all
+elements of the array with the separator specified in the <span class="docutils literal">$&quot;</span> variable:</p>
+<pre class="literal-block">my $temp = join( $&quot;, &#64;ARGV);
+print $temp;
+
+print &quot;&#64;ARGV&quot;;</pre>
+</div>
 <div class="section" id="context">
 <h2>Context</h2>
 <p><a class="reference external" href="https://perldoc.perl.org/perldata.html#Context">https://perldoc.perl.org/perldata.html#Context</a></p>
@@ -63,6 +108,51 @@ represent an address that is never 0. An undefined value (often called
 <span class="docutils literal">undef</span>) is always false because it looks like either &quot;&quot; or 0, depending
 on whether you treat it as a string or a number.</p>
 <p>A list value is true if it  ther are any elements in it.</p>
+</dd>
+</dl>
+<pre class="literal-block">$foo = (&quot;one&quot;, &quot;two&quot;, &quot;three&quot;); # The value of $foo is &quot;three&quot; (the last element of list)
+
+&#64;bar = (&quot;one&quot;, &quot;two&quot;, &quot;three&quot;); # The value of &#64;bar is (&quot;one&quot;, &quot;tow&quot;, &quot;three&quot;)
+
+$foo = &#64;bar;                    # The value of $foo is 3 (the length of array)</pre>
+</div>
+<div class="section" id="operators">
+<h2>Operators</h2>
+<dl>
+<dt>List operators (Leftward)</dt>
+<dd><p>If any list operator (such as <span class="docutils literal">print</span>) or any named unary operator (such
+as <span class="docutils literal">chdir</span>) is followed by a left parenthesis as the next token (ignoring
+whitespace), the operator and its parenthesized arguments are given highest
+precedence, as if it wre a normal function call.</p>
+<pre class="literal-block">open($fh, &quot;&gt;&quot;, &quot;logfile&quot;) or die;   # OK
+open($fh, &quot;&gt;&quot;, &quot;logfile&quot;) || die;   # OK</pre>
+</dd>
+<dt>List operators (Rightward)</dt>
+<dd><p>The right side of a list operator governs all the list operator's
+arguments, which are comma separated, so the precedence of a list operator
+is lower than a comma.</p>
+<pre class="literal-block">open $fh, &quot;&gt;&quot;, &quot;logfile&quot; || die;    # Wrong
+open $fh, &quot;&gt;&quot;, &quot;logfile&quot; or die;    # OK</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="built-in-functions">
+<h2>Built-in functions</h2>
+<dl>
+<dt>open</dt>
+<dd><p>Returns true when it succeeds and <span class="docutils literal">undef</span> otherwise. If the <span class="docutils literal">open</span>
+starts up a pipe to a child process, the return value will be the process
+ID of that new process.</p>
+<p>If you supply an undefined variable for the filehandle, perl will
+automaticall define that variable for you, that is, autovivifying it to
+contain a proper filehandle reference. One advantage of this is that the
+filehandle will be closed automatically when there are no futher references
+to it, typically when the variable goes out of scope:</p>
+<pre class="literal-block">{
+    my $fh;
+    open $fh, &quot;&gt;&quot;, &quot;logfile&quot;
+        or die &quot;Can't create logfile: $!&quot;;
+}   # $fh closed here</pre>
 </dd>
 </dl>
 </div>
