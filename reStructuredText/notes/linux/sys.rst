@@ -13,3 +13,9 @@ Speed of NIC:
 ::
 
     $ cat /sys/class/net/<interface>/speed
+
+
+References
+----------
+
+``man 5 sysfs``

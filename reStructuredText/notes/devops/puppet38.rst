@@ -15,6 +15,14 @@ Install puppet3.8 on CentOS7:
 
 https://puppet.com/docs/puppet/3.8/install_el.html
 
+Install puppet 5.5 on CentOS8: ::
+
+    # rpm -ivh https://yum.puppetlabs.com/puppet5-release-el-8.noarch.rpm
+    # dnf install puppet-agent
+    # dnf install puppetserver
+
+https://www.theskillpedia.com/setup-puppet-master-and-puppet-agent-on-centos-8/
+
 Subcommands
 -----------
 

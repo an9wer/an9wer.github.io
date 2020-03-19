@@ -98,6 +98,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/package/yum.rst
         reStructuredText/notes/package/yum-utils.rst
         reStructuredText/notes/package/dnf.rst
+        reStructuredText/notes/package/copr.rst
         reStructuredText/notes/package/dpkg.rst
         reStructuredText/notes/package/apt.rst
         reStructuredText/notes/package/pacman.rst
@@ -170,6 +171,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/ns/azure.rst
         reStructuredText/notes/ns/gcloud.rst
         reStructuredText/notes/ns/edc.rst
+        reStructuredText/notes/ns/huige.rst
 
     TODO
         reStructuredText//notes/coreutils/seq.rst

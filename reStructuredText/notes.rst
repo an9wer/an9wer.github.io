@@ -111,8 +111,12 @@ Systemd/
         </notes/systemd/hostnamectl.html>`_
     -   `timedatectl
         </notes/systemd/timedatectl.html>`_
+    -   `unit
+        </notes/systemd/unit.html>`_
     -   `exec
         </notes/systemd/exec.html>`_
+    -   `target
+        </notes/systemd/target.html>`_
 Linux/
     -   `Linux filesystem hierarchy
         </notes/linux/filesystem_hierarchy.html>`_
@@ -167,6 +171,8 @@ Package/
         </notes/package/yum.html>`_
     -   `dnf
         </notes/package/dnf.html>`_
+    -   `copr
+        </notes/package/copr.html>`_
     -   `dpkg
         </notes/package/dpkg.html>`_
     -   `apt

@@ -36,9 +36,13 @@
 <p>Display the content of certificate:</p>
 <pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -text</pre>
 <p>Download certificate from a website:</p>
-<pre class="literal-block">$ echo -n | openssl s_client -connect &lt;HOST:PORT&gt; \
-    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' &gt;
-    &lt;certificate&gt;</pre>
+<pre class="literal-block">$ echo -n | openssl s_client -servername &lt;NAME&gt; -connect &lt;HOST:PORT&gt; \
+    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' &gt; &lt;certificate&gt;
+
+-connect &lt;HOST:PORT&gt;  The host and port to connect to.
+-servername &lt;NAME&gt;    The TLS SNI (Server Name Indication) extension (website).</pre>
+<p>Check certificate expire date:</p>
+<pre class="literal-block">$ echo -n | openssl s_client -servername &lt;NAME&gt; -connect &lt;HOST:PORT&gt; 2&gt;/dev/null | openssl x509 -noout -dates</pre>
 <p>Display fingerprint of certificate:</p>
 <pre class="literal-block">$ openssl x509 -in &lt;certificate&gt; -fingerprint -noout</pre>
 <p>Display serial of certificate:</p>

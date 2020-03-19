@@ -23,6 +23,14 @@ Install build dependencies: ::
     # yum-builddep <spec file>
     # yum-builddep <src rpm file>
 
+Download source files: ::
+
+    $ spectool -g -R <spec file>
+
+    Or
+
+    $ rpmbuild --undefine=_disable_source_fetch -ba <spec file>
+
 Download rpm: ::
 
     Fedora

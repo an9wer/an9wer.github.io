@@ -49,6 +49,12 @@ CentOS
 CentOS
 # yum-builddep &lt;spec file&gt;
 # yum-builddep &lt;src rpm file&gt;</pre>
+<p>Download source files:</p>
+<pre class="literal-block">$ spectool -g -R &lt;spec file&gt;
+
+Or
+
+$ rpmbuild --undefine=_disable_source_fetch -ba &lt;spec file&gt;</pre>
 <p>Download rpm:</p>
 <pre class="literal-block">Fedora
 # dnf download &lt;package&gt;

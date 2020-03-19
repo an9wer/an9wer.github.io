@@ -20,3 +20,7 @@ Audio devices:
     $ cat /proc/asound/cards 
 
 
+References
+----------
+
+``man 5 proc``
