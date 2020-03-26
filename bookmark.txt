@@ -19,6 +19,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/commands/curl.rst
         reStructuredText/notes/commands/autossh.rst
         reStructuredText/notes/commands/adb.rst
+        reStructuredText/notes/commands/ftp.rst
     Coreutils
         reStructuredText/notes/coreutils/ls.rst
         reStructuredText/notes/coreutils/du.rst
