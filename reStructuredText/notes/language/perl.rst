@@ -117,8 +117,41 @@ List operators (Rightward)
 
         open $fh, ">", "logfile" || die;    # Wrong
         open $fh, ">", "logfile" or die;    # OK
+        
+Syntax
+------
 
+BLOCK ``{}`` by itself (labeled or not) is semantically equivalent to a loop
+that executes once. Thus you can use any of the loop control statements in it
+to leave or restart the block. (Note that this is NOT true in ``eval{}``,
+``sub{}``, or contrary to popular belief ``do{}`` blocks, which do NOT count as
+loops.) The continue block is optional. ::
 
+    SWITCH: {
+        if (/^abc/) { $abc = 1; last SWITCH; }
+        if (/^def/) { $def = 1; last SWITCH; }
+        if (/^xyz/) { $xyz = 1; last SWITCH; }
+        $nothing = 1;
+    }
+
+    if (1) { {
+        last;
+        print 1;        # Not do
+    } }
+
+In ``while`` statement, if the condition expression is based on any of a group
+of iterative expression types then it gets some magic treatment. The affected
+iterative expression types are ``readline EXPR``, the ``<FILEHANDLE>`` input
+operator, ``readdir DIRHANDLE``, ``glob EXPR``, the ``<PATTERN>`` globbing
+operator, and ``each HASH``.  If the condition expression is one of these
+expression types, then the value yielded by the iterative operator will be
+implicitly assigned to ``$_`` . If the condition expression is one of these
+expression types or an explicit assignment of one of them to a scalar, then the
+condition actually tests for definedness of the expression's value, not for its
+regular truth value. ::
+
+    while (<>) { }
+    while (defined($line = <ARGV>)) { }
 
 
 Built-in functions

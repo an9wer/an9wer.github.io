@@ -280,6 +280,14 @@ Misc/
         </notes/miscellaneous/saas_paas_iaas.html>`_
     -   `Encryption and decryption
         </notes/miscellaneous/encryption_and_decryption.html>`_
+    -   `Mebibyte vs megabyte
+        </notes/miscellaneous/mebibyte_vs_megabyte.html>`_
+    -   `network
+        </notes/miscellaneous/network.html>`_
+    -   `domain
+        </notes/miscellaneous/domain.html>`_
+    -   `Virtualbox
+        </notes/miscellaneous/virtualbox.html>`_
 
 HowTo
 -----
@@ -460,3 +468,11 @@ A4: ::
 R :
     `Quit Bash Shell Without Saving Bash History
     <https://www.if-not-true-then-false.com/2010/quit-bash-shell-without-saving-bash-history/>`_
+
+---
+
+Q: How to find largest file in directory recursively?
+
+A: ::
+
+    # find / -type f -exec du -ha {} + | sort -rh

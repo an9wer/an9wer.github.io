@@ -136,6 +136,37 @@ open $fh, &quot;&gt;&quot;, &quot;logfile&quot; or die;    # OK</pre>
 </dd>
 </dl>
 </div>
+<div class="section" id="syntax">
+<h2>Syntax</h2>
+<p>BLOCK <span class="docutils literal">{}</span> by itself (labeled or not) is semantically equivalent to a loop
+that executes once. Thus you can use any of the loop control statements in it
+to leave or restart the block. (Note that this is NOT true in <span class="docutils literal">eval{}</span>,
+<span class="docutils literal">sub{}</span>, or contrary to popular belief <span class="docutils literal">do{}</span> blocks, which do NOT count as
+loops.) The continue block is optional.</p>
+<pre class="literal-block">SWITCH: {
+    if (/^abc/) { $abc = 1; last SWITCH; }
+    if (/^def/) { $def = 1; last SWITCH; }
+    if (/^xyz/) { $xyz = 1; last SWITCH; }
+    $nothing = 1;
+}
+
+if (1) { {
+    last;
+    print 1;        # Not do
+} }</pre>
+<p>In <span class="docutils literal">while</span> statement, if the condition expression is based on any of a group
+of iterative expression types then it gets some magic treatment. The affected
+iterative expression types are <span class="docutils literal">readline EXPR</span>, the <span class="docutils literal">&lt;FILEHANDLE&gt;</span> input
+operator, <span class="docutils literal">readdir DIRHANDLE</span>, <span class="docutils literal">glob EXPR</span>, the <span class="docutils literal">&lt;PATTERN&gt;</span> globbing
+operator, and <span class="docutils literal">each HASH</span>.  If the condition expression is one of these
+expression types, then the value yielded by the iterative operator will be
+implicitly assigned to <span class="docutils literal">$_</span> . If the condition expression is one of these
+expression types or an explicit assignment of one of them to a scalar, then the
+condition actually tests for definedness of the expression's value, not for its
+regular truth value.</p>
+<pre class="literal-block">while (&lt;&gt;) { }
+while (defined($line = &lt;ARGV&gt;)) { }</pre>
+</div>
 <div class="section" id="built-in-functions">
 <h2>Built-in functions</h2>
 <dl>

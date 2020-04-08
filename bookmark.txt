@@ -164,6 +164,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/mebibyte_vs_megabyte.rst
         reStructuredText/notes/miscellaneous/network.rst
         reStructuredText/notes/miscellaneous/domain.rst
+        reStructuredText/notes/miscellaneous/virtualbox.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst
