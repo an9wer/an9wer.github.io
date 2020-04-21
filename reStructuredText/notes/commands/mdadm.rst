@@ -19,7 +19,7 @@ To load raid device automatically: ::
     # mdadm --assemble --scan
 
 To load raid device manually if above command doesn't work (see `errors may
-be happened when loading raid device manually`_): ::
+happen when loading raid device manually`_): ::
 
     # mdadm --assemble <raid device> <device> [<device> ...]
 
@@ -50,7 +50,7 @@ Update name, homehost or any other parameter of raid device: ::
     ``--examine`` applies to devices which are components of an array, while
     ``--detail`` applies to a whole array which is currently active.
 
-.. _errors may be happened when loading raid device manually:
+.. _errors may happen when loading raid device manually:
 
 -   errors may be happened when loading raid device manually:
 

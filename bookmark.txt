@@ -1,3 +1,5 @@
+reStructuredText/tweet.rst
+
 reStructuredText/notes.rst
     Commands
         reStructuredText/notes/commands/rsync.rst

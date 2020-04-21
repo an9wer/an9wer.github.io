@@ -37,10 +37,11 @@
 <pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
 <p>After that, check the process of creation command:</p>
 <pre class="literal-block"># cat /proc/mdstat</pre>
-<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, if it contains
-<em>resyncing</em>, then the creation is still being in work:</p>
+<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, the <em>resyncing</em>
+means the creation is still being in process:</p>
 <pre class="literal-block"># mdadm --detail /dev/md1
 State: clean, resyncing</pre>
+<p>Thanks for reading :)</p>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
@@ -49,7 +50,7 @@ State: clean, resyncing</pre>
         </div> <!-- content -->
 
         <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
         </div> <!-- footer -->
 
     </div> <!-- main -->

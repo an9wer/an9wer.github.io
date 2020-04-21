@@ -9,13 +9,13 @@ After that, check the process of creation command: ::
 
     # cat /proc/mdstat
 
-Or use ``--detail`` option to get the state of raid device, if it contains
-*resyncing*, then the creation is still being in work: ::
+Or use ``--detail`` option to get the state of raid device, the *resyncing*
+means the creation is still being in process: ::
 
     # mdadm --detail /dev/md1
     State: clean, resyncing
 
-
+Thanks for reading :)
 
 References
 ----------

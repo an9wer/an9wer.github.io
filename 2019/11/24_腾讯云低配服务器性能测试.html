@@ -33,8 +33,12 @@
         <div id="content">
 <div class="section" id="id1">
 <h1>腾讯云低配服务器性能测试</h1>
-<p>S2.SMALL1(标准型S2,1核 1GB)</p>
-<pre class="literal-block">[an9wer&#64;VM_0_17_centos ~]$ sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+<p>最近腾讯云有活动，趁着之前买的服务器快要到期，准备续费一波，于是找了几种价格相
+近的机型，进行了性能测试。（腾讯云可以修改服务器的规格，包年包月从高价位修改成
+低价位不收费也不退款。所以一路从高价位的逐渐往下调，每调整一次规格进行一次测试
+。）</p>
+<p>S2.SMALL1(标准型S2,1核 1GB):</p>
+<pre class="literal-block">$ sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
 sysbench 1.0.17 (using system LuaJIT 2.0.4)
 
 Running the test with following options:
@@ -67,7 +71,7 @@ Threads fairness:
     execution time (avg/stddev):   17.0828/0.00
 
 
-[root&#64;VM_0_3_centos ~]# lscpu
+# lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
@@ -90,10 +94,13 @@ L1d cache:             32K
 L1i cache:             32K
 L2 cache:              4096K
 NUMA node0 CPU(s):     0
-Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx lm constant_tsc rep_good nopl eagerfpu pni pclmulqdq
-ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch bmi1 avx2 bmi2 rdseed adx xsaveopt</pre>
-<p>S5.SMALL2(标准型S5,1核 2GB) Intel Xeon Cascade Lake(2.5 G</p>
-<pre class="literal-block">[an9wer&#64;VM_0_17_centos ~]$  sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx lm constant_tsc
+rep_good nopl eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic
+movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm
+abm 3dnowprefetch bmi1 avx2 bmi2 rdseed adx xsaveopt</pre>
+<p>S5.SMALL2(标准型S5,1核 2GB) Intel Xeon Cascade Lake(2.5 G):</p>
+<pre class="literal-block"># sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
 sysbench 1.0.17 (using system LuaJIT 2.0.4)
 
 Running the test with following options:
@@ -123,19 +130,41 @@ Latency (ms):
 
 Threads fairness:
     events (avg/stddev):           1.0000/0.00
-    execution time (avg/stddev):   14.5376/0.00</pre>
-<pre class="literal-block">(venv) [an9wer&#64;VM_0_17_centos ~]$ speedtest
-Retrieving speedtest.net configuration...
-Testing from Tencent cloud computing (49.234.12.97)...
-Retrieving speedtest.net server list...
-Selecting best server based on ping...
-Hosted by ChinaUnicom-5G (TianJin) [111.65 km]: 39.158 ms
-Testing download speed................................................................................
-Download: 81.11 Mbit/s
-Testing upload speed......................................................................................................
-Upload: 1.00 Mbit/s</pre>
+    execution time (avg/stddev):   14.5376/0.00
+
+# lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                1
+On-line CPU(s) list:   0
+Thread(s) per core:    1
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 85
+Model name:            Intel(R) Xeon(R) Platinum 8255C CPU &#64; 2.50GHz
+Stepping:              5
+CPU MHz:               2494.140
+BogoMIPS:              4988.28
+Hypervisor vendor:     KVM
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              4096K
+L3 cache:              36608K
+NUMA node0 CPU(s):     0
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca
+cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm
+constant_tsc rep_good nopl eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1
+sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand
+hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms
+invpcid rtm mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd
+avx512bw avx512vl xsaveopt xsavec xgetbv1 arat avx512_vnni</pre>
 <p>SA1.SMALL1 (标准型SA1 1核1G):</p>
-<pre class="literal-block">[root&#64;VM_0_17_centos synapse]# sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
+<pre class="literal-block"># sysbench cpu --cpu-max-prime=10000000  --events=1 --threads=1 run
 sysbench 1.0.17 (using system LuaJIT 2.0.4)
 
 Running the test with following options:
@@ -168,7 +197,7 @@ Threads fairness:
     execution time (avg/stddev):   14.8112/0.00
 
 
-[root&#64;VM_0_17_centos opt]# lscpu
+# lscpu
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
@@ -197,21 +226,14 @@ rdtscp lm art rep_good nopl extd_apicid eagerfpu pni pclmulqdq ssse3 fma cx16
 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm
 cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw retpoline_amd vmmcall
 fsgsbase bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec
-xgetbv1 arat
-
-
-
-
-Hosted by ChinaUnicom-5G (TianJin) [111.65 km]: 22.086 ms
-Testing download speed................................................................................
-Download: 83.78 Mbit/s
-Testing upload speed......................................................................................................
-Upload: 1.16 Mbit/s</pre>
+xgetbv1 arat</pre>
+<p>各位猜猜我最终选择了哪款？</p>
+<p>Thanks for reading :)</p>
 </div>
         </div> <!-- content -->
 
         <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
         </div> <!-- footer -->
 
     </div> <!-- main -->

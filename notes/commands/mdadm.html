@@ -42,8 +42,8 @@
 <pre class="literal-block"># madadm --detail &lt;device&gt;</pre>
 <p>To load raid device automatically:</p>
 <pre class="literal-block"># mdadm --assemble --scan</pre>
-<p>To load raid device manually if above command doesn't work (see <a class="reference internal" href="#errors-may-be-happened-when-loading-raid-device-manually">errors may
-be happened when loading raid device manually</a>):</p>
+<p>To load raid device manually if above command doesn't work (see <a class="reference internal" href="#errors-may-happen-when-loading-raid-device-manually">errors may
+happen when loading raid device manually</a>):</p>
 <pre class="literal-block"># mdadm --assemble &lt;raid device&gt; &lt;device&gt; [&lt;device&gt; ...]</pre>
 <p>Remove a device from array of raid device:</p>
 <pre class="literal-block"># mdadm --manage &lt;raid device&gt; --remove &lt;device&gt;</pre>
@@ -64,7 +64,7 @@ Or update homehost (The special name &quot;any&quot; can be used as a wild card)
 <span class="docutils literal"><span class="pre">--detail</span></span> applies to a whole array which is currently active.</p>
 </li>
 </ul>
-<ul id="errors-may-be-happened-when-loading-raid-device-manually">
+<ul id="errors-may-happen-when-loading-raid-device-manually">
 <li><p>errors may be happened when loading raid device manually:</p>
 <p>Case1: Fewer devices are given than when they are created before, then use
 <span class="docutils literal"><span class="pre">--run</span></span> option:</p>
@@ -96,7 +96,7 @@ mdadm: stopped /dev/md127</pre>
         </div> <!-- content -->
 
         <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2019 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
         </div> <!-- footer -->
 
     </div> <!-- main -->
