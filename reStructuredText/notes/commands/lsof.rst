@@ -55,6 +55,11 @@ List UNIX domain socket files for specified processes (use ``-a`` option, see
 `OR AND`_): ::
 
     # lsof -U -a -p <pid>[,<pid>...]
+
+Select the fields to be output (use ``lsof -F?`` to list all support
+characters): ::
+
+    # lsof -F <char>[<char>..]
     
 
 .. _OR AND:

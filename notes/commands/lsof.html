@@ -61,6 +61,9 @@
 <p>List UNIX domain socket files for specified processes (use <span class="docutils literal"><span class="pre">-a</span></span> option, see
 <a class="reference internal" href="#or-and">OR AND</a>):</p>
 <pre class="literal-block"># lsof -U -a -p &lt;pid&gt;[,&lt;pid&gt;...]</pre>
+<p>Select the fields to be output (use <span class="docutils literal">lsof <span class="pre">-F?</span></span> to list all support
+characters):</p>
+<pre class="literal-block"># lsof -F &lt;char&gt;[&lt;char&gt;..]</pre>
 <ul id="or-and">
 <li><p>OR AND:</p>
 <p>Normal list options of <span class="docutils literal">lsof</span> are ORed (i.e. specifying the <span class="docutils literal"><span class="pre">-i</span></span> option

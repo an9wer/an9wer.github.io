@@ -101,6 +101,21 @@ Switch table contains (but not necessarily all):
 2.  Switch interface that leads toward that MAC
 3.  Time at which the entry was placed in the table
 
+P477
+Understand how siwthc filtering and forwarding work:
+
+-   There is no entry in the table for 'DD-DD-DD-DD-DD-DD-DD'. In this case,
+    the switch forwards copies of the frame to the output buffers preceding all
+    interfaces except for the sender interface itself.
+-   There is an entry in the table for 'DD-DD-DD-DD-DD-DD-DD' with the
+    interface same as the sender interface itself, the switch performs the
+    filtering function by discarding the frame.
+-   There is an entry in the table, associating 'DD-DD-DD-DD-DD-DD-DD' with
+    another interface different from the sender interface, the switch performs
+    its forwarding fuction by putting the frame in an output buffer that
+    precedes to target interface.
+
+
 P478
 
 Switches self-learn

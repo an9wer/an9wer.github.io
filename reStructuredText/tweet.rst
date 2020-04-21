@@ -1,6 +1,10 @@
+2020/04/20 Mon 
+
+    Visa Credit Card 到手。 
+
 2020/04/06 Mon
 
-    Essential Phone 屏幕被我摔坏，换回我的 Nubia。
+    不小心把 Essential Phone 的屏幕摔坏，换回我的 Nubia。
 
 2020/04/04 Sat
 
@@ -23,7 +27,7 @@
 
 2020/01/24 Fri
 
-    抢到搬瓦工 CN2 GIA 线路一台。
+    抢到搬瓦工 CN2 GIA 一台。
 
 2019/12/31 Tue
 
