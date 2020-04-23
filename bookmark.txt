@@ -1,5 +1,38 @@
 reStructuredText/tweet.rst
 
+reStructuredText/blog.rst
+    reStructuredText/2020/01/07_服务器被黑事件.rst
+    reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
+    reStructuredText/2019/11/09_Build_raid1.rst
+    reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
+    reStructuredText/2019/08/21_终端下的目录切换.rst
+    reStructuredText/2019/08/20_TODO\ list.rst
+    reStructuredText/2019/08/19_Raspberry\ Pi\ installation.rst
+    reStructuredText/2019/07/21_终端下的单词查询.rst
+    reStructuredText/2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
+    reStructuredText/2019/06/09_地铁轶事.rst
+    reStructuredText/2019/06/04_搭建自己的\ IM.rst
+    reStructuredText/2019/03/20_一大波面试.rst
+    reStructuredText/2019/02/22_从\ Vimwiki\ 转投\ Asciidoc.rst
+    reStructuredText/2019/02/20_Shadowsocks\ 连接异常小记.rst
+    reStructuredText/2019/02/10_关于集福卡.rst
+    reStructuredText/2019/02/09_关于五黑.rst
+    reStructuredText/2019/01/13_Archlinux\ installation.rst
+    reStructuredText/2018/12/29_GH\ 60\ Satan\ 入手.rst
+    reStructuredText/2018/12/24_GANSS\ ALT\ 61\ 入手.rst
+    reStructuredText/2018/12/17_Rapoo\ V500\ 换键帽.rst
+    reStructuredText/2018/12/15_Caps_Lock\ key\ 重绑定.rst
+    reStructuredText/2018/12/13_MuPDF\ 使用小记.rst
+    reStructuredText/2018/12/08_RSS\ 订阅.rst
+    reStructuredText/2018/12/05_OnePlus\ 5T\ 入手.rst
+    reStructuredText/2018/12/03_Vultr\ 换主机小记.rst
+    reStructuredText/2018/12/01_Essential\ Phone\ PH-1\ 入手.rst
+    reStructuredText/2018/11/28_Nubia\ Z11\ mini\ 刷机.rst
+    reStructuredText/2018/11/11_小米平板一代入手.rst
+    reStructuredText/2018/10/30_Suckless\ 的一天.rst
+    reStructuredText/2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
+    reStructuredText/2018/10/24_博客搭建小记.rst
+
 reStructuredText/notes.rst
     Commands
         reStructuredText/notes/commands/rsync.rst
@@ -206,40 +239,6 @@ reStructuredText/notes.rst
         puppet: contain
 
         bash: $_
-
-
-reStructuredText/blog.rst
-    reStructuredText/2020/01/07_服务器被黑事件.rst
-    reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
-    reStructuredText/2019/11/09_Build_raid1.rst
-    reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
-    reStructuredText/2019/08/21_终端下的目录切换.rst
-    reStructuredText/2019/08/20_TODO\ list.rst
-    reStructuredText/2019/08/19_Raspberry\ Pi\ installation.rst
-    reStructuredText/2019/07/21_终端下的单词查询.rst
-    reStructuredText/2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
-    reStructuredText/2019/06/09_地铁轶事.rst
-    reStructuredText/2019/06/04_搭建自己的\ IM.rst
-    reStructuredText/2019/03/20_一大波面试.rst
-    reStructuredText/2019/02/22_从\ Vimwiki\ 转投\ Asciidoc.rst
-    reStructuredText/2019/02/20_Shadowsocks\ 连接异常小记.rst
-    reStructuredText/2019/02/10_关于集福卡.rst
-    reStructuredText/2019/02/09_关于五黑.rst
-    reStructuredText/2019/01/13_Archlinux\ installation.rst
-    reStructuredText/2018/12/29_GH\ 60\ Satan\ 入手.rst
-    reStructuredText/2018/12/24_GANSS\ ALT\ 61\ 入手.rst
-    reStructuredText/2018/12/17_Rapoo\ V500\ 换键帽.rst
-    reStructuredText/2018/12/15_Caps_Lock\ key\ 重绑定.rst
-    reStructuredText/2018/12/13_MuPDF\ 使用小记.rst
-    reStructuredText/2018/12/08_RSS\ 订阅.rst
-    reStructuredText/2018/12/05_OnePlus\ 5T\ 入手.rst
-    reStructuredText/2018/12/03_Vultr\ 换主机小记.rst
-    reStructuredText/2018/12/01_Essential\ Phone\ PH-1\ 入手.rst
-    reStructuredText/2018/11/28_Nubia\ Z11\ mini\ 刷机.rst
-    reStructuredText/2018/11/11_小米平板一代入手.rst
-    reStructuredText/2018/10/30_Suckless\ 的一天.rst
-    reStructuredText/2018/10/27_Categories\ of\ YouTube\ channels\ I\ have\ subscribed.rst
-    reStructuredText/2018/10/24_博客搭建小记.rst
 
 Dot:
     graphviz/python/argparse.dot
