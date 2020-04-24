@@ -50,8 +50,8 @@ build_rst() {
         category=notes
       elif [[ $html =~ /tweet.html$ ]]; then
         category=tweet
-      elif [[ $html =~ /about.html$ ]]; then
-        category=about
+      elif [[ $html =~ /tools.html$ ]]; then
+        category=tools
       else
         echo "Unknown file '$rst'."
         continue
