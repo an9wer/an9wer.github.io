@@ -202,6 +202,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/miscellaneous/network.rst
         reStructuredText/notes/miscellaneous/domain.rst
         reStructuredText/notes/miscellaneous/virtualbox.rst
+        reStructuredText/notes/miscellaneous/mail.rst
     NS
         reStructuredText/notes/ns/deployment.rst
         reStructuredText/notes/ns/contentsrv.rst

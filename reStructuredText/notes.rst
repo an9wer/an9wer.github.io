@@ -288,6 +288,8 @@ Misc/
         </notes/miscellaneous/domain.html>`_
     -   `Virtualbox
         </notes/miscellaneous/virtualbox.html>`_
+    -   `mail
+        </notes/miscellaneous/mail.html>`_
 
 HowTo
 -----

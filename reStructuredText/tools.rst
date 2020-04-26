@@ -112,6 +112,14 @@ Web Server
     (2019/10/22) `mojolicious <https://mojolicious.org/>`_
         Perl real-time web framework
 
+Blog/Forum
+
+    (2019/08/21) `getpelican <https://getpelican.com/>`_
+        Static site generator that supports Markdown and reST syntax
+
+    (2020/04/25) `flarum <https://flarum.org>`_
+        Simple forum software for building great communities.
+
 Network
 
     (2019/10/22) `Openswan <https://www.openswan.org/>`_
@@ -133,6 +141,10 @@ Network
     (2020/04/24) `bgp.he.net <https://bgp.he.net/>`_
         Hurricane Electric BGP Toolkit
 
+    (2020/04/25) `masscan <https://github.com/robertdavidgraham/masscan>`_
+        TCP port scanner, spews SYN packets asynchronously, scanning entire
+        Internet in under 5 minutes. 
+
 Proxy/Tunnel
 
     (2019/11/04) `frp <https://github.com/fatedier/frp>`_
@@ -149,6 +161,14 @@ Proxy/Tunnel
         A smart programmable Ethernet switch for planet Earth. It allows all
         networked devices, VMs, containers, and applications to communicate as
         if they all reside in the same physical data center or cloud region
+
+    (2020/04/24) `setup-ipsec-vpn <https://github.com/hwdsl2/setup-ipsec-vpn>`_
+        Scripts to build your own IPsec VPN server, with IPsec/L2TP and Cisco
+        IPsec on Ubuntu, Debian and CentOS 
+
+    (2020/04/25) `Brook <https://github.com/txthinking/Brook>`_
+        A cross-platform(Linux/BSD/MacOS/Windows/Android/iOS) proxy/vpn
+        software. Zero-Configuration.
 
 Strace
 
@@ -226,9 +246,6 @@ Misc
         A parallel implementation of gzip for modern multi-processor,
         multi-core machines
 
-    (2019/08/21) `getpelican <https://getpelican.com/>`_
-        Static site generator that supports Markdown and reST syntax
-
     (2019/08/21) `packer <https://github.com/hashicorp/packer>`_
         Packer is a tool for creating identical machine images for multiple
         platforms from a single source configuration
@@ -252,4 +269,3 @@ Misc
 
     (2019/09/19) `PuzzleScript <https://github.com/increpare/PuzzleScript>`_
         Open Source HTML5 Puzzle Game Engine
-

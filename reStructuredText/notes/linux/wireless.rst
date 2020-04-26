@@ -1,11 +1,18 @@
 Linux wireless
 ==============
 
+Frequency band
+--------------
+
+The 802.11 standard provides several distinct radio frequency ranges for use in
+Wi-Fi communications: 900 MHz, 2.4 GHz, 3.6 GHz, 4.9 GHz, 5 GHz, 5.9 GHz and 60
+GHz bands. Each range is divided into a multitude of channels.
+
 Channel
 -------
 
-`Wikipedia: List of wlan channels
-<https://en.wikipedia.org/wiki/List_of_WLAN_channels>`_
+todo
+
 
 Transmission power
 ------------------
@@ -63,16 +70,34 @@ List supported channel of wireless interface: ::
 iw
 --
 
+::
+
+    iw list
+
 
 
 References
 ----------
 
+`Linux kernel wiki: wireless dirvers
+<https://wireless.wiki.kernel.org/en/users/drivers>`_
+
 `Arch wiki: wireless network configuration
 <https://wiki.archlinux.org/index.php/Wireless_network_configuration>`_
+
+`Archwiki: software access point
+<https://wiki.archlinux.org/index.php/software_access_point>`_
 
 `Ubuntu: wifi master mode
 <https://help.ubuntu.com/community/WifiDocs/MasterMode>`_
 
-`Linux kernel wiki: wireless dirvers
-<https://wireless.wiki.kernel.org/en/users/drivers>`_
+`Wikipedia: Comparison of open-source wireless drivers
+<https://en.wikipedia.org/wiki/Comparison_of_open-source_wireless_drivers>`_
+
+`Wikipedia: List of WLAN channels
+<https://en.wikipedia.org/wiki/List_of_WLAN_channels>`_
+
+`Frequencies bands, channels and bandwidth
+<https://www.electronics-notes.com/articles/connectivity/wifi-ieee-802-11/channels-frequencies-bands-bandwidth.php>`_
+
+https://www.reddit.com/r/linuxquestions/comments/52r2nh/is_is_possible_to_split_a_single_wireless_nic/
