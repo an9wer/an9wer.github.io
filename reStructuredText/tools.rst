@@ -19,6 +19,14 @@ System Monitor
     (2019/11/01) `psutil <https://github.com/giampaolo/psutil>`_
         Cross-platform lib for process and system monitoring in Python 
 
+    (2020/04/27) `prometheus <https://github.com/prometheus/prometheus>`_
+        Collects metrics from configured targets at given intervals, evaluates
+        rule expressions, displays the results, and can trigger alerts if some
+        condition is observed to be true
+
+    (2020/04/27) `smokeping <https://oss.oetiker.ch/smokeping/>`_
+        Keeps track of your network latency
+
 Automation
 
     (2019/12/13) `huginn <https://github.com/huginn/huginn>`_
