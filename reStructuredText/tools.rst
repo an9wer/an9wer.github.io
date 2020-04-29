@@ -207,10 +207,13 @@ Backup
     (2019/12/20) `rsnapshot <https://github.com/rsnapshot/rsnapshot>`_
         Backing up your data using rsync
 
-Photo/Design
+Photo/Video/Design
 
     (2019/11/06) `inkscape <https://inkscape.org/>`_
         A professional vector graphics editor for Linux, Windows and macOS
+
+    (2020/04/28) `kdenlive <https://kdenlive.org/>`_
+        Open source video editor
 
 Advertisments block
 
