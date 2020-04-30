@@ -2,7 +2,7 @@ System Monitor
 
     (2019/10/24) `netdata <https://github.com/netdata/netdata/>`_
         A real-time health monitoring and performance troubleshooting for
-        systems and applications.
+        systems and applications
 
     (2019/11/01) `munin <https://github.com/munin-monitoring/munin>`_
         The monitoring tool surveys all your computers and remembers what it
@@ -52,6 +52,9 @@ Terminal/Window manager
     (2020/01/14) `hstr <https://github.com/dvorka/hstr>`_
         Bash and zsh shell history suggest box
 
+    (2020/04/30) `rofi <https://github.com/davatorium/rofi>`_
+        A window switcher, application launcher and dmenu replacement
+
 Text
 
     (2019/12/20) `diff-so-fancy <https://github.com/so-fancy/diff-so-fancy>`_
@@ -69,11 +72,11 @@ Benchmark
     (2019/10/14) `curl-loader <http://curl-loader.sourceforge.net/>`_
         An open-source tool written in C-language, simulating application load
         and application behavior of thousands and tens of thousand HTTP/HTTPS
-        and FTP/FTPS clients, each with its own source IP-address. 
+        and FTP/FTPS clients, each with its own source IP-address
 
     (2019/10/14) `wrk <https://github.com/wg/wrk>`_
         A modern HTTP benchmarking tool capable of generating significant load
-        when run on a single multi-core CPU.
+        when run on a single multi-core CPU
 
     (2019/10/22) `ab <https://httpd.apache.org/docs/2.4/programs/ab.html>`_
          A tool for benchmarking your Apache Hypertext Transfer Protocol (HTTP)
@@ -126,7 +129,7 @@ Blog/Forum
         Static site generator that supports Markdown and reST syntax
 
     (2020/04/25) `flarum <https://flarum.org>`_
-        Simple forum software for building great communities.
+        Simple forum software for building great communities
 
 Network
 
@@ -149,9 +152,15 @@ Network
     (2020/04/24) `bgp.he.net <https://bgp.he.net/>`_
         Hurricane Electric BGP Toolkit
 
+    (2020/04/30) `ipifo.io <https://ipinfo.io/AS4809>`_
+        AS number information
+
     (2020/04/25) `masscan <https://github.com/robertdavidgraham/masscan>`_
         TCP port scanner, spews SYN packets asynchronously, scanning entire
-        Internet in under 5 minutes. 
+        Internet in under 5 minutes
+
+    (2020/04/30) `librespeed <https://github.com/librespeed/speedtest>`_
+        Self-hosted Speedtest for HTML5 and more
 
 Proxy/Tunnel
 
@@ -176,7 +185,7 @@ Proxy/Tunnel
 
     (2020/04/25) `Brook <https://github.com/txthinking/Brook>`_
         A cross-platform(Linux/BSD/MacOS/Windows/Android/iOS) proxy/vpn
-        software. Zero-Configuration.
+        software. Zero-Configuration
 
 Strace
 
