@@ -115,7 +115,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/selinux.rst
         reStructuredText/notes/linux/systemd.rst
         reStructuredText/notes/linux/proc.rst
-        reStructuredText/notes/linux/sys.rst
+        reStructuredText/notes/linux/sysfs.rst
         reStructuredText/notes/linux/alsa.rst
         reStructuredText/notes/linux/kickstart.rst
         reStructuredText/notes/linux/networkmanager.rst
@@ -130,6 +130,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/dhcp.rst
         reStructuredText/notes/linux/bbr.rst
         reStructuredText/notes/linux/loadable_kernel_module.rst
+        reStructuredText/notes/linux/postfix.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst

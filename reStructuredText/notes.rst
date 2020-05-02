@@ -130,8 +130,8 @@ Linux/
         </notes/linux/permissions.html>`_
     -   `Linux proc
         </notes/linux/proc.html>`_
-    -   `Linux sys
-        </notes/linux/sys.html>`_
+    -   `Linux sysfs
+        </notes/linux/sysfs.html>`_
     -   `Linux SELinux
         </notes/linux/selinux.html>`_
     -   `Linux Systemd
@@ -162,6 +162,10 @@ Linux/
         </notes/linux/dhcp.html>`_
     -   `Linux bbr
         </notes/linux/bbr.html>`_
+    -   `Linux loadable kernel module
+        </notes/linux/loadable_kernel_module.html>`_
+    -   `Linux postfix
+        </notes/linux/postfix.html>`_
 Package/
     -   `RPM
         </notes/package/rpm.html>`_
