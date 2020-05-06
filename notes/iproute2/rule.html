@@ -31,26 +31,35 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="iproute2-route">
-<h1>Iproute2 route</h1>
-<pre class="literal-block">ip route &quot;add|del|change|append|replace&quot; &lt;ROUTE&gt;
+<div class="section" id="iproute2-rule">
+<h1>Iproute2 rule</h1>
+<p>Each policy routing rule consists of a <em>selector</em> and an <em>action predicate</em>.</p>
+<p>The <em>selector</em> of each rule is applied to <em>source address</em>, <em>destination
+address</em>, <em>incoming interface</em>, <em>tos</em>, <em>fwmark</em> and, if the selector matches
+the packet, the <em>action</em> is performed.</p>
+<pre class="literal-block">ip rule &quot;add|del&quot; &lt;SELECTOR&gt; &lt;ACTION&gt;
 
-ROUTE := &lt;NODE_SPEC&gt; [&lt;INFO_SPEC&gt;]
+SELECTOR := [not] [from &lt;PREFIX&gt;] [to &lt;PREFIX&gt; ] [tos &lt;TOS&gt;] [fwmark &lt;FWMARK&gt;[/&lt;MASK&gt;] ]
+    [iif &lt;STRING&gt;] [oif &lt;STRING&gt;] [pref &lt;NUMBER&gt;] [l3mdev ] [uidrange &lt;NUMBER-NUMBER&gt;]
+    [ipproto &lt;PROTOCOL&gt;] [sport [&lt;NUMBER&gt;|&lt;NUMBER-NUMBER&gt;]]
+    [dport [&lt;NUMBER&gt;|&lt;NUMBER-NUMBER&gt;]] [tun_id &lt;TUN_ID&gt;]
 
-NODE_SPEC := [&lt;TYPE&gt;] &lt;PREFIX&gt; [tos &lt;TOS&gt;] [table &lt;TABLE_ID&gt;] [proto &lt;RTPROTO&gt;]
-  [scope &lt;SCOPE&gt;] [metric &lt;METRIC&gt;] [ttl-propagate &quot;enabled|disabled&quot;]
-
-INFO_SPEC := &quot;NH|nhid ID&quot; &lt;OPTIONS&gt; &lt;FLAGS&gt; [nexthop &lt;NH&gt;] ...</pre>
-<p>Add route to table:</p>
-<pre class="literal-block"># ip route add &lt;prefix&gt; table &lt;table&gt;</pre>
-<p><strong>Note</strong>: When prefix value is <span class="docutils literal">default</span>, it means <span class="docutils literal">0.0.0.0/0</span>, so the
-following two statements are equal:</p>
-<pre class="literal-block"># ip route add default via 192.168.0.1
-
-# ip route add 0.0.0.0/0 via 192.168.0.1</pre>
+ACTION := [table &lt;TABLE_ID&gt;] [protocol &lt;PROTO&gt;] [nat &lt;ADDRESS&gt;]
+    [realms [&lt;SRCREALM&gt;/]&lt;DSTREALM&gt;] [goto &lt;NUMBER&gt;] &lt;SUPPRESSOR&gt;</pre>
+<div class="section" id="action">
+<h2>ACTION</h2>
+<dl>
+<dt>table</dt>
+<dd><p>The routing table identifier to lookup if the rule selector matches:</p>
+<pre class="literal-block"># ip rule add fwmark 1 table 100</pre>
+<p>It is also possible to use lookup instead of table:</p>
+<pre class="literal-block"># ip rule add fwmark 1 lookup 100</pre>
+</dd>
+</dl>
+</div>
 <div class="section" id="references">
 <h2>References</h2>
-<p><span class="docutils literal">man <span class="pre">ip-route</span></span></p>
+<p><span class="docutils literal">man <span class="pre">ip-rule</span></span></p>
 </div>
 </div>
         </div> <!-- content -->

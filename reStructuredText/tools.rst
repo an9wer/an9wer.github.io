@@ -187,6 +187,10 @@ Proxy/Tunnel
         A cross-platform(Linux/BSD/MacOS/Windows/Android/iOS) proxy/vpn
         software. Zero-Configuration
 
+    (2020/05/06) `graftcp <https://github.com/hmgle/graftcp>`_
+        A flexible tool for redirecting a given program's TCP traffic to SOCKS5
+        or HTTP proxy. 
+
 Strace
 
     (2019/10/22) `FlameGraph <https://github.com/brendangregg/FlameGraph>`_

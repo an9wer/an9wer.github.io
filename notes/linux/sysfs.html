@@ -31,26 +31,17 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="iproute2-route">
-<h1>Iproute2 route</h1>
-<pre class="literal-block">ip route &quot;add|del|change|append|replace&quot; &lt;ROUTE&gt;
-
-ROUTE := &lt;NODE_SPEC&gt; [&lt;INFO_SPEC&gt;]
-
-NODE_SPEC := [&lt;TYPE&gt;] &lt;PREFIX&gt; [tos &lt;TOS&gt;] [table &lt;TABLE_ID&gt;] [proto &lt;RTPROTO&gt;]
-  [scope &lt;SCOPE&gt;] [metric &lt;METRIC&gt;] [ttl-propagate &quot;enabled|disabled&quot;]
-
-INFO_SPEC := &quot;NH|nhid ID&quot; &lt;OPTIONS&gt; &lt;FLAGS&gt; [nexthop &lt;NH&gt;] ...</pre>
-<p>Add route to table:</p>
-<pre class="literal-block"># ip route add &lt;prefix&gt; table &lt;table&gt;</pre>
-<p><strong>Note</strong>: When prefix value is <span class="docutils literal">default</span>, it means <span class="docutils literal">0.0.0.0/0</span>, so the
-following two statements are equal:</p>
-<pre class="literal-block"># ip route add default via 192.168.0.1
-
-# ip route add 0.0.0.0/0 via 192.168.0.1</pre>
+<div class="section" id="linux-sys">
+<h1>Linux Sys</h1>
+<p>NIC:</p>
+<pre class="literal-block">$ ls /sys/class/net</pre>
+<p>Speed of NIC:</p>
+<pre class="literal-block">$ cat /sys/class/net/&lt;interface&gt;/speed</pre>
+<p>State (up/down/unknown) of NIC:</p>
+<pre class="literal-block">$ cat /sys/class/net/&lt;interface&gt;/operstate</pre>
 <div class="section" id="references">
 <h2>References</h2>
-<p><span class="docutils literal">man <span class="pre">ip-route</span></span></p>
+<p><span class="docutils literal">man 5 sysfs</span></p>
 </div>
 </div>
         </div> <!-- content -->

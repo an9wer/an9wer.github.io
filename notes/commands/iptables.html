@@ -46,11 +46,11 @@
 <h2>Extensions</h2>
 <dl>
 <dt>tcp</dt>
-<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> tcp</span> is specified.</p>
+<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> tcp</span> is specified:</p>
 <pre class="literal-block"># iptables -A &lt;chain&gt; -p tcp --sport &lt;source port&gt;</pre>
 </dd>
 <dt>udp</dt>
-<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> udp</span> is specified.</p>
+<dd><p>These extensions can be used if <span class="docutils literal"><span class="pre">--protocol</span> udp</span> is specified:</p>
 <pre class="literal-block"># iptables -A &lt;chain&gt; -p upd --dport &lt;destionation port&gt;</pre>
 </dd>
 </dl>
@@ -58,9 +58,18 @@
 <div class="section" id="targets">
 <h2>Targets</h2>
 <dl>
+<dt>REDIRECT</dt>
+<dd><p>This target is only valid in the nat table, in the PREROUTING and OUTPUT
+chains, and user-defined chains which are only called from those chains.</p>
+<p>It redirects the packet to the machine itself by changing the destination
+IP to the primary address of the incoming interface (locally-generated
+packets are mapped to the localhost address, 127.0.0.1 for IPv4 and ::1 for
+IPv6):</p>
+<pre class="literal-block"># iptables -t nat -A &quot;PREROUTING|OUTPUT&quot; -j REDIRECT --to-ports 1080</pre>
+</dd>
 <dt>LOG</dt>
 <dd><p>The Linux kernel will print some information on all matching packets via
-the kernel log (where it can be read with <span class="docutils literal">dmesg</span> or read in the syslog).</p>
+the kernel log (where it can be read with <span class="docutils literal">dmesg</span> or read in the syslog):</p>
 <pre class="literal-block"># iptables -A &lt;chain&gt; -j LOG</pre>
 </dd>
 </dl>

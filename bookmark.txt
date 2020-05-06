@@ -85,6 +85,7 @@ reStructuredText/notes.rst
     Iproute2
         reStructuredText/notes/iproute2/address.rst
         reStructuredText/notes/iproute2/route.rst
+        reStructuredText/notes/iproute2/rule.rst
         reStructuredText/notes/iproute2/ss.rst
     E2fsprogs
         reStructuredText/notes/e2fsprogs/mke2fs.rst

@@ -84,6 +84,8 @@ Iproute2
         </notes/iproute2/address.html>`_
     -   `ip route
         </notes/iproute2/route.html>`_
+    -   `ip rule
+        </notes/iproute2/rule.html>`_
     -   `ss
         </notes/iproute2/ss.html>`_
 E2fsprogs
