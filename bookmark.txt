@@ -132,6 +132,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/bbr.rst
         reStructuredText/notes/linux/loadable_kernel_module.rst
         reStructuredText/notes/linux/postfix.rst
+        reStructuredText/notes/linux/wireguard.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst
