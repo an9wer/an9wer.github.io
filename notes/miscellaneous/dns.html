@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="tools"
+                href="/tools.html">Tools</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="dns">
+<h1>DNS</h1>
+<p><strong>Note</strong>: DNS can use both UDP and TCP port to make request and response. DNS
+primarily uses the UDP on port number 53 to serve requests. DNS queries consist
+of a single UDP request from the client followed by a single UDP reply from the
+server. When the length of the answer exceeds 512 bytes and both client and
+server support EDNS, larger UDP packets are used. Otherwise, the query is sent
+again using the TCP. TCP is also used for tasks such as zone transfers. Some
+resolver implementations use TCP for all queries.</p>
+<div class="section" id="ttl">
+<h2>TTL</h2>
+<p>TODO</p>
+</div>
+<div class="section" id="edns">
+<h2>EDNS</h2>
+<p>EDNS is essential for the implementation of DNS Security Extensions (DNSSEC).
+EDNS is also used for sending general information from resolvers to name
+servers about clients' geographic location in the form of the EDNS <em>Client
+Subnet (ECS)</em> option.</p>
+<pre class="literal-block">$ dig &#64;223.5.5.5 +tcp google.com
+$ dig &#64;223.5.5.5 +tcp google.com +subnet=127.0.0.1</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Domain_Name_System">Wikipedia: DNS</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS">Wikipedia: EDNS</a></p>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

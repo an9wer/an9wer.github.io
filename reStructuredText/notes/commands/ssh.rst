@@ -64,7 +64,7 @@ SSHD config
 
 See ``man sshd_config``
 
-GatewayPorts
+GatewayPorts "yes|no"
     Specify that sshd should allow remote port forwardings to bind to
     non-loopback addresses, thus allowing other hosts to connect.
 

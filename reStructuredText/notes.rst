@@ -35,6 +35,7 @@ Commands/
         </notes/commands/autossh>`_
     -   `adb
         </notes/commands/adb>`_
+
 Coreutils/
     -   `ls
         </notes/coreutils/ls.html>`_
@@ -50,9 +51,11 @@ Coreutils/
         </notes/coreutils/split.html>`_
     -   `head
         </notes/coreutils/head.html>`_
+
 Findutils/
     -   `find
         </notes/findutils/find.html>`_
+
 Util-linux/
     -   `hwclock
         </notes/util-linux/hwclock.html>`_
@@ -66,6 +69,7 @@ Util-linux/
         </notes/util-linux/lslocks.html>`_
     -   `flock
         </notes/util-linux/flock.html>`_
+
 Procps-ng/
     -   `top
         </notes/procps-ng/top.html>`_
@@ -73,12 +77,15 @@ Procps-ng/
         </notes/procps-ng/pgrep.html>`_
     -   `free
         </notes/procps-ng/free.html>`_
+
 Psmisc/
     -   `pstree
         </notes/psmisc/pstree.html>`_
+
 Iputils/
     -   `ping
         </notes/iputils/ping.html>`_
+
 Iproute2
     -   `ip address
         </notes/iproute2/address.html>`_
@@ -88,11 +95,13 @@ Iproute2
         </notes/iproute2/rule.html>`_
     -   `ss
         </notes/iproute2/ss.html>`_
+
 E2fsprogs
     -   `mke2fs
         </notes/e2fsprogs/mke2fs>`_
     -   `tune2fs
         </notes/e2fsprogs/tune2fs>`_
+
 X11/
     -   `xclip
         </notes/X11/xclip.html>`_
@@ -100,14 +109,17 @@ X11/
         </notes/X11/xmodmap.html>`_
     -   `redshift
         </notes/X11/redshift.html>`_
+
 Benchmarking/
     -   `fio
         </notes/benchmarking/fio.html>`_
     -   `iperf
         </notes/benchmarking/iperf.html>`_
+
 Monitor/
     -   `collectd
         </notes/monitor/collectd.html>`_
+
 Systemd/
     -   `hostnamectl
         </notes/systemd/hostnamectl.html>`_
@@ -119,6 +131,7 @@ Systemd/
         </notes/systemd/exec.html>`_
     -   `target
         </notes/systemd/target.html>`_
+
 Linux/
     -   `Linux filesystem hierarchy
         </notes/linux/filesystem_hierarchy.html>`_
@@ -168,6 +181,9 @@ Linux/
         </notes/linux/loadable_kernel_module.html>`_
     -   `Linux postfix
         </notes/linux/postfix.html>`_
+    -   `Linux wireguard
+        </notes/linux/wireguard.html>`_
+
 Package/
     -   `RPM
         </notes/package/rpm.html>`_
@@ -187,6 +203,7 @@ Package/
         </notes/pacman/pacman.html>`_
     -   `fpm
         <notes/package/fpm.html>`_
+
 Bash/
     -   `Bash grammar
         </notes/bash/grammar.html>`_
@@ -202,6 +219,7 @@ Bash/
         </notes/bash/builtin.html>`_
     -   `Bash function
         </notes/bash/function.html>`_
+
 Vim/
     -   `Vim tricks
         </notes/vim/tricks.html>`_
@@ -229,19 +247,23 @@ Vim/
         </notes/vim/map.html>`_
     -   `Vim netrw
         </notes/vim/netrw.html>`_ 
+
 Git/
     -   `git secret
         </notes/git/git_secret.html>`_
     -   `blackbox
         </notes/git/blackbox.html>`_
+
 Storage/
     -   `glusterfs
         </notes/storage/glusterfs.html>`_
     -   `lvm
         </notes/storage/lvm.html>`_
+
 Database/
     -   `redis
         </notes/database/redis.html>`_
+
 Server/
     -   `nginx
         <notes/server/nginx.html>`_
@@ -260,6 +282,7 @@ DevOps/
         </notes/devops/docker.html>`_
     -   `vagrant
         </notes/devops/vagrant.html>`_
+
 Language/
     -   `Java
         </notes/language/java.html>`_
@@ -269,6 +292,7 @@ Language/
         </notes/language/grammar.html>`_
     -   `Perl
         </notes/language/perl.html>`_
+
 Misc/
     -   `Programming language
         </notes/miscellaneous/programming_language.html>`_
@@ -296,6 +320,8 @@ Misc/
         </notes/miscellaneous/virtualbox.html>`_
     -   `mail
         </notes/miscellaneous/mail.html>`_
+    -   `dns
+        </notes/miscellaneous/dns.html>`_
 
 HowTo
 -----

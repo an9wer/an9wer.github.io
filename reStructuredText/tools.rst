@@ -27,6 +27,10 @@ System Monitor
     (2020/04/27) `smokeping <https://oss.oetiker.ch/smokeping/>`_
         Keeps track of your network latency
 
+    (2020/05/12) `mrtg <https://oss.oetiker.ch/mrtg/>`_
+        Monitor SNMP network devices and draw pretty pictures showing how much
+        traffic has passed through each interface
+
 Automation
 
     (2019/12/13) `huginn <https://github.com/huginn/huginn>`_
@@ -130,6 +134,23 @@ Blog/Forum
 
     (2020/04/25) `flarum <https://flarum.org>`_
         Simple forum software for building great communities
+
+IDC
+
+    (2020/05/13) `whmcs <https://www.whmcs.com/>`_
+        Simplify and automate daily tasks and operations with the #1 choice in
+        Web Hosting Automation
+
+    (2020/05/13) `virtualizor <https://virtualizor.com/>`_
+        A powerful web based VPS Control Panel using which a user can deploy
+        and manage VPS on servers with a single click. Virtualizor supports
+        KVM, Xen, OpenVZ, Proxmox, Virtuozzo, LXC, etc with an inbuilt hourly
+        billing system
+
+    (2020/05/13) `solusvm <https://solusvm.com/>`
+        A powerful GUI based VPS management system with full OpenVZ, Linux KVM,
+        Xen Paravirtualization and Xen HVM support
+        
 
 Network
 
