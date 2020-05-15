@@ -183,6 +183,8 @@ Linux/
         </notes/linux/postfix.html>`_
     -   `Linux wireguard
         </notes/linux/wireguard.html>`_
+    -   `Linux zerotier
+        </notes/linux/zerotier.html>`_
 
 Package/
     -   `RPM

@@ -13,14 +13,21 @@ output is: ::
 
     name.arch [epoch:]version-release  repo or @installed-from-repo
 
-**Note**: The repo of installed package will be perfixed with '@' symbol.
+**Note**: The repos of installed package are perfixed with '@' symbol.
 
-List package(s) information from all (by default), available to be installed,
-availabe to be updated, installed or installed but not in yum repository listed
-in config file packages: ::
+List package(s) information from *all* (by default), *available to be
+installed*, *availabe to be updated*, *installed* or *installed but not in yum
+repository*: ::
 
     # yum list [all | available | updates | installed | extra ] [glob_exp ...]
 
+List all/installed packages from speficied repo: ::
+
+    # yum list "all|installed" | grep @<repo>
+
+    or
+
+    # yumdb search from_repo <repo>
 
 Deplist
 -------

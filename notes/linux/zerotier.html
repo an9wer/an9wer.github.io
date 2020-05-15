@@ -31,43 +31,36 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="rpm">
-<h1>RPM</h1>
-<div class="section" id="query">
-<h2>Query</h2>
-<p>List all installed pacakges:</p>
-<pre class="literal-block">$ rpm -qa</pre>
-<p>Display information of specified installed pacakge:</p>
-<pre class="literal-block">$ rpm -qi &lt;package_name&gt;</pre>
-<p>List files of already installed pacakge:</p>
-<pre class="literal-block">$ rpm -ql &lt;package_file&gt;</pre>
-<p>List files of specified RPM package:</p>
-<pre class="literal-block">$ rpm -qlp &lt;package_file&gt;</pre>
-<p>List reverse dependencies of package:</p>
-<pre class="literal-block">$ rpm -q --whatrequires &lt;package_name&gt;</pre>
-</div>
-<div class="section" id="install">
-<h2>Install</h2>
-<p>Install pacakges:</p>
-<pre class="literal-block"># rpm -i &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
-<p>Reinstall packages:</p>
-<pre class="literal-block"># rpm -i --reinstall &lt;package_file&gt; [&lt;package_file&gt; ...]</pre>
-</div>
-<div class="section" id="misc">
-<h2>Misc</h2>
-<p>List all imported signing archive keys:</p>
-<pre class="literal-block"># rpm -qa gpg-pubkey*
+<div class="section" id="linux-zerotier">
+<h1>Linux Zerotier</h1>
+<p>Install zerotier-one:</p>
+<pre class="literal-block"># curl -s https://install.zerotier.com | bash
+# systemctl start zerotier-one.service</pre>
+<p>Join network:</p>
+<pre class="literal-block"># zerotier-cli join &lt;network id&gt;</pre>
+<div class="section" id="create-moon">
+<h2>Create moon</h2>
+<p>Server:</p>
+<pre class="literal-block"># cd /var/lib/zerotier-one
+# zerotier-idtool initmoon identity.public &gt; moon.json
+# vim moon.json
+    &quot;stableEndpoints&quot;: [ &quot;&lt;public ip&gt;/9993&quot; ]
+# mkdir moons.d
+# cd moons.d
+# zerotier-idtool genmoon ../moon.json
+# systemctl restart zerotier-one</pre>
+<p>Client:</p>
+<pre class="literal-block"># zerotier-cli orbit &lt;world id&gt; &lt;seed&gt;
 
-Or
+or
 
-# rpm -q gpg-pubkey --qf '%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n'</pre>
-<p>Remove any unwanted archive signing keys:</p>
-<pre class="literal-block"># rpm -e &lt;gpg-pubkey-4da87d59-5ead3782&gt;</pre>
+Download '/var/lib/zerotier-one/moons.d/xxx.moon' file from server to
+'/var/lib/zerotier-one/moons.d/' directory at client side and then run
+`systemctl restart zerotier-one.service`</pre>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
-<p><span class="docutils literal">man rpm</span></p>
-<p><span class="docutils literal">man rpmkeys</span></p>
+<p><a class="reference external" href="https://imgki.com/archives/234.html">zerotier内网穿透以及moon节点配置</a></p>
 </div>
 </div>
         </div> <!-- content -->

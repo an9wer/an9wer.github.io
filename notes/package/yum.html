@@ -41,11 +41,17 @@ star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
 <p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
 output is:</p>
 <pre class="literal-block">name.arch [epoch:]version-release  repo or &#64;installed-from-repo</pre>
-<p><strong>Note</strong>: The repo of installed package will be perfixed with '&#64;' symbol.</p>
-<p>List package(s) information from all (by default), available to be installed,
-availabe to be updated, installed or installed but not in yum repository listed
-in config file packages:</p>
+<p><strong>Note</strong>: The repos of installed package are perfixed with '&#64;' symbol.</p>
+<p>List package(s) information from <em>all</em> (by default), <em>available to be
+installed</em>, <em>availabe to be updated</em>, <em>installed</em> or <em>installed but not in yum
+repository</em>:</p>
 <pre class="literal-block"># yum list [all | available | updates | installed | extra ] [glob_exp ...]</pre>
+<p>List all/installed packages from speficied repo:</p>
+<pre class="literal-block"># yum list &quot;all|installed&quot; | grep &#64;&lt;repo&gt;
+
+or
+
+# yumdb search from_repo &lt;repo&gt;</pre>
 </div>
 <div class="section" id="deplist">
 <h2>Deplist</h2>

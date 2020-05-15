@@ -150,7 +150,18 @@ IDC
     (2020/05/13) `solusvm <https://solusvm.com/>`
         A powerful GUI based VPS management system with full OpenVZ, Linux KVM,
         Xen Paravirtualization and Xen HVM support
-        
+
+    (2020/05/14) `directadmin <https://www.directadmin.com/>`_
+        A graphical web-based web hosting control panel designed to make
+        administration of websites easier
+
+    (2020/05/14) `cpanel <https://cpanel.net/>`_
+        Provides a graphical interface and automation tools designed to
+        simplify the process of hosting a web site to the website owner or the
+        "end user"
+
+    (2020/05/14) `ddos-guard <https://ddos-guard.net/>`_
+        Powerful and complete DDoS Protection for your business
 
 Network
 
@@ -256,6 +267,12 @@ Advertisments block
 
     (2020/04/24) `pihole <https://pi-hole.net/>`_
         A black hole for Internet advertisements
+
+Third party service
+
+    (2020/05/14) `uptimerebot <https://uptimerobot.com/>`_
+        Monitors your websites every 5 minutes and alerts you if your sites are
+        down
 
 Misc
 
