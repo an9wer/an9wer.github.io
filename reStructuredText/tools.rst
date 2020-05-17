@@ -331,3 +331,14 @@ Misc
 
     (2019/09/19) `PuzzleScript <https://github.com/increpare/PuzzleScript>`_
         Open Source HTML5 Puzzle Game Engine
+
+    (2020/05/17) `CopyQ <https://hluk.github.io/CopyQ/>`_
+        CopyQ is advanced clipboard manager with editing and scripting
+        features
+
+    (2020/05/17) `clipmenu <https://github.com/cdown/clipmenu>`
+        A simple clipboard manager using dmenu (or rofi with CM_LAUNCHER=rofi)
+        and xsel
+
+    (2020/05/17) `flameshot <https://flameshot.js.org/>`_
+        Powerful yet simple to use screenshot software

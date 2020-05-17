@@ -1,3 +1,11 @@
+2020/05/17 Sun
+
+    st 居然支持滚屏了，喜大普奔，奔走相告。
+
+2020/05/15 Fri
+
+    我的微信不知怎地又可以登录网页版了，真是又气又喜。
+
 2020/05/09 Sat
 
     今日吾之微信不能登于网页版，未知其由，着实气愤。但辗转思量，此等毒瘤，早当
@@ -11,7 +19,7 @@
 
     活在疫情当中，每天上班下班都是带着一份侥幸心理。
 
-    今天学到了一个当下比较流行的词汇： lockdown
+    今天学到了一个当下比较流行的词汇: lockdown
 
 2020/04/23 Thu
 
@@ -444,4 +452,3 @@
     Today, when visited the Stack Exchange site, I was so excited to find out
     that I had acquired my first 10 reputation for `this answer
     <https://askubuntu.com/a/1105061/908203>`_ on askubuntu community.
-
