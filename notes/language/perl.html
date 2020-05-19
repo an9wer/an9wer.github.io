@@ -71,6 +71,23 @@ subroutines&quot;.</p>
 </div>
 <div class="section" id="interpolation">
 <h2>Interpolation</h2>
+<p>The following escape sequences are available in constructs that interpolate,
+and in transliterations whose delimiters aren't single quotes:</p>
+<pre class="literal-block">Sequence     Note  Description
+\t                  tab               (HT, TAB)
+\n                  newline           (NL)
+\r                  return            (CR)
+\f                  form feed         (FF)
+\b                  backspace         (BS)
+\a                  alarm (bell)      (BEL)
+\e                  escape            (ESC)
+\x{263A}     [1,8]  hex char          (example: SMILEY)
+\x1b         [2,8]  restricted range hex char (example: ESC)
+\N{name}     [3]    named Unicode character or character sequence
+\N{U+263D}   [4,8]  Unicode character (example: FIRST QUARTER MOON)
+\c[          [5]    control char      (example: chr(27))
+\o{23072}    [6,8]  octal char        (example: SMILEY)
+\033         [7,8]  restricted range octal char  (example: ESC)</pre>
 <p>Array variables are interpolated into double-quote strings by joing all
 elements of the array with the separator specified in the <span class="docutils literal">$&quot;</span> variable:</p>
 <pre class="literal-block">my $temp = join( $&quot;, &#64;ARGV);
@@ -119,6 +136,23 @@ $foo = &#64;bar;                    # The value of $foo is 3 (the length of arra
 <div class="section" id="operators">
 <h2>Operators</h2>
 <dl>
+<dt>Quote and Quote-like Operators</dt>
+<dd><p><strong>Note</strong>: In the following table, a <span class="docutils literal">{}</span> represents any pair of
+delimiters you choose:</p>
+<pre class="literal-block">Customary   Generic        Meaning             Interpolates
+''          q{}            Literal             no
+&quot;&quot;          qq{}           Literal             yes
+``          qx{}           Command             yes*
+            qw{}           Word list           no
+//          m{}            Pattern match       yes*
+            qr{}           Pattern             yes*
+            s{}{}          Substitution        yes*
+            tr{}{}         Transliteration     no
+            y{}{}          Transliteration     no
+            &lt;&lt;EOF          here-doc            yes*
+
+    * unless the delimiter is ''.</pre>
+</dd>
 <dt>List operators (Leftward)</dt>
 <dd><p>If any list operator (such as <span class="docutils literal">print</span>) or any named unary operator (such
 as <span class="docutils literal">chdir</span>) is followed by a left parenthesis as the next token (ignoring

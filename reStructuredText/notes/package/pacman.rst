@@ -59,34 +59,24 @@ packages and their files, as well as meta-information about individual packages
 Q examples
 """"""""""
 
-Display owners of files (path):
-
-::
+Display owners of files (path): ::
 
     $ pacman -Qo <file> [...]
 
-Display information (e.g. depends) of packages by query database:
-
-::
+Display information (e.g. depends) of packages by query database: ::
 
     $ pacman -Qi <package> [...]
 
-List all files owned by packages by query database:
-
-::
+List all files owned by packages by query database: ::
 
     $ pacman -Ql <package> [...]
 
-Display information of packages by querying package files:
-
-::
+Display information of packages by querying package files: ::
 
     $ pacman -Qip <pkgfile>  [...]
 
 
-List all files owned by packages by querying package files:
-
-::
+List all files owned by packages by querying package files: ::
 
     $ pacman -Qlp <pkgfile> [...]
 
@@ -149,41 +139,48 @@ Install from local package file:
 Custom local repository
 -----------------------
 
-Append a section for the local repository to */etc/pacman.conf*:
-
-::
+Append a section for the local repository to */etc/pacman.conf*: ::
 
     # vim /etc/pacman.conf
         [<custom>]
         SigLevel = Optional TrustAll
         Server = file:///home/an9wer/<custompkgs>
 
-Create the repository root and databases:
-
-::
+Create the repository root and databases: ::
 
     $ install -d /home/an9wer/<customkgs>
     $ repo-add /home/an9wer/<custompkgs>/custom.db.tar.gz
 
-Add a new package to the database:
-
-::
+Add a new package to the database: ::
 
     $ mv </path/to/pkg.tar.xz> /home/an9wer/<custompkgs>
     $ repo-add /home/an9wer/<custompkgs>/custom.db.tar.gz </path/to/package.tar.xz>
 
-Then install from custom repostiory:
-
-::
+Then install from custom repostiory: ::
 
     # pacman -Sy <package>
 
-Remove pacakge from database:
-
-::
+Remove pacakge from database: ::
 
     $ repo-remove /home/an9wer/<custompkgs>/custom.db.tar.gz <package name>
-    $ rm </path/to/pkg.tar.xz> /home/an9wer/<custompkgs>
+    $ rm /home/an9wer/<custompkgs>/<pkg.tar.xz>
+
+AUR
+---
+
+If you already have a package, initialize it as a Git repository if it is not
+one, and add an AUR remote: ::
+
+    $ git init
+    $ git remote add origin ssh://aur@aur.archlinux.org/<package>.git
+    $ git commit -m "comment"
+    $ git branch --set-upstream-to=origin/master
+    $ git push origin master
+
+If you are creating a new package from scratch, just clone an unexisted
+repository from aur: ::
+
+    $ git clone ssh://aur@aur.archlinux.org/<package>.git
 
 
 References

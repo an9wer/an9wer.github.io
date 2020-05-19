@@ -44,6 +44,25 @@ subroutines".
 Interpolation
 -------------
 
+The following escape sequences are available in constructs that interpolate,
+and in transliterations whose delimiters aren't single quotes: ::
+
+    Sequence     Note  Description
+    \t                  tab               (HT, TAB)
+    \n                  newline           (NL)
+    \r                  return            (CR)
+    \f                  form feed         (FF)
+    \b                  backspace         (BS)
+    \a                  alarm (bell)      (BEL)
+    \e                  escape            (ESC)
+    \x{263A}     [1,8]  hex char          (example: SMILEY)
+    \x1b         [2,8]  restricted range hex char (example: ESC)
+    \N{name}     [3]    named Unicode character or character sequence
+    \N{U+263D}   [4,8]  Unicode character (example: FIRST QUARTER MOON)
+    \c[          [5]    control char      (example: chr(27))
+    \o{23072}    [6,8]  octal char        (example: SMILEY)
+    \033         [7,8]  restricted range octal char  (example: ESC)
+
 Array variables are interpolated into double-quote strings by joing all
 elements of the array with the separator specified in the ``$"`` variable: ::
 
@@ -100,6 +119,25 @@ Boolean Context
 
 Operators
 ---------
+
+Quote and Quote-like Operators
+    **Note**: In the following table, a ``{}`` represents any pair of
+    delimiters you choose: ::
+
+        Customary   Generic        Meaning             Interpolates
+        ''          q{}            Literal             no
+        ""          qq{}           Literal             yes
+        ``          qx{}           Command             yes*
+                    qw{}           Word list           no
+        //          m{}            Pattern match       yes*
+                    qr{}           Pattern             yes*
+                    s{}{}          Substitution        yes*
+                    tr{}{}         Transliteration     no
+                    y{}{}          Transliteration     no
+                    <<EOF          here-doc            yes*
+
+            * unless the delimiter is ''.
+    
 
 List operators (Leftward)
     If any list operator (such as ``print``) or any named unary operator (such

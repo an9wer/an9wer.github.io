@@ -146,7 +146,20 @@ $ repo-add /home/an9wer/&lt;custompkgs&gt;/custom.db.tar.gz &lt;/path/to/package
 <pre class="literal-block"># pacman -Sy &lt;package&gt;</pre>
 <p>Remove pacakge from database:</p>
 <pre class="literal-block">$ repo-remove /home/an9wer/&lt;custompkgs&gt;/custom.db.tar.gz &lt;package name&gt;
-$ rm &lt;/path/to/pkg.tar.xz&gt; /home/an9wer/&lt;custompkgs&gt;</pre>
+$ rm /home/an9wer/&lt;custompkgs&gt;/&lt;pkg.tar.xz&gt;</pre>
+</div>
+<div class="section" id="aur">
+<h2>AUR</h2>
+<p>If you already have a package, initialize it as a Git repository if it is not
+one, and add an AUR remote:</p>
+<pre class="literal-block">$ git init
+$ git remote add origin ssh://aur&#64;aur.archlinux.org/&lt;package&gt;.git
+$ git commit -m &quot;comment&quot;
+$ git branch --set-upstream-to=origin/master
+$ git push origin master</pre>
+<p>If you are creating a new package from scratch, just clone an unexisted
+repository from aur:</p>
+<pre class="literal-block">$ git clone ssh://aur&#64;aur.archlinux.org/&lt;package&gt;.git</pre>
 <div class="section" id="references">
 <h3>References</h3>
 <p><span class="docutils literal">man aur</span></p>
