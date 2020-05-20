@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes" class="current"
+                href="/notes.html">Notes</a>
+            <a id="tools"
+                href="/tools.html">Tools</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="linux-sudo">
+<h1>Linux sudo</h1>
+<p>The sudoers file grammar will be described below in Extended Backus-Naur Form
+(EBNF):</p>
+<pre class="literal-block">User_Spec ::= User_List Host_List '=' Cmnd_Spec_List \
+              (':' Host_List '=' Cmnd_Spec_List)*
+
+User_List ::= User |
+              User ',' User_List
+
+Host_List ::= Host |
+              Host ',' Host_List
+
+Cmnd_Spec_List ::= Cmnd_Spec |
+                   Cmnd_Spec ',' Cmnd_Spec_List</pre>
+<p>User:</p>
+<pre class="literal-block">User ::= '!'* user name |
+         '!'* #uid |
+         '!'* %group |
+         '!'* %#gid |
+         '!'* +netgroup |
+         '!'* %:nonunix_group |
+         '!'* %:#nonunix_gid |
+         '!'* User_Alias
+
+User_Alias ::= NAME '=' User_List</pre>
+<p>Host:</p>
+<pre class="literal-block">Host ::= '!'* host name |
+         '!'* ip_addr |
+         '!'* network(/netmask)? |
+         '!'* +netgroup |
+         '!'* Host_Alias
+
+Host_Alias ::= NAME '=' Host_List</pre>
+<p>Cmnd_Spec_List:</p>
+<pre class="literal-block">Cmnd_Spec_List ::= Cmnd_Spec |
+                   Cmnd_Spec ',' Cmnd_Spec_List
+
+Cmnd_Spec ::= Runas_Spec? SELinux_Spec? Solaris_Priv_Spec? Tag_Spec* Cmnd
+
+Runas_Spec ::= '(' Runas_List? (':' Runas_List)? ')'
+
+SELinux_Spec ::= ('ROLE=role' | 'TYPE=type')
+
+Solaris_Priv_Spec ::= ('PRIVS=privset' | 'LIMITPRIVS=privset')
+
+Tag_Spec ::= ('EXEC:' | 'NOEXEC:' | 'FOLLOW:' | 'NOFOLLOW' |
+              'LOG_INPUT:' | 'NOLOG_INPUT:' | 'LOG_OUTPUT:' |
+              'NOLOG_OUTPUT:' | 'MAIL:' | 'NOMAIL:' | 'PASSWD:' |
+              'NOPASSWD:' | 'SETENV:' | 'NOSETENV:')</pre>
+<p>Runas_List:</p>
+<pre class="literal-block">Runas_List ::= Runas_Member |
+               Runas_Member ',' Runas_List
+
+Runas_Member ::= '!'* user name |
+                 '!'* #uid |
+                 '!'* %group |
+                 '!'* %#gid |
+                 '!'* %:nonunix_group |
+                 '!'* %:#nonunix_gid |
+                 '!'* +netgroup |
+                 '!'* Runas_Alias
+
+Runas_Alias ::= NAME '=' Runas_List</pre>
+<p>Cmnd:</p>
+<pre class="literal-block">Cmnd ::= Digest_Spec? '!'* command name |
+         '!'* directory |
+         '!'* &quot;sudoedit&quot; |
+         '!'* Cmnd_Alias
+
+Cmnd_Alias ::= NAME '=' Cmnd_List
+
+Cmnd_List ::= Cmnd |
+              Cmnd ',' Cmnd_List</pre>
+<div class="section" id="reserved-word-all">
+<h2>Reserved word ALL</h2>
+<p>The reserved word <em>ALL</em> is a built-in alias that always causes a match to
+succeed. It can be used wherever one might otherwise use a <em>Cmnd_Alias</em>,
+<em>User_Alias</em>, <em>Runas_Alias</em>, or <em>Host_Alias</em>.</p>
+</div>
+<div class="section" id="the-includedir-directive">
+<h2>The includedir directive</h2>
+<p>The #includedir directive can be used to create a sudoers.d directory that the
+system package manager can drop sudoers file rules into as part of package
+installation. For example, given:</p>
+<pre class="literal-block">#includedir /etc/sudoers.d</pre>
+<p>sudo will read each file in /etc/sudoers.d, skipping file names that end in '~'
+or contain a '.' character to avoid causing problems with package manager or
+editor temporary/backup files. Files are parsed in sorted lexical order. That
+is, /etc/sudoers.d/01_first will be parsed before /etc/sudoers.d/10_second. Be
+aware that because the sorting is lexical, not numeric, /etc/sudoers.d/1_whoops
+would be loaded after /etc/sudoers.d/10_second. Using a consistent number of
+leading zeroes in the file names can be used to avoid such problems.</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><span class="docutils literal">man sudoers</span></p>
+</div>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

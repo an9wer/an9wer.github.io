@@ -185,6 +185,8 @@ Linux/
         </notes/linux/wireguard.html>`_
     -   `Linux zerotier
         </notes/linux/zerotier.html>`_
+    -   `Linux sudo
+        </notes/linux/sudo.html>`_
 
 Package/
     -   `RPM
