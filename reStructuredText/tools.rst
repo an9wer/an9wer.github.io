@@ -127,6 +127,9 @@ Web Server
     (2019/10/22) `mojolicious <https://mojolicious.org/>`_
         Perl real-time web framework
 
+    (2020/05/22) `tengine <https://github.com/alibaba/tengine>`_
+        A distribution of Nginx with some advanced features
+
 Blog/Forum
 
     (2019/08/21) `getpelican <https://getpelican.com/>`_
@@ -193,6 +196,11 @@ Network
 
     (2020/04/30) `librespeed <https://github.com/librespeed/speedtest>`_
         Self-hosted Speedtest for HTML5 and more
+
+    (2020/05/22) `dropwatch <https://github.com/nhorman/dropwatch>`_
+        Improve the ability for developers and system administrator to diagnose
+        problems in the Linux Networking stack, specifically in our ability to
+        diagnose where packets are getting dropped
 
 Proxy/Tunnel
 
