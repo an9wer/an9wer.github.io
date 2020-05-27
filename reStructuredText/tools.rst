@@ -31,6 +31,14 @@ System Monitor
         Monitor SNMP network devices and draw pretty pictures showing how much
         traffic has passed through each interface
 
+    (2020/05/26) `bandwhich <https://github.com/imsnif/bandwhich>`_
+        A CLI utility for displaying current network utilization by process,
+        connection and remote IP/hostname
+
+    (2020/05/26) `nmon <http://nmon.sourceforge.net/pmwiki.php>`_
+        A computer performance system monitor tool for the AIX and Linux
+        operating systems
+
 Automation
 
     (2019/12/13) `huginn <https://github.com/huginn/huginn>`_
@@ -58,6 +66,10 @@ Terminal/Window manager
 
     (2020/04/30) `rofi <https://github.com/davatorium/rofi>`_
         A window switcher, application launcher and dmenu replacement
+
+    (2020/05/27) `terminology <https://github.com/billiob/terminology>`_
+        The best terminal emulator based on the Enlightenment Foundation
+        Libraries
 
 Text
 
@@ -230,6 +242,9 @@ Proxy/Tunnel
     (2020/05/06) `graftcp <https://github.com/hmgle/graftcp>`_
         A flexible tool for redirecting a given program's TCP traffic to SOCKS5
         or HTTP proxy. 
+
+    (2020/05/27) `ptunnel-ng <https://github.com/lnslbrty/ptunnel-ng>`_
+        Tunnel TCP connections through ICMP
 
 Strace
 
