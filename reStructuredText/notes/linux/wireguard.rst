@@ -110,6 +110,8 @@ peer B and C.
 
 Configuration of A: ::
 
+    # sysctl -w net.ipv4.ip_forward=1
+
     [Interface]
     Address = 192.168.2.1/24
     ListenPort = <listen port of A>
