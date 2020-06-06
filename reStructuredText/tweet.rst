@@ -1,3 +1,14 @@
+2020/06/05 Fri
+
+    从一年前的 Arch 上执行 pacman -Syu，成功升级！
+
+    From:
+    Linux peace 5.0.11-arch1-1-ARCH #1 SMP PREEMPT Thu May 2 19:48:15 UTC 2019 x86_64 GNU/Linux
+
+    To:
+    Linux peace 5.6.15-arch1-1 #1 SMP PREEMPT Wed, 27 May 2020 23:42:26 +0000 x86_64 GNU/Linux
+
+
 2020/05/20 Wed
 
     这两天秋高气爽，除了气温高了一些。

@@ -164,7 +164,7 @@ Install fonts:
 
 ::
 
-    sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family
+    sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
         for terminal
     sudo pacman -S noto-fonts noto-fonts-cjk
         for firefox

@@ -71,6 +71,9 @@ Terminal/Window manager
         The best terminal emulator based on the Enlightenment Foundation
         Libraries
 
+    (2020/06/05) `kitty <https://sw.kovidgoyal.net/kitty/>`_
+        The fast, featureful, GPU based terminal emulator
+
 Text
 
     (2019/12/20) `diff-so-fancy <https://github.com/so-fancy/diff-so-fancy>`_
