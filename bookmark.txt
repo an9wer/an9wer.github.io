@@ -2,6 +2,7 @@ reStructuredText/tweet.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2020/06/06_Gentoo_installation.rst
     reStructuredText/2020/01/07_服务器被黑事件.rst
     reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
     reStructuredText/2019/11/09_Build_raid1.rst
@@ -107,6 +108,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/systemd/unit.rst
         reStructuredText/notes/systemd/exec.rst
         reStructuredText/notes/systemd/target.rst
+        reStructuredText/notes/systemd/tmpfile.rst
+        reStructuredText/notes/systemd/journal.rst
     Linux
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst

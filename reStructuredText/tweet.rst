@@ -1,3 +1,11 @@
+2020/06/12 Fri
+
+    母行千里儿担忧。
+
+2020/06/07 Sun
+
+    Gentoo is awesome!
+
 2020/06/05 Fri
 
     从一年前的 Arch 上执行 pacman -Syu，成功升级！

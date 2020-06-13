@@ -131,6 +131,10 @@ Systemd/
         </notes/systemd/exec.html>`_
     -   `target
         </notes/systemd/target.html>`_
+    -   `tmpfile
+        </notes/systemd/tmpfile.html>`_
+    -   `journal
+        </notes/systemd/journal.html>`_
 
 Linux/
     -   `Linux filesystem hierarchy

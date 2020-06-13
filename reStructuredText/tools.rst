@@ -368,3 +368,9 @@ Misc
 
     (2020/05/17) `flameshot <https://flameshot.js.org/>`_
         Powerful yet simple to use screenshot software
+
+    (2020/06/11) `ginstall.sh <https://github.com/whalehub/ginstall.sh>`_
+        A script for installing/updating statically compiled applications 
+
+    (2020/06/11) `croc <https://github.com/schollz/croc>`_
+        Easily and securely send things from one computer to another
