@@ -191,6 +191,10 @@ Linux/
         </notes/linux/zerotier.html>`_
     -   `Linux sudo
         </notes/linux/sudo.html>`_
+    -   `Linux syscall
+        <notes/linux/syscall.html>`_
+    -   `Linux schedule
+        </notes/linux/schedule.html>`_
 
 Package/
     -   `RPM

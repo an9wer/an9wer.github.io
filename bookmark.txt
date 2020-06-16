@@ -138,6 +138,8 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/wireguard.rst
         reStructuredText/notes/linux/zerotier.rst
         reStructuredText/notes/linux/sudo.rst
+        reStructuredText/notes/linux/syscall.rst
+        reStructuredText/notes/linux/schedule.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst
