@@ -86,6 +86,12 @@ Text
     (2020/01/16) `the silver searcher <https://github.com/ggreer/the_silver_searcher>`_
         A code-searching tool similar to ack, but faster. 
 
+    (2020/06/18) `doxygen <https://github.com/doxygen/doxygen>`_
+        the de facto standard tool for generating documentation from annotated
+        C++ sources, but it also supports other popular programming languages
+        such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft,
+        and UNO/OpenOffice flavors), Fortran, VHDL, and to some extent D
+
 Benchmark
 
     (2019/10/14) `curl-loader <http://curl-loader.sourceforge.net/>`_
@@ -145,6 +151,17 @@ Web Server
     (2020/05/22) `tengine <https://github.com/alibaba/tengine>`_
         A distribution of Nginx with some advanced features
 
+Web analytics
+
+    (2020/06/18) `goatcounter <https://github.com/zgoat/goatcounter>`_
+        An open source web analytics platform available as a hosted service
+        (free for non-commercial use) or self-hosted app. It aims to offer easy
+        to use and meaningful privacy-friendly web analytics as an alternative
+        to Google Analytics or Matomo
+
+    (2020/06/18) `plausible <https://github.com/plausible/analytics>`_
+        Simple and privacy-friendly alternative to Google Analytics
+        
 Blog/Forum
 
     (2019/08/21) `getpelican <https://getpelican.com/>`_

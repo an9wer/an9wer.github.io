@@ -1,6 +1,10 @@
 Coreutils du
 ============
 
+List all files and directories, not just directories (by default): ::
+
+    # du -a <file> [<file> ...]
+
 Scan only for specified depth: ::
 
     # du -d <depth> <file> [<file> ...]
@@ -8,10 +12,6 @@ Scan only for specified depth: ::
 Print only a total size of files (same as ``-d 0``): ::
 
     # du -s <file> [<file> ...]
-
-List all files, not just directories (by default): ::
-
-    # du -a <file> [<file> ...]
 
 Do not count size of subdirectories into directories: ::
 

@@ -35,6 +35,24 @@
 <h1>Findutils find</h1>
 <p>List files greater (+) or smaller (-) than specified size:</p>
 <pre class="literal-block">$ find &lt;path&gt; -size &quot;+|-&quot;&lt;size&gt;</pre>
+<p>Use all found files as a single argument of some command to execute:</p>
+<pre class="literal-block">$ find &lt;path&gt; --exec &lt;command&gt; {} +
+
+Example:
+$ find /tmp/a --exec echo {} +
+/tmp/a /tmp/a/c /tmp/a/c/d /tmp/a/c/d/e /tmp/a/b /tmp/a/b/c</pre>
+<p>Use each found files as an argument appending to some command to execute
+seperately:</p>
+<pre class="literal-block">$ find &lt;path&gt; --exec &lt;command&gt; {} \;
+
+Example:
+$ find /tmp/a --exec echo {} \;
+/tmp/a
+/tmp/a/c
+/tmp/a/c/d
+/tmp/a/c/d/e
+/tmp/a/b
+/tmp/a/b/c</pre>
 <div class="section" id="references">
 <h2>References</h2>
 <p><span class="docutils literal">man find</span></p>
