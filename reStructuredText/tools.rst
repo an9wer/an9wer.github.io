@@ -74,6 +74,9 @@ Terminal/Window manager
     (2020/06/05) `kitty <https://sw.kovidgoyal.net/kitty/>`_
         The fast, featureful, GPU based terminal emulator
 
+    (2020/06/19) `alacritty <https://github.com/alacritty/alacritty>`_
+        A cross-platform, GPU-accelerated terminal emulator 
+
 Text
 
     (2019/12/20) `diff-so-fancy <https://github.com/so-fancy/diff-so-fancy>`_

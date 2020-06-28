@@ -43,3 +43,11 @@ M-v b
 {number}> {number}G
     Jump to the number of node, if number is omitted, the last instead.
 
+\/
+    Search a string
+
+\}
+    Search forward to next match string
+
+\{
+    Search backward to next match string
