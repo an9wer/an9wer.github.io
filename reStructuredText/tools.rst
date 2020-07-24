@@ -314,6 +314,12 @@ Advertisments block
     (2020/04/24) `pihole <https://pi-hole.net/>`_
         A black hole for Internet advertisements
 
+Native APP
+
+    (2020/07/09) `tauri <https://github.com/tauri-apps/tauri>`
+        a framework for building tiny, blazing fast binaries for all major
+        desktop platforms
+
 Third party service
 
     (2020/05/14) `uptimerebot <https://uptimerobot.com/>`_

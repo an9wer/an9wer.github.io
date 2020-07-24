@@ -33,11 +33,37 @@
         <div id="content">
 <div class="section" id="sysctl">
 <h1>Sysctl</h1>
+<p>What is the difference between &quot;all&quot;, &quot;default&quot; and a specific device in a
+sysctl parameter?</p>
+<p><strong>all</strong>: If all sits in the device position of the parameter, all existing
+devices will take on this specified parameter setting, regardless of the
+interface's own setting. An exception would be that the interface value is a
+greater than the 'all' value.</p>
+<p><strong>default</strong>: If default sits in the device position of the parameter, all
+newly-created devices will take on this specified parameter setting</p>
+<p><strong>ethX</strong>: If ethX (any interface name) sits in the device position of the
+parameter, only that device will take on this specified parameter setting</p>
+<p>Example:</p>
+<pre class="literal-block">net.ipv4.conf.all.rp_filter  = 1
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.eth1.rp_filter = 0
+net.ipv4.conf.eth2.rp_filter = 2</pre>
+<p>Then <span class="docutils literal">eth0</span> and <span class="docutils literal">eth1</span> act as if <span class="docutils literal">rp_filter = 1</span>, <span class="docutils literal">eth2</span> acts as if
+<span class="docutils literal">rp_filter = 2</span>. This is because all is set to 1, and the max value of all or
+the interface name is used.</p>
+<div class="section" id="variables">
+<h2>Variables</h2>
 <dl class="simple">
-<dt>ip_forward</dt>
-<dd><p>Makes the machine act like a router.</p>
+<dt>route_localnet - BOOLEAN</dt>
+<dd><p>Do not consider loopback addresses as martian source or destination while
+routing. This enables the use of 127/8 for local routing purposes.  default
+FALSE</p>
+</dd>
+<dt>ip_forward - BOOLEAN</dt>
+<dd><p>Forward Packets between interfaces which makes it act like a router.</p>
 </dd>
 </dl>
+</div>
 <div class="section" id="vm">
 <h2>vm</h2>
 <p>swappiness</p>

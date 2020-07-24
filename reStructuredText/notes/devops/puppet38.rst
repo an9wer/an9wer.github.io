@@ -6,9 +6,7 @@ Puppet is **declarative**, **idempotent**, and **stateless** by default.
 Installation
 ------------
 
-Install puppet3.8 on CentOS7:
-
-::
+Install puppet3.8 on CentOS7: ::
 
     # rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
     # yum install puppet
@@ -22,6 +20,20 @@ Install puppet 5.5 on CentOS8: ::
     # dnf install puppetserver
 
 https://www.theskillpedia.com/setup-puppet-master-and-puppet-agent-on-centos-8/
+
+Install puppet 5.5 on CentOS8: ::
+
+    # rpm -Uvh https://yum.puppet.com/puppet5-release-el-7.noarch.rpm
+    # yum install puppet-agent
+    # yum install puppetserver
+
+Install puppet 5.5 on CentOS6: ::
+
+    # rpm -Uvh https://yum.puppet.com/puppet5-release-el-6.noarch.rpm
+    # yum install puppet-agent
+    # yum install puppetserver
+
+
 
 Subcommands
 -----------

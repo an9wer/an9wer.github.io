@@ -141,6 +141,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/linux/sudo.rst
         reStructuredText/notes/linux/syscall.rst
         reStructuredText/notes/linux/schedule.rst
+        reStructuredText/notes/linux/kvm.rst
     Package
         reStructuredText/notes/package/rpm.rst
         reStructuredText/notes/package/rpm-packaging.rst

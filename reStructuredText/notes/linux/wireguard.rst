@@ -5,6 +5,10 @@ Generate private key: ::
 
     # wg genkey
 
+Generate public key: ::
+
+    # wg pubkey < privatekey > publickey
+
 Case 1
 ------
 

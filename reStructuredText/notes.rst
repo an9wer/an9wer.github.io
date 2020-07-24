@@ -195,6 +195,8 @@ Linux/
         <notes/linux/syscall.html>`_
     -   `Linux schedule
         </notes/linux/schedule.html>`_
+    -   `Linux KVM
+        </notes/linux/kvm.html>`_
 
 Package/
     -   `RPM
