@@ -1,8 +1,14 @@
+2020/08/13 @ `Redmi K30 5G 刷机 </2020/08/13_Redmi%20K30%205G%20刷机.html>`_
+
+2020/07/05 @ `从 archlinux 转投 gentoo </2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
+
+2020/06/06 @ `Gentoo installation </2020/06/06_Gentoo%20installation.html>`_
+
 2020/01/07 @ `服务器被黑事件 </2020/01/07_服务器被黑事件.html>`_
 
 2019/11/24 @ `腾讯云低配服务器性能测试 </2019/11/24_腾讯云低配服务器性能测试.html>`_
 
-2019/11/09 @ `Build raid1 </2019/11/09_Build_raid1.html>`_
+2019/11/09 @ `Build raid1 </2019/11/09_Build%20raid1.html>`_
 
 2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus.html>`_
 
@@ -10,7 +16,7 @@
 
 2019/08/20 @ `TODO list <2019/08/20_TODO%20list.html>`_
 
-2019/08/19 @ `Raspberry Pi installation <2019/08/19_Raspberry%20Pi%20installation>`_
+2019/08/19 @ `Raspberry Pi installation <2019/08/19_Raspberry%20Pi%20installation.html>`_
 
 2019/07/21 @ `终端下的单词查询 <2019/07/21_终端下的单词查询.html>`_
 

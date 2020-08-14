@@ -1,0 +1,8 @@
+OpenWRT installation
+====================
+
+::
+
+    # opkg update
+
+

@@ -21,11 +21,22 @@ Install puppet 5.5 on CentOS8: ::
 
 https://www.theskillpedia.com/setup-puppet-master-and-puppet-agent-on-centos-8/
 
-Install puppet 5.5 on CentOS8: ::
+Install puppet 5.5 on CentOS7: ::
 
     # rpm -Uvh https://yum.puppet.com/puppet5-release-el-7.noarch.rpm
     # yum install puppet-agent
     # yum install puppetserver
+
+    # /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+    [main]
+    certname = agent5
+    server = puppet-master
+    environment = production
+    runinterval = 1h
+
+    # /opt/puppetlabs/bin/puppet agent --test
+
 
 Install puppet 5.5 on CentOS6: ::
 

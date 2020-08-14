@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="tweet"
+                href="/tweet.html">Tweet</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tools"
+                href="/tools.html">Tools</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="gentoo-installation">
+<h1>Gentoo installation</h1>
+<pre class="literal-block"># net-setup
+# fdisk /dev/sda
+    g
+    n +128M     # for /efi
+    n +16G      # for swap
+    n +remain   # for /
+    t 1 1       # for EFI System
+    t 2 19      # for Linux swap
+    t 3 20      # for Linux filesystem
+    w           # write
+# mkfs.fat -F32 /dev/sda1
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mkfs.ext4 -T small /dev/sda3
+# mount /dev/sda3 /mnt/gentoo</pre>
+<pre class="literal-block"># ntpd -q -g</pre>
+<pre class="literal-block"># cd /mnt/gentoo
+# wget &lt;PASTED_STAGE_URL&gt;
+# tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</pre>
+<pre class="literal-block"># nano -w /mnt/gentoo/etc/portage/make.conf
+    MAKEOPTS=&quot;-j5&quot;
+    GENTOO_MIRRORS=&quot;https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.163.com/genntoo/&quot;</pre>
+<pre class="literal-block"># mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+# cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+# cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+
+
+# mount --types proc /proc /mnt/gentoo/proc
+# mount --rbind /sys /mnt/gentoo/sys
+# mount --make-rslave /mnt/gentoo/sys
+# mount --rbind /dev /mnt/gentoo/dev
+# mount --make-rslave /mnt/gentoo/dev</pre>
+<pre class="literal-block"># chroot /mnt/gentoo /bin/bash
+# source /etc/profile
+# mount /dev/sda1 /boot</pre>
+<pre class="literal-block"># emerge-webrsync
+# eselect profile list
+# emerge --ask --verbose --update --deep --newuse &#64;world</pre>
+<pre class="literal-block"># echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone
+# emerge --config sys-libs/timezone-data</pre>
+<pre class="literal-block"># echo 'en_US.UTF-8 UTF-8' &gt;&gt; /etc/locale.gen
+# locale-gen
+# eselect locale list
+# eselect locale set &lt;number&gt;
+# env-update &amp;&amp; source /etc/profile</pre>
+<pre class="literal-block"># emerge --ask sys-kernel/gentoo-sources
+# emerge --ask sys-kernel/genkernel
+# nano -w /etc/fstab
+    /dev/sda1   /boot   ext2    defaults    0 2
+# genkernel all
+# emerge --ask sys-kernel/linux-firmware</pre>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2020 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

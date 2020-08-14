@@ -201,6 +201,10 @@ IDC
     (2020/05/14) `ddos-guard <https://ddos-guard.net/>`_
         Powerful and complete DDoS Protection for your business
 
+    (2020/08/13) `fastnetmon <https://github.com/pavel-odintsov/fastnetmon>`_
+        A high performance DoS/DDoS load analyzer built on top of multiple
+        packet capture engines (NetFlow, IPFIX, sFlow, AF_PACKET, Netmap, PCAP)
+
 Network
 
     (2019/10/22) `Openswan <https://www.openswan.org/>`_

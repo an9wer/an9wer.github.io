@@ -42,7 +42,6 @@ o|O
 \+
     reset filters in all windows
 
-
 Reference
 ---------
 

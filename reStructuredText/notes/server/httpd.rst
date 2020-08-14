@@ -9,6 +9,10 @@ Show all parsed vhost settings and parsed run settings: ::
 
     # apachectl -S
 
+    Or
+
+    # httpd -S
+
 How to configure httpd:
 
 -   https://www.ntu.edu.sg/home/ehchua/programming/howto/Apache_HowToConfigure.html

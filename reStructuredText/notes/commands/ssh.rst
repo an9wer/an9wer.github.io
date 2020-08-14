@@ -39,7 +39,7 @@ and remote side:
     other interface set by *bind_address*).
 
 -   -R: *port* is located at remote side. *host* and *hostport* is used at
-    loacl side. The tunnel forwards local *host:hostport* to remote *port*,
+    local side. The tunnel forwards local *host:hostport* to remote *port*,
     then remote host can visit local side service through *127.0.0.1:port* (or
     other interface set by *bind_address*).
 

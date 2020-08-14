@@ -1,6 +1,5 @@
-Gentoo Installation
+Gentoo installation
 ===================
-
 
 ::
 
@@ -40,6 +39,7 @@ Gentoo Installation
 
 ::
 
+    # mkdir --parents /mnt/gentoo/etc/portage/repos.conf
     # cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
     # cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
@@ -54,13 +54,12 @@ Gentoo Installation
 
     # chroot /mnt/gentoo /bin/bash 
     # source /etc/profile
-    # mount /dev/sda2 /boot
+    # mount /dev/sda1 /boot
 
 ::
 
     # emerge-webrsync
     # eselect profile list
-
     # emerge --ask --verbose --update --deep --newuse @world
 
 
@@ -80,3 +79,8 @@ Gentoo Installation
 ::
 
     # emerge --ask sys-kernel/gentoo-sources
+    # emerge --ask sys-kernel/genkernel
+    # nano -w /etc/fstab
+        /dev/sda1   /boot   ext2    defaults    0 2
+    # genkernel all
+    # emerge --ask sys-kernel/linux-firmware
