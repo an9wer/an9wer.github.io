@@ -77,6 +77,10 @@ Terminal/Window manager
     (2020/06/19) `alacritty <https://github.com/alacritty/alacritty>`_
         A cross-platform, GPU-accelerated terminal emulator 
 
+    (2020/08/17) `jqmenu <https://github.com/johanmalm/jgmenu>`_
+        A simple, independent and contemporary-looking X11 menu, designed for
+        scripting, ricing and tweaking
+
 Text
 
     (2019/12/20) `diff-so-fancy <https://github.com/so-fancy/diff-so-fancy>`_

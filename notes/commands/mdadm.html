@@ -39,12 +39,14 @@
 <pre class="literal-block"># mdadm --detail &lt;raid device&gt;</pre>
 <p>Print metadata of component of raid device (see <a class="reference internal" href="#difference-between-examine-and-detail">difference between
 --examine and --detail</a>):</p>
-<pre class="literal-block"># madadm --detail &lt;device&gt;</pre>
+<pre class="literal-block"># madadm --examine &lt;device&gt;</pre>
 <p>To load raid device automatically:</p>
 <pre class="literal-block"># mdadm --assemble --scan</pre>
 <p>To load raid device manually if above command doesn't work (see <a class="reference internal" href="#errors-may-happen-when-loading-raid-device-manually">errors may
 happen when loading raid device manually</a>):</p>
 <pre class="literal-block"># mdadm --assemble &lt;raid device&gt; &lt;device&gt; [&lt;device&gt; ...]</pre>
+<p>Deactive raid device:</p>
+<pre class="literal-block"># mdadm --stop &lt;raid device&gt;</pre>
 <p>Remove a device from array of raid device:</p>
 <pre class="literal-block"># mdadm --manage &lt;raid device&gt; --remove &lt;device&gt;</pre>
 <p>Add a deivce to array of raid device:</p>
@@ -65,7 +67,7 @@ Or update homehost (The special name &quot;any&quot; can be used as a wild card)
 </li>
 </ul>
 <ul id="errors-may-happen-when-loading-raid-device-manually">
-<li><p>errors may be happened when loading raid device manually:</p>
+<li><p>Errors may happen when loading raid device manually:</p>
 <p>Case1: Fewer devices are given than when they are created before, then use
 <span class="docutils literal"><span class="pre">--run</span></span> option:</p>
 <pre class="literal-block"># mdadm --assemble /dev/md1 /dev/sdb

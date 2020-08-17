@@ -12,7 +12,7 @@ Print details of raid device: ::
 Print metadata of component of raid device (see `difference between
 --examine and --detail`_): ::
 
-    # madadm --detail <device>
+    # madadm --examine <device>
 
 To load raid device automatically: ::
 
@@ -22,6 +22,10 @@ To load raid device manually if above command doesn't work (see `errors may
 happen when loading raid device manually`_): ::
 
     # mdadm --assemble <raid device> <device> [<device> ...]
+
+Deactive raid device: ::
+
+    # mdadm --stop <raid device>
 
 Remove a device from array of raid device: ::
 
@@ -52,7 +56,7 @@ Update name, homehost or any other parameter of raid device: ::
 
 .. _errors may happen when loading raid device manually:
 
--   errors may be happened when loading raid device manually:
+-   Errors may happen when loading raid device manually:
 
     Case1: Fewer devices are given than when they are created before, then use
     ``--run`` option: ::

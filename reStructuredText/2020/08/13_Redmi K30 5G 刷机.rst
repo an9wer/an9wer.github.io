@@ -16,7 +16,8 @@ Redmi K30 5G 刷机
 机需要支持 5G，虽然目前来看 5G 的概念已经铺垫了有一年多，市场好像还是不温不火，
 但秉承着手机要用 4 年的信念，支持 5G 还是很有必要的。
 
-所以最终还是选择了这款 Redmi K30 5G，价格与性能合适，刷机相对方便。
+所以最终还是选择了这款 Redmi K30 5G，价格与性能合适，刷机相对方便。当然在很多地
+方也做了一些妥协，例如屏幕尺寸过大，亮色背盖等。
 
 Unlock bootloader: ::
 
@@ -36,13 +37,20 @@ Boot into recovery mode: ::
 
     Press volume up (+) button and power button
 
-下载 xiaomi.eu ROM: xiaomi.eu_multi_HMK305G_V11.0.9.0.QGICNXM_v11-10-Fastboot.zip ::
+Download xiaomi.eu ROM: xiaomi.eu_multi_HMK305G_V11.0.9.0.QGICNXM_v11-10-Fastboot.zip ::
 
     unpack zip then:
         # sudo ./linux_fastboot_first_install_with_data_format.sh
+
+小插曲：一开始直接使用 ``./linux_fastboot_first_install_with_data_format.sh``
+安装，结果等了有半个小时还没有跑完，感觉像是进程卡死了，于是使用 ``strace -p
+<pid>`` 看了一下它的状态，发现是它没有权限读取 ``/sys/bus/usb/`` 文件，所以赶紧
+``Ctrl-C`` 结束了它，重新加上 ``sudo`` 再次执行即可。
 
 
 References
 ----------
 
 https://xiaomi.eu/community/threads/guide-how-to-install-xiaomi-eu-rom-for-redmi-k30-k30-5g.54536/
+
+Thanks for reading :)
