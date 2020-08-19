@@ -33,10 +33,21 @@
         <div id="content">
 <div class="section" id="openwrt-installation">
 <h1>OpenWRT installation</h1>
+<p>Install OpenWRT on X86 machine:</p>
+<pre class="literal-block"># dd if=openwrt.img of=/dev/sdX
+# parted /dev/sdX
+    resizepart 2 -1
+# resize2fs /dev/sdX2
+# reboot</pre>
 <p>Use opkg through a proxy:</p>
 <pre class="literal-block"># export http_server=http://&lt;address&gt;:&lt;port&gt;</pre>
+<p>Install Wireguard:</p>
 <pre class="literal-block"># opkg update
-# opkg install wireguard luci-app-wireguard</pre>
+# opkg install wireguard luci-app-wireguard
+# reboot
+
+# wg genkey &gt; privatekey
+# wg pubkey &lt; privatekey &gt; publickey</pre>
 </div>
         </div> <!-- content -->
 

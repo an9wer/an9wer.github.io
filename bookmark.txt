@@ -3,7 +3,7 @@ reStructuredText/tools.rst
 
 reStructuredText/blog.rst
     reStructuredText/2020/08/13_Redmi\ K30\ 5G\ 刷机.rst
-    reStructuredText/2020/07/27_OpenWRT_installation.rst
+    reStructuredText/2020/07/27_OpenWRT\ installation.rst
     reStructuredText/2020/07/05_从\ archlinux\ 转投\ gentoo.rst
     reStructuredText/2020/06/06_Gentoo\ installation.rst
     reStructuredText/2020/01/07_服务器被黑事件.rst

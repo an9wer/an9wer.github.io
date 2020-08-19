@@ -132,24 +132,18 @@ Exit and reboot: ::
 Tools installation
 ------------------
 
-Update system:
-
-::
+Update system: ::
 
     sudo pacman -Syu
 
 
-Install xorg:
-
-::
+Install xorg: ::
 
     sudo pacman -S xorg xorg-xinit
         xorg, which contains xorg-server, is needed by dwm and i3.
 
 
-Install suckless tools:
-
-::
+Install suckless tools: ::
 
     sudo pacman -S libx11 libxft libxinerama
 
@@ -160,9 +154,7 @@ Install suckless tools:
     make && sudo make install
 
 
-Install fonts:
-
-::
+Install fonts: ::
 
     sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
         for terminal
@@ -170,16 +162,12 @@ Install fonts:
         for firefox
 
 
-Install virtual console font:
-
-::
+Install virtual console font: ::
 
     sudo pacman -S tamsyn-font terminus-font
 
 
-Install firefox:
-
-::
+Install firefox: ::
 
     sudo pacman -S firefox flashplugin
         Preferences->General->Fonts:
@@ -187,16 +175,12 @@ Install firefox:
             Sans-serif: Noto Sans
             Monospace: Noto Sans Mono
 
-Install chromium:
-
-::
+Install chromium: ::
 
     sudo pacman -S chromium
 
 
-Install basic tools:
-
-::
+Install basic tools: ::
 
     sudo pacman -S openssh
     sudo pacman -S bash-completion
@@ -206,60 +190,44 @@ Install basic tools:
         xdg-user-dirs-update
 
 
-Install alsa:
-
-::
+Install alsa: ::
 
     sudo pacman -S alsa-utils
         amixer sset Master unmute
 
-Install dunst:
-
-::
+Install dunst: ::
 
     sudo pacman -S dunst libnotify
 
 
-Install fcitx:
-
-::
+Install fcitx: ::
 
     sudo pacman -S fcitx fcitx-im fcitx-configtool
         run 'fcitx-configtool'
 
-Install ibus:
-
-::
+Install ibus: ::
 
     $ sudo pacman -S ibus ibus-rime
     $ ibus-setup
 
-Install mupdf:
-
-::
+Install mupdf: ::
 
     sudo pacman -S mupdf-gl
         if some error of OpenGL happens, may need to install the appropriate dirver for graphic card.
             sudo pacman -S nvidia*
 
 
-Install imagemagick:
-
-::
+Install imagemagick: ::
 
     sudo pacman -S imagemagick
 
 
-Install telegram:
-
-::
+Install telegram: ::
 
     sudo pacman -S telegram-desktop
 
 
-Install virtualbox:
-
-::
+Install virtualbox: ::
 
     sudo pacman -S virtualbox
         When encounter "Kernel driver not installed (rc=-1908)"
@@ -268,9 +236,7 @@ Install virtualbox:
             https://superuser.com/a/1390258
 
 
-Bluetooth:
-
-::
+Bluetooth: ::
 
     sudo pacman -S pulseaudio pluseaudio-bluetooth bluez bluez-utils
         restart pulseaudio
@@ -279,9 +245,7 @@ Bluetooth:
         run bluetoothctl to connect device
 
 
-Fix tap-to-click for touchpad:
-
-::
+Fix tap-to-click for touchpad: ::
 
     sudo pacman -S xf86-input-synaptics
        synclient TapButton1=1 TapButton2=3 TapButton3=2
@@ -296,9 +260,7 @@ way to solve it: https://itsfoss.com/no-bootable-device-found-ubuntu/
 Edit 2019/04/26
 ---------------
 
-Disable nvidia graphic card:
-
-::
+Disable nvidia graphic card: ::
 
     sudo pacman -S bumblebee bbswitch
     sudo pacman -S xf86-video-intel (I don't know is this pacakge required?)
@@ -331,9 +293,7 @@ Disable nvidia graphic card:
 Edit 2019/05/02
 ---------------
 
-Set tap button of touchpad:
-
-::
+Set tap button of touchpad: ::
 
     vim /etc/X11/xorg.conf.d/70-synaptics.conf
         Section "InputClass"
@@ -352,3 +312,17 @@ Edit 2019/10/16
 Install RDP client remmina: ::
 
     # pacman -S remmina freerdp
+
+Edit 2020/08/19
+---------------
+
+Disable the root login: ::
+
+    # passwd -l root
+
+Unlock root: ::
+
+    $ sudo passwd -u root
+
+https://wiki.archlinux.org/index.php/Sudo#Disable_root_login
+
