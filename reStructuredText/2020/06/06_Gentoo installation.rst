@@ -84,3 +84,11 @@ Gentoo installation
         /dev/sda1   /boot   ext2    defaults    0 2
     # genkernel all
     # emerge --ask sys-kernel/linux-firmware
+
+::
+
+    # emerge --ask net-misc/netifrc
+    # vim /etc/conf.d/net
+        config_<interface>="dhcp"
+    # ln -s /etc/init.d/net.lo /etc/init.d/net.<interface>
+    # rc-update add net.<interface> default

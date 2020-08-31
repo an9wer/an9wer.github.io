@@ -47,7 +47,7 @@
 机需要支持 5G，虽然目前来看 5G 的概念已经铺垫了有一年多，市场好像还是不温不火，
 但秉承着手机要用 4 年的信念，支持 5G 还是很有必要的。</p>
 <p>所以最终还是选择了这款 Redmi K30 5G，价格与性能合适，刷机相对方便。当然在很多地
-方也做了一些妥协，例如屏幕尺寸过大，亮色背盖等。</p>
+方也做了一些妥协，例如屏幕尺寸过大，镜头突起等。</p>
 <p>Unlock bootloader:</p>
 <pre class="literal-block">Settings -&gt; My device -&gt; All specs -&gt; MIUI version (Keep tapping it to enable developer option)
 Settings -&gt; Additional settings -&gt; Developer option -&gt; Mi Unlock status -&gt; Login Mi account
@@ -66,10 +66,10 @@ login the Mi Unlock Tool on PC with the same Mi account and press unlock botton<
 <p>小插曲：一开始直接使用 <span class="docutils literal">./linux_fastboot_first_install_with_data_format.sh</span>
 安装，结果等了有半个小时还没有跑完，感觉像是进程卡死了，于是使用 <span class="docutils literal">strace <span class="pre">-p</span> &lt;pid&gt;</span> 看了一下它的状态，发现是它没有权限读取 <span class="docutils literal">/sys/bus/usb/</span> 文件，所以赶紧
 <span class="docutils literal"><span class="pre">Ctrl-C</span></span> 结束了它，重新加上 <span class="docutils literal">sudo</span> 再次执行即可。</p>
+<p>Thanks for reading :)</p>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://xiaomi.eu/community/threads/guide-how-to-install-xiaomi-eu-rom-for-redmi-k30-k30-5g.54536/">https://xiaomi.eu/community/threads/guide-how-to-install-xiaomi-eu-rom-for-redmi-k30-k30-5g.54536/</a></p>
-<p>Thanks for reading :)</p>
 </div>
 </div>
         </div> <!-- content -->

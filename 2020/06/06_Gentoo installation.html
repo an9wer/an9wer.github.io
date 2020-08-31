@@ -84,6 +84,11 @@
     /dev/sda1   /boot   ext2    defaults    0 2
 # genkernel all
 # emerge --ask sys-kernel/linux-firmware</pre>
+<pre class="literal-block"># emerge --ask net-misc/netifrc
+# vim /etc/conf.d/net
+    config_&lt;interface&gt;=&quot;dhcp&quot;
+# ln -s /etc/init.d/net.lo /etc/init.d/net.&lt;interface&gt;
+# rc-update add net.&lt;interface&gt; default</pre>
 </div>
         </div> <!-- content -->
 

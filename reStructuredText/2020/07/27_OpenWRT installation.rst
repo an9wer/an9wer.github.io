@@ -11,7 +11,7 @@ Install OpenWRT on X86 machine: ::
 
 Use opkg through a proxy: ::
 
-    # export http_server=http://<address>:<port>
+    # export http_proxy=http://<address>:<port>
 
 Install Wireguard: ::
 
