@@ -1,3 +1,5 @@
+2020/08/26 @ `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_
+
 2020/08/13 @ `Redmi K30 5G 刷机 </2020/08/13_Redmi%20K30%205G%20刷机.html>`_
 
 2020/07/05 @ `从 archlinux 转投 gentoo </2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
