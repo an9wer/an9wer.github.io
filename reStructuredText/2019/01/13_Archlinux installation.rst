@@ -11,9 +11,7 @@ Flash iso
 System installation
 -------------------
 
-Partition and mount:
-
-::
+Partition and mount: ::
 
     wifi-menu
     timedatectl set-ntp true
@@ -43,17 +41,13 @@ Partition and mount:
     arch-chroot /mnt
 
 
-Datetime:
-
-::
+Datetime: ::
 
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     hwclock --systohc
 
 
-Locale:
-
-::
+Locale: ::
 
     vim /etc/locale.gen
         uncomment en_US.UTF-8 UTF-8
@@ -62,9 +56,7 @@ Locale:
         LANG=en_US.UTF-8
 
 
-Hostname:
-
-::
+Hostname: ::
 
     vim /etc/hostname
         peace
@@ -129,8 +121,8 @@ Exit and reboot: ::
 
     reboot
 
-Tools installation
-------------------
+Application installation
+------------------------
 
 Update system: ::
 
@@ -251,14 +243,14 @@ Fix tap-to-click for touchpad: ::
        synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 
-Edit 2019/03/25
----------------
+Update 2019/03/25
+-----------------
 
 When installing archlinux on ACER, encounter secure boot problem. Find a
 way to solve it: https://itsfoss.com/no-bootable-device-found-ubuntu/
 
-Edit 2019/04/26
----------------
+Update 2019/04/26
+-----------------
 
 Disable nvidia graphic card: ::
 
@@ -290,8 +282,8 @@ Disable nvidia graphic card: ::
     controller is not in use.
 
 
-Edit 2019/05/02
----------------
+Update 2019/05/02
+-----------------
 
 Set tap button of touchpad: ::
 
@@ -306,15 +298,15 @@ Set tap button of touchpad: ::
         EndSection
 
 
-Edit 2019/10/16
----------------
+Update 2019/10/16
+-----------------
 
 Install RDP client remmina: ::
 
     # pacman -S remmina freerdp
 
-Edit 2020/08/19
----------------
+Update 2020/08/19
+-----------------
 
 Disable the root login: ::
 

@@ -22,6 +22,21 @@ Install Wireguard: ::
     # wg genkey > privatekey
     # wg pubkey < privatekey > publickey
 
+Install luci-app-v2ray: ::
+
+    # opkg install jshn
+    # opkg install ip
+    # opkg install ipset
+    # opkg install iptables
+    # opkg install iptables-mod-tproxy
+    # opkg install resolveip
+    # opkg remove dnsmasq
+    # opkg install dnsmasq-full
+
+    # opkg install luci-app-v2ray_1.5.6_all.ipk
+    # opkg install luci-compat
+    # reboot
+
 
 
 

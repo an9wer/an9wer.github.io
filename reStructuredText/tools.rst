@@ -408,3 +408,7 @@ Misc
 
     (2020/06/11) `croc <https://github.com/schollz/croc>`_
         Easily and securely send things from one computer to another
+
+    (2020/09/01) `light <https://github.com/haikarainen/light>`_
+        A program to control backlights (and other hardware lights) in
+        GNU/Linux

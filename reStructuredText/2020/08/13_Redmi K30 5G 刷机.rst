@@ -47,7 +47,14 @@ Download xiaomi.eu ROM: xiaomi.eu_multi_HMK305G_V11.0.9.0.QGICNXM_v11-10-Fastboo
 <pid>`` 看了一下它的状态，发现是它没有权限读取 ``/sys/bus/usb/`` 文件，所以赶紧
 ``Ctrl-C`` 结束了它，重新加上 ``sudo`` 再次执行即可。
 
+Update 2020/10/09
+-----------------
+
+今天发现这个固件版本无法调用前后的人像镜头，所以相当于少了两个镜头。
+
+
 Thanks for reading :)
+
 
 References
 ----------

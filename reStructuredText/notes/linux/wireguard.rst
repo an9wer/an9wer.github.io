@@ -3,7 +3,7 @@ Linux wireguard
 
 Generate private key: ::
 
-    # wg genkey
+    # wg genkey > privatekey
 
 Generate public key: ::
 

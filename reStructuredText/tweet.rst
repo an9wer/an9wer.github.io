@@ -1,3 +1,17 @@
+2020/10/04 Sun
+
+    不带口罩的感觉很好。
+
+2020/09/18 Fri
+
+    Anytime you build something that is useful to someone, it is fun. What
+    becomes less fun is the after-building part of running the business.
+    -- From `some guy <https://jeremyaboyd.com/post/shutting-down-navhere>`_
+
+2020/09/05 Sat
+
+    在笔记本上安装 Deepin 的时候，不能使用触摸板，也不能用键盘的 Tab 键来切换。
+
 2020/08/31 Mon
 
     Redmi K30 5G 电源充电器在 5V 的状态下有滋滋的声音！

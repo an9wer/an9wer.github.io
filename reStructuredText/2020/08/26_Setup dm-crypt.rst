@@ -31,6 +31,8 @@ Automate mounting the encrypted storege: ::
     # vim /etc/fstab
         UUID=<uuid> /mnt ext4 defaults 0 0
 
+    # rc-update add dmcrypt boot
+
 Thanks for reading :)
 
 References

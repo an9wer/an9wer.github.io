@@ -33,7 +33,12 @@
         <div id="content">
 <div class="section" id="gentoo-installation">
 <h1>Gentoo installation</h1>
-<pre class="literal-block"># net-setup
+<div class="section" id="prepare">
+<h2>Prepare</h2>
+<p>Setup network:</p>
+<pre class="literal-block"># net-setup</pre>
+<p>format disk:</p>
+<pre class="literal-block">1. UEFI + GPT
 # fdisk /dev/sda
     g
     n +128M     # for /efi
@@ -46,49 +51,136 @@
 # mkfs.fat -F32 /dev/sda1
 # mkswap /dev/sda2
 # swapon /dev/sda2
+# mkfs.ext4 /dev/sda3
+# mount /dev/sda3 /mnt/gentoo
+
+2. BIOS + MBR
+# fdisk /dev/sda
+    o
+    n +128M     # for /boot
+    n +512M     # for swap
+    n +remain   # for /
+    t 1 83      # Linux
+    t 2 82      # Linux swap
+    t 3 83      # Linux
+# mkfs.ext2 -T small /dev/sda1
+# mkswap /dev/sda2
+# swapon /dev/sda2
 # mkfs.ext4 -T small /dev/sda3
 # mount /dev/sda3 /mnt/gentoo</pre>
+<p>Synchronize system time:</p>
 <pre class="literal-block"># ntpd -q -g</pre>
+<p>Install stage tarball:</p>
 <pre class="literal-block"># cd /mnt/gentoo
 # wget &lt;PASTED_STAGE_URL&gt;
 # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</pre>
+<p>Configure portage:</p>
 <pre class="literal-block"># nano -w /mnt/gentoo/etc/portage/make.conf
     MAKEOPTS=&quot;-j5&quot;
-    GENTOO_MIRRORS=&quot;https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.163.com/genntoo/&quot;</pre>
-<pre class="literal-block"># mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+    GENTOO_MIRRORS=&quot;https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.163.com/gentoo/&quot;
+
+# mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 # cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
-# cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
-
-
-# mount --types proc /proc /mnt/gentoo/proc
+# cp --dereference /etc/resolv.conf /mnt/gentoo/etc/</pre>
+<p>Mounting the necessary filesystems:</p>
+<pre class="literal-block"># mount --types proc /proc /mnt/gentoo/proc
 # mount --rbind /sys /mnt/gentoo/sys
 # mount --make-rslave /mnt/gentoo/sys
 # mount --rbind /dev /mnt/gentoo/dev
 # mount --make-rslave /mnt/gentoo/dev</pre>
+</div>
+<div class="section" id="system-installation">
+<h2>System Installation</h2>
+<p>Chroot:</p>
 <pre class="literal-block"># chroot /mnt/gentoo /bin/bash
 # source /etc/profile
 # mount /dev/sda1 /boot</pre>
+<p>Install basic packages:</p>
 <pre class="literal-block"># emerge-webrsync
 # eselect profile list
 # emerge --ask --verbose --update --deep --newuse &#64;world</pre>
+<p>Set timezone:</p>
 <pre class="literal-block"># echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone
 # emerge --config sys-libs/timezone-data</pre>
+<p>Synchronize the system clock :</p>
+<pre class="literal-block"># emerge --ask net-misc/chrony
+# rc-update add chronyd default</pre>
+<p>Set locale:</p>
 <pre class="literal-block"># echo 'en_US.UTF-8 UTF-8' &gt;&gt; /etc/locale.gen
 # locale-gen
 # eselect locale list
 # eselect locale set &lt;number&gt;
 # env-update &amp;&amp; source /etc/profile</pre>
-<pre class="literal-block"># emerge --ask sys-kernel/gentoo-sources
+<p>Install kerenl:</p>
+<pre class="literal-block">1. Using genkernel
+# emerge --ask sys-kernel/gentoo-sources
 # emerge --ask sys-kernel/genkernel
-# nano -w /etc/fstab
+# nano -w /etc/fstab    # if /boot is at a seperate disk
     /dev/sda1   /boot   ext2    defaults    0 2
 # genkernel all
-# emerge --ask sys-kernel/linux-firmware</pre>
-<pre class="literal-block"># emerge --ask net-misc/netifrc
+# emerge --ask sys-kernel/linux-firmware
+
+2. Using distribution kernels
+# emerge --ask sys-kernel/installkernel-gentoo
+# emerge --ask sys-kernel/gentoo-kernel-bin</pre>
+<p>Install network:</p>
+<pre class="literal-block">1. Ethernet interface
+# emerge --ask net-misc/netifrc
 # vim /etc/conf.d/net
     config_&lt;interface&gt;=&quot;dhcp&quot;
 # ln -s /etc/init.d/net.lo /etc/init.d/net.&lt;interface&gt;
-# rc-update add net.&lt;interface&gt; default</pre>
+# rc-update add net.&lt;interface&gt; default
+
+2. Wireless interface
+# emerge --ask net-wireless/wpa_supplicant
+# vim /etc/wpa_supplicant/wpa_supplicant.conf
+    # Allow users in the 'wheel' group to control wpa_supplicant
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel
+
+    # Make this file writable for wpa_gui / wpa_cli
+    update_config=1
+
+    network={
+      ssid=&quot;&lt;SSID&gt;&quot;
+      psk=&quot;&lt;PSK&gt;&quot;
+    }
+# vim /etc/conf.d/net
+    modules_&lt;wlan&gt;=&quot;wpa_supplicant&quot;
+    config_&lt;wlan&gt;=&quot;dhcp&quot;
+# cp /etc/init.d/net.lo /etc/init.d/net.&lt;wlan&gt;
+# rc-update add net.&lt;wlan&gt; default</pre>
+<p>Install syslog:</p>
+<pre class="literal-block"># emerge --ask app-admin/sysklogd
+# rc-update add sysklogd default</pre>
+<p>Install bootloader:</p>
+<pre class="literal-block">1. BIOS and MBR
+# emerge --ask --verbose sys-boot/grub:2
+# grub-install /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+2. UEFI and GPT
+# echo 'GRUB_PLATFORMS=&quot;efi-64&quot;' &gt;&gt; /etc/portage/make.conf
+# emerge --ask sys-boot/grub:2
+# grub-install --target=x86_64-efi --efi-directory=/boot --removable
+# grub-mkconfig -o /boot/grub/grub.cfg</pre>
+</div>
+<div class="section" id="application-installation">
+<h2>Application installation</h2>
+<p>Install cpupower:</p>
+<pre class="literal-block"># emerge --ask sys-power/cpupower</pre>
+<p>Install xorg:</p>
+<pre class="literal-block">https://wiki.gentoo.org/wiki/Elogind
+# vim /etc/portage/make.conf
+    USE=&quot;elogind -consolekit -systemd&quot;
+# emerge --ask --changed-use --deep &#64;world
+# rc-update add dbus default
+# reboot
+
+# vim /etc/portage/make.conf
+    INPUT_DEVICES=&quot;libinput synaptics&quot;
+    VIDEO_CARDS=&quot;intel&quot;
+# emerge --ask x11-base/xorg-server</pre>
+</div>
 </div>
         </div> <!-- content -->
 

@@ -123,8 +123,8 @@ umount -R /mnt
 reboot</pre>
 </div>
 </div>
-<div class="section" id="tools-installation">
-<h2>Tools installation</h2>
+<div class="section" id="application-installation">
+<h2>Application installation</h2>
 <p>Update system:</p>
 <pre class="literal-block">sudo pacman -Syu</pre>
 <p>Install xorg:</p>
@@ -195,13 +195,13 @@ $ ibus-setup</pre>
 <pre class="literal-block">sudo pacman -S xf86-input-synaptics
    synclient TapButton1=1 TapButton2=3 TapButton3=2</pre>
 </div>
-<div class="section" id="edit-2019-03-25">
-<h2>Edit 2019/03/25</h2>
+<div class="section" id="update-2019-03-25">
+<h2>Update 2019/03/25</h2>
 <p>When installing archlinux on ACER, encounter secure boot problem. Find a
 way to solve it: <a class="reference external" href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p>
 </div>
-<div class="section" id="edit-2019-04-26">
-<h2>Edit 2019/04/26</h2>
+<div class="section" id="update-2019-04-26">
+<h2>Update 2019/04/26</h2>
 <p>Disable nvidia graphic card:</p>
 <pre class="literal-block">sudo pacman -S bumblebee bbswitch
 sudo pacman -S xf86-video-intel (I don't know is this pacakge required?)
@@ -230,8 +230,8 @@ vim /etc/X11/xorg.conf.d/20-monitor.conf
 Then, reboot, run command `lspci -k` to check that the kernel driver of 3D
 controller is not in use.</pre>
 </div>
-<div class="section" id="edit-2019-05-02">
-<h2>Edit 2019/05/02</h2>
+<div class="section" id="update-2019-05-02">
+<h2>Update 2019/05/02</h2>
 <p>Set tap button of touchpad:</p>
 <pre class="literal-block">vim /etc/X11/xorg.conf.d/70-synaptics.conf
     Section &quot;InputClass&quot;
@@ -243,13 +243,13 @@ controller is not in use.</pre>
             Option &quot;TapButton3&quot; &quot;2&quot;
     EndSection</pre>
 </div>
-<div class="section" id="edit-2019-10-16">
-<h2>Edit 2019/10/16</h2>
+<div class="section" id="update-2019-10-16">
+<h2>Update 2019/10/16</h2>
 <p>Install RDP client remmina:</p>
 <pre class="literal-block"># pacman -S remmina freerdp</pre>
 </div>
-<div class="section" id="edit-2020-08-19">
-<h2>Edit 2020/08/19</h2>
+<div class="section" id="update-2020-08-19">
+<h2>Update 2020/08/19</h2>
 <p>Disable the root login:</p>
 <pre class="literal-block"># passwd -l root</pre>
 <p>Unlock root:</p>
