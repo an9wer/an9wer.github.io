@@ -188,5 +188,6 @@ References
 
 ``man aur``
 
-`Arch wiki: Custom local repository <https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Custom_local_repository>`_
+`Arch wiki: Custom local repository
+<https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Custom_local_repository>`_
 

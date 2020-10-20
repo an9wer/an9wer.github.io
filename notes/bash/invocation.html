@@ -31,29 +31,33 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="redshift">
-<h1>Redshift</h1>
-<p>By default redshift will use <em>geoclue2</em> to get location information, but in my
-case, it stucks at <cite>Waiting for initial location to become available...</cite> when
-running without any arguments.</p>
-<p>So manually set my location and daytime and night tempurature:</p>
-<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt;</pre>
-<p>To only print (not run) parameter the redshif will execute:</p>
-<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt; -p</pre>
-<p>To instantly adjusts the color temperature:</p>
-<pre class="literal-block">$ redshift -P -O &lt;TEMPERATURE&gt;</pre>
-<p>To reset all:</p>
-<pre class="literal-block">$ redshift -x</pre>
-<div class="section" id="update-2020-10-14">
-<h2>Update 2020/10/14</h2>
-<p>Fortunately, now <em>geoclue2</em> works well with redshift on my new gentoo system:</p>
-<pre class="literal-block">$ redshift -l geoclue2 -t &lt;DAY:NIGHT&gt;</pre>
-</div>
-<div class="section" id="references">
-<h2>References</h2>
-<p><a class="reference external" href="http://jonls.dk/redshift/">Official website</a></p>
-<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Redshift">Archwiki: redshift</a></p>
-</div>
+<div class="section" id="bash-invocaton">
+<h1>Bash invocaton</h1>
+<dl class="simple">
+<dt>login shell</dt>
+<dd><p>one whose first character of argument zero is a <span class="docutils literal">-</span>, or one started with
+the <span class="docutils literal"><span class="pre">--login</span></span> option.</p>
+</dd>
+<dt>interactive shell</dt>
+<dd><p>one started without non-option arguments (unless <span class="docutils literal"><span class="pre">-s</span></span> is specified) and
+without the -c option whose standard input and error are both connected to
+terminals (as determined by <span class="docutils literal">isatty</span>), or one started with the <span class="docutils literal"><span class="pre">-i</span></span>
+option.</p>
+</dd>
+</dl>
+<p>When bash is invoked as a login shell, it first reads and executes commands
+from the file <em>/etc/profile</em>, if that file  exists. After reading that file,
+it looks for <em>~/.bash_profile</em>, <em>~/.bash_login</em>, and <em>~/.profile</em>, in that
+order, and reads and executes commands from the first one that exists and is
+readable.</p>
+<p>When an interactive shell that is not a login shell is started, bash reads and
+executes commands from <em>~/.bashrc</em>, if that file exists.</p>
+<p>When bash is started non-interactively, to run a shell script, for example, it
+looks for the variable <span class="docutils literal">BASH_ENV</span> in the environment, expands its value if it
+appears there, and  uses the expanded value as the name of a file to read and
+execute.  Bash behaves as if the following command were executed:</p>
+<pre class="literal-block">if [ -n &quot;$BASH_ENV&quot; ]; then . &quot;$BASH_ENV&quot;; fi</pre>
+<p>but the value of the PATH variable is not used to search for the filename.</p>
 </div>
         </div> <!-- content -->
 

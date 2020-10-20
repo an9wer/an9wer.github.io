@@ -103,6 +103,8 @@ E2fsprogs
         </notes/e2fsprogs/tune2fs>`_
 
 X11/
+    -   `xinit
+        </notes/X11/xinit.html>`_
     -   `xclip
         </notes/X11/xclip.html>`_
     -   `xmodmap
@@ -215,10 +217,14 @@ Package/
         </notes/package/apt.html>`_
     -   `pacman
         </notes/pacman/pacman.html>`_
+    -   `emerge
+        </notes/pacman/emerge.html>`_
     -   `fpm
         <notes/package/fpm.html>`_
 
 Bash/
+    -   `Bash invocation
+        </notes/bash/invocation.html>`_
     -   `Bash grammar
         </notes/bash/grammar.html>`_
     -   `Bash quoting

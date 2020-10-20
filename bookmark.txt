@@ -98,6 +98,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/e2fsprogs/e2fsck.rst
         reStructuredText/notes/e2fsprogs/e4defrag.rst
     X11
+        reStructuredText/notes/X11/xinit.rst
         reStructuredText/notes/X11/xclip.rst
         reStructuredText/notes/X11/xmodmap.rst
         reStructuredText/notes/X11/redshift.rst
@@ -155,11 +156,13 @@ reStructuredText/notes.rst
         reStructuredText/notes/package/dpkg.rst
         reStructuredText/notes/package/apt.rst
         reStructuredText/notes/package/pacman.rst
+        reStructuredText/notes/package/emerge.rst
         reStructuredText/notes/package/fpm.rst
     Git
         reStructuredText/notes/git/git_secret.rst
         reStructuredText/notes/git/blackbox.rst
     Bash
+        reStructuredText/notes/bash/invocation.rst
         reStructuredText/notes/bash/grammar.rst
         reStructuredText/notes/bash/quoting.rst
         reStructuredText/notes/bash/parameters.rst

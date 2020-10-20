@@ -38,4 +38,5 @@ Thanks for reading :)
 References
 ----------
 
-`Gentoo wiki: dm-crypt <https://wiki.gentoo.org/wiki/Dm-crypt>`_
+`Gentoo wiki: dm-crypt
+<https://wiki.gentoo.org/wiki/Dm-crypt>`_

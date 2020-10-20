@@ -179,7 +179,69 @@
 # vim /etc/portage/make.conf
     INPUT_DEVICES=&quot;libinput synaptics&quot;
     VIDEO_CARDS=&quot;intel&quot;
-# emerge --ask x11-base/xorg-server</pre>
+# emerge --ask x11-base/xorg-server
+# emerge --ask x11-apps/xinit
+# emerge --ask x11-apps/xmodmap</pre>
+<p>Install fonts:</p>
+<pre class="literal-block"># emerge --ask media-fonts/noto media-fonts/noto-cjk media-fonts/noto-emoji
+# emerge --ask media-fonts/ubuntu-font-family
+# emerge --ask media-fonts/fontawesome</pre>
+<p>Install dwm and st:</p>
+<pre class="literal-block"># vim /etc/portage/package.use/dwm.use
+    x11-terms/dwm savedconfig
+# emerge --ask x11-wm/dwm::an9wer
+
+# vim /etc/portage/package.use/st.use
+    x11-terms/st savedconfig
+# emerge --ask x11-terms/st::an9wer</pre>
+<p>Install ibus:</p>
+<pre class="literal-block"># vim /etc/portage/package.accept_keywords
+    app-i18n/ibus-rime ~amd64
+# emerge --ask app-i18n/ibus app-i18n/ibus-rime
+# ibus-setup</pre>
+<p>Install dunst:</p>
+<pre class="literal-block"># emerge --ask x11-misc/dunst</pre>
+<p>Install redshift:</p>
+<pre class="literal-block"># vim /etc/portage/package.use/redshift.use
+    x11-misc/redshift geoclue
+# emerge --ask x11-misc/redshift</pre>
+<p>Install alsa:</p>
+<pre class="literal-block"># emerge --ask media-sound/alsa-utils</pre>
+<p>Install chroot:</p>
+<pre class="literal-block"># mkdir /chroot
+# wget &lt;PASTED_STAGE_URL&gt;
+# tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /chroot
+# mkdir -p /chroot/etc/portage/repos.conf
+# cp /etc/portage/repos.conf/gentoo.conf /chroot/etc/portage/repos.conf/gentoo.conf
+# vim /etc/init.d/chroot
+    name=&quot;chroot daemon&quot;
+
+    depend() {
+       need localmount
+       need bootmisc
+    }
+
+    start() {
+         ebegin &quot;Mounting chroot directories&quot;
+         mount -o rbind /dev /chroot/dev &gt; /dev/null &amp;
+         mount -t proc none /chroot/proc &gt; /dev/null &amp;
+         mount -o bind /sys /chroot/sys &gt; /dev/null &amp;
+         mount -o bind /tmp /chroot/tmp &gt; /dev/null &amp;
+         eend $? &quot;An error occurred while mounting chroot directories&quot;
+    }
+
+    stop() {
+         ebegin &quot;Unmounting chroot directories&quot;
+         umount -f /chroot/dev &gt; /dev/null &amp;
+         umount -f /chroot/proc &gt; /dev/null &amp;
+         umount -f /chroot/sys &gt; /dev/null &amp;
+         umount -f /chroot/tmp &gt; /dev/null &amp;
+         eend $? &quot;An error occurred while unmounting chroot directories&quot;
+    }
+# rc-service chroot start
+# chroot /chroot /bin/bash
+# emerge-webrsync
+# exit</pre>
 </div>
 </div>
         </div> <!-- content -->

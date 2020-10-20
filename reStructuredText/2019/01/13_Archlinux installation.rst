@@ -153,7 +153,6 @@ Install fonts: ::
     sudo pacman -S noto-fonts noto-fonts-cjk
         for firefox
 
-
 Install virtual console font: ::
 
     sudo pacman -S tamsyn-font terminus-font

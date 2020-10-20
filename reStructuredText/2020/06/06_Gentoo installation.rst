@@ -182,3 +182,79 @@ Install xorg: ::
         INPUT_DEVICES="libinput synaptics"
         VIDEO_CARDS="intel"
     # emerge --ask x11-base/xorg-server
+    # emerge --ask x11-apps/xinit
+    # emerge --ask x11-apps/xmodmap
+
+Install fonts: ::
+
+    # emerge --ask media-fonts/noto media-fonts/noto-cjk media-fonts/noto-emoji
+    # emerge --ask media-fonts/ubuntu-font-family
+    # emerge --ask media-fonts/fontawesome
+
+Install dwm and st: ::
+
+    # vim /etc/portage/package.use/dwm.use
+        x11-terms/dwm savedconfig
+    # emerge --ask x11-wm/dwm::an9wer
+
+    # vim /etc/portage/package.use/st.use
+        x11-terms/st savedconfig
+    # emerge --ask x11-terms/st::an9wer
+
+Install ibus: ::
+
+    # vim /etc/portage/package.accept_keywords
+        app-i18n/ibus-rime ~amd64
+    # emerge --ask app-i18n/ibus app-i18n/ibus-rime
+    # ibus-setup
+
+Install dunst: ::
+
+    # emerge --ask x11-misc/dunst
+
+Install redshift: ::
+
+    # vim /etc/portage/package.use/redshift.use
+        x11-misc/redshift geoclue
+    # emerge --ask x11-misc/redshift
+
+Install alsa: ::
+
+    # emerge --ask media-sound/alsa-utils
+    
+Install chroot: ::
+
+    # mkdir /chroot
+    # wget <PASTED_STAGE_URL>
+    # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /chroot
+    # mkdir -p /chroot/etc/portage/repos.conf
+    # cp /etc/portage/repos.conf/gentoo.conf /chroot/etc/portage/repos.conf/gentoo.conf
+    # vim /etc/init.d/chroot
+        name="chroot daemon"
+
+        depend() {
+           need localmount
+           need bootmisc
+        }
+
+        start() {
+             ebegin "Mounting chroot directories"
+             mount -o rbind /dev /chroot/dev > /dev/null &
+             mount -t proc none /chroot/proc > /dev/null &
+             mount -o bind /sys /chroot/sys > /dev/null &
+             mount -o bind /tmp /chroot/tmp > /dev/null &
+             eend $? "An error occurred while mounting chroot directories"
+        }
+
+        stop() {
+             ebegin "Unmounting chroot directories"
+             umount -f /chroot/dev > /dev/null &
+             umount -f /chroot/proc > /dev/null &
+             umount -f /chroot/sys > /dev/null &
+             umount -f /chroot/tmp > /dev/null &
+             eend $? "An error occurred while unmounting chroot directories"
+        }
+    # rc-service chroot start
+    # chroot /chroot /bin/bash
+    # emerge-webrsync
+    # exit

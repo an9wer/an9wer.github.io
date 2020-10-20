@@ -31,29 +31,36 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="redshift">
-<h1>Redshift</h1>
-<p>By default redshift will use <em>geoclue2</em> to get location information, but in my
-case, it stucks at <cite>Waiting for initial location to become available...</cite> when
-running without any arguments.</p>
-<p>So manually set my location and daytime and night tempurature:</p>
-<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt;</pre>
-<p>To only print (not run) parameter the redshif will execute:</p>
-<pre class="literal-block">$ redshift -l &lt;LATITUDE:LONGTITUDE&gt; -t &lt;DAY:NIGHT&gt; -p</pre>
-<p>To instantly adjusts the color temperature:</p>
-<pre class="literal-block">$ redshift -P -O &lt;TEMPERATURE&gt;</pre>
-<p>To reset all:</p>
-<pre class="literal-block">$ redshift -x</pre>
-<div class="section" id="update-2020-10-14">
-<h2>Update 2020/10/14</h2>
-<p>Fortunately, now <em>geoclue2</em> works well with redshift on my new gentoo system:</p>
-<pre class="literal-block">$ redshift -l geoclue2 -t &lt;DAY:NIGHT&gt;</pre>
-</div>
-<div class="section" id="references">
-<h2>References</h2>
-<p><a class="reference external" href="http://jonls.dk/redshift/">Official website</a></p>
-<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Redshift">Archwiki: redshift</a></p>
-</div>
+<div class="section" id="emerge">
+<h1>Emerge</h1>
+<p>Update repositories:</p>
+<pre class="literal-block">1.
+# emerge --sync [&lt;repo&gt;|&lt;alias&gt; ...]
+
+e.g.
+# emerge --sync
+# emerge --sync an9wer
+
+2.
+# emaint [-r &lt;repo&gt;] sync
+
+e.g.
+# emaint sync
+# emaint -r an9wer sync
+
+3.
+# emerge-webrsync
+
+Note: The emerge-webrsync program will download the entire ebuild
+repository as a tarball, which is much faster than emerge --sync for first
+time syncs.</pre>
+<p>Search match packages, which support a regular expression search by prefixing
+the search string with <span class="docutils literal">%</span>:</p>
+<pre class="literal-block"># emerge -s &lt;package&gt;
+
+e.g.
+# emerge -s cpupower
+# emerge -s &quot;%^kde&quot;</pre>
 </div>
         </div> <!-- content -->
 
