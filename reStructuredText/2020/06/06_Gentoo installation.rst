@@ -205,6 +205,8 @@ Install ibus: ::
 
     # vim /etc/portage/package.accept_keywords
         app-i18n/ibus-rime ~amd64
+    # vim /etc/portage/package.use/ibus-rime.use
+        app-i18n/ibus-rime extra
     # emerge --ask app-i18n/ibus app-i18n/ibus-rime
     # ibus-setup
 
