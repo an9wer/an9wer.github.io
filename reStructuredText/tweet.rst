@@ -1,3 +1,13 @@
+2020/11/01 Sun
+
+    看到 Alex Webb 有 Instagram 帐号，因此注册了一个，但是始终无法登录，后台审
+    核结果：“ Your account has been disabled for violating our terms ”。大概率
+    应该是挂了 VPN 访问被认定机器人了。
+
+2020/10/21 Wed
+
+    500px popular 达成！
+
 2020/10/04 Sun
 
     不带口罩的感觉很好。
