@@ -210,6 +210,11 @@ Install ibus: ::
     # emerge --ask app-i18n/ibus app-i18n/ibus-rime
     # ibus-setup
 
+    For ibus to work with Qt 5
+    # vim /etc/portage/package.use/ibus.use
+        dev-qt/qtgui dbus ibus
+    # emerge --ask --oneshot --newuse dev-qt/qtgui
+
 Install dunst: ::
 
     # emerge --ask x11-misc/dunst
@@ -260,3 +265,11 @@ Install chroot: ::
     # chroot /chroot /bin/bash
     # emerge-webrsync
     # exit
+
+Install gnupg (use pinentry-gtk-2 to request the passphrase in a graphical
+window): ::
+
+    # vim /etc/portage/package.use/gnupg.use
+        app-crypt/pinentry gtk
+    # emerge --ask app-crypt/gnupg
+    # eselect pinentry set pinentry-gtk-2

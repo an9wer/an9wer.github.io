@@ -267,6 +267,8 @@ Vim/
         </notes/vim/map.html>`_
     -   `Vim netrw
         </notes/vim/netrw.html>`_ 
+    -   `Vim plugin
+        </notes/vim/plugin.html>`_
 
 Git/
     -   `git secret

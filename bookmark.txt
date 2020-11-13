@@ -184,6 +184,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/vim/quickfix.rst
         reStructuredText/notes/vim/map.rst
         reStructuredText/notes/vim/netrw.rst
+        reStructuredText/notes/vim/plugin.rst
     Storage
         reStructuredText/notes/storage/glusterfs.rst
         reStructuredText/notes/storage/lvm.rst

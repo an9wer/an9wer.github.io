@@ -31,40 +31,28 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="vim-window">
-<h1>Vim Window</h1>
-<p>See <span class="docutils literal">:h windows.txt</span></p>
-<div class="section" id="buffer">
-<h2>Buffer</h2>
-<ul class="simple">
-<li><p>A buffer is the in-memory text of a file.</p></li>
-<li><p>A window is a viewport on a buffer.</p></li>
-<li><p>A tab page is a collection of windows.</p></li>
-</ul>
-<p>A window is a viewport onto a buffer. You can use multiple windows on one
-buffer, or several windows on different buffers.</p>
-<p>A buffer is a file loaded into memory for editing. The original file remains
-unchanged until you write the buffer to the file.</p>
+<div class="section" id="vim-plugin">
+<h1>Vim plugin</h1>
+<p>See <span class="docutils literal">:h plugin</span></p>
+<p>There are two types of plugins:</p>
+<ol class="arabic simple">
+<li><p>global plugin: Used for all kinds of files</p></li>
+<li><p>filetype plugin: Only used for a specific type of file</p></li>
+</ol>
+<div class="section" id="global-plugin">
+<h2>Global plugin</h2>
+<p>You can see most global plugins in the directory <em>$VIMRUNTIME/plugin</em>.</p>
 </div>
-<div class="section" id="moving-cursor">
-<h2>Moving cursor</h2>
-<dl class="simple">
-<dt>CTRL-W p | CTRL-W CTRL-P</dt>
-<dd><p>Go to previous (last accessed) window (or switch between windows)</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="window-resize">
-<h2>Window resize</h2>
-<p>See <span class="docutils literal">:h <span class="pre">window-resize</span></span></p>
-<dl class="simple">
-<dt>:resize [+|-][N]</dt>
-<dd><p>Resize current window height (default: hightest possible)</p>
-</dd>
-<dt>:vertical resize [+|-][N]</dt>
-<dd><p>Resize current window width (default: widest possible)</p>
-</dd>
-</dl>
+<div class="section" id="filetype-plugin">
+<h2>Filetype plugin</h2>
+<p>See <span class="docutils literal">:h ftplugins</span></p>
+<p>A filetype plugin is like a global plugin, except that it sets options and
+defines mappings for the current buffer only.</p>
+<p>You can add a filetype plugin by dropping it in the right directory
+(<em>$VIMRUNTIME/ftplugin</em>):</p>
+<pre class="literal-block">~/.vim/ftplugin/c.vim
+~/.vim/ftplugin/c_another.vim
+~/.vim/ftplugin/python.vim</pre>
 </div>
 </div>
         </div> <!-- content -->
