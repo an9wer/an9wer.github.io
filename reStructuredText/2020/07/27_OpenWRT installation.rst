@@ -37,7 +37,4 @@ Install luci-app-v2ray: ::
     # opkg install luci-compat
     # reboot
 
-
-
-
-
+Thanks for reading :)

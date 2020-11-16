@@ -1,6 +1,10 @@
 Setup dm-crypt
 ==============
 
+最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台
+NAS 的），本来打算按照之前的方法直接上 raid1，但是这次又想让数据存储更加安全，
+于是在 raid 上面再加了一层 dm-crypt。
+
 Generage a keyfile: ::
 
     # dd if=/dev/urandom of=/path/to/<key file> bs=1 count=4096

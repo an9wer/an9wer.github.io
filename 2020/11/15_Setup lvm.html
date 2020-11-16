@@ -31,21 +31,28 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="build-raid1">
-<h1>Build raid1</h1>
-<p>Create raid 1 device:</p>
-<pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
-<p>After that, check the process of creation command:</p>
-<pre class="literal-block"># cat /proc/mdstat</pre>
-<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, the <em>resyncing</em>
-means the creation is still being in process:</p>
-<pre class="literal-block"># mdadm --detail /dev/md1
-State: clean, resyncing</pre>
+<div class="section" id="setup-lvm">
+<h1>Setup lvm</h1>
+<p>我这台惠普的笔记本 EliteBook 8470p（二手淘回来的）有个光驱盘，而我把它提换成了
+一块机械硬盘。所以打算把它挂载到系统家目录下的 Pictures, Downloads 等文件夹，用
+来存储一些数据文件。</p>
+<p>因为我这块机械硬盘有 1TB 的大小，一时间不知道怎么划分比较合适，所以打算用 lvm，
+每次只添加 50GB 的空间到 pv 里面，可以在有需要的时候实现动态扩容。</p>
+<p>Create a physical volume:</p>
+<pre class="literal-block"># pvcreate /dev/sd&lt;X&gt;</pre>
+<p>Create a volume group:</p>
+<pre class="literal-block"># vgcreate &lt;vg name&gt; /dev/sd&lt;X&gt;</pre>
+<p>Create a logical volume from the volume group above:</p>
+<pre class="literal-block"># lvcreate -l 100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<p>Format the logical voluem:</p>
+<pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<p>Update fstab file, add the following line:</p>
+<pre class="literal-block">/dev/&lt;vg name&gt;/&lt;lv name&gt; &lt;mount point&gt; ext4 defaults,noauto,user 0 0</pre>
+<p>Mount logical volume:</p>
+<pre class="literal-block">$ mount &lt;mount point&gt;</pre>
+<p>Change usr and group ownersip for mount point:</p>
+<pre class="literal-block"># chown -R &lt;uid&gt;:&lt;gid&gt; &lt;mount point&gt;</pre>
 <p>Thanks for reading :)</p>
-<div class="section" id="references">
-<h2>References</h2>
-<p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
-</div>
 </div>
         </div> <!-- content -->
 

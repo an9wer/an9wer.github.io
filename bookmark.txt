@@ -2,6 +2,7 @@ reStructuredText/tweet.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2020/11/15_Setup\ lvm.rst
     reStructuredText/2020/08/26_Setup\ dm-crypt.rst
     reStructuredText/2020/08/13_Redmi\ K30\ 5G\ 刷机.rst
     reStructuredText/2020/07/27_OpenWRT\ installation.rst
@@ -9,7 +10,7 @@ reStructuredText/blog.rst
     reStructuredText/2020/06/06_Gentoo\ installation.rst
     reStructuredText/2020/01/07_服务器被黑事件.rst
     reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
-    reStructuredText/2019/11/09_Build\ raid1.rst
+    reStructuredText/2019/11/09_Setup\ raid1.rst
     reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst
     reStructuredText/2019/08/21_终端下的目录切换.rst
     reStructuredText/2019/08/20_TODO\ list.rst

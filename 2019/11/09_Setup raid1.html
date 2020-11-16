@@ -31,35 +31,23 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="setup-dm-crypt">
-<h1>Setup dm-crypt</h1>
-<p>最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台
-NAS 的），本来打算按照之前的方法直接上 raid1，但是这次又想让数据存储更加安全，
-于是在 raid 上面再加了一层 dm-crypt。</p>
-<p>Generage a keyfile:</p>
-<pre class="literal-block"># dd if=/dev/urandom of=/path/to/&lt;key file&gt; bs=1 count=4096</pre>
-<p>Creating an encrypted storage:</p>
-<pre class="literal-block"># cryptsetup -s 512 luksFormat /dev/&lt;device&gt; /path/to/&lt;key file&gt;</pre>
-<p>Open up the encrypted storage:</p>
-<pre class="literal-block"># cryptsetup luksOpen -d /path/to/&lt;key file&gt; /dev/&lt;device&gt; &lt;mapper name&gt;</pre>
-<p>Format and mount the encrypted storage:</p>
-<pre class="literal-block"># mkfs.ext4 /dev/mapper/&lt;mapper name&gt;
-# mount /dev/mapper/&lt;mapper name&gt; /mnt</pre>
-<p>Close the encrypted storage:</p>
-<pre class="literal-block"># cryptsetup luksClose &lt;mapper name&gt;</pre>
-<p>Automate mounting the encrypted storege:</p>
-<pre class="literal-block"># vim /etc/conf.d/dmcrypt
-    target='crypt'
-    source=UUID=&quot;&lt;uuid&gt;&quot;
-    key='/path/to/&lt;key file&gt;'
-# vim /etc/fstab
-    UUID=&lt;uuid&gt; /mnt ext4 defaults 0 0
-
-# rc-update add dmcrypt boot</pre>
+<div class="section" id="setup-raid1">
+<h1>Setup raid1</h1>
+<p>最近打算把一些照片和重要的文档存储到电脑上，于是特意买了两块东芝 3TB 7200RPM 的
+机械硬盘，安装到我的捡垃圾回来的台式机上（有时间的话另外写一篇 blog 谈论下我是
+如何东拼洗凑捡回这台电脑的），然后就开始安装 raid1。</p>
+<p>Create raid 1 device:</p>
+<pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
+<p>After that, check the process of creation command:</p>
+<pre class="literal-block"># cat /proc/mdstat</pre>
+<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, the <em>resyncing</em>
+means the creation is still being in process:</p>
+<pre class="literal-block"># mdadm --detail /dev/md1
+State: clean, resyncing</pre>
 <p>Thanks for reading :)</p>
 <div class="section" id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Dm-crypt">Gentoo wiki: dm-crypt</a></p>
+<p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
 </div>
 </div>
         </div> <!-- content -->

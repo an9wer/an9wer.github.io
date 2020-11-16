@@ -1,3 +1,5 @@
+2020/11/15 @ `Setup dm-lvm <2020/11/15_Setup%20lvm.html>`_
+
 2020/08/26 @ `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_
 
 2020/08/13 @ `Redmi K30 5G 刷机 </2020/08/13_Redmi%20K30%205G%20刷机.html>`_
@@ -10,7 +12,7 @@
 
 2019/11/24 @ `腾讯云低配服务器性能测试 </2019/11/24_腾讯云低配服务器性能测试.html>`_
 
-2019/11/09 @ `Build raid1 </2019/11/09_Build%20raid1.html>`_
+2019/11/09 @ `Setup raid1 </2019/11/09_Setup%20raid1.html>`_
 
 2019/09/02 @ `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus.html>`_
 
