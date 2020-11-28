@@ -273,3 +273,9 @@ window): ::
         app-crypt/pinentry gtk
     # emerge --ask app-crypt/gnupg
     # eselect pinentry set pinentry-gtk-2
+
+Install imagemagick: ::
+
+    # vim /etc/portage/package.use/imagemagick.use
+        media-gfx/imagemagick X
+    # emerge --ask media-gfx/imagemagick

@@ -44,7 +44,7 @@
 <pre class="literal-block"># vgcreate &lt;vg name&gt; /dev/sd&lt;X&gt;</pre>
 <p>Create a logical volume from the volume group above:</p>
 <pre class="literal-block"># lvcreate -l 100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
-<p>Format the logical voluem:</p>
+<p>Format the logical volume:</p>
 <pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
 <p>Update fstab file, add the following line:</p>
 <pre class="literal-block">/dev/&lt;vg name&gt;/&lt;lv name&gt; &lt;mount point&gt; ext4 defaults,noauto,user 0 0</pre>
@@ -52,7 +52,18 @@
 <pre class="literal-block">$ mount &lt;mount point&gt;</pre>
 <p>Change usr and group ownersip for mount point:</p>
 <pre class="literal-block"># chown -R &lt;uid&gt;:&lt;gid&gt; &lt;mount point&gt;</pre>
+<div class="section" id="id1">
+<h2>创建一个新的挂载点</h2>
+<p>Create another physical volume:</p>
+<pre class="literal-block"># pvcreate /dev/sd&lt;XX&gt;</pre>
+<p>Extend logical volume from the physical volume above:</p>
+<pre class="literal-block"># vgextend &lt;vg name&gt; /dev/sd&lt;XX&gt;</pre>
+<p>Create a logical volume from the volume group above:</p>
+<pre class="literal-block"># lvcreate -l 100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<p>Format the logical volume:</p>
+<pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
 <p>Thanks for reading :)</p>
+</div>
 </div>
         </div> <!-- content -->
 

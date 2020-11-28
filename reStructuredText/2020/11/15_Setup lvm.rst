@@ -20,7 +20,7 @@ Create a logical volume from the volume group above: ::
 
     # lvcreate -l 100%FREE -n <lv name> <vg name>
 
-Format the logical voluem: ::
+Format the logical volume: ::
 
     # mkfs.ext4 /dev/<vg name>/<lv name>
     
@@ -35,5 +35,24 @@ Mount logical volume: ::
 Change usr and group ownersip for mount point: ::
 
     # chown -R <uid>:<gid> <mount point>
+
+创建一个新的挂载点
+------------------
+
+Create another physical volume: ::
+
+    # pvcreate /dev/sd<XX>
+
+Extend logical volume from the physical volume above: ::
+
+    # vgextend <vg name> /dev/sd<XX>
+
+Create a logical volume from the volume group above: ::
+
+    # lvcreate -l 100%FREE -n <lv name> <vg name>
+
+Format the logical volume: ::
+
+    # mkfs.ext4 /dev/<vg name>/<lv name>
 
 Thanks for reading :)

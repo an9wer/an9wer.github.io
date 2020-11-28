@@ -1,4 +1,4 @@
-2020/11/15 @ `Setup dm-lvm <2020/11/15_Setup%20lvm.html>`_
+2020/11/15 @ `Setup lvm <2020/11/15_Setup%20lvm.html>`_
 
 2020/08/26 @ `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_
 

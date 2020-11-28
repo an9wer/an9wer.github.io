@@ -33,3 +33,7 @@ the search string with ``%``: ::
     # emerge -s cpupower
     # emerge -s "%^kde"
 
+Remove package from world: ::
+
+    # emerge --deselect <package>
+    # emerge --depclean -av
