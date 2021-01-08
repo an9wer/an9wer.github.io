@@ -1,6 +1,10 @@
 Emerge
 ======
 
+Use emerge via http proxy: ::
+
+    # export http_proxy=http://<ip>:<port>
+
 Update repositories: ::
 
     1.

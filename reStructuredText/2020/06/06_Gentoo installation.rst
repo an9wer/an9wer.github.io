@@ -279,3 +279,10 @@ Install imagemagick: ::
     # vim /etc/portage/package.use/imagemagick.use
         media-gfx/imagemagick X
     # emerge --ask media-gfx/imagemagick
+
+Install latex: ::
+
+    # vim /etc/portage/package.use/texlive.use
+        app-text/texlive cjk extra
+    # emerge --ask app-text/texlive
+    # emerge --ask dev-texlive/texlive-langchinese 

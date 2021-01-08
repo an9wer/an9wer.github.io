@@ -1,3 +1,17 @@
+2020/12/30 Wed
+
+    Cloudflare universal certificates only support one level subdomain such as
+    one.example.com, not two.one.example.com.
+
+2020/12/29 Tue
+
+    Thanks for 'history -r' command!
+
+2020/12/21 Mon
+
+    搬瓦工流量居然是双向计费的！还差三天到月末流量结算日，结果只剩下 10G 可用了
+    。
+
 2020/11/27 Fri
 
     离职啦！从此 OMC！
@@ -8,7 +22,8 @@
 
 2020/11/15 Sun
 
-    北京东路遇到了很多拿单反的扫街大叔，噢对，还有个大爷，拿了个独脚架。
+    北京东路遇到了很多拿单反的扫街大叔，噢对，还有个大爷，拿了个独脚架，后面跟
+    着两个学生模样的人。
 
 2020/11/11 Wed
 
