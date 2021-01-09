@@ -48,8 +48,8 @@ build_rst() {
         category=blog
       elif [[ $html =~ /notes.html$ ]]; then
         category=notes
-      elif [[ $html =~ /tweet.html$ ]]; then
-        category=tweet
+      elif [[ $html =~ /moments.html$ ]]; then
+        category=moments
       elif [[ $html =~ /tools.html$ ]]; then
         category=tools
       else

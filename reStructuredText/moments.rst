@@ -219,11 +219,11 @@
 
     Good \*uck, see you.
 
-    .. image:: /statics/images/tweet/2019/09/stand.jpg
+    .. image:: /statics/images/moments/2019/09/stand.jpg
 
 2019/09/25 Wed
 
-    .. image:: /statics/images/tweet/2019/09/sky.jpg
+    .. image:: /statics/images/moments/2019/09/sky.jpg
 
 2019/09/21 Sat
 
@@ -231,19 +231,19 @@
 
 2019/09/18 Wed
 
-    .. image:: /statics/images/tweet/2019/09/car.jpg
+    .. image:: /statics/images/moments/2019/09/car.jpg
 
 2019/09/15 Sun
 
     给侄女拼个积木，两百多个零件，这真的是六岁小孩的玩具？
 
-    .. image:: /statics/images/tweet/2019/09/toy.jpg
+    .. image:: /statics/images/moments/2019/09/toy.jpg
 
 2019/09/13 Fri
 
     意思是不能用火狐喽？！
 
-    .. image:: /statics/images/tweet/2019/09/AcFun.png
+    .. image:: /statics/images/moments/2019/09/AcFun.png
 
 2019/09/12 Thu
 
@@ -254,7 +254,7 @@
 
     子弹头
 
-    .. image:: /statics/images/tweet/2019/09/train.jpg
+    .. image:: /statics/images/moments/2019/09/train.jpg
 
 2019/09/06 Fri
 
@@ -265,7 +265,7 @@
     看了 Java tutorial，发现 Java 的语法还没有 Python 难呀，为啥大家都说 Python
     容易上手呢？
 
-    .. image:: /statics/images/tweet/2019/09/sunset.jpg
+    .. image:: /statics/images/moments/2019/09/sunset.jpg
 
 2019/09/04 Wed
 
@@ -274,9 +274,9 @@
 
     雨后初晴的小路
 
-    .. image:: /statics/images/tweet/2019/09/road.jpg
+    .. image:: /statics/images/moments/2019/09/road.jpg
 
-    .. image:: /statics/images/tweet/2019/09/reflection.jpg
+    .. image:: /statics/images/moments/2019/09/reflection.jpg
 
 2019/09/03 Tue
 
@@ -294,7 +294,7 @@
 
     小蜗牛
 
-    .. image:: /statics/images/tweet/2019/08/snail.jpg
+    .. image:: /statics/images/moments/2019/08/snail.jpg
 
 2019/08/02 Fri
 
@@ -304,16 +304,16 @@
 
     N:1
 
-    .. image:: /statics/images/tweet/2019/08/train.jpg
+    .. image:: /statics/images/moments/2019/08/train.jpg
 
 
 2019/07/29 Mon
 
-    .. image:: /statics/images/tweet/2019/07/road.jpg
+    .. image:: /statics/images/moments/2019/07/road.jpg
 
 2019/07/28 Sun
 
-    .. image:: /statics/images/tweet/2019/07/ceil.jpg
+    .. image:: /statics/images/moments/2019/07/ceil.jpg
 
 2019/07/26 Thu
 
@@ -377,7 +377,7 @@
 
     上海师范大学 · 仲夏夜之梦
     
-    .. image:: /statics/images/tweet/2019/06/Show.jpg
+    .. image:: /statics/images/moments/2019/06/Show.jpg
 
 
 2019/06/01 Sat
@@ -396,14 +396,14 @@
 
     好茶 · 再见
 
-    .. image:: /statics/images/tweet/2019/05/Tea.jpg
+    .. image:: /statics/images/moments/2019/05/Tea.jpg
 
 
 2019/05/03 Fri
 
     在爷爷家看到了 Winnie bear :)
 
-    .. image:: /statics/images/tweet/2019/05/Winnie.jpg
+    .. image:: /statics/images/moments/2019/05/Winnie.jpg
 
 
 2019/05/01 Wed
@@ -448,14 +448,14 @@
 
     继昨天电脑没关，Chromium 又开了 n 个 tab 页就成这个样子了。
 
-    .. image:: /statics/images/tweet/2019/04/memory1.png
+    .. image:: /statics/images/moments/2019/04/memory1.png
 
 
 2019/04/09 Tue
 
     Virtualbox 开了两个虚拟机，Firefox 开了 n 个 tab 页就这样子了。
 
-    .. image:: /statics/images/tweet/2019/04/memory0.png
+    .. image:: /statics/images/moments/2019/04/memory0.png
     
 
 2019/04/05 Fri
@@ -503,7 +503,7 @@
 
     最后一天，收拾一下。
 
-    .. image:: /statics/images/tweet/2019/03/normal_day.jpg
+    .. image:: /statics/images/moments/2019/03/normal_day.jpg
 
 
 2019/03/01
@@ -520,7 +520,7 @@
 
     融雪
 
-    .. image:: /statics/images/tweet/2019/02/drip.jpg
+    .. image:: /statics/images/moments/2019/02/drip.jpg
 
 
 2019/01/31
