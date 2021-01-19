@@ -109,10 +109,36 @@ build_dot() {
   done
 }
 
+build_rss() {
+  cat <<EOF
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>an9wer's blog</title>
+  <link>https://an9wer.github.io/blog.html</link>
+EOF
+  perl -lane '
+if (/`(.*) <(.*)>`_/) {
+  print "  <item>";
+  print "    <title>$1</title>";
+  print "    <link>https://an9wer.github.io/$2</link>";
+  print "  </item>";
+}
+' reStructuredText/blog.rst
+
+  cat <<EOF
+</channel>
+
+</rss> 
+EOF
+}
+
 build_all() {
   local IFS=$'\n'
   build_rst $(find "$RST_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
+  build_rss > blog.rss
 }
 
 # Main
