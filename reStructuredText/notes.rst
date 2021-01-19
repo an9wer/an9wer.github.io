@@ -139,6 +139,8 @@ Systemd/
         </notes/systemd/journal.html>`_
 
 Linux/
+    -   `Linux traffic control
+        </notes/linux/traffic_control.html>`_
     -   `Linux filesystem hierarchy
         </notes/linux/filesystem_hierarchy.html>`_
     -   `Linux network

@@ -2,6 +2,7 @@ reStructuredText/moments.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2021/01/19_Kernel\ upgrade\ in\ Gentoo.rst
     reStructuredText/2020/11/15_Setup\ lvm.rst
     reStructuredText/2020/08/26_Setup\ dm-crypt.rst
     reStructuredText/2020/08/13_Redmi\ K30\ 5G\ 刷机.rst
@@ -117,6 +118,7 @@ reStructuredText/notes.rst
         reStructuredText/notes/systemd/tmpfile.rst
         reStructuredText/notes/systemd/journal.rst
     Linux
+        reStructuredText/notes/linux/traffic_control.rst
         reStructuredText/notes/linux/filesystem_hierarchy.rst
         reStructuredText/notes/linux/network.rst
         reStructuredText/notes/linux/wireless.rst

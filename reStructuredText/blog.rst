@@ -1,3 +1,5 @@
+2021/01/19 @ `Kernel upgrade in Gentoo <2021/01/19_Kernel%20upgrade%20in%20Gentoo.html>`_
+
 2020/11/15 @ `Setup lvm <2020/11/15_Setup%20lvm.html>`_
 
 2020/08/26 @ `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_

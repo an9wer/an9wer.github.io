@@ -1,3 +1,11 @@
+2021/01/16 Sat
+
+    野路上滑滑板，一个 DBH 的贴纸给粘在轮子上了，太不可思议了吧！
+
+2021/01/14 Thu
+
+    用 asics 练 ollie 把鞋面给磨破了，好心疼。
+
 2020/12/30 Wed
 
     Cloudflare universal certificates only support one level subdomain such as
