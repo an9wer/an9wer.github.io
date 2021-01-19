@@ -28,6 +28,8 @@ kernel： ::
 
 这样，终于可以把 kernel upgrade 任务从我的 todo list 里面移除了。
 
+Thanks for reading :)
+
 References
 ----------
 
@@ -36,5 +38,3 @@ References
 
 `Gentoo wiki: kernel removal
 <https://wiki.gentoo.org/wiki/Kernel/Removal>`_
-
-Thanks for reading :)
