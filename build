@@ -112,7 +112,7 @@ build_dot() {
 build_all() {
   local IFS=$'\n'
   build_rst $(find "$RST_DIR" -type f -name "*.rst")
-  build_dot $(find "$DOT_DIR" -type f -name "*.dot")
+  #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
 }
 
 # Main

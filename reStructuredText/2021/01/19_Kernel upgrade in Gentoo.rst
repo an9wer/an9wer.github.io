@@ -36,6 +36,5 @@ References
 
 `Gentoo wiki: kernel removal
 <https://wiki.gentoo.org/wiki/Kernel/Removal>`_
-`
 
 Thanks for reading :)
