@@ -1,10 +1,11 @@
 Use zx2c4's pass command on Android phone
 =========================================
 
-我在电脑上一直使用 zx2c4's pass 命令来管理密码。最近和某位前同事讨论的时候，提
-到了手机端密码管理的需求，我平时偶尔需要在手机上输入密码，但一般都是通过 ``adb
-input text $(pass show <pass-name>)`` 来处理的，稍微麻烦了一些。后来发现
-zx2c4's pass 居然还有移动端的客户端，于是在我的安卓机上下载了 `Password Store
+我在电脑上一直使用 `zx2c4's pass <https://www.passwordstore.org/>`_ 命令来管理
+密码。最近和某位前同事讨论的时候，提到了手机端密码管理的需求，我平时偶尔需要在
+手机上输入密码，但一般都是通过 ``adb input text $(pass show <pass-name>)`` 来处
+理的，稍微麻烦了一些。后来发现 zx2c4's pass 居然还有移动端的客户端，于是在我的
+安卓机上下载了 `Password Store
 <https://github.com/android-password-store/Android-Password-Store>`_ 这个软件，
 并配置使用。
 

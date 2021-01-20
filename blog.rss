@@ -4,6 +4,13 @@
 <channel>
   <title>an9wer's blog</title>
   <link>https://an9wer.github.io/blog.html</link>
+  <description>Website of an9wer's blog</description>
+  <webMaster>an9wer@gmail.com</webMaster>
+  <pubDate>Wed, 20 Jan 2021 07:51:01 +0000</pubDate>
+  <lastBuildDate>Wed, 20 Jan 2021 07:51:01 +0000</lastBuildDate>
+  <category>blog</category>
+  <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+  <ttl>60</ttl>
   <item>
     <title>Use zx2c4's pass command on Android phone</title>
     <link>https://an9wer.github.io/2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html</link>

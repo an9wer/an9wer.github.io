@@ -110,15 +110,24 @@ build_dot() {
 }
 
 build_rss() {
-  cat <<EOF
+  if [[ ! -f blog.rss ]] ||
+      ([[ -f blog.rss ]] && (( $(stat -c "%Y" blog.rss ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
+    { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 
 <channel>
   <title>an9wer's blog</title>
   <link>https://an9wer.github.io/blog.html</link>
+  <description>Website of an9wer's blog</description>
+  <webMaster>an9wer@gmail.com</webMaster>
+  <pubDate>$(date -u -R)</pubDate>
+  <lastBuildDate>$(date -u -R)</lastBuildDate>
+  <category>blog</category>
+  <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+  <ttl>60</ttl>
 EOF
-  perl -lane '
+    perl -lane '
 if (/`(.*) <(.*)>`_/) {
   print "  <item>";
   print "    <title>$1</title>";
@@ -127,18 +136,22 @@ if (/`(.*) <(.*)>`_/) {
 }
 ' reStructuredText/blog.rst
 
-  cat <<EOF
+    cat <<EOF
 </channel>
 
 </rss> 
 EOF
+    } > blog.rss
+
+    echo -e "'reStructuredText/blog.rst'\n->\t'blog.rss'"
+  fi
 }
 
 build_all() {
   local IFS=$'\n'
   build_rst $(find "$RST_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
-  build_rss > blog.rss
+  build_rss
 }
 
 # Main
