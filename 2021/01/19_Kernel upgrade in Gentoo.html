@@ -48,7 +48,7 @@ kernel：</p>
 <pre class="literal-block"># grub-mkconfig -o /boot/grub/grub.cfg</pre>
 <p>重启试下，如果没有问题就可以清理旧版本的 kernel 了：</p>
 <pre class="literal-block"># emerge --deselect sys-kernel/gentoo-sources:&lt;old version&gt;
-# eclean-kernel -d n 1</pre>
+# eclean-kernel -d -n 1</pre>
 <p>这里我只保留了最新一个版本的 kernel。</p>
 <p>这样，终于可以把 kernel upgrade 任务从我的 todo list 里面移除了。</p>
 <p>Thanks for reading :)</p>

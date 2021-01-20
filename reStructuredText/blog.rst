@@ -1,3 +1,5 @@
+2021/01/20 @ `Use zx2c4's pass command on Android phone <2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html>`_
+
 2021/01/19 @ `Kernel upgrade in Gentoo <2021/01/19_Kernel%20upgrade%20in%20Gentoo.html>`_
 
 2020/11/15 @ `Setup lvm <2020/11/15_Setup%20lvm.html>`_

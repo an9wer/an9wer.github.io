@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>an9wer's blog</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="docutils" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="moments"
+                href="/moments.html">Moments</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tools"
+                href="/tools.html">Tools</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="use-zx2c4-s-pass-command-on-android-phone">
+<h1>Use zx2c4's pass command on Android phone</h1>
+<p>我在电脑上一直使用 zx2c4's pass 命令来管理密码。最近和某位前同事讨论的时候，提
+到了手机端密码管理的需求，我平时偶尔需要在手机上输入密码，但一般都是通过 <span class="docutils literal">adb input text $(pass show <span class="pre">&lt;pass-name&gt;)</span></span> 来处理的，稍微麻烦了一些。后来发现
+zx2c4's pass 居然还有移动端的客户端，于是在我的安卓机上下载了 <a class="reference external" href="https://github.com/android-password-store/Android-Password-Store">Password Store</a> 这个软件，
+并配置使用。</p>
+<p>Password Store 是通过 git repo 的方式来同步密码的，所以需要先创建 git server，
+在本地创建一个名为 <em>password-store.git</em> 的 git server：</p>
+<pre class="literal-block">$ mkdir password-store.git
+$ cd password-store.git
+$ git init --bare</pre>
+<p>同步本地的 <em>~/.password-store</em> 文件夹到 git server，需要将该文件夹变成 git repo
+然后同步到 git server：</p>
+<pre class="literal-block">$ cd ~/.password-store
+$ git init
+$ git add .
+$ git commit -m &quot;Initial commit&quot;
+$ git remote add origin &lt;username&gt;&#64;&lt;hostname&gt;:/path/to/password-store.git
+$ git push origin master</pre>
+<p>之后在手机上打开 Password Store 软件，配置 git server 的信息，然后同步，这样
+pass 密钥库就同步到手机上了。</p>
+<p>但是如何在手机 Password Store 上解密 pass 密钥文件呢？这个时候还需要安装
+<a class="reference external" href="https://github.com/open-keychain/open-keychain">OpenKeychain</a> 软件，然后将
+电脑上的 gnupg key 导入到 OpenKeychain 软件中：</p>
+<pre class="literal-block">$ gpg --armor --export-secret-keys &lt;key-name&gt; | gpg --armor --symmetric --output &lt;key-name&gt;.sec.asc
+
+Transfer &lt;key-name&gt;.sec.asc to your phone, and then use OpenKeychain to import it.</pre>
+<p>我在操作到了这一步之后发现还是无法解密 Password Store 中的密钥文件，但搜索找到
+了 <a class="reference external" href="https://github.com/android-password-store/Android-Password-Store/issues/518#issuecomment-557832387">解决方案</a>
+，需要在手机的设置中为 OpenKeychain 软件开启如下权限：</p>
+<pre class="literal-block">Settings -&gt; Apps -&gt; OpenKeychain -&gt; Display pop-up windows while running in the background</pre>
+<p>至此，手机上可以顺利读取 zx2c4's pass 的密钥，接下来可以愉快地在手机上使用了。</p>
+<p>Thanks for reading :)</p>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

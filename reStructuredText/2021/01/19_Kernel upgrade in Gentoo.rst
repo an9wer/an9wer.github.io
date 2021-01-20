@@ -22,7 +22,7 @@ kernel： ::
 重启试下，如果没有问题就可以清理旧版本的 kernel 了： ::
 
     # emerge --deselect sys-kernel/gentoo-sources:<old version>
-    # eclean-kernel -d n 1
+    # eclean-kernel -d -n 1
 
 这里我只保留了最新一个版本的 kernel。
 
