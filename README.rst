@@ -1,31 +1,23 @@
 Blog
 ====
 
-My own build statistics blog system.
+My personal statistics blog system.
 
 Prerequisites
 -------------
 
-In current project directory, run:
-
-::
+In current project directory, run: ::
 
     $ python3 -m venv venv
     $ venv/bin/pip install docutils
 
-
 Usage
 -----
 
-Build all blogs and dots:
-
-::
+Build all blogs and generate RSS: ::
 
     $ ./build
 
-
-Clean redurdant files:
-
-::
+Remove obsolete files: ::
 
     $ ./clean
