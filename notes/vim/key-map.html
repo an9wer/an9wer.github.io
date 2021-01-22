@@ -33,35 +33,62 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="vim-options">
-<h1>Vim Options</h1>
-<dl class="simple">
-<dt>paste</dt>
-<dd><p>Put vim in paste mode. This will avoid unexpected effects when pasting text
-in insert mode.</p>
+<div class="section" id="vim-key-map">
+<h1>Vim key map</h1>
+<p>See <cite>:h map.txt</cite></p>
+<dl>
+<dt>&lt;expr&gt;</dt>
+<dd><p>The expression is evaluated to obtain the {rhs} that is used.</p>
+<p>See <cite>:h map-&lt;expr&gt;</cite></p>
 </dd>
-<dt>cryptmethod cm</dt>
-<dd><p>Method used for encryption when the buffer is written to a file.</p>
-<ul class="simple">
-<li><p>zip: PkZip compatible method. A weak kind of encryption.</p></li>
-<li><p>blowfish: Blowfish method. Medium strong encryption but it has an
-implementation flaw.</p></li>
-<li><p>blowfish2: Blowfish method. Medium strong encryption. This adds a
-&quot;seed&quot; to the file, every time you write the file the encrypted bytes
-will be different.</p></li>
-</ul>
+<dt>&lt;buffer&gt;</dt>
+<dd><p>The mapping/abbreviation is effective in the current buffer only.</p>
+<p>See <cite>:h map-&lt;buffer&gt;</cite></p>
 </dd>
 </dl>
-<p>lhsearch</p>
-<p>shortmess</p>
-<p>regexpengine</p>
+<div class="section" id="abbreviations">
+<h2>Abbreviations</h2>
+<p>Abbreviations are used in Insert mode, Replace mode and Command-line mode.</p>
+<p>Abbreviations are never recursive.</p>
+<p>To avoid the abbreviation in Insert mode: Type <em>CTRL-V</em> before the character
+that would trigger the abbreviation. (E.g. CTRL-V &lt;Space&gt;.  Or type part of
+the abbreviation, exit insert mode with &lt;Esc&gt;, re-enter insert mode with &quot;a&quot;
+and type the rest.)</p>
+<p>To avoid the abbreviation in Command-line mode: Type <em>CTRL-V</em> twice somewhere
+in the abbreviation to avoid it to be replaced.  A <em>CTRL-V</em> in front of a
+normal character is mostly ignored otherwise.</p>
 <dl class="simple">
-<dt>modeline</dt>
-<dd><p>If starting editing a new file, and the 'modeline' option is on, a number
-of lines at the beginning and end of the file are checked for modelines.</p>
+<dt>:ab[breviate]</dt>
+<dd><p>List all abbreviations.</p>
+</dd>
+<dt>:ab[breviate] {lhs}</dt>
+<dd><p>List the abbreviations that start with {lhs}.</p>
+</dd>
+<dt>:ab[breviate] [&lt;expr&gt;] [&lt;buffer&gt;] {lhs} {rhs}</dt>
+<dd><p>Add abbrevia for {lhs} to {rhs}. If {lhs} already existed it is replaced
+with the new {rhs}. {rhs} may contain spaces.</p>
+</dd>
+<dt>:ca[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Command-line mode only.</p>
+</dd>
+<dt>:ia[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Insert mode only.</p>
 </dd>
 </dl>
-<p>magic</p>
+</div>
+<div class="section" id="default-key-map">
+<h2>Default key map</h2>
+<p>see <span class="docutils literal">:h editing.txt</span></p>
+<dl class="simple">
+<dt>CTRL-G | :f[ile]</dt>
+<dd><p>Prints the current file name</p>
+</dd>
+<dt>{count}CTRL-G</dt>
+<dd><p>Prints the current file name with full path. If the count is higher then 1,
+the current buffer number is also given.</p>
+</dd>
+</dl>
+</div>
 </div>
         </div> <!-- content -->
 

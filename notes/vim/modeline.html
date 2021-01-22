@@ -33,35 +33,22 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="vim-options">
-<h1>Vim Options</h1>
-<dl class="simple">
-<dt>paste</dt>
-<dd><p>Put vim in paste mode. This will avoid unexpected effects when pasting text
-in insert mode.</p>
-</dd>
-<dt>cryptmethod cm</dt>
-<dd><p>Method used for encryption when the buffer is written to a file.</p>
-<ul class="simple">
-<li><p>zip: PkZip compatible method. A weak kind of encryption.</p></li>
-<li><p>blowfish: Blowfish method. Medium strong encryption but it has an
-implementation flaw.</p></li>
-<li><p>blowfish2: Blowfish method. Medium strong encryption. This adds a
-&quot;seed&quot; to the file, every time you write the file the encrypted bytes
-will be different.</p></li>
-</ul>
-</dd>
-</dl>
-<p>lhsearch</p>
-<p>shortmess</p>
-<p>regexpengine</p>
-<dl class="simple">
-<dt>modeline</dt>
-<dd><p>If starting editing a new file, and the 'modeline' option is on, a number
-of lines at the beginning and end of the file are checked for modelines.</p>
-</dd>
-</dl>
-<p>magic</p>
+<div class="section" id="vim-modline">
+<h1>Vim modline</h1>
+<p>There are two forms of modelines.</p>
+<p>Form 1:</p>
+<pre class="literal-block">[text]{white}{vi:|vim:|ex:}[white]{options}</pre>
+<p>The <em>options</em> in this modeline are seperated with white space or ':', where
+each part between ':' is the argument for a &quot;:set&quot; command.</p>
+<p>Form 2:</p>
+<pre class="literal-block">[text]{white}{vi:|vim:|Vim:|ex:}[white]se[t] {options}:[text]</pre>
+<p>The <em>option</em> in this modeline are seperated with white space, which is the
+argument for a &quot;:set&quot; command.</p>
+<p><strong>Note</strong>: If you want to include a ':' in a set command precede it with a '\'.
+The backslash in front of the ':' will be removed.</p>
+<pre class="literal-block">/* vi:set dir=c\:\tmp: */</pre>
+<p>This sets the 'dir' option to &quot;c:\tmp&quot;. Only a single backslash before the ':'
+is removed.  Thus to include &quot;\:&quot; you have to specify &quot;\\:&quot;.</p>
 </div>
         </div> <!-- content -->
 
