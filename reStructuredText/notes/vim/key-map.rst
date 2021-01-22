@@ -1,5 +1,5 @@
-Vim Map
-=======
+Vim key map
+===========
 
 See `:h map.txt`
 
@@ -44,3 +44,16 @@ normal character is mostly ignored otherwise.
 
 :ia[bbrev] [<expr>] [<buffer>] [lhs] [rhs]
     Same as ":ab[breviate]", but for Insert mode only.
+
+
+Default key map
+---------------
+
+see ``:h editing.txt``
+
+CTRL-G | :f[ile]
+    Prints the current file name
+
+{count}CTRL-G
+    Prints the current file name with full path. If the count is higher then 1,
+    the current buffer number is also given.

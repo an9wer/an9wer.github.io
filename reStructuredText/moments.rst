@@ -1,3 +1,8 @@
+2021/01/21 Thu
+
+    Independent trunks, BlackKnight deck, Skater wheels and BD Skate bearings
+    made up my new skateboard.
+
 2021/01/16 Sat
 
     野路上滑滑板，一个 DBH 的贴纸给粘在轮子上了，太不可思议了吧！

@@ -33,69 +33,18 @@
         </div> <!-- navbar -->
 
         <div id="content">
-<div class="section" id="vim-cmdline">
-<h1>Vim cmdline</h1>
-<div class="section" id="range">
-<h2>Range</h2>
-<p>See <span class="docutils literal">:h [range]</span> or <span class="docutils literal">:h <span class="pre">cmdline-ranges</span></span>.</p>
-<p>Range consists of one or more line specifiers, separated with ',' or ';'.</p>
-<p>When separated with ';' the cursor position will be set to that line before
-interpreting the next line specifier. This doesn't happen for ','.</p>
-<p>The default line specifier for most commands is the cursor position, but the
-ex commands &quot;:write&quot; and &quot;:global&quot; have the whole file (1,$) as default.</p>
-<dl class="simple">
-<dt>{number}</dt>
-<dd><p>an absolute line number</p>
-</dd>
-<dt>0</dt>
-<dd><p>The first line</p>
-</dd>
-<dt>1</dt>
-<dd><p>The first line</p>
-</dd>
-<dt>.</dt>
-<dd><p>the current line</p>
-</dd>
-<dt>$</dt>
-<dd><p>the last line in the file</p>
-</dd>
-<dt>%</dt>
-<dd><p>equal to 1,$ (the entire file)</p>
-</dd>
-<dt>'t</dt>
-<dd><p>position of mark t (lowercase)</p>
-</dd>
-<dt>'T</dt>
-<dd><p>position of mark T (uppercase); when the mark is in another file it cannot
-be used in a range</p>
-</dd>
-<dt>/{pattern}[/]</dt>
-<dd><p>the next of current line where {pattern} matches</p>
-</dd>
-<dt>?{pattern}[?]</dt>
-<dd><p>the previous of current line where {pattern} matches</p>
-</dd>
-<dt>/</dt>
-<dd><p>the next line where the previously used search pattern matches</p>
-</dd>
-<dt>?</dt>
-<dd><p>the previous line where the previously used search pattern matches</p>
-</dd>
-<dt>&amp;</dt>
-<dd><p>the next line where the previously used substitute pattern matches</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="commands">
-<h2>Commands</h2>
-<dl>
-<dt>:[range]w[rite] [++opt] !{cmd}</dt>
-<dd><p>Execute {cmd} with [range] lines as standard input (note the space in front
-of the '!').</p>
-<p>The default [range] for the &quot;:w&quot; command is the whole buffer (1,$).</p>
-</dd>
-</dl>
-</div>
+<div class="section" id="vim-file-searching">
+<h1>Vim file searching</h1>
+<p>See <span class="docutils literal">:h <span class="pre">file-searching</span></span></p>
+<p>The file searching is currently used for the <em>path</em>, <em>cdpath</em> and <em>tags</em>
+options, for <cite>finddir()</cite> and <cite>findfile()</cite>.  Other commands use <cite>wildcards</cite>
+which is slightly different.</p>
+<p>There are three different types of searching:</p>
+<ol class="arabic simple">
+<li><p>Downward searching ('**', '*')</p></li>
+<li><p>Upward searching (';')</p></li>
+<li><p>Combined up/donwward searching ('**', '*', ';')</p></li>
+</ol>
 </div>
         </div> <!-- content -->
 

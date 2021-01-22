@@ -1,4 +1,8 @@
 Commands/
+    -   `7z
+        </notes/commands/7z.html>`_
+    -   `rsync
+        </notes/commands/rsync.html>`_
     -   `ledger
         </notes/commands/ledger.html>`_
     -   `info
@@ -243,8 +247,8 @@ Bash/
         </notes/bash/function.html>`_
 
 Vim/
-    -   `Vim tricks
-        </notes/vim/tricks.html>`_
+    -   `Vim plugin
+        </notes/vim/plugin.html>`_
     -   `Vim options
         </notes/vim/options.html>`_
     -   `Vim pattern
@@ -253,8 +257,6 @@ Vim/
         </notes/vim/cmdline.html>`_
     -   `Vim change
         </notes/vim/change.html>`_
-    -   `Vim editing
-        </notes/vim/editing.html>`_
     -   `Vim window
         </notes/vim/window.html>`_
     -   `Vim tabage
@@ -265,12 +267,18 @@ Vim/
         </notes/vim/various.html>`_
     -   `Vim quickfix
         </notes/vim/quickfix.html>`_
-    -   `Vim map
-        </notes/vim/map.html>`_
     -   `Vim netrw
         </notes/vim/netrw.html>`_ 
-    -   `Vim plugin
-        </notes/vim/plugin.html>`_
+    -   `Vim modeline
+        </notes/vim/modeline.html>`_
+    -   `Vim key map
+        </notes/vim/key-map.html>`_
+    -   `Vim file searching
+        </notes/vim/file-searching.html>`_ 
+    -   `Vim file encryption
+        </notes/vim/file-encryption.html>`_ 
+    -   `Vim tricks
+        </notes/vim/tricks.html>`_
 
 Git/
     -   `git secret

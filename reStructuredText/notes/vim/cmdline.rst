@@ -54,3 +54,11 @@ ex commands ":write" and ":global" have the whole file (1,$) as default.
 \&
     the next line where the previously used substitute pattern matches
 
+Commands
+--------
+
+:[range]w[rite] [++opt] !{cmd}
+    Execute {cmd} with [range] lines as standard input (note the space in front
+    of the '!'). 
+
+    The default [range] for the ":w" command is the whole buffer (1,$).

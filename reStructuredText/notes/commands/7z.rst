@@ -1,0 +1,13 @@
+7z
+==
+
+e (Extract)
+-----------
+
+Extracts files from an archive to current directory: ::
+
+    $ 7z e <archive>.7z
+
+Extract files from an archive to a specified directory: ::
+
+    $ 7z e <archive>.7z -o</path/to/directory>

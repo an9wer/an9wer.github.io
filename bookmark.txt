@@ -44,6 +44,7 @@ reStructuredText/blog.rst
 
 reStructuredText/notes.rst
     Commands
+        reStructuredText/notes/commands/7z.rst
         reStructuredText/notes/commands/rsync.rst
         reStructuredText/notes/commands/ledger.rst
         reStructuredText/notes/commands/info.rst
@@ -176,19 +177,21 @@ reStructuredText/notes.rst
         reStructuredText/notes/bash/function.rst
     Vim
         reStructuredText/notes/vim/tricks.rst
+        reStructuredText/notes/vim/plugin.rst
         reStructuredText/notes/vim/options.rst
         reStructuredText/notes/vim/pattern.rst
         reStructuredText/notes/vim/cmdline.rst
         reStructuredText/notes/vim/change.rst
-        reStructuredText/notes/vim/editing.rst
         reStructuredText/notes/vim/window.rst
         reStructuredText/notes/vim/tabpage.rst
         reStructuredText/notes/vim/repeat.rst
         reStructuredText/notes/vim/various.rst
         reStructuredText/notes/vim/quickfix.rst
-        reStructuredText/notes/vim/map.rst
         reStructuredText/notes/vim/netrw.rst
-        reStructuredText/notes/vim/plugin.rst
+        reStructuredText/notes/vim/key-map.rst
+        reStructuredText/notes/vim/modeline.rst
+        reStructuredText/notes/vim/file-searching.rst
+        reStructuredText/notes/vim/file-encryption.rst
     Storage
         reStructuredText/notes/storage/glusterfs.rst
         reStructuredText/notes/storage/lvm.rst

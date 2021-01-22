@@ -1,13 +1,12 @@
 Vim plugin
 ==========
 
-See ``:h plugin``
+See ``:h plugin``, ``:h initialization`` and ``:h runtimepath``
 
 There are two types of plugins:
 
 1. global plugin: Used for all kinds of files
 2. filetype plugin: Only used for a specific type of file
-
 
 Global plugin
 -------------

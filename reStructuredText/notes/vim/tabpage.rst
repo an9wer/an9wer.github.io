@@ -1,7 +1,7 @@
 Vim Tabpage
 ===========
 
-See *:h tabpage*
+See ``:h tabpage``
 
 Commands
 --------
@@ -46,5 +46,4 @@ CTRL-W gf
 Tabline
 -------
 
-See *:h setting-tabline*
-
+See ``:h setting-tabline``
