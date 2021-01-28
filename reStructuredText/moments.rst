@@ -1,3 +1,7 @@
+2021/01/26 Tue
+
+    原来通过 DNS challenge 可以申请到 Let's encrypt 的泛域名证书。
+
 2021/01/21 Thu
 
     Independent trunks, BlackKnight deck, Skater wheels and BD Skate bearings
@@ -60,7 +64,7 @@
 
 2020/10/04 Sun
 
-    不带口罩的感觉很好。
+    不戴口罩的感觉很好。
 
 2020/09/18 Fri
 
@@ -70,8 +74,8 @@
 
 2020/09/05 Sat
 
-    在笔记本上安装 Deepin 的时候，不能使用触摸板，这是驱动问题我认了，但是居然
-    不能用键盘的 Tab 键来切换所选框，这体验真是扣脚。
+    在笔记本上安装 Deepin 的时候，不能使用触摸板，这是驱动问题我认了。但是居然
+    不能用键盘的 Tab 键来切换所选框，这体验真是扣脚，都怪我没有鼠标。
 
 2020/08/31 Mon
 

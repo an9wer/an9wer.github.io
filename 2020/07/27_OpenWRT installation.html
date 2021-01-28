@@ -35,13 +35,16 @@
         <div id="content">
 <div class="section" id="openwrt-installation">
 <h1>OpenWRT installation</h1>
-<p>Install OpenWRT on X86 machine:</p>
+<p>目前我的 PVE 里面目前有两台虚拟机，一台 Gentoo，一台 Win7，所以打算再安装一台
+Openwrt 的虚拟机来负责其它虚拟机的网络进出。于是按照如下步骤在虚拟机中安装
+OpenWRT，当然这种方法也可以用在 x86 电脑上安装 OpenWRT。</p>
+<p>Flash OpenWRT firmware on X86 machine, and enlarge partition size:</p>
 <pre class="literal-block"># dd if=openwrt.img of=/dev/sdX
 # parted /dev/sdX
     resizepart 2 -1
 # resize2fs /dev/sdX2
 # reboot</pre>
-<p>Use opkg through a proxy:</p>
+<p>Use opkg through a proxy if download speed is low:</p>
 <pre class="literal-block"># export http_proxy=http://&lt;address&gt;:&lt;port&gt;</pre>
 <p>Install Wireguard:</p>
 <pre class="literal-block"># opkg update
@@ -50,7 +53,10 @@
 
 # wg genkey &gt; privatekey
 # wg pubkey &lt; privatekey &gt; publickey</pre>
-<p>Install luci-app-v2ray:</p>
+<p>Install <a class="reference external" href="https://github.com/kuoruan/openwrt-v2ray">v2ray</a>:</p>
+<pre class="literal-block">Download v2ray-core*.ipk from release page, then:
+# opkg install v2ray-core*.ipk</pre>
+<p>Install <a class="reference external" href="https://github.com/kuoruan/luci-app-v2ray">v2ray luci</a>:</p>
 <pre class="literal-block"># opkg install jshn
 # opkg install ip
 # opkg install ipset
@@ -60,10 +66,96 @@
 # opkg remove dnsmasq
 # opkg install dnsmasq-full
 
+Download luci-app-v2ray*.ipk from release page, then:
 # opkg install luci-app-v2ray_1.5.6_all.ipk
 # opkg install luci-compat
 # reboot</pre>
+<div class="section" id="update-2021-01-28">
+<h2>Update 2021/01/28</h2>
+<p>之前买了一台 NanoPi R2S，用来作为旁路由使用。</p>
+<p>这次配置的时候觉得 v2ray luci 使用安装和使用起来太麻烦，所以直接自己写配置文件
+：</p>
+<pre class="literal-block">{
+    &quot;log&quot;: {
+        &quot;logLevel&quot;: &quot;error&quot;
+    },
+    &quot;inbounds&quot;: [{
+        &quot;port&quot;: 1080,
+        &quot;listen&quot;: &quot;0.0.0.0&quot;,
+        &quot;protocol&quot;: &quot;socks&quot;,
+        &quot;sniffing&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+        },
+        &quot;settings&quot;: {
+            &quot;auth&quot;: &quot;noauth&quot;,
+            &quot;udp&quot;: false
+        }
+    }, {
+        &quot;port&quot;: 1081,
+        &quot;listen&quot;: &quot;0.0.0.0&quot;,
+        &quot;protocol&quot;: &quot;http&quot;,
+        &quot;sniffing&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+        },
+        &quot;settings&quot;: {
+            &quot;timeout&quot;: 0,
+            &quot;allowTransparent&quot;: false,
+            &quot;userLevel&quot;: 0
+        }
+    }],
+    &quot;outbounds&quot;: [{
+        &quot;protocol&quot;: &quot;vmess&quot;,
+        &quot;settings&quot;: {
+            &quot;vnext&quot;: [{
+                &quot;address&quot;: &quot;&lt;ADDRESS&gt;&quot;,
+                &quot;port&quot;: &lt;PORT&gt;,
+                &quot;users&quot;: [{
+                    &quot;id&quot;: &quot;&lt;ID&gt;&quot;,
+                    &quot;alterId&quot;: 6
+                }]
+            }]
+        }
+    }, {
+        &quot;protocol&quot;: &quot;freedom&quot;,
+        &quot;settings&quot;: {},
+        &quot;tag&quot;: &quot;direct&quot;
+    }],
+    &quot;routing&quot;: {
+        &quot;domainStrategy&quot;: &quot;AsIs&quot;,
+        &quot;rules&quot;: [{
+            &quot;type&quot;: &quot;field&quot;,
+            &quot;domain&quot;: [
+                &quot;geosite:cn&quot;
+            ],
+            &quot;outboundTag&quot;: &quot;direct&quot;
+        }]
+    }
+}</pre>
+<p>当然还需要手写 init 脚本：</p>
+<pre class="literal-block">#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+
+START=99
+STOP=01
+
+start_service() {
+    procd_open_instance
+    procd_set_param command /usr/bin/v2ray -config /etc/v2ray/config.json
+    procd_set_param file /etc/v2ray/config.json
+    #procd_set_param limits core=&quot;unlimited&quot;
+    procd_set_param pidfile /var/run/v2ray.pid
+    procd_close_instance
+}</pre>
 <p>Thanks for reading :)</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://openwrt.org/docs/guide-user/installation/openwrt_x86">OpenWRT x86 Installation</a></p>
+<p><a class="reference external" href="https://openwrt.org/docs/techref/initscripts">OpenWRT init scripts</a></p>
+</div>
 </div>
         </div> <!-- content -->
 
