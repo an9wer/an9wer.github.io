@@ -6,8 +6,8 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Wed, 20 Jan 2021 07:51:01 +0000</pubDate>
-  <lastBuildDate>Wed, 20 Jan 2021 07:51:01 +0000</lastBuildDate>
+  <pubDate>Thu, 28 Jan 2021 07:11:18 +0000</pubDate>
+  <lastBuildDate>Thu, 28 Jan 2021 07:11:18 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
@@ -30,6 +30,10 @@
   <item>
     <title>Redmi K30 5G 刷机</title>
     <link>https://an9wer.github.io//2020/08/13_Redmi%20K30%205G%20刷机.html</link>
+  </item>
+  <item>
+    <title>OpenWRT installation</title>
+    <link>https://an9wer.github.io//2020/07/27_OpenWRT\ installation.html</link>
   </item>
   <item>
     <title>从 archlinux 转投 gentoo</title>

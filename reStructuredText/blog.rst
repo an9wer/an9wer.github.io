@@ -8,6 +8,8 @@
 
 2020/08/13 @ `Redmi K30 5G 刷机 </2020/08/13_Redmi%20K30%205G%20刷机.html>`_
 
+2020/07/27 @ `OpenWRT installation </2020/07/27_OpenWRT\ installation.html>`_
+
 2020/07/05 @ `从 archlinux 转投 gentoo </2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
 
 2020/06/06 @ `Gentoo installation </2020/06/06_Gentoo%20installation.html>`_
