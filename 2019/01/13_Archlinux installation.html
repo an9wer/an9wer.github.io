@@ -37,100 +37,112 @@
 <h1>Archlinux installation</h1>
 <div class="section" id="flash-iso">
 <h2>Flash iso</h2>
-<pre class="literal-block">$ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} status=&quot;progress&quot;</pre>
+<pre class="literal-block">$ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} conv=fsync status=progress</pre>
 </div>
 <div class="section" id="system-installation">
 <h2>System installation</h2>
-<p>Partition and mount:</p>
-<pre class="literal-block">wifi-menu
-timedatectl set-ntp true
-fdisk /dev/sda
+<p>Connect to the internet:</p>
+<pre class="literal-block"># wifi-menu</pre>
+<p>Update the system clock:</p>
+<pre class="literal-block"># timedatectl set-ntp true</pre>
+<p>Partition, format and mount:</p>
+<pre class="literal-block">BIOS with MBR
+# fdisk /dev/sda
+    o
+    n +16G      # for swap
+    n +remain   # for /
+    t 1 82      # Linux swap
+    t 2 83      # Linux filesystem
+# mkswap /dev/sda1
+# swapon /dev/sda1
+# mkfs.ext4 /dev/sda2
+# mount /dev/sda2 /mnt
+
+
+UEFI with GPT
+# fdisk /dev/sda
     g
     n +512M     # for /efi
     n +8192M    # for swap
     n +remain   # for /
-    t 1 1       # for EFI System
-    t 2 19      # for Linux swap
-    t 3 20      # for Linux filesystem
+    t 1 1       # EFI System
+    t 2 19      # Linux swap
+    t 3 20      # Linux filesystem
     w           # write
 
-mkfs.fat -F32 /dev/sda1
-mkswap /dev/sda2
-swapon /dev/sda2
-mkfs.ext4 /dev/sda3
+# mkfs.fat -F32 /dev/sda1
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mkfs.ext4 /dev/sda3
 
-mount /dev/sda3 /mnt
-mkdir /mnt/efi
-mount /dev/sda1 /mnt/efi
-
-pacstrap /mnt base linux linux-firmware base-devel vim
-
-genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
-
-arch-chroot /mnt</pre>
-<p>Datetime:</p>
-<pre class="literal-block">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-hwclock --systohc</pre>
-<p>Locale:</p>
-<pre class="literal-block">vim /etc/locale.gen
+# mount /dev/sda3 /mnt
+# mkdir /mnt/efi
+# mount /dev/sda1 /mnt/efi</pre>
+<p>Install essential packages:</p>
+<pre class="literal-block"># pacstrap /mnt base linux linux-firmware base-devel vim</pre>
+<p>Generate fstab:</p>
+<pre class="literal-block"># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</pre>
+<p>chroot to new system:</p>
+<pre class="literal-block"># arch-chroot /mnt</pre>
+<p>Set timezone:</p>
+<pre class="literal-block"># ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# hwclock --systohc</pre>
+<p>Localization:</p>
+<pre class="literal-block"># vim /etc/locale.gen
     uncomment en_US.UTF-8 UTF-8
-locale-gen
-vim /etc/locale.conf
+# locale-gen
+# vim /etc/locale.conf
     LANG=en_US.UTF-8</pre>
-<p>Hostname:</p>
-<pre class="literal-block">vim /etc/hostname
-    peace</pre>
+<p>Set hostname:</p>
+<pre class="literal-block"># vim /etc/hostname</pre>
 <div class="section" id="network">
 <h3>Network</h3>
 <p>Use NetworkManager:</p>
-<pre class="literal-block">pacman -S networkmanager
-systemctl enable NetworkManager</pre>
+<pre class="literal-block"># pacman -S networkmanager
+# systemctl enable NetworkManager</pre>
 <p>Or use systemd-network:</p>
-<pre class="literal-block">vim /etc/systemd/network/&lt;nic&gt;.network
+<pre class="literal-block"># vim /etc/systemd/network/&lt;nic&gt;.network
     [Match]
     Name=&lt;nic&gt;
 
     [Network]
     DHCP=ipv4
     EOF
-systemctl enable systemd-networkd
-systemctl enable systemd-resolved
-ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</pre>
+# systemctl enable systemd-networkd
+# systemctl enable systemd-resolved
+# ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</pre>
 </div>
 <div class="section" id="user-account">
 <h3>User account</h3>
 <p>Create user:</p>
-<pre class="literal-block">useradd -m -g wheel an9wer
-passwd an9wer
-visudo
-    uncomment %wheel ALL=(ALL) NOPASSWD: ALL
-    useradd -m -g wheel an9wer
-    passwd an9wer</pre>
+<pre class="literal-block"># useradd -m -g wheel an9wer
+# passwd an9wer
+# visudo
+    uncomment %wheel ALL=(ALL) NOPASSWD: ALL</pre>
 </div>
 <div class="section" id="bootloader">
 <h3>Bootloader</h3>
 <p>EFI Bootloader:</p>
-<pre class="literal-block">pacman -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
-grub-mkconfig -o /boot/grub/grub.cfg</pre>
+<pre class="literal-block"># pacman -S grub efibootmgr
+# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+# grub-mkconfig -o /boot/grub/grub.cfg</pre>
 <p>Legency Bootloader:</p>
-<pre class="literal-block">pacman -S grub
-grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg</pre>
+<pre class="literal-block"># pacman -S grub
+# grub-install --target=i386-pc /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg</pre>
 <p>Exit and reboot:</p>
-<pre class="literal-block">exit
-umount -R /mnt
-
-reboot</pre>
+<pre class="literal-block"># exit
+# umount -R /mnt
+# reboot</pre>
 </div>
 </div>
 <div class="section" id="application-installation">
 <h2>Application installation</h2>
 <p>Update system:</p>
-<pre class="literal-block">sudo pacman -Syu</pre>
+<pre class="literal-block">$ sudo pacman -Syu</pre>
 <p>Install xorg:</p>
-<pre class="literal-block">sudo pacman -S xorg xorg-xinit
+<pre class="literal-block">$ sudo pacman -S xorg xorg-xinit
     xorg, which contains xorg-server, is needed by dwm and i3.</pre>
 <p>Install suckless tools:</p>
 <pre class="literal-block">sudo pacman -S libx11 libxft libxinerama
@@ -141,14 +153,14 @@ make &amp;&amp; sudo make install
 git clone https://git.suckless.org/st
 make &amp;&amp; sudo make install</pre>
 <p>Install fonts:</p>
-<pre class="literal-block">sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
+<pre class="literal-block">$ sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
     for terminal
-sudo pacman -S noto-fonts noto-fonts-cjk
+$ sudo pacman -S noto-fonts noto-fonts-cjk
     for firefox</pre>
 <p>Install virtual console font:</p>
-<pre class="literal-block">sudo pacman -S tamsyn-font terminus-font</pre>
+<pre class="literal-block">$ sudo pacman -S tamsyn-font terminus-font</pre>
 <p>Install firefox:</p>
-<pre class="literal-block">sudo pacman -S firefox flashplugin
+<pre class="literal-block">$ sudo pacman -S firefox flashplugin
     Preferences-&gt;General-&gt;Fonts:
         Serif: Noto Serif
         Sans-serif: Noto Sans
@@ -199,7 +211,7 @@ $ ibus-setup</pre>
 </div>
 <div class="section" id="update-2019-03-25">
 <h2>Update 2019/03/25</h2>
-<p>When installing archlinux on ACER, encounter secure boot problem. Find a
+<p>When installing archlinux on ACER, encounter secure boot problem. Found a
 way to solve it: <a class="reference external" href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p>
 </div>
 <div class="section" id="update-2019-04-26">

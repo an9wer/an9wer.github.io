@@ -6,60 +6,85 @@ Flash iso
 
 ::
 
-    $ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} status="progress"
+    $ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} conv=fsync status=progress
 
 System installation
 -------------------
 
-Partition and mount: ::
+Connect to the internet: ::
 
-    wifi-menu
-    timedatectl set-ntp true
-    fdisk /dev/sda
+    # wifi-menu
+
+Update the system clock: ::
+
+    # timedatectl set-ntp true
+
+Partition, format and mount: ::
+
+    BIOS with MBR
+    # fdisk /dev/sda
+        o
+        n +16G      # for swap
+        n +remain   # for /
+        t 1 82      # Linux swap
+        t 2 83      # Linux filesystem
+    # mkswap /dev/sda1
+    # swapon /dev/sda1
+    # mkfs.ext4 /dev/sda2
+    # mount /dev/sda2 /mnt
+
+
+    UEFI with GPT
+    # fdisk /dev/sda
         g
         n +512M     # for /efi
         n +8192M    # for swap
         n +remain   # for /
-        t 1 1       # for EFI System
-        t 2 19      # for Linux swap
-        t 3 20      # for Linux filesystem
+        t 1 1       # EFI System
+        t 2 19      # Linux swap
+        t 3 20      # Linux filesystem
         w           # write
 
-    mkfs.fat -F32 /dev/sda1
-    mkswap /dev/sda2
-    swapon /dev/sda2
-    mkfs.ext4 /dev/sda3
+    # mkfs.fat -F32 /dev/sda1
+    # mkswap /dev/sda2
+    # swapon /dev/sda2
+    # mkfs.ext4 /dev/sda3
 
-    mount /dev/sda3 /mnt
-    mkdir /mnt/efi
-    mount /dev/sda1 /mnt/efi
+    # mount /dev/sda3 /mnt
+    # mkdir /mnt/efi
+    # mount /dev/sda1 /mnt/efi
 
-    pacstrap /mnt base linux linux-firmware base-devel vim
+Install essential packages: ::
 
-    genfstab -U /mnt >> /mnt/etc/fstab
+    # pacstrap /mnt base linux linux-firmware base-devel vim
 
-    arch-chroot /mnt
+Generate fstab: ::
+
+    # genfstab -U /mnt >> /mnt/etc/fstab
+
+chroot to new system: ::
+
+    # arch-chroot /mnt
 
 
-Datetime: ::
+Set timezone: ::
 
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-    hwclock --systohc
+    # ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    # hwclock --systohc
 
 
-Locale: ::
+Localization: ::
 
-    vim /etc/locale.gen
+    # vim /etc/locale.gen
         uncomment en_US.UTF-8 UTF-8
-    locale-gen
-    vim /etc/locale.conf
+    # locale-gen
+    # vim /etc/locale.conf
         LANG=en_US.UTF-8
 
 
-Hostname: ::
+Set hostname: ::
 
-    vim /etc/hostname
-        peace
+    # vim /etc/hostname
 
 
 Network
@@ -67,21 +92,21 @@ Network
 
 Use NetworkManager: ::
 
-    pacman -S networkmanager
-    systemctl enable NetworkManager
+    # pacman -S networkmanager
+    # systemctl enable NetworkManager
 
 Or use systemd-network: ::
 
-    vim /etc/systemd/network/<nic>.network
+    # vim /etc/systemd/network/<nic>.network
         [Match]
         Name=<nic>
      
         [Network]
         DHCP=ipv4
         EOF
-    systemctl enable systemd-networkd
-    systemctl enable systemd-resolved
-    ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+    # systemctl enable systemd-networkd
+    # systemctl enable systemd-resolved
+    # ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 
 User account
@@ -89,49 +114,45 @@ User account
 
 Create user: ::
 
-    useradd -m -g wheel an9wer
-    passwd an9wer
-    visudo
+    # useradd -m -g wheel an9wer
+    # passwd an9wer
+    # visudo
         uncomment %wheel ALL=(ALL) NOPASSWD: ALL
-        useradd -m -g wheel an9wer
-        passwd an9wer
-
 
 Bootloader
 """"""""""
 
 EFI Bootloader: ::
 
-    pacman -S grub efibootmgr
-    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
-    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
-    grub-mkconfig -o /boot/grub/grub.cfg
+    # pacman -S grub efibootmgr
+    # grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+    # grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+    # grub-mkconfig -o /boot/grub/grub.cfg
 
 Legency Bootloader: ::
     
-    pacman -S grub
-    grub-install --target=i386-pc /dev/sda
-    grub-mkconfig -o /boot/grub/grub.cfg
+    # pacman -S grub
+    # grub-install --target=i386-pc /dev/sda
+    # grub-mkconfig -o /boot/grub/grub.cfg
 
 
 Exit and reboot: ::
 
-    exit
-    umount -R /mnt
-
-    reboot
+    # exit
+    # umount -R /mnt
+    # reboot
 
 Application installation
 ------------------------
 
 Update system: ::
 
-    sudo pacman -Syu
+    $ sudo pacman -Syu
 
 
 Install xorg: ::
 
-    sudo pacman -S xorg xorg-xinit
+    $ sudo pacman -S xorg xorg-xinit
         xorg, which contains xorg-server, is needed by dwm and i3.
 
 
@@ -148,19 +169,19 @@ Install suckless tools: ::
 
 Install fonts: ::
 
-    sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
+    $ sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
         for terminal
-    sudo pacman -S noto-fonts noto-fonts-cjk
+    $ sudo pacman -S noto-fonts noto-fonts-cjk
         for firefox
 
 Install virtual console font: ::
 
-    sudo pacman -S tamsyn-font terminus-font
+    $ sudo pacman -S tamsyn-font terminus-font
 
 
 Install firefox: ::
 
-    sudo pacman -S firefox flashplugin
+    $ sudo pacman -S firefox flashplugin
         Preferences->General->Fonts:
             Serif: Noto Serif
             Sans-serif: Noto Sans
@@ -245,7 +266,7 @@ Fix tap-to-click for touchpad: ::
 Update 2019/03/25
 -----------------
 
-When installing archlinux on ACER, encounter secure boot problem. Find a
+When installing archlinux on ACER, encounter secure boot problem. Found a
 way to solve it: https://itsfoss.com/no-bootable-device-found-ubuntu/
 
 Update 2019/04/26

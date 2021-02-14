@@ -95,27 +95,19 @@ F examples
 """"""""""
 
 Download fresh package databases from the server, which should always be run
-at first:
-
-::
+at first: ::
 
     $ pacman -Fy
 
-Display owners of files (path):
-
-::
+Display owners of files (path): ::
 
     $ pacman -Fo <file> [...]
 
-Display owners of matching strings:
-
-::
+Display owners of matching strings: ::
 
     $ pacman -Fs <string> [...]
 
-Display all files owned by packages:
-
-::
+Display all files owned by packages: ::
 
     $ pacman -Fl <package> [...]
     
@@ -129,9 +121,7 @@ from sync repositories. Either a URL or file path can be specified. This is a
 U examples
 """"""""""
 
-Install from local package file:
-
-::
+Install from local package file: ::
 
     # pacman -U <pkg.tar.xz>
 

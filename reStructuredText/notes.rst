@@ -222,9 +222,9 @@ Package/
     -   `apt
         </notes/package/apt.html>`_
     -   `pacman
-        </notes/pacman/pacman.html>`_
+        </notes/package/pacman.html>`_
     -   `emerge
-        </notes/pacman/emerge.html>`_
+        </notes/package/emerge.html>`_
     -   `fpm
         <notes/package/fpm.html>`_
 
