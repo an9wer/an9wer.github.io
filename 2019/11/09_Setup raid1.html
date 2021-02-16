@@ -47,6 +47,14 @@ means the creation is still being in process:</p>
 <pre class="literal-block"># mdadm --detail /dev/md1
 State: clean, resyncing</pre>
 <p>Thanks for reading :)</p>
+<div class="section" id="edit-2021-02-13">
+<h2>Edit 2021/02/13</h2>
+<p>重装了系统，所以新系统如何识别之前的 raid1 呢？</p>
+<p>可以通过如下命令自动检测识别：</p>
+<pre class="literal-block"># mdadm --assemble --scan</pre>
+<p>又或者手动加载：</p>
+<pre class="literal-block"># mdadm --assemble /dev/md1 /dev/sda /dev/sdb</pre>
+</div>
 <div class="section" id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>

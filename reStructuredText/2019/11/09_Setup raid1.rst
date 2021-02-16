@@ -21,6 +21,20 @@ means the creation is still being in process: ::
 
 Thanks for reading :)
 
+Edit 2021/02/13
+---------------
+
+重装了系统，所以新系统如何识别之前的 raid1 呢？
+
+可以通过如下命令自动检测识别： ::
+
+    # mdadm --assemble --scan
+
+又或者手动加载： ::
+
+    # mdadm --assemble /dev/md1 /dev/sda /dev/sdb
+
+
 References
 ----------
 
