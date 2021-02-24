@@ -37,6 +37,10 @@ the search string with ``%``: ::
     # emerge -s cpupower
     # emerge -s "%^kde"
 
+Update all installed packages: ::
+
+    # emerge -av --update --deep --newuse @world
+
 Remove package from world: ::
 
     # emerge --deselect <package>
