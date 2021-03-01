@@ -36,8 +36,6 @@ Eager
 Backtracking
     Backtrack to a previous position in the regex if match fails.
 
-
-
 Backtracking in NFA
 -------------------
 
@@ -47,5 +45,3 @@ Backtracking in NFA
     3d
 
 -   https://www.regular-expressions.info/repeat.html
-
-

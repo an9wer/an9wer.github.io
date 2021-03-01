@@ -120,21 +120,21 @@
 # nano -w /etc/fstab    # if /boot is at a seperate disk
     /dev/sda1   /boot   ext2    defaults    0 2
 # genkernel all
-# emerge --ask sys-kernel/linux-firmware
+# emerge -av --newuse sys-kernel/linux-firmware
 
 2. Using distribution kernels
-# emerge --ask sys-kernel/installkernel-gentoo
-# emerge --ask sys-kernel/gentoo-kernel-bin</pre>
+# emerge -ask sys-kernel/installkernel-gentoo
+# emerge -ask sys-kernel/gentoo-kernel-bin</pre>
 <p>Install network:</p>
 <pre class="literal-block">1. Ethernet interface
-# emerge --ask net-misc/netifrc
+# emerge -av --newuse net-misc/netifrc
 # vim /etc/conf.d/net
     config_&lt;interface&gt;=&quot;dhcp&quot;
 # ln -s /etc/init.d/net.lo /etc/init.d/net.&lt;interface&gt;
 # rc-update add net.&lt;interface&gt; default
 
 2. Wireless interface
-# emerge --ask net-wireless/wpa_supplicant
+# emerge -av --newuse net-wireless/wpa_supplicant
 # vim /etc/wpa_supplicant/wpa_supplicant.conf
     # Allow users in the 'wheel' group to control wpa_supplicant
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel

@@ -50,15 +50,14 @@ Ibus 与我之前一直使用的 Fcitx 做一个对比：
 对比之后，我选择的方案是 Ibus + ibus-rime，并通过比较 hack 的方式，将 rime 切换
 输入法的按键设置成了 Shift_R。
 
+Update 2019/09/04
+-----------------
 
-Edit 2019/09/04
----------------
-
-尝试修改 ibus 的配色，搜了一圈，只发现了修改 icon 颜色的方法：
-
-::
+尝试修改 ibus 的配色，搜了一圈，只发现了修改 icon 颜色的方法： ::
 
     $ gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#415099'
+
+只好暂且作罢！
 
 
 Thanks for reading :)

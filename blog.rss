@@ -6,11 +6,19 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Thu, 28 Jan 2021 07:11:18 +0000</pubDate>
-  <lastBuildDate>Thu, 28 Jan 2021 07:11:18 +0000</lastBuildDate>
+  <pubDate>Mon, 01 Mar 2021 15:00:05 +0000</pubDate>
+  <lastBuildDate>Mon, 01 Mar 2021 15:00:05 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
+  <item>
+    <title>关于 Bond 和 Bridge</title>
+    <link>https://an9wer.github.io/2021/03/01_关于%20Bond%20和%20Bridge.html</link>
+  </item>
+  <item>
+    <title>关于 Linux Kernel Modules</title>
+    <link>https://an9wer.github.io/2021/03/01_关于%20Linux%20Kernel%20Modules.html</link>
+  </item>
   <item>
     <title>Use zx2c4's pass command on Android phone</title>
     <link>https://an9wer.github.io/2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html</link>

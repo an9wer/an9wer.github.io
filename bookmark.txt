@@ -2,6 +2,8 @@ reStructuredText/moments.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2021/03/01_关于\ Bond\ 和\ Bridge.rst
+    reStructuredText/2021/03/01_关于\ Linux\ Kernel\ Modules.rst
     reStructuredText/2021/01/20_Use\ zx2c4's\ pass\ command\ on\ Android\ phone.rst
     reStructuredText/2021/01/19_Kernel\ upgrade\ in\ Gentoo.rst
     reStructuredText/2020/11/15_Setup\ lvm.rst
