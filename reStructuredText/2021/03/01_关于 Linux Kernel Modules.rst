@@ -1,11 +1,15 @@
 关于 Linux Kernel Modules
 =========================
 
-这几天在尝试给 Gentoo 安装 Wireguard。当前我的 Kernel 版本是 5.4.xx，参考官方
+这几天在尝试给 Gentoo 安装 Wireguard。当前我的 Kernel 版本是 5.4.97，参考官方
 wiki 的说法，Kernel 5.6 及以上的版本已经集成了 Wireguard kernel module，而我这
 个版本的 Kernel 需要在 build 的时候开启一些指定的 Kernel modules。
 
-因此顺带着了解下 Linux kernel modules 是个啥？
+照着文档小心翼翼地开启了 Kernel 的相关配置，等到 build 完之后发现 5.4.97 版本的
+kernel 本身就有 wireguard 模块，不是说好的 5.6 及以上版本才有的吗？所以其实不需
+要特别的 Kernel 配置就可以使用 Wireguard 啊！
+
+不过还是顺带着了解下 Linux kernel modules 是个啥？
 
 在配置 Kernel 的 *.config* 中发现关于 Kernel modules 的 ``CONFIG_XXX`` 值大致可
 以分为三种 (y/n/m)，y 表示开启该配置选项并在 build 的时候编译到生成的内核文件中

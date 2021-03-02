@@ -52,15 +52,16 @@
 <p>同时，配置 <span class="docutils literal">172.24.0.0/24</span> 网段的 DHCP Server，分别用两台电脑连接到软路由的
 enp1s0 和 enp2s0。</p>
 <p>连接到 enp1s0 的电脑 A 和软路由之间可以互相 ping 通，但是连接到 enp2s0 的电脑 B
-却没有自动获取到 IP 地址，其实手动配置 IP 后，也无法 ping 通软路由。</p>
+无法 ping 通软路由。</p>
 <p>究其原因是软路由里面有两个关于 <span class="docutils literal">172.24.0.0/24</span> 网段的规则：</p>
 <pre class="literal-block">172.24.0.0/24 dev enp1s0 proto kernel scope link src 172.24.0.1
 172.24.0.0/24 dev enp2s0 proto kernel scope link src 172.24.0.2</pre>
-<p>而第一条路由的优先级更高。</p>
+<p>由于第一条关于 <span class="docutils literal">172.24.0.0/24</span> 网段的路由的优先级更高，所以 ping 包在回程的时
+候走了第一条路由规则，无法到达电脑 B。</p>
 </div>
 <div class="section" id="bond">
 <h2>Bond</h2>
-<p>将软路由的 enp1s0 和 enp2s0 配置成 bond0：</p>
+<p>将软路由的 enp1s0 和 enp2s0 配置成 bond：</p>
 <pre class="literal-block"># vim /etc/conf/net
     config_enp1s0=&quot;null&quot;
     config_enp2s0=&quot;null&quot;
@@ -68,14 +69,36 @@ enp1s0 和 enp2s0。</p>
     config_bond0=&quot;172.24.0.1/24&quot;
 # ln -s /etc/init.d/net.lo /etc/init.d/net.bond0
 # rc-service net.bond0 start</pre>
-<p>同时，配置 <span class="docutils literal">172.24.0.0/24</span> 网段的 DHCP Server，分别用两台电脑连接到软路由的
+<p>同时，配置 <span class="docutils literal">172.24.0.0/24</span> 网段的 DHCP server，分别用两台电脑连接到软路由的
 enp1s0 和 enp2s0。</p>
 <p>结果两台电脑和软路由之间可以 ping 通，但是两台电脑之间却不能，即使开启
 <span class="docutils literal">net.ipv4.ip_forward</span> 还是 unreachable 。</p>
 </div>
 <div class="section" id="bridge">
 <h2>Bridge</h2>
-<p># TODO</p>
+<p>将软路由的 enp1s0 和 enp2s0 配置成 bridge：</p>
+<pre class="literal-block"># vim /etc/conf/net
+    config_enp1s0=&quot;null&quot;
+    config_enp2s0=&quot;null&quot;
+    bridge_br0=&quot;enp1s0 enp2s0&quot;
+    config_br0=&quot;172.24.0.1/24&quot;</pre>
+<p>同时，配置 <span class="docutils literal">172.24.0.0/24</span> 网段的 DHCP server，分别用两台电脑连接到软路由的
+enp1s0 和 enp2s0。</p>
+<p>结果两台电脑和软路由之间可以 ping 通，但是两台电脑之间也能 ping 通。</p>
+<p>又测试了另外一种 bridge 的方案，即不给 bridge 配置 IP：</p>
+<pre class="literal-block"># vim /etc/conf/net
+    config_enp1s0=&quot;null&quot;
+    config_enp2s0=&quot;null&quot;
+    bridge_br0=&quot;enp1s0 enp2s0&quot;
+    config_br0=&quot;null&quot;</pre>
+<p>此时因为 bridge 没有配置 IP，即没有所属的网段，所以无法配置 DHCP server，只能手
+动给两台电脑分配 IP。</p>
+<p>结果两台电脑之间可以 ping 通。</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>忽地理解了 bond 是用来聚合的，bridge 是用来串通的。</p>
+<p>所以此场景下还是得用 bridge。</p>
 <p>Thanks for reading :)</p>
 </div>
 </div>

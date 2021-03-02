@@ -53,7 +53,7 @@ Install stage tarball: ::
 
 Configure portage: ::
 
-    # nano -w /mnt/gentoo/etc/portage/make.conf
+    # vi /mnt/gentoo/etc/portage/make.conf
         MAKEOPTS="-j5"
         GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo https://mirrors.163.com/gentoo/"
 
