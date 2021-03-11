@@ -113,8 +113,9 @@ Install kerenl: ::
     # emerge -av --newuse sys-kernel/linux-firmware
 
     2. Using distribution kernels
-    # emerge -ask sys-kernel/installkernel-gentoo
-    # emerge -ask sys-kernel/gentoo-kernel-bin
+    # emerge --ask sys-kernel/installkernel-gentoo
+    # emerge --ask sys-kernel/gentoo-kernel-bin
+    # emerge -av --newuse sys-kernel/linux-firmware
 
 Install network: ::
 
