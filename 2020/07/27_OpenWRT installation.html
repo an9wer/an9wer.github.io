@@ -113,7 +113,7 @@ Download luci-app-v2ray*.ipk from release page, then:
                 &quot;port&quot;: &lt;PORT&gt;,
                 &quot;users&quot;: [{
                     &quot;id&quot;: &quot;&lt;ID&gt;&quot;,
-                    &quot;alterId&quot;: 6
+                    &quot;alterId&quot;: &lt;ALTERID&gt;
                 }]
             }]
         }
@@ -149,6 +149,145 @@ start_service() {
     procd_set_param pidfile /var/run/v2ray.pid
     procd_close_instance
 }</pre>
+</div>
+<div class="section" id="update-2021-04-04">
+<h2>Update 2021/04/04</h2>
+<p>socks5 和 http 代理用起来还是太麻烦，所以这次直接上透明代理。</p>
+<p>v2ray 的配置里添加 redirect outbond：</p>
+<pre class="literal-block">{
+    &quot;log&quot;: {
+        &quot;logLevel&quot;: &quot;error&quot;
+    },
+    &quot;inbounds&quot;: [{
+        &quot;port&quot;: 1080,
+        &quot;listen&quot;: &quot;0.0.0.0&quot;,
+        &quot;protocol&quot;: &quot;socks&quot;,
+        &quot;sniffing&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+        },
+        &quot;settings&quot;: {
+            &quot;auth&quot;: &quot;noauth&quot;,
+            &quot;udp&quot;: false
+        }
+    }, {
+        &quot;port&quot;: 1081,
+        &quot;listen&quot;: &quot;0.0.0.0&quot;,
+        &quot;protocol&quot;: &quot;http&quot;,
+        &quot;sniffing&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+        },
+        &quot;settings&quot;: {
+            &quot;timeout&quot;: 0,
+            &quot;allowTransparent&quot;: false,
+            &quot;userLevel&quot;: 0
+        }
+     }, {
+        &quot;port&quot;: 1082,
+        &quot;listen&quot;: &quot;0.0.0.0&quot;,
+        &quot;protocol&quot;: &quot;dokodemo-door&quot;,
+        &quot;sniffing&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+        },
+        &quot;settings&quot;: {
+            &quot;network&quot;: &quot;tcp,udp&quot;,
+            &quot;followRedirect&quot;: true
+        },
+        &quot;streamSettings&quot;: {
+            &quot;sockopt&quot;: {
+                &quot;tproxy&quot;: &quot;redirect&quot;
+            }
+        }
+    }],
+    &quot;outbounds&quot;: [{
+        &quot;protocol&quot;: &quot;vmess&quot;,
+        &quot;settings&quot;: {
+            &quot;vnext&quot;: [{
+                &quot;address&quot;: &quot;&lt;IP&gt;&quot;,
+                &quot;port&quot;: &lt;PORT&gt;,
+                &quot;users&quot;: [{
+                    &quot;id&quot;: &quot;&lt;ID&gt;&quot;,
+                    &quot;alterId&quot;: &lt;ALTERID&gt;
+                }]
+            }]
+        },
+        &quot;streamSettings&quot;: {
+            &quot;sockopt&quot;: {
+                 &quot;mark&quot;: 255
+            }
+        }
+    }, {
+        &quot;protocol&quot;: &quot;freedom&quot;,
+        &quot;settings&quot;: {},
+        &quot;tag&quot;: &quot;direct&quot;,
+        &quot;streamSettings&quot;: {
+            &quot;sockopt&quot;: {
+                 &quot;mark&quot;: 254
+            }
+        }
+    }],
+    &quot;routing&quot;: {
+        &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,
+        &quot;rules&quot;: [{
+            &quot;type&quot;: &quot;field&quot;,
+            &quot;domain&quot;: [
+                &quot;geosite:cn&quot;
+            ],
+        &quot;ip&quot;: [
+            &quot;geoip:cn&quot;
+        ],
+            &quot;outboundTag&quot;: &quot;direct&quot;
+        }]
+    }
+}</pre>
+<p>然后在 OpenWRT 的 luci 管理页面中为 firewall 添加 custom rules：</p>
+<pre class="literal-block">iptables -t nat -N V2RAY
+iptables -t nat -A PREROUTING -j V2RAY
+iptables -t nat -A OUTPUT -j V2RAY
+
+# Ignore v2ray direct outbound traffic
+iptables -t nat -A V2RAY -p tcp -j RETURN -m mark --mark 0xfe
+# Ignore v2ray proxy outbond traffic
+iptables -t nat -A V2RAY -p tcp -j RETURN -m mark --mark 0xff
+
+# Ignore LANs and any other addresses you'd like to bypass the proxy
+# See Wikipedia and RFC5735 for full list of reserved networks.
+iptables -t nat -A V2RAY -d 224.0.0.0/4 -j RETURN
+iptables -t nat -A V2RAY -d 240.0.0.0/4 -j RETURN
+iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
+iptables -t nat -A V2RAY -d 127.0.0.0/8 -j RETURN
+iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
+iptables -t nat -A V2RAY -d 172.16.0.0/12 -j RETURN
+iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
+iptables -t nat -A V2RAY -d 169.254.0.0/16 -j RETURN
+
+# Redirect all left tcp requests to v2ray
+iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 1082</pre>
+<p>到了这一步，还需要解决 dns 污染的问题，虽然 v2ray 中开启了 sniffing，但是还是得
+在 v2ray 之前也就是系统这一层单独找个服务来处理 dns，否则 ip 包经过上面的
+iptables rules 根本就无法来到 v2ray（例如我在实际当中发现 an9wer.github.io 被污
+染成 127.0.0.1）。因此，这里使用的是 dnscrypt-proxy。</p>
+<p>安装以及启动 dnscrypt-proxy，这里得提前暂停 dnsmasq 服务，因为二者的端口有冲突
+：</p>
+<pre class="literal-block"># opkg install dnscrypt-proxy2
+# vim /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+    listen_addresses = ['&lt;LAN-IP&gt;:53', '127.0.0.1:53']
+# /etc/init.d/dnsmasq stop
+# /etc/init.d/dnsmasq disable
+# /etc/init.d/dnscrypt-proxy start
+# /etc/init.d/dnscrypt-proxy enable</pre>
+<p>这里不需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为分流是在 v2ray 中
+处理的，dnscrypt proxy 的作用只是为了让被污染成 127.0.0.1 之类的这些 ip 包能正
+确的达到 v2ray。</p>
+<p>本以为这样就完成了，但是重启测试发现 dhcp 服务不起作用了，原来是 dhcp 服务是通
+过 dnsmasq 来提供的，而我却把它整个关闭了。因此，我需要打开 dnsmasq 的 dhcp 功
+能，禁用它的 dns server 功能：</p>
+<pre class="literal-block"># uci set dhcp.&#64;dnsmasq[0].port=&quot;0&quot;
+# /etc/init.d/dnsmasq start
+# /etc/init.d/dnsmasq enable</pre>
+<p>这样就搞定了。</p>
 <p>Thanks for reading :)</p>
 </div>
 <div class="section" id="references">

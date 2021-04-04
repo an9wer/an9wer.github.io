@@ -93,7 +93,7 @@ Update 2021/01/28
                     "port": <PORT>,
                     "users": [{
                         "id": "<ID>",
-                        "alterId": 6
+                        "alterId": <ALTERID>
                     }]
                 }]
             }
@@ -131,6 +131,158 @@ Update 2021/01/28
         procd_set_param pidfile /var/run/v2ray.pid
         procd_close_instance
     }
+
+
+Update 2021/04/04
+-----------------
+
+socks5 和 http 代理用起来还是太麻烦，所以这次直接上透明代理。
+
+v2ray 的配置里添加 redirect outbond： ::
+
+    {
+        "log": {
+            "logLevel": "error"
+        },
+        "inbounds": [{
+            "port": 1080,
+            "listen": "0.0.0.0",
+            "protocol": "socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+            },
+            "settings": {
+                "auth": "noauth",
+                "udp": false
+            }
+        }, {
+            "port": 1081,
+            "listen": "0.0.0.0",
+            "protocol": "http",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+            },
+            "settings": {
+                "timeout": 0,
+                "allowTransparent": false,
+                "userLevel": 0
+            }
+         }, {
+            "port": 1082,
+            "listen": "0.0.0.0",
+            "protocol": "dokodemo-door",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": ["http", "tls"]
+            },
+            "settings": {
+                "network": "tcp,udp",
+                "followRedirect": true
+            },
+            "streamSettings": {
+                "sockopt": {
+                    "tproxy": "redirect"
+                }
+            }
+        }],
+        "outbounds": [{
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [{
+                    "address": "<IP>",
+                    "port": <PORT>,
+                    "users": [{
+                        "id": "<ID>",
+                        "alterId": <ALTERID>
+                    }]
+                }]
+            },
+            "streamSettings": {
+                "sockopt": {
+                     "mark": 255
+                }
+            }
+        }, {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct",
+            "streamSettings": {
+                "sockopt": {
+                     "mark": 254
+                }
+            }
+        }],
+        "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [{
+                "type": "field",
+                "domain": [
+                    "geosite:cn"
+                ],
+            "ip": [
+                "geoip:cn"
+            ],
+                "outboundTag": "direct"
+            }]
+        }
+    }
+
+然后在 OpenWRT 的 luci 管理页面中为 firewall 添加 custom rules： ::
+
+    iptables -t nat -N V2RAY
+    iptables -t nat -A PREROUTING -j V2RAY
+    iptables -t nat -A OUTPUT -j V2RAY
+
+    # Ignore v2ray direct outbound traffic
+    iptables -t nat -A V2RAY -p tcp -j RETURN -m mark --mark 0xfe
+    # Ignore v2ray proxy outbond traffic
+    iptables -t nat -A V2RAY -p tcp -j RETURN -m mark --mark 0xff
+
+    # Ignore LANs and any other addresses you'd like to bypass the proxy
+    # See Wikipedia and RFC5735 for full list of reserved networks.
+    iptables -t nat -A V2RAY -d 224.0.0.0/4 -j RETURN
+    iptables -t nat -A V2RAY -d 240.0.0.0/4 -j RETURN
+    iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 127.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 172.16.0.0/12 -j RETURN
+    iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
+    iptables -t nat -A V2RAY -d 169.254.0.0/16 -j RETURN
+
+    # Redirect all left tcp requests to v2ray
+    iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 1082
+
+到了这一步，还需要解决 dns 污染的问题，虽然 v2ray 中开启了 sniffing，但是还是得
+在 v2ray 之前也就是系统这一层单独找个服务来处理 dns，否则 ip 包经过上面的
+iptables rules 根本就无法来到 v2ray（例如我在实际当中发现 an9wer.github.io 被污
+染成 127.0.0.1）。因此，这里使用的是 dnscrypt-proxy。
+
+安装以及启动 dnscrypt-proxy，这里得提前暂停 dnsmasq 服务，因为二者的端口有冲突
+： ::
+
+    # opkg install dnscrypt-proxy2
+    # vim /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+        listen_addresses = ['<LAN-IP>:53', '127.0.0.1:53']
+    # /etc/init.d/dnsmasq stop
+    # /etc/init.d/dnsmasq disable
+    # /etc/init.d/dnscrypt-proxy start
+    # /etc/init.d/dnscrypt-proxy enable
+
+这里不需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为分流是在 v2ray 中
+处理的，dnscrypt proxy 的作用只是为了让被污染成 127.0.0.1 之类的这些 ip 包能正
+确的达到 v2ray。
+
+本以为这样就完成了，但是重启测试发现 dhcp 服务不起作用了，原来是 dhcp 服务是通
+过 dnsmasq 来提供的，而我却把它整个关闭了。因此，我需要打开 dnsmasq 的 dhcp 功
+能，禁用它的 dns server 功能： ::
+
+    # uci set dhcp.@dnsmasq[0].port="0"
+    # /etc/init.d/dnsmasq start
+    # /etc/init.d/dnsmasq enable
+
+这样就搞定了。
     
 
 Thanks for reading :)
