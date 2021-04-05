@@ -287,3 +287,26 @@ Install latex: ::
         app-text/texlive cjk extra
     # emerge --ask app-text/texlive
     # emerge --ask dev-texlive/texlive-langchinese 
+
+
+Update 2021/04/04
+-----------------
+
+如果想在 netifrc 中使用 dhcp 动态获取 ip 的同时，添加自己需要的 dns server（例
+如 127.0.0.1），该怎么办？
+
+可以通过安装 dhcpcd 并且在 netifrc 中指定使用 dhcpcd 作为 dhcp client 获取 ip： ::
+
+    # emerge -av net-misc/dhcpcd
+    # vim /etc/config/net
+        modules="dhcpcd"
+
+然后创建一个 */etc/resolv.conf.head* 文件，把自己需要的 dns server 填入： ::
+
+    # vim /etc/resolv.conf.head
+        nameserver 127.0.0.1
+
+也可以是 */etc/resolv.conf.tail* 文件。 head 表示往 */etc/resolv.conf* 头部插入
+，tail 表示往 */etc/resolv.conf* 后部插入。
+
+Thanks for reading :)

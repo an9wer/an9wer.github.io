@@ -270,19 +270,58 @@ iptables rules 根本就无法来到 v2ray（例如我在实际当中发现 an9w
     # /etc/init.d/dnscrypt-proxy start
     # /etc/init.d/dnscrypt-proxy enable
 
-这里不需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为分流是在 v2ray 中
-处理的，dnscrypt proxy 的作用只是为了让被污染成 127.0.0.1 之类的这些 ip 包能正
-确的达到 v2ray。
+.. role:: strike
+    :class: strike
+
+:strike:`这里不需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为分流是在
+v2ray 中处理的，dnscrypt proxy 的作用只是为了让被污染成 127.0.0.1 之类的这些 ip
+包能正确的达到 v2ray。`
+
+这里还需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为 dns 解析完成之后
+给到 v2ray 的都是 ip 地址，所以 geosite 的规则不会生效，之后 geoip 的规则才会起
+作用。但 dnscrypt proxy 中的 resolvers 都是国外的，对于国内的域名例如百度淘宝之
+流的也都解析到了国外的 ip，因此这里用 `dnsmasq-china-list
+<https://github.com/felixonmars/dnsmasq-china-list>`_ 来实现 forward 规则，具体
+build 过程也就不多赘述了。
 
 本以为这样就完成了，但是重启测试发现 dhcp 服务不起作用了，原来是 dhcp 服务是通
-过 dnsmasq 来提供的，而我却把它整个关闭了。因此，我需要打开 dnsmasq 的 dhcp 功
-能，禁用它的 dns server 功能： ::
+过 dnsmasq 来提供的，而我却把它整个关闭了。因此，需要打开 dnsmasq 的 dhcp 功能
+，只禁用它的 dns server 功能： ::
 
     # uci set dhcp.@dnsmasq[0].port="0"
     # /etc/init.d/dnsmasq start
     # /etc/init.d/dnsmasq enable
 
 这样就搞定了。
+
+Update 2021/04/05
+-----------------
+
+v2ray 内建的 geoip 不够看啊，还是得自己来，把 cn 列表导入 ipset 就行： ::
+
+    # opkg install ipset
+    # vim /etc/init.d/ipset
+        #!/bin/sh /etc/rc.common
+
+        USE_PROCD=0
+
+        START=18
+        STOP=99
+
+        start_service() {
+            ipset destroy cn
+            ipset restore -file /etc/ipset/cn
+        }
+
+        stop_service() {
+            ipset destroy cn
+        }
+    # /etc/init.d/ipset start
+    # /etc/init.d/ipset enable
+
+不要忘了在 firewall 中添加绕过 cn 的规则： ::
+
+    iptables -t nat -A V2RAY -m set --match-set cn dst -j RETURN
     
 
 Thanks for reading :)

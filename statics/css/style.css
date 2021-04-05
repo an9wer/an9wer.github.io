@@ -45,6 +45,10 @@ span.literal, code {
     margin: 0px 2px;
 }
 
+span.strike {
+    text-decoration: line-through;
+}
+
 pre {
     border: solid 1px #CCC;
     border-radius: 3px;
