@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>an9wer's blog</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="docutils" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<body>
+    <div id="main">
+
+        <div id="header">
+            <div id="headerLeft">
+                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+                <div id="signature">Just stick to it :)</div>
+            </div> <!-- headerLeft -->
+            <div id="headerRight">
+                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+            </div> <!-- headerRight -->
+        </div> <!-- header -->
+
+        <div id="navbar">
+            <a id="blog" class="current"
+                href="/blog.html">Blog</a>
+            <a id="moments"
+                href="/moments.html">Moments</a>
+            <a id="notes"
+                href="/notes.html">Notes</a>
+            <a id="tools"
+                href="/tools.html">Tools</a>
+        </div> <!-- navbar -->
+
+        <div id="content">
+<div class="section" id="bandwagonhost">
+<h1>BandwagonHost 服务器被黑事件</h1>
+<p>搬瓦工服务器控制面板传来噩耗，因为我的服务器疯狂发送 Spam 邮件，因此被强制
+shutdown 了。第一反应是服务器被黑了！</p>
+<img alt="Bandwagonhost" src="/statics/images/2021/03/12_BandwagonHost.jpg" />
+<p>遇到这样的情况，当然需要找找线索，排查下原因，总结些经验。但是我这边一开机，它
+可能又会不停地发 Spam 邮件，导致触发搬瓦工的安全机制把我再次 shutdown。</p>
+<p>所以想了个办法，先在控制面板 mount 一个 arch 的安装盘上去，启动后 chroot 到原来
+的系统里面，然后 disable NetworkManager.service，这样没有网络，也就无法对外发送
+Spam 邮件了。之后 unmount 安装盘，重启系统，一顿排查，居然没有发现任何线索：</p>
+<ol class="arabic simple">
+<li><p>系统日志：journald 没有做持久化，不过还是保留了前两次 boot 的日志。</p></li>
+<li><p>postfix 日志：只监听 127.0.0.1:25，难道是内部程序漏洞？但是日志里面没有任何
+Spam 邮件的记录。</p></li>
+<li><p>用户登录日志：用 fwknopd 加固了 ssh，怎么看也不像是被人从门口突破的。</p></li>
+<li><p>恶意进程：天哪！这么多进程看花眼。</p></li>
+<li><p>软件漏洞：arch 好久没有 <span class="docutils literal">pacman <span class="pre">-Syu</span></span> 了，看起来有点对头。</p></li>
+</ol>
+<p>憋了两天实在没有办法，选择重装系统部署应用。结果当天晚上搬瓦工又把我的服务器
+shutdown 了，还是同样的问题！</p>
+<p>这次我换了成了 gentoo 系统，所以不太像是某个软件在某个版本的漏洞导致的；而且我
+还没来得及安装 postfix，所以可以排除是它的原因；更不太可能是被人在这么短的时间
+内爆破登录了。</p>
+<p>思前想后，突然意识到一个问题：我这台服务器是安装了 v2ray 做代理服务器的。这下我
+大概有些明白了：家里开了透明代理，如果某台设备不小心中毒安装了恶意软件乱发 Spam
+邮件，那这样经过透明代理之后实际就是从服务器上发送的 Spam 邮件。所以表面看是我
+服务器被黑了，其实是家里的设备中招了！</p>
+<p>为了排查到底是哪台设备的问题，我采用了钓鱼执法的方式，在服务器上监听 25 端口的
+出口流量：</p>
+<pre class="literal-block"># tcpdump -vvv net 0.0.0.0/0 and src &lt;public ip&gt; and dst port 25</pre>
+<p>然后逐个尝试连接设备并进行观察。结果持续瞄了好几天，都没有找到罪魁祸首。而且服
+务器也一直没有被 shutdown。难道问题不复存在了？</p>
+<p>索性也不观察了，直接把 25 端口出口流量给禁用：</p>
+<pre class="literal-block"># iptables -A OUTPUT -o &lt;public interface&gt; -p tcp --dport 25 -j DROP</pre>
+<p>Thanks for reading :)</p>
+</div>
+        </div> <!-- content -->
+
+        <div id="footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+        </div> <!-- footer -->
+
+    </div> <!-- main -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-141786049-1');
+    </script>
+
+</body>
+</html>

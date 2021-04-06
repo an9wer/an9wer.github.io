@@ -6,11 +6,19 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Mon, 01 Mar 2021 15:00:05 +0000</pubDate>
-  <lastBuildDate>Mon, 01 Mar 2021 15:00:05 +0000</lastBuildDate>
+  <pubDate>Tue, 06 Apr 2021 08:00:28 +0000</pubDate>
+  <lastBuildDate>Tue, 06 Apr 2021 08:00:28 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
+  <item>
+    <title>关于 v2ray sniffing</title>
+    <link>https://an9wer.github.io/2021/04/04_关于%20v2ray%20sniffing.html</link>
+  </item>
+  <item>
+    <title>BandwagonHost 服务器被黑事件</title>
+    <link>https://an9wer.github.io/2021/03/12_BandwagonHost%20服务器被黑事件.html</link>
+  </item>
   <item>
     <title>关于 Bond 和 Bridge</title>
     <link>https://an9wer.github.io/2021/03/01_关于%20Bond%20和%20Bridge.html</link>

@@ -16,13 +16,18 @@ Shadowsocks 连接异常小记
 于是我才决定在服务器上部署 kcptun，同时为了下次搭建方便，顺便写了个
 `Dockerfile <https://github.com/an9wer/bpd>`_ 。
 
-Edit 2019/02/28
----------------
+Update 2019/02/28
+-----------------
 
 使用 traceroute 查了一下，消息应该是在 GFW 的某个路由处被绊了：
 
 .. image:: /statics/images/2019/02/20_traceroute.jpg
     :alt: Traceroute
 
-Thanks for reading :)
+Update 2021/04/06
+-----------------
 
+不知从何时起，流行的方案变成了用 https 伪装，也就是在加密协议的外面再套一层
+https，这样使得代理流量更加隐蔽。
+
+Thanks for reading :)

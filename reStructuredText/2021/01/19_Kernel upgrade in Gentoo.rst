@@ -10,7 +10,7 @@ build 更新后的 kernel，今天来了心思，决定操作一把。
     # eselect kernel set <number>
 
 接下来配置 kernel 的 *.config* 文件。但因为我是使用 ``genkernel all`` 这个傻瓜
-命令 build kernel，所以可以跳过着配置 *.config* 文件这一步： ::
+命令 build kernel，所以可以跳过配置 *.config* 文件这一步： ::
 
     # genkernel all
 

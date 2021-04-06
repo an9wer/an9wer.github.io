@@ -2,8 +2,10 @@ reStructuredText/moments.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2021/04/04_关于\ v2ray\ sniffing.rst
     reStructuredText/2021/03/20_关于\ chroot.rst
     reStructuredText/2021/03/19_实战\ QOS.rst
+    reStructuredText/2021/03/12_BandwagonHost\ 服务器被黑事件.rst
     reStructuredText/2021/03/01_关于\ Bond\ 和\ Bridge.rst
     reStructuredText/2021/03/01_关于\ Linux\ Kernel\ Modules.rst
     reStructuredText/2021/01/20_Use\ zx2c4's\ pass\ command\ on\ Android\ phone.rst
@@ -14,7 +16,7 @@ reStructuredText/blog.rst
     reStructuredText/2020/07/27_OpenWRT\ installation.rst
     reStructuredText/2020/07/05_从\ archlinux\ 转投\ gentoo.rst
     reStructuredText/2020/06/06_Gentoo\ installation.rst
-    reStructuredText/2020/01/07_服务器被黑事件.rst
+    reStructuredText/2020/01/07_腾讯云服务器被黑事件.rst
     reStructuredText/2019/11/24_腾讯云低配服务器性能测试.rst
     reStructuredText/2019/11/09_Setup\ raid1.rst
     reStructuredText/2019/09/02_Fcitx_VS_Ibus.rst

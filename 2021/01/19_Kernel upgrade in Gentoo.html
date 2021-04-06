@@ -41,7 +41,7 @@ build 更新后的 kernel，今天来了心思，决定操作一把。</p>
 <pre class="literal-block"># eselect kernel list
 # eselect kernel set &lt;number&gt;</pre>
 <p>接下来配置 kernel 的 <em>.config</em> 文件。但因为我是使用 <span class="docutils literal">genkernel all</span> 这个傻瓜
-命令 build kernel，所以可以跳过着配置 <em>.config</em> 文件这一步：</p>
+命令 build kernel，所以可以跳过配置 <em>.config</em> 文件这一步：</p>
 <pre class="literal-block"># genkernel all</pre>
 <p>到这里 kernel 就 build 完成了，接下来就是更新 grub 的配置，使开机进入最新的
 kernel：</p>

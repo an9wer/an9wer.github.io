@@ -278,9 +278,9 @@ v2ray 中处理的，dnscrypt proxy 的作用只是为了让被污染成 127.0.0
 包能正确的达到 v2ray。`
 
 这里还需要配置 dnscrypt proxy 的 forward 规则来实现分流，因为 dns 解析完成之后
-给到 v2ray 的都是 ip 地址，所以 geosite 的规则不会生效，之后 geoip 的规则才会起
-作用。但 dnscrypt proxy 中的 resolvers 都是国外的，对于国内的域名例如百度淘宝之
-流的也都解析到了国外的 ip，因此这里用 `dnsmasq-china-list
+给到 v2ray 的都是 ip ，所以 geosite 的规则不会生效，之后 geoip 的规则才会起作用
+。但 dnscrypt proxy 中的 resolvers 都是国外的，对于国内的域名例如百度淘宝之流的
+也都解析到了国外的 ip，因此这里用 `dnsmasq-china-list
 <https://github.com/felixonmars/dnsmasq-china-list>`_ 来实现 forward 规则，具体
 build 过程也就不多赘述了。
 
