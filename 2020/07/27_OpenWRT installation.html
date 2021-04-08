@@ -290,6 +290,7 @@ build 过程也就不多赘述了。</p>
 过 dnsmasq 来提供的，而我却把它整个关闭了。因此，需要打开 dnsmasq 的 dhcp 功能
 ，只禁用它的 dns server 功能：</p>
 <pre class="literal-block"># uci set dhcp.&#64;dnsmasq[0].port=&quot;0&quot;
+# uci commit
 # /etc/init.d/dnsmasq start
 # /etc/init.d/dnsmasq enable</pre>
 <p>这样就搞定了。</p>

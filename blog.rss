@@ -6,14 +6,18 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 06 Apr 2021 08:00:28 +0000</pubDate>
-  <lastBuildDate>Tue, 06 Apr 2021 08:00:28 +0000</lastBuildDate>
+  <pubDate>Thu, 08 Apr 2021 04:42:14 +0000</pubDate>
+  <lastBuildDate>Thu, 08 Apr 2021 04:42:14 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
   <item>
     <title>关于 v2ray sniffing</title>
     <link>https://an9wer.github.io/2021/04/04_关于%20v2ray%20sniffing.html</link>
+  </item>
+  <item>
+    <title>关于 chroot</title>
+    <link>https://an9wer.github.io/2021/03/20_关于%20chroot.html</link>
   </item>
   <item>
     <title>BandwagonHost 服务器被黑事件</title>
@@ -60,8 +64,8 @@
     <link>https://an9wer.github.io//2020/06/06_Gentoo%20installation.html</link>
   </item>
   <item>
-    <title>服务器被黑事件</title>
-    <link>https://an9wer.github.io//2020/01/07_服务器被黑事件.html</link>
+    <title>腾讯云服务器被黑事件</title>
+    <link>https://an9wer.github.io//2020/01/07_腾讯云服务器被黑事件.html</link>
   </item>
   <item>
     <title>腾讯云低配服务器性能测试</title>

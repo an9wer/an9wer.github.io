@@ -35,6 +35,14 @@
         <div id="content">
 <div class="section" id="package-rpm-packaging">
 <h1>Package rpm-packaging</h1>
+<p>Using proxy if needed:</p>
+<pre class="literal-block">Fedora:
+# vim /etc/dnf/dnf.cnf
+    proxy=http://&lt;ip&gt;:&lt;port&gt;
+
+CentOS
+# vim /etc/dnf/dnf.cnf
+    proxy=socks5://&lt;ip&gt;:&lt;port&gt;</pre>
 <p>Install required packages:</p>
 <pre class="literal-block">Fedora:
 # dnf install rpm-build rpmdevtools

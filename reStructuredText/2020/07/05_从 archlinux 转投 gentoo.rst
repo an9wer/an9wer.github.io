@@ -30,4 +30,12 @@ systemd 的 linux distro。直到安装并使用一段时间后，我愈加发�
 3. 它和 archlinux 一样是一个 simple linux distro，甚至提供了 systemd 的替代者
    openrc。
 
+Update 2021/04/08
+-----------------
+
+补充一点，gentoo 会把所有你安装的软件都记录在 */var/lib/portage/world* 文件中，
+它是不包含那些在安装时候因为依赖关系连带被安装的软件的（通常是一些 lib 软件）。
+这样你就能明确知道你在当前系统用到了哪些软件，下次如果重装系统的话，直接安装把
+world 文件里面的软件重装一遍就能恢复。
+
 Thanks for Reading :)

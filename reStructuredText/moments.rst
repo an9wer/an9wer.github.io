@@ -1,6 +1,14 @@
+2021/04/06 Thu
+
+    Fedora copr 不支持 fedora-31 的 chroot 了，后悔跳入 Fedora 的大坑！
+
 2021/04/01 Thu
 
     路过 SH，有种怀念的伤感，毕竟这里有我奋斗的故事。
+
+2021/03/25 Thu
+
+    OnePlus 5T 被我妈不慎落水，仆街！
 
 2021/03/02 Tue
 

@@ -1,6 +1,16 @@
 Package rpm-packaging
 =====================
 
+Using proxy if needed: ::
+
+    Fedora:
+    # vim /etc/dnf/dnf.cnf
+        proxy=http://<ip>:<port>
+
+    CentOS
+    # vim /etc/dnf/dnf.cnf
+        proxy=socks5://<ip>:<port>
+
 Install required packages: ::
 
     Fedora:

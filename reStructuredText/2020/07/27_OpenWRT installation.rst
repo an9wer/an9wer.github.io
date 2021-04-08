@@ -289,6 +289,7 @@ build 过程也就不多赘述了。
 ，只禁用它的 dns server 功能： ::
 
     # uci set dhcp.@dnsmasq[0].port="0"
+    # uci commit
     # /etc/init.d/dnsmasq start
     # /etc/init.d/dnsmasq enable
 
