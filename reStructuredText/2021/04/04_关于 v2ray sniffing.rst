@@ -23,7 +23,10 @@ v2ray 的 inbound 配置中有个 sniffing 参数，官方文档对它概念描�
 --------------------------
 
 当一个程序没有使用 socks5, http 等代理时，其不会调用 getaddrinfo, gethostbyname
-来解析域名，而是把数据包一股脑发给代理。
+来解析域名，而是把数据包一股脑发给代理。只能说大部分程序是这样的，但 Firefox 的
+代理配置中有个选项可以选择 socks5 代理之后是否同时代理 DNS 请求（Proxy DNS
+when using SOCKS V5)，所以在 Firefox 中，即使使用了 socks5 代理，也可以不通过代
+理来解析域名。
 
 但一个程序使用的透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo,
 gethostbyname 来解析域名。

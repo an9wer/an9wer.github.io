@@ -2,6 +2,7 @@ reStructuredText/moments.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2021/04/10_Gentoo\ 升级遇难小记.rst
     reStructuredText/2021/04/04_关于\ v2ray\ sniffing.rst
     reStructuredText/2021/03/20_关于\ chroot.rst
     reStructuredText/2021/03/19_实战\ QOS.rst
