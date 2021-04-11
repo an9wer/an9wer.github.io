@@ -1,3 +1,5 @@
+2021/04/10 @ `Gentoo 升级遇难小记 <2021/04/10_Gentoo%20升级遇难小记.html>`_
+
 2021/04/04 @ `关于 v2ray sniffing <2021/04/04_关于%20v2ray%20sniffing.html>`_
 
 2021/03/20 @ `关于 chroot <2021/03/20_关于%20chroot.html>`_

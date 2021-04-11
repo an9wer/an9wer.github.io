@@ -6,11 +6,15 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Thu, 08 Apr 2021 04:42:14 +0000</pubDate>
-  <lastBuildDate>Thu, 08 Apr 2021 04:42:14 +0000</lastBuildDate>
+  <pubDate>Sun, 11 Apr 2021 09:27:25 +0000</pubDate>
+  <lastBuildDate>Sun, 11 Apr 2021 09:27:25 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
+  <item>
+    <title>Gentoo 升级遇难小记</title>
+    <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记.html</link>
+  </item>
   <item>
     <title>关于 v2ray sniffing</title>
     <link>https://an9wer.github.io/2021/04/04_关于%20v2ray%20sniffing.html</link>
