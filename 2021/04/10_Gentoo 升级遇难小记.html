@@ -51,8 +51,8 @@ package A 依赖 package C 的 v2 版本，而一个没有更新的 package B �
 <pre class="literal-block"># emerge -av --oneshot =&lt;packge C v2&gt; &lt;package B&gt;
 # ...
 # emerge -av --oneshot &lt;package A&gt;</pre>
-<p>但是没有 emerge 参数的支持，这样手动更新太麻烦了！好在找到另一个解决方案：使用
-emerge 的 <span class="docutils literal"><span class="pre">--nodeps</span></span> 参数安装所有依赖的 package C，最后安装 packge A：</p>
+<p>但是这样手动更新太麻烦了！好在找到另一个解决方案：使用 emerge 的 <span class="docutils literal"><span class="pre">--nodeps</span></span>
+参数安装所有依赖的 package C，最后安装 packge A：</p>
 <pre class="literal-block"># emerge -av --oneshot --nodeps &lt;package C&gt;
 # ...
 # emerge -av --oneshot --nodeps &lt;pacakge A&gt;</pre>

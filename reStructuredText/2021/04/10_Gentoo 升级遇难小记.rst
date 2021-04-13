@@ -28,8 +28,8 @@ package A 依赖 package C 的 v2 版本，而一个没有更新的 package B �
     # ...
     # emerge -av --oneshot <package A>
 
-但是没有 emerge 参数的支持，这样手动更新太麻烦了！好在找到另一个解决方案：使用
-emerge 的 ``--nodeps`` 参数安装所有依赖的 package C，最后安装 packge A： ::
+但是这样手动更新太麻烦了！好在找到另一个解决方案：使用 emerge 的 ``--nodeps``
+参数安装所有依赖的 package C，最后安装 packge A： ::
 
     # emerge -av --oneshot --nodeps <package C>
     # ...

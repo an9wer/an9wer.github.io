@@ -158,6 +158,9 @@ Web Server
     (2020/05/22) `tengine <https://github.com/alibaba/tengine>`_
         A distribution of Nginx with some advanced features
 
+    (2021/04/13) `openresty <https://github.com/openresty/openresty>`_
+        Turning Nginx into a Full-Fledged Scriptable Web Platform
+
 Web analytics
 
     (2020/06/18) `goatcounter <https://github.com/zgoat/goatcounter>`_
