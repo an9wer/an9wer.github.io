@@ -309,6 +309,11 @@ Backup
     (2019/12/20) `rsnapshot <https://github.com/rsnapshot/rsnapshot>`_
         Backing up your data using rsync
 
+Text to Speech
+
+    (2021/04/15) `tts <https://github.com/mozilla/TTS>`_
+        A library for advanced Text-to-Speech generation
+
 Photo/Video/Design
 
     (2019/11/06) `inkscape <https://inkscape.org/>`_
