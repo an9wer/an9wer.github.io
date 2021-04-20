@@ -23,7 +23,7 @@ Build
 
 Build from <path>/Dockerfile: ::
 
-    # docker build --name <image> <path>
+    # docker build --tag <image> <path>
 
 
 Run
