@@ -6,11 +6,15 @@
   <link>https://an9wer.github.io/blog.html</link>
   <description>Website of an9wer's blog</description>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Thu, 22 Apr 2021 14:00:57 +0000</pubDate>
-  <lastBuildDate>Thu, 22 Apr 2021 14:00:57 +0000</lastBuildDate>
+  <pubDate>Sun, 25 Apr 2021 04:47:33 +0000</pubDate>
+  <lastBuildDate>Sun, 25 Apr 2021 04:47:33 +0000</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>60</ttl>
+  <item>
+    <title>有一只蟑螂</title>
+    <link>https://an9wer.github.io/2021/04/22_有一只蟑螂.html</link>
+  </item>
   <item>
     <title>Gentoo 升级遇难小记</title>
     <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记.html</link>
