@@ -279,6 +279,19 @@ Receiver feedback
 Retransmission
 
 
+IP transit and peering
+----------------------
+
+`Wikipedia: Tier 1 network
+<https://en.wikipedia.org/wiki/Tier_1_network>`_
+
+`Wikipedia: Internet transit
+<https://en.wikipedia.org/wiki/Internet_transit>`_
+
+`为什么中国的网间结算（IP transit)价格如此之高？
+<https://www.zhihu.com/question/33451500/answer/66956818>`_
+
+
 References
 ----------
 
