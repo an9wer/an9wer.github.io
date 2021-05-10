@@ -1,3 +1,11 @@
+2021/05/10 Mon
+
+    原来 /tmp 不一定是 swap。
+
+2021/05/06 Thu
+
+    Tpower 不在了。
+
 2021/04/22 Thu
 
     大战 smokeping 三百回合！
@@ -28,7 +36,7 @@
 
 2021/04/06 Thu
 
-    Fedora copr 不支持 fedora-31 的 chroot 了，后悔跳入 Fedora 的大坑！
+    Fedora copr 不支持 fedora-31 的 chroot 了，当初跳入了 Fedora 大坑！
 
 2021/04/01 Thu
 
