@@ -1,0 +1,5 @@
+User-agent: googlebot
+Disallow: /moments.html
+Disallow: /notes.html
+Disallow: /tools.html
+Disallow: /notes
