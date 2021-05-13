@@ -1,6 +1,11 @@
 关于 v2ray sniffing
 ===================
 
+:Published: : 2021/04/04
+
+.. meta::
+    :description: 关于 v2ray 的 sniffing 参数使用，自己的一些理解。
+
 v2ray 的 inbound 配置中有个 sniffing 参数，官方文档对它概念描述很模糊，目前只知
 道开启后可以通过 outbound 来解析域名，但更具体的使用就不清楚了。
 

@@ -1,6 +1,11 @@
 关于 chroot
 ===========
 
+:Published: : 2021/03/20
+
+.. meta::
+    :description: 关于 chroot 的一些应用场景，以及其与 docker 的对比。
+
 最初接触 chroot 可能是在安装 arch 和 gentoo 镜像的时候，通过 chroot 切换到安装
 的系统目录下面进行初始化配置。
 

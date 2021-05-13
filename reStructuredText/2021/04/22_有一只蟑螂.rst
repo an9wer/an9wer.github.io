@@ -4,8 +4,7 @@
 :Published: : 2021/04/22
 
 .. meta::
-    :description: Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录
-        挂载成 tmpfs 文件系统，直接将安装减少 SSD 硬盘的写
+    :description: 在小区地下停车库玩滑板，碰到一直蟑螂动也不动趴在那，着实可怕！
 
 ::
 

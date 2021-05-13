@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
 <title>Gentoo 升级遇难小记</title>
+<meta content="Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的 时候内存不足的问题。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -31,10 +32,14 @@
     </div> <!-- navbar -->
 
 <h1 class="title">Gentoo 升级遇难小记</h1>
-
+<dl class="docinfo simple">
+<dt class="published">Published</dt>
+<dd class="published"><p>: 2021/04/10</p>
+</dd>
+</dl>
 
     <div id="content">
-<p>有台 Gentoo 的服务器从去年 9 月份就没更新过系统。于是乎今天饶有兴致来 Update 一
+<p>有台 Gentoo 的服务器从去年 9 月份就没更新过系统，于是乎今天饶有兴致来 Update 一
 波。</p>
 <p>首先更新一下 repo：</p>
 <pre class="literal-block"># emerge --sync</pre>
