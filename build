@@ -65,16 +65,19 @@ build_rst() {
     fi
 
     mkdir -p "$(dirname "$html")"
-    #  Only build when html doesn't exist and mtime of rst or template.html is updated.
-    if [[ ! -f $html ]] ||
+    #  Only rebuild when html doesn't exist, mtime of either rst or template.html is updated, or when forced to rebuild
+    if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
+        #--no-doc-info \
       rst2html5.py \
         --strict \
         --no-doc-title \
-        --no-doc-info \
-        --template <(sed -E "/id=\"$category\"/ s/$/ class=\"current\"/" "$OUT_DIR/template.html") \
+        --link-stylesheet \
+        --stylesheet "/statics/css/style.css" \
+        --template <(sed -E "s/(id=\"$category\")/\1 class=\"current\"/" "$OUT_DIR/template.html") \
         "$rst" "$html"
+        #--template <(sed -E "/id=\"$category\"/ s/$/ class=\"current\"/" "$OUT_DIR/template.html") \
       echo -e "'$rst'\n->\t'$html'"
     fi
   done
@@ -155,14 +158,17 @@ build_all() {
 }
 
 # Main
+if [[ $1 =~ ^-f$|^--force$ ]]; then
+  force=true
+fi
 if [[ -z $@ ]]; then
   build_all
 else
   while (( ${#@} > 0 )) ; do
     case $1 in
-      *.rst     ) build_rst "$1" ;;
-      *.dot     ) build_dot "$1" ;;
-      *         ) usage ;;
+      *.rst ) build_rst "$1" ;;
+      *.dot ) build_dot "$1" ;;
+      *     ) usage ;;
     esac
     shift
   done

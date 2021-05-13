@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>an9wer's blog</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="docutils" />
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>03_Vultr 换主机小记.rst</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
-<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
 <body>
-    <div id="main">
+  <div id="main">
 
-        <div id="header">
-            <div id="headerLeft">
-                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
-                <div id="signature">Just stick to it :)</div>
-            </div> <!-- headerLeft -->
-            <div id="headerRight">
-                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-            </div> <!-- headerRight -->
-        </div> <!-- header -->
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
 
-        <div id="navbar">
-            <a id="blog" class="current"
-                href="/blog.html">Blog</a>
-            <a id="moments"
-                href="/moments.html">Moments</a>
-            <a id="notes"
-                href="/notes.html">Notes</a>
-            <a id="tools"
-                href="/tools.html">Tools</a>
-        </div> <!-- navbar -->
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
 
-        <div id="content">
+
+
+
+    <div id="content">
 <div class="section" id="vultr">
 <h1>Vultr 换主机小记</h1>
 <p>大概一个多月前，我发现 Vultr 上新增了 3.5 美金每月的主机，但是日本和洛杉矶线路
@@ -77,15 +78,15 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 <h2>相关命令</h2>
 <p>用 root 身份创建用户，之后可以用 <em>visudo</em> 命令为用户添加免密使用 <em>sudo</em> 的权限
 ：</p>
-<pre class="literal-block">pacman -S sudo
-useradd -m -g wheel an9wer</pre>
+<pre class="literal-block"># pacman -S sudo
+# useradd -m -g wheel &lt;username&gt;</pre>
 <p><em>/etc/sshd/config</em> 的相关配置如下（注意，在这之前最好先将 ssh public key 用
 <em>ssh-copy-id</em> 命令复制到服务器上）：</p>
 <pre class="literal-block">PermitRootLogin no
 PasswordAuthentication no</pre>
 </div>
-<div class="section" id="update-2018-12-11">
-<h2>Update (2018/12/11)</h2>
+<div class="section" id="updated-2018-12-11">
+<h2>Updated 2018/12/11</h2>
 <p>最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
 <span class="docutils literal">sudo crontab <span class="pre">-e</span></span> 命令，添加了如下内容：</p>
 <pre class="literal-block">0 5 * * * /usr/bin/pacman -Syu --noconfirm &amp;&amp; /sbin/shutdown -r +5</pre>
@@ -93,15 +94,16 @@ PasswordAuthentication no</pre>
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 <span class="docutils literal">sudo docker run</span> 命令运行容器时加上 <span class="docutils literal"><span class="pre">--restart</span> <span class="pre">unless-stopped</span></span> 选项。</p>
 </div>
-<div class="section" id="update-2019-02-01">
-<h2>Update (2019/02/01)</h2>
+<div class="section" id="updated-2019-02-01">
+<h2>Updated 2019/02/01</h2>
 <p>在 github 上新建了一个项目 —— <a class="reference external" href="https://github.com/an9wer/verice">verice</a> ，写
 了一些脚本专门用来管理服务器。</p>
 </div>
-<div class="section" id="update-2019-07-09">
-<h2>Update (2019/07/09)</h2>
+<div class="section" id="updated-2019-07-09">
+<h2>Updated 2019/07/09</h2>
 <p>在服务端开启 tcp fast open:</p>
 <pre class="literal-block">echo &quot;net.ipv4.tcp_fastopen = 3&quot; &gt;&gt; /etc/sysctl.d/tfo.conf</pre>
+<p>Thanks for reading :)</p>
 </div>
 <div class="section" id="references">
 <h2>References</h2>
@@ -111,25 +113,24 @@ PasswordAuthentication no</pre>
 <li><p><a class="reference external" href="https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting">https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting</a></p></li>
 <li><p><a class="reference external" href="https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c">https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c</a></p></li>
 </ul>
-<p>Thanks for reading :)</p>
 </div>
 </div>
-        </div> <!-- content -->
+    </div> <!-- content -->
 
-        <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
-        </div> <!-- footer -->
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
 
-    </div> <!-- main -->
+  </div> <!-- main -->
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-141786049-1');
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
 
 </body>
 </html>

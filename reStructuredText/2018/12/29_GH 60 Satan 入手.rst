@@ -75,8 +75,8 @@ github 上找到了 qmk 的官方项目，于是好好研究了一把。
 念头时，我都会去做些别的事情来调整心态，然后卷土重来。我觉得折腾的意义就在于这
 样一次次战胜痛苦绝望的念头，最后苦尽甘来的喜悦。
 
-Edit 2019/02/22
----------------
+Updated 2019/02/22
+------------------
 
 种草原厂键帽好久，也在淘宝上逛了好久，终于入了一套无刻 PBT 原厂键帽。用了也有一
 个多月了，手感确实比 OEM 键帽好很多，主要差别在前者按起来会更实一点，而后者会有
@@ -88,29 +88,22 @@ Edit 2019/02/22
 .. image:: /statics/images/2018/12/29/GH60_Satan2.jpg
     :alt: GH60 Satan2
 
-Edit 2019/05/31
----------------
+Updated 2019/05/31
+------------------
 
 今天突然心血来潮，修改了我的键盘布局。在这里重新整理下刷机命令：
 
-Install requirements first:
-
-::
+Install requirements first: ::
 
     ./util/linux_install.sh
 
 Modify keymaps.c (localted in ./keyboards/dz60/keymaps/an9wer/keymap.c), then
-build:
-
-::
+build: ::
 
     sudo make dz60:an9wer
 
-Finally, enter reset mode and flush keymaps:
-
-::
+Finally, enter reset mode and flush keymaps: ::
 
     sudo make dz60:an9wer:dfu
-
 
 Thanks for reading :)

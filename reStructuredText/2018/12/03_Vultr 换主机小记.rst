@@ -53,8 +53,8 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 用 root 身份创建用户，之后可以用 *visudo* 命令为用户添加免密使用 *sudo* 的权限
 ： ::
 
-    pacman -S sudo
-    useradd -m -g wheel an9wer
+    # pacman -S sudo
+    # useradd -m -g wheel <username>
 
 */etc/sshd/config* 的相关配置如下（注意，在这之前最好先将 ssh public key 用
 *ssh-copy-id* 命令复制到服务器上）： ::
@@ -62,13 +62,11 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
     PermitRootLogin no
     PasswordAuthentication no
 
-Update (2018/12/11)
--------------------
+Updated 2018/12/11
+------------------
 
 最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
-``sudo crontab -e`` 命令，添加了如下内容：
-
-::
+``sudo crontab -e`` 命令，添加了如下内容： ::
 
     0 5 * * * /usr/bin/pacman -Syu --noconfirm && /sbin/shutdown -r +5
 
@@ -77,19 +75,20 @@ Update (2018/12/11)
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 ``sudo
 docker run`` 命令运行容器时加上 ``--restart unless-stopped`` 选项。
 
-Update (2019/02/01)
--------------------
+Updated 2019/02/01
+------------------
 
 在 github 上新建了一个项目 —— `verice <https://github.com/an9wer/verice>`_ ，写
 了一些脚本专门用来管理服务器。
 
-Update (2019/07/09)
--------------------
+Updated 2019/07/09
+------------------
 
 在服务端开启 tcp fast open: ::
 
     echo "net.ipv4.tcp_fastopen = 3" >> /etc/sysctl.d/tfo.conf
 
+Thanks for reading :)
 
 References
 ----------
@@ -101,6 +100,3 @@ How to deploy Arch on vultr?
 -   https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting
 
 -   https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c
-
-Thanks for reading :)
-

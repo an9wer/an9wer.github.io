@@ -290,8 +290,8 @@ Install latex: ::
     # emerge --ask dev-texlive/texlive-langchinese 
 
 
-Update 2021/04/04
------------------
+Updated 2021/04/04
+------------------
 
 如果想在 netifrc 中使用 dhcp 动态获取 ip 的同时，添加自己需要的 dns server（例
 如 127.0.0.1），该怎么办？

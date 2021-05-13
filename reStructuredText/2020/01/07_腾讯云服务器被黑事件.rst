@@ -166,11 +166,9 @@ ldd 查看 top 和 ps 的动态链接库，发现 ``/usr/local/lib/libevent_core
 
 Thanks for reading :)
 
-
 References
 ----------
 
 https://www.anquanke.com/post/id/171523
 
 https://zhuanlan.zhihu.com/p/65609044
-

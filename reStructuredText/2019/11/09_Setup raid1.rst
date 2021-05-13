@@ -19,10 +19,8 @@ means the creation is still being in process: ::
     # mdadm --detail /dev/md1
     State: clean, resyncing
 
-Thanks for reading :)
-
-Edit 2021/02/13
----------------
+Updated 2021/02/13
+------------------
 
 重装了系统，所以新系统如何识别之前的 raid1 呢？
 
@@ -34,6 +32,7 @@ Edit 2021/02/13
 
     # mdadm --assemble /dev/md1 /dev/sda /dev/sdb
 
+Thanks for reading :)
 
 References
 ----------

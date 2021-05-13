@@ -1,10 +1,14 @@
+2021/05/13 Thu
+
+    Anyway, this blog finally supports mobile view now.
+
 2021/05/10 Mon
 
     原来 /tmp 不一定是 swap。
 
 2021/05/06 Thu
 
-    TPower 不在了。
+    花神还在，TPower 不在了。
 
 2021/04/22 Thu
 

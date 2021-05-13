@@ -175,6 +175,12 @@ Web analytics
 
     (2020/06/18) `plausible <https://github.com/plausible/analytics>`_
         Simple and privacy-friendly alternative to Google Analytics
+
+    (2021/05/13) `matomo <https://github.com/matomo-org/matomo>`_
+        The leading open alternative to Google Analytics that gives you full
+        control over your data. Matomo lets you easily collect data from
+        websites & apps and visualise this data and extract insights. Privacy
+        is built-in
         
 Blog/Forum
 
@@ -338,6 +344,9 @@ Advertisments block
 
     (2020/04/24) `pihole <https://pi-hole.net/>`_
         A black hole for Internet advertisements
+
+    (2021/05/13) `ublock <https://github.com/gorhill/uBlock>`_
+        An efficient blocker for Chromium and Firefox
 
 Native APP
 

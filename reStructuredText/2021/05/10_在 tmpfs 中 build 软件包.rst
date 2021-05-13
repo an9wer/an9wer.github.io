@@ -1,6 +1,13 @@
 在 tmpfs 中 build 软件包
 ========================
 
+:Published: : 2021/05/10
+
+.. meta::
+    :description: Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录
+        挂载成 tmpfs 文件系统，安装过程中的读写操作直接写入到内存中，可以减少硬
+        盘的读写次数，增加硬盘寿命，并且提高安装速度。
+
 因为 Gentoo 是通过源码安装软件包，需要下载、解压并编译源代码，这个过程会生成一
 堆临时文件，对于 SSD 用户来说着实心疼硬盘的寿命。不过好在可以通过 tmpfs 来缓解
 硬盘的压力，所谓 tmpfs 即把内存用来当硬盘使用（而 swap 是把硬盘当内存用，正好相
@@ -23,9 +30,7 @@
 由此可以看出，大量的 IO 操作都在 */var/tmp/portage* 目录，我们对其使用 tmpfs 可
 以大大提高 SSD 的寿命，甚至也可以节省软件编译时间（因为直接从内存读写文件）。
 
-接下来就是将 */var/tmp/portage* 挂载成 tmpfs 的具体操作：
-
-::
+接下来就是将 */var/tmp/portage* 挂载成 tmpfs 的具体操作： ::
 
     # vim /etc/fstab
         tmpfs  /var/tmp/portage  tmpfs  size=12G,uid=portage,gid=portage,mode=775,nosuid,noatime,nodev   0 0

@@ -42,4 +42,3 @@ GANSS ALT 61 入手及退货
 另外由于退货比较匆忙，没能来得及拍照片，有一点点遗憾。
 
 Thanks for reading :)
-

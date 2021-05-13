@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>an9wer's blog</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="generator" content="docutils" />
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>05_从 archlinux 转投 gentoo.rst</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
-<link rel="stylesheet" href="/statics/css/icofont.css" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
 <link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
 <body>
-    <div id="main">
+  <div id="main">
 
-        <div id="header">
-            <div id="headerLeft">
-                <div id="name"><a href="/blog.html">an9wer's blog</a></div>
-                <div id="signature">Just stick to it :)</div>
-            </div> <!-- headerLeft -->
-            <div id="headerRight">
-                <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
-            </div> <!-- headerRight -->
-        </div> <!-- header -->
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
 
-        <div id="navbar">
-            <a id="blog" class="current"
-                href="/blog.html">Blog</a>
-            <a id="moments"
-                href="/moments.html">Moments</a>
-            <a id="notes"
-                href="/notes.html">Notes</a>
-            <a id="tools"
-                href="/tools.html">Tools</a>
-        </div> <!-- navbar -->
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
 
-        <div id="content">
+
+
+
+    <div id="content">
 <div class="section" id="archlinux-gentoo">
 <h1>从 archlinux 转投 gentoo</h1>
-<p>当使用了 gentoo 之后，我似乎体验到了转角遇到爱的感觉————这才是符合我审美的
+<p>当使用了 gentoo 之后，我似乎体验到了转角遇到爱的感觉————这才是符合我个人审美的
 linux distro 。</p>
 <p>现在日常以及工作一直用的是 archlinux，大概有一年多的时间，虽然不是很久，但也算
 对 archlinux 有一个比较直观的了解（这期间自己也写过一些 package）。总的来说，
@@ -51,7 +52,7 @@ from source 的 linux distro。尝试使用 gentoo 的原因也很简单，我�
 systemd 的 linux distro。直到安装并使用一段时间后，我愈加发现它能满足我的一些洁
 癖：</p>
 <ol class="arabic simple">
-<li><p>从源码安装软件非常 Geek，另外我非常享受代码在 compile 的过程（只是对我笔记本
+<li><p>从源码安装软件非常 geek，另外我非常享受代码在 compile 的过程（只是对我笔记本
 CPU 的负载稍稍有些担心）。从源码安装还有一个好处是在 compile 的时候可以指定
 使用哪些库或者不需要哪些库（通过 package.use），从而使软件在 compile 完之后
 完全符合你的需要。</p></li>
@@ -60,8 +61,8 @@ CPU 的负载稍稍有些担心）。从源码安装还有一个好处是在 com
 <li><p>它和 archlinux 一样是一个 simple linux distro，甚至提供了 systemd 的替代者
 openrc。</p></li>
 </ol>
-<div class="section" id="update-2021-04-08">
-<h2>Update 2021/04/08</h2>
+<div class="section" id="updated-2021-04-08">
+<h2>Updated 2021/04/08</h2>
 <p>补充一点，gentoo 会把所有你安装的软件都记录在 <em>/var/lib/portage/world</em> 文件中，
 它是不包含那些在安装时候因为依赖关系连带被安装的软件的（通常是一些 lib 软件）。
 这样你就能明确知道你在当前系统用到了哪些软件，下次如果重装系统的话，直接安装把
@@ -69,22 +70,22 @@ world 文件里面的软件重装一遍就能恢复。</p>
 <p>Thanks for Reading :)</p>
 </div>
 </div>
-        </div> <!-- content -->
+    </div> <!-- content -->
 
-        <div id="footer">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
-        </div> <!-- footer -->
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
 
-    </div> <!-- main -->
+  </div> <!-- main -->
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-141786049-1');
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
 
 </body>
 </html>

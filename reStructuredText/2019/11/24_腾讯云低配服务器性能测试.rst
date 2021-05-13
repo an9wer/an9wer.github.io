@@ -203,6 +203,6 @@ SA1.SMALL1 (标准型SA1 1核1G): ::
     fsgsbase bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec
     xgetbv1 arat
 
-各位猜猜我最终选择了哪款？
+所以，各位猜猜我最终选择了哪款？
 
 Thanks for reading :)

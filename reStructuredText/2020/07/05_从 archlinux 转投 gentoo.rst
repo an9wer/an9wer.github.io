@@ -1,7 +1,7 @@
 从 archlinux 转投 gentoo
 ========================
 
-当使用了 gentoo 之后，我似乎体验到了转角遇到爱的感觉————这才是符合我审美的
+当使用了 gentoo 之后，我似乎体验到了转角遇到爱的感觉————这才是符合我个人审美的
 linux distro 。
 
 现在日常以及工作一直用的是 archlinux，大概有一年多的时间，虽然不是很久，但也算
@@ -19,7 +19,7 @@ from source 的 linux distro。尝试使用 gentoo 的原因也很简单，我�
 systemd 的 linux distro。直到安装并使用一段时间后，我愈加发现它能满足我的一些洁
 癖：
 
-1. 从源码安装软件非常 Geek，另外我非常享受代码在 compile 的过程（只是对我笔记本
+1. 从源码安装软件非常 geek，另外我非常享受代码在 compile 的过程（只是对我笔记本
    CPU 的负载稍稍有些担心）。从源码安装还有一个好处是在 compile 的时候可以指定
    使用哪些库或者不需要哪些库（通过 package.use），从而使软件在 compile 完之后
    完全符合你的需要。
@@ -30,8 +30,8 @@ systemd 的 linux distro。直到安装并使用一段时间后，我愈加发�
 3. 它和 archlinux 一样是一个 simple linux distro，甚至提供了 systemd 的替代者
    openrc。
 
-Update 2021/04/08
------------------
+Updated 2021/04/08
+------------------
 
 补充一点，gentoo 会把所有你安装的软件都记录在 */var/lib/portage/world* 文件中，
 它是不包含那些在安装时候因为依赖关系连带被安装的软件的（通常是一些 lib 软件）。
