@@ -69,15 +69,13 @@ build_rst() {
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
-        #--no-doc-info \
       rst2html5.py \
         --strict \
-        --no-doc-title \
         --link-stylesheet \
+        --initial-header-level 2 \
         --stylesheet "/statics/css/style.css" \
         --template <(sed -E "s/(id=\"$category\")/\1 class=\"current\"/" "$OUT_DIR/template.html") \
         "$rst" "$html"
-        #--template <(sed -E "/id=\"$category\"/ s/$/ class=\"current\"/" "$OUT_DIR/template.html") \
       echo -e "'$rst'\n->\t'$html'"
     fi
   done
@@ -160,6 +158,7 @@ build_all() {
 # Main
 if [[ $1 =~ ^-f$|^--force$ ]]; then
   force=true
+  shift
 fi
 if [[ -z $@ ]]; then
   build_all

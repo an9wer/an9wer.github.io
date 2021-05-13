@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>12_BandwagonHost 服务器被黑事件.rst</title>
+<title>BandwagonHost 服务器被黑事件</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -30,12 +30,10 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-
+<h1 class="title">BandwagonHost 服务器被黑事件</h1>
 
 
     <div id="content">
-<div class="section" id="bandwagonhost">
-<h1>BandwagonHost 服务器被黑事件</h1>
 <p>搬瓦工服务器控制面板传来噩耗，由于我的服务器疯狂发送 Spam 邮件，所以被强制
 shutdown 了。第一反应是服务器被黑了！</p>
 <img alt="Bandwagonhost" src="/statics/images/2021/03/12_BandwagonHost.jpg" />
@@ -70,7 +68,6 @@ shutdown 了，还是同样的问题！</p>
 <p>索性也不观察了，直接把 25 端口出口流量给禁用：</p>
 <pre class="literal-block"># iptables -A OUTPUT -o &lt;public interface&gt; -p tcp --dport 25 -j DROP</pre>
 <p>Thanks for reading :)</p>
-</div>
     </div> <!-- content -->
 
     <div id="footer">

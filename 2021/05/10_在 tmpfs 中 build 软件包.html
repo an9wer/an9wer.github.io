@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
-<title>10_在 tmpfs 中 build 软件包.rst</title>
+<title>在 tmpfs 中 build 软件包</title>
 <meta content="Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录 挂载成 tmpfs 文件系统，安装过程中的读写操作直接写入到内存中，可以减少硬 盘的读写次数，增加硬盘寿命，并且提高安装速度。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -31,17 +31,14 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-
-
-
-    <div id="content">
-<div class="section" id="tmpfs-build">
-<h1>在 tmpfs 中 build 软件包</h1>
-<dl class="field-list simple">
-<dt>Published</dt>
-<dd><p>: 2021/05/10</p>
+<h1 class="title">在 tmpfs 中 build 软件包</h1>
+<dl class="docinfo simple">
+<dt class="published">Published</dt>
+<dd class="published"><p>: 2021/05/10</p>
 </dd>
 </dl>
+
+    <div id="content">
 <p>因为 Gentoo 是通过源码安装软件包，需要下载、解压并编译源代码，这个过程会生成一
 堆临时文件，对于 SSD 用户来说着实心疼硬盘的寿命。不过好在可以通过 tmpfs 来缓解
 硬盘的压力，所谓 tmpfs 即把内存用来当硬盘使用（而 swap 是把硬盘当内存用，正好相
@@ -85,7 +82,6 @@ to free that memory.</p>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Knowledge_Base:Freeing_disk_space">Gentoo: Freeing disk space</a></p>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/FAQ#What_is_in_.2Fvar.2Ftmp.2Fportage.3F_Is_it_safe_to_delete_the_files_and_directories_in_.2Fvar.2Ftmp.2Fportage.3F">Gentoo FAQ: What is in /var/tmp/portage?</a></p>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">Gentoo: Portage tmpdir on tmpfs</a></p>
-</div>
 </div>
     </div> <!-- content -->
 
