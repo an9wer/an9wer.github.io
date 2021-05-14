@@ -22,23 +22,23 @@
 
 2020/08/26 「折腾」 `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_
 
-2020/08/13 「开箱」 `Redmi K30 5G 入手及刷机 </2020/08/13_Redmi%20K30%205G%20入手及刷机.html>`_
+2020/08/13 「开箱」 `Redmi K30 5G 入手及刷机 <2020/08/13_Redmi%20K30%205G%20入手及刷机.html>`_
 
-2020/07/27 「折腾」 `OpenWRT installation </2020/07/27_OpenWRT\ installation.html>`_
+2020/07/27 「折腾」 `OpenWRT installation <2020/07/27_OpenWRT%20installation.html>`_
 
-2020/07/05 「折腾」 `从 archlinux 转投 gentoo </2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
+2020/07/05 「折腾」 `从 archlinux 转投 gentoo <2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
 
-2020/06/06 「折腾」 `Gentoo installation </2020/06/06_Gentoo%20installation.html>`_
+2020/06/06 「折腾」 `Gentoo installation <2020/06/06_Gentoo%20installation.html>`_
 
-2020/01/07 「记录」 `腾讯云服务器被黑事件 </2020/01/07_腾讯云服务器被黑事件.html>`_
+2020/01/07 「记录」 `腾讯云服务器被黑事件 <2020/01/07_腾讯云服务器被黑事件.html>`_
 
-2019/11/24 「记录」 `腾讯云低配服务器性能测试 </2019/11/24_腾讯云低配服务器性能测试.html>`_
+2019/11/24 「记录」 `腾讯云低配服务器性能测试 <2019/11/24_腾讯云低配服务器性能测试.html>`_
 
-2019/11/09 「折腾」 `Setup raid1 </2019/11/09_Setup%20raid1.html>`_
+2019/11/09 「折腾」 `Setup raid1 <2019/11/09_Setup%20raid1.html>`_
 
 2019/09/02 「折腾」 `Fcitx VS Ibus <2019/09/02_Fcitx_VS_Ibus.html>`_
 
-2019/08/21 「工具」 `终端下的目录切换 </2019/08/21_终端下的目录切换.html>`_
+2019/08/21 「工具」 `终端下的目录切换 <2019/08/21_终端下的目录切换.html>`_
 
 2019/08/20 「工具」 `TODO list <2019/08/20_TODO%20list.html>`_
 

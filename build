@@ -69,6 +69,7 @@ build_rst() {
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
+      pubRSS=true
       rst2html5.py \
         --strict \
         --link-stylesheet \
@@ -111,7 +112,7 @@ build_dot() {
 }
 
 build_rss() {
-  if [[ ! -f blog.rss ]] ||
+  if [[ $force == true ]] || [[ $pubRSS == true ]] || [[ ! -f blog.rss ]] ||
       ([[ -f blog.rss ]] && (( $(stat -c "%Y" blog.rss ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -120,19 +121,39 @@ build_rss() {
 <channel>
   <title>an9wer's blog</title>
   <link>https://an9wer.github.io/blog.html</link>
+  <language>zh-cn</language>
+  <copyright>CC BY-NC-SA 2018-2021</copyright>
   <description>Website of an9wer's blog</description>
+  <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
   <pubDate>$(date -u -R)</pubDate>
-  <lastBuildDate>$(date -u -R)</lastBuildDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-  <ttl>60</ttl>
+  <ttl>120</ttl>
 EOF
     perl -lane '
-if (/`(.*) <(.*)>`_/) {
+use Time::Piece;
+use File::Basename qw(dirname);
+chdir(dirname($0));
+
+
+$ENV{TZ} = "UTC";
+
+if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "  <item>";
-  print "    <title>$1</title>";
-  print "    <link>https://an9wer.github.io/$2</link>";
+  print "    <title>$3</title>";
+  print q(    <author>an9wer@gmail.com</author>);
+  print "    <category>$2</category>";
+  print "    <pubDate>" . Time::Piece->strptime("$1", "%Y/%m/%d")->strftime("%a, %d %b %Y %H:%M:%S %z") . "</pubDate>";
+  print "    <link>https://an9wer.github.io/$4</link>";
+  my $html = "./" . $4 =~ s/%20/\ /rg ;
+  open(my $fh, q(<), $html) or die("Failed to read from file $html");
+  while(<$fh>) {
+    if (/<meta content="(.*)" name="description" \/>/) {
+      print "    <description>$1</description>";
+      last;
+    }
+  }
   print "  </item>";
 }
 ' reStructuredText/blog.rst
@@ -167,6 +188,7 @@ else
     case $1 in
       *.rst ) build_rst "$1" ;;
       *.dot ) build_dot "$1" ;;
+      rss   ) build_rss ;;
       *     ) usage ;;
     esac
     shift
