@@ -6,18 +6,21 @@ My personal statistics blog system.
 Prerequisites
 -------------
 
-In current project directory, run: ::
+Install docutils: ::
 
-    $ python3 -m venv venv
-    $ venv/bin/pip install docutils
+    $ pip install docutils
 
 Usage
 -----
 
-Build all blogs and generate RSS: ::
+Build all posts and generate RSS subscription: ::
 
     $ ./build
 
 Remove obsolete files: ::
 
     $ ./clean
+
+Run test: ::
+
+    $ ./run
