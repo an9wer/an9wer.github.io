@@ -1,4 +1,5 @@
 User-agent: googlebot
+Sitemap: https://an9wer.github.io/sitemap.xml
 Disallow: /moments.html
 Disallow: /notes.html
 Disallow: /tools.html

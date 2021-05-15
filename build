@@ -69,7 +69,9 @@ build_rst() {
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
-      pubRSS=true
+      if [[ $category == blog ]]; then
+        newpub=true
+      fi
       rst2html5.py \
         --strict \
         --link-stylesheet \
@@ -112,7 +114,7 @@ build_dot() {
 }
 
 build_rss() {
-  if [[ $force == true ]] || [[ $pubRSS == true ]] || [[ ! -f blog.rss ]] ||
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.rss ]] ||
       ([[ -f blog.rss ]] && (( $(stat -c "%Y" blog.rss ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -131,11 +133,8 @@ build_rss() {
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
 EOF
-    perl -lane '
+      perl -lane '
 use Time::Piece;
-use File::Basename qw(dirname);
-chdir(dirname($0));
-
 
 $ENV{TZ} = "UTC";
 
@@ -146,8 +145,8 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "    <category>$2</category>";
   print "    <pubDate>" . Time::Piece->strptime("$1", "%Y/%m/%d")->strftime("%a, %d %b %Y %H:%M:%S %z") . "</pubDate>";
   print "    <link>https://an9wer.github.io/$4</link>";
-  my $html = "./" . $4 =~ s/%20/\ /rg ;
-  open(my $fh, q(<), $html) or die("Failed to read from file $html");
+  my $html = $4 =~ s/%20/\ /rg ;
+  open(my $fh, q(<), "$html") or die("Failed to read from file $html");
   while(<$fh>) {
     if (/<meta content="(.*)" name="description" \/>/) {
       print "    <description>$1</description>";
@@ -158,7 +157,7 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
 }
 ' reStructuredText/blog.rst
 
-    cat <<EOF
+      cat <<EOF
 </channel>
 
 </rss> 
@@ -166,6 +165,44 @@ EOF
     } > blog.rss
 
     echo -e "'reStructuredText/blog.rst'\n->\t'blog.rss'"
+  fi
+}
+
+build_sitemap() {
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f sitemap.xml ]]; then
+    { cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://an9wer.github.io/blog.html</loc>
+      <lastmod>$(date -d @$(stat -c %Y blog.html) +%Y-%m-%d)</lastmod>
+      <changefreq>always</changefreq>
+      <priority>1</priority>
+   </url>
+EOF
+      perl -lane '
+use POSIX qw(strftime);
+
+$ENV{TZ} = "UTC";
+
+if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
+  print "  <url>";
+  print "    <loc>http://an9wer.github.io/$4</loc>";
+  my $html = $4 =~ s/%20/\ /rg ;
+  my @stat = stat("$html");
+  print "    <lastmod>" . strftime("%Y-%m-%d", localtime($stat[9])) . "</lastmod>";
+  print "    <changefreq>always</changefreq>";
+  print "    <priority>0.5</priority>";
+  print "  </url>";
+}
+' reStructuredText/blog.rst
+
+      cat <<EOF
+</urlset> 
+EOF
+    } > sitemap.xml
+
+    echo -e "'reStructuredText/blog.rst'\n->\t'sitemap.xml'"
   fi
 }
 
@@ -186,10 +223,11 @@ if [[ -z $@ ]]; then
 else
   while (( ${#@} > 0 )) ; do
     case $1 in
-      *.rst ) build_rst "$1" ;;
-      *.dot ) build_dot "$1" ;;
-      rss   ) build_rss ;;
-      *     ) usage ;;
+      *.rst   ) build_rst "$1" ;;
+      *.dot   ) build_dot "$1" ;;
+      rss     ) build_rss ;;
+      sitemap ) build_sitemap ;;
+      *       ) usage ;;
     esac
     shift
   done
