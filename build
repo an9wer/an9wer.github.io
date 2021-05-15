@@ -182,13 +182,14 @@ build_sitemap() {
 EOF
       perl -lane '
 use POSIX qw(strftime);
+use URI::Escape;
 
 $ENV{TZ} = "UTC";
 
 if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "  <url>";
-  print "    <loc>http://an9wer.github.io/$4</loc>";
   my $html = $4 =~ s/%20/\ /rg ;
+  print "    <loc>https://an9wer.github.io/" . join("/", map(uri_escape("$_"), split("/", "$html"))) . "</loc>";
   my @stat = stat("$html");
   print "    <lastmod>" . strftime("%Y-%m-%d", localtime($stat[9])) . "</lastmod>";
   print "    <changefreq>always</changefreq>";
