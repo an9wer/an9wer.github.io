@@ -114,8 +114,7 @@ build_dot() {
 }
 
 build_rss() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.xml ]] ||
-      ([[ -f blog.xml ]] && (( $(stat -c "%Y" blog.xml ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.xml ]]; then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
@@ -212,6 +211,7 @@ build_all() {
   build_rst $(find "$RST_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
   build_rss
+  build_sitemap
 }
 
 # Main
