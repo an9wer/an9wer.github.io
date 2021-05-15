@@ -114,8 +114,8 @@ build_dot() {
 }
 
 build_rss() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.rss ]] ||
-      ([[ -f blog.rss ]] && (( $(stat -c "%Y" blog.rss ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.xml ]] ||
+      ([[ -f blog.xml ]] && (( $(stat -c "%Y" blog.xml ) <= $(stat -c "%Y" reStructuredText/blog.rst) ))); then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
@@ -162,9 +162,9 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
 
 </rss> 
 EOF
-    } > blog.rss
+    } > blog.xml
 
-    echo -e "'reStructuredText/blog.rst'\n->\t'blog.rss'"
+    echo -e "'reStructuredText/blog.rst'\n->\t'blog.xml'"
   fi
 }
 
