@@ -179,6 +179,12 @@ build_sitemap() {
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
+      <loc>https://an9wer.github.io/</loc>
+      <lastmod>$(date -d @$(stat -c %Y index.html) +%Y-%m-%d)</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.3</priority>
+   </url>
+   <url>
       <loc>https://an9wer.github.io/blog.html</loc>
       <lastmod>$(date -d @$(stat -c %Y blog.html) +%Y-%m-%d)</lastmod>
       <changefreq>always</changefreq>
