@@ -15,7 +15,7 @@ EOF
 }
 
 build_rst() {
-  local rst html category
+  local rst html
   for rst in "$@"; do
     rst=$(realpath "$rst")
     if [[ ! -f $rst ]]; then
@@ -27,41 +27,23 @@ build_rst() {
       continue
     fi
 
-    # Blog
-    html=$(sed -nE "s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
-    category=blog
-
-    # Notes
-    if [[ -z $html ]]; then
-      # Skip `notes/ns` directory
-      if grep -Eq '.*/notes/ns/[^/]+\.rst$' <(echo "$rst"); then
-        continue
-      fi
-      html=$(sed -nE "s@.*/(notes/.+)\\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
-      category=notes
+    if grep -Eq '.*/notes/ns/[^/]+\.rst$' <(echo "$rst"); then
+      continue
     fi
 
-    # Index
-    if [[ -z $html ]]; then
-      html=$(sed -nE "s@.*/([^/]+)\.rst\$@$OUT_DIR/\1.html@p" <(echo "$rst"))
-      if [[ $html =~ /blog.html$ ]]; then
-        category=blog
-      elif [[ $html =~ /notes.html$ ]]; then
-        category=notes
-      elif [[ $html =~ /moments.html$ ]]; then
-        category=moments
-      elif [[ $html =~ /tools.html$ ]]; then
-        category=tools
-      else
-        echo "Unknown file '$rst'."
-        continue
-      fi
-    fi
+    # The following substitues are for blog page, notes page and index page seperately
+    html=$(sed -nE "
+      s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$OUT_DIR/\1.html@p
+      t
+      s@.*/(notes/.+)\\.rst\$@$OUT_DIR/\1.html@p
+      t
+      s@.*/([^/]+)\.rst\$@$OUT_DIR/\1.html@p
+    " <(echo "$rst"))
 
     # Missing
     if [[ -z $html ]]; then
       echo "Unknown file '$rst'."
-      continue
+      exit 1
     fi
 
     mkdir -p "$(dirname "$html")"
@@ -69,16 +51,40 @@ build_rst() {
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
-      if [[ $category == blog ]]; then
-        newpub=true
-      fi
       rst2html5.py \
         --strict \
         --link-stylesheet \
         --initial-header-level 2 \
         --stylesheet "/statics/css/style.css" \
-        --template <(sed -E "s/(id=\"$category\")/\1 class=\"current\"/" "$OUT_DIR/template.html") \
+        --template template.html \
         "$rst" "$html"
+      case "$html" in
+        */blog.html )
+          newpub=true
+          sed -i -E -e 's@(id="blog")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's blog</title>@" "$html"
+          ;;
+        */20[0-9][0-9]/[01][0-9]/[0-3][0-9]*.html )
+          newpub=true
+          sed -i -E -e 's@(id="blog")@\1 class="current"@' "$html"
+          ;;
+        */notes.html )
+          echo $html
+          sed -i -E -e 's@(id="notes")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's notes</title>@" "$html"
+          ;;
+        */notes/*.html )
+          sed -i -E -e 's@(id="notes")@\1 class="current"@' "$html"
+          ;;
+        */moments.html )
+          sed -i -E -e 's@(id="moments")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's moments</title>@" "$html"
+          ;;
+        */tools.html )
+          sed -i -E -e 's@(id="tools")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's tools</title>@" "$html"
+          ;;
+        * )
+          echo "Unknown file '$html'."
+          exit 1
+          ;;
+      esac
       echo -e "'$rst'\n->\t'$html'"
     fi
   done
