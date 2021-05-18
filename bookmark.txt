@@ -53,12 +53,13 @@ reStructuredText/blog.rst
 
 reStructuredText/notes.rst
     Commands
+        reStructuredText/notes/commands/info.rst
+        reStructuredText/notes/commands/sed.rst
+    Commands
         reStructuredText/notes/commands/7z.rst
         reStructuredText/notes/commands/rsync.rst
         reStructuredText/notes/commands/ledger.rst
-        reStructuredText/notes/commands/info.rst
         reStructuredText/notes/commands/iptables.rst
-        reStructuredText/notes/commands/sed.rst
         reStructuredText/notes/commands/dmidecode.rst
         reStructuredText/notes/commands/lsscsi.rst
         reStructuredText/notes/commands/bc.rst

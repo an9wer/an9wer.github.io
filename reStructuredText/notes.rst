@@ -1,3 +1,11 @@
+Commands
+
+    - `info </notes/commands/info.html>`_
+        The GNU info program and utilities
+
+    - `sed </notes/commands/sed.html>`_
+        Super-useful stream editor
+
 Commands/
     -   `7z
         </notes/commands/7z.html>`_
@@ -5,12 +13,8 @@ Commands/
         </notes/commands/rsync.html>`_
     -   `ledger
         </notes/commands/ledger.html>`_
-    -   `info
-        </notes/commands/info.html>`_
     -   `iptables
         </notes/commands/iptables.html>`_
-    -   `sed
-        </notes/commands/sed.html>`_
     -   `dmidecode
         </notes/commands/dmidecode.html>`_
     -   `lsscsi

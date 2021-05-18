@@ -1,132 +1,220 @@
 Sed
 ===
 
-See ``info sed``
+:Updated: : 2021/05/18
 
 
-``sed`` is a stream editor and follows this syntax: ::
+sed 的基本语法如下: ::
 
     sed [options ... ] [address]command[command options] [inputfile ...]
 
-**Note**: Multiple commands are accpeted, but ned to separated by semicolons
-(';') or newlines (ASCII 10), or specified with '-e' or '-f' options:  ::
+sed 可以同时执行多条命令，用换行符或者用分号分隔，或者使用多个 ``-e`` 参数： ::
 
-    sed '/^foo/d; s/hello/world/'
+    $ sed '/^foo/d; s/hello/world/'
+    $ sed -e '/^foo/d' -e 's/hellow/world/'
+    $ sed -f <(echo "/^foo/d; s/hello/world/")
+    $ sed -f <(echo -e "/^foo/d\ns/hello/world/")
 
-Equals to: ::
+sed 在运行的时候，内部维护了两个 buffer，一个是 `pattern space`_ ，另一个是
+`hold space`_ 。sed 每次只能对一行数据进行处理，每次处理的时候会把整行的内容塞
+到 pattern space 中，如果有必要的话，再通过 'h', 'H', 'g', 'G' 等命令保存到
+hold space 中，等处理完操作下一行的数据时又会清空这两个 buffer 中的内容。
 
-    sed -e '/^foo/d' -e 's/hellow/world/'
+Addresses
+---------
 
-Also equals to: ::
+**Note**: 如果只有一个 address，表示该 address 匹配到的行。如果有两个 address，
+并用逗号分隔，表示从第一个 address 到第二个 address 匹配到的范围。
 
-    sed -f <(echo "/^foo/d; s/hello/world/")
+Number addresses
+""""""""""""""""
 
-And also equals to: ::
+``NUMBER``
+    Specifying a line number will match only that line in the input.
 
-    sed -f <(echo -e "/^foo/d\ns/hello/world/")
+    ::
 
-Options
--------
+        $ seq 3 | sed -n '2p'
+        2
 
---debug
-    Debug mode
+``$``
+    Matches the last line of the last file of input.
 
+    ::
 
-Address
--------
+        $ seq 3 | sed -n '$p'
+        3
 
-NUMBER
-    Specifying a line number will match only that line in the input. (**Note**
-    that 'sed' counts lines continuously across all input files unless '-i' or
-    '-s' options are specified.)
-
-\$
-    Matches the last line of the last file of input, or the last line of each
-    file when the '-i' or '-s' options are specified.
-
-FIRST~STEP
+``FIRST~STEP``
     Matches every STEPth line starting with line FIRST.
 
-/REGEXP/
+    ::
+
+        $ seq 3 | sed -n '1~2p'
+        1
+        3
+
+Regex addresses
+"""""""""""""""
+
+``/REGEXP/`` (The '/' may be replaced by any other single character.)
     Matches the regular expression REGEXP.
 
-\%REGEXP% (The '%' may be replaced by any other single character.)
-    Matches the regular expression REGEXP, but allows one to use a different
-    delimiter than '/'.
+    ::
 
-/REGEXP/I
-    The 'I' modifier to regular-expression matching is a GNU extension which
-    causes the REGEXP to be matched in a case-insensitive manner.
+        $ seq 3 | sed -n '/^[0-2]$/p'
+        1
+        2
 
-/REGEXP/M
-    The 'M' modifier to regular-expression matching is a GNU 'sed' extension
-    which directs GNU 'sed' to match the regular expression in 'multi-line'
-    mode.
+Commands
+--------
 
--   An address range can be specified by specifying two addresses separated by
-    a comma (','). An address range matches lines starting from where the first
-    address matches, and continues until the second address matches.
+**Note**: 为了便于理解，在使用的时候加上 ``--debug`` 参数可以看到 sed 的执行步
+骤。
 
+Common commands
+"""""""""""""""
 
-Command
--------
-
-**Note**: use ``--debug`` option to see what happened when you are confused.
-
-a <TEXT>
+``a <TEXT>``
     Append <TEXT> after line.
 
-i <TEXT>
+    ::
+
+        $ seq 2 | sed 'a a'
+        1
+        a
+        2
+        a
+
+``i <TEXT>``
     Insert <TEXT> before a line.
 
-c <TEXT>
-    Replace (change) lines with <TEXT>.
+    ::
 
-d
+        $ seq 2 | sed 'i i'
+        i
+        1
+        i
+        2
+
+``c <TEXT>``
+    Replace lines with <TEXT>.
+
+    ::
+
+        $ seq 3 | sed '2 c c'
+        1
+        c
+        3
+
+
+``d``
     Delete the `pattern space`_; immediately start next cycle.
 
-D
-    If pattern space contains newlines, delete text in the pattern space up to
-    the first newline, and restart cycle with the resultant pattern space,
-    without reading a new line of input.
+    ::
 
-    If pattern space contains no newline, start a normal new cycle as if the
-    'd' command was issued.
+        $ seq 3 | sed '2d'
+        1
+        3
 
-p
+``p``
     Print out the pattern space.
 
-l
-    Print the pattern space in an `unambiguous form`_. 
+    ::
 
-g
+        $ seq 3 | sed -n '2p'
+        2
+
+``N``
+    Add a newline to the pattern space, then append the next line of input to
+    the pattern space. If there is no more input then 'sed' exits without
+    processing any more commands.
+
+    ::
+
+        $ seq 3 | sed -n 'N; p'
+        1
+        2
+
+Hold space commands
+"""""""""""""""""""
+
+``g``
     Replace the contents of the pattern space with the contents of the `hold
     space`_.
 
-G
+``G``
     Append a newline to the contents of the pattern space, and then append the
     contents of the hold space to that of the pattern space.
 
-h
+``h``
     (hold) Replace the contents of the hold space with the contents of the
     pattern space.
 
-H
+``H``
     Append a newline to the contents of the hold space, and then append the
     contents of the pattern space to that of the hold space.
 
-.. _unambiguous form:
+Branching and flow Control commands
+-----------------------------------
 
--   unambiguous form:
+首先需要了解下 `label`_ ，label 即在 sed 代码中打上一个标记，稍后可以通过下面的
+三个命令进行跳转，有点类似 C 的 goto 语句。
 
-    Non-printable characters (and the \\ character) are printed in C-style
-    escaped form; long lines are split, with a trailing \\ character to
-    indicate the split; the end of each line is marked with a $. 
+``b [<LABLE>]``
+    不管怎么样，马上跳转到 label
+
+    ::
+
+        $ seq 3 | sed -n 's/2/b/; b ; p'
+        <return nothing>
+
+``t [<LABEL>]``
+    如果有 ``s///`` 命令执行成功，则立马跳转到 label
+
+    ::
+
+        $ seq 3 | sed -n 's/2/b/; t ; p'
+        1
+        3
+
+``T [<LABEL>]``
+    如果 ``s///`` 命令没有执行成功，则立马跳转到 label
+
+    ::
+
+        $ seq 3 | sed -n 's/2/b/; T ; p'
+        b
+
+Basic (BRE) and extended (ERE) regular expression
+-------------------------------------------------
+
+BRE 和 ERE 的唯一区别是 ``? + () {} |`` 这几个特殊字符，在 BRE 中需要加上 '\'
+前缀在能有特殊含义（例如 '\?', '\(', '\)' 等），而在 ERE 中不需要这么做，其本身
+就又特殊含义。
+
+Named classes of characters in bracket expressions
+--------------------------------------------------
+
+**Note**: These named classes must be used *inside* brackets themselves.
+
+Incorrect example: ::
+
+    $ echo 1 | sed 's/[:digit:]/X/'
+    sed: character class syntax is [[:space:]], not [:space:]
+
+
+Correct example: ::
+
+     $ echo 1 | sed 's/[[:digit:]]/X/'
+     X
+
+References
+----------
 
 .. _pattern space:
 
--   patter space
-
+patter space
     On every cycle, 'sed' reads one line from the input stream, removes any
     trailing newline, and places it in the pattern space.  Then all commands
     are executed and print the contents of pattern space to the output stream,
@@ -136,37 +224,15 @@ H
 
 .. _hold space:
 
--   hold space
-
+hold space
     On the other hand, keeps its data between cycles (see commands 'h', 'H',
     'x', 'g', 'G' to move data between both buffers).
 
-    
-Basic (BRE) and extended (ERE) regular expression
--------------------------------------------------
+.. _label:
 
-In GNU 'sed', the only difference between basic and extended regular
-expressions is in the behavior of a few special characters: '?', '+',
-parentheses, braces ('{}'), and '|'.
-
-With basic (BRE) syntax, these characters do not have special meaning
-unless prefixed with a backslash ('\'); While with extended (ERE) syntax
-it is reversed: these characters are special unless they are prefixed
-with backslash ('\').
-
-Named classes of characters in bracket expressions
---------------------------------------------------
-
-**Note**: These named classes must be used *inside* brackets themselves.
-
-Incorrect usage: ::
-
-    $ echo 1 | sed 's/[:digit:]/X/'
-    sed: character class syntax is [[:space:]], not [:space:]
+label
+    Labels are defined with a colon followed by one or more letters (e.g.
+    ':x').  If the label is omitted the branch commands restart the cycle.
 
 
-Correct usage: ::
-
-     $ echo 1 | sed 's/[[:digit:]]/X/'
-     X
-
+To find more details in ``info sed``.

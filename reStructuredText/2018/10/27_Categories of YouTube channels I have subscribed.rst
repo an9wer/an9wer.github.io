@@ -169,3 +169,9 @@ Others
 -   `David Zhang <https://www.youtube.com/channel/UC1ELUfyiYnQQhtPWBS9Dmbg/videos>`_
 -   `Gary Explains <https://www.youtube.com/channel/UCRjSO-juFtngAeJGJRMdIZw>`_
 
+Updated 2021/05/17
+------------------
+
+发现 inoreader 可以订阅 yotube 频道，所以直接用它来管理这些订阅了。
+
+Thanks for reading :)
