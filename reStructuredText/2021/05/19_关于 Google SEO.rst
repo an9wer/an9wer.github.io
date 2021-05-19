@@ -59,3 +59,9 @@ google 搜索相关关键字验证，这回发现结果中没有了旧的 url。
 者提交删除申请，如果你是网站的所有者，请使用后者。
 
 Thanks for reading :)
+
+References
+----------
+
+`Remove urls from google
+<https://ahrefs.com/blog/remove-urls-from-google/>`_

@@ -1,3 +1,6 @@
+.. meta::
+   :robots: noindex 
+
 2021/05/13 Thu
 
     Anyway, this blog finally supports mobile view now.

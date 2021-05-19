@@ -1,3 +1,6 @@
+.. meta::
+   :robots: noindex 
+
 System Monitor
 
     (2019/10/24) `netdata <https://github.com/netdata/netdata/>`_
