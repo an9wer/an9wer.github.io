@@ -1,3 +1,5 @@
+2021/05/19 「记录」 `关于 Google SEO <2021/05/19_关于%20Google%20SEO.html>`_
+
 2021/05/10 「折腾」 `在 tmpfs 中 build 软件包 <2021/05/10_在%20tmpfs%20中%20build%20软件包.html>`_
 
 2021/04/22 「杂文」 `有一只蟑螂 <2021/04/22_有一只蟑螂.html>`_
@@ -16,7 +18,7 @@
 
 2021/01/20 「工具」 `Use zx2c4's pass command on Android phone <2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html>`_
 
-2021/01/19 「折腾」 `Kernel upgrade in Gentoo <2021/01/19_Kernel%20upgrade%20in%20Gentoo.html>`_
+2021/01/19 「折腾」 `升级 Gentoo Kernel <2021/01/19_升级%20Gentoo%20Kernel.html>`_
 
 2020/11/15 「折腾」 `Setup lvm <2020/11/15_Setup%20lvm.html>`_
 

@@ -1,8 +1,15 @@
-Kernel upgrade in Gentoo
-========================
+升级 Gentoo Kernel
+==================
+
+:Published: : 2021/04/10
+
+.. meta::
+    :description: 半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软
+        件包，但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一
+        把。
 
 半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软件包，但是唯独没有
-build 更新后的 kernel，今天来了心思，决定操作一把。
+编译更新后的 kernel source，今天来了心思，决定操作一把。
 
 首先本地有多个 kernel 版本，选择最新的那个 kernel 版本： ::
 
@@ -19,7 +26,11 @@ kernel： ::
 
     # grub-mkconfig -o /boot/grub/grub.cfg
 
-重启试下，如果没有问题就可以清理旧版本的 kernel 了： ::
+重启电脑： ::
+
+    # sudo reboot
+
+开机后如果没有问题就可以清理旧版本的 kernel 了： ::
 
     # emerge --deselect sys-kernel/gentoo-sources:<old version>
     # eclean-kernel -d -n 1

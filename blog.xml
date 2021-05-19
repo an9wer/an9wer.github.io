@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 18 May 2021 02:34:02 +0000</pubDate>
+  <pubDate>Wed, 19 May 2021 09:31:46 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>关于 Google SEO</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/05/19_关于%20Google%20SEO.html</link>
+    <description>现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不 太在乎这些，因为很多文章是写给自己看的（也算是另一种笔记的形式），所以 就只满足于孤芳自赏。但最近想法改变了，既然是公开的文章，也想看看自己写 的文章能不能给别人提供些许帮助或者思路。所以打算学习下 Google SEO 的相 关知识，想着把这个网站做起来，起码能有些流量。</description>
+  </item>
   <item>
     <title>在 tmpfs 中 build 软件包</title>
     <author>an9wer@gmail.com</author>
@@ -83,11 +91,12 @@
     <link>https://an9wer.github.io/2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html</link>
   </item>
   <item>
-    <title>Kernel upgrade in Gentoo</title>
+    <title>升级 Gentoo Kernel</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/01/19_Kernel%20upgrade%20in%20Gentoo.html</link>
+    <link>https://an9wer.github.io/2021/01/19_升级%20Gentoo%20Kernel.html</link>
+    <description>半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软 件包，但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一 把。</description>
   </item>
   <item>
     <title>Setup lvm</title>

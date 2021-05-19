@@ -2,6 +2,7 @@ reStructuredText/moments.rst
 reStructuredText/tools.rst
 
 reStructuredText/blog.rst
+    reStructuredText/2021/05/19_关于\ Google\ SEO.rst
     reStructuredText/2021/05/10_在\ tmpfs\ 中\ build\ 软件包.rst
     reStructuredText/2021/04/22_有一只蟑螂.rst
     reStructuredText/2021/04/10_Gentoo\ 升级遇难小记.rst
@@ -12,7 +13,7 @@ reStructuredText/blog.rst
     reStructuredText/2021/03/01_关于\ Bond\ 和\ Bridge.rst
     reStructuredText/2021/03/01_关于\ Linux\ Kernel\ Modules.rst
     reStructuredText/2021/01/20_Use\ zx2c4's\ pass\ command\ on\ Android\ phone.rst
-    reStructuredText/2021/01/19_Kernel\ upgrade\ in\ Gentoo.rst
+    reStructuredText/2021/01/19_升级\ Gentoo\ Kernel.rst
     reStructuredText/2020/11/15_Setup\ lvm.rst
     reStructuredText/2020/08/26_Setup\ dm-crypt.rst
     reStructuredText/2020/08/13_Redmi\ K30\ 5G\ 入手及刷机.rst

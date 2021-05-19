@@ -140,8 +140,8 @@ Hold space commands
 """""""""""""""""""
 
 ``g``
-    Replace the contents of the pattern space with the contents of the `hold
-    space`_.
+    Replace the contents of the pattern space with the contents of the hold
+    space.
 
 ``G``
     Append a newline to the contents of the pattern space, and then append the

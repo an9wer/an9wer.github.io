@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2021-05-18</lastmod>
+      <lastmod>2021-05-19</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2021/05/19_%E5%85%B3%E4%BA%8E%20Google%20SEO.html</loc>
+    <lastmod>2021-05-19</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2021/05/10_%E5%9C%A8%20tmpfs%20%E4%B8%AD%20build%20%E8%BD%AF%E4%BB%B6%E5%8C%85.html</loc>
     <lastmod>2021-05-18</lastmod>
@@ -67,8 +73,8 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://an9wer.github.io/2021/01/19_Kernel%20upgrade%20in%20Gentoo.html</loc>
-    <lastmod>2021-05-18</lastmod>
+    <loc>https://an9wer.github.io/2021/01/19_%E5%8D%87%E7%BA%A7%20Gentoo%20Kernel.html</loc>
+    <lastmod>2021-05-19</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
