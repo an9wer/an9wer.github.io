@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Wed, 19 May 2021 09:31:46 +0000</pubDate>
+  <pubDate>Wed, 19 May 2021 13:25:44 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -293,13 +293,15 @@
     <category>工具</category>
     <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2018/12/13_MuPDF%20使用小记.html</link>
+    <description>初次使用 mupdf，给我的印象是界面简洁，操作简单。与我目前 在使用的 FoxitReader 相比，也差不到哪里去。就我目前的需求，应该是够用了 。</description>
   </item>
   <item>
-    <title>RSS 订阅</title>
+    <title>用 RSS 订阅网站的更新</title>
     <author>an9wer@gmail.com</author>
     <category>工具</category>
     <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2018/12/08_RSS%20订阅.html</link>
+    <link>https://an9wer.github.io/2018/12/08_用%20RSS%20订阅网站的更新.html</link>
+    <description>尝试使用 innoreader 来订阅一些博客、新闻网站等，把内容聚合在 一个统一的平台上，定期获取新的资讯。</description>
   </item>
   <item>
     <title>OnePlus 5T 入手</title>
