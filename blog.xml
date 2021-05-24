@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Wed, 19 May 2021 13:45:42 +0000</pubDate>
+  <pubDate>Mon, 24 May 2021 07:15:01 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -118,6 +118,7 @@
     <category>开箱</category>
     <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2020/08/13_Redmi%20K30%205G%20入手及刷机.html</link>
+    <description>Essential Phone 摔坏之后，入手了红米 k30 5G 手机，谈谈我的 使用体验，以及如何刷机，刷入 Xiaomi.eu ROM。</description>
   </item>
   <item>
     <title>OpenWRT installation</title>
