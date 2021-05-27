@@ -15,7 +15,7 @@
 想法改变了，既然是公开的文章，也想看看自己写的文章能不能给别人提供些许思路或者
 帮助。所以打算尝试下 Google SEO ，想着把这个网站做起来，起码能有些流量。
 
-更新 URL
+url 变更
 --------
 
 遇到 url 变更的时候，例如，有时之前的博文更新后，url 也发生了改变，需要让旧的
@@ -57,6 +57,37 @@ google 搜索相关关键字验证，这回发现结果中没有了旧的 url。
 
 它和 temporary removals 的区别在于，如果你不是网站的所有者，想删除 url 请使用前
 者提交删除申请，如果你是网站的所有者，请使用后者。
+
+
+从 index 中移除被 robots.txt 禁止的 url
+---------------------------------------
+
+在 SEO 前，我这个站点有些 url 已经被录入到 google search index 中，而这些 url
+恰恰是我不想被 google 录入的，所以我把这些 url 添加到 robots.txt 的 disallow 选
+项中，告诉 google 下次不要再爬取这些页面。
+
+但是这些 url 依然存在于 google search index 中。怎么回事呢？原来 robots.txt 只能
+规范 google crawler 哪些页面允许爬取，哪些页面不允许。那要如何才能让这些 url 从
+google search index 中移除呢？有两种方法：其一是上面提到的将该页面删除，将 404
+的结果返回给 google crawler，一段时间后，google 自然会将 url 移除；其二是通过
+noindex 标签来告诉 google crawler 不要将 url 录入到 index 中： 
+
+::
+
+    <meta name="robots" content="noindex">
+
+
+但要注意的是，我这种情况光是设置了 noindex 标签还不够，因为 robots.txt 限制了网
+页的爬取，google crawler 会告诉我们 ``Indexed, though blocked by robots.txt:`` 
+，也就是爬虫连门都没进，怎么知道 noindex 标签的存在？所以还需要在 robots.txt
+中将这些 url 打开（删除之前 disallow 的设置即可）。
+
+另外值得一提的是，即使在 url 被收录之前，就已经在 robots.txt 中设置好了
+disallow 规则，url 还是有可能会被录入到 google search index 中，因为可能在别的
+网站上有页面挂上了这个 url 链接，google crawler 也是会爬取的。
+
+    Google always respects robots.txt, but this doesn't necessarily prevent
+    indexing if someone else links to your page. 
 
 Thanks for reading :)
 

@@ -52,4 +52,13 @@ shutdown 了，还是同样的问题！
 
     # iptables -A OUTPUT -o <public interface> -p tcp --dport 25 -j DROP
 
+Updated 2021/05/04
+------------------
+
+看到有人也在 Bandwagonhost 遇到了这个问题，但是他的原因和我不太一样。
+
+- `找到一直被搬瓦工封机的源头了(1) <https://hostloc.com/thread-838936-1-1.html>`_
+- `找到一直被搬瓦工封机的源头了(2) <https://hostloc.com/thread-839007-1-1.html>`_
+
+
 Thanks for reading :)
