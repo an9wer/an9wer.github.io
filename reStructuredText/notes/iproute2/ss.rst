@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex
+
 Iproute2 ss
 ===========
 

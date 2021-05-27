@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex 
+
 Commands
 
     - `info </notes/commands/info.html>`_

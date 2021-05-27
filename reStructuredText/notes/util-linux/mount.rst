@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex
+
 Util-linux mount
 ================
 

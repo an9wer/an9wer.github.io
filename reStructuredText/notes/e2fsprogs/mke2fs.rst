@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex
+
 E2fsprogs mk2fs
 ===============
 

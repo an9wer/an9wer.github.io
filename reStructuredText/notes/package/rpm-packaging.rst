@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex
+
 Package rpm-packaging
 =====================
 

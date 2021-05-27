@@ -1,3 +1,6 @@
+.. meta::
+    :robots: noindex
+
 Fail2ban
 ========
 
