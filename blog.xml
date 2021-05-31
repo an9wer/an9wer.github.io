@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Thu, 27 May 2021 08:10:52 +0000</pubDate>
+  <pubDate>Mon, 31 May 2021 09:21:11 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -121,11 +121,12 @@
     <description>Essential Phone 摔坏之后，入手了红米 k30 5G 手机，谈谈我的 使用体验，以及如何刷机，刷入 Xiaomi.eu ROM。</description>
   </item>
   <item>
-    <title>OpenWRT installation</title>
+    <title>OpenWRT 软路由的安装及配置</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2020/07/27_OpenWRT%20installation.html</link>
+    <link>https://an9wer.github.io/2020/07/27_OpenWRT%20软路由的安装及配置.html</link>
+    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台 软路由。</description>
   </item>
   <item>
     <title>从 archlinux 转投 gentoo</title>

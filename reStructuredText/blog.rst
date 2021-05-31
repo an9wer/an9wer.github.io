@@ -26,7 +26,7 @@
 
 2020/08/13 「开箱」 `Redmi K30 5G 入手及刷机 <2020/08/13_Redmi%20K30%205G%20入手及刷机.html>`_
 
-2020/07/27 「折腾」 `OpenWRT installation <2020/07/27_OpenWRT%20installation.html>`_
+2020/07/27 「折腾」 `OpenWRT 软路由的安装及配置 <2020/07/27_OpenWRT%20软路由的安装及配置.html>`_
 
 2020/07/05 「折腾」 `从 archlinux 转投 gentoo <2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
 

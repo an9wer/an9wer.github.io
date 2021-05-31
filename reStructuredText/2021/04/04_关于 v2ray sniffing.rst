@@ -33,7 +33,7 @@ v2ray 的 inbound 配置中有个 sniffing 参数，官方文档对它概念描�
 when using SOCKS V5)，所以在 Firefox 中，即使使用了 socks5 代理，也可以不通过代
 理来解析域名。
 
-但一个程序使用的透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo,
+但一个程序使用的是透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo,
 gethostbyname 来解析域名。
 
 Thanks for reading :)

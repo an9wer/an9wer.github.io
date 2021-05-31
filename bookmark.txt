@@ -17,7 +17,7 @@ reStructuredText/blog.rst
     reStructuredText/2020/11/15_Setup\ lvm.rst
     reStructuredText/2020/08/26_Setup\ dm-crypt.rst
     reStructuredText/2020/08/13_Redmi\ K30\ 5G\ 入手及刷机.rst
-    reStructuredText/2020/07/27_OpenWRT\ installation.rst
+    reStructuredText/2020/07/27_OpenWRT\ 软路由的安装及配置.rst
     reStructuredText/2020/07/05_从\ archlinux\ 转投\ gentoo.rst
     reStructuredText/2020/06/06_Gentoo\ installation.rst
     reStructuredText/2020/01/07_腾讯云服务器被黑事件.rst
