@@ -4,10 +4,10 @@ set -e
 
 PATH=venv/bin:$PATH
 
-CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
-SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
-DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
-DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
+export CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
+export SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
+export DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
+export DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
 
 usage() {
   cat <<EOF
@@ -18,6 +18,7 @@ EOF
 build_rst() {
   local rst html
   for rst in "$@"; do
+    echo rst
     rst=$(realpath "$rst")
     if [[ ! -f $rst ]]; then
       echo "Unexisted file '$rst'."
@@ -32,6 +33,7 @@ build_rst() {
       continue
     fi
 
+    echo 11
     # The following substitues are for blog page, notes page and index page seperately
     html=$(sed -nE "
       s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$DST_DIR/\1.html@p
@@ -40,6 +42,8 @@ build_rst() {
       t
       s@.*/([^/]+)\.rst\$@$DST_DIR/\1.html@p
     " <(echo "$rst"))
+    echo 22
+    echo $html
 
     # Missing
     if [[ -z $html ]]; then
@@ -152,7 +156,7 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "    <pubDate>" . Time::Piece->strptime("$1", "%Y/%m/%d")->strftime("%a, %d %b %Y %H:%M:%S %z") . "</pubDate>";
   print "    <link>https://an9wer.github.io/$4</link>";
   my $html = $4 =~ s/%20/\ /rg ;
-  open(my $fh, q(<), "$html") or die("Failed to read from file $html");
+  open(my $fh, q(<), $ENV{q(DST_DIR)} . "/" . "$html") or die("Failed to read from file $html");
   while(<$fh>) {
     if (/<meta content="(.*)" name="description" \/>/) {
       print "    <description>$1</description>";
@@ -181,13 +185,13 @@ build_sitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://an9wer.github.io/</loc>
-      <lastmod>$(date -d @$(stat -c %Y index.html) +%Y-%m-%d)</lastmod>
+      <lastmod>$(date -d @$(stat -c %Y "${DST_DIR}/index.html") +%Y-%m-%d)</lastmod>
       <changefreq>always</changefreq>
       <priority>0.3</priority>
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>$(date -d @$(stat -c %Y blog.html) +%Y-%m-%d)</lastmod>
+      <lastmod>$(date -d @$(stat -c %Y "${DST_DIR}/blog.html") +%Y-%m-%d)</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
@@ -202,7 +206,7 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "  <url>";
   my $html = $4 =~ s/%20/\ /rg ;
   print "    <loc>https://an9wer.github.io/" . join("/", map(uri_escape("$_"), split("/", "$html"))) . "</loc>";
-  my @stat = stat("$html");
+  my @stat = stat($ENV{q(DST_DIR)} . "/" . "$html");
   print "    <lastmod>" . strftime("%Y-%m-%d", localtime($stat[9])) . "</lastmod>";
   print "    <changefreq>always</changefreq>";
   print "    <priority>0.5</priority>";
@@ -221,9 +225,9 @@ EOF
 
 build_all() {
   local IFS=$'\n'
-  build_rst $(find "$SRC_DIR" -type f -name "*.rst")
+  #build_rst $(find "$SRC_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
-  build_rss
+  #build_rss
   build_sitemap
 }
 
