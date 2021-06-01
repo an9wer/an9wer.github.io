@@ -1,39 +1,40 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-
-DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
+CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
+SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
+DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
 
 msg() {
   echo "D. $@"
 }
 
 clean() {
-  local from=$1
-  local to=$2
-  local from_suffix=$3
-  local to_suffix=$4
+  local src=$1
+  local dst=$2
+  local src_ext=$3
+  local dst_ext=$4
 
   OLD_IFS=$IFS
   IFS=$'\n'
 
-  for dir in $(find "$to" -type d  -printf '%P\n'); do
-    from_dir=$from/$dir
-    to_dir=$to/$dir
+  for dir in $(find "$dst" -type d  -printf '%P\n'); do
+    s=$src/$dir
+    d=$dst/$dir
 
-    if [[ ! -d $from_dir ]]; then
-      msg "$DIR/$to_dir"
-      rm -rf "$DIR/$to_dir"
+    if [[ ! -d $s ]]; then
+      msg "$d"
+      rm -rf "$d"
       continue
     fi
   done
 
-  for file in $(find "$to" -type f -printf '%P\n'); do
-    from_file=$from/${file/%${to_suffix}/${from_suffix}}
-    to_file=$to/$file
+  for file in $(find "$dst" -type f -printf '%P\n'); do
+    s=$src/${file/%${dst_ext}/${src_ext}}
+    d=$dst/$file
 
-    if [[ ! -f $from_file ]]; then
-      msg "$DIR/$to_file"
-      rm "$DIR/$to_file"
+    if [[ ! -f $s ]]; then
+      msg "$d"
+      rm "$d"
       continue
     fi
   done
@@ -42,34 +43,28 @@ clean() {
 }
 
 clean_blog() {
-  local from to
-  local from_suffix=rst
-  local to_suffix=html
-  for to in $(ls -d 20[0-9][0-9]); do
-    from=reStructuredText/$to
-    clean "$from" "$to" "$from_suffix" "$to_suffix"
+  local src dst
+  for dir in $(find "$DST_DIR" -maxdepth 1 -type d -name '20[0-9][0-9]' -printf '%P\n'); do
+    src=$SRC_DIR/$dir
+    dst=$DST_DIR/$dir
+    clean "$src" "$dst" rst html
   done
 }
 
 clean_notes() {
-  local from=reStructuredText/notes
-  local to=notes
-  local from_suffix=rst
-  local to_suffix=html
-  clean "$from" "$to" "$from_suffix" "$to_suffix"
+  local src=$SRC_DIR/notes
+  local dst=$DST_DIR/notes
+  clean "$src" "$dst" rst html
 }
 
 clean_code() {
-  local from=graphviz
-  local to=code
-  local from_suffix=dot
-  local to_suffix=jpg
-  clean "$from" "$to" "$from_suffix" "$to_suffix"
+  local src=graphviz
+  local dst=code
+  clean "$src" "$dst" dot jpg
 }
 
 
 # Main
-cd "$DIR"   # Ensure we are in the diectory of this script
 clean_blog
 clean_notes
 #clean_code
