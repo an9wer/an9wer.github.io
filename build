@@ -18,7 +18,6 @@ EOF
 build_rst() {
   local rst html
   for rst in "$@"; do
-    echo rst
     rst=$(realpath "$rst")
     if [[ ! -f $rst ]]; then
       echo "Unexisted file '$rst'."
@@ -29,11 +28,10 @@ build_rst() {
       continue
     fi
 
-    if grep -Eq '.*/notes/ns/[^/]+\.rst$' <(echo "$rst"); then
+    if [[ $rst =~ .*/notes/ns/[^/]+\.rst$ ]]; then
       continue
     fi
 
-    echo 11
     # The following substitues are for blog page, notes page and index page seperately
     html=$(sed -nE "
       s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$DST_DIR/\1.html@p
@@ -42,8 +40,6 @@ build_rst() {
       t
       s@.*/([^/]+)\.rst\$@$DST_DIR/\1.html@p
     " <(echo "$rst"))
-    echo 22
-    echo $html
 
     # Missing
     if [[ -z $html ]]; then
@@ -225,9 +221,9 @@ EOF
 
 build_all() {
   local IFS=$'\n'
-  #build_rst $(find "$SRC_DIR" -type f -name "*.rst")
+  build_rst $(find "$SRC_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
-  #build_rss
+  build_rss
   build_sitemap
 }
 
