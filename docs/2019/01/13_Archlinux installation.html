@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Archlinux installation | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Archlinux installation</h1>
+
+
+    <div id="content">
+<div class="section" id="flash-iso">
+<h2>Flash iso</h2>
+<pre class="literal-block">$ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} conv=fsync status=progress</pre>
+</div>
+<div class="section" id="system-installation">
+<h2>System installation</h2>
+<p>Connect to the internet:</p>
+<pre class="literal-block"># wifi-menu</pre>
+<p>Update the system clock:</p>
+<pre class="literal-block"># timedatectl set-ntp true</pre>
+<p>Partition, format and mount:</p>
+<pre class="literal-block">BIOS with MBR
+# fdisk /dev/sda
+    o
+    n +16G      # for swap
+    n +remain   # for /
+    t 1 82      # Linux swap
+    t 2 83      # Linux filesystem
+# mkswap /dev/sda1
+# swapon /dev/sda1
+# mkfs.ext4 /dev/sda2
+# mount /dev/sda2 /mnt
+
+
+UEFI with GPT
+# fdisk /dev/sda
+    g
+    n +512M     # for /efi
+    n +8192M    # for swap
+    n +remain   # for /
+    t 1 1       # EFI System
+    t 2 19      # Linux swap
+    t 3 20      # Linux filesystem
+    w           # write
+
+# mkfs.fat -F32 /dev/sda1
+# mkswap /dev/sda2
+# swapon /dev/sda2
+# mkfs.ext4 /dev/sda3
+
+# mount /dev/sda3 /mnt
+# mkdir /mnt/efi
+# mount /dev/sda1 /mnt/efi</pre>
+<p>Install essential packages:</p>
+<pre class="literal-block"># pacstrap /mnt base linux linux-firmware base-devel vim</pre>
+<p>Generate fstab:</p>
+<pre class="literal-block"># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</pre>
+<p>chroot to new system:</p>
+<pre class="literal-block"># arch-chroot /mnt</pre>
+<p>Set timezone:</p>
+<pre class="literal-block"># ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# hwclock --systohc</pre>
+<p>Localization:</p>
+<pre class="literal-block"># vim /etc/locale.gen
+    uncomment en_US.UTF-8 UTF-8
+# locale-gen
+# vim /etc/locale.conf
+    LANG=en_US.UTF-8</pre>
+<p>Set hostname:</p>
+<pre class="literal-block"># vim /etc/hostname</pre>
+<div class="section" id="network">
+<h3>Network</h3>
+<p>Use NetworkManager:</p>
+<pre class="literal-block"># pacman -S networkmanager
+# systemctl enable NetworkManager</pre>
+<p>Or use systemd-network:</p>
+<pre class="literal-block"># vim /etc/systemd/network/&lt;nic&gt;.network
+    [Match]
+    Name=&lt;nic&gt;
+
+    [Network]
+    DHCP=ipv4
+    EOF
+# systemctl enable systemd-networkd
+# systemctl enable systemd-resolved
+# ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</pre>
+</div>
+<div class="section" id="user-account">
+<h3>User account</h3>
+<p>Create user:</p>
+<pre class="literal-block"># useradd -m -g wheel an9wer
+# passwd an9wer
+# visudo
+    uncomment %wheel ALL=(ALL) NOPASSWD: ALL</pre>
+</div>
+<div class="section" id="bootloader">
+<h3>Bootloader</h3>
+<p>EFI Bootloader:</p>
+<pre class="literal-block"># pacman -S grub efibootmgr
+# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux
+# grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=archlinux --removable
+# grub-mkconfig -o /boot/grub/grub.cfg</pre>
+<p>Legency Bootloader:</p>
+<pre class="literal-block"># pacman -S grub
+# grub-install --target=i386-pc /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg</pre>
+<p>Exit and reboot:</p>
+<pre class="literal-block"># exit
+# umount -R /mnt
+# reboot</pre>
+</div>
+</div>
+<div class="section" id="application-installation">
+<h2>Application installation</h2>
+<p>Update system:</p>
+<pre class="literal-block">$ sudo pacman -Syu</pre>
+<p>Install xorg:</p>
+<pre class="literal-block">$ sudo pacman -S xorg xorg-xinit
+    xorg, which contains xorg-server, is needed by dwm and i3.</pre>
+<p>Install suckless tools:</p>
+<pre class="literal-block">sudo pacman -S libx11 libxft libxinerama
+
+git clone https://git.suckless.org/dwm
+make &amp;&amp; sudo make install
+
+git clone https://git.suckless.org/st
+make &amp;&amp; sudo make install</pre>
+<p>Install fonts:</p>
+<pre class="literal-block">$ sudo pacman -S adobe-source-code-pro-fonts ttf-ubuntu-font-family ttf-font-awesome
+    for terminal
+$ sudo pacman -S noto-fonts noto-fonts-cjk
+    for firefox</pre>
+<p>Install virtual console font:</p>
+<pre class="literal-block">$ sudo pacman -S tamsyn-font terminus-font</pre>
+<p>Install firefox:</p>
+<pre class="literal-block">$ sudo pacman -S firefox flashplugin
+    Preferences-&gt;General-&gt;Fonts:
+        Serif: Noto Serif
+        Sans-serif: Noto Sans
+        Monospace: Noto Sans Mono</pre>
+<p>Install chromium:</p>
+<pre class="literal-block">sudo pacman -S chromium</pre>
+<p>Install basic tools:</p>
+<pre class="literal-block">sudo pacman -S openssh
+sudo pacman -S bash-completion
+sudo pacman -S shadowsocks-qt5
+
+sudo pacman -S xdg-user-dirs
+    xdg-user-dirs-update</pre>
+<p>Install alsa:</p>
+<pre class="literal-block">sudo pacman -S alsa-utils
+    amixer sset Master unmute</pre>
+<p>Install dunst:</p>
+<pre class="literal-block">sudo pacman -S dunst libnotify</pre>
+<p>Install fcitx:</p>
+<pre class="literal-block">sudo pacman -S fcitx fcitx-im fcitx-configtool
+    run 'fcitx-configtool'</pre>
+<p>Install ibus:</p>
+<pre class="literal-block">$ sudo pacman -S ibus ibus-rime
+$ ibus-setup</pre>
+<p>Install mupdf:</p>
+<pre class="literal-block">sudo pacman -S mupdf-gl
+    if some error of OpenGL happens, may need to install the appropriate dirver for graphic card.
+        sudo pacman -S nvidia*</pre>
+<p>Install imagemagick:</p>
+<pre class="literal-block">sudo pacman -S imagemagick</pre>
+<p>Install telegram:</p>
+<pre class="literal-block">sudo pacman -S telegram-desktop</pre>
+<p>Install virtualbox:</p>
+<pre class="literal-block">sudo pacman -S virtualbox
+    When encounter &quot;Kernel driver not installed (rc=-1908)&quot;
+        sudo modprobe vboxdrv
+    When encounter the problem about Mouse disappearing
+        https://superuser.com/a/1390258</pre>
+<p>Bluetooth:</p>
+<pre class="literal-block">sudo pacman -S pulseaudio pluseaudio-bluetooth bluez bluez-utils
+    restart pulseaudio
+        pulseaudio --kill
+        pulseaudio --start
+    run bluetoothctl to connect device</pre>
+<p>Fix tap-to-click for touchpad:</p>
+<pre class="literal-block">sudo pacman -S xf86-input-synaptics
+   synclient TapButton1=1 TapButton2=3 TapButton3=2</pre>
+</div>
+<div class="section" id="update-2019-03-25">
+<h2>Update 2019/03/25</h2>
+<p>When installing archlinux on ACER, encounter secure boot problem. Found a
+way to solve it: <a class="reference external" href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p>
+</div>
+<div class="section" id="update-2019-04-26">
+<h2>Update 2019/04/26</h2>
+<p>Disable nvidia graphic card:</p>
+<pre class="literal-block">sudo pacman -S bumblebee bbswitch
+sudo pacman -S xf86-video-intel (I don't know is this pacakge required?)
+
+vim /etc/modules-load.d/bbswitch.conf
+    bbswitch
+
+vim /etc/modprobe.d/bbswitch.conf
+    options bbswitch load_state=0 unload_state=1
+
+vim /etc/X11/xorg.conf.d/20-intel.conf
+    Section &quot;Device&quot;
+        Identifier  &quot;Intel Graphics&quot;
+        Driver      &quot;intel&quot;
+    EndSection
+
+vim /etc/X11/xorg.conf.d/20-monitor.conf
+    Section &quot;Monitor&quot;
+        Identifier  &quot;HDMI1&quot;
+    EndSection
+    Section &quot;Monitor&quot;
+        Identifier  &quot;eDP1&quot;
+        Option      &quot;LeftOf&quot; &quot;HDMI1&quot;
+    EndSection
+
+Then, reboot, run command `lspci -k` to check that the kernel driver of 3D
+controller is not in use.</pre>
+</div>
+<div class="section" id="update-2019-05-02">
+<h2>Update 2019/05/02</h2>
+<p>Set tap button of touchpad:</p>
+<pre class="literal-block">vim /etc/X11/xorg.conf.d/70-synaptics.conf
+    Section &quot;InputClass&quot;
+        Identifier &quot;touchpad&quot;
+        Driver &quot;synaptics&quot;
+        MatchIsTouchpad &quot;on&quot;
+            Option &quot;TapButton1&quot; &quot;1&quot;
+            Option &quot;TapButton2&quot; &quot;3&quot;
+            Option &quot;TapButton3&quot; &quot;2&quot;
+    EndSection</pre>
+</div>
+<div class="section" id="update-2019-10-16">
+<h2>Update 2019/10/16</h2>
+<p>Install RDP client remmina:</p>
+<pre class="literal-block"># pacman -S remmina freerdp</pre>
+</div>
+<div class="section" id="update-2020-08-19">
+<h2>Update 2020/08/19</h2>
+<p>Disable the root login:</p>
+<pre class="literal-block"># passwd -l root</pre>
+<p>Unlock root:</p>
+<pre class="literal-block">$ sudo passwd -u root</pre>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Sudo#Disable_root_login">https://wiki.archlinux.org/index.php/Sudo#Disable_root_login</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

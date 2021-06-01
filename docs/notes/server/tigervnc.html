@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>TigerVNC</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">TigerVNC</h1>
+
+
+    <div id="content">
+<p>VNC only can be used in GUI, instead of console.</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<p>Install TigerVNC server on CentOS7:</p>
+<pre class="literal-block"># yum install tigervnc-server</pre>
+<p>Install TigerVNC client on CentOS7:</p>
+<pre class="literal-block"># yum install tigervnc</pre>
+</div>
+<div class="section" id="server-setup">
+<h2>Server setup</h2>
+<p>Run vncserver:</p>
+<pre class="literal-block">$ vncserver</pre>
+<p>When vncserver is run with no options at all, it will choose the first
+available display number (usually :1), start Xvnc with that display number, and
+start the default window manager in the Xvnc session. It will also listen a
+tcp port on number <em>5900 + display number</em>.</p>
+<p>You can also specify the display number, in which case vncserver will attempt
+to start Xvnc with that display number and exit if the display number is not
+available:</p>
+<pre class="literal-block">$ vncserver :{display}</pre>
+<p>The first time when vncserver is run, it will ask you to set password and
+create <em>$HOME/.vnc</em> directory. You can modify password by using the following
+command:</p>
+<pre class="literal-block">$ vncpasswd {passwd-file}</pre>
+<p>Its default behavior is to prompt for a VNC password and then store an
+obfuscated version of this password to passwd-file (or to <em>$HOME/.vnc/passwd</em>
+if no password file is specified.)</p>
+<p><strong>Note</strong>: Only the first eight characters of VNC password are significant.</p>
+<p>Editing the file <em>$HOME/.vnc/xstartup</em> allows you to change the applications run
+at startup (but note that this will not affect an existing VNC session.)</p>
+<pre class="literal-block">$ vim $HOME/.vnc/xstartup
+    exec startxfce4
+$ vncserver :{display}</pre>
+<p>Or run a custom startup script:</p>
+<pre class="literal-block">$ vncserver -xstartup &quot;exec startxfce4&quot; :{display}</pre>
+<p>To list all vnc servers:</p>
+<pre class="literal-block">$ vncserver -list</pre>
+<p>To kill a vnc server:</p>
+<pre class="literal-block">$ vncserver -kill :{display}</pre>
+<p>Another way is use <em>x0vncserver</em> which allows direct control over a physical X
+session:</p>
+<pre class="literal-block">$ x0vncserver -rfbauth ~/.vnc/passwd</pre>
+<p><strong>Note</strong>: x0vncserver is an inefficient VNC server which continuously polls any
+X display, allowing it to be controlled via VNC. It is intended mainly as a
+demonstration of a simple VNC server.</p>
+</div>
+<div class="section" id="client-setup">
+<h2>Client setup</h2>
+<pre class="literal-block">$ vncviewer {ip}:{display}</pre>
+<p>Or:</p>
+<pre class="literal-block">$ vncviewer {ip}::{port}</pre>
+<p>The port number is <em>5900 + display number</em> (e.g. 5901 if display number is 1).</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/TigerVNC">ArchWiki: TigerVNC</a></p>
+<p><a class="reference external" href="https://www.stuartellis.name/articles/vnc-on-linux/#manually-launching-vnc">VNC on linux</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

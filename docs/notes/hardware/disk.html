@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Hardware disk</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Hardware disk</h1>
+
+
+    <div id="content">
+<div class="section" id="physcial-block-size-and-logical-block-size">
+<h2>Physcial block size and logical block size</h2>
+<p>The logical block size is the size of the blocks that the UNIX kernel uses to
+read or write files. The logical block size is usually different from the
+physical block size (usually 512 bytes), which is the size of the smallest
+block that the disk controller can read or write.</p>
+<p>To check physcial and logical block size:</p>
+<pre class="literal-block">Way 1
+# cat /sys/block/&lt;device&gt;/queue/physical_block_size
+# cat /sys/block/&lt;device&gt;/queue/logical_block_size
+
+Way 2
+# blockdev --getss &lt;device&gt;
+# blockdev --getpbsz /dev/sda
+
+Way 3
+# smartctl -i &lt;device&gt;
+
+Way 4
+# hdparm -I &lt;device&gt;</pre>
+<p><a class="reference external" href="https://wiki.archlinux.org/index.php/Advanced_Format#Aligning_Partitions">Archwiki: Advanced format</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_Format">Wikipedia: Advanced format</a></p>
+<p><a class="reference external" href="https://www.thomas-krenn.com/en/wiki/Advanced_Sector_Format_of_Block_Devices">Thomas-krenn wiki: Advanced Sector Format of Block Devices</a></p>
+<p><a class="reference external" href="https://docs.oracle.com/cd/E19455-01/805-7228/fsfilesysappx-9/index.html">Logical block size</a></p>
+</div>
+<div class="section" id="ata-sata-scsi-and-sas">
+<h2>ATA, SATA, SCSI and SAS</h2>
+<p><a class="reference external" href="/notes/commands/lsscsi.html">lsscsi</a></p>
+</div>
+<div class="section" id="disk-enclosure">
+<h2>Disk enclosure</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Disk_enclosure">Wikipedia: Disk Enclosure</a></p>
+</div>
+<div class="section" id="s-m-a-r-t">
+<h2>S.M.A.R.T</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/S.M.A.R.T.">Wikipedia: S.M.A.R.T</a></p>
+</div>
+<div class="section" id="ssd">
+<h2>SSD</h2>
+<p><a class="reference external" href="http://codecapsule.com/2014/02/12/coding-for-ssds-part-1-introduction-and-table-of-contents/">http://codecapsule.com/2014/02/12/coding-for-ssds-part-1-introduction-and-table-of-contents/</a></p>
+<blockquote>
+<p>Cells are grouped into a grid, called a <strong>block</strong>, and blocks are grouped
+into planes. The smallest unit through which a block can be read or written
+is a <strong>page</strong>. Pages cannot be erased individually, only whole blocks can
+be erased. The size of a NAND-flash page size can vary, and most drive
+have pages of size 2 KB, 4 KB, 8 KB or 16 KB. Most SSDs have blocks of 128
+or 256 pages, which means that the size of a block can vary between 256 KB
+and 4 MB. For example, the Samsung SSD 840 EVO has blocks of size 2048 KB,
+and each block contains 256 pages of 8 KB each. The way pages and blocks
+can be accessed is covered in details in Section 3.1.</p>
+<p>It is not possible to read less than one page at once. One can of course
+only request just one byte from the operating system, but a full page will
+be retrieved in the SSD, forcing a lot more data to be read than necessary.</p>
+<p>When writing to an SSD, writes happen by increments of the page size. So
+even if a write operation affects only one byte, a whole page will be
+written anyway.</p>
+<p>A NAND-flash page can be written to only if it is in the “free” state. When
+data is changed, the content of the page is copied into an internal
+register, the data is updated, and the new version is stored in a “free”
+page, an operation called “read-modify-write”.</p>
+<p>Pages cannot be overwritten, and once they become stale, the only way to
+make them free again is to erase them. However, it is not possible to erase
+individual pages, and it is only possible to erase whole blocks at once.</p>
+</blockquote>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

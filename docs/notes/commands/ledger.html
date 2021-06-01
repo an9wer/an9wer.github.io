@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>ledger</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">ledger</h1>
+
+
+    <div id="content">
+<pre class="literal-block">Assets + Expenses = Liabilities + Income + Equity</pre>
+<div class="section" id="transaction-state">
+<h2>Transaction State</h2>
+<p>A transaction can have a “state”: cleared, pending, or uncleared. The default
+is uncleared.</p>
+<p>To mark a transaction cleared, put an asterisk ‘*’ after the date, before the
+code or payee:</p>
+<pre class="literal-block">2012-03-10 * KFC
+    Expenses:Food                $20.00
+    Assets:Cash</pre>
+<p>To mark it pending, use a ‘!’:</p>
+<pre class="literal-block">2012-03-10 ! KFC
+    Expenses:Food                $20.00
+    Assets:Cash</pre>
+<p>What these mean is entirely up to you. The <span class="docutils literal"><span class="pre">--cleared</span></span> option limits reports
+to only cleared items, while <span class="docutils literal"><span class="pre">--uncleared</span></span> shows both uncleared and pending
+items, and <span class="docutils literal"><span class="pre">--pending</span></span> shows only pending items.</p>
+<p>You can mark individual postings as cleared or pending, in case one “side” of
+the transaction has cleared, but the other hasn’t yet:</p>
+<pre class="literal-block">2012-03-10 KFC
+    Liabilities:Credit           $100.00
+    * Assets:Checking</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://plaintextaccounting.org/">Plain Text Accounting</a></p>
+<p><a class="reference external" href="https://www.ledger-cli.org/3.0/doc/ledger3.html#Cleared-Report">Ledger official documents</a></p>
+<p><a class="reference external" href="https://www.mathstat.dal.ca/~selinger/accounting/tutorial.html">Double-entry accounting</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Double-entry_bookkeeping_system">Wikipedia: Double-entry bookkeeping</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Normal_balance">Wikipedia: Normal balance</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Equity_(finance)">Wikipedia: Equity</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Debits_and_credits">Wikipedia: Debits and credits</a></p>
+<p>有借必有贷，借贷必相等。会计中的借贷只是个记账符号，资产和费用类，借是增加，贷
+是减少。负债、所有者权益、收入，借是减少，贷是增加。借方在账簿的左侧，贷方在账
+簿的右侧。在任何会计事项中记账的原则如下：(1)资产、费用增加时，记入借方;资产、
+费用减少时，记入贷方。(2)负债、所有者权益、收入增加时，记入贷方;负债、所有者权
+益、收入减少时，记入借方。</p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

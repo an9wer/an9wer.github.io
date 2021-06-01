@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Bc</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Bc</h1>
+
+
+    <div id="content">
+<div class="section" id="numbers">
+<h2>Numbers</h2>
+<p>The most basic element in 'bc' is the number. There are two attributes of
+numbers, the length and the scale.  The length is the total number of digits
+used by 'bc' to represent a number and the scale is the total number of decimal
+digits after the decimal point. (For example, .000001 has a length of 6 and
+scale of 6, while 1935.000 has a length of 7 and a scale of 3.)</p>
+</div>
+<div class="section" id="variables">
+<h2>Variables</h2>
+<p>Special variables:</p>
+<ul class="simple">
+<li><p>SCALE: How some operations use digits after the decimal point.</p></li>
+<li><p>IBASE: the conversion base for input numbers.</p></li>
+<li><p>OBASE: the conversion base for output numbers.</p></li>
+<li><p>LAST: the value of the last printed number.</p></li>
+</ul>
+</div>
+<div class="section" id="comments">
+<h2>Comments</h2>
+<dl class="simple">
+<dt>Multiple lines comment</dt>
+<dd><p>starts with the characters <span class="docutils literal">/*</span> and ends with the characters <span class="docutils literal">*/</span></p>
+</dd>
+<dt>Single line comment</dt>
+<dd><p>starts at a <span class="docutils literal">#</span> cahracter and continues to the next end of the line</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="expression">
+<h2>Expression</h2>
+<dl class="simple">
+<dt>VAR = expr</dt>
+<dd><p>The variable is assigned the value of the expression.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="statements">
+<h2>Statements</h2>
+<dl>
+<dt>EXPRESSION</dt>
+<dd><p>If the expression starts with <span class="docutils literal">&lt;variable&gt; &lt;assignment&gt; ...</span>, it is
+considered to be an assignment statement.</p>
+<p>If the expression is not an assignment statement, the expression is
+evaluated and printed to the output. After the number is printed, a
+newline is printed.</p>
+</dd>
+<dt>STRING</dt>
+<dd><p>The string is printed to the output. Strings start with a double quote
+character and contain all characters until the next double quote character.</p>
+<p>All characters are taken literally, including any newline.</p>
+</dd>
+<dt>halt</dt>
+<dd><p>causes the 'bc' processor to quit only when it is executed.</p>
+</dd>
+<dt>quit</dt>
+<dd><p>causes the 'bc' processor to quit.</p>
+</dd>
+</dl>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

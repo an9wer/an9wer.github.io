@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Fio</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Fio</h1>
+
+
+    <div id="content">
+<div class="section" id="interpreting-the-output">
+<h2>Interpreting the output</h2>
+<dl class="simple">
+<dt>slat</dt>
+<dd><p>Submission latency (min being the minimum, max being the maximum, avg being
+the average, stdev being the <em>standard deviation</em>). This is the time it
+took to submit the I/O. For sync I/O this row is not displayed as the slat
+is really the completion latency (since queue/complete is one operation
+there).</p>
+</dd>
+<dt>clat</dt>
+<dd><p>Completion latency. This denotes the time from submission to completion of
+the I/O pieces. For sync I/O, clat will usually be equal (or very close) to
+0, as the time from submit to complete is basically just CPU time (I/O has
+already been done, see slat explanation).</p>
+</dd>
+<dt>lat</dt>
+<dd><p>Total latency. This denotes the time from when fio created the I/O unit to
+completion of the I/O operation.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>Examples</h2>
+<pre class="literal-block">[global]
+ioengine=libaio
+direct=1
+blocksize=1Mi
+iodepth=32                  # aio 每次提交 32 个 blocksize？
+verify=md5
+do_verify=1
+rw=write                    # 顺序写
+
+[write]
+directory=/mnt/dbtest
+filesize=1Mi:10Mi           # 文件大小 1m - 10m 中随机（最小必须大于 blocksize 的设置）
+nrfiles=1000                # 总共写 1000 个文件</pre>
+<pre class="literal-block">[global]
+ioengine=libaio
+direct=1
+blocksize=4Ki
+iodepth=32
+filesize=200Ki:10Mi         # 文件大小随机从 200Ki 到 10Mi
+nrfiles=1000                # 总共 1000 个文件
+directory=/mnt/dbtest
+
+[write]
+rw=rw                       # 顺序读写
+rwmixread=0                 # 读占比为0%，也即全部顺序写
+
+[randread]
+rw=randrw                   # 随机读写
+rwmixwrite=0                # 写占比为 0%，也即全部随机读</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://fio.readthedocs.io/en/latest/fio_doc.html">Fio official document</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation">Wikipedia: standard deviation</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

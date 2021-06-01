@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>从 Vimwiki 转投 Asciidoc | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">从 Vimwiki 转投 Asciidoc</h1>
+
+
+    <div id="content">
+<p>从这个博客搭建至今，我一直使用 vimwiki 来记录我的博文。但是用久了之后发现
+vimwiki 的几个痛点：</p>
+<ol class="arabic simple">
+<li><p>某些特殊字符无法进行转义，如 $。</p></li>
+<li><p>List 中嵌套 Preformatted text 会比较麻烦。</p></li>
+<li><p>大文件 build 成 HTML 会比较慢。</p></li>
+<li><p>不支持批量文件 build。</p></li>
+</ol>
+<p>因此我就有了寻找更合适的标记语言来替换 vimwiki 的想法，以解决上面提到的痛点。</p>
+<p>本来想回到 Markdown 阵营，打算用 CommonMark，结果发现它不支持 table，于是我又打
+了退堂鼓。</p>
+<p>继而我又找到了 reStructuredText，Asciidoc （关于他们和 Markdown 的比较可以看
+<a class="reference external" href="https://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">这篇文章</a>
+）。二者语法其实都大同小异，要论扩展性和流行度的话应该是前者比较好，但是最终我
+选择了后者，因为 Asciidoc 文档更清晰，代码更简洁，且其代码托管在 Github 上，同
+时更新也较为频繁。</p>
+<p>之后就是将之前所有的博文转化成 Asciidoc 格式，这大概陆陆续续花了我半个月的时间
+，现在也已基本完工，同时我也写了个 <a class="reference external" href="https://github.com/an9wer/an9wer.github.io/blob/master/asciidoc/build">脚本</a> ，方
+便将新建或者修改的 Asciidoc 文件重新 Build 成 HTML5 文件。</p>
+<p>Thanks for reading :)</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

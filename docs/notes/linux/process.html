@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Linux process</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Linux process</h1>
+
+
+    <div id="content">
+<div class="section" id="zombie-process">
+<h2>Zombie process</h2>
+<dl>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/Zombie_process">https://en.wikipedia.org/wiki/Zombie_process</a></dt>
+<dd><p>a zombie process or defunct process is a process that has completed
+execution (via the exit system call) but still has an entry in the process
+table.</p>
+<p>How to generate a zombie process?</p>
+<p>Run <em>supervisord</em> in non-daemon mode, type Ctrl-Z to put it in backgroud,
+kill some subprocess managed by <em>supervisord</em>, and run <cite>ps</cite> command to
+check the state of that subprocess which should be <em>defunct</em>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="orphan-process">
+<h2>Orphan process</h2>
+<dl>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/Orphan_process">https://en.wikipedia.org/wiki/Orphan_process</a></dt>
+<dd><p>In a Unix-like operating system any orphaned process will be immediately
+adopted by the special init system process: the kernel sets the parent to
+init. This operation is called re-parenting and occurs automatically.</p>
+<p>How to generate a orphan process?</p>
+<p>Run <em>supervisord</em> in daemon mode, kill <em>supervisord</em> process only, and run
+<cite>ps</cite> comand to check PPID of subprocess managed by <em>supervisord</em> which
+should be 1.</p>
+<p>It is sometimes desirable to intentionally orphan a process, usually to
+allow a long-running job to complete without further user attention, or to
+start an indefinitely running service or agent; such processes (without an
+associated session) are known as daemons, particularly if they are
+indefinitely running.</p>
+</dd>
+<dt>Whan happened of child process when parent process is dead?</dt>
+<dd><p>The child process will become orphan process.</p>
+<p><a class="reference external" href="https://unix.stackexchange.com/questions/158727/is-there-any-unix-variant-on-which-a-child-process-dies-with-its-parent">https://unix.stackexchange.com/questions/158727/is-there-any-unix-variant-on-which-a-child-process-dies-with-its-parent</a></p>
+</dd>
+</dl>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

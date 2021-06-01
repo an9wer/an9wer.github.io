@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Util-linux mount</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Util-linux mount</h1>
+
+
+    <div id="content">
+<p>List all mounted filesystems:</p>
+<pre class="literal-block"># mount</pre>
+<p>List all mounted filesystems with labels:</p>
+<pre class="literal-block"># mount -l</pre>
+<p>Mount all filesystems mentioned in <em>/etc/fstab</em>, except for those whose line
+contains the noauto keyword:</p>
+<pre class="literal-block"># mount -a</pre>
+<div class="section" id="filesystem-independent-mount-options">
+<h2>Filesystem-independent mount options</h2>
+<dl>
+<dt>default</dt>
+<dd><p>Use the default options: rw, suid, dev, exec, auto, nouser, and async.</p>
+<p><strong>Note</strong> that the real set of all default mount options depends on kernel
+and filesystem type.</p>
+</dd>
+<dt>auto</dt>
+<dd><p>Can be mounted with the <span class="docutils literal"><span class="pre">-a</span></span> option.</p>
+</dd>
+<dt>noauto</dt>
+<dd><p>Can only be mounted explicitly.</p>
+</dd>
+<dt>exec</dt>
+<dd><p>Permit execution of binaries.</p>
+</dd>
+<dt>dev</dt>
+<dd><p>Interpret character or block special devices on the file system.</p>
+</dd>
+<dt>nodev</dt>
+<dd><p>Do not interpret character or block special devices on the file system.</p>
+</dd>
+<dt>user</dt>
+<dd><p>Allow an ordinary user to mount the file system.</p>
+<p><strong>Note</strong> that this option implies the options noexec, nosuid, and nodev,
+unless overridden by subsequent options.</p>
+</dd>
+<dt>nouser</dt>
+<dd><p>Forbid an ordinary user to mount the filesystem.</p>
+</dd>
+<dt>async</dt>
+<dd><p>All IO to the file system should be done asynchronously.</p>
+</dd>
+<dt>sync</dt>
+<dd><p>All IO to the filesystem should be done synchronously.</p>
+<p>In the case of media with a limited number of write cycles (e.g. some flash
+derives), sync may cause life-cycle shortening.</p>
+</dd>
+<dt>dirsync</dt>
+<dd><p>All directory updates wthin the filesystem should be done synchronously.</p>
+<p>This affects the following systemcalls: <span class="docutils literal">create</span>, <span class="docutils literal">link</span>, <span class="docutils literal">unlink</span>,
+<span class="docutils literal">symlink</span>, <span class="docutils literal">mkdir</span>, <span class="docutils literal">rmdir</span>, <span class="docutils literal">mknod</span> and <span class="docutils literal">rename</span>.</p>
+</dd>
+<dt>suid</dt>
+<dd><p>Honor set-user-ID and set-group-ID bits or file capabilities when executing
+programs from this filesystem.</p>
+</dd>
+<dt>nosuid</dt>
+<dd><p>Do not honor set-user-ID and set-group-ID bits or file capabilities when
+executing programs from this filesystem.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="non-superuser-mounts">
+<h2>Non-superuser mounts</h2>
+<p>When <em>/etc/fstab</em> contains the <span class="docutils literal">user</span> option on a line, any body can mount
+the corresponding filesystem:</p>
+<pre class="literal-block"># vim /etc/fstab
+    /dev/sd&lt;X&gt;  /mnt  ext4  default,user</pre>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

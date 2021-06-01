@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Bash Builtin</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Bash Builtin</h1>
+
+
+    <div id="content">
+<div class="section" id="set">
+<h2>set</h2>
+<pre class="literal-block">set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]</pre>
+<p><strong>Note</strong>: Using + rather than - causes these flags to be turned off.</p>
+<dl class="option-list">
+<dt><kbd><span class="option">-v</span></kbd></dt>
+<dd><p>Print shell input lines as they are read.</p>
+<pre class="literal-block">$ set -v
+
+$ cat &lt;&lt;EOF
+cat &lt;&lt;EOF
+&gt; 1
+1
+&gt; 2
+2
+&gt; EOF
+EOF
+1
+2</pre>
+</dd>
+<dt><kbd><span class="option">-x</span></kbd></dt>
+<dd><p>Print commands and their arguments as they are executed.</p>
+<pre class="literal-block">$ set -x
+
+$ echo 123
++ echo 123
+123
+
+$ cat &lt;&lt;EOF
+&gt; 1
+&gt; 2
+&gt; EOF
++ cat
+1
+2</pre>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pipefail</dt>
+<dd><p>The return status of a pipeline is the exit status of the last command,
+unless the pipefail option is enabled. If pipefail is enabled, the
+pipeline's return status is the value of the last (rightmost) command  to
+exit with a non-zero status, or zero if all commands exit successfully.</p>
+</dd>
+<dt>--</dt>
+<dd><p>Assign any remaining arguments to the positional parameters. If there are
+no remaining arguments, the positional parameters are unset.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="shopt">
+<h2>Shopt</h2>
+<div class="section" id="options">
+<h3>Options</h3>
+<dl class="simple">
+<dt><cite>-p</cite></dt>
+<dd><p>print each shell option with an indication of its status</p>
+</dd>
+<dt><cite>-s</cite></dt>
+<dd><p>enable OPTNAME</p>
+</dd>
+<dt><cite>-u</cite></dt>
+<dd><p>disable OPTNAME</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="optnames">
+<h3>Optnames</h3>
+<dl class="simple">
+<dt>globstar</dt>
+<dd><p>If set, the pattern ** used in a pathname expansion context will match all
+files and zero or more directories and subdirectories.  If the pattern is
+followed  by  a /, only directories and subdirectories match.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="getopts">
+<h2>getopts</h2>
+<pre class="literal-block">getopts optstring name [args]</pre>
+<dl class="simple">
+<dt>optstring</dt>
+<dd><p>Contains the option characters to be recognized; if a character is followed
+by a <em>colon</em>, the option is expected to have an argument, which should be
+seperated from it by white space.</p>
+</dd>
+<dt>name</dt>
+<dd><p>Each time getopts is invoked, it places the next option in the shell
+variable 'name'.</p>
+</dd>
+<dt>OPTIND</dt>
+<dd><p>Stores the index of the next argument, its initial value is 1. The shell
+doesn't reset OPTIND automatically; it must be manually reset.</p>
+</dd>
+<dt>OPTARG</dt>
+<dd><p>Stores the current argument.</p>
+</dd>
+<dt>Silent mode</dt>
+<dd><p>When the first character of 'optstring' is a <em>colon</em>, the getopt is silent.</p>
+</dd>
+</dl>
+<p>When the end of options is encountered, getopts exits with a return value
+greater than zero. 'OPTIND' is set to the index of the first non-option
+argument, and 'name' is set to ?.</p>
+<p>If an invalid option is seen, getopts places ? into 'name' and, if not silent,
+prints an message and unset OPTARG. if getopts is silent, the option character
+found is placed in 'OPTARG' and no diagnostic message is printed.</p>
+<p>If a required argument is not found, and getopts is not silent, a question mark
+(?) is placed in 'name', 'OPTARG' is unset. and a deagnostic message is
+printed. If getopts is silent, the a colon (:) is placed in 'name' and 'OPTARG'
+is set to the otpion character found.</p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>关于 Google SEO | an9wer's blog</title>
+<meta content="现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不 太在乎这些，因为很多文章是写给自己看的（也算是另一种笔记的形式），所以 就只满足于孤芳自赏。但最近想法改变了，既然是公开的文章，也想看看自己写 的文章能不能给别人提供些许帮助或者思路。所以打算学习下 Google SEO 的相 关知识，想着把这个网站做起来，起码能有些流量。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">关于 Google SEO</h1>
+<dl class="docinfo simple">
+<dt class="published">Published</dt>
+<dd class="published"><p>: 2021/05/19</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不太在乎这些，因为很
+多文章是写给自己看的（也算是另一种笔记的形式），所以就只满足于孤芳自赏。但最近
+想法改变了，既然是公开的文章，也想看看自己写的文章能不能给别人提供些许思路或者
+帮助。所以打算尝试下 Google SEO ，想着把这个网站做起来，起码能有些流量。</p>
+<div class="section" id="url">
+<h2>url 变更</h2>
+<p>遇到 url 变更的时候，例如，有时之前的博文更新后，url 也发生了改变，需要让旧的
+url 从 google search index 中删除怎么办？</p>
+<p>通常来说只要 google crawler 下次请求旧的 url 时得到 404 的返回结果，google 会自
+动将旧的 url 从其 index 中删除，但是这样会有个时间差，即在 google crawler 来之
+前，旧的 url 仍然会出现在 google search 的搜索结果中。如果我们不想这么被动的话
+，可以先在 Removal tool 中手动提交一个临时删除 url 的请求给 google：</p>
+<pre class="literal-block">Google Search Console -&gt; Removals -&gt; Temporary removals -&gt; New request</pre>
+<p>提交后，会得到一条删除 url 的记录，如果其状态是 Processing request，说明 google
+正在处理我们的删除请求，等到这个状态变成 Temporarily removed 之后，我们再通过
+google 搜索相关关键字验证，这回发现结果中没有了旧的 url。</p>
+<p>但不要高兴得太早，上面的方法只是把旧的 url 从 google 搜索结果中临时删除了，其还
+保留在 google search index 中（google crawler 依然会继续爬取旧的 url），且有效
+期只有 6 个月。也就是接下来不告诉 google crawler 要永久删除这个 url 的话（也就
+是将 url 从 google serach index 中移除）， 等有效期过了之后，旧的 url 又会出现
+在搜索结果中。那么如何永久删除旧的 url 呢？有三种方法：</p>
+<ol class="arabic simple">
+<li><p>移除旧的 url 页面，即返回 404 或者 401 结果。</p></li>
+<li><p>给旧的 url 页面加上密码才能访问。</p></li>
+<li><p>在旧的 url 页面中加上 noindex meta tag。</p></li>
+</ol>
+<p><strong>注意</strong> ： 只有在我们给 google 手动提交临时删除旧的 url 请求，且要等到请求
+状态变成 Temporarily removed 之后（在这个过程中旧的 url 必须依然要能被访问到，
+不能是 404 等异常状态）。我们接下来才能使用上面的方法永久删除旧的 url。</p>
+<blockquote>
+<p>If your URL is unreachable by Google (404, 502/3) when you use this tool,
+it will assume that the page is gone, and your block request will expire.
+Any page found at that URL at a later time will be considered a new page
+that can appear in Google Search results.</p>
+</blockquote>
+<p>另外，google 还提供了另外一种删除 url 的入口： Remove Outdated Content tool</p>
+<pre class="literal-block">Google Search Console -&gt; Removals -&gt; Outdated Content</pre>
+<p>它和 temporary removals 的区别在于，如果你不是网站的所有者，想删除 url 请使用前
+者提交删除申请，如果你是网站的所有者，请使用后者。</p>
+</div>
+<div class="section" id="index-robots-txt-url">
+<h2>从 index 中移除被 robots.txt 禁止的 url</h2>
+<p>在 SEO 前，我这个站点有些 url 已经被录入到 google search index 中，而这些 url
+恰恰是我不想被 google 录入的，所以我把这些 url 添加到 robots.txt 的 disallow 选
+项中，告诉 google 下次不要再爬取这些页面。</p>
+<p>但是这些 url 依然存在于 google search index 中。怎么回事呢？原来 robots.txt 只能
+规范 google crawler 哪些页面允许爬取，哪些页面不允许。那要如何才能让这些 url 从
+google search index 中移除呢？有两种方法：其一是上面提到的将该页面删除，将 404
+的结果返回给 google crawler，一段时间后，google 自然会将 url 移除；其二是通过
+noindex 标签来告诉 google crawler 不要将 url 录入到 index 中：</p>
+<pre class="literal-block">&lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;&gt;</pre>
+<p>但要注意的是，我这种情况光是设置了 noindex 标签还不够，因为 robots.txt 限制了网
+页的爬取，google crawler 会告诉我们 <span class="docutils literal">Indexed, though blocked by robots.txt:</span>
+，也就是爬虫连门都没进，怎么知道 noindex 标签的存在？所以还需要在 robots.txt
+中将这些 url 打开（删除之前 disallow 的设置即可）。</p>
+<p>另外值得一提的是，即使在 url 被收录之前，就已经在 robots.txt 中设置好了
+disallow 规则，url 还是有可能会被录入到 google search index 中，因为可能在别的
+网站上有页面挂上了这个 url 链接，google crawler 也是会爬取的。</p>
+<blockquote>
+<p>Google always respects robots.txt, but this doesn't necessarily prevent
+indexing if someone else links to your page.</p>
+</blockquote>
+<p>Thanks for reading :)</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://ahrefs.com/blog/remove-urls-from-google/">Remove urls from google</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

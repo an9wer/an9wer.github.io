@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Perl</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Perl</h1>
+
+
+    <div id="content">
+<div class="section" id="data">
+<h2>Data</h2>
+<p>Perl has three built-in data types: scalars, arrays of scalars, and associative
+arrays of scalars, known as &quot;hashes&quot;.</p>
+<p>Values are usually referred to by name, or through a named reference. The first
+character of the name tells you to what sort of data structure it refers. The
+rest of the name tells you the particular value to which it refers.</p>
+<p>1. Scalar values are always named with '$', even when referring to a scalar
+that is part of an array or a hash.</p>
+<pre class="literal-block">$days           # the simple scalar value &quot;days&quot;
+$days[28]       # the 29th element of array &#64;days
+$days{'Feb'}    # the 'Feb' value from hash %days
+$#days          # the last index of array &#64;days</pre>
+<ol class="arabic">
+<li><p>Entire arrays (and slices of arrays and hashes) are denoted by '&#64;'.</p>
+<pre class="literal-block">&#64;days           # ($days[0], $days[1],... $days[n])
+&#64;days[3,4,5]    # same as ($days[3],$days[4],$days[5])
+&#64;days{'a','c'}  # same as ($days{'a'},$days{'c'}</pre>
+</li>
+</ol>
+<ol class="arabic">
+<li><p>Entire hashes are denoted by '%'.</p>
+<pre class="literal-block">%days           # (key1, val1, key2, val2 ...)</pre>
+</li>
+</ol>
+<p>1.  Subroutines are named with an initial '&amp;', though this is optional when
+unambiguous.</p>
+<ol class="arabic simple">
+<li><p>Symbol table entries can be named with an initial '*'.</p></li>
+</ol>
+<p>Perl arrays and hashes are internally one-dimensional. That is, their elements
+can hold only scalar values (string, numbers, and references). When we use a
+phrase like &quot;array of arrays&quot;, we really mean &quot;array of references to arrays&quot;,
+just as when we say &quot;hash of functions&quot;, we really mean &quot;hash of references to
+subroutines&quot;.</p>
+</div>
+<div class="section" id="interpolation">
+<h2>Interpolation</h2>
+<p>The following escape sequences are available in constructs that interpolate,
+and in transliterations whose delimiters aren't single quotes:</p>
+<pre class="literal-block">Sequence     Note  Description
+\t                  tab               (HT, TAB)
+\n                  newline           (NL)
+\r                  return            (CR)
+\f                  form feed         (FF)
+\b                  backspace         (BS)
+\a                  alarm (bell)      (BEL)
+\e                  escape            (ESC)
+\x{263A}     [1,8]  hex char          (example: SMILEY)
+\x1b         [2,8]  restricted range hex char (example: ESC)
+\N{name}     [3]    named Unicode character or character sequence
+\N{U+263D}   [4,8]  Unicode character (example: FIRST QUARTER MOON)
+\c[          [5]    control char      (example: chr(27))
+\o{23072}    [6,8]  octal char        (example: SMILEY)
+\033         [7,8]  restricted range octal char  (example: ESC)</pre>
+<p>Array variables are interpolated into double-quote strings by joing all
+elements of the array with the separator specified in the <span class="docutils literal">$&quot;</span> variable:</p>
+<pre class="literal-block">my $temp = join( $&quot;, &#64;ARGV);
+print $temp;
+
+print &quot;&#64;ARGV&quot;;</pre>
+</div>
+<div class="section" id="context">
+<h2>Context</h2>
+<p><a class="reference external" href="https://perldoc.perl.org/perldata.html#Context">https://perldoc.perl.org/perldata.html#Context</a></p>
+<dl>
+<dt>Scalar context</dt>
+<dd><p>Assignment to a scalar variable, or to a scalar element of an array or
+hash, evaluates the righthand side in a scalar context:</p>
+<pre class="literal-block">$x = func();
+$x[1] = func();
+$x{&quot;1&quot;} = func();</pre>
+</dd>
+<dt>List context</dt>
+<dd><p>Assignment to an array or a hash, or to a slice either, evaluates the
+righthand side in a list context, even if the slice picks out only on
+element:</p>
+<pre class="literal-block">&#64;x = func();
+&#64;x[1] = func();
+%x = func();</pre>
+<p>Assignment to a list of scalars also provides list context to the righthand
+side, even if there's only one element in the list:</p>
+<pre class="literal-block">($x, $y, $z) = func();
+($x) = func();</pre>
+</dd>
+<dt>Boolean Context</dt>
+<dd><p>A scalar value is true if it is not the null string &quot;&quot; or the number 0 (or
+its string equivalent, &quot;0&quot;). A reference is always true because it
+represent an address that is never 0. An undefined value (often called
+<span class="docutils literal">undef</span>) is always false because it looks like either &quot;&quot; or 0, depending
+on whether you treat it as a string or a number.</p>
+<p>A list value is true if it  ther are any elements in it.</p>
+</dd>
+</dl>
+<pre class="literal-block">$foo = (&quot;one&quot;, &quot;two&quot;, &quot;three&quot;); # The value of $foo is &quot;three&quot; (the last element of list)
+
+&#64;bar = (&quot;one&quot;, &quot;two&quot;, &quot;three&quot;); # The value of &#64;bar is (&quot;one&quot;, &quot;tow&quot;, &quot;three&quot;)
+
+$foo = &#64;bar;                    # The value of $foo is 3 (the length of array)</pre>
+</div>
+<div class="section" id="operators">
+<h2>Operators</h2>
+<dl>
+<dt>Quote and Quote-like Operators</dt>
+<dd><p><strong>Note</strong>: In the following table, a <span class="docutils literal">{}</span> represents any pair of
+delimiters you choose:</p>
+<pre class="literal-block">Customary   Generic        Meaning             Interpolates
+''          q{}            Literal             no
+&quot;&quot;          qq{}           Literal             yes
+``          qx{}           Command             yes*
+            qw{}           Word list           no
+//          m{}            Pattern match       yes*
+            qr{}           Pattern             yes*
+            s{}{}          Substitution        yes*
+            tr{}{}         Transliteration     no
+            y{}{}          Transliteration     no
+            &lt;&lt;EOF          here-doc            yes*
+
+    * unless the delimiter is ''.</pre>
+</dd>
+<dt>List operators (Leftward)</dt>
+<dd><p>If any list operator (such as <span class="docutils literal">print</span>) or any named unary operator (such
+as <span class="docutils literal">chdir</span>) is followed by a left parenthesis as the next token (ignoring
+whitespace), the operator and its parenthesized arguments are given highest
+precedence, as if it wre a normal function call.</p>
+<pre class="literal-block">open($fh, &quot;&gt;&quot;, &quot;logfile&quot;) or die;   # OK
+open($fh, &quot;&gt;&quot;, &quot;logfile&quot;) || die;   # OK</pre>
+</dd>
+<dt>List operators (Rightward)</dt>
+<dd><p>The right side of a list operator governs all the list operator's
+arguments, which are comma separated, so the precedence of a list operator
+is lower than a comma.</p>
+<pre class="literal-block">open $fh, &quot;&gt;&quot;, &quot;logfile&quot; || die;    # Wrong
+open $fh, &quot;&gt;&quot;, &quot;logfile&quot; or die;    # OK</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="syntax">
+<h2>Syntax</h2>
+<p>BLOCK <span class="docutils literal">{}</span> by itself (labeled or not) is semantically equivalent to a loop
+that executes once. Thus you can use any of the loop control statements in it
+to leave or restart the block. (Note that this is NOT true in <span class="docutils literal">eval{}</span>,
+<span class="docutils literal">sub{}</span>, or contrary to popular belief <span class="docutils literal">do{}</span> blocks, which do NOT count as
+loops.) The continue block is optional.</p>
+<pre class="literal-block">SWITCH: {
+    if (/^abc/) { $abc = 1; last SWITCH; }
+    if (/^def/) { $def = 1; last SWITCH; }
+    if (/^xyz/) { $xyz = 1; last SWITCH; }
+    $nothing = 1;
+}
+
+if (1) { {
+    last;
+    print 1;        # Not do
+} }</pre>
+<p>In <span class="docutils literal">while</span> statement, if the condition expression is based on any of a group
+of iterative expression types then it gets some magic treatment. The affected
+iterative expression types are <span class="docutils literal">readline EXPR</span>, the <span class="docutils literal">&lt;FILEHANDLE&gt;</span> input
+operator, <span class="docutils literal">readdir DIRHANDLE</span>, <span class="docutils literal">glob EXPR</span>, the <span class="docutils literal">&lt;PATTERN&gt;</span> globbing
+operator, and <span class="docutils literal">each HASH</span>.  If the condition expression is one of these
+expression types, then the value yielded by the iterative operator will be
+implicitly assigned to <span class="docutils literal">$_</span> . If the condition expression is one of these
+expression types or an explicit assignment of one of them to a scalar, then the
+condition actually tests for definedness of the expression's value, not for its
+regular truth value.</p>
+<pre class="literal-block">while (&lt;&gt;) { }
+while (defined($line = &lt;ARGV&gt;)) { }</pre>
+</div>
+<div class="section" id="built-in-functions">
+<h2>Built-in functions</h2>
+<dl>
+<dt>open</dt>
+<dd><p>Returns true when it succeeds and <span class="docutils literal">undef</span> otherwise. If the <span class="docutils literal">open</span>
+starts up a pipe to a child process, the return value will be the process
+ID of that new process.</p>
+<p>If you supply an undefined variable for the filehandle, perl will
+automaticall define that variable for you, that is, autovivifying it to
+contain a proper filehandle reference. One advantage of this is that the
+filehandle will be closed automatically when there are no futher references
+to it, typically when the variable goes out of scope:</p>
+<pre class="literal-block">{
+    my $fh;
+    open $fh, &quot;&gt;&quot;, &quot;logfile&quot;
+        or die &quot;Can't create logfile: $!&quot;;
+}   # $fh closed here</pre>
+</dd>
+</dl>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikibooks.org/wiki/Perl_Programming">https://en.wikibooks.org/wiki/Perl_Programming</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

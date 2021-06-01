@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Fcitx VS Ibus | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Fcitx VS Ibus</h1>
+
+
+    <div id="content">
+<p>起因是装了 Fedora 30 之后发现其自带了中文输入法，了解之后发现是 Ibus，暗黑的配
+色一下子吸引了我，更重要的是输入手感也很棒。</p>
+<p>于是在工作的电脑上安装了 Ibus，体验了一阵。接下来就针对我个人的使用习惯，简单将
+Ibus 与我之前一直使用的 Fcitx 做一个对比：</p>
+<p><strong>Fcitx</strong>:</p>
+<ul class="simple">
+<li><p>配置项复杂</p></li>
+<li><p>可以使用 Shift_R 键切换中英文输入法</p></li>
+<li><p>从某个应用切换到另一个应用不会保留输入法，但同应用之间会保留。</p></li>
+<li><p>项目不再维护</p></li>
+</ul>
+<p><strong>Ibus</strong>:</p>
+<ul class="simple">
+<li><p>配置项简单</p></li>
+<li><p>不可以使用 Shift_R 键 (只能 Shift）切换中英文输入法</p></li>
+<li><p>输入法状态为全局，从某个应用切换到另一个应用会保留输入法</p></li>
+<li><p>项目仍在更新维护</p></li>
+</ul>
+<p>输入法引擎方面，这次也顺带尝试了 ibus-libpinyin 和 ibus-rime：</p>
+<p><strong>ibus-libpinyin</strong>:</p>
+<ul class="simple">
+<li><p>在中文输入法状态下按 shift 键会 commit 已经输入的字母，然后切换成英文输入法</p></li>
+<li><p>配置简单（GUI），功能够用</p></li>
+</ul>
+<p><strong>ibus-rime</strong>:</p>
+<ul class="simple">
+<li><p>在中文输入法状态下按 shift 键会 commit 已经输入的字母的第一个中文选项，然后
+切换成英文输入法</p></li>
+<li><p>配置麻烦（使用文件进行配置，无 GUI，比较符合我的风格），功能很强</p></li>
+</ul>
+<p>另外，在文章的开头也提到了 Ibus 的皮肤是吸引我的一点，但在 Arch 中，我还真不知
+道如何配置 Ibus 的皮肤？</p>
+<p>对比之后，我选择的方案是 Ibus + ibus-rime，并通过比较 hack 的方式，将 rime 切换
+输入法的按键设置成了 Shift_R。</p>
+<div class="section" id="updated-2019-09-04">
+<h2>Updated 2019/09/04</h2>
+<p>尝试修改 ibus 的配色，搜了一圈，只发现了修改 icon 颜色的方法：</p>
+<pre class="literal-block">$ gsettings set org.freedesktop.ibus.panel xkb-icon-rgba '#415099'</pre>
+<p>只好暂且作罢！</p>
+<p>Thanks for reading :)</p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

@@ -4,9 +4,10 @@ set -e
 
 PATH=venv/bin:$PATH
 
-RST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/reStructuredText")
+CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
+SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
+DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
 DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
-OUT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
 
 usage() {
   cat <<EOF
@@ -33,11 +34,11 @@ build_rst() {
 
     # The following substitues are for blog page, notes page and index page seperately
     html=$(sed -nE "
-      s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$OUT_DIR/\1.html@p
+      s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$DST_DIR/\1.html@p
       t
-      s@.*/(notes/.+)\\.rst\$@$OUT_DIR/\1.html@p
+      s@.*/(notes/.+)\\.rst\$@$DST_DIR/\1.html@p
       t
-      s@.*/([^/]+)\.rst\$@$OUT_DIR/\1.html@p
+      s@.*/([^/]+)\.rst\$@$DST_DIR/\1.html@p
     " <(echo "$rst"))
 
     # Missing
@@ -50,13 +51,13 @@ build_rst() {
     #  Only rebuild when html doesn't exist, mtime of either rst or template.html is updated, or when forced to rebuild
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
-        ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$OUT_DIR/template.html") ))); then
+        ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "${CRT_DIR}/template.html") ))); then
       rst2html5.py \
         --strict \
         --link-stylesheet \
         --initial-header-level 2 \
         --stylesheet "/statics/css/style.css" \
-        --template template.html \
+        --template "${CRT_DIR}/template.html" \
         "$rst" "$html"
       case "$html" in
         */blog.html )
@@ -103,7 +104,7 @@ build_dot() {
       continue
     fi
 
-    jpeg=$(sed -nE "s@.*/graphviz/(.+)\\.dot\$@$OUT_DIR/code/\1.jpg@p" <(echo "$dot"))
+    jpeg=$(sed -nE "s@.*/graphviz/(.+)\\.dot\$@$DST_DIR/code/\1.jpg@p" <(echo "$dot"))
     if [[ -z $jpeg ]]; then
       echo "Unfound '$dot' in 'graphviz' directory."
       continue
@@ -160,16 +161,16 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   }
   print "  </item>";
 }
-' reStructuredText/blog.rst
+' "${SRC_DIR}/blog.rst"
 
       cat <<EOF
 </channel>
 
 </rss> 
 EOF
-    } > blog.xml
+    } > "${DST_DIR}/blog.xml"
 
-    echo -e "'reStructuredText/blog.rst'\n->\t'blog.xml'"
+    echo -e "'${SRC_DIR}/blog.rst'\n->\t'${DST_DIR}/blog.xml'"
   fi
 }
 
@@ -207,20 +208,20 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
   print "    <priority>0.5</priority>";
   print "  </url>";
 }
-' reStructuredText/blog.rst
+' "${SRC_DIR}/blog.rst"
 
       cat <<EOF
 </urlset> 
 EOF
-    } > sitemap.xml
+    } > "${DST_DIR}/sitemap.xml"
 
-    echo -e "'reStructuredText/blog.rst'\n->\t'sitemap.xml'"
+    echo -e "'${SRC_DIR}/blog.rst'\n->\t'${DST_DIR}/sitemap.xml'"
   fi
 }
 
 build_all() {
   local IFS=$'\n'
-  build_rst $(find "$RST_DIR" -type f -name "*.rst")
+  build_rst $(find "$SRC_DIR" -type f -name "*.rst")
   #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
   build_rss
   build_sitemap

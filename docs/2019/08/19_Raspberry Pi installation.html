@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Raspberry Pi installation | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Raspberry Pi installation</h1>
+
+
+    <div id="content">
+<p>Flash image:</p>
+<pre class="literal-block">$ unzip -p 2019-07-10-raspbian-buster-lite.zip | sudo dd of=/dev/sd&lt;X&gt; bs=4M conv=fsync status=progress</pre>
+<p>Set keyboard layout:</p>
+<pre class="literal-block">$ sudo vi /etc/default/keyboard
+    XKBLAYOUT=&quot;us&quot;
+$ reboot</pre>
+<p>Add wifi configuration:</p>
+<pre class="literal-block">$ sudo iwlist wlan0 scan
+$ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+    network={
+        ssid=&quot;testing&quot;
+        psk=&quot;testingPassword&quot;
+    }
+$ sudo wpa_cli -i wlan0 reconfigure</pre>
+<p>Change repository source (see
+<a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/">https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/</a>):</p>
+<pre class="literal-block">$ sudo vim `/etc/apt/sources.list`
+    deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
+    deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib
+
+$ sudo vim `/etc/apt/sources.list.d/raspi.list`
+    deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui</pre>
+<p>Config NIC eth0:</p>
+<pre class="literal-block">$ sudo vim /etc/network/interfaces.d/eth0
+    auto eth0
+    iface eth0 inet static
+        address 192.168.12.1/24</pre>
+<p>Install and config ISC dhcp server:</p>
+<pre class="literal-block">$ sudo apt install isc-dhcp-server
+
+$ sudo vim /etc/default/isc-dhcp-server
+    INTERFACESv4=&quot;eth0&quot;
+
+$ sudo vim /etc/dhcp/dhcpd.conf
+    subnet 192.168.12.0 netmast 255.255.255.0 {
+        range 192.168.12.10 192.168.12.250;
+    }</pre>
+<p>Install dnscrypt-proxy:</p>
+<pre class="literal-block">$ sudo apt install dnscrypt-proxy</pre>
+<p>Install autossh:</p>
+<pre class="literal-block">$ sudo atp install sutossh</pre>
+<p>Edit 2019/12/08</p>
+<p>在淘宝上买了 USB 转 TTL 的线，参考 <a class="reference external" href="https://www.bashpi.org/?page_id=354">教程</a>
+，以后玩树莓排就不需要额外的显示器了。</p>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://www.raspberrypi.org/documentation/configuration/config-txt/">RaspberryPi document: config.txt</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Vim Window</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Vim Window</h1>
+
+
+    <div id="content">
+<p>See <span class="docutils literal">:h windows.txt</span></p>
+<div class="section" id="buffer">
+<h2>Buffer</h2>
+<ul class="simple">
+<li><p>A buffer is the in-memory text of a file.</p></li>
+<li><p>A window is a viewport on a buffer.</p></li>
+<li><p>A tab page is a collection of windows.</p></li>
+</ul>
+<p>A window is a viewport onto a buffer. You can use multiple windows on one
+buffer, or several windows on different buffers.</p>
+<p>A buffer is a file loaded into memory for editing. The original file remains
+unchanged until you write the buffer to the file.</p>
+</div>
+<div class="section" id="moving-cursor">
+<h2>Moving cursor</h2>
+<dl class="simple">
+<dt>CTRL-W p | CTRL-W CTRL-P</dt>
+<dd><p>Go to previous (last accessed) window (or switch between windows)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="window-resize">
+<h2>Window resize</h2>
+<p>See <span class="docutils literal">:h <span class="pre">window-resize</span></span></p>
+<dl class="simple">
+<dt>:resize [+|-][N]</dt>
+<dd><p>Resize current window height (default: hightest possible)</p>
+</dd>
+<dt>:vertical resize [+|-][N]</dt>
+<dd><p>Resize current window width (default: widest possible)</p>
+</dd>
+</dl>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

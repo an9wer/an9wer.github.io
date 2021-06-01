@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Yum</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Yum</h1>
+
+
+    <div id="content">
+<p><strong>Note</strong>: All of the following <em>glob_exp</em> is a package name which may contain
+star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
+(*) to avoid bash expanding.</p>
+<div class="section" id="list">
+<h2>List</h2>
+<p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
+output is:</p>
+<pre class="literal-block">name.arch [epoch:]version-release  repo or &#64;installed-from-repo</pre>
+<p><strong>Note</strong>: The repos of installed package are perfixed with '&#64;' symbol.</p>
+<p>List package(s) information from <em>all</em> (by default), <em>available to be
+installed</em>, <em>availabe to be updated</em>, <em>installed</em> or <em>installed but not in yum
+repository</em>:</p>
+<pre class="literal-block"># yum list [all | available | updates | installed | extra ] [glob_exp ...]</pre>
+<p>List all/installed packages from speficied repo:</p>
+<pre class="literal-block"># yum list &quot;all|installed&quot; | grep &#64;&lt;repo&gt;
+
+or
+
+# yumdb search from_repo &lt;repo&gt;</pre>
+</div>
+<div class="section" id="deplist">
+<h2>Deplist</h2>
+<p>List dependencies of packages:</p>
+<pre class="literal-block"># yum deplist &lt;package&gt; [&lt;package&gt; ...]</pre>
+</div>
+<div class="section" id="provides">
+<h2>Provides</h2>
+<p>Find out which package provides a specific file or a file-glob-syntax
+wildcards:</p>
+<pre class="literal-block"># yum provides &lt;file&gt; [&lt;file&gt; ...]
+
+e.g.
+# yum provides /usr/bin/ps
+# yum provides '*/collectd2html.pl'</pre>
+</div>
+<div class="section" id="group">
+<h2>Group</h2>
+<p>To view the number of installed groups, available groups, available environment
+groups, and both installed and available language groups:</p>
+<pre class="literal-block"># yum group summary</pre>
+<p>To list all package groups:</p>
+<pre class="literal-block"># yum group list</pre>
+<p>To list language, environment, installed or availabe package groups:</p>
+<pre class="literal-block"># yum group list [language | environment | installed | available]</pre>
+<p>To list packages contained in a particular group:</p>
+<pre class="literal-block"># yum group info &lt;glob_exp&gt; [...]</pre>
+<ul class="simple">
+<li><p>&quot; - &quot;: Package is not installed and it will not be installed as a part of
+the package group.</p></li>
+<li><p>&quot; + &quot;: Package is not installed but it will be installed on the next yum
+upgrade or yum group upgrade.</p></li>
+<li><p>&quot; = &quot;: Package is installed and it was installed as a part of the package
+group.</p></li>
+<li><p>&quot;no symbol&quot;: Package is installed but it was installed outside of the
+package group. This means that the yum group remove will not remove these
+packages.</p></li>
+</ul>
+<p>To install package groups:</p>
+<pre class="literal-block"># yum group install &lt;glob_exp&gt; [...]</pre>
+<p>To update package groups:</p>
+<pre class="literal-block"># yum group update &lt;glob_exp&gt; [...]</pre>
+<p>To uninstall package groups:</p>
+<pre class="literal-block"># yum group remove &lt;glob_exp&gt; [...]</pre>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software">Redhat Doc: Installing and Managing Software</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

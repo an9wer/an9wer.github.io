@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Linux loadable kernel module</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Linux loadable kernel module</h1>
+
+
+    <div id="content">
+<p>Linux kernel modules can be loaded/unloaded in runtime, which allows for
+smaller core kernel images and more flexibles systems.</p>
+<p>Normally, kernel modules are located at <cite>/usr/modules/$(uname -r)/kernel`</cite>
+directory.</p>
+<div class="section" id="built-in-vs-module">
+<h2>Built-in vs module</h2>
+<dl>
+<dt>Built-in:</dt>
+<dd><p>Building a function into the kernel directly ensures that that function
+will be available at all times. The downside is that it makes your kernel
+bigger, increasing boot time, and ultimately using that much more memory to
+hold the kernel. If you are compiling a kernel to fit on a floppy so that
+you can boot Linux off a rescue floppy, space will become an issue.</p>
+</dd>
+<dt>Modules:</dt>
+<dd><p>Building a function as a module allows that function to be loaded into
+memory as needed and unloaded when it is no longer needed. This helps keep
+your kernel small. It is very useful if, say, you are swapping hardware in
+and out of your system frequently. You could compile support for a variety
+of, say, sound cards as modules, and your Linux system will theoretically
+only load the driver that is appropriate for the hardware setup at the
+time.</p>
+<p>Another benefit of building functions as modules is that parameters can be
+passed to the modules which can be useful in debugging your system if
+problems occur.</p>
+</dd>
+</dl>
+<p>There are some considerations to be made when deciding if a kernel function
+should be modularized. A small performance penalty is paid as it takes a little
+time to get the module loaded and unloaded. There are some functions that are
+needed at boot time and these cannot be compiled as modules -- they need to be
+present in the kernel so your system can be loaded. For example,
+ext2/ext3/reiserfs file system support needs to be built into the kernel so
+that your partitions can be read, as you need to be able to read the filesystem
+to load modules. In my case, if I have PCMCIA support built into the kernel,
+then metworking works. If PCMCIA support is modularized, networking fails to
+start, probably because the PCMCIA support needs to be available very early in
+the boot process to set up networking.</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Loadable_kernel_module">Wikipedia: loadable kernel module</a></p>
+<p><a class="reference external" href="https://www.linuxquestions.org/questions/linux-software-2/built-in-or-module-any-difference-243255/">Built-in or module</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

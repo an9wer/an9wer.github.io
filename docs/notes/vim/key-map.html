@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Vim key map</title>
+<meta content="noindex" name="robots" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" class="current" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Vim key map</h1>
+
+
+    <div id="content">
+<p>See <cite>:h map.txt</cite></p>
+<dl>
+<dt>&lt;expr&gt;</dt>
+<dd><p>The expression is evaluated to obtain the {rhs} that is used.</p>
+<p>See <cite>:h map-&lt;expr&gt;</cite></p>
+</dd>
+<dt>&lt;buffer&gt;</dt>
+<dd><p>The mapping/abbreviation is effective in the current buffer only.</p>
+<p>See <cite>:h map-&lt;buffer&gt;</cite></p>
+</dd>
+</dl>
+<div class="section" id="abbreviations">
+<h2>Abbreviations</h2>
+<p>Abbreviations are used in Insert mode, Replace mode and Command-line mode.</p>
+<p>Abbreviations are never recursive.</p>
+<p>To avoid the abbreviation in Insert mode: Type <em>CTRL-V</em> before the character
+that would trigger the abbreviation. (E.g. CTRL-V &lt;Space&gt;.  Or type part of
+the abbreviation, exit insert mode with &lt;Esc&gt;, re-enter insert mode with &quot;a&quot;
+and type the rest.)</p>
+<p>To avoid the abbreviation in Command-line mode: Type <em>CTRL-V</em> twice somewhere
+in the abbreviation to avoid it to be replaced.  A <em>CTRL-V</em> in front of a
+normal character is mostly ignored otherwise.</p>
+<dl class="simple">
+<dt>:ab[breviate]</dt>
+<dd><p>List all abbreviations.</p>
+</dd>
+<dt>:ab[breviate] {lhs}</dt>
+<dd><p>List the abbreviations that start with {lhs}.</p>
+</dd>
+<dt>:ab[breviate] [&lt;expr&gt;] [&lt;buffer&gt;] {lhs} {rhs}</dt>
+<dd><p>Add abbrevia for {lhs} to {rhs}. If {lhs} already existed it is replaced
+with the new {rhs}. {rhs} may contain spaces.</p>
+</dd>
+<dt>:ca[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Command-line mode only.</p>
+</dd>
+<dt>:ia[bbrev] [&lt;expr&gt;] [&lt;buffer&gt;] [lhs] [rhs]</dt>
+<dd><p>Same as &quot;:ab[breviate]&quot;, but for Insert mode only.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="default-key-map">
+<h2>Default key map</h2>
+<p>see <span class="docutils literal">:h editing.txt</span></p>
+<dl class="simple">
+<dt>CTRL-G | :f[ile]</dt>
+<dd><p>Prints the current file name</p>
+</dd>
+<dt>{count}CTRL-G</dt>
+<dd><p>Prints the current file name with full path. If the count is higher then 1,
+the current buffer number is also given.</p>
+</dd>
+</dl>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

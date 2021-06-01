@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>Setup raid1 | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Setup raid1</h1>
+
+
+    <div id="content">
+<p>最近打算把一些照片和重要的文档存储到电脑上，于是特意买了两块东芝 3TB 7200RPM 的
+机械硬盘，安装到我的捡垃圾回来的台式机上（有时间的话另外写一篇 blog 谈论下我是
+如何东拼洗凑捡回这台电脑的），然后就开始安装 raid1。</p>
+<p>Create raid 1 device:</p>
+<pre class="literal-block"># mdadm --create /dev/md1 --homehost=any --level=mirror --raid-devices=2 /dev/sda /dev/sdb</pre>
+<p>After that, check the process of creation command:</p>
+<pre class="literal-block"># cat /proc/mdstat</pre>
+<p>Or use <span class="docutils literal"><span class="pre">--detail</span></span> option to get the state of raid device, the <em>resyncing</em>
+means the creation is still being in process:</p>
+<pre class="literal-block"># mdadm --detail /dev/md1
+State: clean, resyncing</pre>
+<div class="section" id="updated-2021-02-13">
+<h2>Updated 2021/02/13</h2>
+<p>重装了系统，所以新系统如何识别之前的 raid1 呢？</p>
+<p>可以通过如下命令自动检测识别：</p>
+<pre class="literal-block"># mdadm --assemble --scan</pre>
+<p>又或者手动加载：</p>
+<pre class="literal-block"># mdadm --assemble /dev/md1 /dev/sda /dev/sdb</pre>
+<p>Thanks for reading :)</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://raid.wiki.kernel.org/index.php/RAID_setup">Kernel wiki: raid setup</a></p>
+</div>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

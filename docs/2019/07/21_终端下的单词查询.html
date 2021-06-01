@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<title>终端下的单词查询 | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">终端下的单词查询</h1>
+
+
+    <div id="content">
+<p>我平时一直使用 <a class="reference external" href="https://dictionary.cambridge.org/dictionary/english/">cambridge dictionary</a>
+查询单词（这里向各位推荐一下，个人感觉对单词的注释，用例都相当全面和到位的）。</p>
+<p>一般都是在浏览器里面，通过它的网站搜索目标单词。但我是一个终端控，所以一直想把
+它做成一个终端命令，通过命令行的操作来搜索单词，并且将搜索过的单词都记录下来，
+方便日后复习使用。</p>
+<p>一开始试过找 cambridge dictionary 官方提供的接口，但发现需要申请，申请之后也只
+有 30 天的使用时间，之后可能还需要付费。因此，调用 API 这条路似乎行不通。</p>
+<p>第二种方法（似乎也是最后一种方法），通过爬虫获取页面上单词的信息。但谈到爬虫，
+我就觉得心累，原因是爬虫这玩意儿就是个体力活，可玩性不高。因此，这个方法也被我
+一直搁置了。</p>
+<p>最近，在 github 上面偶然发现的一个 <a class="reference external" href="https://github.com/xueyuanl/cambrinary">项目</a> ,
+正是 cambridge dictionary 的爬虫实现。代码实现也不复杂，本来打算 PR 一波，但又
+觉得对方代码写得一般（呵呵，原谅我的眼高手低），照着我的个性，绝对是重撸一遍。</p>
+<p>但有一种感觉叫提笔忘字（原谅我真的不想写爬虫）。其实对于解析 html 文本这一步觉
+得有些麻烦。这时脑袋突然灵光一现，既然不愿意处理 html，纯文本是否会简单一些呢？
+使用终端浏览器（w3m, links 等）配合文本处理命令（sed, awk, cut) 等，不就可以做
+到类似爬虫的效果吗？</p>
+<p>于是乎自己撸了一个 <a class="reference external" href="https://github.com/an9wer/werice/blob/aef3c56f398ace4184148c0de6fcfe9a7e152614/.scripts/camdict">脚本</a>
+，简单粗暴（详细用法可参见 <span class="docutils literal">camdict <span class="pre">-h</span></span> ）。</p>
+<p>Thanks for reading :)</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
