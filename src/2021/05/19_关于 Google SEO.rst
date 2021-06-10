@@ -70,9 +70,7 @@ google 搜索相关关键字验证，这回发现结果中没有了旧的 url。
 规范 google crawler 哪些页面允许爬取，哪些页面不允许。那要如何才能让这些 url 从
 google search index 中移除呢？有两种方法：其一是上面提到的将该页面删除，将 404
 的结果返回给 google crawler，一段时间后，google 自然会将 url 移除；其二是通过
-noindex 标签来告诉 google crawler 不要将 url 录入到 index 中： 
-
-::
+noindex 标签来告诉 google crawler 不要将 url 录入到 index 中： ::
 
     <meta name="robots" content="noindex">
 

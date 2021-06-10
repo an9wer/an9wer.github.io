@@ -261,6 +261,9 @@ Network
         problems in the Linux Networking stack, specifically in our ability to
         diagnose where packets are getting dropped
 
+    (2021/06/04) `scapy <https://github.com/secdev/scapy>`_
+        The Python-based interactive packet manipulation program & library
+
 Proxy/Tunnel
 
     (2019/11/04) `frp <https://github.com/fatedier/frp>`_

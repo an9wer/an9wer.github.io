@@ -36,6 +36,19 @@ when using SOCKS V5)，所以在 Firefox 中，即使使用了 socks5 代理，�
 但一个程序使用的是透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo,
 gethostbyname 来解析域名。
 
+Updated 2021/06/10
+------------------
+
+在 stackexchange 上看到一个这个 `回答 <https://askubuntu.com/a/447881>`_ ，http
+proxy 只能通过 remote 来解析 IP，而 socks5 可以设置通过 local 还是 remote 来解
+析 IP。
+
+我自己用 tinyproxy —— 一个 http proxy —— 验证了下，果然 DNS 的解析是在 remote
+处理的。
+
+另外还看到了一个 `回复 <https://stackoverflow.com/a/34103057>`_ ，证实了使用
+socks5 proxy 可以设置 DNS 在哪里解析。
+
 Thanks for reading :)
 
 References
