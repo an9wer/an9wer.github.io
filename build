@@ -121,7 +121,7 @@ build_dot() {
 }
 
 build_rss() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f blog.xml ]]; then
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f ${DST_DIR}/blog.xml ]]; then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
@@ -175,7 +175,7 @@ EOF
 }
 
 build_sitemap() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f sitemap.xml ]]; then
+  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f ${DST_DIR}/sitemap.xml ]]; then
     { cat <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
