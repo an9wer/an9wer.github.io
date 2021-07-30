@@ -50,8 +50,8 @@ SWAP 看起来不够啊！咋办？
 
 突然脑筋一转，可以把 swap 的空间扩大啊！ ::
 
-    # dd if=/dev/zero of=swapfile bs=1M count=2048 status=progress
-    # chmod 500 /swapfile
+    # dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
+    # chmod 600 /swapfile
     # mkswap /swapfile
     # swapon /swapfile
 

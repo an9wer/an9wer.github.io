@@ -59,4 +59,11 @@ Updated 2019/09/04
 
 只好暂且作罢！
 
+Updated 2021/07/30
+------------------
+
+在官方文档中发现了配色方案的 `描述
+<https://github.com/rime/home/wiki/CustomizationGuide#%E4%B8%80%E4%BE%8B%E5%AE%9A%E8%A3%BD%E5%B0%8F%E7%8B%BC%E6%AF%AB%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88>`
+但是看起来目前只支持小狼毫和鼠鬚管。
+
 Thanks for reading :)
