@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>关于 chroot | an9wer's blog</title>
 <meta content="关于 chroot 的一些应用场景，以及其与 docker 的对比。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,23 +34,23 @@
 
 <h1 class="title">关于 chroot</h1>
 <dl class="docinfo simple">
-<dt class="published">Published</dt>
+<dt class="published">Published<span class="colon">:</span></dt>
 <dd class="published"><p>: 2021/03/20</p>
 </dd>
 </dl>
 
     <div id="content">
-<p>最初接触 chroot 可能是在安装 arch 和 gentoo 镜像的时候，通过 chroot 切换到安装
-的系统目录下面进行初始化配置。</p>
+<p>最初接触 chroot 可能是在安装 arch 和 gentoo 系统的时候，
+通过 chroot 切换到安装的系统目录下面进行初始化配置。</p>
 <p>后来慢慢地也用 chroot 做一些其它的事情，例如：</p>
 <ol class="arabic simple">
-<li><p>程序软件包的打包。我自己维护了 Arch/Gentoo/RPM 的一些软件包，所以在需要更新
-软件包的时候会切换到 chroot 里面操作。</p></li>
-<li><p>程序的安装及试用。有时候不想让系统里面装一些杂七杂八的软件，所以会先在
-chroot 里面安装试用，避免污染了整个系统。</p></li>
+<li><p>程序软件包的打包。我自己维护了 Arch/Gentoo/RPM 的一些软件包，所以在需要更新软件包的时候会切换到 chroot 里面操作。</p></li>
+<li><p>程序的安装及试用。有时候不想让系统里面装一些杂七杂八的软件，所以会先在 chroot 里面安装试用，避免污染了整个系统。</p></li>
 </ol>
-<p>其实 chroot 的很多使用场景都和 docker 重叠了，甚至 docker 在某些方面会更加强大
-，但是也算是一种更轻量的方案，各位有兴趣不妨也体验下吧。</p>
+<p>其实 chroot 的很多使用场景都和 docker 重叠了，
+甚至 docker 在某些方面会更加强大，
+但是也算是一种更轻量的方案，
+各位有兴趣不妨也体验下吧。</p>
 <p>Thanks for reading :)</p>
     </div> <!-- content -->
 

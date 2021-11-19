@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Setup dm-crypt | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -35,8 +36,8 @@
 
     <div id="content">
 <p>最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台
-NAS 的），本来打算按照之前的方法直接上 raid1，但是这次又想让数据存储更加安全，
-于是在 raid 上面再加了一层 dm-crypt。</p>
+NAS 的），本来打算按照之前的方法直接上 RAID，但是这次又想让数据存储更加安全，
+于是在 RAID 上面再加了一层 dm-crypt。</p>
 <p>Generage a keyfile:</p>
 <pre class="literal-block"># dd if=/dev/urandom of=/path/to/&lt;key file&gt; bs=1 count=4096</pre>
 <p>Creating an encrypted storage:</p>
@@ -58,10 +59,10 @@ NAS 的），本来打算按照之前的方法直接上 raid1，但是这次又�
 
 # rc-update add dmcrypt boot</pre>
 <p>Thanks for reading :)</p>
-<div class="section" id="references">
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Dm-crypt">Gentoo wiki: dm-crypt</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

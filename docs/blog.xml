@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 19 Nov 2021 07:07:44 +0000</pubDate>
+  <pubDate>Fri, 19 Nov 2021 11:00:32 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>关于我的 NAS</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/11/19_关于我的%20NAS.html</link>
+    <description>聊聊我的 NAS 的软硬件构成，也是记录给数据盘做 RAID 和加密的过程。</description>
+  </item>
   <item>
     <title>关于 Google SEO</title>
     <author>an9wer@gmail.com</author>
