@@ -9,11 +9,11 @@
 在 Linux 电脑上，我一直使用 `zx2c4's pass <https://www.passwordstore.org/>`_ 命令来管理密码。
 最近和某位前同事聊天的时候，谈到了手机端密码管理的需求，想到自己平时偶尔也是需要在手机上输入密码；
 不过每当这种时候，密码稍微复杂一点，我都是将手机通过 USB 线连接到电脑上之后，
-使用 adb 命令 ———— ``adb input text $(pass show <pass-name>)`` ，来处理的。
+使用 adb 命令 —— ``adb input text $(pass show <pass-name>)`` ，来处理的。
 很明显，这样的方式太过麻烦，常常令我头大。
 
 
-之前没发现 zx2c4's pass 居然还有移动端的客户端 ————
+之前没发现 zx2c4's pass 居然还有移动端的客户端 ——
 安卓上对应的是 `Password Store <https://github.com/android-password-store/Android-Password-Store>`_ APP，
 于是开始在自己的安卓手机上下载、安装，并尝试配置使用。
 
@@ -65,7 +65,7 @@ repository： ::
 Updated 2021/11/18
 ------------------
 
-最近开始用 iPhone 手机了，所以在 IOS 上也找了对应的 APP ———— Pass，
+最近开始用 iPhone 手机了，所以在 IOS 上也找了对应的 APP —— Pass，
 其相对于安卓上的 Password Store 的优势是集成了 gnupg key 的管理，
 因此无需另外一款类似 OpenKeychain 的 APP 配合使用。
 
