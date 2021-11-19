@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 30 Jul 2021 02:26:18 +0000</pubDate>
+  <pubDate>Fri, 19 Nov 2021 06:59:41 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -84,11 +84,12 @@
     <link>https://an9wer.github.io/2021/03/01_关于%20Linux%20Kernel%20Modules.html</link>
   </item>
   <item>
-    <title>Use zx2c4's pass command on Android phone</title>
+    <title>在手机上使用 Pass 命令管理密码</title>
     <author>an9wer@gmail.com</author>
     <category>工具</category>
     <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html</link>
+    <link>https://an9wer.github.io/2021/01/20_在手机上使用%20Pass%20命令管理密码.html</link>
+    <description>在手机上使用 zx2c4 pass 命令。分别在安卓和苹果手机上安装、配置及使用，方便随时查看、修改及同步密码。</description>
   </item>
   <item>
     <title>升级 Gentoo Kernel</title>

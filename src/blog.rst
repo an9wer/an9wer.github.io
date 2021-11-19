@@ -16,7 +16,7 @@
 
 2021/03/01 「思考」 `关于 Linux Kernel Modules <2021/03/01_关于%20Linux%20Kernel%20Modules.html>`_
 
-2021/01/20 「工具」 `Use zx2c4's pass command on Android phone <2021/01/20_Use%20zx2c4's%20pass%20command%20on%20Android%20phone.html>`_
+2021/01/20 「工具」 `在手机上使用 Pass 命令管理密码 <2021/01/20_在手机上使用%20Pass%20命令管理密码.html>`_
 
 2021/01/19 「折腾」 `升级 Gentoo Kernel <2021/01/19_升级%20Gentoo%20Kernel.html>`_
 
