@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>在手机上使用 Pass 命令管理密码 | an9wer's blog</title>
+<meta content="在手机上使用 zx2c4 pass 命令。分别在安卓和苹果手机上安装、配置及使用，方便随时查看、修改及同步密码。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">在手机上使用 Pass 命令管理密码</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2021/01/20</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>在 Linux 电脑上，我一直使用 <a class="reference external" href="https://www.passwordstore.org/">zx2c4's pass</a> 命令来管理密码。
+最近和某位前同事聊天的时候，谈到了手机端密码管理的需求，想到自己平时偶尔也是需要在手机上输入密码；
+不过每当这种时候，密码稍微复杂一点，我都是将手机通过 USB 线连接到电脑上之后，
+使用 adb 命令 ———— <span class="docutils literal">adb input text $(pass show <span class="pre">&lt;pass-name&gt;)</span></span> ，来处理的。
+很明显，这样的方式太过麻烦，常常令我头大。</p>
+<p>之前没发现 zx2c4's pass 居然还有移动端的客户端 ————
+安卓上对应的是 <a class="reference external" href="https://github.com/android-password-store/Android-Password-Store">Password Store</a> APP，
+于是开始在自己的安卓手机上下载、安装，并尝试配置使用。</p>
+<p>Password Store 通过 clone git repository 的方式同步密码，
+所以需要有个 git server，可以是类似 github 这种公共的仓库服务，也可以在本地创建一个私有仓库服务：</p>
+<pre class="literal-block">$ cd &lt;somewhere&gt;
+$ mkdir password-store.git
+$ cd password-store.git
+$ git init --bare</pre>
+<p>然后同步本地 <em>~/.password-store</em> 目录下的所有内容到刚刚创建的 git server 中。
+如果 <em>~/.password-store</em> 还不是一个 git repository，则需要先为其生成一个 git
+repository：</p>
+<pre class="literal-block">$ cd ~/.password-store
+$ git init
+$ git add .
+$ git commit -m &quot;Initial commit&quot;
+$ git remote add origin &lt;username&gt;&#64;&lt;hostname&gt;:/path/to/password-store.git
+$ git push origin master</pre>
+<p>之后，在手机上打开 Password Store 软件，配置刚刚生成的 git server 的信息，
+至于在同步 git repository 的时候通过何种方式认证，这里我选择了 ssh key：</p>
+<pre class="literal-block">$ ssh-keygen -t ecdsa -f ~/.ssh/pass_ecdsa
+
+Transfer pass_ecdsa file to your phone, and open Password Store APP to import it.
+And then append content of ~/.ssh/pass_ecdsa.pub to ~/.ssh/authorized_keys file.</pre>
+<p>配置好上面这些之后就可以开始同步了，稍稍一会儿电脑上的 pass 密钥库就都同步到了手机上。
+但是如何在手机 Password Store 上解密 pass 密钥文件呢？
+此时则还需在手机上安装 <a class="reference external" href="https://github.com/open-keychain/open-keychain">OpenKeychain</a> APP，
+然后将电脑上的 gnupg key 导入到 OpenKeychain 中：</p>
+<pre class="literal-block">$ gpg --armor --export-secret-keys &lt;key-name&gt; | gpg --armor --symmetric --output &lt;key-name&gt;.sec.asc
+
+Transfer &lt;key-name&gt;.sec.asc to your phone, and open OpenKeychain APP to import it.</pre>
+<p>但是到了这一步之后，我发现还是无法解密 Password Store 中的密钥文件，
+原因是需要在手机的设置中为 OpenKeychain 软件开启如下权限
+（参考 <a class="reference external" href="https://github.com/android-password-store/Android-Password-Store/issues/518#issuecomment-557832387">解决方案</a> )
+：</p>
+<pre class="literal-block">Settings -&gt; Apps -&gt; OpenKeychain -&gt; Display pop-up windows while running in the background</pre>
+<p>至此，pass 命令终于可以在安卓手机上愉快地使用啦！</p>
+<section id="updated-2021-11-18">
+<h2>Updated 2021/11/18</h2>
+<p>最近开始用 iPhone 手机了，所以在 IOS 上也找了对应的 APP ———— Pass，
+其相对于安卓上的 Password Store 的优势是集成了 gnupg key 的管理，
+因此无需另外一款类似 OpenKeychain 的 APP 配合使用。</p>
+<p>Git repository 的同步和认证方式都与安卓的一样，只是 gnupg key 的导入同时需要
+public key 和 secret key</p>
+<pre class="literal-block">$ gpg --armor --export -o &lt;key-name&gt;.asc &lt;key-name&gt;
+$ gpg --armor --export-secret-keys -o &lt;key-name&gt;.sec.asc &lt;key-name&gt;
+
+Transfer &lt;key-name&gt;.asc and &lt;key-name&gt;.sec.asc to your phone, and open Pass APP to import it.</pre>
+<p>Thanks for reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
