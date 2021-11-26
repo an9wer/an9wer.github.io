@@ -2,8 +2,10 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Setup lvm | an9wer's blog</title>
+<meta content="使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -31,40 +33,58 @@
     </div> <!-- navbar -->
 
 <h1 class="title">Setup lvm</h1>
-
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2020/11/15</p>
+</dd>
+</dl>
 
     <div id="content">
-<p>我这台惠普的笔记本 EliteBook 8470p（二手淘回来的）有个光驱盘，而我把它提换成了
-一块机械硬盘。所以打算把它挂载到系统家目录下的 Pictures, Downloads 等文件夹，用
-来存储一些数据文件。</p>
-<p>因为我这块机械硬盘有 1TB 的大小，一时间不知道怎么划分比较合适，所以打算用 lvm，
-每次只添加 50GB 的空间到 pv 里面，可以在有需要的时候实现动态扩容。</p>
-<p>Create a physical volume:</p>
+<p>我现在正在使用的是一台 HP EliteBook 8470p 笔记本。
+它本身是带个光驱盘的，不过我把光驱盘取下来换成了一块 2.5 寸的机械硬盘，
+用来挂载到用户目录下的 Pictures, Downloads 等。</p>
+<p>由于这块机械硬盘有 1TB 的容量，且我目前的用量需求也不完全明确，
+所以决定使用 LVM，这样可以在有需要的时候实现动态扩容。</p>
+<section id="section-1">
+<h2>创建一个新的挂载点</h2>
+<p>Initialize a new physical volume:</p>
 <pre class="literal-block"># pvcreate /dev/sd&lt;X&gt;</pre>
-<p>Create a volume group:</p>
+<p>Create a new volume group:</p>
 <pre class="literal-block"># vgcreate &lt;vg name&gt; /dev/sd&lt;X&gt;</pre>
-<p>Create a logical volume from the volume group above:</p>
-<pre class="literal-block"># lvcreate -l 100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<p>Create a new logical volume to use all left space in the volume group created above:</p>
+<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
 <p>Format the logical volume:</p>
 <pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
 <p>Update fstab file, add the following line:</p>
 <pre class="literal-block">/dev/&lt;vg name&gt;/&lt;lv name&gt; &lt;mount point&gt; ext4 defaults,noauto,user 0 0</pre>
 <p>Mount logical volume:</p>
 <pre class="literal-block">$ mount &lt;mount point&gt;</pre>
-<p>Change usr and group ownersip for mount point:</p>
+<p>Set ownership of usr and group for mount point:</p>
 <pre class="literal-block"># chown -R &lt;uid&gt;:&lt;gid&gt; &lt;mount point&gt;</pre>
-<div class="section" id="id1">
-<h2>创建一个新的挂载点</h2>
-<p>Create another physical volume:</p>
+</section>
+<section id="section-2">
+<h2>创建另一个新的挂载点</h2>
+<p>Initialize a new physical volume:</p>
 <pre class="literal-block"># pvcreate /dev/sd&lt;XX&gt;</pre>
-<p>Extend logical volume from the physical volume above:</p>
+<p>Extend an existed group volume:</p>
 <pre class="literal-block"># vgextend &lt;vg name&gt; /dev/sd&lt;XX&gt;</pre>
-<p>Create a logical volume from the volume group above:</p>
-<pre class="literal-block"># lvcreate -l 100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<p>Create a new logical volume to use all left space in the volume group:</p>
+<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
 <p>Format the logical volume:</p>
 <pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+</section>
+<section id="section-3">
+<h2>扩展某个挂载点的容量</h2>
+<p>Initialize a new physical volume:</p>
+<pre class="literal-block"># pvcreate /dev/sd&lt;XXX&gt;</pre>
+<p>Extend an existed group volume:</p>
+<pre class="literal-block"># vgextend &lt;vg name&gt; /dev/sd&lt;XXX&gt;</pre>
+<p>Extend an existed logical volume to use all left space in the volume group:</p>
+<pre class="literal-block"># lvextend -l +100%FREE /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<p>Extend ext4 partition on the logical volume:</p>
+<pre class="literal-block"># resize2fs /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
 <p>Thanks for reading :)</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

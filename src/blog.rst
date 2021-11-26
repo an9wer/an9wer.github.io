@@ -22,7 +22,7 @@
 
 2021/01/19 「折腾」 `升级 Gentoo Kernel <2021/01/19_升级%20Gentoo%20Kernel.html>`_
 
-2020/11/15 「折腾」 `Setup lvm <2020/11/15_Setup%20lvm.html>`_
+2020/11/15 「折腾」 `实战 LVM <2020/11/15_Setup%20lvm.html>`_
 
 2020/08/26 「折腾」 `Setup dm-crypt <2020/08/26_Setup%20dm-crypt.html>`_
 

@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 19 Nov 2021 11:04:06 +0000</pubDate>
+  <pubDate>Fri, 26 Nov 2021 12:54:50 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -108,11 +108,12 @@
     <description>半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软 件包，但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一 把。</description>
   </item>
   <item>
-    <title>Setup lvm</title>
+    <title>实战 LVM</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2020/11/15_Setup%20lvm.html</link>
+    <description>使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。</description>
   </item>
   <item>
     <title>Setup dm-crypt</title>

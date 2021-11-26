@@ -15,7 +15,7 @@ src/blog.rst
     src/2021/03/01_关于\ Linux\ Kernel\ Modules.rst
     src/2021/01/20_在手机上使用\ Pass\ 命令管理密码.rst
     src/2021/01/19_升级\ Gentoo\ Kernel.rst
-    src/2020/11/15_Setup\ lvm.rst
+    src/2020/11/15_实战\ LVM.rst
     src/2020/08/26_Setup\ dm-crypt.rst
     src/2020/08/13_Redmi\ K30\ 5G\ 入手及刷机.rst
     src/2020/07/27_OpenWRT\ 软路由的安装及配置.rst
