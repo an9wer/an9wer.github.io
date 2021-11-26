@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 26 Nov 2021 12:54:50 +0000</pubDate>
+  <pubDate>Fri, 26 Nov 2021 12:59:04 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -112,7 +112,7 @@
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2020/11/15_Setup%20lvm.html</link>
+    <link>https://an9wer.github.io/2020/11/15_实战%20LVM.html</link>
     <description>使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。</description>
   </item>
   <item>
