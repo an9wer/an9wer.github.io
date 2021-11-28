@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Fio</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="interpreting-the-output">
+<section id="interpreting-the-output">
 <h2>Interpreting the output</h2>
 <dl class="simple">
 <dt>slat</dt>
@@ -56,8 +57,8 @@ already been done, see slat explanation).</p>
 completion of the I/O operation.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h2>Examples</h2>
 <pre class="literal-block">[global]
 ioengine=libaio
@@ -88,12 +89,12 @@ rwmixread=0                 # 读占比为0%，也即全部顺序写
 [randread]
 rw=randrw                   # 随机读写
 rwmixwrite=0                # 写占比为 0%，也即全部随机读</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://fio.readthedocs.io/en/latest/fio_doc.html">Fio official document</a></p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation">Wikipedia: standard deviation</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

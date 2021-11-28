@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>SSH</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,7 +53,7 @@ $ ssh &lt;destinationB&gt;</pre>
 &gt; done &lt; &lt;/path/to/hostfile&gt;</pre>
 </dd>
 </dl>
-<div class="section" id="ssh-tunnel">
+<section id="ssh-tunnel">
 <h2>SSH tunnel</h2>
 <pre class="literal-block">ssh -L [bind_address:]port:host:hostport destination
 ssh -R [bind_address:]port:host:hostport destination</pre>
@@ -74,12 +75,12 @@ other interface set by <em>bind_address</em>).</p></li>
 <em>GatewayPorts</em> option is enabled.</p>
 <p>Use <span class="docutils literal"><span class="pre">-fN</span></span> option to make ssh port forwarding run at background:</p>
 <pre class="literal-block">ssh -fN -L|-R [bind_address:]port:host:hostport destination</pre>
-<div class="section" id="ssh-tunnel-references">
+<section id="ssh-tunnel-references">
 <h3>SSH tunnel references</h3>
 <p><a class="reference external" href="https://unix.stackexchange.com/a/115906">Stackoverflow: ssh forwarding</a></p>
-</div>
-</div>
-<div class="section" id="sshd-config">
+</section>
+</section>
+<section id="sshd-config">
 <h2>SSHD config</h2>
 <p>See <span class="docutils literal">man sshd_config</span></p>
 <dl>
@@ -91,15 +92,15 @@ to the local host only, <em>yes</em> to force remote port forwardings to bind to
 the wildcard address.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="ssh-keygen">
+</section>
+<section id="ssh-keygen">
 <h2>ssh-keygen</h2>
 <p>Generate the missing public key again from the private key:</p>
 <pre class="literal-block">$ ssh-keygen -y -f &lt;private key&gt;</pre>
 <p>Display fingerprint of public key:</p>
 <pre class="literal-block">$ ssh-keygen -l -f &lt;private key or publick key&gt;</pre>
-</div>
-<div class="section" id="authorized-keys">
+</section>
+<section id="authorized-keys">
 <h2>authorized_keys</h2>
 <p>See <span class="docutils literal">man sshd</span></p>
 <p>Each line of the file contains one key (empty lines and lines starting with a
@@ -110,7 +111,7 @@ space-separated fields:</p>
 &quot;ecdsa-sha2-nistp521&quot;, &quot;ssh-ed25519&quot;, &quot;ssh-dss&quot; or &quot;ssh-rsa&quot;;</p>
 <p>the comment field is not used for anything (but may be convenient for the user
 to identify the key).</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

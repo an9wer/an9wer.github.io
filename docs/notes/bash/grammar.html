@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Bash Grammar</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="simple-commands">
+<section id="simple-commands">
 <h2>Simple commands</h2>
 <p>A simple command is a sequence of optional variable assignments followed by
 blank-separated words and redirections, and terminated by a control operator.
@@ -47,8 +48,8 @@ only the environment seen by that command.</p>
 <pre class="literal-block">$ [var=value ...] command [arg ...]</pre>
 <p>The return value of a simple command is its exit status, or 128+n if the
 command is terminated by signal n.</p>
-</div>
-<div class="section" id="compound-commands">
+</section>
+<section id="compound-commands">
 <h2>Compound commands</h2>
 <dl>
 <dt>[[ expression ]]</dt>
@@ -59,7 +60,7 @@ substitution</em>, and <em>quote  removal</em> are performed.</p>
 <p><a class="reference external" href="https://mywiki.wooledge.org/BashPitfalls#A.5B_.24foo_.3D_.22bar.22_.5D">Bash pitfalls: [ $foo = &quot;bar&quot; ]</a></p>
 </dd>
 </dl>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

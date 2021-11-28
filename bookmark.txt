@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    src/2021/11/21_实战\ Bluetooth.rst
     src/2021/11/19_关于我的\ NAS.rst
     src/2021/05/19_关于\ Google\ SEO.rst
     src/2021/05/10_在\ tmpfs\ 中\ build\ 软件包.rst
@@ -9,7 +10,6 @@ src/blog.rst
     src/2021/04/10_Gentoo\ 升级遇难小记.rst
     src/2021/04/04_关于\ v2ray\ sniffing.rst
     src/2021/03/20_关于\ chroot.rst
-    src/2021/03/19_实战\ QOS.rst
     src/2021/03/12_BandwagonHost\ 服务器被黑事件.rst
     src/2021/03/01_关于\ Bond\ 和\ Bridge.rst
     src/2021/03/01_关于\ Linux\ Kernel\ Modules.rst
@@ -252,18 +252,6 @@ src/notes.rst
         src/notes/ns/gcloud.rst
         src/notes/ns/edc.rst
         src/notes/ns/huige.rst
-
-    TODO
-        src//notes/coreutils/csplit.rst
-        
-        fd (https://stackoverflow.com/a/2031100)
-
-        https://wiki.archlinux.org/index.php/XScreenSaver
-        https://wiki.archlinux.org/index.php/Backlight
-        https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-        https://www.jwz.org/xscreensaver/man1.html
-
-        bash: $_
 
 Dot:
     graphviz/python/argparse.dot

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Fpm</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,19 +36,19 @@
 
 
     <div id="content">
-<div class="section" id="installation">
+<section id="installation">
 <h2>Installation</h2>
 <p>Install on CentOS 7:</p>
 <pre class="literal-block"># yum install ruby-devel gcc make rpm-build rubygems
 # gem install --no-ri --no-rdoc fpm</pre>
-</div>
-<div class="section" id="usage">
+</section>
+<section id="usage">
 <h2>Usage</h2>
 <p>Create package from a single directory or multiple directories:</p>
 <pre class="literal-block">$ fpm -s dir -t &lt;target&gt; -v &lt;version&gt; [--iteration &lt;release&gt;] -n &lt;name&gt; &lt;directory&gt; [&lt;directory&gt; ...]</pre>
 <p>Create pacakge from a single directory, and specify prefix of target:</p>
 <pre class="literal-block">$ fpm -s dir -t &lt;target&gt; -v &lt;version&gt; [--iteration &lt;release&gt;] -n &lt;name&gt; --prefix &lt;prefix&gt; &lt;directory&gt;</pre>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

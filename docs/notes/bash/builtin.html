@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Bash Builtin</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="set">
+<section id="set">
 <h2>set</h2>
 <pre class="literal-block">set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]</pre>
 <p><strong>Note</strong>: Using + rather than - causes these flags to be turned off.</p>
@@ -84,10 +85,10 @@ exit with a non-zero status, or zero if all commands exit successfully.</p>
 no remaining arguments, the positional parameters are unset.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="shopt">
+</section>
+<section id="shopt">
 <h2>Shopt</h2>
-<div class="section" id="options">
+<section id="options">
 <h3>Options</h3>
 <dl class="simple">
 <dt><cite>-p</cite></dt>
@@ -100,8 +101,8 @@ no remaining arguments, the positional parameters are unset.</p>
 <dd><p>disable OPTNAME</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="optnames">
+</section>
+<section id="optnames">
 <h3>Optnames</h3>
 <dl class="simple">
 <dt>globstar</dt>
@@ -110,9 +111,9 @@ files and zero or more directories and subdirectories.  If the pattern is
 followed  by  a /, only directories and subdirectories match.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="getopts">
+</section>
+</section>
+<section id="getopts">
 <h2>getopts</h2>
 <pre class="literal-block">getopts optstring name [args]</pre>
 <dl class="simple">
@@ -146,7 +147,7 @@ found is placed in 'OPTARG' and no diagnostic message is printed.</p>
 (?) is placed in 'name', 'OPTARG' is unset. and a deagnostic message is
 printed. If getopts is silent, the a colon (:) is placed in 'name' and 'OPTARG'
 is set to the otpion character found.</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

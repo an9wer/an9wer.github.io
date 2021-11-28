@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>关于 v2ray sniffing | an9wer's blog</title>
 <meta content="关于 v2ray 的 sniffing 参数使用，自己的一些理解。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +34,7 @@
 
 <h1 class="title">关于 v2ray sniffing</h1>
 <dl class="docinfo simple">
-<dt class="published">Published</dt>
+<dt class="published">Published<span class="colon">:</span></dt>
 <dd class="published"><p>: 2021/04/04</p>
 </dd>
 </dl>
@@ -53,7 +54,7 @@
 的 getaddrinfo, gethostbyname 函数来交给系统解析 IP 的。所以这个时候到达 v2ray
 的都是 IP，sniffing 是否启用都不影响了，v2ray 不会帮我们解析域名。因此，我们需
 要自己部署 dns resolver 来处理 dns 污染的问题。</p>
-<div class="section" id="id1">
+<section id="section-1">
 <h2>猜想关于程序何时会解析域名</h2>
 <p>当一个程序没有使用 socks5, http 等代理时，其不会调用 getaddrinfo, gethostbyname
 来解析域名，而是把数据包一股脑发给代理。只能说大部分程序是这样的，例如 Firefox
@@ -62,8 +63,8 @@ when using SOCKS V5)，所以在 Firefox 中，即使使用了 socks5 代理，�
 理来解析域名。</p>
 <p>但一个程序使用的是透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo,
 gethostbyname 来解析域名。</p>
-</div>
-<div class="section" id="updated-2021-06-10">
+</section>
+<section id="updated-2021-06-10">
 <h2>Updated 2021/06/10</h2>
 <p>在 stackexchange 上看到一个这个 <a class="reference external" href="https://askubuntu.com/a/447881">回答</a> ，http
 proxy 只能通过 remote 来解析 IP，而 socks5 可以设置通过 local 还是 remote 来解
@@ -73,11 +74,11 @@ proxy 只能通过 remote 来解析 IP，而 socks5 可以设置通过 local 还
 <p>另外还看到了一个 <a class="reference external" href="https://stackoverflow.com/a/34103057">回复</a> ，证实了使用
 socks5 proxy 可以设置 DNS 在哪里解析。</p>
 <p>Thanks for reading :)</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://zwischenzugs.com/2018/06/08/anatomy-of-a-linux-dns-lookup-part-i/">linux dns lookup</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>TigerVNC</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,14 +37,14 @@
 
     <div id="content">
 <p>VNC only can be used in GUI, instead of console.</p>
-<div class="section" id="installation">
+<section id="installation">
 <h2>Installation</h2>
 <p>Install TigerVNC server on CentOS7:</p>
 <pre class="literal-block"># yum install tigervnc-server</pre>
 <p>Install TigerVNC client on CentOS7:</p>
 <pre class="literal-block"># yum install tigervnc</pre>
-</div>
-<div class="section" id="server-setup">
+</section>
+<section id="server-setup">
 <h2>Server setup</h2>
 <p>Run vncserver:</p>
 <pre class="literal-block">$ vncserver</pre>
@@ -80,19 +81,19 @@ session:</p>
 <p><strong>Note</strong>: x0vncserver is an inefficient VNC server which continuously polls any
 X display, allowing it to be controlled via VNC. It is intended mainly as a
 demonstration of a simple VNC server.</p>
-</div>
-<div class="section" id="client-setup">
+</section>
+<section id="client-setup">
 <h2>Client setup</h2>
 <pre class="literal-block">$ vncviewer {ip}:{display}</pre>
 <p>Or:</p>
 <pre class="literal-block">$ vncviewer {ip}::{port}</pre>
 <p>The port number is <em>5900 + display number</em> (e.g. 5901 if display number is 1).</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/TigerVNC">ArchWiki: TigerVNC</a></p>
 <p><a class="reference external" href="https://www.stuartellis.name/articles/vnc-on-linux/#manually-launching-vnc">VNC on linux</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Puppet3.8</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,7 +37,7 @@
 
     <div id="content">
 <p>Puppet is <strong>declarative</strong>, <strong>idempotent</strong>, and <strong>stateless</strong> by default.</p>
-<div class="section" id="installation">
+<section id="installation">
 <h2>Installation</h2>
 <p>Install puppet3.8 on CentOS7:</p>
 <pre class="literal-block"># rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
@@ -65,25 +66,25 @@ runinterval = 1h
 <pre class="literal-block"># rpm -Uvh https://yum.puppet.com/puppet5-release-el-6.noarch.rpm
 # yum install puppet-agent
 # yum install puppetserver</pre>
-</div>
-<div class="section" id="subcommands">
+</section>
+<section id="subcommands">
 <h2>Subcommands</h2>
-<div class="section" id="module">
+<section id="module">
 <h3>module</h3>
 <p>Install a module:</p>
 <pre class="literal-block"># puppet module install &lt;module&gt;</pre>
 <p>Install a specified version of module:</p>
 <pre class="literal-block"># puppet module install -v &lt;version&gt; &lt;module&gt;</pre>
-</div>
-<div class="section" id="apply">
+</section>
+<section id="apply">
 <h3>apply</h3>
 <p>Dry run:</p>
 <pre class="literal-block"># puppet apply --noop &lt;foo.pp&gt;</pre>
-</div>
-</div>
-<div class="section" id="resource">
+</section>
+</section>
+<section id="resource">
 <h2>Resource</h2>
-<div class="section" id="exec">
+<section id="exec">
 <h3>Exec</h3>
 <dl>
 <dt>refreshonly</dt>
@@ -98,12 +99,12 @@ resources it subscribes (by using <em>subscribe</em> or <em>notify</em> attribut
 resource will never be triggered.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="references">
+</section>
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://elatov.github.io/2014/09/writing-better-puppet-modules/">https://elatov.github.io/2014/09/writing-better-puppet-modules/</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Yum</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,7 +39,7 @@
 <p><strong>Note</strong>: All of the following <em>glob_exp</em> is a package name which may contain
 star (*) to match fuzzily, sometimes you need quote it ('*') or backslash it
 (*) to avoid bash expanding.</p>
-<div class="section" id="list">
+<section id="list">
 <h2>List</h2>
 <p><span class="docutils literal">yum list</span> displays information on the version of the package, the format of
 output is:</p>
@@ -54,13 +55,13 @@ repository</em>:</p>
 or
 
 # yumdb search from_repo &lt;repo&gt;</pre>
-</div>
-<div class="section" id="deplist">
+</section>
+<section id="deplist">
 <h2>Deplist</h2>
 <p>List dependencies of packages:</p>
 <pre class="literal-block"># yum deplist &lt;package&gt; [&lt;package&gt; ...]</pre>
-</div>
-<div class="section" id="provides">
+</section>
+<section id="provides">
 <h2>Provides</h2>
 <p>Find out which package provides a specific file or a file-glob-syntax
 wildcards:</p>
@@ -69,8 +70,8 @@ wildcards:</p>
 e.g.
 # yum provides /usr/bin/ps
 # yum provides '*/collectd2html.pl'</pre>
-</div>
-<div class="section" id="group">
+</section>
+<section id="group">
 <h2>Group</h2>
 <p>To view the number of installed groups, available groups, available environment
 groups, and both installed and available language groups:</p>
@@ -98,11 +99,11 @@ packages.</p></li>
 <pre class="literal-block"># yum group update &lt;glob_exp&gt; [...]</pre>
 <p>To uninstall package groups:</p>
 <pre class="literal-block"># yum group remove &lt;glob_exp&gt; [...]</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html-single/system_administrators_guide/index#part-Installing_and_Managing_Software">Redhat Doc: Installing and Managing Software</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

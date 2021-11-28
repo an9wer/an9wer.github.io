@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Bash Expansion</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="parameter-expansion">
+<section id="parameter-expansion">
 <h2>Parameter expansion</h2>
 <dl>
 <dt>${parameter:offset}  ${parameter:offset:length}</dt>
@@ -64,8 +65,8 @@ value of parameter.</p>
 parameter.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="pathname-expansion">
+</section>
+<section id="pathname-expansion">
 <h2>Pathname expansion</h2>
 <p><strong>Note</strong>: When in pathname matching context (pathname expansion), the slash
 character must always be matched explicitly by a slash in the pattern, but in
@@ -82,8 +83,8 @@ HISTIGNORE) it can be matched by a special pattern character.</p>
 <dd><p>Matches any one of the enclosed characters.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="porcess-substitution">
+</section>
+<section id="porcess-substitution">
 <h2>Porcess substitution</h2>
 <p>The form <span class="docutils literal">&lt;(list)</span> is used as an input file. We need to treat it as a file
 when it is used as a command argument.</p>
@@ -96,8 +97,8 @@ when it is used as a command argument.</p>
 321</pre>
 <pre class="literal-block">$ echo 123 &gt;(sed 's/123/321/')
 123 /dev/fd/63</pre>
-</div>
-<div class="section" id="word-splitting">
+</section>
+<section id="word-splitting">
 <h2>Word splitting</h2>
 <p>The shell scans the results of <em>parameter expansion</em>, <em>command substitution</em>,
 and <em>arithmetic expansion</em> that did not occur within double quotes for word
@@ -120,11 +121,11 @@ $ func &quot;1     2   3&quot;    # Word splitting is not performed
 
 $ func 1     2   3      # Word splitting is not performed
 3</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://www.tldp.org/LDP/abs/html/process-sub.html">https://www.tldp.org/LDP/abs/html/process-sub.html</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

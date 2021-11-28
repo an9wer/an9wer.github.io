@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>OpenWRT 软路由的安装及配置 | an9wer's blog</title>
 <meta content="在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台 软路由。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +34,7 @@
 
 <h1 class="title">OpenWRT 软路由的安装及配置</h1>
 <dl class="docinfo simple">
-<dt class="published">Published</dt>
+<dt class="published">Published<span class="colon">:</span></dt>
 <dd class="published"><p>: 2020/07/27</p>
 </dd>
 </dl>
@@ -81,7 +82,7 @@ Download luci-app-v2ray*.ipk from release page, then:
 # opkg install luci-app-v2ray_1.5.6_all.ipk
 # opkg install luci-compat
 # reboot</pre>
-<div class="section" id="updated-2021-01-28">
+<section id="updated-2021-01-28">
 <h2>Updated 2021/01/28</h2>
 <p>之前买了一台 NanoPi R2S，这两天打算刷入 OpenWRT 作为旁路由使用。</p>
 <p>NanoPi R2S 刷入 OpenWRT 的方法可以参照官方文档，这里就不赘述了。</p>
@@ -144,8 +145,8 @@ start_service() {
     procd_set_param pidfile /var/run/v2ray.pid
     procd_close_instance
 }</pre>
-</div>
-<div class="section" id="updated-2021-04-04">
+</section>
+<section id="updated-2021-04-04">
 <h2>Updated 2021/04/04</h2>
 <p>socks5 和 http 代理用的时候需要看手动配置，感觉还是太麻烦，所以这次直接上透明代
 理。透明代理的好处是，只要在路由器中配置即可，局域网内所有设备直接能无感用上代
@@ -271,8 +272,8 @@ build 过程也就不多赘述了。</p>
 <p>这样整个透明代理就搞定了。NanoPi R2S 也从旁路由升级成为网关路由，区别在于
 NanoPi R2S 之前是拉了一根网线连接到路由器 lan 口上的，而现在是路由器拉一根网线
 连接到 NanoPi R2S 的 lan 口。一下次老子变成儿子，儿子变成老子，呵呵。</p>
-</div>
-<div class="section" id="updated-2021-04-05">
+</section>
+<section id="updated-2021-04-05">
 <h2>Updated 2021/04/05</h2>
 <p>v2ray 内建的 geoip 不够看啊，还是得自己来，把 cn 列表导入 ipset 就行：</p>
 <pre class="literal-block"># opkg install ipset
@@ -296,8 +297,8 @@ NanoPi R2S 之前是拉了一根网线连接到路由器 lan 口上的，而现�
 # /etc/init.d/ipset enable</pre>
 <p>不要忘了在 firewall 中添加绕过 cn 的规则：</p>
 <pre class="literal-block">iptables -t nat -A V2RAY -m set --match-set cn dst -j RETURN</pre>
-</div>
-<div class="section" id="updated-2021-05-29">
+</section>
+<section id="updated-2021-05-29">
 <h2>Updated 2021/05/29</h2>
 <p>今天 OpenWRT 路由器重启遇到 v2ray 也连接不上 server 的情况。之后发现
 dnscrypt-proxy 连接上游一直 timeout，不过想想这也正常，因为 v2ray 连不上导致
@@ -319,8 +320,8 @@ nameserver 还就是 dnscrypt-proxy 的监听地址。所以这就是个死循�
 了 wan 和 lan interfaces 设置的 nameserver，与 luci 页面中的配置一致，也就是可
 以通过 luci 来修改其值。</p>
 <p>至此案件告破。</p>
-</div>
-<div class="section" id="updated-2021-05-30">
+</section>
+<section id="updated-2021-05-30">
 <h2>Updated 2021/05/30</h2>
 <p>今天又发现连接 NanoPi R2S 的路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT
 的 DHCP 没有分配 dns nameserver。</p>
@@ -329,12 +330,12 @@ nameserver 还就是 dnscrypt-proxy 的监听地址。所以这就是个死循�
     config dhcp 'lan'
         list 'dhcp_option' '6,&lt;openwrt ip&gt;,114.114.114.114'</pre>
 <p>Thanks for reading :)</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://openwrt.org/docs/guide-user/installation/openwrt_x86">OpenWRT x86 Installation</a></p>
 <p><a class="reference external" href="https://openwrt.org/docs/techref/initscripts">OpenWRT init scripts</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

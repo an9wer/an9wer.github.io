@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Perl</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="data">
+<section id="data">
 <h2>Data</h2>
 <p>Perl has three built-in data types: scalars, arrays of scalars, and associative
 arrays of scalars, known as &quot;hashes&quot;.</p>
@@ -70,8 +71,8 @@ can hold only scalar values (string, numbers, and references). When we use a
 phrase like &quot;array of arrays&quot;, we really mean &quot;array of references to arrays&quot;,
 just as when we say &quot;hash of functions&quot;, we really mean &quot;hash of references to
 subroutines&quot;.</p>
-</div>
-<div class="section" id="interpolation">
+</section>
+<section id="interpolation">
 <h2>Interpolation</h2>
 <p>The following escape sequences are available in constructs that interpolate,
 and in transliterations whose delimiters aren't single quotes:</p>
@@ -96,8 +97,8 @@ elements of the array with the separator specified in the <span class="docutils 
 print $temp;
 
 print &quot;&#64;ARGV&quot;;</pre>
-</div>
-<div class="section" id="context">
+</section>
+<section id="context">
 <h2>Context</h2>
 <p><a class="reference external" href="https://perldoc.perl.org/perldata.html#Context">https://perldoc.perl.org/perldata.html#Context</a></p>
 <dl>
@@ -134,8 +135,8 @@ on whether you treat it as a string or a number.</p>
 &#64;bar = (&quot;one&quot;, &quot;two&quot;, &quot;three&quot;); # The value of &#64;bar is (&quot;one&quot;, &quot;tow&quot;, &quot;three&quot;)
 
 $foo = &#64;bar;                    # The value of $foo is 3 (the length of array)</pre>
-</div>
-<div class="section" id="operators">
+</section>
+<section id="operators">
 <h2>Operators</h2>
 <dl>
 <dt>Quote and Quote-like Operators</dt>
@@ -171,8 +172,8 @@ is lower than a comma.</p>
 open $fh, &quot;&gt;&quot;, &quot;logfile&quot; or die;    # OK</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="syntax">
+</section>
+<section id="syntax">
 <h2>Syntax</h2>
 <p>BLOCK <span class="docutils literal">{}</span> by itself (labeled or not) is semantically equivalent to a loop
 that executes once. Thus you can use any of the loop control statements in it
@@ -202,8 +203,8 @@ condition actually tests for definedness of the expression's value, not for its
 regular truth value.</p>
 <pre class="literal-block">while (&lt;&gt;) { }
 while (defined($line = &lt;ARGV&gt;)) { }</pre>
-</div>
-<div class="section" id="built-in-functions">
+</section>
+<section id="built-in-functions">
 <h2>Built-in functions</h2>
 <dl>
 <dt>open</dt>
@@ -222,11 +223,11 @@ to it, typically when the variable goes out of scope:</p>
 }   # $fh closed here</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://en.wikibooks.org/wiki/Perl_Programming">https://en.wikibooks.org/wiki/Perl_Programming</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

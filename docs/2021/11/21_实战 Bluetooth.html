@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>实战 Bluetooth | an9wer's blog</title>
+<meta content="在 Linux (Gentoo) 中安装 bluez 软件，使用蓝牙（bluetooth）功能。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">实战 Bluetooth</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2021/11/21</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>我有一个罗技 K480 蓝牙键盘，这个键盘左侧有个小旋钮，分三个档位，一共可以连接三台设备。
+出于某些原因，需要将它连上我的笔记本电脑，作为外接键盘使用。</p>
+<p>在 Linux 上使用蓝牙，需要安装 bluez 软件包。在我目前使用的 Gentoo 系统中的安装方式：</p>
+<pre class="literal-block"># vim /etc/portage/make.conf
+    USE=&quot;bluetooth&quot;
+# emerge --ask --changed-use --deep &#64;world</pre>
+<p>安装完成后，启动 bluetooth daemon：</p>
+<pre class="literal-block"># rc-service bluetooth start</pre>
+<p>调用 bluetoothctl 命令连接蓝牙设备：</p>
+<pre class="literal-block">$ bluetoothctl
+
+如果笔记本有多个蓝牙网卡，通过 MAC 地址指定要使用的蓝牙网卡
+[bluetoothctl] # select &lt;MAC address&gt;
+
+打开蓝牙网卡
+[bluetoothctl] # power on
+
+列出蓝牙网卡已经配对成功的蓝牙设备的 MAC 地址
+[bluetoothctl] # devices
+
+扫描其他蓝牙设备的 MAC 地址
+[bluetoothctl] # scan on
+
+打开 agent 用于连接其他蓝牙设备
+[bluetoothctl] # agent on
+
+配对其他蓝牙设备
+[bluetoothctl] # pair &lt;MAC address&gt;
+
+信任其他蓝牙设备
+[bluetoothctl] # trust &lt;MAC address&gt;
+
+连接其他蓝牙设备
+[bluetoothctl] # connect &lt;MAC address&gt;</pre>
+<p>以上通过命令行的方式连接蓝牙设备难免有些繁琐，为了方便也可以使用图形化工具 ——
+<a class="reference external" href="https://github.com/blueman-project/blueman">blueman</a> 。</p>
+<section id="q-a">
+<h2>Q&amp;A</h2>
+<ul class="simple">
+<li><p>为什么罗技 K480 蓝牙键盘只有一张蓝牙网卡（一个 MAC 地址）可以同时连接三台设备？</p></li>
+</ul>
+<p>因为蓝牙可以设定不同的 channel，罗技 K480 蓝牙键盘有三个档位，
+相当于有三个不同的 channel 用于连接不同的设备，不同 channel 之间的设备不会相互影响。</p>
+<ul class="simple">
+<li><p>bluetoothctl 中的 trust 命令有什么用？</p></li>
+</ul>
+<p>因为每次连接不信任的设备需要重新确认，trush 之后可以免去下次连接的确认提示
+（具体可以参考 <a class="reference external" href="https://www.reddit.com/r/linuxquestions/comments/g0rid3/bluetoothctl_what_are_trusted_devices/">这个答案</a> ）。</p>
+<p>Thanks for reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Vultr 换主机小记 | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -72,7 +73,7 @@ Alpine， Arch，FreeBSD 等。我毫不犹豫地选择了 Arch，因为 Arch �
 # echo 'sysctl net.ipv4.tcp_congestion_control=bbr' &gt;&gt; /etc/sysctl.d/bbr.sh</pre>
 <p>至此，有关 Vultr 换主机总算告一段落，接下来的重点就是关注服务器的稳定性，好在
 Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁盘等进行监控。</p>
-<div class="section" id="id1">
+<section id="section-1">
 <h2>相关命令</h2>
 <p>用 root 身份创建用户，之后可以用 <em>visudo</em> 命令为用户添加免密使用 <em>sudo</em> 的权限
 ：</p>
@@ -82,8 +83,8 @@ Vultr 提供了可视化的面板，方便我对服务器的流量，CPU，磁�
 <em>ssh-copy-id</em> 命令复制到服务器上）：</p>
 <pre class="literal-block">PermitRootLogin no
 PasswordAuthentication no</pre>
-</div>
-<div class="section" id="updated-2018-12-11">
+</section>
+<section id="updated-2018-12-11">
 <h2>Updated 2018/12/11</h2>
 <p>最近想着让服务器每天执行一下系统更新，所以在服务器上安装了 cronie ，然后使用
 <span class="docutils literal">sudo crontab <span class="pre">-e</span></span> 命令，添加了如下内容：</p>
@@ -91,19 +92,19 @@ PasswordAuthentication no</pre>
 <p>这条命令会让服务器在每天凌晨五点的时候进行系统更新（服务器是日本的，所以相当于
 北京时间凌晨 4 点），然后在更新成功后 5 分钟重启服务器。当然，服务器重启之后还
 需要自动启动为 Shadowsocks 的容器，我找了一个比较简单的方案：直接在 <span class="docutils literal">sudo docker run</span> 命令运行容器时加上 <span class="docutils literal"><span class="pre">--restart</span> <span class="pre">unless-stopped</span></span> 选项。</p>
-</div>
-<div class="section" id="updated-2019-02-01">
+</section>
+<section id="updated-2019-02-01">
 <h2>Updated 2019/02/01</h2>
 <p>在 github 上新建了一个项目 —— <a class="reference external" href="https://github.com/an9wer/verice">verice</a> ，写
 了一些脚本专门用来管理服务器。</p>
-</div>
-<div class="section" id="updated-2019-07-09">
+</section>
+<section id="updated-2019-07-09">
 <h2>Updated 2019/07/09</h2>
 <p>在服务端开启 tcp fast open:</p>
 <pre class="literal-block">echo &quot;net.ipv4.tcp_fastopen = 3&quot; &gt;&gt; /etc/sysctl.d/tfo.conf</pre>
 <p>Thanks for reading :)</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p>How to deploy Arch on vultr?</p>
 <ul class="simple">
@@ -111,7 +112,7 @@ PasswordAuthentication no</pre>
 <li><p><a class="reference external" href="https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting">https://www.vultr.com/docs/install-arch-linux-with-btrfs-snapshotting</a></p></li>
 <li><p><a class="reference external" href="https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c">https://gist.github.com/juniorctl/bd9c0afcc313620aeae9d18876f41a5c</a></p></li>
 </ul>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

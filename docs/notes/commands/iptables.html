@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>iptables</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,7 +45,7 @@
 <img alt="iptables" src="/statics/images/notes/iptables.jpg" />
 <p>Delete rules of chain by rule number:</p>
 <pre class="literal-block"># iptables -D &lt;chain&gt; &lt;rulenum&gt;</pre>
-<div class="section" id="extensions">
+<section id="extensions">
 <h2>Extensions</h2>
 <dl>
 <dt>tcp</dt>
@@ -56,8 +57,8 @@
 <pre class="literal-block"># iptables -A &lt;chain&gt; -p upd --dport &lt;destionation port&gt;</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="targets">
+</section>
+<section id="targets">
 <h2>Targets</h2>
 <dl>
 <dt>REDIRECT</dt>
@@ -75,13 +76,13 @@ the kernel log (where it can be read with <span class="docutils literal">dmesg</
 <pre class="literal-block"># iptables -A &lt;chain&gt; -j LOG</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><span class="docutils literal">man iptables</span></p>
 <p><span class="docutils literal">man <span class="pre">iptables-extensions</span></span></p>
 <p><a class="reference external" href="https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html">iptables tutorial</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>关于 Boud 和 Bridge | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -38,7 +39,7 @@
 软路由上，且在同一个网段，该如何配置呢？</p>
 <p>有一些思路，于是动手在 Gentoo 上做下验证。既然难得不怕麻烦折腾，当然需要好好记
 录下来。</p>
-<div class="section" id="static-ip">
+<section id="static-ip">
 <h2>Static IP</h2>
 <p>将软路由的 enp1s0 和 enp2s0 分别配置成同一网段的不同 IP：</p>
 <pre class="literal-block"># vim /etc/conf/net
@@ -57,8 +58,8 @@ enp1s0 和 enp2s0。</p>
 172.24.0.0/24 dev enp2s0 proto kernel scope link src 172.24.0.2</pre>
 <p>由于第一条关于 <span class="docutils literal">172.24.0.0/24</span> 网段的路由的优先级更高，所以 ping 包在回程的时
 候走了第一条路由规则，无法到达电脑 B。</p>
-</div>
-<div class="section" id="bond">
+</section>
+<section id="bond">
 <h2>Bond</h2>
 <p>将软路由的 enp1s0 和 enp2s0 配置成 bond：</p>
 <pre class="literal-block"># vim /etc/conf/net
@@ -72,8 +73,8 @@ enp1s0 和 enp2s0。</p>
 enp1s0 和 enp2s0。</p>
 <p>结果两台电脑和软路由之间可以 ping 通，但是两台电脑之间却不能，即使开启
 <span class="docutils literal">net.ipv4.ip_forward</span> 还是 unreachable 。</p>
-</div>
-<div class="section" id="bridge">
+</section>
+<section id="bridge">
 <h2>Bridge</h2>
 <p>将软路由的 enp1s0 和 enp2s0 配置成 bridge：</p>
 <pre class="literal-block"># vim /etc/conf/net
@@ -93,13 +94,13 @@ enp1s0 和 enp2s0。</p>
 <p>此时因为 bridge 没有配置 IP，即没有所属的网段，所以无法配置 DHCP server，只能手
 动给两台电脑分配 IP。</p>
 <p>结果两台电脑之间可以 ping 通。</p>
-</div>
-<div class="section" id="conclusion">
+</section>
+<section id="conclusion">
 <h2>Conclusion</h2>
 <p>忽地理解了 bond 是用来聚合的，bridge 是用来串通的。</p>
 <p>所以此场景下还是得用 bridge。</p>
 <p>Thanks for reading :)</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

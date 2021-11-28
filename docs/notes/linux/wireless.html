@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Linux wireless</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,30 +36,25 @@
 
 
     <div id="content">
-<div class="section" id="frequency-band">
+<section id="frequency-band">
 <h2>Frequency band</h2>
 <p>The 802.11 standard provides several distinct radio frequency ranges for use in
 Wi-Fi communications: 900 MHz, 2.4 GHz, 3.6 GHz, 4.9 GHz, 5 GHz, 5.9 GHz and 60
 GHz bands. Each range is divided into a multitude of channels.</p>
-</div>
-<div class="section" id="channel">
+</section>
+<section id="channel">
 <h2>Channel</h2>
 <p>todo</p>
-</div>
-<div class="section" id="transmission-power">
+</section>
+<section id="transmission-power">
 <h2>Transmission power</h2>
 <p>The high TX power will extend the range for slower TX rates only, as faster
 rates are transmitted at a lower TX power, which is normal for ALL APs and
 devices.</p>
-</div>
-<div class="section" id="signal-level">
+</section>
+<section id="signal-level">
 <h2>Signal level</h2>
 <table>
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 14%" />
-<col style="width: 63%" />
-</colgroup>
 <thead>
 <tr><th class="head"><p>Signal Strength</p></th>
 <th class="head"><p>TL;DR</p></th>
@@ -94,8 +90,8 @@ functionality is highly unlikely.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="wireless-tools">
+</section>
+<section id="wireless-tools">
 <h2>wireless_tools</h2>
 <p>Get frequency (channel) of connected wireless:</p>
 <pre class="literal-block">$ iwconfig | grep Frequency</pre>
@@ -107,12 +103,12 @@ functionality is highly unlikely.</p></td>
 <pre class="literal-block">$ iwconfig | grep 'Signal level'</pre>
 <p>List supported channel of wireless interface:</p>
 <pre class="literal-block">$ iwlist &lt;dev&gt; channel</pre>
-</div>
-<div class="section" id="iw">
+</section>
+<section id="iw">
 <h2>iw</h2>
 <pre class="literal-block">iw list</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://wireless.wiki.kernel.org/en/users/drivers">Linux kernel wiki: wireless dirvers</a></p>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/Wireless_network_configuration">Arch wiki: wireless network configuration</a></p>
@@ -122,7 +118,7 @@ functionality is highly unlikely.</p></td>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">Wikipedia: List of WLAN channels</a></p>
 <p><a class="reference external" href="https://www.electronics-notes.com/articles/connectivity/wifi-ieee-802-11/channels-frequencies-bands-bandwidth.php">Frequencies bands, channels and bandwidth</a></p>
 <p><a class="reference external" href="https://www.reddit.com/r/linuxquestions/comments/52r2nh/is_is_possible_to_split_a_single_wireless_nic/">https://www.reddit.com/r/linuxquestions/comments/52r2nh/is_is_possible_to_split_a_single_wireless_nic/</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>xinit</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@
 
 
     <div id="content">
-<div class="section" id="xinitrc">
+<section id="xinitrc">
 <h2>xinitrc</h2>
 <p>To determine the client to run, startx looks for the following files, in
 order:</p>
@@ -43,8 +44,8 @@ order:</p>
 2. /usr/lib64/sys.startxrc
 3. $(HOME)/.xinitrc
 4. /etc/X11/xinit/xinitrc</pre>
-</div>
-<div class="section" id="xprofile">
+</section>
+<section id="xprofile">
 <h2>xprofile</h2>
 <p>An xprofile file, <em>~/.xprofile</em> and <em>/etc/xprofile</em>, allows you to execute
 commands at the beginning of the X user session - before the window manager is
@@ -60,12 +61,12 @@ started.</p>
 # Make sure this is before the 'exec' command or it won't be sourced.
 [ -f /etc/xprofile ] &amp;&amp; . /etc/xprofile
 [ -f ~/.xprofile ] &amp;&amp; . ~/.xprofile</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><span class="docutils literal">man startx</span></p>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/Xprofile">archwiki: xprofile</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

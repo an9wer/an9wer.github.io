@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Linux wireguard</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,7 +40,7 @@
 <pre class="literal-block"># wg genkey &gt; privatekey</pre>
 <p>Generate public key:</p>
 <pre class="literal-block"># wg pubkey &lt; privatekey &gt; publickey</pre>
-<div class="section" id="case-1">
+<section id="case-1">
 <h2>Case 1</h2>
 <p>A and B are servers with public IP. To peer A and B.</p>
 <p>Configuration of A:</p>
@@ -62,8 +63,8 @@ Endpoint = &lt;public ip of A&gt;:&lt;port of A&gt;
 PublicKey = &lt;public key of A&gt;
 AllowedIPs = 192.168.2.1/32</pre>
 <p>Then, <span class="docutils literal">ping</span> from B to A and reverse are ok.</p>
-</div>
-<div class="section" id="case-2">
+</section>
+<section id="case-2">
 <h2>Case 2</h2>
 <p>A is a server with public IP and B is a local machine behind a NAT router. To
 peer A and B.</p>
@@ -88,8 +89,8 @@ PublicKey = &lt;public key of A&gt;
 AllowedIPs = 192.168.2.1/32
 PersistentKeepalive = 25</pre>
 <p>Then, <span class="docutils literal">ping</span> from B to A and reverse are ok.</p>
-</div>
-<div class="section" id="case-3">
+</section>
+<section id="case-3">
 <h2>Case 3</h2>
 <p>A is a server with public IP and B is a local machine behind a NAT router. To
 forward all traffic of B through A.</p>
@@ -117,8 +118,8 @@ Endpoint = &lt;IP of A&gt;:&lt;port of A&gt;
 AllowedIPs = 0.0.0.0/0
 PersistentKeepalive = 25</pre>
 <p>Then, <span class="docutils literal">curl ifconfig.me</span> from B gets A's public IP.</p>
-</div>
-<div class="section" id="case-4">
+</section>
+<section id="case-4">
 <h2>Case 4</h2>
 <p>A is a server with public IP and B, C are local machines behind NAT router. To
 peer B and C.</p>
@@ -158,8 +159,8 @@ Endpoint = &lt;IP of A&gt;:&lt;port of A&gt;
 AllowedIPs = 192.168.2.0/24
 PersistentKeepalive = 25</pre>
 <p>Then, <span class="docutils literal">ping</span> from B to C and reverse are ok.</p>
-</div>
-<div class="section" id="case-5">
+</section>
+<section id="case-5">
 <h2>Case 5</h2>
 <p>A is a server with public IP and B, C are local machines behind NAT router. To
 forward all traffic of B through C.</p>
@@ -205,7 +206,7 @@ Endpoint = &lt;IP of A&gt;:&lt;port of A&gt;
 AllowedIPs = 192.168.2.1/32
 PersistentKeepalive = 25</pre>
 <p>Then, <span class="docutils literal">curl ifconfig.me</span> from B gets C's public IP.</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

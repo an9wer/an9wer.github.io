@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>搭建自己的 IM | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -102,7 +103,7 @@ Identity Server URL: https://xxx.xxx.xxx.xxx:8448</pre>
 </li>
 </ol>
 <p>以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。</p>
-<div class="section" id="edit-2019-06-23">
+<section id="edit-2019-06-23">
 <h2>Edit 2019/06/23</h2>
 <p>To change user password:</p>
 <p>Create hashed password first:</p>
@@ -110,14 +111,14 @@ Identity Server URL: https://xxx.xxx.xxx.xxx:8448</pre>
 <p>Update user's password with hashed password above:</p>
 <pre class="literal-block">$ sqlite3 homeserver.db
 &gt; update users set password_hash='xxxxxxx' where name='&#64;xxx:synapse.me';</pre>
-</div>
-<div class="section" id="edit-2019-06-24">
+</section>
+<section id="edit-2019-06-24">
 <h2>Edit 2019/06/24</h2>
 <ul class="simple">
 <li><p>The way to <a class="reference external" href="https://github.com/matrix-org/synapse/blob/master/UPGRADE.rst">update</a> synapse</p></li>
 </ul>
 <p>Thanks for reading :)</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

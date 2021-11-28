@@ -48,7 +48,11 @@ build_rst() {
     fi
 
     mkdir -p "$(dirname "$html")"
-    #  Only rebuild when html doesn't exist, mtime of either rst or template.html is updated, or when forced to rebuild
+    # Only rebuild
+    # 1) when html doesn't exist
+    # 2) When mtime of either rst
+    # 3) When template.html is updated
+    # 4) when forced to rebuild
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "${CRT_DIR}/template.html") ))); then

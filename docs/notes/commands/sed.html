@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Sed</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -32,7 +33,7 @@
 
 <h1 class="title">Sed</h1>
 <dl class="docinfo simple">
-<dt class="updated">Updated</dt>
+<dt class="updated">Updated<span class="colon">:</span></dt>
 <dd class="updated"><p>: 2021/05/18</p>
 </dd>
 </dl>
@@ -49,11 +50,11 @@ $ sed -f &lt;(echo -e &quot;/^foo/d\ns/hello/world/&quot;)</pre>
 <a class="reference internal" href="#hold-space">hold space</a> 。sed 每次只能对一行数据进行处理，每次处理的时候会把整行的内容塞
 到 pattern space 中，如果有必要的话，再通过 'h', 'H', 'g', 'G' 等命令保存到
 hold space 中，等处理完操作下一行的数据时又会清空这两个 buffer 中的内容。</p>
-<div class="section" id="addresses">
+<section id="addresses">
 <h2>Addresses</h2>
 <p><strong>Note</strong>: 如果只有一个 address，表示该 address 匹配到的行。如果有两个 address，
 并用逗号分隔，表示从第一个 address 到第二个 address 匹配到的范围。</p>
-<div class="section" id="number-addresses">
+<section id="number-addresses">
 <h3>Number addresses</h3>
 <dl>
 <dt><span class="docutils literal">NUMBER</span></dt>
@@ -73,8 +74,8 @@ hold space 中，等处理完操作下一行的数据时又会清空这两个 bu
 3</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="regex-addresses">
+</section>
+<section id="regex-addresses">
 <h3>Regex addresses</h3>
 <dl>
 <dt><span class="docutils literal">/REGEXP/</span> (The '/' may be replaced by any other single character.)</dt>
@@ -84,13 +85,13 @@ hold space 中，等处理完操作下一行的数据时又会清空这两个 bu
 2</pre>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="commands">
+</section>
+</section>
+<section id="commands">
 <h2>Commands</h2>
 <p><strong>Note</strong>: 为了便于理解，在使用的时候加上 <span class="docutils literal"><span class="pre">--debug</span></span> 参数可以看到 sed 的执行步
 骤。</p>
-<div class="section" id="common-commands">
+<section id="common-commands">
 <h3>Common commands</h3>
 <dl>
 <dt><span class="docutils literal">a &lt;TEXT&gt;</span></dt>
@@ -136,8 +137,8 @@ processing any more commands.</p>
 2</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="hold-space-commands">
+</section>
+<section id="hold-space-commands">
 <h3>Hold space commands</h3>
 <dl class="simple">
 <dt><span class="docutils literal">g</span></dt>
@@ -157,9 +158,9 @@ pattern space.</p>
 contents of the pattern space to that of the hold space.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="branching-and-flow-control-commands">
+</section>
+</section>
+<section id="branching-and-flow-control-commands">
 <h2>Branching and flow Control commands</h2>
 <p>首先需要了解下 <a class="reference internal" href="#label">label</a> ，label 即在 sed 代码中打上一个标记，稍后可以通过下面的
 三个命令进行跳转，有点类似 C 的 goto 语句。</p>
@@ -181,14 +182,14 @@ contents of the pattern space to that of the hold space.</p>
 b</pre>
 </dd>
 </dl>
-</div>
-<div class="section" id="basic-bre-and-extended-ere-regular-expression">
+</section>
+<section id="basic-bre-and-extended-ere-regular-expression">
 <h2>Basic (BRE) and extended (ERE) regular expression</h2>
 <p>BRE 和 ERE 的唯一区别是 <span class="docutils literal">? + () {} |</span> 这几个特殊字符，在 BRE 中需要加上 ''
 前缀在能有特殊含义（例如 '?', '(', ')' 等），而在 ERE 中不需要这么做，其本身
 就又特殊含义。</p>
-</div>
-<div class="section" id="named-classes-of-characters-in-bracket-expressions">
+</section>
+<section id="named-classes-of-characters-in-bracket-expressions">
 <h2>Named classes of characters in bracket expressions</h2>
 <p><strong>Note</strong>: These named classes must be used <em>inside</em> brackets themselves.</p>
 <p>Incorrect example:</p>
@@ -197,8 +198,8 @@ sed: character class syntax is [[:space:]], not [:space:]</pre>
 <p>Correct example:</p>
 <pre class="literal-block">$ echo 1 | sed 's/[[:digit:]]/X/'
 X</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <dl class="simple" id="pattern-space">
 <dt>patter space</dt>
@@ -223,7 +224,7 @@ used, the pattern space is deleted between two cycles.</p>
 </dd>
 </dl>
 <p>To find more details in <span class="docutils literal">info sed</span>.</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Sysctl</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,7 +54,7 @@ net.ipv4.conf.eth2.rp_filter = 2</pre>
 <p>Then <span class="docutils literal">eth0</span> and <span class="docutils literal">eth1</span> act as if <span class="docutils literal">rp_filter = 1</span>, <span class="docutils literal">eth2</span> acts as if
 <span class="docutils literal">rp_filter = 2</span>. This is because all is set to 1, and the max value of all or
 the interface name is used.</p>
-<div class="section" id="variables">
+<section id="variables">
 <h2>Variables</h2>
 <dl class="simple">
 <dt>route_localnet - BOOLEAN</dt>
@@ -65,12 +66,12 @@ FALSE</p>
 <dd><p>Forward Packets between interfaces which makes it act like a router.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="vm">
+</section>
+<section id="vm">
 <h2>vm</h2>
 <p>swappiness</p>
 <p>drop_caches</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

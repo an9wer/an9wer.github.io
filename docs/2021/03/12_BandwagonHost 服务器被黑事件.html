@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>BandwagonHost 服务器被黑事件 | an9wer's blog</title>
 <meta content="搬瓦工服务器被强制关机，因为在短时间内发送太多垃圾邮件。看我 是如何调查事故原因的？" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +34,7 @@
 
 <h1 class="title">BandwagonHost 服务器被黑事件</h1>
 <dl class="docinfo simple">
-<dt class="published">Published</dt>
+<dt class="published">Published<span class="colon">:</span></dt>
 <dd class="published"><p>: 2021/03/12</p>
 </dd>
 </dl>
@@ -72,7 +73,7 @@ shutdown 了，还是同样的问题！</p>
 务器也一直没有被 shutdown。难道问题不复存在了？</p>
 <p>索性也不观察了，直接把 25 端口出口流量给禁用：</p>
 <pre class="literal-block"># iptables -A OUTPUT -o &lt;public interface&gt; -p tcp --dport 25 -j DROP</pre>
-<div class="section" id="updated-2021-05-04">
+<section id="updated-2021-05-04">
 <h2>Updated 2021/05/04</h2>
 <p>看到有人也在 Bandwagonhost 遇到了这个问题，但是他的原因和我不太一样。</p>
 <ul class="simple">
@@ -80,7 +81,7 @@ shutdown 了，还是同样的问题！</p>
 <li><p><a class="reference external" href="https://hostloc.com/thread-839007-1-1.html">找到一直被搬瓦工封机的源头了(2)</a></p></li>
 </ul>
 <p>Thanks for reading :)</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

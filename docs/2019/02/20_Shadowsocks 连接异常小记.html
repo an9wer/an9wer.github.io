@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Shadowsocks 连接异常小记 | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -44,17 +45,17 @@
 致了 shadowsocks 代理异常。</p>
 <p>于是我才决定在服务器上部署 kcptun，同时为了下次搭建方便，顺便写了个
 <a class="reference external" href="https://github.com/an9wer/bpd">Dockerfile</a> 。</p>
-<div class="section" id="update-2019-02-28">
+<section id="update-2019-02-28">
 <h2>Update 2019/02/28</h2>
 <p>使用 traceroute 查了一下，消息应该是在 GFW 的某个路由处被绊了：</p>
 <img alt="Traceroute" src="/statics/images/2019/02/20_traceroute.jpg" />
-</div>
-<div class="section" id="update-2021-04-06">
+</section>
+<section id="update-2021-04-06">
 <h2>Update 2021/04/06</h2>
 <p>不知从何时起，流行的方案变成了用 https 伪装，也就是在加密协议的外面再套一层
 https，这样使得代理流量更加隐蔽。</p>
 <p>Thanks for reading :)</p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

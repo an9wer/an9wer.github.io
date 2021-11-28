@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Systemd unit</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,21 +41,21 @@ service, a socket, a device, a mount point, an automount point, a swap file or
 partition, a start-up target, a watched file system path, a timer controlled
 and supervised by systemd, a resource management slice or a group of externally
 created processes.</p>
-<div class="section" id="unit-section">
+<section id="unit-section">
 <h2>Unit section</h2>
 <p>&quot;[Unit]&quot; section carries generic information about the unit that is not
 dependent on the type of unit.</p>
-</div>
-<div class="section" id="install-section">
+</section>
+<section id="install-section">
 <h2>Install section</h2>
 <p>&quot;[Install]&quot; section carries installation information for the unit. This section
 is not interpreted by systemd during runtime; it is used by the enable and
 disable commands of the systemctl tool during installation of a unit.</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><span class="docutils literal">man systemd.unit</span></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

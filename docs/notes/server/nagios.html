@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Nagios</title>
 <meta content="noindex" name="robots" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,11 +53,11 @@ generate password of nagios user (<em>nagiosadmin</em> here), and put them to
 <p>Start httpd service:</p>
 <pre class="literal-block"># systemctl start httpd</pre>
 <p>Then visit <em>http://xxx.xxx.xxx.xxx/nagios</em>.</p>
-<div class="section" id="nagios-plugins">
+<section id="nagios-plugins">
 <h2>Nagios plugins</h2>
 <p>Nagios plugins directory: <em>/usr/lib64/nagios/plugins</em>.</p>
-</div>
-<div class="section" id="nrpe">
+</section>
+<section id="nrpe">
 <h2>Nrpe</h2>
 <p>Install <em>check_nrpe</em> plugin on the monitoring machine:</p>
 <pre class="literal-block"># yum install epel-release
@@ -68,11 +69,11 @@ generate password of nagios user (<em>nagiosadmin</em> here), and put them to
 <p>Then, on the monitoring machine, run the following commmand to check remote
 machine:</p>
 <pre class="literal-block"># /usr/lib64/nagios/plugins/check_nrpe -H &lt;remote host&gt; -c &lt;command&gt;</pre>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References</h2>
 <p><a class="reference external" href="https://assets.nagios.com/downloads/nagioscore/docs/nrpe/NRPE.pdf">NRPE document</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

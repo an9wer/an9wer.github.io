@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<meta name="generator" content="Docutils 0.16: http://docutils.sourceforge.net/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Archlinux installation | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -34,11 +35,11 @@
 
 
     <div id="content">
-<div class="section" id="flash-iso">
+<section id="flash-iso">
 <h2>Flash iso</h2>
 <pre class="literal-block">$ dd if=archlinux-{x}-x86_64.iso of=/dev/sd{x} conv=fsync status=progress</pre>
-</div>
-<div class="section" id="system-installation">
+</section>
+<section id="system-installation">
 <h2>System installation</h2>
 <p>Connect to the internet:</p>
 <pre class="literal-block"># wifi-menu</pre>
@@ -94,7 +95,7 @@ UEFI with GPT
     LANG=en_US.UTF-8</pre>
 <p>Set hostname:</p>
 <pre class="literal-block"># vim /etc/hostname</pre>
-<div class="section" id="network">
+<section id="network">
 <h3>Network</h3>
 <p>Use NetworkManager:</p>
 <pre class="literal-block"># pacman -S networkmanager
@@ -110,16 +111,16 @@ UEFI with GPT
 # systemctl enable systemd-networkd
 # systemctl enable systemd-resolved
 # ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf</pre>
-</div>
-<div class="section" id="user-account">
+</section>
+<section id="user-account">
 <h3>User account</h3>
 <p>Create user:</p>
 <pre class="literal-block"># useradd -m -g wheel an9wer
 # passwd an9wer
 # visudo
     uncomment %wheel ALL=(ALL) NOPASSWD: ALL</pre>
-</div>
-<div class="section" id="bootloader">
+</section>
+<section id="bootloader">
 <h3>Bootloader</h3>
 <p>EFI Bootloader:</p>
 <pre class="literal-block"># pacman -S grub efibootmgr
@@ -134,9 +135,9 @@ UEFI with GPT
 <pre class="literal-block"># exit
 # umount -R /mnt
 # reboot</pre>
-</div>
-</div>
-<div class="section" id="application-installation">
+</section>
+</section>
+<section id="application-installation">
 <h2>Application installation</h2>
 <p>Update system:</p>
 <pre class="literal-block">$ sudo pacman -Syu</pre>
@@ -207,13 +208,13 @@ $ ibus-setup</pre>
 <p>Fix tap-to-click for touchpad:</p>
 <pre class="literal-block">sudo pacman -S xf86-input-synaptics
    synclient TapButton1=1 TapButton2=3 TapButton3=2</pre>
-</div>
-<div class="section" id="update-2019-03-25">
+</section>
+<section id="update-2019-03-25">
 <h2>Update 2019/03/25</h2>
 <p>When installing archlinux on ACER, encounter secure boot problem. Found a
 way to solve it: <a class="reference external" href="https://itsfoss.com/no-bootable-device-found-ubuntu/">https://itsfoss.com/no-bootable-device-found-ubuntu/</a></p>
-</div>
-<div class="section" id="update-2019-04-26">
+</section>
+<section id="update-2019-04-26">
 <h2>Update 2019/04/26</h2>
 <p>Disable nvidia graphic card:</p>
 <pre class="literal-block">sudo pacman -S bumblebee bbswitch
@@ -242,8 +243,8 @@ vim /etc/X11/xorg.conf.d/20-monitor.conf
 
 Then, reboot, run command `lspci -k` to check that the kernel driver of 3D
 controller is not in use.</pre>
-</div>
-<div class="section" id="update-2019-05-02">
+</section>
+<section id="update-2019-05-02">
 <h2>Update 2019/05/02</h2>
 <p>Set tap button of touchpad:</p>
 <pre class="literal-block">vim /etc/X11/xorg.conf.d/70-synaptics.conf
@@ -255,20 +256,20 @@ controller is not in use.</pre>
             Option &quot;TapButton2&quot; &quot;3&quot;
             Option &quot;TapButton3&quot; &quot;2&quot;
     EndSection</pre>
-</div>
-<div class="section" id="update-2019-10-16">
+</section>
+<section id="update-2019-10-16">
 <h2>Update 2019/10/16</h2>
 <p>Install RDP client remmina:</p>
 <pre class="literal-block"># pacman -S remmina freerdp</pre>
-</div>
-<div class="section" id="update-2020-08-19">
+</section>
+<section id="update-2020-08-19">
 <h2>Update 2020/08/19</h2>
 <p>Disable the root login:</p>
 <pre class="literal-block"># passwd -l root</pre>
 <p>Unlock root:</p>
 <pre class="literal-block">$ sudo passwd -u root</pre>
 <p><a class="reference external" href="https://wiki.archlinux.org/index.php/Sudo#Disable_root_login">https://wiki.archlinux.org/index.php/Sudo#Disable_root_login</a></p>
-</div>
+</section>
     </div> <!-- content -->
 
     <div id="footer">
