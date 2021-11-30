@@ -216,7 +216,9 @@ For ibus to work with Qt 5
     x11-misc/redshift geoclue
 # emerge --ask x11-misc/redshift</pre>
 <p>Install alsa:</p>
-<pre class="literal-block"># emerge --ask media-sound/alsa-utils</pre>
+<pre class="literal-block"># vim /etc/portage/make.conf
+    USE=&quot;alsa&quot;
+# emerge --ask media-sound/alsa-utils</pre>
 <p>Install chroot:</p>
 <pre class="literal-block"># mkdir /chroot
 # wget &lt;PASTED_STAGE_URL&gt;

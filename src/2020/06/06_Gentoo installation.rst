@@ -228,6 +228,8 @@ Install redshift: ::
 
 Install alsa: ::
 
+    # vim /etc/portage/make.conf
+        USE="alsa"
     # emerge --ask media-sound/alsa-utils
     
 Install chroot: ::
