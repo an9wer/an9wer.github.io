@@ -9,16 +9,16 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 30 Nov 2021 12:49:37 +0000</pubDate>
+  <pubDate>Wed, 01 Dec 2021 01:53:36 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
   <item>
-    <title>实战 Bluetooth</title>
+    <title>在 Linux 中使用蓝牙</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/11/21_实战%20Bluetooth.html</link>
+    <link>https://an9wer.github.io/2021/11/21_在%20Linux%20中使用蓝牙.html</link>
     <description>在 Linux (Gentoo) 中安装 bluez 软件，使用蓝牙（bluetooth）功能。</description>
   </item>
   <item>
