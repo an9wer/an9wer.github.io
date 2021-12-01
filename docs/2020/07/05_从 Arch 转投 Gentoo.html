@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>从 Arch 转投 Gentoo | an9wer's blog</title>
+<meta content="在使用一年多的 Arch 之后，转到 Gentoo 门下。它是如何吸引我的？和 Arch 相比又有什么异同？" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">从 Arch 转投 Gentoo</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2020/07/05</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>在尝试使用了 Gentoo 之后，我似乎体验到了转角遇到爱的感觉 —— 这才是符合我审美的 Linux Distro 。</p>
+<p>在此之前一年多的时间里，我的日常及工作均在 Arch 平台上。
+在那期间，算是对 Arch 有一个比较深入的了解，同时也写过一些 AUR Package。
+总的来说，Arch 正如官方声称的那样，是一个简单的 Linux Distro。
+所谓简单，我以为有两点：
+一是官方有详细的文档，对于新手来说非常友好，容易上手；
+二是系统本身的精简，安装完 Linux 内核以及 base 包之后，即可开启的 Linux 之旅
+（Gnome，NetworkManager，firewalld 之流的臃肿软件，统统可以不要。dwm, netctl, iptables 这些软件简单又实用，何不美哉？）。
+另外，Arch 的软件包既多又新，让用户更快体验到软件的新功能，足以让其它 Linux Distro 用户垂涎三尺。</p>
+<p>早些年就听说过 Gentoo ，当初刚接触 Linux 以为遥不可及，没想到机缘巧合下就这么相遇了：
+我当时为了找一个没有自带 systemd 的 Linux Distro。</p>
+<p>在使用 Gentoo 一段时间后，我愈加坚定 Gentoo 就是我想要的 Linux Distro，因为它能够满足我的一些癖好：</p>
+<ol class="arabic simple">
+<li><p>它默认的 init system 是 openrc 而不是 systemd。
+当然在 Gentoo 中也可以使用 systemd，这一点 Gentoo 相对于 Arch 来说是更加灵活的。</p></li>
+<li><p>它是滚动更新系统，能随时保持系统在最新版本。
+相对于 Arch 的滚动更新，Gentoo 官方维护的软件版本通常不会是最最新的，而是偏向软件的稳定性和安全性进而选择合适的版本。</p></li>
+<li><p>它的软件是从源码编译安装。
+从源码安装的好处是在编译前可以指定需要哪些库不需要哪些库，从而使软件在安装完之后的功能完全符合你的需要，不多也不少。
+另外，看到源码编译时输出的一行行日志，虽然不明所以，但是让人感到非常 geek。</p></li>
+<li><p>它会在软件更新后保留一份用户之前修改过的配置文件以及一份新版本的配置文件。
+通过 etc-update 命令让用户自己决定如何处理新版本的配置文件。所谓“进可攻退可守也”。</p></li>
+</ol>
+<section id="updated-2021-04-08">
+<h2>Updated 2021/04/08</h2>
+<p>补充一点，Gentoo 会把所有安装过的软件都记录在 <em>/var/lib/portage/world</em> 文件中，
+其中不包含在安装之时因依赖关系连同被安装的软件，例如某些 lib 软件。
+这就能一目了然地知道在当前系统用到了哪些软件。
+如果下次重装系统的话，只要将 world 文件里面的软件重装一遍就能恢复。</p>
+</section>
+<section id="updated-2021-11-28">
+<h2>Updated 2021/11/28</h2>
+<p>再补充一点，Gentoo 的软件包如果有 9999 版本（例如： <span class="docutils literal"><span class="pre">app-misc/ranger-9999</span></span> ），其表明该软件的最最新的版本，是从软件的源码仓库中把最新代码拉下来编译安装的。
+如果要想安装它，以 <span class="docutils literal"><span class="pre">app-misc/ranger-9999</span></span> 为例：</p>
+<p>首先 unmask <span class="docutils literal"><span class="pre">app-misc/ranger-9999</span></span> ：</p>
+<pre class="literal-block"># vim /etc/portage/package.accept_keywords
+    =app-misc/ranger-9999 **</pre>
+<p>（可选）为了让 git pull 从仓库拉镜像的时候减少下载数据量，相当于为其加上 <span class="docutils literal"><span class="pre">--depth=1</span></span> 参数，需要设置如下环境变量：</p>
+<pre class="literal-block"># vim /etc/portage/make.conf
+    EGIT_CLONE_TYPE=&quot;shallow&quot;</pre>
+<p>最后在安装时指定 9999 版本：</p>
+<pre class="literal-block"># emerge -av =app-misc/ranger-9999</pre>
+</section>
+<section id="updated-2021-11-30">
+<h2>Updated 2021/11/30</h2>
+<p>再补充一点，有些比较基础的 USE flags 可以在 <em>/etc/portage/make.conf</em> 中设置成全局的，例如 alsa, opengl 等。
+因为我安装了 qutebrowser 之后，使用它看视频发现没有声音，后来才知道是 qtwebengine 在安装的时候没有开启 alsa 这个 flag。
+另外值得一提的是：使用 euse 命令可以方便地添加，删除，或者修改全局的 USE flags。</p>
+</section>
+<section id="updated-2021-12-01">
+<h2>Updated 2021/12/01</h2>
+<p>再补充一点，软件通常会有漏洞，Gentoo 官方会针对披露的漏洞对软件进行修复维护，并且展示到官方的 <a class="reference external" href="https://security.gentoo.org/glsa/">安全公告平台</a> 。
+使用 glsa-check 命令可以方便地查看当前使用的 Gentoo 版本是否存在漏洞，如果有漏洞就需要赶紧升级喽！</p>
+<p>Thanks for Reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

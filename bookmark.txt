@@ -19,7 +19,7 @@ src/blog.rst
     src/2020/08/26_Setup\ dm-crypt.rst
     src/2020/08/13_Redmi\ K30\ 5G\ 入手及刷机.rst
     src/2020/07/27_OpenWRT\ 软路由的安装及配置.rst
-    src/2020/07/05_从\ archlinux\ 转投\ gentoo.rst
+    src/2020/07/05_从\ Arch\ 转投\ Gentoo.rst
     src/2020/06/06_Gentoo\ installation.rst
     src/2020/01/07_腾讯云服务器被黑事件.rst
     src/2019/11/24_腾讯云低配服务器性能测试.rst

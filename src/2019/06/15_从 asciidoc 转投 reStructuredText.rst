@@ -1,8 +1,10 @@
 从 asciidoc 转投 reStructuredText
 =================================
 
-大概在几个月前，我从 vimwiki 转投到了 asciidoc。先如今，我又从 asciidoc 转投到
-了 reStructuredText。我可真是能够折腾，呵呵。
+我可真是能够折腾的，呵呵。
+
+大概在几个月前，我从 vimwiki 转投到了 asciidoc。
+现如今，我又从 asciidoc 转投到了 reStructuredText。
 
 这次转投的原因是在于使用了一段时间 asciidoc 之后，愈发觉得其语法别扭，又或者说
 是 reStructuredText 的语法更符合我的审美，加之 reStructuredText 似乎比 asciidoc
@@ -27,4 +29,3 @@ vimwiki 了。
 使用教程，我都会打开 notes，将它们记录下来，方便以后的回顾。
 
 Thanks for reading :)
-

@@ -32,7 +32,7 @@
 
 2020/07/27 「折腾」 `OpenWRT 软路由的安装及配置 <2020/07/27_OpenWRT%20软路由的安装及配置.html>`_
 
-2020/07/05 「折腾」 `从 archlinux 转投 gentoo <2020/07/05_从%20archlinux%20转投%20gentoo.html>`_
+2020/07/05 「折腾」 `从 Arch 转投 Gentoo <2020/07/05_从%20Arch%20转投%20Gentoo.html>`_
 
 2020/06/06 「折腾」 `Gentoo installation <2020/06/06_Gentoo%20installation.html>`_
 
