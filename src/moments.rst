@@ -1,13 +1,17 @@
 .. meta::
     :robots: noindex 
 
+2021/12/02
+
+    原来 DuckDuckGo 的真正用法是 Bang Bang Bang！！！
+
 2021/07/22 Thu
 
-    ollie 跳台阶有心里恐惧。
+    ollie 跳台阶有心里恐惧了 :(
 
 2021/06/15 Tue
 
-    刷 ollie 把袜子磨破了。
+    刷 ollie 把袜子磨破了 :P
 
 2021/06/07 Mon
 
@@ -16,7 +20,7 @@
 
 2021/05/31 Mon
 
-    Baidu SEO 就是个笑话！
+    Baidu SEO is a joke!
 
 2021/05/13 Thu
 
