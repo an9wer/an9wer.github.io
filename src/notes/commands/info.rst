@@ -3,13 +3,12 @@ Info
 
 :Updated: : 2021/05/18
 
-
-**注意** ： 下面的快捷键列表中，如果出现两个快捷键，且用空格分隔，则左侧的是
-emacs 键位（默认），右侧的是 vi 键位（在使用 ``info`` 命令的时候加上
-``--vi-keys`` 参数）。
+**注意** ： 
+下面的快捷键列表中，如果出现两个快捷键，且用空格分隔，
+则左侧的是 emacs 键位（默认），右侧的是 vi 键位（在使用 ``info`` 命令的时候加上 ``--vi-keys`` 参数）。
 
 ``t``
-    Jump to top node in current info file.
+    Jump to top node in current info file
 
 ``<space>``
     Scroll forward to next window
@@ -24,10 +23,10 @@ emacs 键位（默认），右侧的是 vi 键位（在使用 ``info`` 命令的
     Scroll back to previous node
 
 ``b`` ``M-b``
-    Move to the beginning of the current node.
+    Move to the beginning of the current node
 
 ``e`` ``M-e``
-    Move to the end of the current node.
+    Move to the end of the current node
 
 ``C-v`` ``f``
     Scroll forward page.
@@ -36,10 +35,10 @@ emacs 键位（默认），右侧的是 vi 键位（在使用 ``info`` 命令的
     Scroll backword page.
 
 ``<RET>`` ``M-g``
-    Follow the xref in current cursor line.
+    Follow the xref in current cursor line
 
 ``l``
-    Follow back to the recently selected node.
+    Follow back to the recently selected node
 
 ``{number}<`` ``{number}g``
     Jump to the number of node, if number is omitted, the first instead.

@@ -55,6 +55,7 @@ src/blog.rst
 
 src/notes.rst
     Commands
+        src/notes/commands/less.rst
         src/notes/commands/info.rst
         src/notes/commands/sed.rst
     Commands
