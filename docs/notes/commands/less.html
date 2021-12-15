@@ -4,8 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
-<title>an9wer's notes</title>
-<meta content="noindex" name="robots" />
+<title>less</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -32,17 +31,55 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-
-
+<h1 class="title">less</h1>
+<dl class="docinfo simple">
+<dt class="updated">Updated<span class="colon">:</span></dt>
+<dd class="updated"><p>: 2021/12/15</p>
+</dd>
+</dl>
 
     <div id="content">
+<p><strong>注意</strong> ：
+下面的命令中，如果出现用空格分隔的两种命令，二者的作用相同。</p>
 <dl class="simple">
-<dt>Commands/</dt>
-<dd><ul class="simple">
-<li><p><a class="reference external" href="/notes/commands/less.html">less</a> - opposite of more</p></li>
-<li><p><a class="reference external" href="/notes/commands/info.html">info</a> - read info documents</p></li>
-<li><p><a class="reference external" href="/notes/commands/sed.html">sed</a> - stream editor for filtering and transforming text</p></li>
-</ul>
+<dt>标记命令</dt>
+<dd><dl class="simple">
+<dt><span class="docutils literal">m</span></dt>
+<dd><p>Followed by any lowercase or uppercase letter, marks the first
+displayed line with that letter.</p>
+</dd>
+<dt><span class="docutils literal">'</span></dt>
+<dd><p>Followed by any lowercase or uppercase letter, returns to the position
+which was previously marked with that letter.  -</p>
+</dd>
+<dt><span class="docutils literal"><span class="pre">ESC-m</span></span></dt>
+<dd><p>Followed by any lowercase or uppercase letter, clears the mark
+identified by that letter.</p>
+</dd>
+</dl>
+</dd>
+<dt>文件命令</dt>
+<dd><dl class="simple">
+<dt><span class="docutils literal">:e [filename]</span> <span class="docutils literal">E [filename]</span></dt>
+<dd><p>Examine a new file.</p>
+</dd>
+<dt><span class="docutils literal">:n</span></dt>
+<dd><p>Examine the next file.</p>
+</dd>
+<dt><span class="docutils literal">:p</span></dt>
+<dd><p>Examine the previous file.</p>
+</dd>
+<dt><span class="docutils literal">:d</span></dt>
+<dd><p>Remove the current file from the list of files.</p>
+</dd>
+</dl>
+</dd>
+<dt>日志命令</dt>
+<dd><dl class="simple">
+<dt><span class="docutils literal">s [filename]</span></dt>
+<dd><p>Save the input to a file.</p>
+</dd>
+</dl>
 </dd>
 </dl>
     </div> <!-- content -->
