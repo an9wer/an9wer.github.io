@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>Gentoo 升级遇难小记（二） | an9wer's blog</title>
+<meta content="Gentoo 更新系统的时候遇到了 ldns 和 ldns-utils 两个软件包冲突问题。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Gentoo 升级遇难小记（二）</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2021/12/18</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>这两天更新笔记本电脑上的 Gentoo 系统，
+遇到 ldns 与 ldns-utils 两个软件包冲突，
+导致整个系统无法更新：</p>
+<pre class="literal-block">$ sudo emerge -avp ldns
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild     U  ] net-libs/ldns-1.8.0-r4:0/3::gentoo [1.7.1-r5:0/3::gentoo] USE=&quot;dane ecdsa -doc -ed448 -ed25519 -examples% -gost -python -static-libs -vim-syntax&quot; PYTHON_SINGLE_TARGET=&quot;python3_9 -python3_8 (-python3_10)&quot; 1,254 KiB
+[blocks B      ] &lt;net-dns/ldns-utils-1.8.0-r2 (&quot;&lt;net-dns/ldns-utils-1.8.0-r2&quot; is soft blocking net-libs/ldns-1.8.0-r4)
+
+Total: 1 package (1 upgrade), Size of downloads: 1,254 KiB Conflict: 1 block (1 unsatisfied)
+
+ * Error: The above package list contains packages which cannot be
+ * installed at the same time on the same system.
+
+  (net-dns/ldns-utils-1.7.1:0/0::gentoo, installed) pulled in by
+    net-dns/ldns-utils required by &#64;selected
+
+  (net-libs/ldns-1.8.0-r4:0/3::gentoo, ebuild scheduled for merge) pulled in by
+    ldns
+    &gt;=net-libs/ldns-1.7.1[dane?,ecdsa?,ed25519?,ed448?,gost?] (&gt;=net-libs/ldns-1.7.1[dane]) required by (net-dns/ldns-utils-1.7.1:0/0::gentoo, installed) USE=&quot;dane ssl -ecdsa -ed25519 -ed448 -examples -gost&quot;
+
+
+For more information about Blocked Packages, please refer to the following
+section of the Gentoo Linux x86 Handbook (architecture is irrelevant):
+
+https://wiki.gentoo.org/wiki/Handbook:X86/Working/Portage#Blocked_packages</pre>
+<p>可以看出，
+目前系统已经安装的是 net-dns/ldns-utils-1.7.1 和 net-libs/ldns-1.7.1-r5，
+这次是将后者更新到 net-libs/ldns-1.8.0-r4，
+但是因为 <span class="docutils literal"><span class="pre">&lt;net-dns/ldns-utils-1.8.0-r2</span></span> 无法满足要求导致不能更新。</p>
+<p>为啥 ldns-utils 不能随之更新到 net-dns/ldns-utils-1.8.0-r2 或者更高的版本呢？
+看来只能通过 ebuild 文件源码一探究竟。</p>
+<p>先查看 <em>/var/db/repos/gentoo/net-libs/ldns/ldns-1.8.0-r4.ebuild</em> 文件，
+可以发现 ldns-1.8.0-r4 无法兼容低于 ldns-utils-1.8.0-r2 的版本：</p>
+<pre class="literal-block">RDEPEND=&quot;${COMMON_DEPEND}
+        !&lt;net-dns/ldns-utils-1.8.0-r2
+&quot;</pre>
+<p>再查看 <em>/var/db/repos/gentoo/net-dns/ldns-utils/ldns-utils-1.8.0-r2.ebuild</em> 文件，
+KEYWORDS 中 amd64 有个 <span class="docutils literal">~</span> 前缀，表示其为 unstable 版本，无法直接安装：</p>
+<pre class="literal-block">KEYWORDS=&quot;~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86&quot;</pre>
+<p>这样就说的通之前安装报错的问题了。既然明白了原因，那么也就有解决方案了：</p>
+<ol class="arabic simple">
+<li><p>编辑 <em>/etc/portage/package.mask</em> 文件，将 <span class="docutils literal"><span class="pre">&gt;net-libs/ldns-1.7.1-r5</span></span> 添加到其中，
+这样 ldns 最多只能更新到 net-libs/ldns-1.7.1-r5，即保留了当前 ldns 的版本。</p></li>
+<li><p>或者，编辑 <em>/etc/portage/package.accpet_keywords</em> 文件，将 <span class="docutils literal"><span class="pre">net-dns/ldns-utils</span> ~amd64</span> 添加到其中，
+这样就能允许系统安装 net-dns/ldns-utils-1.8.0-r2 版本的 ldns-utils 了。</p></li>
+</ol>
+<p>不过上面两种方法都有些问题：
+方法一，之后都无法将 ldns 更新到最新的版本；
+方法二，安装 unstable 版本的 ldns-utils 似乎没那么可靠。</p>
+<p>看起来是时候到官方 <a class="reference external" href="https://bugs.gentoo.org/">Bugzilla</a> 提个 issue 了。
+顺便试试搜索下 ldns 相关的 issue，还真找到了与我一样问题的 <a class="reference external" href="https://bugs.gentoo.org/828109">issue</a> ,
+这里面提到：</p>
+<blockquote>
+<p>Given that ldns and ldns-utils are built from the same source code, I would
+suggest consolidating them into a single package. This will avoid any
+possible issues with mismatched library versions.</p>
+</blockquote>
+<p>原来是维护者打算把 ldns-utils 合并到 ldns 中成为同一个软件包，继而取消 ldns-utils 软件包。
+之所以会出现以上我遇到的问题，是维护者故意为止，让用户自己将 ldns-utils 从 &#64;world 中 deselect：</p>
+<pre class="literal-block">$ sudo emerge --deselect net-dns/ldns-utils</pre>
+<p>请问维护者这是哪门子逻辑？</p>
+<p>Thanks for reading :)</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

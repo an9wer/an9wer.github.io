@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    src/2021/12/18_Gentoo\ 升级遇难小记（二）.rst
     src/2021/11/21_在\ Linux\ 中使用蓝牙.rst
     src/2021/11/19_关于我的\ NAS.rst
     src/2021/05/19_关于\ Google\ SEO.rst

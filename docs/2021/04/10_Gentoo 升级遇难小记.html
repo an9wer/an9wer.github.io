@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>Gentoo 升级遇难小记 | an9wer's blog</title>
-<meta content="Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的 时候内存不足的问题。" name="description" />
+<meta content="Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的时候内存不足的问题。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -40,30 +40,43 @@
 </dl>
 
     <div id="content">
-<p>有台 Gentoo 的服务器从去年 9 月份就没更新过系统，于是乎今天饶有兴致来 Update 一
-波。</p>
+<p>有台 Gentoo 的服务器从去年 9 月份就没更新过系统，于是乎今天饶有兴致来 Update 一波。</p>
 <p>首先更新一下 repo：</p>
 <pre class="literal-block"># emerge --sync</pre>
 <p>之后提示告诉我要升级系统最好先升级 <em>sys-apps/portage</em> ：</p>
-<pre class="literal-block"># emerge -av --oneshot sys-apps/portage</pre>
-<p>结果出现一堆依赖报错，形如 <span class="docutils literal">Dependency graph slot conflicts</span> ，咋回事？</p>
-<p>原由是使用 emerge 更新一个单独的 package 通常会导致依赖冲突，相当于想要更新的
-package A 依赖 package C 的 v2 版本，而一个没有更新的 package B 依赖 package C
-的 v1 版本。emerge 目前还没有办法自动处理这些依赖冲突，所以推荐使用 <span class="docutils literal">emerge <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">--update</span> <span class="pre">--newuse</span> <span class="pre">--deep</span> &#64;world</span>  命令把所有软件都更新了。</p>
-<p>但我得先更新 <em>sys-app/portage</em> 才行啊！还是得靠自己手动解决。</p>
-<p>看了下官方 wiki 里面的方案，需要找到这些所有这些冲突的 package B 软件，然后先用
-如下命令解决 package B 依赖 package C 的版本问题，最后才能更新 package A：</p>
-<pre class="literal-block"># emerge -av --oneshot =&lt;packge C v2&gt; &lt;package B&gt;
-# ...
-# emerge -av --oneshot &lt;package A&gt;</pre>
-<p>但是这样手动更新太麻烦了！好在找到另一个解决方案：使用 emerge 的 <span class="docutils literal"><span class="pre">--nodeps</span></span>
-参数安装所有依赖的 package C，最后安装 packge A：</p>
-<pre class="literal-block"># emerge -av --oneshot --nodeps &lt;package C&gt;
-# ...
-# emerge -av --oneshot --nodeps &lt;pacakge A&gt;</pre>
-<p>解决了 <em>sys-apps/portage</em> 的更新问题，就可以更新其它软件了。原以为到这里就结束
-了。结果在 build gcc 的时候因为内存不足编译失败了，服务器的 512M RAM + 512M
-SWAP 看起来不够啊！咋办？</p>
+<pre class="literal-block"># emerge --oneshot sys-apps/portage</pre>
+<p>结果出现一堆依赖报错：</p>
+<pre class="literal-block">!!! Multiple package instances within a single package slot have been pulled
+!!! into the dependency graph, resulting in a slot conflict:</pre>
+<p>这是咋回事？</p>
+<p>原由是使用 emerge 更新一个单独的 package 通常会导致依赖冲突。
+例如，想要安装 package A，其依赖 package C 的 v2 版本，
+所以需要将系统中已经安装的 package C 从 v1 版本更新到 v2 版本，
+但是另一个已经安装的 package B 却依赖 package C 的 v1 版本，不过同时也兼容 v2 版本。
+emerge 目前还没有办法自动处理这样依赖冲突，
+所以官方推荐使用 <span class="docutils literal">emerge <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">--update</span> <span class="pre">--newuse</span> <span class="pre">--deep</span> &#64;world</span>  命令一次性把所有软件都更新了。</p>
+<blockquote>
+<p>Attempts to upgrade single packages will often trigger dependency conflicts
+because emerge does not have an option to specify that it should
+automatically update reverse dependencies as needed. The recommended
+practice is to update all packages together (after each emerge --sync
+operation), using a command such as emerge --deep --newuse --update &#64;world.</p>
+</blockquote>
+<p>但我得先更新 <em>sys-app/portage</em> 这一个软件包才行啊！看来还是得靠自己手动解决。</p>
+<p>根据官方 wiki 提供的 <a class="reference external" href="https://wiki.gentoo.org/wiki/Troubleshooting#Dependency_graph_slot_conflicts">方案</a> ，
+先使用如下命令使 package B 重新依赖 package C 的 v2 版本，
+然后安装 package A：</p>
+<pre class="literal-block"># emerge -ask --oneshot =&lt;packge C v2&gt; &lt;package B&gt;
+# emerge -ask &lt;package A&gt;</pre>
+<p>但是这种方法会有个问题，假设在更新 packge C 到 v2 版本的时候也遇到了相似的依赖冲突问题，这样无限下去会相当麻烦！
+另外还有一种情况是，假设 package B 也有更新，而其原来版本的 ebuild 文件因为太老被 drop 了，这样就再也无法解决 packge B 与 packge C v2 的冲突问题了。</p>
+<p>有个简单且讨巧的方法是使用 emerge 的 <span class="docutils literal"><span class="pre">--nodeps</span></span> 参数直接安装 package C 的 v2 版本，之后安装 packge A：</p>
+<pre class="literal-block"># emerge -ask --oneshot --nodeps =&lt;package C v2&gt;
+# emerge -ask &lt;pacakge A&gt;</pre>
+<p>不过需要注意的是：使用 <span class="docutils literal"><span class="pre">--nodeps</span></span> 不总会成功，可能会遇到安装失败的问题，所以这种方法不是完美的。</p>
+<p>使用上面的方法将 <em>sys-apps/portage</em> 所依赖的软件包都更新之后，就可以更新 <em>sys-apps/portage</em> 了。</p>
+<p>接下来再使用 <span class="docutils literal">emerge <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">--update</span> <span class="pre">--newuse</span> <span class="pre">--deep</span> &#64;world</span> 命令更新其它软件。
+原以为到这里就结束了，结果在 build gcc 的时候因为内存不足编译失败了，服务器的 512M RAM + 512M SWAP 看起来不够啊！咋办？</p>
 <ol class="arabic simple">
 <li><p>升级服务器内存，没钱！</p></li>
 <li><p>在其它机器编译，太难！</p></li>
@@ -77,10 +90,10 @@ SWAP 看起来不够啊！咋办？</p>
 <p>Thanks for reading :)</p>
 <section id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Troubleshooting#Dependency_graph_slot_conflicts">Dependency graph slot conflicts</a></p>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Portage/FAQ#Why_is_there_a_dependency_conflict_when_I_attempt_to_upgrade_a_single_package.3F">Why is there a dependency conflict when I attempt to upgrade a single package?</a></p>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Portage/FAQ#What_should_I_do_when_emerge_reports_a_lot_of_dependency_conflicts_involving_built_slot-operator_.28foo.2Fbar:X.2FY.3D.29_dependencies.3F">What should I do when emerge reports a lot of dependency conflicts involving
-built slot-operator (foo/bar:X/Y=) dependencies?</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Portage/FAQ#Why_is_there_a_dependency_conflict_when_I_attempt_to_upgrade_a_single_package.3F">Gentoo Wiki: Why is there a dependency conflict when I attempt to upgrade a single package?</a></p></li>
+<li><p><a class="reference external" href="https://wiki.gentoo.org/wiki/Project:Portage/FAQ#What_should_I_do_when_emerge_reports_a_lot_of_dependency_conflicts_involving_built_slot-operator_.28foo.2Fbar:X.2FY.3D.29_dependencies.3F">Gentoo Wiki: What should I do when emerge reports a lot of dependency conflicts involving built slot-operator (foo/bar:X/Y=) dependencies?</a></p></li>
+</ul>
 </section>
     </div> <!-- content -->
 

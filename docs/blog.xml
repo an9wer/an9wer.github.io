@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 18 Dec 2021 08:08:29 +0000</pubDate>
+  <pubDate>Sat, 18 Dec 2021 14:47:09 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>Gentoo 升级遇难小记（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/12/18_Gentoo%20升级遇难小记（二）.html</link>
+    <description>Gentoo 更新系统的时候遇到了 ldns 和 ldns-utils 两个软件包冲突问题。</description>
+  </item>
   <item>
     <title>在 Linux 中使用蓝牙</title>
     <author>an9wer@gmail.com</author>
@@ -51,7 +59,7 @@
     <category>杂文</category>
     <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/04/22_有一只蟑螂.html</link>
-    <description>在小区地下停车库玩滑板，碰到一只超大蟑螂动也不动趴在那，着实 可怕！有两个母亲带着两个小孩停车后从车上下来，等她们走后我回头一看，好 家伙，蟑螂给踩死了。</description>
+    <description>在小区地下停车库玩滑板，碰到一只超大蟑螂动也不动趴在那，着实可怕！ 有两个母亲带着两个小孩停车后从车上下来，等她们走后我回头一看，好家伙，蟑螂给踩死了。</description>
   </item>
   <item>
     <title>Gentoo 升级遇难小记</title>
@@ -59,7 +67,7 @@
     <category>折腾</category>
     <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记.html</link>
-    <description>Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的 时候内存不足的问题。</description>
+    <description>Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的时候内存不足的问题。</description>
   </item>
   <item>
     <title>关于 v2ray sniffing</title>

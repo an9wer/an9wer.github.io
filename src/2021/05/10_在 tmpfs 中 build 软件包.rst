@@ -41,7 +41,7 @@
     instances the machine will deadlock since the OOM handler will not be able
     to free that memory.
 
-因此我们需要好好地拿捏一下分配给 */var/tmp/portage* 内存的大小。
+因此我们需要好好地拿捏一下分配给 */var/tmp/portage* 的内存大小。
 之后就可以愉快地使用 emerge 安装软件了。
 
 Thanks for reading :)
