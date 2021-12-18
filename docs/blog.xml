@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Wed, 15 Dec 2021 10:45:57 +0000</pubDate>
+  <pubDate>Sat, 18 Dec 2021 08:08:29 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -43,7 +43,7 @@
     <category>折腾</category>
     <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中%20build%20软件包.html</link>
-    <description>Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录 挂载成 tmpfs 文件系统，安装过程中的读写操作直接写入到内存中，可以减少硬 盘的读写次数，增加硬盘寿命，并且提高安装速度。</description>
+    <description>Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统， 安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。</description>
   </item>
   <item>
     <title>有一只蟑螂</title>

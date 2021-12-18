@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>在 tmpfs 中 build 软件包 | an9wer's blog</title>
-<meta content="Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录 挂载成 tmpfs 文件系统，安装过程中的读写操作直接写入到内存中，可以减少硬 盘的读写次数，增加硬盘寿命，并且提高安装速度。" name="description" />
+<meta content="Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统， 安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -40,48 +40,44 @@
 </dl>
 
     <div id="content">
-<p>因为 Gentoo 是通过源码安装软件包，需要下载、解压并编译源代码，这个过程会生成一
-堆临时文件，对于 SSD 用户来说着实心疼硬盘的寿命。不过好在可以通过 tmpfs 来缓解
-硬盘的压力，所谓 tmpfs 即把内存用来当硬盘使用（而 swap 是把硬盘当内存用，正好相
-反）。</p>
+<p>因为 Gentoo 是通过源码安装软件包，需要下载、解压并编译源代码，这个过程会生成一堆临时文件，对于 SSD 用户来说着实心疼硬盘的寿命。
+不过好在可以通过 tmpfs 来缓解硬盘的压力，所谓 tmpfs 即把内存用来当硬盘使用（而 swap 是把硬盘当内存用，正好相反）。</p>
 <p>在 Gentoo 安装软件的时候主要会涉及到三个目录：</p>
 <dl class="simple">
 <dt><em>/var/cache/distfiles</em></dt>
-<dd><p>存放软件源代码，一般都是压缩包文件 (.tar.gz)。软件包升级后旧的源代码会被删
-除，只保留最新的源代码。</p>
+<dd><p>存放软件源代码，一般都是压缩包文件 (.tar.gz)。
+软件包升级后旧的源代码会被删除，只保留最新的源代码。</p>
 </dd>
 <dt><em>/var/tmp/portage</em></dt>
-<dd><p>存放了软件包在 emerge build 时候的工作目录，软件包的压缩包解压的位置也位于
-该处。软件安装成功后会自动删除该工作目录，但是如果软件安装过程中遇到了
-interrupt 问题，则会保留该工作目录。</p>
+<dd><p>存放了软件包在 emerge build 时候的工作目录，软件包的压缩包解压的位置也位于该处。
+软件安装成功后会自动删除该工作目录，但是如果软件安装过程中遇到了 interrupt 问题，则会保留该工作目录。</p>
 </dd>
 <dt><em>/var/cache/binpkgs</em></dt>
 <dd><p>binary package (目前还不太清楚作用)</p>
 </dd>
 </dl>
-<p>由此可以看出，大量的 IO 操作都在 <em>/var/tmp/portage</em> 目录，我们对其使用 tmpfs 可
-以大大提高 SSD 的寿命，甚至也可以节省软件编译时间（因为直接从内存读写文件）。</p>
+<p>由此可以看出，大量的 IO 操作都在 <em>/var/tmp/portage</em> 目录。
+我们对其使用 tmpfs 可以大大提高 SSD 的寿命，甚至也可以节省软件编译时间（因为直接从内存读写文件）。</p>
 <p>接下来就是将 <em>/var/tmp/portage</em> 挂载成 tmpfs 的具体操作：</p>
 <pre class="literal-block"># vim /etc/fstab
     tmpfs  /var/tmp/portage  tmpfs  size=12G,uid=portage,gid=portage,mode=775,nosuid,noatime,nodev   0 0
 # mount /var/tmp/portage</pre>
-<p>这里需要指定 <em>/var/tmp/portage</em> 的大小，设置太小的话可能都不够软件包源码的解压
-大小，一般在 emerge build 前会检查是否有足够的空间满足软件包的解压，不够会有警
-告提示；设置太大的话剩下用来给 emerge build 运行时的内存就不够了，而且 tmpfs 最
-大不能超过系统所有内存大小的一半：</p>
+<p>这里需要指定 <em>/var/tmp/portage</em> 的大小，
+设置太小的话可能都不够软件包源码的解压大小，一般在 emerge build 前会检查是否有足够的空间满足软件包的解压，不够会有警告提示；
+设置太大的话会显得浪费，且剩下用来给 emerge build 运行时的内存就不够了。</p>
 <blockquote>
 <p>size: The limit of allocated bytes for this tmpfs instance. The default is
 half of your physical RAM without swap. If you oversize your tmpfs
 instances the machine will deadlock since the OOM handler will not be able
 to free that memory.</p>
 </blockquote>
-<p>因此我们需要好好地拿捏一下分配给 <em>/var/tmp/portage</em> 内存的大小。之后就可以愉快
-地使用 emerge 安装软件了。</p>
+<p>因此我们需要好好地拿捏一下分配给 <em>/var/tmp/portage</em> 内存的大小。
+之后就可以愉快地使用 emerge 安装软件了。</p>
 <p>Thanks for reading :)</p>
 <section id="references">
 <h2>References</h2>
-<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Knowledge_Base:Freeing_disk_space">Gentoo: Freeing disk space</a></p>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/FAQ#What_is_in_.2Fvar.2Ftmp.2Fportage.3F_Is_it_safe_to_delete_the_files_and_directories_in_.2Fvar.2Ftmp.2Fportage.3F">Gentoo FAQ: What is in /var/tmp/portage?</a></p>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Knowledge_Base:Freeing_disk_space">Gentoo: Freeing disk space</a></p>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Portage_TMPDIR_on_tmpfs">Gentoo: Portage tmpdir on tmpfs</a></p>
 </section>
     </div> <!-- content -->

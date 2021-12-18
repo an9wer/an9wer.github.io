@@ -60,7 +60,7 @@ Q&A
 
 - bluetoothctl 中的 trust 命令有什么用？
 
-因为每次连接不信任的设备需要重新确认，trush 之后可以免去下次连接的确认提示
+因为每次连接不信任的设备需要重新确认，trust 之后可以免去下次连接的确认提示
 （具体可以参考 `这个答案 <https://www.reddit.com/r/linuxquestions/comments/g0rid3/bluetoothctl_what_are_trusted_devices/>`_ ）。
 
 

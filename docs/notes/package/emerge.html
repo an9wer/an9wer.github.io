@@ -67,7 +67,8 @@ e.g.
 # emerge -s cpupower
 # emerge -s &quot;%^kde&quot;</pre>
 <p>Update all installed packages:</p>
-<pre class="literal-block"># emerge -av --update --deep --newuse &#64;world</pre>
+<pre class="literal-block"># emerge -av --update --deep --newuse &#64;world
+# emerge -av --update --deep --newuse --keep-going=y &#64;world</pre>
 <p>Remove package from world:</p>
 <pre class="literal-block"># emerge --deselect &lt;package&gt;
 # emerge --depclean -av</pre>

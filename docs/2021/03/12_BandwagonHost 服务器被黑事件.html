@@ -40,38 +40,36 @@
 </dl>
 
     <div id="content">
-<p>搬瓦工服务器控制面板传来噩耗，由于我的服务器疯狂发送 Spam 邮件，所以被强制
-shutdown 了。第一反应是服务器被黑了！</p>
+<p>搬瓦工服务器控制面板传来噩耗，由于我的服务器疯狂发送 Spam 邮件，被强制 shutdown 了 —— 第一反应是服务器被黑了！</p>
 <img alt="Bandwagonhost" src="/statics/images/2021/03/12_BandwagonHost.jpg" />
-<p>遇到这样的情况，不着急重装系统，而是需要找找线索，排查下原因，总结些经验。但是
-我这边一开机，它可能又会不停地发 Spam 邮件，会导致再次触发搬瓦工的安全机制把服
-务器 shutdown。</p>
-<p>所以想了个办法，先在控制面板 mount 一个 arch 的安装盘上去，启动后 chroot 到原来
-的系统里面，disable NetworkManager.service。这样没有了网络，就无法对外发送 Spam
-邮件了。之后 unmount 安装盘，重启系统，一顿排查，居然没有发现任何线索：</p>
+<p>遇到这样的情况，不着急重装系统，而是找找线索，排查下原因，总结些经验。
+但是我这边一开机，服务器可能又会不停地发 Spam 邮件，导致再次触发搬瓦工的安全机制从而 shutdown。</p>
+<p>想了个办法，先在控制面板 mount 一个 arch 的安装盘上去，启动后 chroot 到原来的系统里面，disable NetworkManager.service。
+没有了网络，服务器就无法对外发送 Spam 邮件了。
+接下来 unmount 安装盘，重启系统，一顿排查，居然没有发现任何线索：</p>
 <ol class="arabic simple">
 <li><p>系统日志：journald 没有做持久化，不过还是保留了前两次 boot 的日志。</p></li>
-<li><p>postfix 日志：只监听 127.0.0.1:25，难道是内部程序漏洞？但是日志里面没有任何
-Spam 邮件的记录。</p></li>
+<li><p>postfix 日志：只监听 127.0.0.1:25，难道是内部程序漏洞？但是日志里面没有任何 Spam 邮件的记录。</p></li>
 <li><p>用户登录日志：用 fwknopd 加固了 ssh，怎么看也不像是被人从门口突破的。</p></li>
 <li><p>恶意进程：天哪！这么多进程看花眼。</p></li>
 <li><p>软件漏洞：arch 好久没有 <span class="docutils literal">pacman <span class="pre">-Syu</span></span> 了，看起来有点对头。</p></li>
 </ol>
-<p>憋了两天实在没有办法，选择重装系统部署应用。结果当天晚上搬瓦工又把我的服务器
-shutdown 了，还是同样的问题！</p>
-<p>这次我换了成了 gentoo 系统，所以不太像是某个软件在某个版本的漏洞导致的；而且我
-还没来得及安装 postfix，所以可以排除是它的原因；更不太可能是被人在这么短的时间
-内爆破登录了。</p>
-<p>思前想后，突然意识到一个问题：我这台服务器是安装了 v2ray 做代理服务器的。这下我
-大概有些明白了：家里开了透明代理，如果某台设备不小心中毒安装了恶意软件乱发 Spam
-邮件，那这样经过透明代理之后实际就是从服务器上发送的 Spam 邮件。所以表面看是我
-服务器被黑了，其实是家里的设备中招了！</p>
-<p>为了排查到底是哪台设备的问题，我采用了钓鱼执法的方式，在服务器上监听 25 端口的
-出口流量：</p>
+<p>憋了两天实在没有办法，选择重装系统部署应用，这次选择了 gentoo 系统。
+结果当天晚上搬瓦工又将服务器 shutdown 了 —— 还是同样的问题！</p>
+<p>因为这次换成了 gentoo 系统，所以不太像是某个软件在某个版本的漏洞导致的；
+另外我还没来得及安装 postfix，也可以排除是它的原因；
+至于登录密码爆破，这么短的时间也不太可能。</p>
+<p>思前想后，突然意识到我这台服务器是安装了 v2ray 做代理服务器的。
+这下我大概有些明白了：
+家里开了透明代理，如果某台设备不小心中毒安装了恶意软件乱发 Spam 邮件，那这样经过透明代理之后实际就是从服务器上发送的 Spam 邮件。
+所以表面看是我服务器被黑了，其实是家里的设备中招了！</p>
+<p>为了排查到底是哪台设备的问题，我采用了钓鱼执法的方式，在服务器上监听 25 端口的出口流量：</p>
 <pre class="literal-block"># tcpdump -vvv net 0.0.0.0/0 and src &lt;public ip&gt; and dst port 25</pre>
-<p>然后逐个尝试连接设备并进行观察。结果持续瞄了好几天，都没有找到罪魁祸首。而且服
-务器也一直没有被 shutdown。难道问题不复存在了？</p>
-<p>索性也不观察了，直接把 25 端口出口流量给禁用：</p>
+<p>然后逐个尝试连接设备并进行观察。
+持续瞄了好几天，结果都没有找到罪魁祸首。
+而且服务器也一直没有被 shutdown。
+难道问题不复存在了？</p>
+<p>相信我的判断没有问题，所以索性也不观察了，直接把 25 端口出口流量给禁用：</p>
 <pre class="literal-block"># iptables -A OUTPUT -o &lt;public interface&gt; -p tcp --dport 25 -j DROP</pre>
 <section id="updated-2021-05-04">
 <h2>Updated 2021/05/04</h2>
@@ -80,6 +78,10 @@ shutdown 了，还是同样的问题！</p>
 <li><p><a class="reference external" href="https://hostloc.com/thread-838936-1-1.html">找到一直被搬瓦工封机的源头了(1)</a></p></li>
 <li><p><a class="reference external" href="https://hostloc.com/thread-839007-1-1.html">找到一直被搬瓦工封机的源头了(2)</a></p></li>
 </ul>
+</section>
+<section id="updated-2021-12-16">
+<h2>Updated 2021/12/16</h2>
+<p>禁用 25 端口出口流量之后就再也没有出现这样的问题了。</p>
 <p>Thanks for reading :)</p>
 </section>
     </div> <!-- content -->

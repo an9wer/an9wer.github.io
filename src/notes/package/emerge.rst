@@ -43,6 +43,7 @@ the search string with ``%``: ::
 Update all installed packages: ::
 
     # emerge -av --update --deep --newuse @world
+    # emerge -av --update --deep --newuse --keep-going=y @world
 
 Remove package from world: ::
 

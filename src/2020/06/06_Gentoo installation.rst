@@ -238,8 +238,8 @@ Install chroot: ::
     # wget <PASTED_STAGE_URL>
     # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /chroot
     # mkdir -p /chroot/etc/portage/repos.conf
-    # cp /etc/portage/repos.conf/gentoo.conf /chroot/etc/portage/repos.conf/gentoo.conf
-    # cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+    # cp /usr/share/portage/config/repos.conf /chroot/etc/portage/repos.conf/gentoo.conf
+    # cp --dereference /etc/resolv.conf /chroot/etc/
     # vim /etc/init.d/chroot
         name="chroot daemon"
 
