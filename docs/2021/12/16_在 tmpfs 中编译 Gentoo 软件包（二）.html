@@ -41,7 +41,7 @@
 
     <div id="content">
 <p>在 <a class="reference external" href="/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html">之前一篇文章</a> 中，
-我将 <em>/var/tmp/portage</em> 挂载成 tmpfs 文件系统挂，
+我将 <em>/var/tmp/portage</em> 使用 tmpfs 文件系统进行挂载，
 用于 <span class="docutils literal">emerge <span class="pre">--ask</span> <span class="pre">--newuse</span> <span class="pre">--update</span> <span class="pre">--deep</span> &#64;world</span> 命令更新整个 Gentoo 系统时编译软件包，
 以减省硬盘的读写量，同时提高编译速度。
 这次，我同样会使用 tmpfs，不同的是将它用来构建 Gentoo 软件包的打包及测试环境。</p>
@@ -53,7 +53,7 @@
 因此我想到了在 <a class="reference external" href="/2021/03/20_关于%20chroot.html">之前另一篇文章</a> 中提到的 chroot。</p>
 <p>那么开头提到的 tmpfs 是用来做甚的呢？ —— 我打算将其作为 chroot 挂载点的文件系统使用。
 这样做除了之前提到的优点，另外还有一点是：
-一旦 unmount chroot，其中的所有内容会自动消失，
+一旦 unmount chroot，其中所有的内容都会自动消失，
 之后打包及测试其他软件包只要重新构建一个全新的 chroot 环境即可，
 本地不会留下一堆不知何年何月做甚用的 chroot1，chroot2，chroot3 ……</p>
 <p>在本地创建一个目录给 chroot 使用：</p>
@@ -82,7 +82,10 @@ $ sudo mount -o bind /tmp /chroot/tmp</pre>
 (chroot) # emerge --ask app-eselect/eselect-repository
 (chroot) # eselect repository create an9wer /tmp/my-overlay-repo
 (chroot) # emerge --sync an9wer</pre>
-<p>接下来就可以打包及测试 overlay 仓库中的软件包了。</p>
+<p>接下来就可以打包及测试 overlay 仓库中的软件包了。
+另外，如果在这过程中发现 chroot 大小不够用了（之前的命令中设置的是 4G 的大小），
+可以使用下面的命令直接给其动态扩容，无需 unmount：</p>
+<pre class="literal-block">$ sudo mount -o remount,size=8G /chroot</pre>
 <p>Thanks for reading :)</p>
 <section id="references">
 <h2>References</h2>

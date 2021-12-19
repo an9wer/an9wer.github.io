@@ -8,7 +8,7 @@
         用于打包及测试 Gentoo 软件包。
 
 在 `之前一篇文章 </2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html>`_ 中，
-我将 */var/tmp/portage* 挂载成 tmpfs 文件系统挂，
+我将 */var/tmp/portage* 使用 tmpfs 文件系统进行挂载，
 用于 ``emerge --ask --newuse --update --deep @world`` 命令更新整个 Gentoo 系统时编译软件包，
 以减省硬盘的读写量，同时提高编译速度。
 这次，我同样会使用 tmpfs，不同的是将它用来构建 Gentoo 软件包的打包及测试环境。
@@ -22,7 +22,7 @@
 
 那么开头提到的 tmpfs 是用来做甚的呢？ —— 我打算将其作为 chroot 挂载点的文件系统使用。
 这样做除了之前提到的优点，另外还有一点是：
-一旦 unmount chroot，其中的所有内容会自动消失，
+一旦 unmount chroot，其中所有的内容都会自动消失，
 之后打包及测试其他软件包只要重新构建一个全新的 chroot 环境即可，
 本地不会留下一堆不知何年何月做甚用的 chroot1，chroot2，chroot3 ……
 
@@ -69,6 +69,10 @@
     (chroot) # emerge --sync an9wer
 
 接下来就可以打包及测试 overlay 仓库中的软件包了。
+另外，如果在这过程中发现 chroot 大小不够用了（之前的命令中设置的是 4G 的大小），
+可以使用下面的命令直接给其动态扩容，无需 unmount： ::
+
+    $ sudo mount -o remount,size=8G /chroot 
 
 Thanks for reading :)
 
