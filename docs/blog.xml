@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 18 Dec 2021 14:47:09 +0000</pubDate>
+  <pubDate>Sun, 19 Dec 2021 12:40:57 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -20,6 +20,14 @@
     <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/12/18_Gentoo%20升级遇难小记（二）.html</link>
     <description>Gentoo 更新系统的时候遇到了 ldns 和 ldns-utils 两个软件包冲突问题。</description>
+  </item>
+  <item>
+    <title>在 tmpfs 中编译 Gentoo 软件包（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/12/16_在%20tmpfs%20中编译%20Gentoo%20软件包（二）.html</link>
+    <description>将 chroot 的根目录挂载点设置成 tmpfs 文件系统，构建一个独立干净的环境， 用于打包及测试 Gentoo 软件包。</description>
   </item>
   <item>
     <title>在 Linux 中使用蓝牙</title>
@@ -46,11 +54,11 @@
     <description>现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不 太在乎这些，因为很多文章是写给自己看的（也算是另一种笔记的形式），所以 就只满足于孤芳自赏。但最近想法改变了，既然是公开的文章，也想看看自己写 的文章能不能给别人提供些许帮助或者思路。所以打算学习下 Google SEO 的相 关知识，想着把这个网站做起来，起码能有些流量。</description>
   </item>
   <item>
-    <title>在 tmpfs 中 build 软件包</title>
+    <title>在 tmpfs 中编译 Gentoo 软件包</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中%20build%20软件包.html</link>
+    <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html</link>
     <description>Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统， 安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。</description>
   </item>
   <item>
@@ -75,7 +83,7 @@
     <category>思考</category>
     <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/04/04_关于%20v2ray%20sniffing.html</link>
-    <description>关于 v2ray 的 sniffing 参数使用，自己的一些理解。</description>
+    <description>关于 v2ray 的 sniffing 参数使用，个人的一些理解。</description>
   </item>
   <item>
     <title>关于 chroot</title>
@@ -91,7 +99,7 @@
     <category>记录</category>
     <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/03/12_BandwagonHost%20服务器被黑事件.html</link>
-    <description>搬瓦工服务器被强制关机，因为在短时间内发送太多垃圾邮件。看我 是如何调查事故原因的？</description>
+    <description>搬瓦工服务器被强制关机，因为在短时间内发送太多垃圾邮件。看我是如何调查事故原因的？</description>
   </item>
   <item>
     <title>关于 Bond 和 Bridge</title>
@@ -106,6 +114,7 @@
     <category>思考</category>
     <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/03/01_关于%20Linux%20Kernel%20Modules.html</link>
+    <description>折腾 Wireguard 的时候顺带了解一些 Linux Kernel Modules 相关的知识。</description>
   </item>
   <item>
     <title>在手机上使用 Pass 命令管理密码</title>
@@ -175,6 +184,7 @@
     <category>记录</category>
     <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2020/01/07_腾讯云服务器被黑事件.html</link>
+    <description>腾讯云服务器被爆破登录，执行恶意代码，导致 CPU 负载甚高。</description>
   </item>
   <item>
     <title>腾讯云低配服务器性能测试</title>

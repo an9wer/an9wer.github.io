@@ -76,4 +76,10 @@ Updated 2021/12/01
 再补充一点，软件通常会有漏洞，Gentoo 官方会针对披露的漏洞对软件进行修复维护，并且展示到官方的 `安全公告平台 <https://security.gentoo.org/glsa/>`_ 。
 使用 glsa-check 命令可以方便地查看当前使用的 Gentoo 版本是否存在漏洞，如果有漏洞就需要赶紧升级喽！
 
+Updated 2021/12/19
+------------------
+
+CONFIG_PROTECT
+autounmask-write=y
+
 Thanks for Reading :)

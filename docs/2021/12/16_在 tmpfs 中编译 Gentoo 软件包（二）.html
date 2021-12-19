@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>在 tmpfs 中编译 Gentoo 软件包（二） | an9wer's blog</title>
+<meta content="将 chroot 的根目录挂载点设置成 tmpfs 文件系统，构建一个独立干净的环境， 用于打包及测试 Gentoo 软件包。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">在 tmpfs 中编译 Gentoo 软件包（二）</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2021/12/16</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>在 <a class="reference external" href="/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html">之前一篇文章</a> 中，
+我将 <em>/var/tmp/portage</em> 挂载成 tmpfs 文件系统挂，
+用于 <span class="docutils literal">emerge <span class="pre">--ask</span> <span class="pre">--newuse</span> <span class="pre">--update</span> <span class="pre">--deep</span> &#64;world</span> 命令更新整个 Gentoo 系统时编译软件包，
+以减省硬盘的读写量，同时提高编译速度。
+这次，我同样会使用 tmpfs，不同的是将它用来构建 Gentoo 软件包的打包及测试环境。</p>
+<p>由于自己维护了一个个人的 Gentoo overlay 仓库，需要不定期地给仓库里的软件包升级，
+所以需要这样一个打包及测试的环境 —— 当然不能是我本地的系统，主要有两方面的原因，
+其一是安装测试软件包可能会破坏当前的系统；其二是本地系统中已经安装了
+很多的基础软件包，在打包软件包的时候可能会遗漏其所依赖的软件包。
+所以这个环境必须要独立且干净，
+因此我想到了在 <a class="reference external" href="/2021/03/20_关于%20chroot.html">之前另一篇文章</a> 中提到的 chroot。</p>
+<p>那么开头提到的 tmpfs 是用来做甚的呢？ —— 我打算将其作为 chroot 挂载点的文件系统使用。
+这样做除了之前提到的优点，另外还有一点是：
+一旦 unmount chroot，其中的所有内容会自动消失，
+之后打包及测试其他软件包只要重新构建一个全新的 chroot 环境即可，
+本地不会留下一堆不知何年何月做甚用的 chroot1，chroot2，chroot3 ……</p>
+<p>在本地创建一个目录给 chroot 使用：</p>
+<pre class="literal-block">$ sudo mkdir /chroot</pre>
+<p>将 chroot 挂载点设置成 tmpfs 文件系统：</p>
+<pre class="literal-block">$ sudo mount -t tmpfs -o size=4G,mode=775,nosuid,noatime,nodev tmpfs /chroot</pre>
+<p>下载 <a class="reference external" href="https://www.gentoo.org/downloads/">Gentoo stage tarball</a> ，解压到 chroot 目录：</p>
+<pre class="literal-block">$ sudo tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C /chroot</pre>
+<p>将本地的仓库配置文件以及 DNS resolver 文件复制到 chroot 中：</p>
+<pre class="literal-block">$ sudo mkdir -p /chroot/etc/portage/repos.conf
+$ sudo cp /etc/portage/repos.conf/gentoo.conf /chroot/etc/portage/repos.conf/gentoo.conf
+$ sudo cp --dereference /etc/resolv.conf /chroot/etc/</pre>
+<p>将一些必要的文件系统挂载到 chroot 中：</p>
+<pre class="literal-block">$ sudo mount -o rbind /dev /chroot/dev
+$ sudo mount -t proc none /chroot/proc
+$ sudo mount -o bind /sys /chroot/sys
+$ sudo mount -o bind /tmp /chroot/tmp</pre>
+<p>由于本地的 <em>/tmp</em> 目录是与 chroot 共享的，
+所以可以将我个人的 overlay 仓库都同步到 <em>/tmp</em> 目录下，
+这样 chroot 里面也可以读取到 overlay 仓库了：</p>
+<pre class="literal-block">$ rsync -avc /path/to/my-overlay-repo /tmp/my-overlay-repo</pre>
+<p>之后进入到 chroot 中了：</p>
+<pre class="literal-block">$ sudo chroot /chroot /bin/bash</pre>
+<p>在 chroot 里面，同步 Gentoo 官方仓库，以及我个人的 overlay 仓库：</p>
+<pre class="literal-block">(chroot) # emerge --sync gentoo
+(chroot) # emerge --ask app-eselect/eselect-repository
+(chroot) # eselect repository create an9wer /tmp/my-overlay-repo
+(chroot) # emerge --sync an9wer</pre>
+<p>接下来就可以打包及测试 overlay 仓库中的软件包了。</p>
+<p>Thanks for reading :)</p>
+<section id="references">
+<h2>References</h2>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Chroot">Gentoo Wiki: chroot</a></p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

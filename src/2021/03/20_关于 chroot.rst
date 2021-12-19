@@ -16,7 +16,7 @@
 
 其实 chroot 的很多使用场景都和 docker 重叠了，
 甚至 docker 在某些方面会更加强大，
-但是也算是一种更轻量的方案，
+但是 chroot 也算是一种更轻量的方案，
 各位有兴趣不妨也体验下吧。
 
 Thanks for reading :)

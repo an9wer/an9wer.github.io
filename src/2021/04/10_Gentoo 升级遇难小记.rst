@@ -21,7 +21,6 @@ Gentoo 升级遇难小记
     !!! Multiple package instances within a single package slot have been pulled
     !!! into the dependency graph, resulting in a slot conflict:
 
-
 这是咋回事？
 
 原由是使用 emerge 更新一个单独的 package 通常会导致依赖冲突。
