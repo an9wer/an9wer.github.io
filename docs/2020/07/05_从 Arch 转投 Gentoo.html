@@ -96,8 +96,16 @@
 </section>
 <section id="updated-2021-12-19">
 <h2>Updated 2021/12/19</h2>
-<p>CONFIG_PROTECT
-autounmask-write=y</p>
+<p>Gentoo 之所以在软件更新后，不会随之更新 <em>/etc</em> 目录下的配置文件内容，
+是因为设置了 CONFIG_PROTECT 变量（可以通过 <span class="docutils literal">emerge <span class="pre">--info</span> | grep CONFIG_PROTECT</span> 命令查看），
+该变量的值是以空格分隔的目录名，这些目录的文件在软件更新的时候都不会被修改。
+但如果想设置一些例外的可被修改的目录，则可通过定义另外的一个变量 CONFIG_PROTECT_MASK 实现。</p>
+<p>例如，
+我想让 emerge 在安装或者更新软件的时候自动将 unmask 提示直接写入到 <em>/etc/portage/package.use/zz-autounmask</em> 文件中，
+但 CONFIG_PROTECT 的值中包含了 <em>/etc</em> ，
+这下就可将 <span class="docutils literal"><span class="pre">CONFIG_PROTECT_MASK=&quot;/etc/portage/package.use&quot;</span></span> 添加到 <em>make.conf</em> 文件中，
+最后在使用 emerge 命令的时候加上 <span class="docutils literal"><span class="pre">--autounmask-write=y</span></span> 参数。</p>
+<p>更多描述可以参见 <span class="docutils literal">man emerge</span> CONFIGURATION FILES 章节。</p>
 <p>Thanks for Reading :)</p>
 </section>
     </div> <!-- content -->

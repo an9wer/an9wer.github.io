@@ -75,7 +75,7 @@ $ sudo mount -o bind /tmp /chroot/tmp</pre>
 所以可以将我个人的 overlay 仓库都同步到 <em>/tmp</em> 目录下，
 这样 chroot 里面也可以读取到 overlay 仓库了：</p>
 <pre class="literal-block">$ rsync -avc /path/to/my-overlay-repo /tmp/my-overlay-repo</pre>
-<p>之后进入到 chroot 中了：</p>
+<p>之后进入到 chroot 中：</p>
 <pre class="literal-block">$ sudo chroot /chroot /bin/bash</pre>
 <p>在 chroot 里面，同步 Gentoo 官方仓库，以及我个人的 overlay 仓库：</p>
 <pre class="literal-block">(chroot) # emerge --sync gentoo

@@ -57,7 +57,7 @@
 
     $ rsync -avc /path/to/my-overlay-repo /tmp/my-overlay-repo
 
-之后进入到 chroot 中了： ::
+之后进入到 chroot 中： ::
 
     $ sudo chroot /chroot /bin/bash
 
