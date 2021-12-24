@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 21 Dec 2021 12:44:19 +0000</pubDate>
+  <pubDate>Fri, 24 Dec 2021 06:09:42 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -130,7 +130,7 @@
     <category>折腾</category>
     <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2021/01/19_升级%20Gentoo%20Kernel.html</link>
-    <description>半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软 件包，但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一 把。</description>
+    <description>半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软件包， 但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一把。</description>
   </item>
   <item>
     <title>实战 LVM</title>
