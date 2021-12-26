@@ -29,12 +29,12 @@
 
     # reboot
 
-重启后如果没有问题就可以清理旧版的 Kernel 了，只保留最新版的 kernel。
+重启后如果没有问题就可以清理旧版 Kernel 了。
 可以手动在 */usr/src/* ， */lib/modules* ， */boot/* 目录中找到旧版 Kernel 相关的文件并删除，
-亦可使用 eclean-kernel 工具自动列出并删除： ::
+亦可使用 eclean-kernel 工具列出并删除： ::
 
     # emerge --ask app-admin/eclean-kernel
-    # eclean-kernel -d -n 1
+    # eclean-kernel -A -d -n 1
 
 从系统中移除旧版 Kernel 的软件包 ： ::
 
