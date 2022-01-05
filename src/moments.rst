@@ -1,6 +1,10 @@
 .. meta::
     :robots: noindex 
 
+2022/01/03
+
+    用上 IPv6 后竟然把代理线路给掰直了，呼呼！！
+
 2021/12/02
 
     原来 DuckDuckGo 的真正用法是 Bang Bang Bang！！！
