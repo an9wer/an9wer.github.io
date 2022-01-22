@@ -19,8 +19,7 @@
 
 2021/06/07 Mon
 
-    我自攒的小主机今天烧了，刚接上电，主板上的一颗芯片就起火冒烟了。二手需谨慎
-    ，垃圾佬不好当！
+    我自攒的小主机今天烧了，刚接上电，主板上的一颗芯片就起火冒烟了。二手需谨慎，垃圾佬不好当！
 
 2021/05/31 Mon
 
@@ -52,15 +51,14 @@
 
 2021/04/16 Fri
 
-    居然被我发现有邻居在攻击我的 22 端口，而且还连着三天早上 10 点左右，每次大
-    概持续 5 分钟！咋发现的呢？因为短时间内持续爆破密码导致 rsyslogd 和
-    journald 进程负载特别高！于是果断上 fwknopd 同时用 iptables DROP 22 端口。
+    居然有邻居在攻击我的 22 端口，而且还连着三天早上 10 点左右，每次大概持续 5 分钟！
+    咋发现的呢？因为短时间内持续爆破密码导致 rsyslogd 和 journald 进程负载特别高！
+    于是果断上 fwknopd 同时用 iptables DROP 22 端口。
 
 2021/04/15 Thu
 
-    `Rust 作为一门系统语言正被打算用在 linux kernel 中。
-    <https://lkml.org/lkml/2021/4/14/1023>`_ 忽然觉得现在经历的平凡时
-    刻说不定以后就成为光辉历史了。
+    `Rust 作为一门系统语言正被打算用在 linux kernel 中。 <https://lkml.org/lkml/2021/4/14/1023>`_
+    忽然觉得现在经历的平凡时刻说不定以后就成为光辉历史了。
 
 2021/04/07 Wed
 
@@ -72,7 +70,7 @@
 
 2021/04/01 Thu
 
-    路过 SH，有种怀念的伤感，毕竟这里有我奋斗的故事，呵呵。
+    路过 SH，有种怀念的伤感，毕竟这里曾有我的故事。
 
 2021/03/25 Thu
 
@@ -96,8 +94,8 @@
 
 2021/02/04 Thu
 
-    遇到两个板仔。男的鸭舌帽、耳罩、架着手机录视频；女的花臂、香水、骑着电瓶车
-    抽烟。和女的搭话请教了 ollie，她还顺便拧紧了我的桥。
+    遇到两个板仔。男的鸭舌帽、耳罩、架着手机录视频；女的花臂、香水、骑着电瓶车抽烟。
+    和女的搭话请教了 ollie，她还顺便拧紧了我的桥。
 
 2021/01/31 Sun
 
@@ -113,8 +111,7 @@
 
 2021/01/21 Thu
 
-    Independent trunks, BlackKnight deck, Skater wheels and BD Skate bearings
-    made up my new skateboard.
+    Independent trunks, BlackKnight deck, Skater wheels and BD Skate bearings made up my new skateboard.
 
 2021/01/16 Sat
 
@@ -126,8 +123,7 @@
 
 2020/12/30 Wed
 
-    Cloudflare universal certificates only support one level subdomain such as
-    one.example.com, not two.one.example.com.
+    Cloudflare universal certificates only support one level subdomain such as one.example.com, but not two.one.example.com.
 
 2020/12/29 Tue
 
@@ -135,8 +131,7 @@
 
 2020/12/21 Mon
 
-    搬瓦工流量居然是双向计费的！还差三天到月末流量结算日，结果只剩下 10G 可用了
-    。
+    搬瓦工流量居然是双向计费的！还差三天到月末流量结算日，结果只剩下 10G 可用了。
 
 2020/11/27 Fri
 
@@ -148,8 +143,8 @@
 
 2020/11/15 Sun
 
-    北京东路遇到了很多拿单反的扫街大叔，噢对，还有个大爷，拿了个独脚架，后面跟
-    着两个学生模样的人。
+    北京东路遇到了很多拿单反的扫街大叔，
+    噢对，还有个大爷，拿了个独脚架，后面跟着两个学生模样的人。
 
 2020/11/11 Wed
 
@@ -157,15 +152,15 @@
 
 2020/11/09 Mon
 
-    德邦快递没送上楼，联系了快递员重新送上楼，结果等了五个小时也没过来送，非常
-    气愤，找客服投诉效果甚微，只赔了一些减免券，交流中感觉服务依然不会有改观。
+    德邦快递没送上楼，联系了快递员重新送上楼，结果等了五个小时也没过来送，非常气愤。
+    找客服投诉效果甚微，只赔了一些减免券，交流中感觉服务依然不会有改观。
     不过以后遇到这种事情还是得投诉。
 
 2020/11/01 Sun
 
-    看到 Alex Webb 有 Instagram 帐号，因此注册了一个，但是始终无法登录，后台审
-    核结果：“ Your account has been disabled for violating our terms ”。大概率
-    应该是挂了 VPN 访问被认定机器人了。
+    看到 Alex Webb 有 Instagram 帐号，因此注册了一个，但始终无法登录。
+    后台审核结果：“ Your account has been disabled for violating our terms ”。
+    大概率应该是挂了 VPN 访问被认定机器人了 —— Instagram, \*ck you! 
 
 2020/10/21 Wed
 
@@ -177,14 +172,14 @@
 
 2020/09/18 Fri
 
-    Anytime you build something that is useful to someone, it is fun. What
-    becomes less fun is the after-building part of running the business.
+    Anytime you build something that is useful to someone, it is fun.
+    What becomes less fun is the after-building part of running the business.
     -- From `some guy <https://jeremyaboyd.com/post/shutting-down-navhere>`_
 
 2020/09/05 Sat
 
-    在笔记本上安装 Deepin 的时候，不能使用触摸板，这是驱动问题我认了。但是居然
-    不能用键盘的 Tab 键来切换所选框，这体验真是扣脚，都怪我没有鼠标。
+    在笔记本上安装 Deepin 的时候，不能使用触摸板，这是驱动问题我认了。
+    但是居然不能用键盘的 Tab 键来切换所选框，这体验真是扣脚，都怪我没有鼠标。
 
 2020/08/31 Mon
 
@@ -192,7 +187,7 @@
 
 2020/08/24 Mon
 
-    早高峰上班骑自行车还能堵车！
+    搬家之后发现早高峰上班骑自行车还能堵车！
 
 2020/08/18 Tue
 

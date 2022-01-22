@@ -17,8 +17,7 @@
 （Gnome，NetworkManager，firewalld 之流的臃肿软件，统统可以不要。dwm, netctl, iptables 这些软件简单又实用，何不美哉？）。
 另外，Arch 的软件包既多又新，让用户更快体验到软件的新功能，足以让其它 Linux Distro 用户垂涎三尺。
 
-早些年就听说过 Gentoo ，当初刚接触 Linux 以为遥不可及，没想到机缘巧合下就这么相遇了：
-我当时为了找一个没有自带 systemd 的 Linux Distro。
+早些年就听说过 Gentoo ，当初刚接触 Linux 以为遥不可及，没想到机缘巧合下就这么相遇了 —— 为了找一个不带 systemd 的 Linux Distro。
 
 在使用 Gentoo 一段时间后，我愈加坚定 Gentoo 就是我想要的 Linux Distro，因为它能够满足我的一些癖好：
 
