@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Wed, 05 Jan 2022 12:28:16 +0000</pubDate>
+  <pubDate>Sun, 23 Jan 2022 12:54:30 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>在 Vim 中映射 Alt 键</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/23_在%20Vim%20中映射%20Alt%20键.html</link>
+    <description>近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键， 例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？</description>
+  </item>
   <item>
     <title>Gentoo 升级遇难小记（二）</title>
     <author>an9wer@gmail.com</author>

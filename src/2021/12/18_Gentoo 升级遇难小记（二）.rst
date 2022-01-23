@@ -68,7 +68,9 @@ KEYWORDS 中 amd64 有个 ``~`` 前缀，表示其为 unstable 版本，无法�
 方法二，安装 unstable 版本的 ldns-utils 似乎没那么可靠。
 
 看起来是时候到官方 `Bugzilla <https://bugs.gentoo.org/>`_ 提个 issue 了。
-顺便试试搜索下 ldns 相关的 issue，还真找到了与我一样问题的 `issue <https: //bugs.gentoo.org/828109>`_ ,
+
+不过提交前试着搜索 ldns 相关的 issue，
+结果真有和我遇到相同问题且是近期发布的 `issue <https: //bugs.gentoo.org/828109>`_ ,
 这里面提到：
 
     Given that ldns and ldns-utils are built from the same source code, I would

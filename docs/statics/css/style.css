@@ -265,6 +265,14 @@ tbody tr:nth-child(even) {
     border-left: solid 2px #999;
     padding: 3px 0px 3px 24px;
 }
+
+.footnote-reference {
+    vertical-align: super
+}
+
+.footnote p {
+    display: inline;
+}
 /* }}} content */
 
 

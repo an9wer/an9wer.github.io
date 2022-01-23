@@ -21,7 +21,7 @@
 因此我想到了在 `之前另一篇文章 </2021/03/20_关于%20chroot.html>`_ 中提到的 chroot。
 
 那么开头提到的 tmpfs 是用来做甚的呢？ —— 我打算将其作为 chroot 挂载点的文件系统使用。
-这样做除了之前提到的优点，另外还有一点是：
+这样做除了之前提到的优点，另外的好处是：
 一旦 unmount chroot，其中所有的内容都会自动消失，
 之后打包及测试其他软件包只要重新构建一个全新的 chroot 环境即可，
 本地不会留下一堆不知何年何月做甚用的 chroot1，chroot2，chroot3 ……
@@ -76,7 +76,7 @@
 
 Thanks for reading :)
 
-References
-----------
+See Also
+--------
 
 `Gentoo Wiki: chroot  <https://wiki.gentoo.org/wiki/Chroot>`_

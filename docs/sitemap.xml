@@ -8,19 +8,25 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2022-01-05</lastmod>
+      <lastmod>2022-01-23</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
   <url>
+    <loc>https://an9wer.github.io/2022/01/23_%E5%9C%A8%20Vim%20%E4%B8%AD%E6%98%A0%E5%B0%84%20Alt%20%E9%94%AE.html</loc>
+    <lastmod>2022-01-23</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://an9wer.github.io/2021/12/18_Gentoo%20%E5%8D%87%E7%BA%A7%E9%81%87%E9%9A%BE%E5%B0%8F%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89.html</loc>
-    <lastmod>2022-01-05</lastmod>
+    <lastmod>2022-01-23</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://an9wer.github.io/2021/12/16_%E5%9C%A8%20tmpfs%20%E4%B8%AD%E7%BC%96%E8%AF%91%20Gentoo%20%E8%BD%AF%E4%BB%B6%E5%8C%85%EF%BC%88%E4%BA%8C%EF%BC%89.html</loc>
-    <lastmod>2022-01-05</lastmod>
+    <lastmod>2022-01-23</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
@@ -62,7 +68,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2021/04/04_%E5%85%B3%E4%BA%8E%20v2ray%20sniffing.html</loc>
-    <lastmod>2022-01-05</lastmod>
+    <lastmod>2022-01-23</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
@@ -128,7 +134,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2020/07/05_%E4%BB%8E%20Arch%20%E8%BD%AC%E6%8A%95%20Gentoo.html</loc>
-    <lastmod>2022-01-05</lastmod>
+    <lastmod>2022-01-11</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

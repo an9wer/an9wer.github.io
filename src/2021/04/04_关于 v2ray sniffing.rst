@@ -14,35 +14,35 @@ v2ray 的 inbound 配置中有个 sniffing 参数，官方文档对它概念描�
 当 inbound 是 socks5, http 之流的代理时，原始数据包会经过 TCP/IP 的层层协议发给代理服务 —— v2ray，
 v2ray 解开数据包后会得到目标的域名，因为开启了 sniffing，所以 v2ray 会通过内部的路由规则将域名解析任务交给某个 outbound 处理。
 
-当 inbound 被设置成透明代理时（redirect 或者 tproxy），一般都是配合 iptables 规则使用。
-原始数据包在到达 v2ray 时会先经过 iptables，但在这之前就已经把目标域名给解析成 IP 了，否则怎么去匹配 iptables 的规则呢？
-大多数的程序都是调用 glibc 中的 getaddrinfo, gethostbyname 函数来交给系统解析 IP 的。
-所以这个时候到达 v2ray 的都是 IP，sniffing 是否启用都不影响了，v2ray 不会帮我们解析域名。
-因此，我们需要自己部署 dns resolver 来处理 dns 污染的问题。
+而当 inbound 被设置成透明代理时，一般都是配合 iptables （redirect 或者 tproxy）使用。
+原始数据包在到达 v2ray 前会先经过 iptables，此时的目标域名早已被解析成了 IP，否则怎么去匹配 iptables 的规则呢？
+大多数的程序是调用 glibc 中的 getaddrinfo, gethostbyname 函数将域名交给系统解析成 IP 的，在到达 v2ray 的时候都已经转化成了 IP，
+所以 sniffing 是否启用都不影响了，v2ray 不会帮我们解析域名。
+因此，我们需要另外部署 dns resolver 来处理 dns 污染的问题。
 
-猜想关于程序何时会解析域名
---------------------------
+猜想程序何时会解析域名
+----------------------
 
-当一个程序没有使用 socks5, http 等代理时，其不会调用 getaddrinfo, gethostbyname 来解析域名，而是把数据包一股脑发给代理。
-只能说大部分程序是这样的，例如 Firefox 的代理配置中有个选项可以选择 socks5 代理之后是否同时代理 DNS 请求（Proxy DNS when using SOCKS V5)，
-所以在 Firefox 中，即使使用了 socks5 代理，也可以不通过代理来解析域名。
+当程序没有使用 socks5, http 等代理时，其不会调用 getaddrinfo, gethostbyname 来解析域名，而是把数据包一股脑发给代理。
+但也只能说大部的分程序是这样处理的，
+例如： 在 Firefox 的代理配置中有选项可以选择在使用 socks5 代理的同时是否代理 DNS 请求（Proxy DNS when using SOCKS V5)，
+因而在这种情况下即使使用了 socks5 代理，也可以不通过代理来解析域名。
 
-但一个程序使用的是透明代理（也相当于没有使用代理），在其内部会调用 getaddrinfo, gethostbyname 来解析域名。
+而当程序使用的是透明代理（即对程序来说代理是不可知的），在程序内部会调用 getaddrinfo, gethostbyname 来解析域名。
 
 Updated 2021/06/10
 ------------------
 
-在 stackexchange 上看到一个这个 `回答 <https://askubuntu.com/a/447881>`_ ，
+在 stackexchange 上看到 `一个回答 <https://askubuntu.com/a/447881>`_ ，
 http proxy 只能通过 remote 来解析 IP，而 socks5 可以设置通过 local 还是 remote 来解析 IP。
+我自己用 tinyproxy —— 一个简易的 http proxy —— 做了验证，果然 DNS 的解析是在 remote 处理的。
 
-我自己用 tinyproxy —— 一个 http proxy —— 验证了下，果然 DNS 的解析是在 remote 处理的。
-
-另外还看到了一个 `回复 <https://stackoverflow.com/a/34103057>`_ ，
-证实了使用 socks5 proxy 可以设置 DNS 在哪里解析。
+在 stackexchange 上看到 `另一个回答 <https://stackoverflow.com/a/34103057>`_ ，
+也说明了使用 socks5 proxy 可以设置 DNS 在何处进行解析。
 
 Thanks for reading :)
 
-References
-----------
+See also
+--------
 
-- `linux dns lookup <https://zwischenzugs.com/2018/06/08/anatomy-of-a-linux-dns-lookup-part-i/>`_
+- `Linux DNS Lookup <https://zwischenzugs.com/2018/06/08/anatomy-of-a-linux-dns-lookup-part-i/>`_

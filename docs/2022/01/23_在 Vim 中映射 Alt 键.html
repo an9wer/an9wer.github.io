@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>在 Vim 中映射 Alt 键 | an9wer's blog</title>
+<meta content="近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键， 例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">在 Vim 中映射 Alt 键</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2022/01/23</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键，
+例如 <span class="docutils literal"><span class="pre">alt-f</span></span> 向前移动一个 word， <span class="docutils literal"><span class="pre">alt-b</span></span> 向后移动一个 word。</p>
+<p>本以为只要在 <em>~/.vimrc</em> 文件中加上如下两行简单的配置：</p>
+<pre class="literal-block">cnoremap &lt;M-b&gt; &lt;S-Left&gt;
+cnoremap &lt;M-f&gt; &lt;S-Right&gt;</pre>
+<p>但结果这两行配置并没有起作用，看来我还是 too native！</p>
+<p>一番搜索后，在 vim 的文档中（ <span class="docutils literal">:h <span class="pre">map-alt-keys</span></span> ）找到了答案：</p>
+<blockquote>
+<p>By default Vim assumes that pressing the ALT key sets the 8th bit of a typed character.
+Most decent terminals can work that way, such as xterm, aterm and rxvt.
+If your &lt;A-k&gt; mappings don't work it might be that the terminal is prefixing the character with an ESC character.
+But you can just as well type ESC before a character,
+thus Vim doesn't know what happened (except for checking the delay between characters, which is not reliable).</p>
+</blockquote>
+<p>原来在默认情况下，vim 会认为 Alt 键是用来 set 8th bit of a typed character，但这同时也需要 terminal 的支持。
+而我目前所使用的 st terminal 显然不是这样处理 Alt 键的，而是将 Alt 键当成 Esc 键在组合键中作为前缀使用。</p>
+<ul class="simple">
+<li><p>什么是 set 8th bit of a typed character？</p></li>
+</ul>
+<p>此时 Alt 键相当于 shift 键的一个扩展，可以用来输入 Latin-1 中 160 到 255 之间的字符 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> 。
+例如： 按下 <span class="docutils literal"><span class="pre">alt-a</span></span> 得到的是 á，按下 <span class="docutils literal"><span class="pre">alt-b</span></span> 得到的是 â，按下 <span class="docutils literal"><span class="pre">alt-c</span></span> 得到的是 ã，等等。</p>
+<ul class="simple">
+<li><p>什么是将 Alt 键当成 Esc 键在组合键中作为前缀使用？</p></li>
+</ul>
+<p>这种情况下，按 Alt 键相当于按 Esc 键，
+不信可以在 bash 中试试按 <span class="docutils literal"><span class="pre">alt-f</span></span> 键与先按一个 <span class="docutils literal">Esc</span> 键再按一个 <span class="docutils literal">f</span> 键的效果是一样的。
+这其实是由 readline 设定的（ <span class="docutils literal">man readline</span> ）：</p>
+<blockquote>
+<dl class="simple">
+<dt>prefix-meta (ESC)</dt>
+<dd><p>Metafy the next character typed.  ESC f is equivalent to Meta-f.</p>
+</dd>
+</dl>
+</blockquote>
+<p>因此，解决 vim 中 Alt 键的映射问题也有两种方法。</p>
+<section id="section-1">
+<h2>方法一</h2>
+<p>设置 st terminal 支持将 Alt 键用来 set 8th bit of a typed character。
+如何设置呢？说来还得用到 terminfo/termcap。</p>
+<p>在 st 项目源码中，有个 <em>st.info</em> 文件，其内容即是 terminfo 配置，其中的 <span class="docutils literal"><span class="pre">st-meta-256color</span></span> 引起了我的注意：</p>
+<pre class="literal-block">st-meta-256color| simpleterm with meta key and 256 colors,
+        use=st-256color,
+        km,
+        rmm=\E[?1034l,
+        smm=\E[?1034h,
+        rs2=\E[4l\E&gt;\E[?1034h,
+        is2=\E[4l\E&gt;\E[?1034h,</pre>
+<p>对照 <span class="docutils literal">man terminfo</span> 文档中的说明，
+得知 <span class="docutils literal">km</span> 即表示 terminal 支持 meta mode，
+而 <span class="docutils literal">rmm</span> 和 <span class="docutils literal">smm</span> 分别代表关闭和开启 meta mode 的 terminal code。
+这正是我想要的，那么如何才能使用 <span class="docutils literal"><span class="pre">st-meta-256color</span></span> 的 terminfo 呢？</p>
+<p>首先，需要使用 tic 命令将 <em>st.info</em> 源码文件转化成 terminfo 可识别的二进制文件：</p>
+<pre class="literal-block">$ tic -sx st.info</pre>
+<p>tic 命令默认会将结果文件置于 <span class="docutils literal"><span class="pre">$HOME/.terminfo</span></span> 目录中，
+使用 <span class="docutils literal">infocmp <span class="pre">st-meta-256color</span></span> 命令也能找到该文件。
+但重启 st 之后发现没有任何变化。
+这是为何？原因是 TERM 环境变量依然是先前的 <span class="docutils literal"><span class="pre">st-256color</span></span> ：</p>
+<pre class="literal-block">$ echo $TERM
+st-256color</pre>
+<p>所以还得修改 st 的 <em>config.h</em> 文件，将 termname 设置成 <span class="docutils literal"><span class="pre">st-meta-256color</span></span> ，然后重新编译：</p>
+<pre class="literal-block">$ vim config.h
+    char *termname = &quot;st-meta-256color&quot;;</pre>
+<p>这下重启 st 后，<span class="docutils literal"><span class="pre">st-meta-256color</span></span> 的 terminfo 终于生效了，
+但要启动 meta mode，还需键入 <span class="docutils literal">smm</span> 的 terminal code：</p>
+<pre class="literal-block">$ echo -e '\E[?1034h'</pre>
+<p>之后再通过开头提到的 <em>~/.vimrc</em> 中的两行配置：</p>
+<pre class="literal-block">cnoremap &lt;M-b&gt; &lt;S-Left&gt;
+cnoremap &lt;M-f&gt; &lt;S-Right&gt;</pre>
+<p>即可在 vim 中成功映射 Alt 键。</p>
+<p>但是，此方法有个很大的副作用 —— 不管是在 vim 还是 readline 中都需要重新定义所有 Alt 键相关的功能键，
+如果没有重新定义则按下 Alt 键相关的功能键得到就是 á â 之流的拉丁字母啦！</p>
+<p>难不成我每次在使用 vim 前先 <span class="docutils literal">echo <span class="pre">-e</span> <span class="pre">'\E[?1034h'</span></span> 开启 meta mode，
+使用完 vim 之后再 <span class="docutils literal">echo <span class="pre">-e</span> <span class="pre">'\E[?1034l'</span></span> 关闭 meta mode？
+甚烦！</p>
+</section>
+<section id="section-2">
+<h2>方法二</h2>
+<p>既然 st terminal 是将 Alt 键当成 Esc 键在组合键中作为前缀使用，那么将计就计，
+把 <span class="docutils literal"><span class="pre">&lt;M-b&gt;</span></span> 和 <span class="docutils literal"><span class="pre">&lt;M-f&gt;</span></span> 的 terminal code 分别定义成 <span class="docutils literal">^[b</span> 和 <span class="docutils literal">^[f</span> 即可 <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> ：</p>
+<pre class="literal-block">&quot; 映射 keysym 到 terminal code
+set &lt;M-b&gt;=^[b
+set &lt;M-f&gt;=^[f
+
+&quot; 自定义 command mode 中的 key
+cnoremap &lt;M-b&gt; &lt;S-Left&gt;
+cnoremap &lt;M-f&gt; &lt;S-Right&gt;</pre>
+<p>将上述配置添加到 <em>~/.vimrc</em> 中，也能成功映射 Alt 键。</p>
+<p>但是，此方法也同样有个副作用 —— Esc delay。不过要解决这个副作用也很简单，只需要再添加一行配置：</p>
+<pre class="literal-block">set timeoutlen=5</pre>
+</section>
+<section id="see-also">
+<h2>See Also</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://unix.stackexchange.com/a/266490/474814">What is bash's meta key?</a></p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://invisible-island.net/ncurses/ncurses.faq.html#bash_meta_mode">Alt-keys do not work in bash</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+<p><span class="docutils literal">:h <span class="pre">set-termcap</span></span></p>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
