@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sun, 23 Jan 2022 12:54:30 +0000</pubDate>
+  <pubDate>Tue, 25 Jan 2022 01:20:54 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>关于 Vim 的 Esc Delay</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/23_关于%20Vim%20的%20Esc%20Delay.html</link>
+    <description>Vim 用户可能会遇到这种情况： 莫名其妙地，在 command mode 或者 insert mode 中， 按下 Esc 键后，会有个短暂的 delay，才能进入 normal model 中。 虽然短暂，但是足以让人抓狂。</description>
+  </item>
   <item>
     <title>在 Vim 中映射 Alt 键</title>
     <author>an9wer@gmail.com</author>
@@ -333,6 +341,7 @@
     <category>折腾</category>
     <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2018/12/15_Caps_Lock%20key%20重绑定.html</link>
+    <description>Ctrl 是 Bash 和 Vim 中常用的按键，但其位于键盘的左下角，按起 来实在不舒服，所以我通过 xmodmap 将其重新绑定到了 Caps_Lock 键上。</description>
   </item>
   <item>
     <title>MuPDF 使用小记</title>

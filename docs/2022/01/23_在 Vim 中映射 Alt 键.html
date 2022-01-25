@@ -35,11 +35,12 @@
 <h1 class="title">在 Vim 中映射 Alt 键</h1>
 <dl class="docinfo simple">
 <dt class="published">Published<span class="colon">:</span></dt>
-<dd class="published"><p>: 2022/01/23</p>
+<dd class="published"><p>2022/01/23</p>
 </dd>
 </dl>
 
     <div id="content">
+<p>（首先声明 Alt 键一般来说即所谓的 Meta 键）</p>
 <p>近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键，
 例如 <span class="docutils literal"><span class="pre">alt-f</span></span> 向前移动一个 word， <span class="docutils literal"><span class="pre">alt-b</span></span> 向后移动一个 word。</p>
 <p>本以为只要在 <em>~/.vimrc</em> 文件中加上如下两行简单的配置：</p>
@@ -127,8 +128,8 @@ set &lt;M-f&gt;=^[f
 cnoremap &lt;M-b&gt; &lt;S-Left&gt;
 cnoremap &lt;M-f&gt; &lt;S-Right&gt;</pre>
 <p>将上述配置添加到 <em>~/.vimrc</em> 中，也能成功映射 Alt 键。</p>
-<p>但是，此方法也同样有个副作用 —— Esc delay。不过要解决这个副作用也很简单，只需要再添加一行配置：</p>
-<pre class="literal-block">set timeoutlen=5</pre>
+<p>但是，此方法也同样有个副作用 —— Esc Delay <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> 。不过要解决这个副作用好在可以比较简单地解决，只需要再添加一行配置：</p>
+<pre class="literal-block">set ttimeoutlen=50</pre>
 </section>
 <section id="see-also">
 <h2>See Also</h2>
@@ -146,11 +147,15 @@ cnoremap &lt;M-f&gt; &lt;S-Right&gt;</pre>
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
 <p><span class="docutils literal">:h <span class="pre">set-termcap</span></span></p>
 </aside>
+<aside class="footnote brackets" id="footnote-3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="/2022/01/23_关于%20Vim%20的%20Esc%20Delay.html">关于 Vim 的 Esc Delay</a></p>
+</aside>
 </section>
     </div> <!-- content -->
 
     <div id="footer">
-      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2021 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
     </div> <!-- footer -->
 
   </div> <!-- main -->

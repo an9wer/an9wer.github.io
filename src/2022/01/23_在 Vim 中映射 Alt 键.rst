@@ -1,11 +1,13 @@
 在 Vim 中映射 Alt 键
 ====================
 
-:Published: : 2022/01/23
+:Published: 2022/01/23
 
 .. meta::
     :description: 近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键，
         例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？
+
+（首先声明 Alt 键一般来说即所谓的 Meta 键）
 
 近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键，
 例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。
@@ -117,9 +119,9 @@ tic 命令默认会将结果文件置于 ``$HOME/.terminfo`` 目录中，
 
 将上述配置添加到 *~/.vimrc* 中，也能成功映射 Alt 键。
 
-但是，此方法也同样有个副作用 —— Esc delay。不过要解决这个副作用也很简单，只需要再添加一行配置： ::
+但是，此方法也同样有个副作用 —— Esc Delay [#]_ 。不过要解决这个副作用好在可以比较简单地解决，只需要再添加一行配置： ::
 
-    set timeoutlen=5
+    set ttimeoutlen=50
 
 See Also
 --------
@@ -131,3 +133,4 @@ References
 
 .. [#] `Alt-keys do not work in bash <https://invisible-island.net/ncurses/ncurses.faq.html#bash_meta_mode>`_
 .. [#] ``:h set-termcap``
+.. [#] `关于 Vim 的 Esc Delay </2022/01/23_关于%20Vim%20的%20Esc%20Delay.html>`_

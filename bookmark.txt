@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    src/2022/01/23_关于\ Vim\ 的\ Esc\ Delay.rst
     src/2022/01/23_在\ Vim\ 中映射\ Alt\ 键.rst
     src/2021/12/24_Gentoo\ 升级遇难小记（三）.rst
     src/2021/12/18_Gentoo\ 升级遇难小记（二）.rst

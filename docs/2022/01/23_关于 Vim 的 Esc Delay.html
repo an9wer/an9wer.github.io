@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>关于 Vim 的 Esc Delay | an9wer's blog</title>
+<meta content="Vim 用户可能会遇到这种情况： 莫名其妙地，在 command mode 或者 insert mode 中， 按下 Esc 键后，会有个短暂的 delay，才能进入 normal model 中。 虽然短暂，但是足以让人抓狂。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">关于 Vim 的 Esc Delay</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2022/01/23</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>Vim 用户可能会遇到这种情况：
+莫名其妙地，在 command mode 或者 insert mode 中，
+按下 Esc 键后，会有个短暂的 delay，才能进入 normal model 中。
+虽然短暂，但是足以让人抓狂。</p>
+<p>所以，为何会出现 esc delay 呢？</p>
+<p>有两种情况会在按下 Esc 键的时候发生 delay <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> ：</p>
+<ol class="arabic simple">
+<li><p>mapping delay: 使用 map 命令定义的 key 中包含了 Esc 键的 terminal code <span class="docutils literal">^[</span></p></li>
+<li><p>keycode delay: 某些键的 terminal code 含有 Esc 键的 terminal code <span class="docutils literal">^[</span> ，例如 F5 的 terminal code <span class="docutils literal"><span class="pre">^[[15~</span></span> ；
+或者自己重新定义了某个键的 terminal code，例如 <span class="docutils literal">set <span class="pre">&lt;M-b&gt;=^[b</span></span></p></li>
+</ol>
+<p>那么，怎样才能避免 esc delay 呢？</p>
+<ol class="arabic simple">
+<li><p>如果是 mapping delay 导致的问题，则可以设置一个较短的 timeoutlen <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> ，例如 <span class="docutils literal">set timeoutlen=50</span></p></li>
+<li><p>如果是 keycode delay 导致的问题，则可以设置一个较短的 ttimeoutlen <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ，例如 <span class="docutils literal">set ttimeoutlen=50</span></p></li>
+</ol>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://vi.stackexchange.com/a/20220">Esc Delay</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+<p><span class="docutils literal">:h timeoutlen</span></p>
+</aside>
+<aside class="footnote brackets" id="footnote-3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
+<p><span class="docutils literal">:h ttimeoutlen</span></p>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
