@@ -123,6 +123,8 @@ tic 命令默认会将结果文件置于 ``$HOME/.terminfo`` 目录中，
 
     set ttimeoutlen=50
 
+Thanks for reading :)
+
 See Also
 --------
 

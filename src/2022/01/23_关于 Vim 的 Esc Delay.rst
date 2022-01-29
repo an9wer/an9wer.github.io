@@ -27,6 +27,8 @@ Vim 用户可能会遇到这种情况：
 1. 如果是 mapping delay 导致的问题，则可以设置一个较短的 timeoutlen [#]_ ，例如 ``set timeoutlen=50``
 2. 如果是 keycode delay 导致的问题，则可以设置一个较短的 ttimeoutlen [#]_ ，例如 ``set ttimeoutlen=50``
 
+Thanks for reading :)
+
 References
 ----------
 
