@@ -232,4 +232,4 @@ label
     ':x').  If the label is omitted the branch commands restart the cycle.
 
 
-To find more details in ``info sed``.
+(To find more, see ``info sed``)
