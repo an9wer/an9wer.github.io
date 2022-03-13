@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2022-01-23</lastmod>
+      <lastmod>2022-03-13</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2022/01/24_%E4%B8%80%E5%A4%A7%E6%B3%A2%E9%9D%A2%E8%AF%95%EF%BC%88%E4%BA%8C%EF%BC%89.html</loc>
+    <lastmod>2022-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2022/01/23_%E5%85%B3%E4%BA%8E%20Vim%20%E7%9A%84%20Esc%20Delay.html</loc>
     <lastmod>2022-01-29</lastmod>
@@ -212,13 +218,13 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2019/06/04_%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%20IM.html</loc>
-    <lastmod>2022-01-23</lastmod>
+    <lastmod>2022-03-13</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://an9wer.github.io/2019/03/20_%E4%B8%80%E5%A4%A7%E6%B3%A2%E9%9D%A2%E8%AF%95.html</loc>
-    <lastmod>2022-01-23</lastmod>
+    <lastmod>2022-03-13</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

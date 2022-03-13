@@ -2,6 +2,8 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    TODO: src/2022/03/11_HP trackpoint 的灵敏度设置.rst
+    src/2022/01/24_一大波面试（二）.rst
     src/2022/01/23_关于\ Vim\ 的\ Esc\ Delay.rst
     src/2022/01/23_在\ Vim\ 中映射\ Alt\ 键.rst
     TODO: src/2021/12/24_Gentoo\ 升级遇难小记（三）.rst

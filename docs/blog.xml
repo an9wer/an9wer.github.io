@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 29 Jan 2022 11:39:37 +0000</pubDate>
+  <pubDate>Sun, 13 Mar 2022 15:53:53 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>一大波面试（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/24_一大波面试（二）.html</link>
+    <description>又一次踏上了找工作的征途，且看我遇到了哪些不一样的经历。</description>
+  </item>
   <item>
     <title>关于 Vim 的 Esc Delay</title>
     <author>an9wer@gmail.com</author>
@@ -271,6 +279,7 @@
     <category>工具</category>
     <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2019/06/04_搭建自己的%20IM.html</link>
+    <description>因为聊天信息安全的需要，寻找了一款适用的开源聊天软件 ——synapse， 部署服务端软件并尝试使用。</description>
   </item>
   <item>
     <title>一大波面试</title>
@@ -278,6 +287,7 @@
     <category>记录</category>
     <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2019/03/20_一大波面试.html</link>
+    <description>找工作面试遇到的经历。</description>
   </item>
   <item>
     <title>从 Vimwiki 转投 Asciidoc</title>

@@ -1,24 +1,28 @@
 搭建自己的 IM
 =============
 
-写在这个特别有历史意义的日子里。
+:Published: 2019/06/04
 
-由于自己的两个梯子在六月一号同时被 ban，所以 telegram 暂时用不起来，因此临时用
-了两天微信。但因为顾及着聊天的安全性，在微信上发消息时刻都是小心翼翼地，着实难
-受。
+.. meta::
+    :description: 因为聊天信息安全的需要，寻找了一款适用的开源聊天软件 ——synapse，
+        部署服务端软件并尝试使用。
 
-于是考虑使用开源方案，自己搭建一套 IM。看了 `相关文章
-<https://opensource.com/alternatives/slack>`_ ，结合自己的需求：
+（写在这个特别有历史意义的日子里）
 
-1.  安全。
-2.  轻量。
+由于自用的两个梯子在六月一号同时被 ban，导致 telegram 暂时无法使用，于是这几天微信的使用频率变多了。
+但因为顾及着聊天信息的安全性，在使用微信的時候都是小心翼翼地，斟酌再三地确认消息內容，令人着实难受。
+
+于是考虑使用开源方案，自己动手搭建一套专属 IM。
+參考了相关 `可用方案 <https://opensource.com/alternatives/slack>`_ ，结合自己的需求：
+
+1.  安全
+2.  轻量
 
 最终决定选择了 `Matrix Synapse <https://github.com/matrix-org/synapse>`_ 。
 
 接下来就是撸起袖子一把梭。
 
-正好这两天腾讯云有活动，以较低的价格入手了一台主机（1 核 1 G 的配置，价格 214
-元/ 半年）。
+正好最近腾讯云有活动，以较低的价格入手了一台主机（1 核 1 G 的配置，价格 214 元/ 半年）。
 
 参照官方教程在服务器（CentOS 7）上搭建 Synapse：
 
@@ -28,7 +32,6 @@
         $ yum install libtiff-devel libjpeg-devel libzip-devel freetype-devel \
             lcms2-devel libwebp-devel tcl-devel tk-devel redhat-rpm-config \
             python-virtualenv libffi-devel openssl-devel
-
 2.  Install the Synapse ::
 
         $ mkdir -p /opt/synapse
@@ -70,7 +73,7 @@
 
         $ synctl start
 
-8.  Register a user: ::
+8.  Register one user: ::
 
         $ register_new_matrix_user -c /opt/synapse/homeserver.yaml https://localhost:8448
 
@@ -83,12 +86,13 @@
 
         @username:synapse.me
 
-以上只是一个简单的部署及配置，想着有时间再折腾一下语音和视频功能。
+以上只是一个简单的服务端部署及配置，之后有需求或许会再折腾一下它的语音和视频功能。
+至于客戶端，在安卓和苹果上安裝 riot.im 这个软件即可，Linux 上亦有 electron 打包的桌面软件可供使用。
 
-Edit 2019/06/23
----------------
+Updated 2019/06/23
+------------------
 
-To change user password:
+To change user password
 
 Create hashed password first: ::
 
@@ -99,9 +103,9 @@ Update user's password with hashed password above: ::
     $ sqlite3 homeserver.db
     > update users set password_hash='xxxxxxx' where name='@xxx:synapse.me';
 
-Edit 2019/06/24
----------------
+Updated 2019/06/24
+------------------
 
--   The way to `update <https://github.com/matrix-org/synapse/blob/master/UPGRADE.rst>`_ synapse
+To `upgrade synapse <https://github.com/matrix-org/synapse/blob/master/UPGRADE.rst>`_
 
 Thanks for reading :)
