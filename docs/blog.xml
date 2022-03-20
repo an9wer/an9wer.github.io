@@ -9,14 +9,22 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sun, 13 Mar 2022 15:53:53 +0000</pubDate>
+  <pubDate>Sun, 20 Mar 2022 04:44:58 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
   <item>
-    <title>一大波面试（二）</title>
+    <title>Gentoo 升级遇难小记（四）</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
+    <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/03/20_Gentoo%20升级遇难小记（四）.html</link>
+    <description>Gentoo 更新系统的时候遇到了 USE flag 冲突导致软件被跳过更新的问题。</description>
+  </item>
+  <item>
+    <title>一大波面试（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
     <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2022/01/24_一大波面试（二）.html</link>
     <description>又一次踏上了找工作的征途，且看我遇到了哪些不一样的经历。</description>
