@@ -85,12 +85,38 @@ Nothing to merge; quitting.</pre>
 发现二者都是在前段时间 2 月 14 号的日子里 <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>，加上的 png USE flag 相关的代码。
 估计之后在 pass 的 ebuild 文件中，维护者会将上面的依赖语句更新成 <span class="docutils literal"><span class="pre">media-gfx/qrencode[png]</span></span> ，
 因为 qrencode 已经支持 png USE flag 了，不用再假装它支持了。</p>
+<section id="updated-2022-03-20">
+<h2>Updated 2022/03/20</h2>
+<p>忽然发现 emerge 有个神奇的参数 <span class="docutils literal"><span class="pre">--bracktrack</span></span> ，能自动解决这个冲突：</p>
+<pre class="literal-block">$ sudo emerge -avp --backtrack=10 qrencode pass
+
+These are the packages that would be merged, in order:
+
+Calculating dependencies... done!
+[ebuild   R    ] media-gfx/qrencode-4.1.1:0/4::gentoo  USE=&quot;png%* -test&quot; 0 KiB
+[ebuild   R    ] app-admin/pass-1.7.4-r2::gentoo  USE=&quot;git -X -dmenu -emacs -importers -wayland&quot; 0 KiB
+
+Total: 2 packages (2 reinstalls), Size of downloads: 0 KiB
+
+The following USE changes are necessary to proceed:
+ (see &quot;package.use&quot; in the portage(5) man page for more details)
+# required by app-admin/pass-1.7.4-r2::gentoo
+# required by &#64;selected
+# required by &#64;world (argument)
+&gt;=media-gfx/qrencode-4.1.1 png
+
+ * In order to avoid wasting time, backtracking has terminated early
+ * due to the above autounmask change(s). The --autounmask-backtrack=y
+ * option can be used to force further backtracking, but there is no
+ * guarantee that it will produce a solution.</pre>
+<p>不过本质也是给 qrencode 启动 png USE flag.</p>
 <p>Thanks for reading :)</p>
+</section>
 <section id="references">
 <h2>References</h2>
 <aside class="footnote brackets" id="footnote-1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
-<p><cite>Atom Use defaults &lt;https://forums.gentoo.org/viewtopic-t-1101562-start-0.html&gt;</cite></p>
+<p><a class="reference external" href="https://forums.gentoo.org/viewtopic-t-1101562-start-0.html">Atom Use defaults</a></p>
 </aside>
 <aside class="footnote brackets" id="footnote-2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>

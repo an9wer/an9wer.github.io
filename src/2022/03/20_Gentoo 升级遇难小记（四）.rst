@@ -65,11 +65,40 @@ Gentoo 升级遇难小记（四）
 估计之后在 pass 的 ebuild 文件中，维护者会将上面的依赖语句更新成 ``media-gfx/qrencode[png]`` ，
 因为 qrencode 已经支持 png USE flag 了，不用再假装它支持了。
 
+Updated 2022/03/20
+------------------
+
+忽然发现 emerge 有个神奇的参数 ``--bracktrack`` ，能自动解决这个冲突： ::
+
+    $ sudo emerge -avp --backtrack=10 qrencode pass
+
+    These are the packages that would be merged, in order:
+
+    Calculating dependencies... done!
+    [ebuild   R    ] media-gfx/qrencode-4.1.1:0/4::gentoo  USE="png%* -test" 0 KiB
+    [ebuild   R    ] app-admin/pass-1.7.4-r2::gentoo  USE="git -X -dmenu -emacs -importers -wayland" 0 KiB
+
+    Total: 2 packages (2 reinstalls), Size of downloads: 0 KiB
+
+    The following USE changes are necessary to proceed:
+     (see "package.use" in the portage(5) man page for more details)
+    # required by app-admin/pass-1.7.4-r2::gentoo
+    # required by @selected
+    # required by @world (argument)
+    >=media-gfx/qrencode-4.1.1 png
+
+     * In order to avoid wasting time, backtracking has terminated early
+     * due to the above autounmask change(s). The --autounmask-backtrack=y
+     * option can be used to force further backtracking, but there is no
+     * guarantee that it will produce a solution.
+
+不过本质也是给 qrencode 启动 png USE flag.
+
 Thanks for reading :)
 
 References
 ----------
 
-.. [#] `Atom Use defaults <https://forums.gentoo.org/viewtopic-t-1101562-start-0.html>`
+.. [#] `Atom Use defaults <https://forums.gentoo.org/viewtopic-t-1101562-start-0.html>`_
 .. [#] `media-gfx/qrencode: Add "png" flag <https://github.com/gentoo/gentoo/commit/7a34377e3277a6a0e2eedd40e90452a44c55f1e6>`_
 .. [#] `app-admin/pass: Prepare for new qrencode[png] flag <https://github.com/gentoo/gentoo/commit/ccfd53afd435e73c4d4a754a2e006b7860d93246>`_
