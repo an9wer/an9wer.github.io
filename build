@@ -11,7 +11,7 @@ export DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
 
 usage() {
   cat <<EOF
-build [<rst> ...] [<dot> ...]
+build [rss] [sitemap] [<rst> ...] [<dot> ...]
 EOF
 }
 
