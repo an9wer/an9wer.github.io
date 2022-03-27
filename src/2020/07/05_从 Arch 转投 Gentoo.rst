@@ -1,7 +1,7 @@
 从 Arch 转投 Gentoo
 ===================
 
-:Published: : 2020/07/05
+:Published: 2020/07/05
 
 .. meta::
     :description: 在使用一年多的 Arch 之后，转到 Gentoo 门下。它是如何吸引我的？和 Arch 相比又有什么异同？

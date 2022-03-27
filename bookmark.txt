@@ -3,6 +3,7 @@ src/tools.rst
 
 src/blog.rst
     src/2022/03/20_Gentoo\ 升级遇难小记（四）.rst
+    src/2022/03/16_小米\ AC2100\ 路由器刷入及配置\ OpenWRT.rst
     TODO: src/2022/03/11_HP trackpoint 的灵敏度设置.rst
     src/2022/01/24_一大波面试（二）.rst
     src/2022/01/23_关于\ Vim\ 的\ Esc\ Delay.rst

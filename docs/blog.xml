@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sun, 20 Mar 2022 08:56:07 +0000</pubDate>
+  <pubDate>Sun, 27 Mar 2022 13:09:04 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -20,6 +20,14 @@
     <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2022/03/20_Gentoo%20升级遇难小记（四）.html</link>
     <description>Gentoo 更新系统的时候遇到了 USE flag 冲突导致软件被跳过更新的问题。</description>
+  </item>
+  <item>
+    <title>小米 AC2100 路由器刷入及配置 OpenWRT</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/03/16_小米%20AC2100%20路由器刷入及配置%20OpenWRT.html</link>
+    <description>由于疫情的原因被封锁在家远程办公，但是在家上网冲浪各种不方便， 于是掏出小米 AC2100 路由器，刷入 OpenWRT，扶墙上网。</description>
   </item>
   <item>
     <title>一大波面试（二）</title>
@@ -193,7 +201,7 @@
     <category>折腾</category>
     <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2020/07/27_OpenWRT%20软路由的安装及配置.html</link>
-    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台 软路由。</description>
+    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。 在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。</description>
   </item>
   <item>
     <title>从 Arch 转投 Gentoo</title>
