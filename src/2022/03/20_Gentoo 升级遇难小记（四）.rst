@@ -50,7 +50,7 @@ Gentoo 升级遇难小记（四）
 
 上面的 ``media-gfx/qrencode[png(+)]`` 是什么意思呢？ [#]_
 其表示 pass 在运行时依赖 qrencode，且需要后者同时启用 png USE flag。
-如果 qrencode 不支持 png USE flag 呢，则假装它支持，且启用了该 USE flag。
+如果 qrencode 不支持 png USE flag 呢，则假装它支持，且启用该 USE flag。
 
 而事实上在 qrencode 的 ebuild 源码文件中发现其已经支持了 png USE flag，
 但该 flag 默认是非启用状态，同时我们并没有在任何地方声明要启用它，因此导致了冲突。
@@ -61,14 +61,14 @@ Gentoo 升级遇难小记（四）
         media-gfx/qrencode png
 
 之后查看了这两个 ebuild 文件在官方 github 仓库中的历史修改记录，
-发现二者都是在前段时间 2 月 14 号的日子里 [#]_ [#]_，加上的 png USE flag 相关的代码。
+发现二者都是在前段时间 2 月 14 号的时候 [#]_ [#]_，给加上的 png USE flag 相关代码。
 估计之后在 pass 的 ebuild 文件中，维护者会将上面的依赖语句更新成 ``media-gfx/qrencode[png]`` ，
 因为 qrencode 已经支持 png USE flag 了，不用再假装它支持了。
 
 Updated 2022/03/20
 ------------------
 
-忽然发现 emerge 有个神奇的参数 ``--bracktrack`` ，能自动解决这个冲突： ::
+忽地发现 emerge 有个神奇的参数 ``--bracktrack`` ，能自动解决这个冲突： ::
 
     $ sudo emerge -avp --backtrack=10 qrencode pass
 

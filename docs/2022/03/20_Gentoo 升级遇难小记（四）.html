@@ -75,19 +75,19 @@ Nothing to merge; quitting.</pre>
 &quot;</pre>
 <p>上面的 <span class="docutils literal"><span class="pre">media-gfx/qrencode[png(+)]</span></span> 是什么意思呢？ <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
 其表示 pass 在运行时依赖 qrencode，且需要后者同时启用 png USE flag。
-如果 qrencode 不支持 png USE flag 呢，则假装它支持，且启用了该 USE flag。</p>
+如果 qrencode 不支持 png USE flag 呢，则假装它支持，且启用该 USE flag。</p>
 <p>而事实上在 qrencode 的 ebuild 源码文件中发现其已经支持了 png USE flag，
 但该 flag 默认是非启用状态，同时我们并没有在任何地方声明要启用它，因此导致了冲突。</p>
 <p>知晓原因后，就知道怎么解决了：</p>
 <pre class="literal-block">$ vim /etc/portage/package.use/qrencode.use
     media-gfx/qrencode png</pre>
 <p>之后查看了这两个 ebuild 文件在官方 github 仓库中的历史修改记录，
-发现二者都是在前段时间 2 月 14 号的日子里 <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>，加上的 png USE flag 相关的代码。
+发现二者都是在前段时间 2 月 14 号的时候 <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>，给加上的 png USE flag 相关代码。
 估计之后在 pass 的 ebuild 文件中，维护者会将上面的依赖语句更新成 <span class="docutils literal"><span class="pre">media-gfx/qrencode[png]</span></span> ，
 因为 qrencode 已经支持 png USE flag 了，不用再假装它支持了。</p>
 <section id="updated-2022-03-20">
 <h2>Updated 2022/03/20</h2>
-<p>忽然发现 emerge 有个神奇的参数 <span class="docutils literal"><span class="pre">--bracktrack</span></span> ，能自动解决这个冲突：</p>
+<p>忽地发现 emerge 有个神奇的参数 <span class="docutils literal"><span class="pre">--bracktrack</span></span> ，能自动解决这个冲突：</p>
 <pre class="literal-block">$ sudo emerge -avp --backtrack=10 qrencode pass
 
 These are the packages that would be merged, in order:
