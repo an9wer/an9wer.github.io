@@ -9,7 +9,7 @@
 我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。
 
 首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下。
-然后修改系统的 */boot/grub2/grub.cfg* 文件，添加如下配置 ::
+然后修改系统的 */boot/grub2/grub.cfg* 文件，添加如下配置： ::
 
     menuentry "gentoo" {
       set isofile='/install-amd64-minimal-20220102T170545Z.iso'
