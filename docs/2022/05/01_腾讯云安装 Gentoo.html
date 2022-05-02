@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>腾讯云安装 Gentoo | an9wer's blog</title>
+<meta content="我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">腾讯云安装 Gentoo</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2022/05/01</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。</p>
+<p>首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下。
+然后修改系统的 <em>/boot/grub2/grub.cfg</em> 文件，添加如下配置</p>
+<pre class="literal-block">menuentry &quot;gentoo&quot; {
+  set isofile='/install-amd64-minimal-20220102T170545Z.iso'
+  loopback loop $isofile
+  linux (loop)/boot/gentoo init=/linuxrc dokeymap docache passwd=&lt;PASSWD&gt; dosshd looptype=squashfs loop=/image.squashfs cdroot isoboot=$isofile
+  initrd (loop)/boot/gentoo.igz
+}</pre>
+<p>值得一提的是 linuxrc 这个命令，它是 gentoo ramfs 中的一个类似 init 命令工具，
+但是它提供了更多的参数，例如上面的 <span class="docutils literal">dokeymap</span>, <span class="docutils literal">docache</span>, <span class="docutils literal">passwd</span>, <span class="docutils literal">dosshd</span> 等。</p>
+<ul class="simple">
+<li><p><span class="docutils literal">dokeymap</span>: 在载入安装镜像时，提供选项设置 keymap</p></li>
+<li><p><span class="docutils literal">docache</span>: 将安装镜像整个载入内存（但在实际运行时发现没有完全载入内存）</p></li>
+<li><p><span class="docutils literal">passwd</span>: 设置安装镜像中 root 的密码</p></li>
+<li><p><span class="docutils literal">dosshd</span>: 开启 sshd 服务</p></li>
+<li><p><span class="docutils literal">isoboot</span>: 载入安装镜像</p></li>
+</ul>
+<p>重启系统后在 grub 引导界面选择 gentoo 进入，即可正常载入 gentoo 的安装镜像。</p>
+<p>需要注意的是，gentoo 的安装镜像没有完全载入内存（还没有搞清楚原因），
+因此无法对之前系统所在磁盘进行重新分区以及格式化。
+所以只能将之前的系统盘挂载到 <em>/mnt/gentoo</em> 后将所有文件全部删除，
+只留下一个 gentoo iso 安装镜像文件。</p>
+<p>接下来就是正常的系统安装流程，就不多赘述了。</p>
+<p>Thanks for reading :)</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

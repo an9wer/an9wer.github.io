@@ -82,6 +82,7 @@ Install basic packages: ::
 
     # emerge-webrsync
     # eselect profile list
+    # eselect profile set <num>
     # emerge --ask --verbose --update --deep --newuse @world
 
 Set timezone: ::

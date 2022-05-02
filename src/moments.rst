@@ -11,7 +11,7 @@
 
 2022/02/09 Wed
 
-    单凭手感来说，EliteBook 840 G5 还比不上 EliteBook 840 G3，不过要说最好的还属我的 EliteBook 8470p！
+    单凭手感来说，EliteBook 840 G5 还比不上 EliteBook 840 G3，不过要说最好的还属 EliteBook 8470p！
 
 2022/01/27 Thu
 

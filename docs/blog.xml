@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 09 Apr 2022 13:44:21 +0000</pubDate>
+  <pubDate>Mon, 02 May 2022 09:28:30 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>腾讯云安装 Gentoo</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/05/01_腾讯云安装%20Gentoo.html</link>
+    <description>我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。</description>
+  </item>
   <item>
     <title>Gentoo 升级遇难小记（四）</title>
     <author>an9wer@gmail.com</author>
