@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 14 May 2022 12:13:26 +0000</pubDate>
+  <pubDate>Sat, 14 May 2022 12:16:35 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -17,5 +17,446 @@
     <title>在云中编译 Gentoo 软件包</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
-    <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/05/14_在云中编译%20Gentoo%20软件包.html</link>
+    <pubDate>Sat, 14 May 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/05/14_在云中编译%20Gentoo%20软件包.html</link>
+    <description>为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源， 我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。</description>
+  </item>
+  <item>
+    <title>腾讯云安装 Gentoo</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/05/01_腾讯云安装%20Gentoo.html</link>
+    <description>我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。 奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣； 心心念念想装 Gentoo。</description>
+  </item>
+  <item>
+    <title>Gentoo 升级遇难小记（四）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/03/20_Gentoo%20升级遇难小记（四）.html</link>
+    <description>Gentoo 更新系统的时候遇到了 USE flag 冲突导致软件被跳过更新的问题。</description>
+  </item>
+  <item>
+    <title>小米 AC2100 路由器刷入及配置 OpenWRT</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/03/16_小米%20AC2100%20路由器刷入及配置%20OpenWRT.html</link>
+    <description>由于疫情的原因被封锁在家远程办公，但是在家上网冲浪各种不方便， 于是掏出小米 AC2100 路由器，刷入 OpenWRT，扶墙上网。</description>
+  </item>
+  <item>
+    <title>一大波面试（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/24_一大波面试（二）.html</link>
+    <description>又一次踏上了找工作的征途，且看我遇到了哪些不一样的经历。</description>
+  </item>
+  <item>
+    <title>关于 Vim 的 Esc Delay</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/23_关于%20Vim%20的%20Esc%20Delay.html</link>
+    <description>Vim 用户可能会遇到这种情况： 莫名其妙地，在 command mode 或者 insert mode 中， 按下 Esc 键后，会有个短暂的 delay，才能进入 normal model 中。 虽然短暂，但是足以让人抓狂。</description>
+  </item>
+  <item>
+    <title>在 Vim 中映射 Alt 键</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/01/23_在%20Vim%20中映射%20Alt%20键.html</link>
+    <description>近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键， 例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？</description>
+  </item>
+  <item>
+    <title>Gentoo 升级遇难小记（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/12/18_Gentoo%20升级遇难小记（二）.html</link>
+    <description>Gentoo 更新系统的时候遇到了 ldns 和 ldns-utils 两个软件包冲突问题。</description>
+  </item>
+  <item>
+    <title>在 tmpfs 中编译 Gentoo 软件包（二）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/12/16_在%20tmpfs%20中编译%20Gentoo%20软件包（二）.html</link>
+    <description>将 chroot 的根目录挂载点设置成 tmpfs 文件系统，构建一个独立干净的环境， 用于打包及测试 Gentoo 软件包。</description>
+  </item>
+  <item>
+    <title>在 Linux 中使用蓝牙</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/11/21_在%20Linux%20中使用蓝牙.html</link>
+    <description>在 Linux (Gentoo) 中安装 bluez 软件，使用蓝牙（bluetooth）功能。</description>
+  </item>
+  <item>
+    <title>关于我的 NAS</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/11/19_关于我的%20NAS.html</link>
+    <description>聊聊我的 NAS 的软硬件构成，同时也记录数据盘做 RAID 和加密的过程。</description>
+  </item>
+  <item>
+    <title>关于 Google SEO</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/05/19_关于%20Google%20SEO.html</link>
+    <description>现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不 太在乎这些，因为很多文章是写给自己看的（也算是另一种笔记的形式），所以 就只满足于孤芳自赏。但最近想法改变了，既然是公开的文章，也想看看自己写 的文章能不能给别人提供些许帮助或者思路。所以打算学习下 Google SEO 的相 关知识，想着把这个网站做起来，起码能有些流量。</description>
+  </item>
+  <item>
+    <title>在 tmpfs 中编译 Gentoo 软件包</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html</link>
+    <description>Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统， 安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。</description>
+  </item>
+  <item>
+    <title>有一只蟑螂</title>
+    <author>an9wer@gmail.com</author>
+    <category>杂文</category>
+    <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/04/22_有一只蟑螂.html</link>
+    <description>在小区地下停车库玩滑板，碰到一只超大蟑螂动也不动趴在那，着实可怕！ 有两个母亲带着两个小孩停车后从车上下来，等她们走后我回头一看，好家伙，蟑螂给踩死了。</description>
+  </item>
+  <item>
+    <title>Gentoo 升级遇难小记</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记.html</link>
+    <description>Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的时候内存不足的问题。</description>
+  </item>
+  <item>
+    <title>关于 v2ray sniffing</title>
+    <author>an9wer@gmail.com</author>
+    <category>思考</category>
+    <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/04/04_关于%20v2ray%20sniffing.html</link>
+    <description>关于 v2ray 的 sniffing 参数使用，个人的一些理解。</description>
+  </item>
+  <item>
+    <title>关于 chroot</title>
+    <author>an9wer@gmail.com</author>
+    <category>思考</category>
+    <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/03/20_关于%20chroot.html</link>
+    <description>关于 chroot 的一些应用场景，以及其与 docker 的对比。</description>
+  </item>
+  <item>
+    <title>BandwagonHost 服务器被黑事件</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/03/12_BandwagonHost%20服务器被黑事件.html</link>
+    <description>搬瓦工服务器被强制关机，因为在短时间内发送太多垃圾邮件。看我是如何调查事故原因的？</description>
+  </item>
+  <item>
+    <title>关于 Bond 和 Bridge</title>
+    <author>an9wer@gmail.com</author>
+    <category>思考</category>
+    <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/03/01_关于%20Bond%20和%20Bridge.html</link>
+  </item>
+  <item>
+    <title>关于 Linux Kernel Modules</title>
+    <author>an9wer@gmail.com</author>
+    <category>思考</category>
+    <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/03/01_关于%20Linux%20Kernel%20Modules.html</link>
+    <description>折腾 Wireguard 的时候顺带了解一些 Linux Kernel Modules 相关的知识。</description>
+  </item>
+  <item>
+    <title>在手机上使用 Pass 命令管理密码</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/01/20_在手机上使用%20Pass%20命令管理密码.html</link>
+    <description>在手机上使用 zx2c4 pass 命令。分别在安卓和苹果手机上安装、配置及使用，方便随时查看、修改及同步密码。</description>
+  </item>
+  <item>
+    <title>升级 Gentoo Kernel</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Tue, 19 Jan 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/01/19_升级%20Gentoo%20Kernel.html</link>
+    <description>半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软件包， 但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一把。</description>
+  </item>
+  <item>
+    <title>实战 LVM</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/11/15_实战%20LVM.html</link>
+    <description>使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。</description>
+  </item>
+  <item>
+    <title>Setup dm-crypt</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/08/26_Setup%20dm-crypt.html</link>
+  </item>
+  <item>
+    <title>Redmi K30 5G 入手及刷机</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/08/13_Redmi%20K30%205G%20入手及刷机.html</link>
+    <description>Essential Phone 摔坏之后，入手了红米 k30 5G 手机，谈谈我的 使用体验，以及如何刷机，刷入 Xiaomi.eu ROM。</description>
+  </item>
+  <item>
+    <title>OpenWRT 软路由的安装及配置</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/07/27_OpenWRT%20软路由的安装及配置.html</link>
+    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。 在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。</description>
+  </item>
+  <item>
+    <title>从 Arch 转投 Gentoo</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/07/05_从%20Arch%20转投%20Gentoo.html</link>
+    <description>在使用一年多的 Arch 之后，转到 Gentoo 门下。它是如何吸引我的？和 Arch 相比又有什么异同？</description>
+  </item>
+  <item>
+    <title>Gentoo installation</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/06/06_Gentoo%20installation.html</link>
+  </item>
+  <item>
+    <title>腾讯云服务器被黑事件</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2020/01/07_腾讯云服务器被黑事件.html</link>
+    <description>腾讯云服务器被爆破登录，执行恶意代码，导致 CPU 负载甚高。</description>
+  </item>
+  <item>
+    <title>腾讯云低配服务器性能测试</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/11/24_腾讯云低配服务器性能测试.html</link>
+  </item>
+  <item>
+    <title>Setup raid1</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/11/09_Setup%20raid1.html</link>
+  </item>
+  <item>
+    <title>Fcitx VS Ibus</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/09/02_Fcitx_VS_Ibus.html</link>
+  </item>
+  <item>
+    <title>终端下的目录切换</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/08/21_终端下的目录切换.html</link>
+  </item>
+  <item>
+    <title>TODO list</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/08/20_TODO%20list.html</link>
+  </item>
+  <item>
+    <title>Raspberry Pi installation</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Mon, 19 Aug 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/08/19_Raspberry%20Pi%20installation.html</link>
+  </item>
+  <item>
+    <title>终端下的单词查询</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/07/21_终端下的单词查询.html</link>
+  </item>
+  <item>
+    <title>从 asciidoc 转投 reStructuredText</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/06/15_从%20asciidoc%20转投%20reStructuredText.html</link>
+  </item>
+  <item>
+    <title>地铁轶事</title>
+    <author>an9wer@gmail.com</author>
+    <category>杂文</category>
+    <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/06/09_地铁轶事.html</link>
+  </item>
+  <item>
+    <title>搭建自己的 IM</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/06/04_搭建自己的%20IM.html</link>
+    <description>因为聊天信息安全的需要，寻找了一款适用的开源聊天软件 ——synapse， 部署服务端软件并尝试使用。</description>
+  </item>
+  <item>
+    <title>一大波面试</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/03/20_一大波面试.html</link>
+    <description>找工作面试遇到的经历。</description>
+  </item>
+  <item>
+    <title>从 Vimwiki 转投 Asciidoc</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/02/22_从%20Vimwiki%20转投%20Asciidoc.html</link>
+  </item>
+  <item>
+    <title>Shadowsocks 连接异常小记</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/02/20_Shadowsocks%20连接异常小记.html</link>
+  </item>
+  <item>
+    <title>关于集福卡</title>
+    <author>an9wer@gmail.com</author>
+    <category>杂文</category>
+    <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/02/10_关于集福卡.html</link>
+  </item>
+  <item>
+    <title>关于五黑</title>
+    <author>an9wer@gmail.com</author>
+    <category>杂文</category>
+    <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/02/09_关于五黑.html</link>
+  </item>
+  <item>
+    <title>Archlinux installation</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2019/01/13_Archlinux%20installation.html</link>
+  </item>
+  <item>
+    <title>GH 60 Satan 入手</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/29_GH%2060%20Satan%20入手.html</link>
+  </item>
+  <item>
+    <title>GANSS ALT 61 入手</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Mon, 24 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/24_GANSS%20ALT%2061%20入手.html</link>
+  </item>
+  <item>
+    <title>Rapoo V500 换键帽</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/17_Rapoo%20V500%20换键帽.html</link>
+  </item>
+  <item>
+    <title>Caps_Lock key 重绑定</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/15_Caps_Lock%20key%20重绑定.html</link>
+    <description>Ctrl 是 Bash 和 Vim 中常用的按键，但其位于键盘的左下角，按起 来实在不舒服，所以我通过 xmodmap 将其重新绑定到了 Caps_Lock 键上。</description>
+  </item>
+  <item>
+    <title>MuPDF 使用小记</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/13_MuPDF%20使用小记.html</link>
+    <description>初次使用 mupdf，给我的印象是界面简洁，操作简单。与我目前 在使用的 FoxitReader 相比，也差不到哪里去。就我目前的需求，应该是够用了 。</description>
+  </item>
+  <item>
+    <title>用 RSS 订阅网站的更新</title>
+    <author>an9wer@gmail.com</author>
+    <category>工具</category>
+    <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/08_用%20RSS%20订阅网站的更新.html</link>
+    <description>尝试使用 innoreader 来订阅一些博客、新闻网站等，把内容聚合在 一个统一的平台上，定期获取新的资讯。</description>
+  </item>
+  <item>
+    <title>OnePlus 5T 入手</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/05_OnePlus%205T%20入手.html</link>
+  </item>
+  <item>
+    <title>Vultr 换主机小记</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/03_Vultr%20换主机小记.html</link>
+  </item>
+  <item>
+    <title>Essential Phone PH-1 入手</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/12/01_Essential%20Phone%20PH-1%20入手.html</link>
+  </item>
+  <item>
+    <title>Nubia Z11 mini 刷机</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/11/28_Nubia%20Z11%20mini%20刷机.html</link>
+  </item>
+  <item>
+    <title>小米平板一代入手</title>
+    <author>an9wer@gmail.com</author>
+    <category>开箱</category>
+    <pubDate>Sun, 11 Nov 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/11/11_小米平板一代入手.html</link>
+  </item>
+  <item>
+    <title>Suckless 的一天</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/10/30_Suckless%20的一天.html</link>
+  </item>
+  <item>
+    <title>Categories of YouTube channels I have subscribed</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/10/27_Categories%20of%20YouTube%20channels%20I%20have%20subscribed.html</link>
+  </item>
+  <item>
+    <title>博客搭建小记</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Wed, 24 Oct 2018 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2018/10/24_博客搭建小记.html</link>
+  </item>
+</channel>
+
+</rss> 
