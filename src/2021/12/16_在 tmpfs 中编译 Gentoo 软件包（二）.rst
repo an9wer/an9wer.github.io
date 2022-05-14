@@ -1,7 +1,7 @@
 在 tmpfs 中编译 Gentoo 软件包（二）
 ===================================
 
-:Published: : 2021/12/16
+:Published:  2021/12/16
 
 .. meta::
     :description: 将 chroot 的根目录挂载点设置成 tmpfs 文件系统，构建一个独立干净的环境，

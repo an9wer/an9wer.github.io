@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 <title>腾讯云安装 Gentoo | an9wer's blog</title>
-<meta content="我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。" name="description" />
+<meta content="我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。 奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣； 心心念念想装 Gentoo。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -40,8 +40,11 @@
 </dl>
 
     <div id="content">
-<p>我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。</p>
-<p>首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下。
+<p>我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。
+奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣；
+心心念念想装 Gentoo。</p>
+<p>于是折腾了一阵，总算是找到了方法。</p>
+<p>首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下，
 然后修改系统的 <em>/boot/grub2/grub.cfg</em> 文件，添加如下配置：</p>
 <pre class="literal-block">menuentry &quot;gentoo&quot; {
   set isofile='/install-amd64-minimal-20220102T170545Z.iso'

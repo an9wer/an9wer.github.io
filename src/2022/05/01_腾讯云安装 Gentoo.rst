@@ -1,14 +1,20 @@
 腾讯云安装 Gentoo
 =================
 
-:Published: 2022/05/01
+:Published:  2022/05/01
 
 .. meta::
-    :description: 我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。
+    :description: 我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。
+        奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣；
+        心心念念想装 Gentoo。
 
-我在腾讯云有一台轻量云服务器，其运行的一直是 CentOS7，这次突发奇想给它安装 Gentoo 系统。
+我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。
+奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣；
+心心念念想装 Gentoo。
 
-首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下。
+于是折腾了一阵，总算是找到了方法。
+
+首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下，
 然后修改系统的 */boot/grub2/grub.cfg* 文件，添加如下配置： ::
 
     menuentry "gentoo" {

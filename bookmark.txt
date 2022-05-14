@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    src/2022/05/14_在云中编译\ Gentoo\ 软件包.rst
     src/2022/05/01_腾讯云安装\ Gentoo.rst
     src/2022/03/20_Gentoo\ 升级遇难小记（四）.rst
     src/2022/03/16_小米\ AC2100\ 路由器刷入及配置\ OpenWRT.rst

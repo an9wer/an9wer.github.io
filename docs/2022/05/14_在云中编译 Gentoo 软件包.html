@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>在云中编译 Gentoo 软件包 | an9wer's blog</title>
+<meta content="为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源， 我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">在云中编译 Gentoo 软件包</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2022/05/14</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p><a class="reference external" href="/2022/05/01_腾讯云安装%20Gentoo.html">前文</a> 中，
+我在腾讯云上安装了 Gentoo 系统，虽然也给它搭建了一些基础服务，但这对服务器的开销是非常小的。
+为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源，我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。</p>
+<p>至于如何实现远程编译软件，然后安装到本地呢？
+这就得靠 distcc 这个工具了，好在 Gentoo 的包管理工具也集成了这个软件。</p>
+<p>首先需要在本地和远程都安装 distcc 软件：</p>
+<pre class="literal-block">$ sudo emerge -av distcc</pre>
+<p>本地和远端之间的通信有两种方式：</p>
+<ol class="arabic simple">
+<li><p>通过 tcp socket：好处是 network io 相对比较快，坏处是通信过程全部明文，在公网环境不太安全，不过可以通过配合 wireguard 解决。</p></li>
+<li><p>通过 ssh：好处是通信过程全部加密，坏处是每次通信都需要建立 ssh 连接，开销比较大，导致 network io 比较慢。</p></li>
+</ol>
+<section id="tcp-socket">
+<h2>通过 tcp socket</h2>
+<p>此方法需要在远端启动 distcc daemon：</p>
+<pre class="literal-block">$ sudo vim /etc/conf.d/distccd
+    DISTCCD_OPTS=&quot;${DISTCCD_OPTS} --listen &lt;address&gt; --port &lt;port&gt;&quot;
+$ sudo rc-service distccd start</pre>
+<p>在本地配置 distcc slaver 地址：</p>
+<pre class="literal-block">$ sudo vim /etc/distcc/hosts
+    &lt;address&gt;:&lt;port&gt;</pre>
+<p>给 Gentoo portage 配置启用 distcc：</p>
+<pre class="literal-block">$ sudo vim /etc/portage/make.conf
+    MAKEOPTS=&quot;-j1 -l0&quot;
+    FEATURES=&quot;distcc -network-sandbox&quot;</pre>
+</section>
+<section id="ssh">
+<h2>通过 ssh</h2>
+<p>这种方式需要提前配置 ssh 的连接方式，且为了避免繁琐地输入登录密码，所以推荐使用 ssh key 的方式登录远端。
+另外，由于 portage 用户的家目录在 <em>/var/lib/portage/home</em> ，所以 ssh 客户端的配置文件都写入在该目录下。</p>
+<p>在本地配置 distcc slaver 地址：</p>
+<pre class="literal-block">$ sudo vim /etc/distcc/hosts
+    &lt;ssh host&gt;</pre>
+<p>给 Gentoo portage 配置启用 distcc，并启用 ssh 通信：</p>
+<pre class="literal-block">$ sudo vim /etc/portage/make.conf
+    DISTCC_SSH=&quot;ssh&quot;
+    MAKEOPTS=&quot;-j1 -l0&quot;
+    FEATURES=&quot;distcc -network-sandbox&quot;</pre>
+<p>Thanks for reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

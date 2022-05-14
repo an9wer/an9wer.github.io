@@ -1,7 +1,7 @@
 升级 Gentoo Kernel
 ==================
 
-:Published: : 2021/04/10
+:Published:  2021/04/10
 
 .. meta::
     :description: 半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软件包，
