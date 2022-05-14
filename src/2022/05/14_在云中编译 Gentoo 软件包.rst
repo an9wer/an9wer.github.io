@@ -12,7 +12,7 @@
 为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源，我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。
 
 至于如何实现远程编译软件，然后安装到本地呢？
-这就得靠 distcc 这个工具了，好在 Gentoo 的包管理工具也集成了这个软件。
+这就得靠 distcc 这个工具了，好在 Gentoo portage 也集成了这个软件。 [#]_
 
 首先需要在本地和远程都安装 distcc 软件： ::
 
@@ -62,3 +62,8 @@
         FEATURES="distcc -network-sandbox"
 
 Thanks for reading :)
+
+References
+----------
+
+.. [#] `Gentoo distcc <https://wiki.gentoo.org/wiki/Distcc>`_

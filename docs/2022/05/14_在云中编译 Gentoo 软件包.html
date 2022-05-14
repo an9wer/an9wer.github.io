@@ -44,7 +44,7 @@
 我在腾讯云上安装了 Gentoo 系统，虽然也给它搭建了一些基础服务，但这对服务器的开销是非常小的。
 为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源，我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。</p>
 <p>至于如何实现远程编译软件，然后安装到本地呢？
-这就得靠 distcc 这个工具了，好在 Gentoo 的包管理工具也集成了这个软件。</p>
+这就得靠 distcc 这个工具了，好在 Gentoo portage 也集成了这个软件。 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>首先需要在本地和远程都安装 distcc 软件：</p>
 <pre class="literal-block">$ sudo emerge -av distcc</pre>
 <p>本地和远端之间的通信有两种方式：</p>
@@ -79,6 +79,13 @@ $ sudo rc-service distccd start</pre>
     MAKEOPTS=&quot;-j1 -l0&quot;
     FEATURES=&quot;distcc -network-sandbox&quot;</pre>
 <p>Thanks for reading :)</p>
+</section>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Distcc">Gentoo distcc</a></p>
+</aside>
 </section>
     </div> <!-- content -->
 
