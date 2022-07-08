@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 14 May 2022 12:22:13 +0000</pubDate>
+  <pubDate>Thu, 07 Jul 2022 07:28:52 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -27,7 +27,7 @@
     <category>折腾</category>
     <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2022/05/01_腾讯云安装%20Gentoo.html</link>
-    <description>我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。 奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣； 心心念念想装 Gentoo。</description>
+    <description>在腾讯云上，我有一台云服务器，虽然前前后后经过几次迁移，但一直运行的都是 CentOS7。 奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 更是提不起兴趣； 心心念念想装 Gentoo。</description>
   </item>
   <item>
     <title>Gentoo 升级遇难小记（四）</title>
@@ -110,11 +110,11 @@
     <description>现在这个网站也存在快 3 年了，但访问数量实在是少的可怜。之前不 太在乎这些，因为很多文章是写给自己看的（也算是另一种笔记的形式），所以 就只满足于孤芳自赏。但最近想法改变了，既然是公开的文章，也想看看自己写 的文章能不能给别人提供些许帮助或者思路。所以打算学习下 Google SEO 的相 关知识，想着把这个网站做起来，起码能有些流量。</description>
   </item>
   <item>
-    <title>在 tmpfs 中编译 Gentoo 软件包</title>
+    <title>在 tmpfs 中编译 Gentoo 软件包（一）</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Mon, 10 May 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包.html</link>
+    <link>https://an9wer.github.io/2021/05/10_在%20tmpfs%20中编译%20Gentoo%20软件包（一）.html</link>
     <description>Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统， 安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。</description>
   </item>
   <item>
@@ -126,11 +126,11 @@
     <description>在小区地下停车库玩滑板，碰到一只超大蟑螂动也不动趴在那，着实可怕！ 有两个母亲带着两个小孩停车后从车上下来，等她们走后我回头一看，好家伙，蟑螂给踩死了。</description>
   </item>
   <item>
-    <title>Gentoo 升级遇难小记</title>
+    <title>Gentoo 升级遇难小记（一）</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记.html</link>
+    <link>https://an9wer.github.io/2021/04/10_Gentoo%20升级遇难小记（一）.html</link>
     <description>Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的时候内存不足的问题。</description>
   </item>
   <item>

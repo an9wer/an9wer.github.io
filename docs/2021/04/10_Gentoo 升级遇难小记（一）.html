@@ -68,8 +68,8 @@ operation), using a command such as emerge --deep --newuse --update &#64;world.<
 然后安装 package A：</p>
 <pre class="literal-block"># emerge -ask --oneshot =&lt;packge C v2&gt; &lt;package B&gt;
 # emerge -ask &lt;package A&gt;</pre>
-<p>但是这种方法会有个问题，假设在更新 packge C 到 v2 版本的时候也遇到了相似的依赖冲突问题，这样无限下去会相当麻烦！
-另外还有一种情况是，假设 package B 也有更新，而其原来版本的 ebuild 文件因为太老被 drop 了，这样就再也无法解决 packge B 与 packge C v2 的冲突问题了。</p>
+<p>但是这种方法会有个问题，假设在更新 packge C 到 v2 版本的时候也遇到了相似的依赖冲突问题，这样循环下去会相当麻烦！
+另外假设 package B 也有更新，而其原来版本的 ebuild 文件因为太老被 drop 了，这样就再也无法解决 packge B 与 packge C v2 的冲突问题了。</p>
 <p>有个简单且讨巧的方法是使用 emerge 的 <span class="docutils literal"><span class="pre">--nodeps</span></span> 参数直接安装 package C 的 v2 版本，之后安装 packge A：</p>
 <pre class="literal-block"># emerge -ask --oneshot --nodeps =&lt;package C v2&gt;
 # emerge -ask &lt;pacakge A&gt;</pre>

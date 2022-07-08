@@ -45,8 +45,8 @@ emerge 目前还没有办法自动处理这样依赖冲突，
     # emerge -ask --oneshot =<packge C v2> <package B>
     # emerge -ask <package A>
 
-但是这种方法会有个问题，假设在更新 packge C 到 v2 版本的时候也遇到了相似的依赖冲突问题，这样无限下去会相当麻烦！
-另外还有一种情况是，假设 package B 也有更新，而其原来版本的 ebuild 文件因为太老被 drop 了，这样就再也无法解决 packge B 与 packge C v2 的冲突问题了。
+但是这种方法会有个问题，假设在更新 packge C 到 v2 版本的时候也遇到了相似的依赖冲突问题，这样循环下去会相当麻烦！
+另外假设 package B 也有更新，而其原来版本的 ebuild 文件因为太老被 drop 了，这样就再也无法解决 packge B 与 packge C v2 的冲突问题了。
 
 有个简单且讨巧的方法是使用 emerge 的 ``--nodeps`` 参数直接安装 package C 的 v2 版本，之后安装 packge A： ::
 

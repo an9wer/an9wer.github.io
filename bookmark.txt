@@ -16,9 +16,9 @@ src/blog.rst
     src/2021/11/21_在\ Linux\ 中使用蓝牙.rst
     src/2021/11/19_关于我的\ NAS.rst
     src/2021/05/19_关于\ Google\ SEO.rst
-    src/2021/05/10_在\ tmpfs\ 中编译\ Gentoo\ 软件包.rst
+    src/2021/05/10_在\ tmpfs\ 中编译\ Gentoo\ 软件包（一）.rst
     src/2021/04/22_有一只蟑螂.rst
-    src/2021/04/10_Gentoo\ 升级遇难小记.rst
+    src/2021/04/10_Gentoo\ 升级遇难小记（一）.rst
     src/2021/04/04_关于\ v2ray\ sniffing.rst
     src/2021/03/20_关于\ chroot.rst
     src/2021/03/12_BandwagonHost\ 服务器被黑事件.rst

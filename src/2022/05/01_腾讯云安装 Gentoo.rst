@@ -4,15 +4,15 @@
 :Published:  2022/05/01
 
 .. meta::
-    :description: 我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。
-        奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣；
+    :description: 在腾讯云上，我有一台云服务器，虽然前前后后经过几次迁移，但一直运行的都是 CentOS7。
+        奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 更是提不起兴趣；
         心心念念想装 Gentoo。
 
-我在腾讯云有一台轻量云服务器，其运行的是 CentOS7。
-奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 提不起兴趣；
+在腾讯云上，我有一台云服务器，虽然前前后后经过几次迁移，但一直运行的都是 CentOS7。
+奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 更是提不起兴趣；
 心心念念想装 Gentoo。
 
-于是折腾了一阵，总算是找到了方法。
+折腾了一阵，总算找到了方法。
 
 首先下载 Gentoo 系统的 iso 文件到当前系统的根目录下，
 然后修改系统的 */boot/grub2/grub.cfg* 文件，添加如下配置： ::
@@ -24,7 +24,7 @@
       initrd (loop)/boot/gentoo.igz
     }
 
-值得一提的是 linuxrc 这个命令，它是 gentoo ramfs 中的一个类似 init 命令工具，
+在上面的配置中，值得一提的是 ``linuxrc`` ，它是预装到 gentoo ramfs 中的一个命令工具，类似 init，
 但是它提供了更多的参数，例如上面的 ``dokeymap``, ``docache``, ``passwd``, ``dosshd`` 等。
 
 - ``dokeymap``: 在载入安装镜像时，提供选项设置 keymap
@@ -35,7 +35,7 @@
 
 重启系统后在 grub 引导界面选择 gentoo 进入，即可正常载入 gentoo 的安装镜像。
 
-需要注意的是，gentoo 的安装镜像没有完全载入内存（还没有搞清楚原因），
+但有个问题是，gentoo 的安装镜像没有完全载入内存（还不清楚原因），
 因此无法对之前系统所在磁盘进行重新分区以及格式化。
 所以只能将之前的系统盘挂载到 */mnt/gentoo* 后将所有文件全部删除，
 只留下一个 gentoo iso 安装镜像文件。

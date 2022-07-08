@@ -37,7 +37,7 @@
     $ sudo vim /etc/distcc/hosts
         <address>:<port>
 
-给 Gentoo portage 配置启用 distcc： ::
+同时配置 Gentoo portage 启用 distcc： ::
 
     $ sudo vim /etc/portage/make.conf
         MAKEOPTS="-j1 -l0"
@@ -54,12 +54,22 @@
     $ sudo vim /etc/distcc/hosts
         <ssh host>
 
-给 Gentoo portage 配置启用 distcc，并启用 ssh 通信： ::
+同时配置 Gentoo portage 启用 distcc，并使用 ssh 通信： ::
 
     $ sudo vim /etc/portage/make.conf
         DISTCC_SSH="ssh"
         MAKEOPTS="-j1 -l0"
         FEATURES="distcc -network-sandbox"
+
+DEBUG
+-----
+
+如果在调试的过程中遇到问题，可以通过如下方式在开启 distcc 的 DEBUG 模式： ::
+
+    $ sudo vim /etc/portage/bashrc
+        export DISTCC_VERBOSE=1
+        export DISTCC_SAVE_TEMPS=1
+        export DISTCC_FALLBACK=0
 
 Thanks for reading :)
 
