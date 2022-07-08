@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Thu, 07 Jul 2022 07:28:52 +0000</pubDate>
+  <pubDate>Fri, 08 Jul 2022 13:29:06 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -68,6 +68,14 @@
     <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2022/01/23_在%20Vim%20中映射%20Alt%20键.html</link>
     <description>近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键， 例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？</description>
+  </item>
+  <item>
+    <title>Gentoo 升级遇难小记（三）</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2021/12/24_Gentoo%20升级遇难小记（三）.html</link>
+    <description>Gentoo 更新 gcc 软件包的时候磁盘空间不足的问题。</description>
   </item>
   <item>
     <title>Gentoo 升级遇难小记（二）</title>

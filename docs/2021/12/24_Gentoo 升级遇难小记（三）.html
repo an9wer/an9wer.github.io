@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<title>Gentoo 升级遇难小记（三） | an9wer's blog</title>
+<meta content="Gentoo 更新 gcc 软件包的时候磁盘空间不足的问题。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Gentoo 升级遇难小记（三）</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>: 2021/12/24</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>之前有幸赶上最后一班 Bandwagon CN2 GIA $49.9/year 的车 —— 现在已成为绝版小鸡。</p>
+<p>但万幸中的不幸是，其只有 512M 的内存以及 10G 的磁盘空间，而我还偏偏安装了 Gentoo ——
+因此在每次更新 gcc 软件包的时候都是个头疼的问题。
+因为一般在更新软件包的时候我会生成 2G 的 swap 充当临时内存，此时磁盘的空间就捉襟见肘了，常常是不够 gcc 编译使用。</p>
+<p>想到可以用 NFS 用来扩展磁盘空间，
+不过如果在 non-Gentoo 系统上开启 NFS server，同时挂载给 Gentoo 系统的 <em>/var/tmp/portage/</em> 路径，
+然后使用 <span class="docutils literal">emerge</span> 命令安装软件包，会有权限相关的报错。
+原因也显而易见，是因为 non-Gentoo 系统上没有 portage 这个用户，
+但发现即使手动创建了 portage 用户，依然无法正常使用 <span class="docutils literal">emerge</span> 。
+看起来需要 NFS server 所在的系统也同样是 Gentoo。</p>
+<p>所以只能新建一个 Gentoo 系统，然后在其上安装 NFS server。
+但是众所周知，搭建一个 Gentoo 系统是非常耗时的。
+那怎么能快速创建 Gentoo 系统呢？ —— 答案是 stage4。
+通常我们都是基于官方提供的 stage3（tar 包）安装 Gentoo 系统的，stage3 中只包含了一些基础的系统文件（bin, lib 等）
+而 stage4 的概念则是将一个完整可用的系统都打成 tar 包，解压即可用。</p>
+<p>网上有人提供了一些可用的 stage4，不过也可以通过 <cite>mkstage4 &lt;https://github.com/TheChymera/mkstage4&gt;_</cite> 工具
+手动将一个完整的 Gentoo 打包成 stage4 tar 包。
+之后便可快速安装 Gentoo 系统（与其说是安装，不如说是还原，呵呵）。</p>
+<section id="nfs-server">
+<h2>NFS server</h2>
+<pre class="literal-block">$ sudo emerge -av net-fs/nfs-utils
+$ sudo vim /etc/exports
+    /var/tmp/portage  &lt;client ip&gt;/32(rw,no_root_squash,sync,no_subtree_check,crossmnt,fsid=0)
+$ sudo vim /etc/conf.d/nfs
+    OPTS_RPC_NFSD=&quot;2 -V 3 -V 4 -V 4.1&quot;
+$ sudo rc-service nfs start</pre>
+</section>
+<section id="nfs-client">
+<h2>NFS client</h2>
+<pre class="literal-block">$ sudo vim /etc/fstab
+    &lt;server ip&gt;:/var/tmp/portage  /var/tmp/portage  nfs  rw,noauto  0  0
+$ sudo rc-service nfsclient start
+$ sudo mount /var/tmp/portage</pre>
+<p>Thanks for reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
