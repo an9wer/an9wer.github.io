@@ -69,6 +69,7 @@ src/notes.rst
         src/notes/commands/less.rst
         src/notes/commands/info.rst
         src/notes/commands/sed.rst
+	src/notes/tmux.rst
     Commands
         src/notes/commands/7z.rst
         src/notes/commands/rsync.rst

@@ -25,7 +25,7 @@ Gentoo 升级遇难小记（三）
 通常我们都是基于官方提供的 stage3（tar 包）安装 Gentoo 系统的，stage3 中只包含了一些基础的系统文件（bin, lib 等）
 而 stage4 的概念则是将一个完整可用的系统都打成 tar 包，解压即可用。
 
-网上有人提供了一些可用的 stage4，不过也可以通过 `mkstage4 <https://github.com/TheChymera/mkstage4>_` 工具
+网上有人提供了一些可用的 stage4，不过也可以通过 `mkstage4 <https://github.com/TheChymera/mkstage4>`_ 工具
 手动将一个完整的 Gentoo 打包成 stage4 tar 包。
 之后便可快速安装 Gentoo 系统（与其说是安装，不如说是还原，呵呵）。
 

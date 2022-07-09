@@ -4,8 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
-<title>an9wer's notes</title>
-<meta content="noindex" name="robots" />
+<title>Tmux</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -32,28 +31,30 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-
+<h1 class="title">Tmux</h1>
 
 
     <div id="content">
-<dl class="simple">
-<dt>Command/</dt>
-<dd><ul class="simple">
-<li><p><a class="reference external" href="/notes/commands/less.html">less</a> - opposite of more</p></li>
-<li><p><a class="reference external" href="/notes/commands/info.html">info</a> - read info documents</p></li>
-</ul>
-</dd>
-<dt>Editor/</dt>
-<dd><ul class="simple">
-<li><p><a class="reference external" href="/notes/commands/sed.html">sed</a> - stream editor for filtering and transforming text</p></li>
-</ul>
-</dd>
-<dt>Screen Manager/</dt>
-<dd><ul class="simple">
-<li><p><a class="reference external" href="/notes/tmux.html">tmux</a> - terminal multiplexer</p></li>
-</ul>
-</dd>
-</dl>
+<section id="session">
+<h2>Session</h2>
+<p>List sessions:</p>
+<pre class="literal-block">$ tmux ls</pre>
+<p>Attach a specified session:</p>
+<pre class="literal-block">$ tmux attach -t &lt;session number&gt;</pre>
+<p>Close a specified session:</p>
+<pre class="literal-block">$ tmux kill-session -t &lt;session number&gt;</pre>
+<p>Close all sessions but a specified session:</p>
+<pre class="literal-block">$ tmux kill-session -a -t &lt;session number&gt;</pre>
+</section>
+<section id="window">
+<h2>Window</h2>
+<p>List windows in a specified session:</p>
+<pre class="literal-block">$ tmux lsc -t &lt;session number&gt;</pre>
+<p>Close a specified window:</p>
+<pre class="literal-block">$ tmux kill-window -t &lt;window number&gt;</pre>
+<p>Close all windows but a specified window:</p>
+<pre class="literal-block">$ tmux kill-window -a -t &lt;window number&gt;</pre>
+</section>
     </div> <!-- content -->
 
     <div id="footer">
