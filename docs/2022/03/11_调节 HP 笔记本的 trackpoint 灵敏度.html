@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<title>有一只蟑螂 | an9wer's blog</title>
-<meta content="在小区地下停车库玩滑板，碰到一只超大蟑螂动也不动趴在那，着实可怕！ 有两个母亲带着两个小孩停车后从车上下来，等她们走后我回头一看，好家伙，蟑螂给踩死了。" name="description" />
+<title>调节 HP 笔记本的 trackpoint 灵敏度 | an9wer's blog</title>
+<meta content="在 Linux 系统中，调节 HP 笔记本的 trackpoint 灵敏度。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -32,31 +32,32 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-<h1 class="title">有一只蟑螂</h1>
+<h1 class="title">调节 HP 笔记本的 trackpoint 灵敏度</h1>
 <dl class="docinfo simple">
 <dt class="published">Published<span class="colon">:</span></dt>
-<dd class="published"><p>: 2021/04/22</p>
+<dd class="published"><p>2022/03/11</p>
 </dd>
 </dl>
 
     <div id="content">
-<pre class="literal-block">有一只蟑螂
-趴在停车位前
-路道旁的白线边上
-动也不动
-像是死了
-
-有一只蟑螂
-下班的车
-路过它
-动也不动
-像是死了
-
-有一只蟑螂
-下车的人
-经过它
-肚皮朝天
-真是死了</pre>
+<p>要知道在若干年前，HP 的 EliteBook 系列的笔记本也是有 trackpoint 的。
+而我手上就有这么一台年数已久 HP 笔记本，型号为 EliteBook 8470p。</p>
+<p>Trackpoint 还真是个有用的东西，用它来当鼠标，双手可以不用离开键盘核心区域，因此打字和移动鼠标可以无缝切换。
+但直到最近，遇到个苦恼的问题 —— 因为使用频率太高，而它默认的灵敏度设置又比较低，导致用久了之后，手指感到异常酸疼。</p>
+<p>那么问题来了，在 Linux 下该如何调节 HP 笔记本的 trackpoint 灵敏度呢？</p>
+<p>在 Linux 下，input 设备（鼠标，键盘，触摸板等）的驱动主要有 libinput, evdev 和 synaptics。</p>
+<p>使用 <span class="docutils literal">xinput</span> 命令可以得知当前 trackpoint 使用的是 libinput，
+而同样使用 <span class="docutils literal">xinput</span> 命令修改 trackpoint 灵敏度却不奏效（或者说在 0 到 1  之间的范围内，不管怎么调整，差别都不大）：</p>
+<pre class="literal-block">$ xinput set-prop 'PS/2 Generic Mouse' 'Libinput Accel Speed' 1</pre>
+<p>既然这样，索性将 trackpoint 的驱动从 libinput 换成 evdev：</p>
+<pre class="literal-block">$ sudo vim /etc/X11/xorg.conf
+    Section &quot;InputClass&quot;
+      Identifier &quot;trackpoint&quot;
+      Driver &quot;evdev&quot;
+      MatchDevicePath &quot;/dev/input/event&lt;number&gt;&quot;
+      Option &quot;ConstantDeceleration&quot; &quot;&lt;number&gt;&quot;
+    Endsection</pre>
+<p>最终看起来 evdev 对 HP 的兼容性会比 libinput 更好。</p>
 <p>Thanks for reading :)</p>
     </div> <!-- content -->
 

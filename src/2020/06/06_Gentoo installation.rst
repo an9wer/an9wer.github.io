@@ -1,14 +1,14 @@
 Gentoo installation
 ===================
 
-Prepare
--------
+Preparation
+-----------
 
 Setup network: ::
 
     # net-setup
 
-format disk: ::
+Disk partition: ::
 
     1. UEFI + GPT
     # fdisk /dev/sda
@@ -45,7 +45,7 @@ Synchronize system time: ::
 
     # ntpd -q -g
 
-Install stage tarball: ::
+Install stage3: ::
 
     # cd /mnt/gentoo
     # wget <PASTED_STAGE_URL>
@@ -61,7 +61,7 @@ Configure portage: ::
     # cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
     # cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 
-Mounting the necessary filesystems: ::
+Mount necessary filesystems: ::
 
     # mount --types proc /proc /mnt/gentoo/proc
     # mount --rbind /sys /mnt/gentoo/sys
@@ -90,7 +90,7 @@ Set timezone: ::
     # echo "Asia/Shanghai" > /etc/timezone
     # emerge --config sys-libs/timezone-data
 
-Synchronize the system clock : ::
+Synchronize system clock : ::
 
     # emerge --ask net-misc/chrony
     # rc-update add chronyd default
@@ -178,7 +178,9 @@ Install xorg: ::
         USE="elogind -consolekit -systemd"
     # emerge --ask --changed-use --deep @world
     # rc-update add dbus default
-    # reboot
+
+    Issue: parse_vt_settings: Cannot open /dev/tty0 (Permission denied)
+    # rc-update add elogind boot
 
     # vim /etc/portage/make.conf
         INPUT_DEVICES="libinput synaptics"

@@ -2,11 +2,12 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    # TODO src/2022/08/14_efibootmgr\ 双系统.rst
     src/2022/05/14_在云中编译\ Gentoo\ 软件包.rst
     src/2022/05/01_腾讯云安装\ Gentoo.rst
     src/2022/03/20_Gentoo\ 升级遇难小记（四）.rst
     src/2022/03/16_小米\ AC2100\ 路由器刷入及配置\ OpenWRT.rst
-    TODO: src/2022/03/11_HP trackpoint 的灵敏度设置.rst
+    src/2022/03/11_调节\ HP\ 笔记本的\ trackpoint\ 灵敏度.rst
     src/2022/01/24_一大波面试（二）.rst
     src/2022/01/23_关于\ Vim\ 的\ Esc\ Delay.rst
     src/2022/01/23_在\ Vim\ 中映射\ Alt\ 键.rst

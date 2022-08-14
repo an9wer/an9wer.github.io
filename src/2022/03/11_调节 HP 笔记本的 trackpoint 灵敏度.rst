@@ -1,0 +1,36 @@
+调节 HP 笔记本的 trackpoint 灵敏度
+==================================
+
+:Published:  2022/03/11
+
+.. meta::
+    :description: 在 Linux 系统中，调节 HP 笔记本的 trackpoint 灵敏度。
+
+要知道在若干年前，HP 的 EliteBook 系列的笔记本也是有 trackpoint 的。
+而我手上就有这么一台年数已久 HP 笔记本，型号为 EliteBook 8470p。
+
+Trackpoint 还真是个有用的东西，用它来当鼠标，双手可以不用离开键盘核心区域，因此打字和移动鼠标可以无缝切换。
+但直到最近，遇到个苦恼的问题 —— 因为使用频率太高，而它默认的灵敏度设置又比较低，导致用久了之后，手指感到异常酸疼。
+
+那么问题来了，在 Linux 下该如何调节 HP 笔记本的 trackpoint 灵敏度呢？
+
+在 Linux 下，input 设备（鼠标，键盘，触摸板等）的驱动主要有 libinput, evdev 和 synaptics。
+
+使用 ``xinput`` 命令可以得知当前 trackpoint 使用的是 libinput，
+而同样使用 ``xinput`` 命令修改 trackpoint 灵敏度却不奏效（或者说在 0 到 1  之间的范围内，不管怎么调整，差别都不大）： ::
+
+    $ xinput set-prop 'PS/2 Generic Mouse' 'Libinput Accel Speed' 1
+
+既然这样，索性将 trackpoint 的驱动从 libinput 换成 evdev： ::
+
+    $ sudo vim /etc/X11/xorg.conf
+        Section "InputClass"
+          Identifier "trackpoint"
+          Driver "evdev"
+          MatchDevicePath "/dev/input/event<number>"
+          Option "ConstantDeceleration" "<number>"
+        Endsection
+
+最终看起来 evdev 对 HP 的兼容性会比 libinput 更好。
+
+Thanks for reading :)

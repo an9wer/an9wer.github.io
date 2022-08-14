@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <title>Gentoo installation | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
@@ -35,11 +35,11 @@
 
 
     <div id="content">
-<section id="prepare">
-<h2>Prepare</h2>
+<section id="preparation">
+<h2>Preparation</h2>
 <p>Setup network:</p>
 <pre class="literal-block"># net-setup</pre>
-<p>format disk:</p>
+<p>Disk partition:</p>
 <pre class="literal-block">1. UEFI + GPT
 # fdisk /dev/sda
     g
@@ -72,7 +72,7 @@
 # mount /dev/sda3 /mnt/gentoo</pre>
 <p>Synchronize system time:</p>
 <pre class="literal-block"># ntpd -q -g</pre>
-<p>Install stage tarball:</p>
+<p>Install stage3:</p>
 <pre class="literal-block"># cd /mnt/gentoo
 # wget &lt;PASTED_STAGE_URL&gt;
 # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</pre>
@@ -84,7 +84,7 @@
 # mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 # cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 # cp --dereference /etc/resolv.conf /mnt/gentoo/etc/</pre>
-<p>Mounting the necessary filesystems:</p>
+<p>Mount necessary filesystems:</p>
 <pre class="literal-block"># mount --types proc /proc /mnt/gentoo/proc
 # mount --rbind /sys /mnt/gentoo/sys
 # mount --make-rslave /mnt/gentoo/sys
@@ -105,7 +105,7 @@
 <p>Set timezone:</p>
 <pre class="literal-block"># echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone
 # emerge --config sys-libs/timezone-data</pre>
-<p>Synchronize the system clock :</p>
+<p>Synchronize system clock :</p>
 <pre class="literal-block"># emerge --ask net-misc/chrony
 # rc-update add chronyd default</pre>
 <p>Set locale:</p>
@@ -178,7 +178,9 @@
     USE=&quot;elogind -consolekit -systemd&quot;
 # emerge --ask --changed-use --deep &#64;world
 # rc-update add dbus default
-# reboot
+
+Issue: parse_vt_settings: Cannot open /dev/tty0 (Permission denied)
+# rc-update add elogind boot
 
 # vim /etc/portage/make.conf
     INPUT_DEVICES=&quot;libinput synaptics&quot;
