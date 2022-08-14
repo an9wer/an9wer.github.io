@@ -7,7 +7,7 @@ src/blog.rst
     src/2022/05/01_腾讯云安装\ Gentoo.rst
     src/2022/03/20_Gentoo\ 升级遇难小记（四）.rst
     src/2022/03/16_小米\ AC2100\ 路由器刷入及配置\ OpenWRT.rst
-    src/2022/03/11_调节\ HP\ 笔记本的\ trackpoint\ 灵敏度.rst
+    src/2022/03/11_调节\ HP\ 笔记本的\ Trackpoint\ 灵敏度.rst
     src/2022/01/24_一大波面试（二）.rst
     src/2022/01/23_关于\ Vim\ 的\ Esc\ Delay.rst
     src/2022/01/23_在\ Vim\ 中映射\ Alt\ 键.rst
