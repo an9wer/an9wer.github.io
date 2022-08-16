@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 16 Aug 2022 09:52:14 +0000</pubDate>
+  <pubDate>Tue, 16 Aug 2022 13:05:52 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -287,11 +287,12 @@
     <link>https://an9wer.github.io/2019/08/21_终端下的目录切换.html</link>
   </item>
   <item>
-    <title>TODO list</title>
+    <title>关于 TODO List</title>
     <author>an9wer@gmail.com</author>
     <category>工具</category>
     <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2019/08/20_TODO%20list.html</link>
+    <link>https://an9wer.github.io/2019/08/20_关于%20TODO%20List.html</link>
+    <description>TODO List 的最佳实践。</description>
   </item>
   <item>
     <title>Raspberry Pi installation</title>

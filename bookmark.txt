@@ -39,7 +39,7 @@ src/blog.rst
     src/2019/11/09_Setup\ raid1.rst
     src/2019/09/02_Fcitx_VS_Ibus.rst
     src/2019/08/21_终端下的目录切换.rst
-    src/2019/08/20_TODO\ list.rst
+    src/2019/08/20_关于\ TODO\ List.rst
     src/2019/08/19_Raspberry\ Pi\ installation.rst
     src/2019/07/21_终端下的单词查询.rst
     src/2019/06/15_从\ asciidoc\ 转投\ reStructuredText.rst
