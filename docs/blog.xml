@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sun, 14 Aug 2022 06:50:22 +0000</pubDate>
+  <pubDate>Tue, 16 Aug 2022 09:52:14 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -394,12 +394,12 @@
     <link>https://an9wer.github.io/2018/12/17_Rapoo%20V500%20换键帽.html</link>
   </item>
   <item>
-    <title>Caps_Lock key 重绑定</title>
+    <title>CapsLock 键重绑定</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2018/12/15_Caps_Lock%20key%20重绑定.html</link>
-    <description>Ctrl 是 Bash 和 Vim 中常用的按键，但其位于键盘的左下角，按起 来实在不舒服，所以我通过 xmodmap 将其重新绑定到了 Caps_Lock 键上。</description>
+    <link>https://an9wer.github.io/2018/12/15_CapsLock%20键重绑定.html</link>
+    <description>Ctrl 键是 Bash 和 Vim 中常用的按键，但其位于键盘的左下角，按起 来实在不舒服，因此通过 xmodmap 将其重新绑定到了 Caps_Lock 键上。</description>
   </item>
   <item>
     <title>MuPDF 使用小记</title>

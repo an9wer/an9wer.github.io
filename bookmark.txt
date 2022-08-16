@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    # TODO src/2022/08/15_巧用\ AltGr\ 键自定义键盘布局.rst
     # TODO src/2022/08/14_efibootmgr\ 双系统.rst
     src/2022/05/14_在云中编译\ Gentoo\ 软件包.rst
     src/2022/05/01_腾讯云安装\ Gentoo.rst
@@ -53,7 +54,7 @@ src/blog.rst
     src/2018/12/29_GH\ 60\ Satan\ 入手.rst
     src/2018/12/24_GANSS\ ALT\ 61\ 入手.rst
     src/2018/12/17_Rapoo\ V500\ 换键帽.rst
-    src/2018/12/15_Caps_Lock\ key\ 重绑定.rst
+    src/2018/12/15_CapsLock\ 键重绑定.rst
     src/2018/12/13_MuPDF\ 使用小记.rst
     src/2018/12/08_用\ RSS\ 订阅网站的更新.rst
     src/2018/12/05_OnePlus\ 5T\ 入手.rst
