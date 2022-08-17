@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<title>巧用 AltGr 键自定义键盘布局 | an9wer's blog</title>
+<meta content="通过 AltGr 键，给键盘自定义一套 layer。" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">巧用 AltGr 键自定义键盘布局</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2022/08/15</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>键盘上的上下左右键位不在核心区域，无奈每次都需要抬手去按，因而打字流畅度大打折扣。
+有没有比较优雅的方案呢？ —— 当然有，前文中我提到了 xmodmap 工具，可以用来自定义键位。</p>
+<p>但问题是上下左右键共有四个键，映射到哪些键位比较合适呢？
+仔细观察键盘上的每个按键，尤其是边边角角，想着能扣出几个位置来给上下左右“四兄弟”，奈何键盘这寸土寸金之地，哪还有它们的落脚之地。</p>
+<p>好在看 xmodmap 的文档的时候，发现 keysym 的可以包含如下 6 种定义（不过在 <span class="docutils literal">xmodmap <span class="pre">-pke</span></span> 的输出结果中，发现不止 6 种） <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> ：</p>
+<blockquote>
+<p>Each keycode is followed by the keysym it is mapped to. Each keysym column in the table corresponds to a particular combination of modifier keys:</p>
+<blockquote>
+<ol class="arabic simple">
+<li><p>Key</p></li>
+<li><p>Shift+Key</p></li>
+<li><p>Mode_switch+Key</p></li>
+<li><p>Mode_switch+Shift+Key</p></li>
+<li><p>ISO_Level3_Shift+Key</p></li>
+<li><p>ISO_Level3_Shift+Shift+Key</p></li>
+</ol>
+</blockquote>
+</blockquote>
+<p>那么我就可以通过 Mode_switch 或者 ISO_Level3_Shift 这两个 modifier key 对键位映射新的含义。</p>
+<p>这里解释下相关名词的含义：</p>
+<ul class="simple">
+<li><p>keycode: the numeric representation received by the kernel when a key or a mouse button is pressed.</p></li>
+<li><p>keysym: the value assigned to the keycode. For example, pressing a generates the keycode 38, which is mapped to the keysym 0×61, which matches a in the ASCII table.</p></li>
+<li><p>ISO_Level3_Shift: The AltGr key on non-US keyboards calls modifier ISO_Level3_Shift. (On US keyboards, the right-alt Alt_R has the same function as the left-alt Alt_L, which makes setting the layout as US international preferable.)</p></li>
+<li><p>Mode_switch: The Mode_switch modifier may be mapped by default to a key that is not on your keyboard.</p></li>
+</ul>
+<p>另外，关于 modifier key，它可以用来修改键位原本的含义，通过 <span class="docutils literal">xev <span class="pre">-event</span> keyboard</span> 命令的输出，可以直观的看出差异。
+例如，原本仅按 a 键输出的是 &quot;a&quot;，这里 <span class="docutils literal">state 0x0</span> 表示没有按任何 modifier key， <span class="docutils literal">keycode 38</span> 表示 a 键的 keycode 为 38：</p>
+<pre class="literal-block">KeyPress event, serial 28, synthetic NO, window 0x4600001,
+    root 0x520, subw 0x0, time 357030121, (154,616), root:(155,617),
+    state 0x0, keycode 38 (keysym 0x61, a), same_screen YES,
+    XLookupString gives 1 bytes: (61) &quot;a&quot;
+    XmbLookupString gives 1 bytes: (61) &quot;a&quot;
+    XFilterEvent returns: False</pre>
+<p>而在按 a 键的同时按 shift 键，则会输出 &quot;A&quot;，这次 state 不再是 0x0，即表明 modifier key 被按下，而 0x1 则代表 shift 键。
+另一方面可以发现 kecode 仍然是 38：</p>
+<pre class="literal-block">KeyPress event, serial 28, synthetic NO, window 0x4600001,
+    root 0x520, subw 0x0, time 357104060, (478,623), root:(479,624),
+    state 0x1, keycode 38 (keysym 0x41, A), same_screen YES,
+    XLookupString gives 1 bytes: (41) &quot;A&quot;
+    XmbLookupString gives 1 bytes: (41) &quot;A&quot;
+    XFilterEvent returns: False</pre>
+<p>通过这种方式，可以得到其它 modifer key 的 keycode，如果是多个 modifer key 的组合键，则 keycode 是它们的合：</p>
+<table>
+<thead>
+<tr><th class="head"><p>Key</p></th>
+<th class="head"><p>Keycode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>Shift</p></td>
+<td><p>0x1</p></td>
+</tr>
+<tr><td><p>Ctrl</p></td>
+<td><p>0x4</p></td>
+</tr>
+<tr><td><p>Alt</p></td>
+<td><p>0x8</p></td>
+</tr>
+<tr><td><p>Ctrl+Shift</p></td>
+<td><p>0x5</p></td>
+</tr>
+<tr><td><p>Ctrl+Alt</p></td>
+<td><p>0xc</p></td>
+</tr>
+</tbody>
+</table>
+<p>综上所述，通过 AltGr 键（即 ISO_Level3_Shift 键） <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 加上其他按键的组合键可以对上下左右键重新映射。
+但新的问题又来了，在 US 标准布局的键盘上，是没有 AltGr 键的，那么有没有可能通过软件层面将右侧的 Alt 键转化成 AltGr 键？
+答案是肯定的，而且有两种方法：
+其一是使用 <span class="docutils literal">setxkbmap <span class="pre">-variant</span> <span class="pre">altgr-intl</span></span> 命令，或是将如下配置添加到 <em>/etc/X11/xorg.conf.d</em> 目录下 <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ：</p>
+<pre class="literal-block">Section &quot;InputClass&quot;
+    Identifier &quot;Keyboard Defaults&quot;
+    MatchIsKeyboard &quot;yes&quot;
+    Driver &quot;evdev&quot;
+    Option &quot;XkbLayout&quot; &quot;us&quot;
+    Option  &quot;XkbVariant&quot; &quot;altgr-intl&quot;
+EndSection</pre>
+<p>最终，通过 AltGr 这个 modifier key，我将上下左右键分别映射到 <span class="docutils literal">AltGr+WSAD</span> 这些组合键上。
+其实，利用 AltGr 键完全可以做到给键盘重新映射一层自定义的 layer。</p>
+<p>Thanks for reading :)</p>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.archlinux.org/title/xmodmap">ArchWiki: xmodmap</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/AltGr_key#:~:text=AltGr(alsoAltGraph)is,typographicmarksandaccentedletters.">Wikipedia: AltGr key</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://zuttobenkyou.wordpress.com/2011/08/24/xorg-using-the-us-international-altgr-intl-variant-keyboard-layout/">Xorg: Using the US International (altgr-intl variant) Keyboard Layout</a></p>
+</aside>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2022 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
