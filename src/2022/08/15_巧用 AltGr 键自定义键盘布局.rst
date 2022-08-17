@@ -7,7 +7,7 @@
     :description: 通过 AltGr 键，给键盘自定义一套 layer。
 
 键盘上的上下左右键位不在核心区域，无奈每次都需要抬手去按，因而打字流畅度大打折扣。
-有没有比较优雅的方案呢？ —— 当然有，前文中我提到了 xmodmap 工具，可以用来自定义键位。
+有没有比较优雅的方案呢？ —— 当然有， `前文 </2018/12/15_CapsLock%20键重绑定.html>`_ 中我提到了 xmodmap 工具，可以用来自定义键位。
 
 但问题是上下左右键共有四个键，映射到哪些键位比较合适呢？
 仔细观察键盘上的每个按键，尤其是边边角角，想着能扣出几个位置来给上下左右“四兄弟”，奈何键盘这寸土寸金之地，哪还有它们的落脚之地。
@@ -16,12 +16,12 @@
 
     Each keycode is followed by the keysym it is mapped to. Each keysym column in the table corresponds to a particular combination of modifier keys:
     
-        1. Key
-        2. Shift+Key
-        3. Mode_switch+Key
-        4. Mode_switch+Shift+Key
-        5. ISO_Level3_Shift+Key
-        6. ISO_Level3_Shift+Shift+Key
+    1. Key
+    2. Shift+Key
+    3. Mode_switch+Key
+    4. Mode_switch+Shift+Key
+    5. ISO_Level3_Shift+Key
+    6. ISO_Level3_Shift+Shift+Key
 
 那么我就可以通过 Mode_switch 或者 ISO_Level3_Shift 这两个 modifier key 对键位映射新的含义。
 
