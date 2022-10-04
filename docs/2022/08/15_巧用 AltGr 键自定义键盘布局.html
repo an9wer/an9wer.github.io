@@ -64,8 +64,8 @@
 <li><p>ISO_Level3_Shift: The AltGr key on non-US keyboards calls modifier ISO_Level3_Shift. (On US keyboards, the right-alt Alt_R has the same function as the left-alt Alt_L, which makes setting the layout as US international preferable.)</p></li>
 <li><p>Mode_switch: The Mode_switch modifier may be mapped by default to a key that is not on your keyboard.</p></li>
 </ul>
-<p>另外，关于 modifier key，它可以用来修改键位原本的含义，通过 <span class="docutils literal">xev <span class="pre">-event</span> keyboard</span> 命令的输出，可以直观的看出差异。
-例如，原本仅按 a 键输出的是 &quot;a&quot;，这里 <span class="docutils literal">state 0x0</span> 表示没有按任何 modifier key， <span class="docutils literal">keycode 38</span> 表示 a 键的 keycode 为 38：</p>
+<p>另外，关于 modifier key，它可以用来修改键位原本的含义，通过 <span class="docutils literal">xev <span class="pre">-event</span> keyboard</span> 命令的输出，可以直观地看出差异。
+例如，原本仅按 a 键输出的是 &quot;a&quot;，此时 <span class="docutils literal">state 0x0</span> 表示没有按任何 modifier key， <span class="docutils literal">keycode 38</span> 表示 a 键的 keycode 为 38：</p>
 <pre class="literal-block">KeyPress event, serial 28, synthetic NO, window 0x4600001,
     root 0x520, subw 0x0, time 357030121, (154,616), root:(155,617),
     state 0x0, keycode 38 (keysym 0x61, a), same_screen YES,
@@ -116,6 +116,7 @@
     Option &quot;XkbLayout&quot; &quot;us&quot;
     Option  &quot;XkbVariant&quot; &quot;altgr-intl&quot;
 EndSection</pre>
+<p>需要注意的是，在使用 xmodemap 命令之前将需要将 AltGr 键提前设置好。</p>
 <p>最终，通过 AltGr 这个 modifier key，我将上下左右键分别映射到 <span class="docutils literal">AltGr+WSAD</span> 这些组合键上。
 其实，利用 AltGr 键完全可以做到给键盘重新映射一层自定义的 layer。</p>
 <p>Thanks for reading :)</p>
