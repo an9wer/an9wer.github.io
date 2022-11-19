@@ -25,7 +25,7 @@
 
 那么我就可以通过 Mode_switch 或者 ISO_Level3_Shift 这两个 modifier key 对键位映射新的含义。
 
-这里解释下相关名词的含义：
+解释下相关名词的含义：
 
 - keycode: the numeric representation received by the kernel when a key or a mouse button is pressed.
 - keysym: the value assigned to the keycode. For example, pressing a generates the keycode 38, which is mapped to the keysym 0×61, which matches a in the ASCII table.
@@ -53,7 +53,7 @@
         XmbLookupString gives 1 bytes: (41) "A"
         XFilterEvent returns: False
 
-通过这种方式，可以得到其它 modifer key 的 keycode，如果是多个 modifer key 的组合键，则 keycode 是它们的合：
+通过该方式，可以得到其它 modifer key 的 keycode，如果是多个 modifer key 的组合键，则 keycode 是它们的合：
 
 +------------+-----------+
 | Key        | Keycode   |
@@ -70,9 +70,9 @@
 +------------+-----------+
 
 综上所述，通过 AltGr 键（即 ISO_Level3_Shift 键） [#]_ 加上其他按键的组合键可以对上下左右键重新映射。
-但新的问题又来了，在 US 标准布局的键盘上，是没有 AltGr 键的，那么有没有可能通过软件层面将右侧的 Alt 键转化成 AltGr 键？
-答案是肯定的，而且有两种方法：
-其一是使用 ``setxkbmap -variant altgr-intl`` 命令，或是将如下配置添加到 */etc/X11/xorg.conf.d* 目录下 [#]_ ： ::
+但新的问题又来了，在 US 标准布局的键盘上，是没有 AltGr 键的。
+那么有没有可能通过软件层面将右侧的 Alt 键转化成 AltGr 键？还真是有的：
+使用 ``setxkbmap -variant altgr-intl`` 命令，或是将如下配置添加到 */etc/X11/xorg.conf.d* 目录下 [#]_ ： ::
 
     Section "InputClass"
         Identifier "Keyboard Defaults"
