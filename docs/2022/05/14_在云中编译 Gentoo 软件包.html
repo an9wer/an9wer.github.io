@@ -42,7 +42,7 @@
     <div id="content">
 <p><a class="reference external" href="/2022/05/01_腾讯云安装%20Gentoo.html">前文</a> 中，
 我在腾讯云上安装了 Gentoo 系统，虽然也给它搭建了一些基础服务，但这对服务器的开销是非常小的。
-为了凸显服务器更多的存在价值，也为了压榨服务器的每一点资源，我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。</p>
+为了突显服务器更多的存在价值，也为了压榨服务器的每一点资源，我打算将个人笔记本上系统的日常更新过程挪到服务器上 —— 实现云中编译 Gentoo 软件包。</p>
 <p>至于如何实现远程编译软件，然后安装到本地呢？
 这就得靠 distcc 这个工具了，好在 Gentoo portage 也集成了这个软件。 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>首先需要在本地和远程都安装 distcc 软件：</p>

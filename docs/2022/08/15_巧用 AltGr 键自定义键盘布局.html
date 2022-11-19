@@ -57,7 +57,7 @@
 </ol>
 </blockquote>
 <p>那么我就可以通过 Mode_switch 或者 ISO_Level3_Shift 这两个 modifier key 对键位映射新的含义。</p>
-<p>这里解释下相关名词的含义：</p>
+<p>解释下相关名词的含义：</p>
 <ul class="simple">
 <li><p>keycode: the numeric representation received by the kernel when a key or a mouse button is pressed.</p></li>
 <li><p>keysym: the value assigned to the keycode. For example, pressing a generates the keycode 38, which is mapped to the keysym 0×61, which matches a in the ASCII table.</p></li>
@@ -80,7 +80,7 @@
     XLookupString gives 1 bytes: (41) &quot;A&quot;
     XmbLookupString gives 1 bytes: (41) &quot;A&quot;
     XFilterEvent returns: False</pre>
-<p>通过这种方式，可以得到其它 modifer key 的 keycode，如果是多个 modifer key 的组合键，则 keycode 是它们的合：</p>
+<p>通过该方式，可以得到其它 modifer key 的 keycode，如果是多个 modifer key 的组合键，则 keycode 是它们的合：</p>
 <table>
 <thead>
 <tr><th class="head"><p>Key</p></th>
@@ -106,9 +106,9 @@
 </tbody>
 </table>
 <p>综上所述，通过 AltGr 键（即 ISO_Level3_Shift 键） <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 加上其他按键的组合键可以对上下左右键重新映射。
-但新的问题又来了，在 US 标准布局的键盘上，是没有 AltGr 键的，那么有没有可能通过软件层面将右侧的 Alt 键转化成 AltGr 键？
-答案是肯定的，而且有两种方法：
-其一是使用 <span class="docutils literal">setxkbmap <span class="pre">-variant</span> <span class="pre">altgr-intl</span></span> 命令，或是将如下配置添加到 <em>/etc/X11/xorg.conf.d</em> 目录下 <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ：</p>
+但新的问题又来了，在 US 标准布局的键盘上，是没有 AltGr 键的。
+那么有没有可能通过软件层面将右侧的 Alt 键转化成 AltGr 键？还真是有的：
+使用 <span class="docutils literal">setxkbmap <span class="pre">-variant</span> <span class="pre">altgr-intl</span></span> 命令，或是将如下配置添加到 <em>/etc/X11/xorg.conf.d</em> 目录下 <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ：</p>
 <pre class="literal-block">Section &quot;InputClass&quot;
     Identifier &quot;Keyboard Defaults&quot;
     MatchIsKeyboard &quot;yes&quot;
