@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 19 Nov 2022 05:48:05 +0000</pubDate>
+  <pubDate>Wed, 21 Dec 2022 09:53:48 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>老招扶新墙</title>
+    <author>an9wer@gmail.com</author>
+    <category>折腾</category>
+    <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2022/11/19_老招扶新墙.html</link>
+    <description>在代理被 GFW 封锁后，祭出了“老招” —— SSH，来突破封锁。</description>
+  </item>
   <item>
     <title>巧用 AltGr 键自定义键盘布局</title>
     <author>an9wer@gmail.com</author>
@@ -272,6 +280,7 @@
     <category>记录</category>
     <pubDate>Sun, 24 Nov 2019 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2019/11/24_腾讯云低配服务器性能测试.html</link>
+    <description>为了续费腾讯云服务器，找了几款价格相近的低配机型测试性能进行对比。</description>
   </item>
   <item>
     <title>Setup raid1</title>
@@ -359,6 +368,7 @@
     <category>记录</category>
     <pubDate>Wed, 20 Feb 2019 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2019/02/20_Shadowsocks%20连接异常小记.html</link>
+    <description>防火墙升级导致 shadowsocks 连接中断。</description>
   </item>
   <item>
     <title>关于集福卡</title>

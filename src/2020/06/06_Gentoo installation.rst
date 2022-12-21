@@ -68,6 +68,8 @@ Mount necessary filesystems: ::
     # mount --make-rslave /mnt/gentoo/sys
     # mount --rbind /dev /mnt/gentoo/dev
     # mount --make-rslave /mnt/gentoo/dev 
+    # mount --bind /run /mnt/gentoo/run
+    # mount --make-slave /mnt/gentoo/run
 
 System Installation
 -------------------
@@ -121,8 +123,10 @@ Install kerenl: ::
 Install network: ::
 
     1. Ethernet interface
+    # emerge -av --newuse net-misc/dhcpcd
     # emerge -av --newuse net-misc/netifrc
     # vim /etc/conf.d/net
+        modules="dhcpcd"
         config_<interface>="dhcp"
     # ln -s /etc/init.d/net.lo /etc/init.d/net.<interface>
     # rc-update add net.<interface> default

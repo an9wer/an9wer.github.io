@@ -85,7 +85,7 @@
 需要注意的是，在使用 xmodemap 命令之前将需要将 AltGr 键提前设置好。
 
 最终，通过 AltGr 这个 modifier key，我将上下左右键分别映射到 ``AltGr+WSAD`` 这些组合键上。
-其实，利用 AltGr 键完全可以做到给键盘重新映射一层自定义的 layer。
+其实，更进一步来讲，使用 AltGr 键完全可以实现给键盘映射一层全新的 layer。
 
 Thanks for reading :)
 
