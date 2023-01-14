@@ -49,7 +49,7 @@
 <p>使用 <span class="docutils literal">xinput</span> 命令可以得知当前 trackpoint 使用的是 libinput，
 而同样使用 <span class="docutils literal">xinput</span> 命令修改 trackpoint 灵敏度却不奏效（或者说在 0 到 1  之间的范围内，不管怎么调整，差别都不大）：</p>
 <pre class="literal-block">$ xinput set-prop 'PS/2 Generic Mouse' 'Libinput Accel Speed' 1</pre>
-<p>既然这样，索性将 trackpoint 的驱动从 libinput 换成 evdev：</p>
+<p>不过在尝试将 trackpoint 的驱动从 libinput 换成 evdev 后， <span class="docutils literal">xinput</span> 的调节开始奏效了：</p>
 <pre class="literal-block">$ sudo vim /etc/X11/xorg.conf
     Section &quot;InputClass&quot;
       Identifier &quot;trackpoint&quot;
@@ -57,7 +57,7 @@
       MatchDevicePath &quot;/dev/input/event&lt;number&gt;&quot;
       Option &quot;ConstantDeceleration&quot; &quot;&lt;number&gt;&quot;
     Endsection</pre>
-<p>最终看起来 evdev 对 HP 的兼容性会比 libinput 更好。</p>
+<p>最终看起来对于 HP 笔记本来说，evdev 的兼容性会比 libinput 更好。</p>
 <p>Thanks for reading :)</p>
     </div> <!-- content -->
 

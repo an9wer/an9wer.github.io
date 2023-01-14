@@ -12,13 +12,13 @@
 
 要说这台小米 AC2100 还是我两周前在网上买回来的，本是打算用来做中继路由蹭房东家的 WiFi，
 但是之后自己办了长城宽带，而运营商给的路由器又有 WiFi 功能，所以这台小米 AC2100 路由器就被闲置了。
-没想到这次疫情期间派上了大用场。
+没想到这次疫情封锁期间却派上了大用场。
 
 之所以购入小米 AC2100，主要是三个因素：
 
 1. 可刷 OpenWRT
-2. 价格便宜（入手￥239）
-3. 外观独特
+2. 外观独特（圆筒身材）
+3. 价格便宜（入手￥239）
 
 刷入 OpenWRT 的过程完全参照官方提供的文档 [#]_，
 需要先给路由器固件降级，利用小米官方固件 2.0.722 版本的漏洞，破解路由器 root 帐号的密码；
@@ -34,7 +34,6 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
     $ uci set network.lan.netmask='<netmask>'
     $ uci commit
     $ /etc/init.d/network reload
-
 
 开启 WiFi： ::
 
@@ -57,7 +56,7 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
 安装 v2ray
 ----------
 
-从此 `仓库 <https://github.com/kuoruan/openwrt-v2ray>`_ 下载对应版本即可。
+从 `此仓库 <https://github.com/kuoruan/openwrt-v2ray>`_ 下载对应版本即可。
 
 安装及配置 iptables
 -------------------
@@ -67,21 +66,21 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
     $ opkg update
     $ opkg install iptables
 
-但是发现 iptables 居然不支持 nat table，需要另外再安装： ::
+但是发现 iptables 居然不支持 nat table，需要安装： ::
 
     $ opkg install kmod-ipt-nat
 
-如果另外想在 iptables 中支持 tproxy，则需要安装： ::
+另外，如果需要 iptables 支持 tproxy，需要安装： ::
 
     $ opkg install iptables-mod-tproxy
 
-配置 iptables，使其： ::
+配置 iptables，使其加载 */etc/firewall.user* 文件中自定义的防火墙规则： ::
 
     $ uci add firewall include
     $ uci set firewall.@include[-1].path='/etc/firewall.user'
     $ uci commit firewall
 
-    $ touch /etc/firewall.user
+    $ vim /etc/firewall.user
 
 安装及配置 DNS
 --------------
@@ -102,6 +101,43 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
         listen_addresses = ['<LAN-IP>:53', '127.0.0.1:53']
     # /etc/init.d/dnscrypt-proxy start
 
+安装及配置 Wireguard [#]_ [#]_
+------------------------------
+
+安装 wireguard-tool ： ::
+
+    $ opkg update
+    $ opkg install wireguard-tools
+
+配置 wireguard 网口 ： ::
+
+    $ wg genkey | tee wgslave.key | wg pubkey > wgslave.pub
+    $ uci set network.wgslave="interface"
+    $ uci set network.wgslave.proto="wireguard"
+    $ uci set network.wgslave.private_key="<PRIVATE KEY>"
+    $ uci add_list network.wgslave.addresses="<SLAVE ADDRESS>"
+    $ uci commit network
+    $ /etc/init.d/network restart
+
+配置 wireguard 客户端： ::
+
+    $ uci add network wireguard_wgslave
+    $ uci set network.@wireguard_wgslave[-1].public_key="<PUBLIC KEY>"
+    $ uci set network.@wireguard_wgslave[-1].endpoint_host="<MASTER HOST>"
+    $ uci set network.@wireguard_wgslave[-1].endpoint_port="<MASTER PORT>"
+    $ uci set network.@wireguard_wgslave[-1].persistent_keepalive="25"
+    $ uci set network.wgserver.route_allowed_ips="1"
+    $ uci add_list network.@wireguard_wgslave[-1].allowed_ips="<MASTER ADDRESS>"
+    $ uci commit network
+    $ /etc/init.d/network restart
+
+（其中关于 route_allowed_ips 的作用可以参考
+`源代码 <https://github.com/openwrt/openwrt/blob/c03e458c865c837001bb0626061a0e7bd7d8c445/package/network/utils/wireguard-tools/files/wireguard.sh#L85>`_ ）
+
+查看 wireguard 当前配置： ::
+
+    $ wg showconf wgslave
+
 Thanks for reading :)
 
 
@@ -109,3 +145,5 @@ References
 ----------
 
 .. [#] `OpenWRT: MI Router AC2100 <https://openwrt.org/toh/xiaomi/mi_router_ac2100>`_
+.. [#] `OpenWRT: WireGuard client <https://openwrt.org/docs/guide-user/services/vpn/wireguard/client>`_
+.. [#] `Setting up a wireguard server running on an OpenWRT router <https://casept.github.io/post/wireguard-server-on-openwrt-router/>`_

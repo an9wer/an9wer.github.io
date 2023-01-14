@@ -44,12 +44,12 @@
 于是掏出小米 AC2100 路由器，架好扶墙新姿势。</p>
 <p>要说这台小米 AC2100 还是我两周前在网上买回来的，本是打算用来做中继路由蹭房东家的 WiFi，
 但是之后自己办了长城宽带，而运营商给的路由器又有 WiFi 功能，所以这台小米 AC2100 路由器就被闲置了。
-没想到这次疫情期间派上了大用场。</p>
+没想到这次疫情封锁期间却派上了大用场。</p>
 <p>之所以购入小米 AC2100，主要是三个因素：</p>
 <ol class="arabic simple">
 <li><p>可刷 OpenWRT</p></li>
+<li><p>外观独特（圆筒身材）</p></li>
 <li><p>价格便宜（入手￥239）</p></li>
-<li><p>外观独特</p></li>
 </ol>
 <p>刷入 OpenWRT 的过程完全参照官方提供的文档 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>，
 需要先给路由器固件降级，利用小米官方固件 2.0.722 版本的漏洞，破解路由器 root 帐号的密码；
@@ -78,23 +78,23 @@ $ uci commit wireless
 $ wifi reload</pre>
 <section id="v2ray">
 <h2>安装 v2ray</h2>
-<p>从此 <a class="reference external" href="https://github.com/kuoruan/openwrt-v2ray">仓库</a> 下载对应版本即可。</p>
+<p>从 <a class="reference external" href="https://github.com/kuoruan/openwrt-v2ray">此仓库</a> 下载对应版本即可。</p>
 </section>
 <section id="iptables">
 <h2>安装及配置 iptables</h2>
 <p>安装 iptables ：</p>
 <pre class="literal-block">$ opkg update
 $ opkg install iptables</pre>
-<p>但是发现 iptables 居然不支持 nat table，需要另外再安装：</p>
+<p>但是发现 iptables 居然不支持 nat table，需要安装：</p>
 <pre class="literal-block">$ opkg install kmod-ipt-nat</pre>
-<p>如果另外想在 iptables 中支持 tproxy，则需要安装：</p>
+<p>另外，如果需要 iptables 支持 tproxy，需要安装：</p>
 <pre class="literal-block">$ opkg install iptables-mod-tproxy</pre>
-<p>配置 iptables，使其：</p>
+<p>配置 iptables，使其加载 <em>/etc/firewall.user</em> 文件中自定义的防火墙规则：</p>
 <pre class="literal-block">$ uci add firewall include
 $ uci set firewall.&#64;include[-1].path='/etc/firewall.user'
 $ uci commit firewall
 
-$ touch /etc/firewall.user</pre>
+$ vim /etc/firewall.user</pre>
 </section>
 <section id="dns">
 <h2>安装及配置 DNS</h2>
@@ -110,6 +110,34 @@ $ /etc/init.d/dnscrypt-proxy stop
 # vim /etc/dnscrypt-proxy/dnscrypt-proxy.toml
     listen_addresses = ['&lt;LAN-IP&gt;:53', '127.0.0.1:53']
 # /etc/init.d/dnscrypt-proxy start</pre>
+</section>
+<section id="wireguard">
+<h2>安装及配置 Wireguard <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></h2>
+<p>安装 wireguard-tool ：</p>
+<pre class="literal-block">$ opkg update
+$ opkg install wireguard-tools</pre>
+<p>配置 wireguard 网口 ：</p>
+<pre class="literal-block">$ wg genkey | tee wgslave.key | wg pubkey &gt; wgslave.pub
+$ uci set network.wgslave=&quot;interface&quot;
+$ uci set network.wgslave.proto=&quot;wireguard&quot;
+$ uci set network.wgslave.private_key=&quot;&lt;PRIVATE KEY&gt;&quot;
+$ uci add_list network.wgslave.addresses=&quot;&lt;SLAVE ADDRESS&gt;&quot;
+$ uci commit network
+$ /etc/init.d/network restart</pre>
+<p>配置 wireguard 客户端：</p>
+<pre class="literal-block">$ uci add network wireguard_wgslave
+$ uci set network.&#64;wireguard_wgslave[-1].public_key=&quot;&lt;PUBLIC KEY&gt;&quot;
+$ uci set network.&#64;wireguard_wgslave[-1].endpoint_host=&quot;&lt;MASTER HOST&gt;&quot;
+$ uci set network.&#64;wireguard_wgslave[-1].endpoint_port=&quot;&lt;MASTER PORT&gt;&quot;
+$ uci set network.&#64;wireguard_wgslave[-1].persistent_keepalive=&quot;25&quot;
+$ uci set network.wgserver.route_allowed_ips=&quot;1&quot;
+$ uci add_list network.&#64;wireguard_wgslave[-1].allowed_ips=&quot;&lt;MASTER ADDRESS&gt;&quot;
+$ uci commit network
+$ /etc/init.d/network restart</pre>
+<p>（其中关于 route_allowed_ips 的作用可以参考
+<a class="reference external" href="https://github.com/openwrt/openwrt/blob/c03e458c865c837001bb0626061a0e7bd7d8c445/package/network/utils/wireguard-tools/files/wireguard.sh#L85">源代码</a> ）</p>
+<p>查看 wireguard 当前配置：</p>
+<pre class="literal-block">$ wg showconf wgslave</pre>
 <p>Thanks for reading :)</p>
 </section>
 <section id="references">
@@ -118,6 +146,14 @@ $ /etc/init.d/dnscrypt-proxy stop
 <aside class="footnote brackets" id="footnote-1" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://openwrt.org/toh/xiaomi/mi_router_ac2100">OpenWRT: MI Router AC2100</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://openwrt.org/docs/guide-user/services/vpn/wireguard/client">OpenWRT: WireGuard client</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://casept.github.io/post/wireguard-server-on-openwrt-router/">Setting up a wireguard server running on an OpenWRT router</a></p>
 </aside>
 </aside>
 </section>
