@@ -325,7 +325,7 @@ Updated 2021/05/29
 Updated 2021/05/30
 ------------------
 
-今天又发现连接 NanoPi R2S 的路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT 的 DHCP 没有分配 dns nameserver。
+今天又发现连接 NanoPi R2S 路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT 的 DHCP 没有分配 dns nameserver。
 
 OpenWRT 的 dhcp 是通过 dnsmasq 提供的服务，所以： ::
 

@@ -74,7 +74,7 @@
 
 2019/08/20 「工具」 `关于 TODO List <2019/08/20_关于%20TODO%20List.html>`_
 
-2019/08/19 「折腾」 `Raspberry Pi installation <2019/08/19_Raspberry%20Pi%20installation.html>`_
+2019/08/19 「折腾」 `Raspberry Pi 安装 <2019/08/19_Raspberry%20Pi%20安装.html>`_
 
 2019/07/21 「工具」 `终端下的单词查询 <2019/07/21_终端下的单词查询.html>`_
 

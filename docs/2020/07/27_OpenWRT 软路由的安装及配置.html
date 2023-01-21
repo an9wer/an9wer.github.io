@@ -307,7 +307,7 @@ iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports &lt;v2ray redirect port&g
 </section>
 <section id="updated-2021-05-30">
 <h2>Updated 2021/05/30</h2>
-<p>今天又发现连接 NanoPi R2S 的路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT 的 DHCP 没有分配 dns nameserver。</p>
+<p>今天又发现连接 NanoPi R2S 路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT 的 DHCP 没有分配 dns nameserver。</p>
 <p>OpenWRT 的 dhcp 是通过 dnsmasq 提供的服务，所以：</p>
 <pre class="literal-block"># vim /etc/config/dhcp
     config dhcp 'lan'

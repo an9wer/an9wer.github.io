@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 14 Jan 2023 14:08:00 +0000</pubDate>
+  <pubDate>Sat, 21 Jan 2023 03:23:53 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -312,11 +312,12 @@
     <description>TODO List 的最佳实践。</description>
   </item>
   <item>
-    <title>Raspberry Pi installation</title>
+    <title>Raspberry Pi 安装</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Mon, 19 Aug 2019 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2019/08/19_Raspberry%20Pi%20installation.html</link>
+    <link>https://an9wer.github.io/2019/08/19_Raspberry%20Pi%20安装.html</link>
+    <description>树莓派安装及配置。</description>
   </item>
   <item>
     <title>终端下的单词查询</title>
