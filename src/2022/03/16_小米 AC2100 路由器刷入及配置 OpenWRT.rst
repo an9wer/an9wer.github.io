@@ -42,12 +42,14 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
     $ uci set wireless.radio0.disabled='0'
     $ uci set wireless.radio1.disabled='0'
     $ uci commit wireless
-    $ wifi reload
+    $ wifi up
 
 设置 WiFi 的 SSID 及密码： ::
 
     $ uci set wireless.default_radio0.ssid='<ssid>'
     $ uci set wireless.default_radio1.ssid='<ssid>'
+    $ uci set wireless.default_radio0.encryption='psk2'
+    $ uci set wireless.default_radio1.encryption='psk2'
     $ uci set wireless.default_radio0.key='<password>'
     $ uci set wireless.default_radio1.key='<password>'
     $ uci commit wireless
@@ -61,14 +63,10 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
 安装及配置 iptables
 -------------------
 
-安装 iptables ： ::
+安装 ipset： ::
 
     $ opkg update
-    $ opkg install iptables
-
-但是发现 iptables 居然不支持 nat table，需要安装： ::
-
-    $ opkg install kmod-ipt-nat
+    $ opkg install ipset
 
 另外，如果需要 iptables 支持 tproxy，需要安装： ::
 
@@ -92,14 +90,20 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
     $ uci commit dhcp
     $ /etc/init.d/dnsmasq start
 
-安装 dnsmasq 并配置其监听 lan 口和 lo 口： ::
+安装 dnscrypt-proxy 并配置其监听 lan 口和 lo 口： ::
 
     $ opkg update
     $ opkg install dnscrypt-proxy2
     $ /etc/init.d/dnscrypt-proxy stop
-    # vim /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+    # vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
         listen_addresses = ['<LAN-IP>:53', '127.0.0.1:53']
     # /etc/init.d/dnscrypt-proxy start
+
+配置 dnsmasq，使其在提供 DHCP 服务的时候将 dns server 设置成 lan 口地址： ::
+
+    # uci add_list dhcp.lan.dhcp_option='6,<LAN-IP>'
+    # uci commit dhcp
+    # /etc/init.d/network restart
 
 安装及配置 Wireguard [#]_ [#]_
 ------------------------------
@@ -126,7 +130,7 @@ ssh 登录路由器后即可刷入 OpenWRT 固件，成功后路由器自动重�
     $ uci set network.@wireguard_wgslave[-1].endpoint_host="<MASTER HOST>"
     $ uci set network.@wireguard_wgslave[-1].endpoint_port="<MASTER PORT>"
     $ uci set network.@wireguard_wgslave[-1].persistent_keepalive="25"
-    $ uci set network.wgserver.route_allowed_ips="1"
+    $ uci set network.@wireguard_wgslave[-1].route_allowed_ips="1"
     $ uci add_list network.@wireguard_wgslave[-1].allowed_ips="<MASTER ADDRESS>"
     $ uci commit network
     $ /etc/init.d/network restart

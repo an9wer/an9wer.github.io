@@ -68,10 +68,12 @@ $ uci set wireless.radio1.country='CN'
 $ uci set wireless.radio0.disabled='0'
 $ uci set wireless.radio1.disabled='0'
 $ uci commit wireless
-$ wifi reload</pre>
+$ wifi up</pre>
 <p>设置 WiFi 的 SSID 及密码：</p>
 <pre class="literal-block">$ uci set wireless.default_radio0.ssid='&lt;ssid&gt;'
 $ uci set wireless.default_radio1.ssid='&lt;ssid&gt;'
+$ uci set wireless.default_radio0.encryption='psk2'
+$ uci set wireless.default_radio1.encryption='psk2'
 $ uci set wireless.default_radio0.key='&lt;password&gt;'
 $ uci set wireless.default_radio1.key='&lt;password&gt;'
 $ uci commit wireless
@@ -82,11 +84,9 @@ $ wifi reload</pre>
 </section>
 <section id="iptables">
 <h2>安装及配置 iptables</h2>
-<p>安装 iptables ：</p>
+<p>安装 ipset：</p>
 <pre class="literal-block">$ opkg update
-$ opkg install iptables</pre>
-<p>但是发现 iptables 居然不支持 nat table，需要安装：</p>
-<pre class="literal-block">$ opkg install kmod-ipt-nat</pre>
+$ opkg install ipset</pre>
 <p>另外，如果需要 iptables 支持 tproxy，需要安装：</p>
 <pre class="literal-block">$ opkg install iptables-mod-tproxy</pre>
 <p>配置 iptables，使其加载 <em>/etc/firewall.user</em> 文件中自定义的防火墙规则：</p>
@@ -103,13 +103,17 @@ $ vim /etc/firewall.user</pre>
 $ uci set dhcp.&#64;dnsmasq[0].port='0'
 $ uci commit dhcp
 $ /etc/init.d/dnsmasq start</pre>
-<p>安装 dnsmasq 并配置其监听 lan 口和 lo 口：</p>
+<p>安装 dnscrypt-proxy 并配置其监听 lan 口和 lo 口：</p>
 <pre class="literal-block">$ opkg update
 $ opkg install dnscrypt-proxy2
 $ /etc/init.d/dnscrypt-proxy stop
-# vim /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+# vim /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
     listen_addresses = ['&lt;LAN-IP&gt;:53', '127.0.0.1:53']
 # /etc/init.d/dnscrypt-proxy start</pre>
+<p>配置 dnsmasq，使其在提供 DHCP 服务的时候将 dns server 设置成 lan 口地址：</p>
+<pre class="literal-block"># uci add_list dhcp.lan.dhcp_option='6,&lt;LAN-IP&gt;'
+# uci commit dhcp
+# /etc/init.d/network restart</pre>
 </section>
 <section id="wireguard">
 <h2>安装及配置 Wireguard <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></h2>
@@ -130,7 +134,7 @@ $ uci set network.&#64;wireguard_wgslave[-1].public_key=&quot;&lt;PUBLIC KEY&gt;
 $ uci set network.&#64;wireguard_wgslave[-1].endpoint_host=&quot;&lt;MASTER HOST&gt;&quot;
 $ uci set network.&#64;wireguard_wgslave[-1].endpoint_port=&quot;&lt;MASTER PORT&gt;&quot;
 $ uci set network.&#64;wireguard_wgslave[-1].persistent_keepalive=&quot;25&quot;
-$ uci set network.wgserver.route_allowed_ips=&quot;1&quot;
+$ uci set network.&#64;wireguard_wgslave[-1].route_allowed_ips=&quot;1&quot;
 $ uci add_list network.&#64;wireguard_wgslave[-1].allowed_ips=&quot;&lt;MASTER ADDRESS&gt;&quot;
 $ uci commit network
 $ /etc/init.d/network restart</pre>
