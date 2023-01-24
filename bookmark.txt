@@ -2,6 +2,7 @@ src/moments.rst
 src/tools.rst
 
 src/blog.rst
+    src/2023/01/24_聊聊印度同事.rst
     src/2022/11/19_老招扶新墙.rst
     src/2022/08/15_巧用\ AltGr\ 键自定义键盘布局.rst
     # TODO src/2022/08/14_efibootmgr\ 双系统.rst

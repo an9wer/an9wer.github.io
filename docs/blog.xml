@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Mon, 23 Jan 2023 14:31:44 +0000</pubDate>
+  <pubDate>Tue, 24 Jan 2023 07:20:59 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>聊聊印度同事</title>
+    <author>an9wer@gmail.com</author>
+    <category>记录</category>
+    <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2023/01/24_聊聊印度同事.html</link>
+    <description>在 HP 工作中有机会和一帮印度同事打交道，因此来聊聊我对他们的印象。</description>
+  </item>
   <item>
     <title>老招扶新墙</title>
     <author>an9wer@gmail.com</author>
@@ -249,7 +257,7 @@
     <category>折腾</category>
     <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2020/07/27_OpenWRT%20软路由的安装及配置.html</link>
-    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。 在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。</description>
+    <description>在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。 之后又在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。</description>
   </item>
   <item>
     <title>从 Arch 转投 Gentoo</title>

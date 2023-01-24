@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2023-01-21</lastmod>
+      <lastmod>2023-01-24</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2023/01/24_%E8%81%8A%E8%81%8A%E5%8D%B0%E5%BA%A6%E5%90%8C%E4%BA%8B.html</loc>
+    <lastmod>2023-01-24</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2022/11/19_%E8%80%81%E6%8B%9B%E6%89%B6%E6%96%B0%E5%A2%99.html</loc>
     <lastmod>2023-01-14</lastmod>
@@ -188,7 +194,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2020/07/27_OpenWRT%20%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE.html</loc>
-    <lastmod>2023-01-21</lastmod>
+    <lastmod>2023-01-24</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
@@ -290,7 +296,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2019/02/10_%E5%85%B3%E4%BA%8E%E9%9B%86%E7%A6%8F%E5%8D%A1.html</loc>
-    <lastmod>2022-08-14</lastmod>
+    <lastmod>2023-01-24</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

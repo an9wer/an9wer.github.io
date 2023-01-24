@@ -5,7 +5,7 @@ OpenWRT 软路由的安装及配置
 
 .. meta::
     :description: 在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。
-        在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。
+        之后又在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。
 
 目前我的 PVE 里面目前有两台虚拟机，一台 Gentoo，一台 Win7，所以打算再安装一台 OpenWRT 虚拟机来作为网关负责其它虚拟机的网络。
 于是按照如下步骤在虚拟机中安装 OpenWRT，当然这种方法也可以在其它 x86 平台上安装。
@@ -63,12 +63,10 @@ OpenWRT 的 opkg 工具安装软件包的 时候下载速度可能比较慢，�
 Updated 2021/01/28
 ------------------
 
-之前买了一台 NanoPi R2S，这两天打算刷入 OpenWRT 作为旁路由使用。
+手里有一台 NanoPi R2S，打算刷入 OpenWRT 作为旁路由使用。
 
 NanoPi R2S 刷入 OpenWRT 的方法可以参照官方文档，这里就不赘述了。
-
-接下来安装和配置 v2ray。这次配置的时候觉得 luci-app-v2ray 安装以及使用太麻烦，
-所以直接自己写配置文件： ::
+接下来安装和配置 v2ray，之前使用 luci-app-v2ray 后感觉太麻烦，所以这次直接自己手写配置文件： ::
 
     {
         "log": {
@@ -135,7 +133,7 @@ routing 中设置了国内的域名都走直连线路，其他域名走代理线
 Updated 2021/04/04
 ------------------
 
-socks5 和 http 代理用的时候需要看手动配置，感觉还是太麻烦，所以这次直接上透明代理。
+因为 socks5 和 http 代理用的时候需要手动配置，感觉还是比较麻烦，所以这次直接上透明代理。
 透明代理的好处是，只要在路由器中配置即可，局域网内所有设备直接能无感用上代理。
 
 v2ray 的配置里添加 redirect outbond： ::
@@ -271,7 +269,7 @@ v2ray 的配置里添加 redirect outbond： ::
 Updated 2021/04/05
 ------------------
 
-v2ray 内建的 geoip 不够看啊，还是得自己来，把 cn 列表导入 ipset 就行： ::
+v2ray 内建的 geoip 不够看啊，还是得自己来，把中国的 IP 列表导入 ipset 就行： ::
 
     # opkg install ipset
     # vim /etc/init.d/ipset
@@ -293,45 +291,52 @@ v2ray 内建的 geoip 不够看啊，还是得自己来，把 cn 列表导入 ip
     # /etc/init.d/ipset start
     # /etc/init.d/ipset enable
 
-不要忘了在 firewall 中添加绕过 cn 的规则： ::
+最后，不要忘了在 firewall 中添加绕过 cn 的规则： ::
 
     iptables -t nat -A V2RAY -m set --match-set cn dst -j RETURN
     
 Updated 2021/05/29
 ------------------
 
-今天 OpenWRT 路由器重启遇到 v2ray 也连接不上 server 的情况。
-之后发现 dnscrypt-proxy 连接上游一直 timeout，不过想想这也正常，因为 v2ray 连不上导致 dnscrypt-proxy 也连不上。
+今天路由器重启后 v2ray 始终连接不上 server，之后又发现 dnscrypt-proxy 连接上游一直 timeout。
+想来后者可能是因为前者无法作用而导致 timeout。
 
-哪里出问题了呢？突然想到 v2ray 的 server 地址是用域名表示的，而 dnscrypt-proxy 无法工作，所以域名也解析不了了。
-再一看 */etc/resolv.conf* 果然只设置了一个 nameserver 还就是 dnscrypt-proxy 的监听地址。所以这就是个死循环啊！
+所以到底是哪里出问题了呢？
+突然意识到 v2ray 的 server 地址是用域名表示的，而 dnscrypt-proxy 无法工作，所以域名也解析不了。
+再一看 */etc/resolv.conf* 果然只设置了一个 nameserver，并且还就是 dnscrypt-proxy 的监听地址。
+所以这就是个死循环啊！
 
-解决方法是在 */etc/resolv.conf* 中再添加个 nameserver。
+这样一来解决方法就很很简单了，即在 */etc/resolv.conf* 中再添加个 nameserver。
 
-也不知道 OpenWRT 中怎么永久性地修改 */etc/resolv.conf* 中的内容，只发现 */etc/resolv.conf* 是个软链接，指向 */tmp/resolv.conf* 。
-那到底是是哪个程序创建的 */tmp/resolv.conf* 呢？索性用 grep 在 */etc/init.d* 目录中搜索了一遍，发现是 */etc/init.d/dnsmasq* 干的坏事。
+但不知 OpenWRT 中如何永久性地修改 */etc/resolv.conf* 中的内容？
+只是发现 */etc/resolv.conf* 是个软链接，指向 */tmp/resolv.conf* 。
+但到底是是哪个程序创建的 */tmp/resolv.conf* 呢？
+索性用 grep 在 */etc/init.d* 目录中搜索了一遍，结果发现是 */etc/init.d/dnsmasq* 干的坏事。
 
-于是乎细看了下 */etc/init.d/dnsmasq* 的代码文件，才发现有个 localuse 参数看起来比较可疑。通过 uci 命令将其值修改成 0： ::
+于是乎细看了下 */etc/init.d/dnsmasq* 的代码文件，找到可可疑的参数 localuse。
+于是试着将其值修改成 0，然后重启路由器： ::
 
     # uci set dhcp.@dnsmasq[0].localuse='0'
     # uci commit
 
-之后重启路由器，此时发现原先的 */etc/resolv.conf* 还是指向 */tmp/resolv.conf* ，
+此时发现原先的 */etc/resolv.conf* 还是指向 */tmp/resolv.conf* ，
 而 */tmp/resolv.conf* 这次又指向了 */tmp/resolv.conf.auto* ，
-该文件中分别包含了 wan 和 lan interfaces 设置的 nameserver，与 luci 页面中的配置一致，也就是可以通过 luci 来修改其值。
+该文件中分别包含了 wan 和 lan interfaces 设置的 nameserver。
+其与 luci 页面中的配置一致，也就是可以通过 luci 来修改其值。
 
 至此案件告破。
 
 Updated 2021/05/30
 ------------------
 
-今天又发现连接 NanoPi R2S 路由器的 dns 地址不是 OpenWRT 的 ip，原来是 OpenWRT 的 DHCP 没有分配 dns nameserver。
+今天发现连接 NanoPi R2S 路由器后的 DNS 地址不是其 LAN 口的 ip，
+原因是路由器的 DHCP 服务并没有分配 DNS nameserver。
 
-OpenWRT 的 dhcp 是通过 dnsmasq 提供的服务，所以： ::
+而 DHCP 服务是通过 dnsmasq 提供的，所以： ::
 
     # vim /etc/config/dhcp
         config dhcp 'lan'
-            list 'dhcp_option' '6,<openwrt ip>,114.114.114.114'
+            list 'dhcp_option' '6,<LAN-IP>,114.114.114.114'
 
 Thanks for reading :)
 
