@@ -42,4 +42,18 @@
 
 接下来就是正常的系统安装流程，就不多赘述了。
 
+Updated 2023/01/29
+------------------
+
+如果云服务商（例如 AWS）没有提供 VNC 控制台，那么可以将 ``menuentry "gentoo"`` 设置成启动时默认的载入项 [#]_ ，
+则会在重启后自动载入到 gentoo liveCD： ::
+
+    $ vim /etc/default/grub
+        GRUB_DEFAULT=<x>
+
 Thanks for reading :)
+
+References
+----------
+
+.. [#] `StackOverflow: How do I change the GRUB boot order? <https://askubuntu.com/a/110738>`_

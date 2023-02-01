@@ -1,5 +1,7 @@
-Gentoo installation
-===================
+Gentoo 安装
+===========
+
+:Published:  2020/06/06
 
 Preparation
 -----------

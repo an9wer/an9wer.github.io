@@ -67,7 +67,23 @@
 所以只能将之前的系统盘挂载到 <em>/mnt/gentoo</em> 后将所有文件全部删除，
 只留下一个 gentoo iso 安装镜像文件。</p>
 <p>接下来就是正常的系统安装流程，就不多赘述了。</p>
+<section id="updated-2023-01-29">
+<h2>Updated 2023/01/29</h2>
+<p>如果云服务商（例如 AWS）没有提供 VNC 控制台，那么可以将 <span class="docutils literal">menuentry &quot;gentoo&quot;</span> 设置成启动时默认的载入项 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> ，
+则会在重启后自动载入到 gentoo liveCD：</p>
+<pre class="literal-block">$ vim /etc/default/grub
+    GRUB_DEFAULT=&lt;x&gt;</pre>
 <p>Thanks for reading :)</p>
+</section>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://askubuntu.com/a/110738">StackOverflow: How do I change the GRUB boot order?</a></p>
+</aside>
+</aside>
+</section>
     </div> <!-- content -->
 
     <div id="footer">

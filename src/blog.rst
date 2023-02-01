@@ -62,7 +62,7 @@
 
 2020/07/05 「折腾」 `从 Arch 转投 Gentoo <2020/07/05_从%20Arch%20转投%20Gentoo.html>`_
 
-2020/06/06 「折腾」 `Gentoo installation <2020/06/06_Gentoo%20installation.html>`_
+2020/06/06 「折腾」 `Gentoo 安装 <2020/06/06_Gentoo%20安装.html>`_
 
 2020/01/07 「记录」 `腾讯云服务器被黑事件 <2020/01/07_腾讯云服务器被黑事件.html>`_
 
