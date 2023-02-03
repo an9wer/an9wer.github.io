@@ -1,6 +1,10 @@
 .. meta::
     :robots: noindex 
 
+2023/02/01 Wed
+
+    收到信用卡的还款通知，结果是 BandwagongHost 的费用 —— 白嫖失败！
+
 2023/01/23 Mon
 
     要问路由器上搭建一套扶墙组件需要多少 flash size？ —— 10M 足矣。
