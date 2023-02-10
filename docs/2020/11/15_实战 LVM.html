@@ -50,13 +50,13 @@
 <p>Initialize a new physical volume:</p>
 <pre class="literal-block"># pvcreate /dev/sd&lt;X&gt;</pre>
 <p>Create a new volume group:</p>
-<pre class="literal-block"># vgcreate &lt;vg name&gt; /dev/sd&lt;X&gt;</pre>
+<pre class="literal-block"># vgcreate &lt;VG&gt; /dev/sd&lt;X&gt;</pre>
 <p>Create a new logical volume to use all left space in the volume group created above:</p>
-<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;LV&gt; &lt;VG&gt;</pre>
 <p>Format the logical volume:</p>
-<pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<pre class="literal-block"># mkfs.ext4 /dev/&lt;VG&gt;/&lt;LV&gt;</pre>
 <p>Update fstab file, add the following line:</p>
-<pre class="literal-block">/dev/&lt;vg name&gt;/&lt;lv name&gt; &lt;mount point&gt; ext4 defaults,noauto,user 0 0</pre>
+<pre class="literal-block">/dev/&lt;vg name&gt;/&lt;LV&gt; &lt;mount point&gt; ext4 defaults,noauto,user 0 0</pre>
 <p>Mount logical volume:</p>
 <pre class="literal-block">$ mount &lt;mount point&gt;</pre>
 <p>Set ownership of usr and group for mount point:</p>
@@ -67,22 +67,27 @@
 <p>Initialize a new physical volume:</p>
 <pre class="literal-block"># pvcreate /dev/sd&lt;XX&gt;</pre>
 <p>Extend an existed group volume:</p>
-<pre class="literal-block"># vgextend &lt;vg name&gt; /dev/sd&lt;XX&gt;</pre>
+<pre class="literal-block"># vgextend &lt;VG&gt; /dev/sd&lt;XX&gt;</pre>
 <p>Create a new logical volume to use all left space in the volume group:</p>
-<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;lv name&gt; &lt;vg name&gt;</pre>
+<pre class="literal-block"># lvcreate -l +100%FREE -n &lt;LV&gt; &lt;VG&gt;</pre>
 <p>Format the logical volume:</p>
-<pre class="literal-block"># mkfs.ext4 /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<pre class="literal-block"># mkfs.ext4 /dev/&lt;VG&gt;/&lt;LV&gt;</pre>
 </section>
 <section id="section-3">
 <h2>扩展某个挂载点的容量</h2>
 <p>Initialize a new physical volume:</p>
 <pre class="literal-block"># pvcreate /dev/sd&lt;XXX&gt;</pre>
 <p>Extend an existed group volume:</p>
-<pre class="literal-block"># vgextend &lt;vg name&gt; /dev/sd&lt;XXX&gt;</pre>
+<pre class="literal-block"># vgextend &lt;VG&gt; /dev/sd&lt;XXX&gt;</pre>
 <p>Extend an existed logical volume to use all left space in the volume group:</p>
-<pre class="literal-block"># lvextend -l +100%FREE /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<pre class="literal-block"># lvextend -l +100%FREE /dev/&lt;VG&gt;/&lt;LV&gt;</pre>
 <p>Extend ext4 partition on the logical volume:</p>
-<pre class="literal-block"># resize2fs /dev/&lt;vg name&gt;/&lt;lv name&gt;</pre>
+<pre class="literal-block"># resize2fs /dev/&lt;VG&gt;/&lt;LV&gt;</pre>
+</section>
+<section id="misc">
+<h2>Misc</h2>
+<p>Renaming a volume group:</p>
+<pre class="literal-block"># vgrename /dev/&lt;VG&gt; /dev/&lt;VG_RENAME&gt;</pre>
 <p>Thanks for reading :)</p>
 </section>
     </div> <!-- content -->

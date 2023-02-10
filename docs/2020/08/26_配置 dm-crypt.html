@@ -4,7 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<title>Setup dm-crypt | an9wer's blog</title>
+<title>配置 dm-crypt | an9wer's blog</title>
+<meta content="给 NAS 的硬盘设置加密。" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -31,13 +32,16 @@
       <a id="tools" href="/tools.html">Tools</a>
     </div> <!-- navbar -->
 
-<h1 class="title">Setup dm-crypt</h1>
-
+<h1 class="title">配置 dm-crypt</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2020/08/26</p>
+</dd>
+</dl>
 
     <div id="content">
-<p>最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台
-NAS 的），本来打算按照之前的方法直接上 RAID，但是这次又想让数据存储更加安全，
-于是在 RAID 上面再加了一层 dm-crypt。</p>
+<p>最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台 NAS 的），
+本来打算按照之前的方法直接上 RAID，但是这次又想让数据存储更加安全，于是在 RAID 上面再加了一层 dm-crypt。</p>
 <p>Generage a keyfile:</p>
 <pre class="literal-block"># dd if=/dev/urandom of=/path/to/&lt;key file&gt; bs=1 count=4096</pre>
 <p>Creating an encrypted storage:</p>

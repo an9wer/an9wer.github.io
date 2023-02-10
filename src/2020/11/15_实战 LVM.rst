@@ -22,19 +22,19 @@ Initialize a new physical volume: ::
 
 Create a new volume group: ::
 
-    # vgcreate <vg name> /dev/sd<X>
+    # vgcreate <VG> /dev/sd<X>
 
 Create a new logical volume to use all left space in the volume group created above: ::
 
-    # lvcreate -l +100%FREE -n <lv name> <vg name>
+    # lvcreate -l +100%FREE -n <LV> <VG>
 
 Format the logical volume: ::
 
-    # mkfs.ext4 /dev/<vg name>/<lv name>
+    # mkfs.ext4 /dev/<VG>/<LV>
     
 Update fstab file, add the following line: ::
 
-    /dev/<vg name>/<lv name> <mount point> ext4 defaults,noauto,user 0 0
+    /dev/<vg name>/<LV> <mount point> ext4 defaults,noauto,user 0 0
 
 Mount logical volume: ::
 
@@ -53,15 +53,15 @@ Initialize a new physical volume: ::
 
 Extend an existed group volume: ::
 
-    # vgextend <vg name> /dev/sd<XX>
+    # vgextend <VG> /dev/sd<XX>
 
 Create a new logical volume to use all left space in the volume group: ::
 
-    # lvcreate -l +100%FREE -n <lv name> <vg name>
+    # lvcreate -l +100%FREE -n <LV> <VG>
 
 Format the logical volume: ::
 
-    # mkfs.ext4 /dev/<vg name>/<lv name>
+    # mkfs.ext4 /dev/<VG>/<LV>
 
 扩展某个挂载点的容量
 --------------------
@@ -72,14 +72,21 @@ Initialize a new physical volume: ::
 
 Extend an existed group volume: ::
 
-    # vgextend <vg name> /dev/sd<XXX>
+    # vgextend <VG> /dev/sd<XXX>
 
 Extend an existed logical volume to use all left space in the volume group: ::
 
-    # lvextend -l +100%FREE /dev/<vg name>/<lv name>
+    # lvextend -l +100%FREE /dev/<VG>/<LV>
 
 Extend ext4 partition on the logical volume: ::
 
-    # resize2fs /dev/<vg name>/<lv name>
+    # resize2fs /dev/<VG>/<LV>
+
+Misc
+----
+
+Renaming a volume group: ::
+
+    # vgrename /dev/<VG> /dev/<VG_RENAME>
 
 Thanks for reading :)

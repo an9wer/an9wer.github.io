@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 03 Feb 2023 02:25:45 +0000</pubDate>
+  <pubDate>Fri, 10 Feb 2023 15:06:35 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -237,11 +237,12 @@
     <description>使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。</description>
   </item>
   <item>
-    <title>Setup dm-crypt</title>
+    <title>配置 dm-crypt</title>
     <author>an9wer@gmail.com</author>
     <category>折腾</category>
     <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
-    <link>https://an9wer.github.io/2020/08/26_Setup%20dm-crypt.html</link>
+    <link>https://an9wer.github.io/2020/08/26_配置%20dm-crypt.html</link>
+    <description>给 NAS 的硬盘设置加密。</description>
   </item>
   <item>
     <title>Redmi K30 5G 入手及刷机</title>

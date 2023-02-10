@@ -1,9 +1,13 @@
-Setup dm-crypt
-==============
+配置 dm-crypt
+=============
 
-最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台
-NAS 的），本来打算按照之前的方法直接上 RAID，但是这次又想让数据存储更加安全，
-于是在 RAID 上面再加了一层 dm-crypt。
+:Published: 2020/08/26
+
+.. meta::
+    :description: 给 NAS 的硬盘设置加密。
+
+最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台 NAS 的），
+本来打算按照之前的方法直接上 RAID，但是这次又想让数据存储更加安全，于是在 RAID 上面再加了一层 dm-crypt。
 
 Generage a keyfile: ::
 
