@@ -1,9 +1,19 @@
 .. meta::
     :robots: noindex 
 
+2023/04/27 Thu
+
+    The third attempt to try baking a bread, finally made such a soft one, with a crunchy crust :)
+
+    .. image:: /statics/images/moments/2023/04/bread.jpg
+
+2023/04/17 Mon
+
+    Switched my daily-use browser back to Firefox, just because Qutebrowser's insert mode and normol mode messed me up a lot — sometimes when I was typing something in a tab under insert mode, some ideas might pop up, then I would open a new tab for research. The problem is when I switched back to the old tab, it became to normal mode without my awarenesss. In that case, if I hit some keys, the unexpected actions would be triggered.
+
 2023/02/01 Wed
 
-    收到信用卡的还款通知，结果是 BandwagongHost 的费用 —— 白嫖失败！
+    收到信用卡的还款通知，是 BandwagongHost 的费用 —— 白嫖失败！
 
 2023/01/23 Mon
 
@@ -349,8 +359,7 @@
 
 2019/12/20 Fri
 
-    Archlinux 系统滚动到升级后，结果最新版的 Vagrant (2.2.6) 的 provider 不支持
-    最新版本的 Virtualbox (6.1.0)，呵呵。
+    Archlinux 系统滚动到升级后，结果 Vagrant (2.2.6) 的 provider 不支持最新版本的 Virtualbox (6.1.0)，呵呵。
 
 2019/12/18 Wed
 
@@ -424,7 +433,7 @@
 
 2019/09/12 Thu
 
-    很巧，今天的两顿饭都是十块钱：中午一碟长豆角炒肉丝，外加一份米饭；晚上一碗兰州拉面。
+    很巧，今天的两顿饭都是十块钱：中午一碟长豆角炒肉丝加一份米饭；晚上一碗兰州拉面。
 
 2019/09/07 Sat
 
@@ -438,8 +447,7 @@
 
 2019/09/05 Thu
 
-    看了 Java tutorial，发现 Java 的语法还没有 Python 难呀，为啥大家都说 Python
-    容易上手呢？
+    看了些 Java tutorial，发现 Java 的语法还没有 Python 难呀，为啥大家都说 Python 容易上手呢？
 
     .. image:: /statics/images/moments/2019/09/sunset.jpg
 
@@ -460,11 +468,9 @@
 
 2019/08/23 Fri
 
-    下午例常从公司溜出去散步，天气不是很好，但在河边闻到了熟悉的下雨的味道，甚
-    是欣喜。
+    下午上班例常从公司溜出去散步，虽然天气不是很好，但在河边闻到了雨后的泥土味道，清新舒畅，甚是欢欣。
 
-    吃饭的时候在一旁听到某个中年妇女讨论有关 GFW 以及最近香港问题，心里冒出三个
-    字：小粉红。
+    吃饭的时候一旁有个中年妇女在讨论 GFW 以及最近香港问题，听其言论，贴其标签：小粉红。
 
 2019/08/14 Wed
 
@@ -493,16 +499,15 @@
 
 2019/07/26 Thu
 
-    破纪录 11 分钟骑到公司，使用低头哈腰大法。
+    破纪录 11 分钟骑到公司 —— 使用低头哈腰大法。
 
 2019/07/17 Wed
 
-    昨天在 freenom 上申请了免费域名，今天早上可以用 drill 查询到了，呵呵。
+    昨天在 freenom 上申请了免费域名，今天早上可以解析了，呵呵。
 
 2019/07/14 Sun
 
-    一个印度朋友给我看他加的 PDD （拼多多）微信群，群里发了各种优惠商品的链接，
-    再一看群里多是外国人，当时我就惊讶了，居然还有这种专门面向老外的购物群。
+    一个印度朋友给我看他加的 PDD （拼多多）微信群，群里发了各种优惠商品的链接，再一看群里多是外国人 —— 这也是个好生意啊！
 
 2019/07/09 Tue
 
@@ -510,17 +515,13 @@
 
 2019/07/08 Mon
 
-    大晚上骑自行车在马路中央发现一只从烧烤店里面偷跑出来的小龙虾，本来我都已经
-    骑出去好远了，不过觉得这小龙虾好不容易越狱成功，怕是要在这马路上丢了性命。
-    于是我又掉头骑回去，把它捡起来扔到了一旁的小河里。（好久没捉过小龙虾了，还
-    有些担心它会钳到我，还好没事，呵呵。）
+    大晚上骑自行车在马路中央发现一只从烧烤店里面偷跑出来的小龙虾，本来我都已经骑出去好远了，不过觉得这小龙虾好不容易越狱成功，怕是要在这马路上丢了性命。
+    于是我又掉头骑回去，把它捡起来扔到了一旁的小河里。（好久没捉过小龙虾了，还有些担心它会钳到我，还好没事，呵呵。）
 
 2019/07/07 Sun
 
-    小区门口路边趟着一只被车撞的小狗，一道长长的水迹从两米远的地方笔直地延伸至
-    小狗的嘴边，似乎描绘着刚才悲惨的一幕。小狗横躺在地上，不得动弹，只是大口喘
-    着粗气，眼神渴望而又无助地望着一旁直立立站着的男人，这个男人冷冰冰地对电话
-    的那头说：“没的救，不用管了。”
+    小区门口路边趟着一只被车撞的小狗，一道长长的水迹从两米远的地方笔直地延伸至它的嘴边，似乎描绘着刚才悲惨的一幕。
+    小狗无力地横躺在地上，只能大口喘着粗气，眼神渴望而又无助地望着一旁直立立站着的男人，这个男人冷冰冰地对电话的那头说：“没的救，不用管了。”
 
 2019/06/28 Fri
 
@@ -537,16 +538,12 @@
 
 2019/06/12 Wed
 
-    The more options you implement, the more flexible your program is, and the
-    more complicated its implementation becomes. -- *From documentation of
-    Python's optparse module*
+    The more options you implement, the more flexible your program is, and the more complicated its implementation becomes. -- *From documentation of Python's optparse module*
 
 
 2019/06/08 Fir
 
-    走在大马路上帮别人拍照，被旁边的一个老爷爷误认为是在给他拍照。他微笑着对我
-    连说几声谢谢，我怪不好意思的，于是端起相机，匆匆地给他拍了一张照片。回想起
-    来，却没能和他好好坐下来聊一聊。
+    走在大马路上帮别人拍照，被旁边的一个老爷爷误认为是在给他拍照。他微笑着对我连说几声谢谢，我怪不好意思的，于是端起相机，也给他拍了一张照片。—— 现在想想，或许当时和他坐下来聊一聊会更好。
 
 
 2019/06/02 Sun
@@ -563,9 +560,7 @@
 
 2019/05/28 Tue
 
-    Rec. 深入体验了下  `vimium <https://github.com/philc/vimium>`_ ，意外发现
-    gi 键可以锁定 input 框，T 键用来搜索当前所有 tab 页，以及强大的 search
-    engine 功能，真是好用。
+    深入体验了下  `vimium <https://github.com/philc/vimium>`_ ，gi 键可以锁定 input 框，T 键用来搜索当前所有 tab 页，以及强大的 search engine 功能，真是好用。
 
 
 2019/05/22 Wed
@@ -584,9 +579,7 @@
 
 2019/05/01 Wed
 
-    在动车上看到有位小姑娘抱着一本我小学时看过的《男生贾里全传》，回想这本书我
-    也曾爱不释手，另一方面，觉得自己一下子又年轻了好多，颇为激动。
-
+    在动车上看到有位小姑娘抱着一本《男生贾里全传》，回想起来这本书我上小学地时候也曾看过且爱不释手，看来好书确实可以流传。
 
 2019/04/26 Fri
 
@@ -635,18 +628,14 @@
 
 2019/04/05 Fri
 
-    今天坐大巴回家，因为司机不熟悉路线而且提前放乘客下车，导致某个乘客和司机发
-    生了争执，并且动手掐司机的脖子。还好司机比较理智，停下车才和动手乘客理论，
-    也没有过多计较他的行为。感觉差点上演了重庆坠江大巴的悲剧。
+    今天坐大巴回家，因为司机不熟悉路线而且提前放乘客下车，导致某个乘客和司机发生了争执，并且动手掐司机的脖子。还好司机比较理智，停下车才和动手乘客理论，也没有过多计较他的行为 —— 几乎差点上演了重庆坠江大巴的悲剧。
 
-    在老家的小区里看到翻垃圾桶的老人，想起了在上海晚上 10 点下班回去还能在马路
-    上遇到的拎满破瓶罐翻垃圾桶的单薄身影。
+    在老家的小区里看到翻垃圾桶的老人，想起了在上海晚上 10 点下班回去还能在马路上遇到的拎满破瓶罐翻垃圾桶的单薄身影。
 
 
 2019/04/02 Tue
 
-    折腾了快一个礼拜的 jumpserver 的安装及配置，开始写 puppet，果然还是写代码舒
-    服。
+    折腾了快一个礼拜的 jumpserver 的安装及配置，开始写 puppet，果然还是写代码舒服。
 
 
 2019/03/30 Sat
@@ -656,22 +645,17 @@
 
 2019/03/27
 
-    Rec. `Tree Style Tab
-    <https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/>`_, A
-    useful plugin for Firefox, which provides ability to operate tabs as
-    "tree".
-
+    `Tree Style Tab <https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/>`_,
+    a useful plugin for Firefox, which provides ability to operate tabs as "tree".
 
 2019/03/24
 
-    参加一次舞会，你努力想记住某个人的名字。假如这个名字是别人告诉你的，那么忘
-    记的概率很高。但如果是自己想法设法打听到的，那么它将被铭刻在脑海中，并非后
-    者更重要，也不是记忆力提高了，仅仅是因为练习更加深入了。 —— The Talent Code
+    参加一次舞会，你努力想记住某个人的名字。假如这个名字是别人告诉你的，那么忘记的概率很高。但如果是自己想法设法打听到的，那么它将被铭刻在脑海中，并非后者更重要，也不是记忆力提高了，仅仅是因为练习更加深入了。 —— The Talent Code
 
 
 2019/03/23
 
-    有一家书店名叫坐忘书房。
+    有一家书店叫坐忘书房。
 
 
 2019/03/22
@@ -683,7 +667,7 @@
 
 2019/03/01
 
-    最近找工作挺不顺的，心态有点崩，还是得提醒一下自己：切忌浮躁。
+    最近找工作挺不顺的，心态有点崩，不过还是不能急躁。
 
 
 2019/02/13

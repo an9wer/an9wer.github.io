@@ -3,7 +3,7 @@
 python_version=$(python -c "import sys; print(sys.version_info[0])")
 
 pushd docs
-qutebrowser 127.0.0.1:8000/index.html &
+firefox 127.0.0.1:8000/index.html &
 
 if (( $python_version == 3 )); then
   python -m http.server 8000

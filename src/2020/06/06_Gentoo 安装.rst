@@ -40,7 +40,7 @@ Disk partition: ::
     # mkfs.ext2 -T small /dev/sda1
     # mkswap /dev/sda2
     # swapon /dev/sda2
-    # mkfs.ext4 -T small /dev/sda3
+    # mkfs.ext4 -T big /dev/sda3
     # mount /dev/sda3 /mnt/gentoo
     
 Synchronize system time: ::
