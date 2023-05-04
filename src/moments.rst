@@ -1,6 +1,12 @@
 .. meta::
     :robots: noindex 
 
+2023/05/02 Tue
+
+    Oh, my first self-make pineapple pizza!
+
+    .. image:: /statics/images/moments/2023/05/pineapple-pizza.jpg
+
 2023/04/27 Thu
 
     The third attempt to try baking a bread, finally made such a soft one, with a crunchy crust :)
