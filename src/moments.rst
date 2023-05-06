@@ -1,9 +1,15 @@
 .. meta::
     :robots: noindex 
 
+2023/05/06 Sat
+
+    Awesome! Finally got an approach, with picom, to make displaying windows transparent and gaps between each of them.
+
+    .. image:: /statics/images/moments/2023/05/picom.jpg
+
 2023/05/02 Tue
 
-    Oh, my first self-make pineapple pizza!
+    Oh, my first pineapple pizza!
 
     .. image:: /statics/images/moments/2023/05/pineapple-pizza.jpg
 
