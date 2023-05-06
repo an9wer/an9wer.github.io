@@ -14,7 +14,7 @@ BandwagonHost 服务器被黑事件
 遇到这样的情况，不着急重装系统，而是找找线索，排查下原因，总结些经验。
 但是我这边一开机，服务器可能又会不停地发 Spam 邮件，导致再次触发搬瓦工的安全机制从而 shutdown。
 
-想了个办法，先在控制面板 mount 一个 arch 的安装盘上去，启动后 chroot 到原来的系统里面，disable NetworkManager.service。
+于是想了个办法，先在控制面板 mount 一个 arch 的安装盘上去，启动后 chroot 到原来的系统里面，disable NetworkManager.service。
 没有了网络，服务器就无法对外发送 Spam 邮件了。
 接下来 unmount 安装盘，重启系统，一顿排查，居然没有发现任何线索：
 
@@ -45,14 +45,14 @@ BandwagonHost 服务器被黑事件
 而且服务器也一直没有被 shutdown。
 难道问题不复存在了？
 
-相信我的判断没有问题，所以索性也不观察了，直接把 25 端口出口流量给禁用： ::
+相信我的判断没有问题，所以也不再继续观察，直接把 25 端口出口流量给禁用： ::
 
     # iptables -A OUTPUT -o <public interface> -p tcp --dport 25 -j DROP
 
 Updated 2021/05/04
 ------------------
 
-看到有人也在 Bandwagonhost 遇到了这个问题，但是他的原因和我不太一样。
+看到有人也在 Bandwagonhost 遇到了这个问题：
 
 - `找到一直被搬瓦工封机的源头了(1) <https://hostloc.com/thread-838936-1-1.html>`_
 - `找到一直被搬瓦工封机的源头了(2) <https://hostloc.com/thread-839007-1-1.html>`_
@@ -61,6 +61,6 @@ Updated 2021/12/16
 ------------------
 
 禁用 25 端口出口流量之后就再也没有出现这样的问题了。
-
+所以应该是家里的某些设备，例如 Windows 电脑，或是安卓手机等，可能被不知不觉地安装了恶意软件，被当作肉鸡发送 Spam 邮件。
 
 Thanks for reading :)
