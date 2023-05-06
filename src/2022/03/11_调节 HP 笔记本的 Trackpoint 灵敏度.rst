@@ -21,7 +21,8 @@ Trackpoint 还真是个有用的东西，用它来当鼠标，双手可以不用
 
     $ xinput set-prop 'PS/2 Generic Mouse' 'Libinput Accel Speed' 1
 
-不过在尝试将 trackpoint 的驱动从 libinput 换成 evdev 后， ``xinput`` 的调节开始奏效了： ::
+在网上同样看到有人抱怨 libinput 调节的敏感度不及 evdev。 [#]_
+于是尝试将 trackpoint 的驱动从 libinput 换成 evdev ，之后 ``xinput`` 的调节果然开始奏效了： ::
 
     $ sudo vim /etc/X11/xorg.conf
         Section "InputClass"
@@ -31,6 +32,11 @@ Trackpoint 还真是个有用的东西，用它来当鼠标，双手可以不用
           Option "ConstantDeceleration" "<number>"
         Endsection
 
-最终看起来对于 HP 笔记本来说，evdev 的兼容性会比 libinput 更好。
+虽然 libinput 是新一代的 input 驱动，但看起来至少对于 HP 笔记本来说，evdev 会更加合适。
 
 Thanks for reading :)
+
+References
+----------
+
+.. [#] `Why I've come to dislike libinput <https://www.askwoody.com/forums/topic/why-ive-come-to-dislike-libinput-one-of-the-linux-input-drivers/>`_

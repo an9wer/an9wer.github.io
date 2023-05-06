@@ -49,7 +49,8 @@
 <p>使用 <span class="docutils literal">xinput</span> 命令可以得知当前 trackpoint 使用的是 libinput，
 而同样使用 <span class="docutils literal">xinput</span> 命令修改 trackpoint 灵敏度却不奏效（或者说在 0 到 1  之间的范围内，不管怎么调整，差别都不大）：</p>
 <pre class="literal-block">$ xinput set-prop 'PS/2 Generic Mouse' 'Libinput Accel Speed' 1</pre>
-<p>不过在尝试将 trackpoint 的驱动从 libinput 换成 evdev 后， <span class="docutils literal">xinput</span> 的调节开始奏效了：</p>
+<p>在网上同样看到有人抱怨 libinput 调节的敏感度不及 evdev。 <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+于是尝试将 trackpoint 的驱动从 libinput 换成 evdev ，之后 <span class="docutils literal">xinput</span> 的调节果然开始奏效了：</p>
 <pre class="literal-block">$ sudo vim /etc/X11/xorg.conf
     Section &quot;InputClass&quot;
       Identifier &quot;trackpoint&quot;
@@ -57,8 +58,17 @@
       MatchDevicePath &quot;/dev/input/event&lt;number&gt;&quot;
       Option &quot;ConstantDeceleration&quot; &quot;&lt;number&gt;&quot;
     Endsection</pre>
-<p>最终看起来对于 HP 笔记本来说，evdev 的兼容性会比 libinput 更好。</p>
+<p>虽然 libinput 是新一代的 input 驱动，但看起来至少对于 HP 笔记本来说，evdev 会更加合适。</p>
 <p>Thanks for reading :)</p>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.askwoody.com/forums/topic/why-ive-come-to-dislike-libinput-one-of-the-linux-input-drivers/">Why I've come to dislike libinput</a></p>
+</aside>
+</aside>
+</section>
     </div> <!-- content -->
 
     <div id="footer">
