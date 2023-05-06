@@ -42,22 +42,24 @@
     <div id="content">
 <p>之前有幸赶上最后一班 Bandwagon CN2 GIA $49.9/year 的车 —— 现在已成为绝版小鸡。</p>
 <p>但万幸中的不幸是，其只有 512M 的内存以及 10G 的磁盘空间，而我还偏偏安装了 Gentoo ——
-因此在每次更新 gcc 软件包的时候都是个头疼的问题。
-因为一般在更新软件包的时候我会生成 2G 的 swap 充当临时内存，此时磁盘的空间就捉襟见肘了，常常是不够 gcc 编译使用。</p>
-<p>想到可以用 NFS 用来扩展磁盘空间，
+因此在每次更新软件包的时候都是个头疼的问题。
+因为某些软件包（例如 gcc），对内存和磁盘空间都有一定的要求。
+首先 512M 内存根本无法满足新版本 gcc 的编译；
+其次如果我把磁盘的部分空间设置成 swap 充当内存，此时磁盘空间就入不敷出了。</p>
+<p>想到可以用 NFS 用来扩展磁盘空间。
 不过如果在 non-Gentoo 系统上开启 NFS server，同时挂载给 Gentoo 系统的 <em>/var/tmp/portage/</em> 路径，
 然后使用 <span class="docutils literal">emerge</span> 命令安装软件包，会有权限相关的报错。
 原因也显而易见，是因为 non-Gentoo 系统上没有 portage 这个用户，
-但发现即使手动创建了 portage 用户，依然无法正常使用 <span class="docutils literal">emerge</span> 。
-看起来需要 NFS server 所在的系统也同样是 Gentoo。</p>
-<p>所以只能新建一个 Gentoo 系统，然后在其上安装 NFS server。
-但是众所周知，搭建一个 Gentoo 系统是非常耗时的。
+但尝试后发现即使手动创建了 portage 用户，依然无法正常使用 <span class="docutils literal">emerge</span> 。</p>
+<p>看起来只能再搭建另外一个 Gentoo 环境，然后在其上安装 NFS server。
+但众所周知，搭建一个 Gentoo 系统是相当麻烦且非常耗时的。
 那怎么能快速创建 Gentoo 系统呢？ —— 答案是 stage4。
-通常我们都是基于官方提供的 stage3（tar 包）安装 Gentoo 系统的，stage3 中只包含了一些基础的系统文件（bin, lib 等）
-而 stage4 的概念则是将一个完整可用的系统都打成 tar 包，解压即可用。</p>
-<p>网上有人提供了一些可用的 stage4，不过也可以通过 <a class="reference external" href="https://github.com/TheChymera/mkstage4">mkstage4</a> 工具
-手动将一个完整的 Gentoo 打包成 stage4 tar 包。
-之后便可快速安装 Gentoo 系统（与其说是安装，不如说是还原，呵呵）。</p>
+通常我们都是基于官方提供的 stage3（tar 包）安装 Gentoo 系统。
+stage3 中只包含某些基础的系统文件（bin, lib 等），而其他类似 <em>/boot</em> 目录下的文件还根据不同的场景另外生成。
+stage4 的概念则是在这个基础上将完整系统都打成 tar 包，实现解压即可用。</p>
+<p>在网上我们可以找到别人提供的一些可用的 stage4。
+不过还有个专门打包 stage4 的工具 —— <a class="reference external" href="https://github.com/TheChymera/mkstage4">mkstage4</a> 。
+可以将一个完整的 Gentoo 打包成 stage4 tar 包，之后便能够快速安装 Gentoo 系统（不过与其说是安装，不如说是还原，呵呵）。</p>
 <section id="nfs-server">
 <h2>NFS server</h2>
 <pre class="literal-block">$ sudo emerge -av net-fs/nfs-utils

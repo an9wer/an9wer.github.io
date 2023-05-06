@@ -7,7 +7,7 @@
     :description: 在 Linux (Gentoo) 中安装 bluez 软件，使用蓝牙（bluetooth）功能。
 
 我有一个罗技 K480 蓝牙键盘，这个键盘左侧有个小旋钮，分三个档位，一共可以连接三台设备。
-出于某些原因，我要将它连上笔记本电脑，作为外接键盘使用。
+因为某些原因，我要将它连上笔记本电脑，作为外接键盘使用。
 
 在 Linux 上使用蓝牙，需要安装 bluez 软件包。在我目前使用的 Gentoo 系统中的安装方式： ::
 
@@ -61,7 +61,7 @@ Q&A
 - bluetoothctl 中的 trust 命令有什么用？
 
 因为每次连接不信任的设备需要重新确认，trust 之后可以免去下次连接的确认提示
-（具体可以参考 `这个答案 <https://www.reddit.com/r/linuxquestions/comments/g0rid3/bluetoothctl_what_are_trusted_devices/>`_ ）。
+（具体可以参考 `这个回答 <https://www.reddit.com/r/linuxquestions/comments/g0rid3/bluetoothctl_what_are_trusted_devices/>`_ ）。
 
 
 Thanks for reading :)
