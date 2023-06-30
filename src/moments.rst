@@ -22,7 +22,7 @@
 
 2023/04/27 Thu
 
-    The third attempt to try baking a bread, finally made such a soft one, with a crunchy crust :)
+    The third attempt to try baking bread, finally made such a soft one, with a crunchy crust :)
 
     .. image:: /statics/images/moments/2023/04/bread.jpg
 
