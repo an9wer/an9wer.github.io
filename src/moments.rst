@@ -1,6 +1,13 @@
 .. meta::
     :robots: noindex 
 
+2023/07/01 Sat
+
+    Ciabatta!
+
+    .. image:: /statics/images/moments/2023/07/ciabatta-1.jpg
+    .. image:: /statics/images/moments/2023/07/ciabatta-2.jpg
+
 2023/05/06 Sat
 
     Awesome! Finally got an approach, with picom, to make displaying windows transparent and gaps between each of them.
