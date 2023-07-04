@@ -77,8 +77,8 @@ files are preserved:</p>
 <p>Or use a helper program <span class="docutils literal"><span class="pre">revdev-rebuild</span></span> <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
 <pre class="literal-block">$ sudo revdep-rebuild --library /usr/lib64/libcrypto.so.1.1</pre>
 <p>After that, the old Python has been rebuilt on the new OpenSSL libraries and
-updated to the new version 3.10.12. If checking the all files in the OpenSSL
-package again, I can find the old shared library files has been removed:</p>
+updated to the new version 3.10.12. If checking again all files in the OpenSSL
+package, I can find out the old shared library files has been removed:</p>
 <pre class="literal-block">$ equery files =dev-libs/openssl-3.0.9-r1
 ...
 /usr/lib64/libcrypto.so.3

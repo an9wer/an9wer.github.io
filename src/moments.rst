@@ -1,6 +1,18 @@
 .. meta::
     :robots: noindex 
 
+2023/07/04 Tue
+
+    Goodbye Macmillan Dict!
+
+    .. image:: /statics/images/moments/2023/07/macmillan-dict-1.jpg
+       :width: 360px
+
+    My last word of Macmillan Dict:
+
+    .. image:: /statics/images/moments/2023/07/macmillan-dict-2.jpg
+       :width: 360px
+
 2023/07/01 Sat
 
     Ciabatta!
