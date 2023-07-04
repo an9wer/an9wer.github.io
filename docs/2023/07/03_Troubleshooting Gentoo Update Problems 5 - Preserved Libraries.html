@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<title>Troubleshooting Gentoo Update Problems 5 - Preserved Libraries | an9wer's blog</title>
+<meta content="After updating Gentoo to the latest version, the system itself tells me to resolve the preserved library issue. What was that?" name="description" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Troubleshooting Gentoo Update Problems 5 - Preserved Libraries</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2023/07/03</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>During my most recent update, the package <em>dev-libs/openssl</em> has been updated
+from 1.1.1 to 3.0.9, as well as <em>dev-lang/python</em> updated from 3.10.10 to
+3.11.4. For openssl, two shared library files have been renamed from xxx.so.1.1
+to xxx.so.3. However, because of Gentoo's slotting feature, my current system
+has two versions of Python installed simultaneously, the old Python 3.10.10
+built on the OpenSSL 1.1.1 and the new Python 3.11.4 built on the Openssl
+3.0.9.</p>
+<p>Gentoo makes it possible by identifying and keeping the files from old packages
+that are still in use in the current system. For instance, after displaying all
+files in the new OpenSSL package, it also shows shared library ifles from the
+old OpenSSL pacakge:</p>
+<pre class="literal-block">$ equery files =dev-libs/openssl-3.0.9-r1
+...
+/usr/lib64/libcrypto.so.1.1
+/usr/lib64/libcrypto.so.3
+/usr/lib64/libssl.so.1.1
+/usr/lib64/libssl.so.3
+...</pre>
+<p>Next time when triggering the emerge command, it will remind me to rebuild the
+old package for applying new libraries. In the file
+<em>/var/lib/portage/preserved_libs_registry</em>, it tells which old shared library
+files are preserved:</p>
+<pre class="literal-block">{
+  &quot;dev-libs/openssl:0&quot;: [
+    &quot;dev-libs/openssl-3.0.9-r1&quot;,
+    &quot;1067&quot;,
+    [
+      &quot;/usr/lib64/libcrypto.so.1.1&quot;,
+      &quot;/usr/lib64/libssl.so.1.1&quot;
+    ]
+  ]
+}</pre>
+<p>The way to resolve that is executing the following command <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<pre class="literal-block">$ sudo emerge --ask --verbose &#64;preserved-rebuild</pre>
+<p>Or use a helper program <span class="docutils literal"><span class="pre">revdev-rebuild</span></span> <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
+<pre class="literal-block">$ sudo revdep-rebuild --library /usr/lib64/libcrypto.so.1.1</pre>
+<p>After that, the old Python has been rebuilt on the new OpenSSL libraries and
+updated to the new version 3.10.12. If checking the all files in the OpenSSL
+package again, I can find the old shared library files has been removed:</p>
+<pre class="literal-block">$ equery files =dev-libs/openssl-3.0.9-r1
+...
+/usr/lib64/libcrypto.so.3
+/usr/lib64/libssl.so.3
+...</pre>
+<p>Thanks for reading :)</p>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Preserved-rebuild">GentooWiki: Preserved Rebuild</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Preserve-libs">GentooWiki: Preserve Libs</a></p>
+</aside>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

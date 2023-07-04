@@ -1,3 +1,5 @@
+2023/07/03 「Linux」 `Troubleshooting Gentoo Update Problems 5 - Preserved Libraries <2023/07/03_Troubleshooting%20Gentoo%20Update%20Problems%205%20-%20Preserved%20Libraries.html>`_
+
 2023/01/24 「记录」 `聊聊印度同事 <2023/01/24_聊聊印度同事.html>`_
 
 2022/11/19 「折腾」 `老招扶新墙 <2022/11/19_老招扶新墙.html>`_
