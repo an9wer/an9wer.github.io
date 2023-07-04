@@ -6,21 +6,23 @@ My personal statistics blog system.
 Prerequisites
 -------------
 
-Install docutils: ::
+The only requirement is docutils - an open-source text processing system for
+processing plaintext documentation into useful formats: ::
 
     $ pip install docutils
 
 Usage
 -----
 
-Build all posts and generate RSS subscription: ::
+Building all posts and generating a RSS subscription: ::
 
     $ ./build
 
-Remove obsolete files: ::
+Removing obsolete files: ::
 
     $ ./clean
 
-Run test: ::
+Running locally, which will trigger a Python http server and open the homepage
+in Firefox: ::
 
     $ ./run
