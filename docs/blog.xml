@@ -9,10 +9,18 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 07 Jul 2023 08:08:29 +0000</pubDate>
+  <pubDate>Fri, 07 Jul 2023 17:33:56 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
+  <item>
+    <title>Snapshots of Gentoo Ebuild Repositories and Their Deltas</title>
+    <author>an9wer@gmail.com</author>
+    <category>Linux</category>
+    <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html</link>
+    <description>What is the command 'emerge-delta-webrsync'? How to use it to download snapshots of Gentoo ebuild repositories and their deltas?</description>
+  </item>
   <item>
     <title>Troubleshooting Gentoo Update Problems 5 - Preserved Libraries</title>
     <author>an9wer@gmail.com</author>

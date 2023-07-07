@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2023-07-04</lastmod>
+      <lastmod>2023-07-08</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html</loc>
+    <lastmod>2023-07-07</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2023/07/03_Troubleshooting%20Gentoo%20Update%20Problems%205%20-%20Preserved%20Libraries.html</loc>
     <lastmod>2023-07-07</lastmod>
@@ -20,7 +26,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2023/01/24_%E8%81%8A%E8%81%8A%E5%8D%B0%E5%BA%A6%E5%90%8C%E4%BA%8B.html</loc>
-    <lastmod>2023-05-06</lastmod>
+    <lastmod>2023-07-07</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

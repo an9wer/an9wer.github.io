@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="What is the command 'emerge-delta-webrsync'? How to use it to download snapshots of Gentoo ebuild repositories and their deltas?" name="description" />
+<title>Snapshots of Gentoo Ebuild Repositories and Their Deltas | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Snapshots of Gentoo Ebuild Repositories and Their Deltas</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2023/07/07</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>Snapshots of Gentoo ebuild repositories are a simple tarball file, which can
+be downloaded from any Gentoo mirrors (specified by <span class="docutils literal">GENTOO_MIRRORS</span>) through
+the command <span class="docutils literal"><span class="pre">emerge-webrsync</span></span> to update local ebuild repositories. Another
+less common but useful command <span class="docutils literal"><span class="pre">emerge-delta-webrsync</span></span> can download not only
+snapshots, but also their deltas, the different parts between two snapshots.
+This is an example of a snapshot directory tree in Gentoo mirrors:</p>
+<pre class="literal-block">snapshots/
+    deltas/
+        snapshot-yyyymmdd-yyyymmdd.patch.bz2
+        snapshot-yyyymmdd-yyyymmdd.patch.bz2.md5sum
+    gentoo-yyyymmdd.tar.xz
+    gentoo-yyyymmdd.tar.xz.md5sum
+    portage-yyyymmdd.tar.xz
+    portage-yyyymmdd.tar.xz.md5sum
+    portage-yyyymmdd.tar.bz2
+    portage-yyyymmdd.tar.bz2.md5sum</pre>
+<p>The reason for using deltas instead of snapshots is to minimize download
+bandwith and save disk space. A good practice is enabling
+<span class="docutils literal"><span class="pre">sync-webrsync-delta</span></span> in the file <em>repos.conf</em> to use
+<span class="docutils literal"><span class="pre">emerge-delta-webrsync</span></span> automatically when calling the command <span class="docutils literal">emerge <span class="pre">--sync</span> &lt;REPO&gt;</span>:</p>
+<pre class="literal-block">$ vim /etc/portage/repos.conf/gentoo.conf
+    sync-webrsync-delta = yes</pre>
+<p>Gentoo releases a new snapshot for every single day, which, however, is named
+with two different formats, <em>portage-yyyymmdd.tar.xz</em> and
+<em>gentoo-yyyymmdd.tar.xz</em>. Although running md5sum on them returns different
+output, files inside them, except the top-level directory (<em>portage</em> and
+<em>gentoo-yyyymmdd</em>), are totally same. It can be verified through the following
+commands:</p>
+<pre class="literal-block">$ tar -xvf portage-yyyymmdd.tar.xz
+$ tar -xvf gentoo-yyyymmdd.tar.xz
+
+# returns nothing if no difference between them
+$ rsync -acn portage gentoo-yyyymmdd</pre>
+<p>Or checking the file <em>metadata/timestamp.commit</em> inside the snapshot can get
+the exact commit id on which that snapshot is based. The snapshots should be
+equal if they are based on the same commit id:</p>
+<pre class="literal-block">$ tar -xvf portage-yyyymmdd.tar.xz --strip-components=1 -C portage
+$ cat portage/metadata/timestamp.commit
+
+$ tar -xvf gentoo-yyyymmdd.tar.xz --strip-components=1 -C gentoo
+$ cat gentoo/metadata/timestamp.commit</pre>
+<p>As mentioned, both of the command <span class="docutils literal"><span class="pre">emerge-webrsync</span></span> and
+<span class="docutils literal"><span class="pre">emerge-delta-webrsync</span></span> use snapshots to update local ebuild repositories. In
+particular, the former uses the snapshots with the format
+<em>gentoo-yyyymmdd.tar.xz</em>, and the latter uses the snapshots with the format
+<em>portage-yyymmdd.tar.bz2</em>. Deltas, instead, are all named with the format
+<em>snapshot-yyyymmdd-yyyymmdd.patch.bz2</em>.</p>
+<p>Thanks for reading :)</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>
