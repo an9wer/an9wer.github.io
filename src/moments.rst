@@ -3,7 +3,7 @@
 
 2023/07/04 Tue
 
-    Macmillan English Dictionary are closed after 14 years of online excellence:
+    Macmillan English Dictionary was closed after 14 years of online excellence:
 
     .. image:: /statics/images/moments/2023/07/macmillan-dict-1.jpg
        :width: 360px

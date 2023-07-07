@@ -11,14 +11,14 @@ During my most recent update of Gentoo, the package *dev-libs/openssl* has been
 updated from 1.1.1 to 3.0.9, as well as *dev-lang/python* from 3.10.10 to
 3.11.4. For openssl, two shared library files have been renamed from xxx.so.1.1
 to xxx.so.3. However, the problem was that there are two versions of Python
-existed simultaneously in my current system. The old one based on the OpenSSL
-1.1.1 is the Python 3.10.10, and the new one based on the Openssl 3.0.9 is the
-Python 3.11.4.
+existed simultaneously in my current system. The old one is the Python 3.10.10,
+based on the OpenSSL 1.1.1, and the new one is the Python 3.11.4, based on the
+Openssl 3.0.9.
 
 Because of Gentoo's slotting feature [#]_, it is allowed to have different
 versions of a package in the same system. However, I was curious of what Gentoo
 actually do to allow different versions of a package based on different
-versions of a library seperately.
+versions of a library seperately?
 
 Gentoo makes it possible by identifying and keeping the files from old packages
 that are still in use in the current system. For instance, if listing all files
