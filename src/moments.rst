@@ -3,12 +3,12 @@
 
 2023/07/04 Tue
 
-    Goodbye Macmillan Dict!
+    Macmillan English Dictionary are closed after 14 years of online excellence:
 
     .. image:: /statics/images/moments/2023/07/macmillan-dict-1.jpg
        :width: 360px
 
-    My last word of Macmillan Dict:
+    Yesterday became my last use of it:
 
     .. image:: /statics/images/moments/2023/07/macmillan-dict-2.jpg
        :width: 360px
