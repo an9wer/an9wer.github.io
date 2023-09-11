@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Fri, 07 Jul 2023 17:33:56 +0000</pubDate>
+  <pubDate>Mon, 11 Sep 2023 15:05:29 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -27,7 +27,7 @@
     <category>Linux</category>
     <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2023/07/03_Troubleshooting%20Gentoo%20Update%20Problems%205%20-%20Preserved%20Libraries.html</link>
-    <description>After updating Gentoo to the latest version, the system itself tells me to resolve the preserved library issue. What was that?</description>
+    <description>During the update of Gentoo, it shown me to resolve the preserved library issue.</description>
   </item>
   <item>
     <title>聊聊印度同事</title>

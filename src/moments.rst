@@ -8,7 +8,7 @@
     .. image:: /statics/images/moments/2023/07/macmillan-dict-1.jpg
        :width: 360px
 
-    Yesterday became my last use of it:
+    Never thought it was my last word on Macmillan English Dictionary yesterday.
 
     .. image:: /statics/images/moments/2023/07/macmillan-dict-2.jpg
        :width: 360px
@@ -22,7 +22,7 @@
 
 2023/05/06 Sat
 
-    Awesome! Finally got an approach, with picom, to make displaying windows transparent and gaps between each of them.
+    Using picom to make my dwm a bit awesome - window opacity and gaps.
 
     .. image:: /statics/images/moments/2023/05/picom.jpg
 

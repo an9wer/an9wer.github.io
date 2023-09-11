@@ -7,8 +7,8 @@ Snapshots of Gentoo Ebuild Repositories and Their Deltas
     :description: What is the command 'emerge-delta-webrsync'? How to use it to
         download snapshots of Gentoo ebuild repositories and their deltas?
 
-Snapshots of Gentoo ebuild repositories are a simple tarball file, which can
-be downloaded from any Gentoo mirrors (specified by ``GENTOO_MIRRORS``) through
+Snapshots of Gentoo ebuild repositories are tarball files, which can be
+downloaded from any Gentoo mirrors (specified by ``GENTOO_MIRRORS``) through
 the command ``emerge-webrsync`` to update local ebuild repositories. Another
 less common but useful command ``emerge-delta-webrsync`` can download not only
 snapshots, but also their deltas, the different parts between two snapshots.
@@ -49,7 +49,7 @@ commands: ::
 
 Or checking the file *metadata/timestamp.commit* inside the snapshot can get
 the exact commit id on which that snapshot is based. The snapshots should be
-equal if they are based on the same commit id: ::
+equivalent to each other if they are based on the same commit id: ::
 
     $ tar -xvf portage-yyyymmdd.tar.xz --strip-components=1 -C portage
     $ cat portage/metadata/timestamp.commit

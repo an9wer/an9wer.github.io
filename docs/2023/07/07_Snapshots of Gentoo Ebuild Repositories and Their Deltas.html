@@ -40,8 +40,8 @@
 </dl>
 
     <div id="content">
-<p>Snapshots of Gentoo ebuild repositories are a simple tarball file, which can
-be downloaded from any Gentoo mirrors (specified by <span class="docutils literal">GENTOO_MIRRORS</span>) through
+<p>Snapshots of Gentoo ebuild repositories are tarball files, which can be
+downloaded from any Gentoo mirrors (specified by <span class="docutils literal">GENTOO_MIRRORS</span>) through
 the command <span class="docutils literal"><span class="pre">emerge-webrsync</span></span> to update local ebuild repositories. Another
 less common but useful command <span class="docutils literal"><span class="pre">emerge-delta-webrsync</span></span> can download not only
 snapshots, but also their deltas, the different parts between two snapshots.
@@ -75,7 +75,7 @@ $ tar -xvf gentoo-yyyymmdd.tar.xz
 $ rsync -acn portage gentoo-yyyymmdd</pre>
 <p>Or checking the file <em>metadata/timestamp.commit</em> inside the snapshot can get
 the exact commit id on which that snapshot is based. The snapshots should be
-equal if they are based on the same commit id:</p>
+equivalent to each other if they are based on the same commit id:</p>
 <pre class="literal-block">$ tar -xvf portage-yyyymmdd.tar.xz --strip-components=1 -C portage
 $ cat portage/metadata/timestamp.commit
 

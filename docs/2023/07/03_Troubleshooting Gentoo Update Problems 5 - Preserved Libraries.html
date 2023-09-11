@@ -2,10 +2,10 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta content="During the update of Gentoo, it shown me to resolve the preserved library issue." name="description" />
 <title>Troubleshooting Gentoo Update Problems 5 - Preserved Libraries | an9wer's blog</title>
-<meta content="After updating Gentoo to the latest version, the system itself tells me to resolve the preserved library issue. What was that?" name="description" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
@@ -40,21 +40,20 @@
 </dl>
 
     <div id="content">
-<p>During my most recent update of Gentoo, the package <em>dev-libs/openssl</em> has been
-updated from 1.1.1 to 3.0.9, as well as <em>dev-lang/python</em> from 3.10.10 to
-3.11.4. For openssl, two shared library files have been renamed from xxx.so.1.1
-to xxx.so.3. However, the problem was that there are two versions of Python
-existed simultaneously in my current system. The old one is the Python 3.10.10,
-based on the OpenSSL 1.1.1, and the new one is the Python 3.11.4, based on the
-Openssl 3.0.9.</p>
-<p>Because of Gentoo's slotting feature <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, it is allowed to have different
-versions of a package in the same system. However, I was curious of what Gentoo
-actually do to allow different versions of a package based on different
-versions of a library seperately?</p>
-<p>Gentoo makes it possible by identifying and keeping the files from old packages
-that are still in use in the current system. For instance, if listing all files
-from the new OpenSSL package, the shared library files from the old OpenSSL
-pacakge are shown in the output as well:</p>
+<p>During my recent update of Gentoo, the package <em>dev-libs/openssl</em> was updated
+from 1.1.1 to 3.0.9, as well as two of its shared library files renamed from
+&quot;xxx.so.1.1&quot; to &quot;xxx.so.3&quot;. The problem was that there were two versions of
+Python existed simultaneously on my system. The old version was Python 3.10.10,
+which was based on the OpenSSL 1.1.1, and the new version was Python
+3.11.4, based on the Openssl 3.0.9.</p>
+<p>Gentoo allows different versions of the same package existed at the same time
+beecause of its slotting feature <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. But what magic does Gentoo use to let
+different versions of a package rely on different versions of a library
+seperately? And what if the old version of the library package has been removed?</p>
+<p>The answer is that gentoo will identify what files of the old version are still
+in use and then keep them in the new version. For instance, if listing all files
+in the new OpenSSL package, the shared library files from the old version
+of OpenSSL can be found in the output as well:</p>
 <pre class="literal-block">$ equery files =dev-libs/openssl-3.0.9-r1
 ...
 /usr/lib64/libcrypto.so.1.1
@@ -62,10 +61,11 @@ pacakge are shown in the output as well:</p>
 /usr/lib64/libssl.so.1.1
 /usr/lib64/libssl.so.3
 ...</pre>
-<p>Next time when triggering the emerge command, I will be reminded to rebuild
-old packages for applying new libraries. The file
-<em>/var/lib/portage/preserved_libs_registry</em> also tells which old shared library
-files are preserved:</p>
+<p>However, next time when the emerge command was executed, it will remind you to rebuild
+packages that were built on the old version of libraries with the new ones. A
+special file <em>/var/lib/portage/preserved_libs_registry</em> is used by Gentoo
+to records what old files are preserved. It should be empty if there is no
+preserved librariy issue:</p>
 <pre class="literal-block">{
   &quot;dev-libs/openssl:0&quot;: [
     &quot;dev-libs/openssl-3.0.9-r1&quot;,
@@ -76,16 +76,16 @@ files are preserved:</p>
     ]
   ]
 }</pre>
-<p>Therefore, the way to resolve that is by executing the following command to
-rebuild old packages <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
+<p>The way to resolve such problem is by executing the following command to rebuild
+old packages <a class="footnote-reference brackets" href="#footnote-2" id="footnote-reference-2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>:</p>
 <pre class="literal-block">$ sudo emerge --ask --verbose &#64;preserved-rebuild</pre>
-<p>Or using a helper program <span class="docutils literal"><span class="pre">revdev-rebuild</span></span> to figure out what emerge command
-should be used to deal with it <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<p>Or by using a helper program <span class="docutils literal"><span class="pre">revdev-rebuild</span></span> to figure out what emerge
+command should be used to solve it <a class="footnote-reference brackets" href="#footnote-3" id="footnote-reference-3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
 <pre class="literal-block">$ sudo revdep-rebuild --library /usr/lib64/libcrypto.so.1.1</pre>
-<p>Once done, the old version of Python will be updated to a new minor version
-3.10.12. Since rebuilt, it is now based on the new version of OpenSSL. If
-checking again all files belonging to the new OpenSSL package, no old shared
-library files will be there:</p>
+<p>Once done, Python will be updated to a new version, which is 3.10.12. Since
+rebuilt, it is now based on the new version of OpenSSL, and if checking again
+all files in the new package of OpenSSL, old shared library files will not be
+there any more:</p>
 <pre class="literal-block">$ equery files =dev-libs/openssl-3.0.9-r1
 ...
 /usr/lib64/libcrypto.so.3
@@ -95,15 +95,15 @@ library files will be there:</p>
 <section id="references">
 <h2>References</h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="footnote-1" role="note">
+<aside class="footnote brackets" id="footnote-1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://devmanual.gentoo.org/general-concepts/slotting/index.html">GentooWiki: Slotting</a></p>
 </aside>
-<aside class="footnote brackets" id="footnote-2" role="note">
+<aside class="footnote brackets" id="footnote-2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-2">2</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Preserved-rebuild">GentooWiki: Preserved Rebuild</a></p>
 </aside>
-<aside class="footnote brackets" id="footnote-3" role="note">
+<aside class="footnote brackets" id="footnote-3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-3">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://wiki.gentoo.org/wiki/Preserve-libs">GentooWiki: Preserve Libs</a></p>
 </aside>
