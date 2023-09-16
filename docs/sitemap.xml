@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2023-07-08</lastmod>
+      <lastmod>2023-09-16</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2023/09/16_Improving%20SSH%20Connections%20by%20Cloudflare%20WARP.html</loc>
+    <lastmod>2023-09-16</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html</loc>
     <lastmod>2023-09-11</lastmod>
@@ -20,7 +26,7 @@
   </url>
   <url>
     <loc>https://an9wer.github.io/2023/07/03_Troubleshooting%20Gentoo%20Update%20Problems%205%20-%20Preserved%20Libraries.html</loc>
-    <lastmod>2023-09-11</lastmod>
+    <lastmod>2023-09-16</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

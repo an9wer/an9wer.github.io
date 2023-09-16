@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Using Clodflare WARP to decrease network latency and  improve the quality of SSH connection to my remote server." name="description" />
+<title>Improving SSH Connections by Cloudflare WARP | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/blog.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="blog" class="current" href="/blog.html">Blog</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="notes" href="/notes.html">Notes</a>
+      <a id="tools" href="/tools.html">Tools</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Improving SSH Connections by Cloudflare WARP</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2023/09/16</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>The quality of a SSH connection to a remote server is always poor when the
+remote server is truely remote - so far away from me. As network packets of a
+SSH connection, heading to the remote server, have to go through a series of
+routing hops, the further the distance usually means the higher the network
+latency. Moreover, The situation gets worse when the network connection is not
+stable, in which a few parts of the packets are lost on their way to reach the
+remote server.</p>
+<p>The experience of performing operation on my remote server via SSH is highly
+connected to the network latency. A bad experience is when typing commands,
+moving the cursor between words, or scrolling the screen of a man page, I can
+apparently notice the delay between my input and the reaction from my remote
+server.</p>
+<p>The simplest solution is buying a new server that is close to me, but it is
+not practical obviously. Another possible solution is with the help of another
+server in the middle, which should have lower network latency for both sides,
+but I still have to buy a new server to work as the middle server.</p>
+<p>Finally, I found a free solution - Cloudflare WARP, which is based on Wireguard
+protocol and provides a way of making the connection faster <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Cloudflare
+WARP can transfer my original SSH connections to Cloudflare's own global
+network to promise lower network latency and packet loss.</p>
+<pre class="literal-block">.----.     .-----------------.      .---------------------------.     .------------------.
+| me | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge      | --&gt; | my remote server |
+`----'     |   close to me   |      | close to my remote server |     `------------------'
+           `-----------------'      `---------------------------'</pre>
+<section id="instructions-of-using-cloudflare-warp-for-ssh-connections">
+<h2>Instructions of using Cloudflare WARP for SSH connections</h2>
+<p>Running a WARP sevice:</p>
+<pre class="literal-block">$ warp-svc    # set cap before use</pre>
+<p>Initializing WARP connection in the socks5 proxy mode, by default listening on
+<span class="docutils literal">127.0.0.1:40000</span>:</p>
+<pre class="literal-block">$ warp-cli register
+$ warp-cli set-mode proxy
+$ warp-cli connect</pre>
+<p>Forwarding SSH connections to WARP's socks5 proxy:</p>
+<pre class="literal-block">$ nano ~/.ssh/config
+    Host my-remote-server
+        ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p</pre>
+<p>The last issue I detected is that SSH connections will be closed suddenly if no
+actions in the next 10 seconds. I guess that was WARP's default rule of closing
+any inactive sessions. Thus, to keep SSH connections alive I have to add the
+below settings:</p>
+<pre class="literal-block">$ nano ~/.ssh/config
+    Host my-remote-server
+        ServerAliveInterval 5   # less than 10 seconds
+        ServerAliveCountMax 12</pre>
+<p>Thanks for reading :)</p>
+</section>
+<section id="references">
+<h2>References</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://blog.cloudflare.com/1111-warp-better-vpn/">Cloudflare: Introducing WARP</a></p>
+</aside>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

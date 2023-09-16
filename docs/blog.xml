@@ -9,14 +9,22 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Mon, 11 Sep 2023 15:05:29 +0000</pubDate>
+  <pubDate>Sat, 16 Sep 2023 08:11:49 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
   <item>
+    <title>Improving SSH Connections by Cloudflare WARP</title>
+    <author>an9wer@gmail.com</author>
+    <category>Network</category>
+    <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
+    <link>https://an9wer.github.io/2023/09/16_Improving%20SSH%20Connections%20by%20Cloudflare%20WARP.html</link>
+    <description>Using Clodflare WARP to decrease network latency and  improve the quality of SSH connection to my remote server.</description>
+  </item>
+  <item>
     <title>Snapshots of Gentoo Ebuild Repositories and Their Deltas</title>
     <author>an9wer@gmail.com</author>
-    <category>Linux</category>
+    <category>Gentoo</category>
     <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html</link>
     <description>What is the command 'emerge-delta-webrsync'? How to use it to download snapshots of Gentoo ebuild repositories and their deltas?</description>
@@ -24,10 +32,10 @@
   <item>
     <title>Troubleshooting Gentoo Update Problems 5 - Preserved Libraries</title>
     <author>an9wer@gmail.com</author>
-    <category>Linux</category>
+    <category>Gentoo</category>
     <pubDate>Mon, 03 Jul 2023 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2023/07/03_Troubleshooting%20Gentoo%20Update%20Problems%205%20-%20Preserved%20Libraries.html</link>
-    <description>During the update of Gentoo, it shown me to resolve the preserved library issue.</description>
+    <description>During the update of Gentoo, it showed me to resolve the preserved library issue.</description>
   </item>
   <item>
     <title>聊聊印度同事</title>
