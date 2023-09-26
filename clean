@@ -51,20 +51,5 @@ clean_blog() {
   done
 }
 
-clean_notes() {
-  local src=$SRC_DIR/notes
-  local dst=$DST_DIR/notes
-  clean "$src" "$dst" rst html
-}
-
-clean_code() {
-  local src=graphviz
-  local dst=code
-  clean "$src" "$dst" dot jpg
-}
-
-
 # Main
 clean_blog
-clean_notes
-#clean_code
