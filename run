@@ -1,16 +1,6 @@
 #!/bin/bash
 
-python_version=$(python -c "import sys; print(sys.version_info[0])")
-
 pushd docs
 firefox 127.0.0.1:8000/index.html &
-
-if (( $python_version == 3 )); then
-  python -m http.server 8000
-elif (( $python_version == 2 )); then
-  python -m SimpleHTTPServer 8000
-else
-  echo Unknown version of python
-  exit 1
-fi
+python -m http.server 8000
 popd
