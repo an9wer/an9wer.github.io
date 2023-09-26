@@ -7,16 +7,16 @@ PATH=venv/bin:$PATH
 export CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
 export SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
 export DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
-export DOT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/graphviz")
 
 usage() {
   cat <<EOF
-build [rss] [sitemap] [<rst> ...] [<dot> ...]
+build [rss] [sitemap] [<rst> ...]
 EOF
 }
 
 build_rst() {
   local rst html
+
   for rst in "$@"; do
     rst=$(realpath "$rst")
     if [[ ! -f $rst ]]; then
@@ -28,31 +28,24 @@ build_rst() {
       continue
     fi
 
-    if [[ $rst =~ .*/notes/ns/[^/]+\.rst$ ]]; then
-      continue
-    fi
-
-    # The following substitues are for blog page, notes page and index page seperately
+    # convert rst path to html path
     html=$(sed -nE "
       s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$DST_DIR/\1.html@p
-      t
-      s@.*/(notes/.+)\\.rst\$@$DST_DIR/\1.html@p
       t
       s@.*/([^/]+)\.rst\$@$DST_DIR/\1.html@p
     " <(echo "$rst"))
 
-    # Missing
     if [[ -z $html ]]; then
-      echo "Unknown file '$rst'."
+      echo "Unable to convert from a rst path to a html path '$rst'."
       exit 1
     fi
 
     mkdir -p "$(dirname "$html")"
-    # Only rebuild
-    # 1) when html doesn't exist
-    # 2) When mtime of either rst
-    # 3) When template.html is updated
-    # 4) when forced to rebuild
+    # rebuild only when
+    # 1) html doesn't exist
+    # 2) mtime of either rst
+    # 3) template.html is updated
+    # 4) forced to rebuild
     if [[ $force == true ]] || [[ ! -f $html ]] ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
         ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "${CRT_DIR}/template.html") ))); then
@@ -63,6 +56,8 @@ build_rst() {
         --stylesheet "/statics/css/style.css" \
         --template "${CRT_DIR}/template.html" \
         "$rst" "$html"
+
+      # Set current label
       case "$html" in
         */blog.html )
           newpub=true
@@ -71,13 +66,6 @@ build_rst() {
         */20[0-9][0-9]/[01][0-9]/[0-3][0-9]*.html )
           newpub=true
           sed -i -E -e 's@(id="blog")@\1 class="current"@' -e "s@<title>(.*)</title>@<title>\1 | an9wer's blog</title>@" "$html"
-          ;;
-        */notes.html )
-          echo $html
-          sed -i -E -e 's@(id="notes")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's notes</title>@" "$html"
-          ;;
-        */notes/*.html )
-          sed -i -E -e 's@(id="notes")@\1 class="current"@' "$html"
           ;;
         */moments.html )
           sed -i -E -e 's@(id="moments")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's moments</title>@" "$html"
@@ -91,35 +79,6 @@ build_rst() {
           ;;
       esac
       echo -e "'$rst'\n->\t'$html'"
-    fi
-  done
-}
-
-build_dot() {
-  local dot jpeg
-  for dot in "$@"; do
-    dot=$(realpath "$dot")
-    if [[ ! -f $dot ]]; then
-      echo "Unexisted file '$dot'."
-      continue
-    fi
-    if [[ ! $dot =~ \.dot$ ]]; then
-      echo "Unkonwn filetype '$dot'."
-      continue
-    fi
-
-    jpeg=$(sed -nE "s@.*/graphviz/(.+)\\.dot\$@$DST_DIR/code/\1.jpg@p" <(echo "$dot"))
-    if [[ -z $jpeg ]]; then
-      echo "Unfound '$dot' in 'graphviz' directory."
-      continue
-    fi
-
-    mkdir -p "$(dirname "$jpeg")"
-    #  Only build when jpeg doesn't exist and mtime of dot is updated
-    if [[ ! -f $jpeg ]] ||
-        ([[ -f $jpeg ]] && (( $(stat -c "%Y" "$jpeg") <= $(stat -c "%Y" "$dot") ))); then
-      dot -Tjpeg "$dot" -o "$jpeg"
-      echo -e "'$dot'\n->\t'$jpeg'"
     fi
   done
 }
@@ -170,7 +129,7 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
       cat <<EOF
 </channel>
 
-</rss> 
+</rss>
 EOF
     } > "${DST_DIR}/blog.xml"
 
@@ -215,7 +174,7 @@ if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
 ' "${SRC_DIR}/blog.rst"
 
       cat <<EOF
-</urlset> 
+</urlset>
 EOF
     } > "${DST_DIR}/sitemap.xml"
 
@@ -226,7 +185,6 @@ EOF
 build_all() {
   local IFS=$'\n'
   build_rst $(find "$SRC_DIR" -type f -name "*.rst")
-  #build_dot $(find "$DOT_DIR" -type f -name "*.dot")
   build_rss
   build_sitemap
 }
@@ -242,7 +200,6 @@ else
   while (( ${#@} > 0 )) ; do
     case $1 in
       *.rst   ) build_rst "$1" ;;
-      *.dot   ) build_dot "$1" ;;
       rss     ) build_rss ;;
       sitemap ) build_sitemap ;;
       *       ) usage ;;
