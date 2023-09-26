@@ -15,7 +15,7 @@ files, which can be installed as: ::
 Usage
 -----
 
-Build all posts and generate a RSS subscription as well: ::
+Build all posts, as well as a RSS feed and a sitemap: ::
 
     $ ./build
 
