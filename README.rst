@@ -6,23 +6,24 @@ My personal statistics blog system.
 Prerequisites
 -------------
 
-The only requirement is docutils - an open-source text processing system for
-processing plaintext documentation into useful formats: ::
+All posts are written in the reStructuredText (RST) markup language, and I am
+using `docutils <https://docutils.sourceforge.io/>` to convert them into HTML
+files, which can be installed as: ::
 
     $ pip install docutils
 
 Usage
 -----
 
-Building all posts and generating a RSS subscription: ::
+Build all posts and generate a RSS subscription as well: ::
 
     $ ./build
 
-Removing obsolete files: ::
+Remove obsolete HTML files (e.g. if renaming the name of RST files): ::
 
     $ ./clean
 
-Running locally, which will trigger a Python http server and open the homepage
-in Firefox: ::
+Run a simple web server (Python's http.server) locally and review posts on
+Firefox: ::
 
     $ ./run
