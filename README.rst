@@ -7,7 +7,7 @@ Prerequisites
 -------------
 
 All posts are written in the reStructuredText (RST) markup language, and I am
-using `docutils <https://docutils.sourceforge.io/>` to convert them into HTML
+using `docutils <https://docutils.sourceforge.io/>`_ to convert them into HTML
 files, which can be installed as: ::
 
     $ pip install docutils
