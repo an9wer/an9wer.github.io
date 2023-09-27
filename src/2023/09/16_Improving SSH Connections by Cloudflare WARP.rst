@@ -8,12 +8,12 @@ Improving SSH Connections by Cloudflare WARP
             the quality of SSH connection to my remote server.
 
 The quality of a SSH connection to a remote server is always poor when the
-remote server is truely remote - so far away from me. As network packets of a
-SSH connection, heading to the remote server, have to go through a series of
-routing hops, the further the distance usually means the higher the network
-latency. Moreover, The situation gets worse when the network connection is not
-stable, in which a few parts of the packets are lost on their way to reach the
-remote server.
+remote server is truely "remote" - which locates so far away from me. Because
+network packets of a SSH connection, heading to the remote server, have to go
+through a series of routing hops, the further the distance, the higher the
+network latency. Moreover, The situation become worse when the network
+connection is not stable, in which a few of the packets are lost on their way to
+reach the remote server.
 
 The experience of performing operation on my remote server via SSH is highly
 connected to the network latency. A bad experience is when typing commands,
@@ -56,10 +56,10 @@ Forwarding SSH connections to WARP's socks5 proxy: ::
         Host my-remote-server
             ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p
 
-The last issue I detected is that SSH connections will be closed suddenly if no
-actions in the next 10 seconds. I guess that was WARP's default rule of closing
-any inactive sessions. Thus, to keep SSH connections alive I have to add the
-below settings: ::
+The last issue I was facing was that SSH connections would be closed suddenly if
+no actions in the next 10 seconds, which probably was WARP's default rule of
+closing any inactive sessions. Thus, to keep SSH connections alive I have to add
+the below settings: ::
 
     $ nano ~/.ssh/config
         Host my-remote-server

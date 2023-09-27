@@ -73,6 +73,9 @@ build_rst() {
         */tools.html )
           sed -i -E -e 's@(id="tools")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's tools</title>@" "$html"
           ;;
+        */about.html )
+          sed -i -E -e 's@(id="about")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's about</title>@" "$html"
+          ;;
         * )
           echo "Unknown file '$html'."
           exit 1

@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Sat, 16 Sep 2023 08:11:49 +0000</pubDate>
+  <pubDate>Wed, 27 Sep 2023 14:45:47 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -528,4 +528,4 @@
   </item>
 </channel>
 
-</rss> 
+</rss>
