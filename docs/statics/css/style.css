@@ -197,7 +197,9 @@ tbody tr:nth-child(even) {
 #content {
     padding: 0% 4% 2% 4%;
     margin-bottom: 5%;
-    font-family: serif;
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: 400;
 }
 
 #title {

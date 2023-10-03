@@ -1,3 +1,5 @@
+2023/09/27 「Gentoo」 `Video Acceleration on Gentoo <2023/09/27_Video%20Acceleration%20on%20Gentoo.html>`_
+
 2023/09/16 「Network」 `Improving SSH Connections by Cloudflare WARP <2023/09/16_Improving%20SSH%20Connections%20by%20Cloudflare%20WARP.html>`_
 
 2023/07/07 「Gentoo」 `Snapshots of Gentoo Ebuild Repositories and Their Deltas <2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html>`_

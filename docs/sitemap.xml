@@ -8,10 +8,16 @@
    </url>
    <url>
       <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>2023-09-28</lastmod>
+      <lastmod>2023-10-03</lastmod>
       <changefreq>always</changefreq>
       <priority>1</priority>
    </url>
+  <url>
+    <loc>https://an9wer.github.io/2023/09/27_Video%20Acceleration%20on%20Gentoo.html</loc>
+    <lastmod>2023-10-03</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url>
   <url>
     <loc>https://an9wer.github.io/2023/09/16_Improving%20SSH%20Connections%20by%20Cloudflare%20WARP.html</loc>
     <lastmod>2023-09-27</lastmod>

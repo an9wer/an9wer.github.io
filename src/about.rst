@@ -20,7 +20,7 @@ Changelog
 =========
 
 **2023-09-29*** adding the "changelog" section - any changes about this site
-should be recorded.
+should be noticed.
 
 **2023-09-28*** adding the "about" page - say hello and talk a bit about me.
 
