@@ -83,7 +83,7 @@ USE flags ``hwaccel`` and ``wayland`` (note that even for Xorg, the USE flag
 To verify if Firefox works fine with VA-API enabled, execute the following
 command and check out the output: ::
 
-	$ MOZ_LOG="PlatformDecoderModule:5" firefox 2>&1 | grep "VA-API
+	$ MOZ_LOG="PlatformDecoderModule:5" firefox 2>&1 | grep "VA-API"
 
 .. image:: /statics/images/2023/09/vaapi-firefox.webp
        :width: 720px

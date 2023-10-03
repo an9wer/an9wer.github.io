@@ -70,8 +70,8 @@ by Cloudflare WARP to close inactive sessions): ::
 
 Thanks for reading :)
 
-References
-----------
+Further Readings
+----------------
 
 .. [#] `Cloudflare: Introducing WARP <https://blog.cloudflare.com/1111-warp-better-vpn/>`_
 
