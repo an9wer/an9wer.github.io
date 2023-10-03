@@ -47,8 +47,8 @@ get its running details:
 .. image:: /statics/images/2023/09/vaapi-mpv.webp
        :width: 360px
 
-Firefox
--------
+Firefox Settings
+----------------
 
 Open the page ``about:config`` in Firefox, make sure the below two options are
 set to true: ::
@@ -84,8 +84,8 @@ Thanks for reading :)
 .. _MPV: https://mpv.io/
 
 
-Further Reading
----------------
+Further Readings
+----------------
 
 .. [#] `Arch Wiki: Hardware Video Acceleration <https://wiki.archlinux.org/title/Hardware_video_acceleration#Application_support>`_
 .. [#] `Wikipedia: Video Acceleration API <https://en.wikipedia.org/wiki/Video_Acceleration_API>`_
