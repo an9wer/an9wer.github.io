@@ -54,35 +54,37 @@ is to provide a stable and low-latency network to both sides. However, it is not
 easy to find such a server, and if you are luck to find one, you still need to
 pay for it.</p>
 <p>So, here is Cloudflare WARP, a free VPN service <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Although its goal of
-design is to secure Internet, I can also take advantage of its stable and
-low-latency network to speed up my SSH connections.</p>
-<pre class="literal-block">.----.     .-----------------.      .----------------------------.     .-------------------.
-| me | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
-`----'     |   close to me   |      | close to the remote server |     `-------------------'
-           `-----------------'      `----------------------------'</pre>
+design is to secure Internet, you can also take advantage of its stable and
+low-latency network to speed up your SSH connections.</p>
+<pre class="literal-block">.-----.     .-----------------.      .----------------------------.     .-------------------.
+| you | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
+`-----'     |  close to you   |      | close to the remote server |     `-------------------'
+            `-----------------'      `----------------------------'</pre>
 <p>To use Cloudflare WARP, download its package from <a class="reference external" href="https://1.1.1.1/">its website</a>, and here are
 the instructions of using it for SSH connections on Linux.</p>
 <section id="instructions-of-using-cloudflare-warp-for-ssh-connections">
 <h2>Instructions of using Cloudflare WARP for SSH connections</h2>
-<p>Start a WARP sevice:</p>
+<p>Start a Couldflare WARP sevice locally:</p>
 <pre class="literal-block">$ warp-svc    # set cap before use</pre>
-<p>Connect to Cloudflare WARP, and start a socks5 proxy locally, which by default
-listens on <span class="docutils literal">127.0.0.1:40000</span>:</p>
+<p>Connect to Cloudflare WARP's edge network, and start a socks5 proxy locally,
+which by default listens on <span class="docutils literal">127.0.0.1:40000</span>:</p>
 <pre class="literal-block">$ warp-cli register
 $ warp-cli set-mode proxy
 $ warp-cli connect</pre>
-<p>Forward SSH connections to Cludflare WARP through the socks5 proxy:</p>
+<p>Forward SSH connections to Cludflare WARP's edge network through the local
+socks5 proxy:</p>
 <pre class="literal-block">$ nano ~/.ssh/config
         Host my-remote-server
                 ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p</pre>
 <p>The last issue I encountered was that SSH connections were closed suddenly if
 there were no operations in the next few seconds (around 10s). It looks like a
 rule set by Cloudflare WARP that will colse any inactive sessions exceeding to
-a specific time. Thus to keep SSH connections alive I have to add the below
-settings to make ssh client send an alive message for every 5s:</p>
+a specific time. Thus to keep SSH connections alive I can add the below settings
+to make ssh client send an alive message for every 5s (lower than the time set
+by Cloudflare WARP to close inactive sessions):</p>
 <pre class="literal-block">$ nano ~/.ssh/config
         Host my-remote-server
-                ServerAliveInterval 5   # less than 10s
+                ServerAliveInterval 5
                 ServerAliveCountMax 12</pre>
 <p>Thanks for reading :)</p>
 </section>
