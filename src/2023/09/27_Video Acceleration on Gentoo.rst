@@ -1,6 +1,15 @@
 Video Acceleration on Gentoo
 ============================
 
+:Published: 2023/09/27
+
+.. meta::
+	:description: At least for the recent months, I have beed used to
+		spending my free time watching videos on my laptop, and since my
+		laptop has an integrated GPU, AMD Radeon Vega 8, I was thinking
+		about what if I can accelerate video processing using GPU and
+		reduce the load of CPU.
+ 
 At least for the recent months, I have beed used to spending my free time
 watching videos on my laptop, and since my laptop has an integrated GPU, AMD
 Radeon Vega 8, I was thinking about what if I can accelerate video processing
@@ -81,8 +90,6 @@ command and check out the output: ::
 
 Thanks for reading :)
 
-.. _MPV: https://mpv.io/
-
 
 Further Readings
 ----------------
@@ -92,3 +99,6 @@ Further Readings
 .. [#] `Gentoo Wiki: VAAPI <https://wiki.gentoo.org/wiki/VAAPI>`_
 .. [#] `Gentoo Wiki: AMDGPU <https://wiki.gentoo.org/wiki/AMDGPU#Feature_support>`_
 .. [#] `Gentoo Wiki: Firefox <https://wiki.gentoo.org/wiki/Firefox#ESR>`_
+
+
+.. _MPV: https://mpv.io/

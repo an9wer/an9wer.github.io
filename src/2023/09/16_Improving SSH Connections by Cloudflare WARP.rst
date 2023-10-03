@@ -7,69 +7,70 @@ Improving SSH Connections by Cloudflare WARP
     :description: Using Clodflare WARP to decrease network latency and  improve
             the quality of SSH connection to my remote server.
 
-The quality of a SSH connection to a remote server is always poor when the
-remote server is truely "remote" - which locates so far away from me. Because
-network packets of a SSH connection, heading to the remote server, have to go
-through a series of routing hops, the further the distance, the higher the
-network latency. Moreover, The situation become worse when the network
-connection is not stable, in which a few of the packets are lost on their way to
-reach the remote server.
+The quality of a SSH connection to a remote server is usually poor when the
+remote server is truely "remote" - locating far away from where you are, because
+network packets have to go through more routing hops to reach the remote server,
+leading to a high network latency, and perhaps a high packet loss ratio as well.
 
-The experience of performing operation on my remote server via SSH is highly
-connected to the network latency. A bad experience is when typing commands,
-moving the cursor between words, or scrolling the screen of a man page, I can
-apparently notice the delay between my input and the reaction from my remote
+Why does it matter? Because when performing operations on a remote server,
+such as typing commands, moving cursors, or scrolling screens, you can
+apparently feel the delay between your input and the reaction from the remote
 server.
 
-The simplest solution is buying a new server that is close to me, but it is
-not practical obviously. Another possible solution is with the help of another
-server in the middle, which should have lower network latency for both sides,
-but I still have to buy a new server to work as the middle server.
+How to solve that? One solution is to set up another server which resides
+between the remote server and you. The only requirement is that it can provides
+stable low-latency network to both sides. However, it is not easy to find such a
+server, and if you are luck to find one, you still need to pay for it.
 
-Finally, I found a free solution - Cloudflare WARP, which is based on Wireguard
-protocol and provides a way of making the connection faster [#]_. Cloudflare
-WARP can transfer my original SSH connections to Cloudflare's own global
-network to promise lower network latency and packet loss. ::
+So, here is Cloudflare WARP, a free VPN service [#]_. Although its goal of
+design is to secure Internet, I can also take advantage of its stable and
+low-latency network to speed up my SSH connections. ::
 
-    .----.     .-----------------.      .---------------------------.     .------------------.
-    | me | --> | Cloudflare edge |  --> |      Cloudflare edge      | --> | my remote server |
-    `----'     |   close to me   |      | close to my remote server |     `------------------'
-               `-----------------'      `---------------------------'
+    .----.     .-----------------.      .----------------------------.     .-------------------.
+    | me | --> | Cloudflare edge |  --> |      Cloudflare edge       | --> | the remote server |
+    `----'     |   close to me   |      | close to the remote server |     `-------------------'
+               `-----------------'      `----------------------------'
+
+You can download the Clodflare WARP package from `its website`_, and here is the
+instructions of using it for SSH connections on Linux.
 
 Instructions of using Cloudflare WARP for SSH connections
 ---------------------------------------------------------
 
-Running a WARP sevice: ::
+Start a WARP sevice: ::
 
-    $ warp-svc    # set cap before use
+	$ warp-svc    # set cap before use
 
-Initializing WARP connection in the socks5 proxy mode, by default listening on
-``127.0.0.1:40000``: ::
+Connect to Cloudflare WARP, and start a socks5 proxy locally, which by default
+listens on ``127.0.0.1:40000``: ::
 
-    $ warp-cli register
-    $ warp-cli set-mode proxy
-    $ warp-cli connect
+	$ warp-cli register
+	$ warp-cli set-mode proxy
+	$ warp-cli connect
 
-Forwarding SSH connections to WARP's socks5 proxy: ::
+Forward SSH connections to WARP's socks5 proxy: ::
 
-    $ nano ~/.ssh/config
-        Host my-remote-server
-            ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p
+	$ nano ~/.ssh/config
+		Host my-remote-server
+			ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p
 
-The last issue I was facing was that SSH connections would be closed suddenly if
-no actions in the next 10 seconds, which probably was WARP's default rule of
-closing any inactive sessions. Thus, to keep SSH connections alive I have to add
-the below settings: ::
+The last issue I encountered was that SSH connections were closed suddenly if
+there were no operations in the next few seconds (around 10s). It looks like a
+rule set by Cloudflare WARP that will colse any inactive sessions exceeding to
+a specific time. Thus to keep SSH connections alive I have to add the below
+settings to make ssh client send an alive message for every 5s: ::
 
-    $ nano ~/.ssh/config
-        Host my-remote-server
-            ServerAliveInterval 5   # less than 10 seconds
-            ServerAliveCountMax 12
+	$ nano ~/.ssh/config
+		Host my-remote-server
+			ServerAliveInterval 5   # less than 10s
+			ServerAliveCountMax 12
 
 Thanks for reading :)
-
 
 References
 ----------
 
 .. [#] `Cloudflare: Introducing WARP <https://blog.cloudflare.com/1111-warp-better-vpn/>`_
+
+
+.. _its website: https://1.1.1.1/
