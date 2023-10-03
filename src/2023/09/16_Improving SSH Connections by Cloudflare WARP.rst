@@ -4,8 +4,8 @@ Improving SSH Connections by Cloudflare WARP
 :Published: 2023/09/16
 
 .. meta::
-    :description: Using Clodflare WARP to decrease network latency and  improve
-            the quality of SSH connection to my remote server.
+	:description: Using Clodflare WARP to decrease network latency and
+		improve the quality of SSH connection to my remote server.
 
 The quality of a SSH connection to a remote server is usually poor when the
 remote server is truely "remote" - locating far away from where you are, because
@@ -18,9 +18,10 @@ apparently feel the delay between your input and the reaction from the remote
 server.
 
 How to solve that? One solution is to set up another server which resides
-between the remote server and you. The only requirement is that it can provides
-stable low-latency network to both sides. However, it is not easy to find such a
-server, and if you are luck to find one, you still need to pay for it.
+between the remote server and you. The only requirement that is should satisify
+is to provide a stable and low-latency network to both sides. However, it is not
+easy to find such a server, and if you are luck to find one, you still need to
+pay for it.
 
 So, here is Cloudflare WARP, a free VPN service [#]_. Although its goal of
 design is to secure Internet, I can also take advantage of its stable and
@@ -31,8 +32,8 @@ low-latency network to speed up my SSH connections. ::
     `----'     |   close to me   |      | close to the remote server |     `-------------------'
                `-----------------'      `----------------------------'
 
-You can download the Clodflare WARP package from `its website`_, and here is the
-instructions of using it for SSH connections on Linux.
+To use Cloudflare WARP, download its package from `its website`_, and here are
+the instructions of using it for SSH connections on Linux.
 
 Instructions of using Cloudflare WARP for SSH connections
 ---------------------------------------------------------
@@ -48,7 +49,7 @@ listens on ``127.0.0.1:40000``: ::
 	$ warp-cli set-mode proxy
 	$ warp-cli connect
 
-Forward SSH connections to WARP's socks5 proxy: ::
+Forward SSH connections to Cludflare WARP through the socks5 proxy: ::
 
 	$ nano ~/.ssh/config
 		Host my-remote-server

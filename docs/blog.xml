@@ -9,7 +9,7 @@
   <description>Website of an9wer's blog</description>
   <managingEditor>an9wer@gmail.com</managingEditor>
   <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>Tue, 03 Oct 2023 13:44:27 +0000</pubDate>
+  <pubDate>Tue, 03 Oct 2023 14:05:13 +0000</pubDate>
   <category>blog</category>
   <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>120</ttl>
@@ -19,7 +19,7 @@
     <category>Gentoo</category>
     <pubDate>Wed, 27 Sep 2023 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2023/09/27_Video%20Acceleration%20on%20Gentoo.html</link>
-    <description>At least for the recent months, I have beed used to spending my free time watching videos on my laptop, and since my laptop has an integrated GPU, AMD Radeon Vega 8, I was thinking about what if I can accelerate video processing using GPU and reduce the load of CPU.</description>
+    <description>At least for the recent months, I have been used to spending my free time watching videos on my laptop, and since my laptop has an integrated GPU, AMD Radeon Vega 8, I was thinking about what if I can accelerate video processing using GPU and reduce the load of CPU.</description>
   </item>
   <item>
     <title>Improving SSH Connections by Cloudflare WARP</title>
@@ -27,7 +27,7 @@
     <category>Network</category>
     <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
     <link>https://an9wer.github.io/2023/09/16_Improving%20SSH%20Connections%20by%20Cloudflare%20WARP.html</link>
-    <description>Using Clodflare WARP to decrease network latency and  improve the quality of SSH connection to my remote server.</description>
+    <description>Using Clodflare WARP to decrease network latency and improve the quality of SSH connection to my remote server.</description>
   </item>
   <item>
     <title>Snapshots of Gentoo Ebuild Repositories and Their Deltas</title>

@@ -4,20 +4,20 @@ Video Acceleration on Gentoo
 :Published: 2023/09/27
 
 .. meta::
-	:description: At least for the recent months, I have beed used to
+	:description: At least for the recent months, I have been used to
 		spending my free time watching videos on my laptop, and since my
 		laptop has an integrated GPU, AMD Radeon Vega 8, I was thinking
 		about what if I can accelerate video processing using GPU and
 		reduce the load of CPU.
- 
-At least for the recent months, I have beed used to spending my free time
+
+At least for the recent months, I have been used to spending my free time
 watching videos on my laptop, and since my laptop has an integrated GPU, AMD
 Radeon Vega 8, I was thinking about what if I can accelerate video processing
 using GPU and reduce the load of CPU.
 
-The media players that I am using the most time to watch videos are Firefox (for
-online videos) and `MPV`_ (for offline videos), and referring to the list of
-video acceleration support between different applications [#]_, the only method
+The media players that I mostly use to watch videos are Firefox (for online
+videos) and `MPV`_ (for offline videos), and referring to the list of video
+acceleration support between different applications [#]_, the only method
 that is supported by both Firefox and MPV is VA-API, which is
 
 	an open source application programming interface that allows
@@ -38,8 +38,8 @@ included [#]_: ::
 		USE="vaapi"
 
 After that, update the whole system to apply these changes. However, we still
-need to do some different settings respectively inside MPV and Firefox to let
-them use VA-API while playing videos.
+need to do additional settings inside MPV and Firefox respectively to make them
+work with VA-API while playing videos.
 
 MPV Settings
 ------------
