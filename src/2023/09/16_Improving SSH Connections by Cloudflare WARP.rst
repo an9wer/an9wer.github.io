@@ -20,7 +20,7 @@ server.
 How to solve that? One solution is to set up another server which resides
 between the remote server and you. The only requirement that is should satisify
 is to provide a stable and low-latency network to both sides. However, it is not
-easy to find such a server, and if you are luck to find one, you still need to
+easy to find such a server, or if you are luck to find one, you still need to
 pay for it.
 
 So, here is Cloudflare WARP, a free VPN service [#]_. Although its goal of
@@ -40,7 +40,7 @@ Instructions of using Cloudflare WARP for SSH connections
 
 Start a Couldflare WARP sevice locally: ::
 
-	$ warp-svc    # set cap before use
+	$ warp-svc
 
 Connect to Cloudflare WARP's edge network, and start a socks5 proxy locally,
 which by default listens on ``127.0.0.1:40000``: ::

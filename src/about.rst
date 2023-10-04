@@ -19,6 +19,9 @@ By the way, this website is built with docutils_, and hosted on `Github Pages`_.
 Changelog
 =========
 
+**2023-10-04*** CSS updates - use Noto fonts for the whole website, and fix
+image overflow in mobile view.
+
 **2023-09-29*** adding the "changelog" section - any changes about this site
 should be noticed.
 

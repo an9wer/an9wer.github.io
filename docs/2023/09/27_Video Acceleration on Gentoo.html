@@ -67,7 +67,7 @@ need to do additional settings inside MPV and Firefox respectively to make them
 work with VA-API while playing videos.</p>
 <section id="mpv-settings">
 <h2>MPV Settings</h2>
-<p>Simply add the below line to MPV's configuration file, Or use the option
+<p>Simply add the below line to MPV's configuration file, or use the option
 <span class="docutils literal"><span class="pre">--hwdec=vaapi</span></span> while opening it:</p>
 <pre class="literal-block">$ nano ~/.config/mpv/mpv.conf
         hwdec=vaapi</pre>
@@ -82,7 +82,7 @@ set to true:</p>
 <pre class="literal-block">gfx.webrender.all             true
 media.ffmpeg.vaapi.enabled    true</pre>
 <p>However, I was not able to find the option <span class="docutils literal">media.ffmpeg.vaapi.enable</span> in my
-Firefox, then I channelled my Google-fu and found out:</p>
+Firefox. After channelling my Google-fu, I found:</p>
 <blockquote>
 <p>115esr needs &quot;hwcaccel&quot; and &quot;wayland&quot; USE flags enabled to get hardware
 acceleration for Firefox. X and wayland can be enabled simultaneously.

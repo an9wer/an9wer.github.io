@@ -44,7 +44,7 @@ work with VA-API while playing videos.
 MPV Settings
 ------------
 
-Simply add the below line to MPV's configuration file, Or use the option
+Simply add the below line to MPV's configuration file, or use the option
 ``--hwdec=vaapi`` while opening it: ::
 
 	$ nano ~/.config/mpv/mpv.conf
@@ -66,7 +66,7 @@ set to true: ::
 	media.ffmpeg.vaapi.enabled    true
 
 However, I was not able to find the option ``media.ffmpeg.vaapi.enable`` in my
-Firefox, then I channelled my Google-fu and found out:
+Firefox. After channelling my Google-fu, I found:
 
 	115esr needs "hwcaccel" and "wayland" USE flags enabled to get hardware
 	acceleration for Firefox. X and wayland can be enabled simultaneously.
