@@ -14,14 +14,14 @@ body {
     width: 100%;
     max-width: 874px;
     margin: 0 auto;
-    font-family: sans-serif;
+    font-family: "Noto Serif";
     font-size: min(4vw, 1.08rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
 }
 
 #title, h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia,"Times New Roman",Times,serif;
+    font-family: "Noto Serif";
     margin-top: 30px;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 strong, b {
-    font-family: Georgia,"Times New Roman",Times,serif;
+    font-family: "Noto Serif";
     font-size: 1.2rem;
 }
 
@@ -76,7 +76,7 @@ th, td {
     text-align: left;
     border: 1px solid #999;
     padding: 0.2em 1em;
-    font-size: 0.8rem;
+    font-size: 1rem;
     white-space: nowrap;
 }
 
@@ -197,7 +197,7 @@ tbody tr:nth-child(even) {
 #content {
     padding: 0% 4% 2% 4%;
     margin-bottom: 5%;
-    font-family: 'Noto Serif';
+    font-family: 'Noto Sans';
     font-style: normal;
     font-weight: 400;
 }
@@ -235,12 +235,10 @@ tbody tr:nth-child(even) {
     color: #8fbbe6;
 }
 
-#content .imageblock img{
-    display: block;
-    margin: 0px auto;
-}
-
-#content .image {
+#content img {
+    // display: block;
+    // margin: 0px auto;
+    max-width: 100%;
 }
 
 #content ul {
@@ -269,7 +267,8 @@ tbody tr:nth-child(even) {
 }
 
 .footnote-reference {
-    vertical-align: super
+    font-size: 0.8rem;
+    vertical-align: super;
 }
 
 .footnote p {
