@@ -24,11 +24,11 @@
 
 .. container:: posts
 
-	`Snapshots of Gentoo Ebuild Repositories and Their Deltas <2023/07/06_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html>`_
+	`Snapshots of Gentoo Ebuild Repositories and Their Deltas <2023/07/07_Snapshots%20of%20Gentoo%20Ebuild%20Repositories%20and%20Their%20Deltas.html>`_
 
 	Gentoo |
 
-	2023-07-06
+	2023-07-07
 
 .. container:: posts
 
