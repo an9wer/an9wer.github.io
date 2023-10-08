@@ -152,19 +152,20 @@ tbody tr:nth-child(even) {
 
 
 /* navbar {{{ */
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #navbar a {
-    float: left;
     width: 24.5vw;
     max-width: 24.2%;
-    height: 2em;
+    height: 2rem;
     text-align: center;
     background-color: #DDD;
     border: solid 0.5px #CCC;
     margin-bottom: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     text-decoration: none;
     color: #000;
 }
@@ -295,11 +296,6 @@ tbody tr:nth-child(even) {
     text-align: right;
 }
 
-.posts p:nth-child(3) {
-    margin: 0.25rem 0;
-    text-align: right;
-    padding: 0 0 0 4px;
-}
 /* }}} content */
 
 

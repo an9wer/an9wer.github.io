@@ -41,7 +41,7 @@
 </dl>
 
     <div id="content">
-<p>Typically, a poor SSH connection to a remote server happens when the remote
+<p>Usually, a poor SSH connection to a remote server happens when the remote
 server is truely &quot;remote&quot; - locating far away from your position, because
 network packets have to go through more routing hops to reach the remote server,
 leading to a high network latency, and perhaps a high packet loss ratio as well.</p>
@@ -57,23 +57,25 @@ pay for it.</p>
 <p>So, here is Cloudflare WARP, a free VPN service <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Although its goal of
 design is to secure Internet, you can also take advantage of its stable and
 low-latency network to speed up your SSH connections.</p>
-<pre class="literal-block">.----------.     .-----------------.      .----------------------------.     .-------------------.
-|   your   | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
-| position |     |  close to you   |      | close to the remote server |     `-------------------'
-`----------'     `-----------------'      `----------------------------'</pre>
+<pre class="literal-block">.---------.     .-----------------.      .----------------------------.     .-------------------.
+|   you   | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
+`---------'     |  close to you   |      | close to the remote server |     `-------------------'
+                `-----------------'      `----------------------------'</pre>
 <p>To use Cloudflare WARP, download its package from <a class="reference external" href="https://1.1.1.1/">its website</a>, and here are
 the instructions of using it for SSH connections on Linux.</p>
 <section id="instructions-of-using-cloudflare-warp-for-ssh-connections">
 <h2>Instructions of using Cloudflare WARP for SSH connections</h2>
 <p>Start a Couldflare WARP sevice locally:</p>
 <pre class="literal-block">$ warp-svc</pre>
-<p>Connect to Cloudflare WARP's edge network, and start a socks5 proxy locally,
-which by default listens on <span class="docutils literal">127.0.0.1:40000</span>:</p>
+<p>Tell the local Cloudflare WARP service to serve as a socks5 proxy, which by
+default listens on <span class="docutils literal">127.0.0.1:40000</span>:</p>
+<pre class="literal-block">$ warp-cli set-mode proxy</pre>
+<p>Tell the local Cloudflare WARP service to connect to Cloudflare WARP's edge
+network:</p>
 <pre class="literal-block">$ warp-cli register
-$ warp-cli set-mode proxy
 $ warp-cli connect</pre>
-<p>Forward SSH connections to Cludflare WARP's edge network through the local
-socks5 proxy:</p>
+<p>Forward your SSH connections to Cludflare WARP's edge network through the socks5
+proxy:</p>
 <pre class="literal-block">$ nano ~/.ssh/config
         Host my-remote-server
                 ProxyCommand nc -X 5 -x 127.0.0.1:40000 %h %p</pre>
