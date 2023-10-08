@@ -4,6 +4,7 @@
 :Published: 2022/03/16
 
 .. meta::
+    :tags: OpenWRT
     :description: 由于疫情的原因被封锁在家远程办公，但是在家上网冲浪各种不方便，
         于是掏出小米 AC2100 路由器，刷入 OpenWRT，扶墙上网。
 

@@ -1,9 +1,10 @@
 Shadowsocks 连接异常小记
 ========================
 
-:Published:  2019/02/20
+:Published: 2019/02/20
 
 .. meta::
+    :tags: proxy
     :description: 防火墙升级导致 shadowsocks 连接中断。
 
 年后来公司上班，发现自己的两台 shadowsocks 代理都连接异常，主要表现是代理连接上之后几秒钟就会断掉，过了大概五分钟之后又恢复正常，再次连接后又出现这种情况。

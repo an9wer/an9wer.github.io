@@ -4,6 +4,7 @@
 :Published: 2022/01/23
 
 .. meta::
+    :tags: vim
     :description: Vim 用户可能会遇到这种情况：
         莫名其妙地，在 command mode 或者 insert mode 中，
         按下 Esc 键后，会有个短暂的 delay，才能进入 normal model 中。

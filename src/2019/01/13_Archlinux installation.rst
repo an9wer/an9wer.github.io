@@ -1,6 +1,11 @@
 Archlinux installation
 ======================
 
+:Published: 2021/01/13
+
+.. meta::
+    :tags: Arch
+
 Flash iso
 ---------
 

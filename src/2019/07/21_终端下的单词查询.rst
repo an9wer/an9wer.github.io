@@ -1,6 +1,11 @@
 终端下的单词查询
 ================
 
+:Published: 2019/07/21
+
+.. meta::
+    :tags: misc
+
 我平时一直使用 `cambridge dictionary <https://dictionary.cambridge.org/dictionary/english/>`_
 查询单词（这里向各位推荐一下，个人感觉对单词的注释，用例都相当全面和到位的）。
 

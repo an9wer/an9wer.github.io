@@ -1,6 +1,11 @@
 OnePlus 5T 入手
 ===============
 
+:Published: 2018/12/05
+
+.. meta::
+    :tags: review
+
 上周末刷咸鱼的时候发现了了这款 OnePlus 5T 手机（标价 1550，配置 6G RAM + 64G
 ROM)。卖家也是个搞机玩家，手机已经刷了 TWRP 和 DK ROM （基于官方 H2OS 改的ROM，
 可以在 OnePlus 5T 中文论坛找到）。比较有趣的是，我在和卖家沟通时顺便探讨了一下

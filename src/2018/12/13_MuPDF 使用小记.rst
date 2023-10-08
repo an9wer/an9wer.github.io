@@ -1,9 +1,10 @@
 MuPDF 使用小记
 ==============
 
-:Published: : 2018/12/08
+:Published: 2018/12/08
 
 .. meta::
+    :tags: review
     :description: 初次使用 mupdf，给我的印象是界面简洁，操作简单。与我目前
         在使用的 FoxitReader 相比，也差不到哪里去。就我目前的需求，应该是够用了
         。

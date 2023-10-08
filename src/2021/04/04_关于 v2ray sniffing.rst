@@ -1,9 +1,10 @@
 关于 v2ray sniffing
 ===================
 
-:Published: : 2021/04/04
+:Published: 2021/04/04
 
 .. meta::
+    :tags: proxy
     :description: 关于 v2ray 的 sniffing 参数使用，个人的一些理解。
 
 v2ray 的 inbound 配置中有个 sniffing 参数，官方文档对它概念描述很模糊，

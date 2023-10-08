@@ -4,6 +4,7 @@
 :Published: 2019/06/04
 
 .. meta::
+    :tags: misc
     :description: 因为聊天信息安全的需要，寻找了一款适用的开源聊天软件 ——synapse，
         部署服务端软件并尝试使用。
 

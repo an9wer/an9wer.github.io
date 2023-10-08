@@ -4,6 +4,7 @@ Raspberry Pi 安装
 :Published: 2019/08/19
 
 .. meta::
+    :tags: RaspberryPi
     :description: 树莓派安装及配置。
 
 Flash image: ::
@@ -12,10 +13,10 @@ Flash image: ::
 
 Set keyboard layout: ::
 
-    $ sudo vi /etc/default/keyboard    
+    $ sudo vi /etc/default/keyboard
         XKBLAYOUT="us"
     $ reboot
-    
+
 
 Add wifi configuration: ::
 

@@ -1,6 +1,11 @@
 GANSS ALT 61 入手及退货
 =======================
 
+:Published: 2018/12/24
+
+.. meta::
+    :tags: review
+
 看了好一阵 `这货的视频
 <https://www.youtube.com/channel/UCMENmPolwqsv-odwxqN5v2Q>`_ ，感觉有点被带入坑
 了。

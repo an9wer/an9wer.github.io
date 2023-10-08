@@ -4,6 +4,7 @@ OpenWRT 软路由的安装及配置
 :Published: 2020/07/27
 
 .. meta::
+    :tags: OpenWRT
     :description: 在 PVE 中安装 OpenWRT 虚拟机，作为其他虚拟机的网关使用。
         之后又在 NanoPi R2S 上刷入 OpenWRT，安装 wireguard, v2ray 等软件，配置成一台软路由。
 

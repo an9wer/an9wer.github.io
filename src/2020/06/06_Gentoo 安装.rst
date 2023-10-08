@@ -3,6 +3,10 @@ Gentoo 安装
 
 :Published:  2020/06/06
 
+.. meta:
+    :tags: Gentoo
+
+
 Preparation
 -----------
 

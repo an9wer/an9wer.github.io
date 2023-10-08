@@ -4,8 +4,9 @@ Snapshots of Gentoo Ebuild Repositories and Their Deltas
 :Published: 2023/07/07
 
 .. meta::
-    :description: What is the command 'emerge-delta-webrsync'? How to use it to
-        download snapshots of Gentoo ebuild repositories and their deltas?
+	:tags: Gentoo
+	:description: What is the command 'emerge-delta-webrsync'? How to use it to
+		download snapshots of Gentoo ebuild repositories and their deltas?
 
 Snapshots of Gentoo ebuild repositories are tarball files, which can be
 downloaded from any Gentoo mirrors (specified by ``GENTOO_MIRRORS``) through

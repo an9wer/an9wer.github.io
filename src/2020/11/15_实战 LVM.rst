@@ -1,9 +1,10 @@
 实战 LVM
 =========
 
-:Published: : 2020/11/15
+:Published: 2020/11/15
 
 .. meta::
+    :tags: misc
     :description: 使用 LVM 给笔记本的存储盘分区，同时方便满足以后扩容的需求。
 
 我现在正在使用的是一台 HP EliteBook 8470p 笔记本。
@@ -31,7 +32,7 @@ Create a new logical volume to use all left space in the volume group created ab
 Format the logical volume: ::
 
     # mkfs.ext4 /dev/<VG>/<LV>
-    
+
 Update fstab file, add the following line: ::
 
     /dev/<vg name>/<LV> <mount point> ext4 defaults,noauto,user 0 0

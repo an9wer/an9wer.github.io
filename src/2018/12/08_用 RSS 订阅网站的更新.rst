@@ -1,9 +1,10 @@
 用 RSS 订阅网站的更新
 =====================
 
-:Published: : 2018/12/08
+:Published: 2018/12/08
 
 .. meta::
+    :tags: misc
     :description: 尝试使用 innoreader 来订阅一些博客、新闻网站等，把内容聚合在
         一个统一的平台上，定期获取新的资讯。
 

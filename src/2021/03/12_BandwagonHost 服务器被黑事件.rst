@@ -4,6 +4,7 @@ BandwagonHost 服务器被黑事件
 :Published: : 2021/03/12
 
 .. meta::
+    :tags: proxy
     :description: 搬瓦工服务器被强制关机，因为在短时间内发送太多垃圾邮件。看我是如何调查事故原因的？
 
 搬瓦工服务器控制面板传来噩耗，由于我的服务器疯狂发送 Spam 邮件，被强制 shutdown 了 —— 第一反应是服务器被黑了！

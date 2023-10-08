@@ -4,22 +4,23 @@ Improving SSH Connections by Cloudflare WARP
 :Published: 2023/09/16
 
 .. meta::
+	:tags: network
 	:description: Using Clodflare WARP to decrease network latency and
 		improve the quality of SSH connection to my remote server.
 
-The quality of a SSH connection to a remote server is usually poor when the
-remote server is truely "remote" - locating far away from where you are, because
+Typically, a poor SSH connection to a remote server happens when the remote
+server is truely "remote" - locating far away from your position, because
 network packets have to go through more routing hops to reach the remote server,
 leading to a high network latency, and perhaps a high packet loss ratio as well.
 
-Why does it matter? Because when performing operations on a remote server,
-such as typing commands, moving cursors, or scrolling screens, you can
+Why does it matter? If the quality of a SSH connection is terriable, you can
 apparently feel the delay between your input and the reaction from the remote
-server.
+server, while performing operations on a remote server, such as typing commands,
+moving cursors, or scrolling screens.
 
 How to solve that? One solution is to set up another server which resides
-between the remote server and you. The only requirement that is should satisify
-is to provide a stable and low-latency network to both sides. However, it is not
+between the remote server and you. The only requirement it should meet is to
+provide a stable and low-latency network to both sides. However, it is not
 easy to find such a server, or if you are luck to find one, you still need to
 pay for it.
 
@@ -27,10 +28,10 @@ So, here is Cloudflare WARP, a free VPN service [#]_. Although its goal of
 design is to secure Internet, you can also take advantage of its stable and
 low-latency network to speed up your SSH connections. ::
 
-    .-----.     .-----------------.      .----------------------------.     .-------------------.
-    | you | --> | Cloudflare edge |  --> |      Cloudflare edge       | --> | the remote server |
-    `-----'     |  close to you   |      | close to the remote server |     `-------------------'
-                `-----------------'      `----------------------------'
+	.----------.     .-----------------.      .----------------------------.     .-------------------.
+	|   your   | --> | Cloudflare edge |  --> |      Cloudflare edge       | --> | the remote server |
+	| position |     |  close to you   |      | close to the remote server |     `-------------------'
+	`----------'     `-----------------'      `----------------------------'
 
 To use Cloudflare WARP, download its package from `its website`_, and here are
 the instructions of using it for SSH connections on Linux.

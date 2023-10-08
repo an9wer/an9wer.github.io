@@ -4,6 +4,7 @@
 :Published:  2022/03/11
 
 .. meta::
+    :tags: misc
     :description: 在 Linux 系统中，调节 HP 笔记本的 trackpoint 灵敏度。
 
 要知道在若干年前，HP 的 EliteBook 系列的笔记本也是有 trackpoint 的。

@@ -1,9 +1,10 @@
 关于我的 NAS
 ============
 
-:Published: : 2021/11/19
+:Published: 2021/11/19
 
 .. meta::
+    :tags: misc
     :description: 聊聊我的 NAS 的软硬件构成，同时也记录数据盘做 RAID 和加密的过程。
 
 我的 NAS 是东拼西凑而成的：

@@ -1,6 +1,11 @@
 Rapoo V500 换键帽
 =================
 
+:Published: 2018/12/17
+
+.. meta::
+    :tags: keyboard
+
 起因是看了 `这个视频 <https://www.youtube.com/watch?v=y4r44zLFHYg>`_ 。
 
 我现在用的 Rapoo V500 键盘已经用了一年多了，键帽早已经打油（这期间还洗过一次）

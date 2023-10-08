@@ -1,6 +1,13 @@
 关于 Boud 和 Bridge
 ===================
 
+:published: 2021/03/01
+
+.. meta::
+    :tags: network
+    :description: 遇到这样一种网络情况：一个 AP，一台交换机，一个软路由，想让 AP 和交换机都连接到
+        软路由上，且在同一个网段，该如何配置呢？
+
 遇到这样一种网络情况：一个 AP，一台交换机，一个软路由，想让 AP 和交换机都连接到
 软路由上，且在同一个网段，该如何配置呢？
 
@@ -19,7 +26,7 @@ Static IP
     # ln -s /etc/init.d/net.lo /etc/init.d/net.enp2s0
     # rc-service enp1s0 start
     # rc-service enp2s0 start
-        
+
 同时，配置 ``172.24.0.0/24`` 网段的 DHCP Server，分别用两台电脑连接到软路由的
 enp1s0 和 enp2s0。
 

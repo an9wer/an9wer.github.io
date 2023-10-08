@@ -4,8 +4,9 @@ Troubleshooting Gentoo Update Problems 5 - Preserved Libraries
 :Published: 2023/07/03
 
 .. meta::
-    :description: During the update of Gentoo, it showed me to resolve the
-        preserved library issue.
+	:tags: Gentoo
+	:description: During the update of Gentoo, it showed me to resolve the
+		preserved library issue.
 
 During my recent update of Gentoo, the package *dev-libs/openssl* was updated
 from 1.1.1 to 3.0.9, as well as two of its shared library files renamed from

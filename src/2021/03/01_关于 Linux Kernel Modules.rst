@@ -1,9 +1,10 @@
 关于 Linux Kernel Modules
 =========================
 
-:Published: : 2021/03/01
+:Published: 2021/03/01
 
 .. meta::
+    :tags: kernel
     :description: 折腾 Wireguard 的时候顺带了解一些 Linux Kernel Modules 相关的知识。
 
 这几天在尝试在 Gentoo 上安装 Wireguard。

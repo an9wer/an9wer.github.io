@@ -1,9 +1,10 @@
 Gentoo 升级遇难小记（二）
 =========================
 
-:Published: : 2021/12/18
+:Published: 2021/12/18
 
 .. meta::
+    :tags: Gentoo
     :description: Gentoo 更新系统的时候遇到了 ldns 和 ldns-utils 两个软件包冲突问题。
 
 这两天更新笔记本电脑上的 Gentoo 系统，

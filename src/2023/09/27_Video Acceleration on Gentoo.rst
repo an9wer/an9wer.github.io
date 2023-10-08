@@ -4,6 +4,7 @@ Video Acceleration on Gentoo
 :Published: 2023/09/27
 
 .. meta::
+	:tags: Gentoo
 	:description: At least for the recent months, I have been used to
 		spending my free time watching videos on my laptop, and since my
 		laptop has an integrated GPU, AMD Radeon Vega 8, I was thinking

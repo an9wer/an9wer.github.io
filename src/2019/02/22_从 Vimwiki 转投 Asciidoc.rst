@@ -1,6 +1,11 @@
 从 Vimwiki 转投 Asciidoc
 ========================
 
+:Published: 2019/02/22
+
+.. meta:
+    :tags: review
+
 从这个博客搭建至今，我一直使用 vimwiki 来记录我的博文。但是用久了之后发现
 vimwiki 的几个痛点：
 

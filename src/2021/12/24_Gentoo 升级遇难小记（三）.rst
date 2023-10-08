@@ -1,9 +1,10 @@
 Gentoo 升级遇难小记（三）
 =========================
 
-:Published: : 2021/12/24
+:Published: 2021/12/24
 
 .. meta::
+    :tags: Gentoo
     :description: Gentoo 更新 gcc 软件包的时候磁盘空间不足的问题。
 
 之前有幸赶上最后一班 Bandwagon CN2 GIA $49.9/year 的车 —— 现在已成为绝版小鸡。

@@ -4,6 +4,7 @@
 :Published:  2022/05/01
 
 .. meta::
+    :tags: Gentoo
     :description: 在腾讯云上，我有一台云服务器，虽然前前后后经过几次迁移，但一直运行的都是 CentOS7。
         奈何 CentOS7 将成老古董；CentOS8 迟迟没决心上；Ubuntu, Debian 更是提不起兴趣；
         心心念念想装 Gentoo。

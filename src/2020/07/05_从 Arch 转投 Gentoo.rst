@@ -4,6 +4,7 @@
 :Published: 2020/07/05
 
 .. meta::
+    :tags: review
     :description: 在使用一年多的 Arch 之后，转到 Gentoo 门下。它是如何吸引我的？和 Arch 相比又有什么异同？
 
 在尝试使用了 Gentoo 之后，我似乎体验到了转角遇到爱的感觉 —— 这才是符合我审美的 Linux Distro 。

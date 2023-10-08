@@ -4,6 +4,7 @@
 :Published: 2019/08/20
 
 .. meta::
+    :tags: misc
     :description: TODO List 的最佳实践。
 
 最近早上一到公司，老是对着电脑屏发呆，脑子里在想今天要做什么；

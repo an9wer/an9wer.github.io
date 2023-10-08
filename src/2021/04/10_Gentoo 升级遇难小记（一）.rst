@@ -1,9 +1,10 @@
 Gentoo 升级遇难小记
 ===================
 
-:Published: : 2021/04/10
+:Published: 2021/04/10
 
 .. meta::
+    :tags: Gentoo
     :description: Gentoo 更新系统的时候遇到了软件包依赖问题，以及在编译 gcc 的时候内存不足的问题。
 
 有台 Gentoo 的服务器从去年 9 月份就没更新过系统，于是乎今天饶有兴致来 Update 一波。

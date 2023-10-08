@@ -1,9 +1,10 @@
 在 tmpfs 中编译 Gentoo 软件包
 =============================
 
-:Published: : 2021/05/10
+:Published: 2021/05/10
 
 .. meta::
+    :tags: Gentoo
     :description: Gentoo 安装软件包或者升级系统的时候，将 /var/tmp/portage 目录挂载成 tmpfs 文件系统，
         安装过程中的读写操作直接写入到内存中，可以减少硬盘的读写次数，增加硬盘寿命，并且提高安装速度。
 

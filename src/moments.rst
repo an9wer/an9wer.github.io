@@ -1,5 +1,13 @@
 .. meta::
-    :robots: noindex 
+    :robots: noindex
+
+
+2023/10/04 Wed
+
+    The scene while walking around
+
+    .. image:: /statics/images/2023/10/scene.jpg
+        :width: 360px
 
 2023/07/04 Tue
 

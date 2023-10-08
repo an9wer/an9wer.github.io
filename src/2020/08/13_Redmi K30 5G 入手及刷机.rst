@@ -1,9 +1,10 @@
 Redmi K30 5G 入手及刷机
 =======================
 
-:Published: : 2020/08/13
+:Published: 2020/08/13
 
 .. meta::
+    :tags: review
     :description: Essential Phone 摔坏之后，入手了红米 k30 5G 手机，谈谈我的
         使用体验，以及如何刷机，刷入 Xiaomi.eu ROM。
 

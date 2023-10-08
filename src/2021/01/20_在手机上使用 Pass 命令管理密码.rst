@@ -4,6 +4,7 @@
 :Published: : 2021/01/20
 
 .. meta::
+    :tags: misc
     :description: 在手机上使用 zx2c4 pass 命令。分别在安卓和苹果手机上安装、配置及使用，方便随时查看、修改及同步密码。
 
 在 Linux 电脑上，我一直使用 `zx2c4's pass <https://www.passwordstore.org/>`_ 命令来管理密码。

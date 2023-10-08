@@ -1,6 +1,16 @@
 Categories of YouTube channels I have subscribed
 ================================================
 
+:Published: 2018/10/27
+
+.. meta::
+    :tags: misc
+    :description: I always have the questions about why YouTube does't include
+        features for channel classification, because I have subscribed a bunch
+        of channels, the number of which is still being growing. I generally
+        feel it's kind of hard to manage them, so I decided to category them
+        here by myself.
+
 I always have the questions about why YouTube does't include features for
 channel classification, because I have subscribed a bunch of channels, the
 number of which is still being growing. I generally feel it's kind of hard to
@@ -9,7 +19,7 @@ manage them, so I decided to category them here by myself.
 Life
 ----
 
--   `Linzin 阿哲 <https://www.youtube.com/channel/UC0oosHZ4k1o-zNT21gg5O7A>`_ 
+-   `Linzin 阿哲 <https://www.youtube.com/channel/UC0oosHZ4k1o-zNT21gg5O7A>`_
 -   `藍諾Eleanor Jiang <https://www.youtube.com/channel/UCcHu3AGkj_IRmgQKaf2QH6g>`_
 -   `Joma Tech <https://www.youtube.com/channel/UCV0qA-eDDICsRR9rPcnG7tw>`_
 -   `mayuko <https://www.youtube.com/channel/UCEDkO7wshcDZ7UZo17rPkzQ>`_

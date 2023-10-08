@@ -4,6 +4,7 @@
 :Published: 2020/08/26
 
 .. meta::
+    :tags: misc
     :description: 给 NAS 的硬盘设置加密。
 
 最近把自己的 NAS 组装起来了（有时间的话也另外写一篇 blog 来讲讲我是怎么组装这台 NAS 的），

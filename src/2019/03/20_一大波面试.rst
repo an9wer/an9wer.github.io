@@ -4,6 +4,7 @@
 :Published: 2019/03/20
 
 .. meta::
+    :tags: interview
     :description: 找工作面试遇到的经历。
 
 其实早有跳槽的打算了，趁着金三银四，开始投简历约面试。

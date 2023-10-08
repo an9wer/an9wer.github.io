@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="network" name="tags" />
 <meta content="Using Clodflare WARP to decrease network latency and improve the quality of SSH connection to my remote server." name="description" />
 <title>Improving SSH Connections by Cloudflare WARP | an9wer's blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,26 +41,26 @@
 </dl>
 
     <div id="content">
-<p>The quality of a SSH connection to a remote server is usually poor when the
-remote server is truely &quot;remote&quot; - locating far away from where you are, because
+<p>Typically, a poor SSH connection to a remote server happens when the remote
+server is truely &quot;remote&quot; - locating far away from your position, because
 network packets have to go through more routing hops to reach the remote server,
 leading to a high network latency, and perhaps a high packet loss ratio as well.</p>
-<p>Why does it matter? Because when performing operations on a remote server,
-such as typing commands, moving cursors, or scrolling screens, you can
+<p>Why does it matter? If the quality of a SSH connection is terriable, you can
 apparently feel the delay between your input and the reaction from the remote
-server.</p>
+server, while performing operations on a remote server, such as typing commands,
+moving cursors, or scrolling screens.</p>
 <p>How to solve that? One solution is to set up another server which resides
-between the remote server and you. The only requirement that is should satisify
-is to provide a stable and low-latency network to both sides. However, it is not
+between the remote server and you. The only requirement it should meet is to
+provide a stable and low-latency network to both sides. However, it is not
 easy to find such a server, or if you are luck to find one, you still need to
 pay for it.</p>
 <p>So, here is Cloudflare WARP, a free VPN service <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Although its goal of
 design is to secure Internet, you can also take advantage of its stable and
 low-latency network to speed up your SSH connections.</p>
-<pre class="literal-block">.-----.     .-----------------.      .----------------------------.     .-------------------.
-| you | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
-`-----'     |  close to you   |      | close to the remote server |     `-------------------'
-            `-----------------'      `----------------------------'</pre>
+<pre class="literal-block">.----------.     .-----------------.      .----------------------------.     .-------------------.
+|   your   | --&gt; | Cloudflare edge |  --&gt; |      Cloudflare edge       | --&gt; | the remote server |
+| position |     |  close to you   |      | close to the remote server |     `-------------------'
+`----------'     `-----------------'      `----------------------------'</pre>
 <p>To use Cloudflare WARP, download its package from <a class="reference external" href="https://1.1.1.1/">its website</a>, and here are
 the instructions of using it for SSH connections on Linux.</p>
 <section id="instructions-of-using-cloudflare-warp-for-ssh-connections">

@@ -4,6 +4,7 @@ Gentoo 升级遇难小记（四）
 :Published: 2022/03/20
 
 .. meta::
+    :tags: Gentoo
     :description: Gentoo 更新系统的时候遇到了 USE flag 冲突导致软件被跳过更新的问题。
 
 最近又来升级笔记本上的 Gentoo，但是遇到软件冲突导致某软件被跳过安装的问题： ::

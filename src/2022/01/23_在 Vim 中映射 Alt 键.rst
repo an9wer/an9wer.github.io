@@ -4,6 +4,7 @@
 :Published: 2022/01/23
 
 .. meta::
+    :tags: vim
     :description: 近来想在 vim 的 command mode 中使用与 readline 的 emacs mode 相似的功能键，
         例如 ``alt-f`` 向前移动一个 word， ``alt-b`` 向后移动一个 word。这该如何配置呢？
 

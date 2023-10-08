@@ -1,9 +1,10 @@
 在 Linux 中使用蓝牙
 ===================
 
-:Published: : 2021/11/21
+:Published: 2021/11/21
 
 .. meta::
+    :tags: misc
     :description: 在 Linux (Gentoo) 中安装 bluez 软件，使用蓝牙（bluetooth）功能。
 
 我有一个罗技 K480 蓝牙键盘，这个键盘左侧有个小旋钮，分三个档位，一共可以连接三台设备。

@@ -4,6 +4,7 @@
 :Published:  2021/04/10
 
 .. meta::
+    :tags: Gentoo
     :description: 半个月前同步了最新的 gentoo repo，更新了系统里面安装的所有软件包，
         但是唯独没有编译更新后的 kernel source，今天来了心思，决定操作一把。
 

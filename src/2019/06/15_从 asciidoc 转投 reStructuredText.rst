@@ -1,6 +1,11 @@
 从 asciidoc 转投 reStructuredText
 =================================
 
+:Published: 2019/06/15
+
+.. meta:
+    :tags: review
+
 我可真是能够折腾的，呵呵。
 
 大概在几个月前，我从 vimwiki 转投到了 asciidoc。

@@ -4,6 +4,7 @@
 :Published:  2022/08/15
 
 .. meta::
+    :tags: keyboard
     :description: 通过 AltGr 键，给键盘自定义一套 layer。
 
 键盘上的上下左右键位不在核心区域，无奈每次都需要抬手去按，因而打字流畅度大打折扣。
@@ -15,7 +16,7 @@
 好在看 xmodmap 的文档的时候，发现 keysym 的可以包含如下 6 种定义（不过在 ``xmodmap -pke`` 的输出结果中，发现不止 6 种） [#]_ ：
 
     Each keycode is followed by the keysym it is mapped to. Each keysym column in the table corresponds to a particular combination of modifier keys:
-    
+
     1. Key
     2. Shift+Key
     3. Mode_switch+Key
