@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="thought" name="tags" />
+<meta content="Bash is the most common shell on Linux, and I have been using it since my early days of learning Linux, but when I get into the world of BSD system, things are changed. The default shell is ash for FreeBSD, and ksh for OpenBSD. Although they all belong to Bourne family their syntax differs a lot. That means many of my Bash scripts that utilize features specific to Bash are not compatible to BSD system if I want to insist on BSD's default shell." name="description" />
+<title>Portable Shell Scripts are Unachievable | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/posts.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="posts" class="current" href="/posts.html">Posts</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="tools" href="/tools.html">Tools</a>
+      <a id="about" href="/about.html">About</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Portable Shell Scripts are Unachievable (Draft)</h1>
+<dl class="docinfo simple">
+<dt class="published">Published<span class="colon">:</span></dt>
+<dd class="published"><p>2023-10-10</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>Bash is the most common shell on Linux, and I have been using it since my
+early days of learning Linux, but when I get into the world of BSD system,
+things are changed. The default shell is ash for FreeBSD, and ksh for
+OpenBSD. Although they all belong to Bourne family (shown as the below picture),
+their syntax differs a lot. That means many of my Bash scripts that utilize
+features specific to Bash are not compatible to BSD system if I want to insist
+on BSD's default shell.</p>
+<img alt="/statics/images/2023/10/shell-varieties.webp" src="/statics/images/2023/10/shell-varieties.webp" style="width: 560px;" />
+<p>If I only talk about the portability of the shell language itself, it still can
+be achievable by following the POSIX (Portable Operating System Interface)
+shell specifications, as most Bourne-family shells are compatible with POSIX.
+Even though the POSIX shell has some limitations, it is still featured enough,
+and syntatic sugar in Bash can be rewritten in the POSIX style.</p>
+<p>For example, in Bash, for condition expressions quoted by <span class="docutils literal">[[</span>, there is no
+need to use doube quotation for variables whose value include whitespaces.
+That can be implemented in the POSIX shell, using <span class="docutils literal">[</span> and quoting any
+variables including whitespaces:</p>
+<pre class="literal-block">$ v=&quot;a b&quot;
+
+# in Bash
+$ [[ $v = &quot;a b&quot; ]]
+
+# in POSIX
+$ [ &quot;$v&quot; = &quot;a b&quot; ]</pre>
+<p>Another example is the rediction symbol <span class="docutils literal">|&amp;</span> in Bash, which pipes both
+standard output and standard error, is just a shorthand for <span class="docutils literal"><span class="pre">2&gt;&amp;1</span> |</span>:</p>
+<pre class="literal-block"># in Bash
+$ MOZ_LOG=&quot;PlatformDecoderModule:5&quot; firefox |&amp; grep VA-VAPI
+
+# in POSIX
+$ MOZ_LOG=&quot;PlatformDecoderModule:5&quot; firefox 2&gt;&amp;1 | grep VA-API&quot;</pre>
+<p>However, portable shell scripts do not only mean using the shell language
+compatible over different shell varieties, but also involve the portability of
+programs external to the shell. Most shell scripts need to use a number of
+programs other than the shell itself to achieve their ends. Compared to the
+divergence in the functions and options offered by programs, the variance
+of all the shell languages is relatively trivial.</p>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141786049-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-141786049-1');
+  </script>
+
+</body>
+</html>

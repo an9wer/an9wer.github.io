@@ -1,5 +1,11 @@
 .. container:: posts
 
+	`Portable Shell Scripts are Unachievable </2023/10/10_Portable%20Shell%20Scripts%20are%20Unachievable.html>`_
+
+	thought | 2023-10-10
+
+.. container:: posts
+
 	`The "Wrong" Way to Install OpenBSD </2023/10/02_The%20"Wrong"%20Way%20to%20Install%20OpenBSD.html>`_
 
 	OpenBSD | 2023-10-02
