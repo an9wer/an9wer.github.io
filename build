@@ -1,212 +1,68 @@
-#!/bin/bash
+#!/usr/bin/env tclsh
 
-set -e
+package require fileutil
 
-PATH=venv/bin:$PATH
-
-export CRT_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})")
-export SRC_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/src")
-export DST_DIR=$(realpath "$(dirname ${BASH_SOURCE[0]})/docs")
-
-usage() {
-  cat <<EOF
-build [rss] [sitemap] [<rst> ...]
-EOF
+proc url_encode url {
+	# TODO: encode url: https://www.ietf.org/rfc/rfc3986.txt
+	return [regsub -all { } $url {%20}]
 }
 
-build_rst() {
-  local rst html
+proc rst2html {rst html title} {
+	exec rst2html5.py				\
+		--strict				\
+		--link-stylesheet			\
+		--initial-header-level 2		\
+		--stylesheet "/statics/css/style.css"	\
+		--template "src/template.html"		\
+		--title "$title | an9wer's blog"	\
+		$rst $html
 
-  for rst in "$@"; do
-    rst=$(realpath "$rst")
-    if [[ ! -f $rst ]]; then
-      echo "Unexisted file '$rst'."
-      continue
-    fi
-    if [[ ! $rst =~ \.rst$ ]]; then
-      echo "Unkonwn filetype '$rst'."
-      continue
-    fi
-
-    # convert rst path to html path
-    html=$(sed -nE "
-      s@.*(20[1-9][0-9]/[01][0-9]/[0-3][0-9]_[^/]+)\\.rst\$@$DST_DIR/\1.html@p
-      t
-      s@.*/([^/]+)\.rst\$@$DST_DIR/\1.html@p
-    " <(echo "$rst"))
-
-    if [[ -z $html ]]; then
-      echo "Unable to convert from a rst path to a html path '$rst'."
-      exit 1
-    fi
-
-    mkdir -p "$(dirname "$html")"
-    # rebuild only when
-    # 1) html doesn't exist
-    # 2) mtime of either rst
-    # 3) template.html is updated
-    # 4) forced to rebuild
-    if [[ $force == true ]] || [[ ! -f $html ]] ||
-        ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "$rst") ))) ||
-        ([[ -f $html ]] && (( $(stat -c "%Y" "$html") <= $(stat -c "%Y" "${CRT_DIR}/template.html") ))); then
-      rst2html5.py \
-        --strict \
-        --link-stylesheet \
-        --initial-header-level 2 \
-        --stylesheet "/statics/css/style.css" \
-        --template "${CRT_DIR}/template.html" \
-        "$rst" "$html"
-
-      # Set current label
-      case "$html" in
-        */blog.html )
-          newpub=true
-          sed -i -E -e 's@(id="blog")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's blog</title>@" "$html"
-          ;;
-        */20[0-9][0-9]/[01][0-9]/[0-3][0-9]*.html )
-          newpub=true
-          sed -i -E -e 's@(id="blog")@\1 class="current"@' -e "s@<title>(.*)</title>@<title>\1 | an9wer's blog</title>@" "$html"
-          ;;
-        */moments.html )
-          sed -i -E -e 's@(id="moments")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's moments</title>@" "$html"
-          ;;
-        */tools.html )
-          sed -i -E -e 's@(id="tools")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's tools</title>@" "$html"
-          ;;
-        */about.html )
-          sed -i -E -e 's@(id="about")@\1 class="current"@' -e "s@<title>.*</title>@<title>an9wer's about</title>@" "$html"
-          ;;
-        * )
-          echo "Unknown file '$html'."
-          exit 1
-          ;;
-      esac
-      echo -e "'$rst'\n->\t'$html'"
-    fi
-  done
+	puts "$rst\n\t-> $html"
 }
 
-build_rss() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f ${DST_DIR}/blog.xml ]]; then
-    { cat <<EOF
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+# collect information of each post
+foreach rst [lsort -decreasing [fileutil::findByPattern src -glob {[0-9][0-9]_*.rst}]] {
+	dict set post rst   $rst
+	dict set post html  [regsub {^src(.*)\.rst$}             $rst {docs\1.html}]
+	dict set post url   [regsub {^src(.*)\.rst$}             $rst {\1.html}    ]
+	dict set post date  [regsub {^src/(\d+)/(\d+)/(\d+)_.*$} $rst {\1-\2-\3}   ]
+	dict set post title [regsub {^src/.*_(.*).rst$}          $rst {\1}         ]
 
-<channel>
-  <title>an9wer's blog</title>
-  <link>https://an9wer.github.io/blog.html</link>
-  <language>zh-cn</language>
-  <copyright>CC BY-NC-SA 2018-2021</copyright>
-  <description>Website of an9wer's blog</description>
-  <managingEditor>an9wer@gmail.com</managingEditor>
-  <webMaster>an9wer@gmail.com</webMaster>
-  <pubDate>$(date -u -R)</pubDate>
-  <category>blog</category>
-  <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-  <ttl>120</ttl>
-EOF
-      perl -lane '
-use Time::Piece;
+	set pf [open $rst r]
+	while {[gets $pf line] >= 0} {
+		if {[regexp {^\s+:tags: (.*)$} $line]} {
+			dict set post tags [regsub {^\s+:tags: (.*)$} $line {\1}]
+			break
+		}
+	}
+	close $pf
 
-$ENV{TZ} = "UTC";
-
-if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
-  print "  <item>";
-  print "    <title>$3</title>";
-  print q(    <author>an9wer@gmail.com</author>);
-  print "    <category>$2</category>";
-  print "    <pubDate>" . Time::Piece->strptime("$1", "%Y/%m/%d")->strftime("%a, %d %b %Y %H:%M:%S %z") . "</pubDate>";
-  print "    <link>https://an9wer.github.io/$4</link>";
-  my $html = $4 =~ s/%20/\ /rg ;
-  open(my $fh, q(<), $ENV{q(DST_DIR)} . "/" . "$html") or die("Failed to read from file $html");
-  while(<$fh>) {
-    if (/<meta content="(.*)" name="description" \/>/) {
-      print "    <description>$1</description>";
-      last;
-    }
-  }
-  print "  </item>";
-}
-' "${SRC_DIR}/blog.rst"
-
-      cat <<EOF
-</channel>
-
-</rss>
-EOF
-    } > "${DST_DIR}/blog.xml"
-
-    echo -e "'${SRC_DIR}/blog.rst'\n->\t'${DST_DIR}/blog.xml'"
-  fi
+	lappend posts $post
 }
 
-build_sitemap() {
-  if [[ $force == true ]] || [[ $newpub == true ]] || [[ ! -f ${DST_DIR}/sitemap.xml ]]; then
-    { cat <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-      <loc>https://an9wer.github.io/</loc>
-      <lastmod>$(date -d @$(stat -c %Y "${DST_DIR}/index.html") +%Y-%m-%d)</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.3</priority>
-   </url>
-   <url>
-      <loc>https://an9wer.github.io/blog.html</loc>
-      <lastmod>$(date -d @$(stat -c %Y "${DST_DIR}/blog.html") +%Y-%m-%d)</lastmod>
-      <changefreq>always</changefreq>
-      <priority>1</priority>
-   </url>
-EOF
-      perl -lane '
-use POSIX qw(strftime);
-use URI::Escape;
-
-$ENV{TZ} = "UTC";
-
-if (/(.*) 「(.*)」 `(.*) <(.*)>`_/) {
-  print "  <url>";
-  my $html = $4 =~ s/%20/\ /rg ;
-  print "    <loc>https://an9wer.github.io/" . join("/", map(uri_escape("$_"), split("/", "$html"))) . "</loc>";
-  my @stat = stat($ENV{q(DST_DIR)} . "/" . "$html");
-  print "    <lastmod>" . strftime("%Y-%m-%d", localtime($stat[9])) . "</lastmod>";
-  print "    <changefreq>always</changefreq>";
-  print "    <priority>0.5</priority>";
-  print "  </url>";
-}
-' "${SRC_DIR}/blog.rst"
-
-      cat <<EOF
-</urlset>
-EOF
-    } > "${DST_DIR}/sitemap.xml"
-
-    echo -e "'${SRC_DIR}/blog.rst'\n->\t'${DST_DIR}/sitemap.xml'"
-  fi
+# generate html page for each post
+foreach post $posts {
+	dict with post {
+		rst2html $rst $html $title
+	}
 }
 
-build_all() {
-  local IFS=$'\n'
-  build_rst $(find "$SRC_DIR" -type f -name "*.rst")
-  build_rss
-  build_sitemap
+# generate the 'posts.rst' file
+set pf [open src/posts.rst w]
+foreach post $posts {
+	dict with post {
+		puts $pf ".. container:: posts\n"
+		puts $pf "\t`$title <[url_encode $url]>`_\n"
+		puts $pf "\t$tags | $date\n"
+	}
 }
+close $pf
 
-# Main
-if [[ $1 =~ ^-f$|^--force$ ]]; then
-  force=true
-  shift
-fi
-if [[ -z $@ ]]; then
-  build_all
-else
-  while (( ${#@} > 0 )) ; do
-    case $1 in
-      *.rst   ) build_rst "$1" ;;
-      rss     ) build_rss ;;
-      sitemap ) build_sitemap ;;
-      *       ) usage ;;
-    esac
-    shift
-  done
-fi
+# generate the "posts" html page
+rst2html src/posts.rst docs/posts.html posts
+# generate the "moments" html page
+rst2html src/moments.rst docs/moments.html moments
+# generate the "tools" html page
+rst2html src/tools.rst docs/tools.html tools
+# generate the "about" html page
+rst2html src/about.rst docs/about.html about

@@ -59,3 +59,9 @@ programs external to the shell. Most shell scripts need to use a number of
 programs other than the shell itself to achieve their ends. Compared to the
 divergence in the functions and options offered by programs, the variance
 of all the shell languages is relatively trivial.
+
+In fact, the portability of external programs in shell scripts is the real
+difficulty that I can not cope with in an easy way. Although POSIX has
+specifications for various basic programs, such as ``find``, ``sed``, and so on,
+I still got some programs not included in POSIX, or some limitations using only
+POSIX defined options of a program.

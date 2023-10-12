@@ -176,7 +176,7 @@ tbody tr:nth-child(even) {
     color: #F3F3F3;;
 }
 
-#navbar .current {
+#navbar .active {
     color: #F3F3F3;
     border: solid 0.5px #336699;
     background-color: #336699;

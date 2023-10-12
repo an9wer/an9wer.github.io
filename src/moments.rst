@@ -1,6 +1,15 @@
 .. meta::
     :robots: noindex
 
+2023/10/11 Wed
+
+    Joined Tcl's monthly virtual meetup - a good way for developers and users
+    communicating with each other.
+
+2023/10/08 Sun
+
+    My first `contribution <https://github.com/gentoo/gentoo/commit/6bc97529f09b9b8dec6106b94a4013e34e0ed2b2>`_
+    to Gentoo.
 
 2023/10/04 Wed
 
