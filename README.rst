@@ -3,27 +3,35 @@ Blog
 
 My personal statistics blog system.
 
+Features
+--------
+
+- buld scripts written in the `Tcl`_ programming language
+- posts written in the `reStructuredText`_ markup language
+- support for generating an RSS feed
+- support for generating a sitemap
+
 Prerequisites
 -------------
 
-All posts are written in the reStructuredText (RST) markup language, and I am
-using `docutils <https://docutils.sourceforge.io/>`_ to convert them into HTML
-files, which can be installed as: ::
-
-    $ pip install docutils
+- Tcl >= 8.5
+- `docutils`_
 
 Usage
 -----
 
-Build all posts, as well as a RSS feed and a sitemap: ::
+Build all posts, the RSS feed file, and the sitemap file: ::
 
     $ ./build
 
-Remove obsolete HTML files (e.g. if renaming the name of RST files): ::
+Remove obsolete HTML files, after renaming post files: ::
 
     $ ./clean
 
-Run a simple web server (Python's http.server) locally and review posts on
-Firefox: ::
+Start a local web server, and open the home page on Firefox: ::
 
     $ ./run
+
+.. _Tcl: https://www.tcl.tk/
+.. _reStructuredText: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html
+.. _docutils: https://docutils.sourceforge.io/
