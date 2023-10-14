@@ -6,15 +6,15 @@ My personal statistics blog system.
 Features
 --------
 
-- buld scripts written in the `Tcl`_ programming language
-- posts written in the `reStructuredText`_ markup language
+- buld scripts written in `the Tcl programming language`_
+- posts written in `the reStructuredText markup language`_
 - support for generating an RSS feed
 - support for generating a sitemap
 
 Prerequisites
 -------------
 
-- Tcl >= 8.5
+- Tcl >= 8.6
 - `docutils`_
 
 Usage
@@ -32,6 +32,6 @@ Start a local web server, and open the home page on Firefox: ::
 
     $ ./run
 
-.. _Tcl: https://www.tcl.tk/
-.. _reStructuredText: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html
+.. _the Tcl programming language: https://www.tcl.tk/
+.. _the reStructuredText markup language: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html
 .. _docutils: https://docutils.sourceforge.io/
