@@ -15,7 +15,7 @@ Prerequisites
 -------------
 
 - Tcl >= 8.6
-- `docutils`_
+- `docutils`_ == 0.20.1
 
 Usage
 -----
