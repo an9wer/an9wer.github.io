@@ -58,6 +58,8 @@ foreach post $posts {
 }
 close $pf
 
+# generate the "index" html page
+rst2html src/posts.rst docs/index.html posts
 # generate the "posts" html page
 rst2html src/posts.rst docs/posts.html posts
 # generate the "moments" html page
