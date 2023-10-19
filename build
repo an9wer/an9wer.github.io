@@ -2,9 +2,23 @@
 
 package require fileutil
 
-proc url_encode url {
-	# TODO: encode url: https://www.ietf.org/rfc/rfc3986.txt
-	return [regsub -all { } $url {%20}]
+proc encode-url {url} {
+	# characters that should not be escaped, refer to:
+	# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+        foreach char [split $url {}] {
+                if {[string match {[A-Za-z0-9-_.!~*'();/?:@&=+$,#]} $char]} {
+                        append eurl $char
+                } else {
+                        binary scan [encoding convertto utf-8 $char] cu* nums
+                        foreach num $nums {
+                                append eurl [format {%%%X} $num]
+                        }
+                }
+        }
+
+	# TODO: escape characters that are excepted here
+	#   but should be escaped in HTML, e.g. &
+	return $eurl
 }
 
 proc rst2html {rst html title} {
@@ -52,7 +66,7 @@ set pf [open src/posts.rst w]
 foreach post $posts {
 	dict with post {
 		puts $pf ".. container:: posts\n"
-		puts $pf "\t`$title <[url_encode $url]>`_\n"
+		puts $pf "\t`$title <[encode-url $url]>`_\n"
 		puts $pf "\t$tags | $date\n"
 	}
 }
