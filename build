@@ -2,9 +2,10 @@
 
 package require fileutil
 
+# Encode and escape special characters into the hex format '%XX'.
+# Refer to the link below for the list of characters that are escape free:
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
 proc encode-url {url} {
-	# characters that should not be escaped, refer to:
-	# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
         foreach char [split $url {}] {
                 if {[string match {[A-Za-z0-9-_.!~*'();/?:@&=+$,#]} $char]} {
                         append eurl $char
