@@ -2,6 +2,14 @@
 
 package require fileutil
 
+# Get the modification time of a file with the W3C datetime format.
+# Refer to the link below for the W3C datetime format:
+# https://www.w3.org/TR/NOTE-datetime
+proc file-lastmod {file} {
+	file stat $file fstat
+	return [clock format $fstat(ctime) -format {%Y-%m-%dT%H:%M:%SZ} -timezone :UTC]
+}
+
 # Encode and escape special characters into the hex format '%XX'.
 # Refer to the link below for the list of characters that are escape free:
 # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
@@ -83,3 +91,45 @@ rst2html src/moments.rst docs/moments.html moments
 rst2html src/tools.rst docs/tools.html tools
 # generate the "about" html page
 rst2html src/about.rst docs/about.html about
+
+# generate the sitemap
+set dm an9wer.github.io
+set sf [open docs/sitemap.xml w]
+
+puts $sf {<?xml version="1.0" encoding="UTF-8"?>}
+puts $sf {<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">}
+
+puts $sf "\t<url>"
+puts $sf "\t\t<loc>https://$dm/index.html</loc>"
+puts $sf "\t\t<lastmod>[file-lastmod docs/index.html]</lastmod>"
+puts $sf "\t\t<changefreq>weekly</changefreq>"
+puts $sf "\t\t<priority>0.3</priority>"
+puts $sf "\t</url>"
+
+puts $sf "\t<url>"
+puts $sf "\t\t<loc>https://$dm/posts.html</loc>"
+puts $sf "\t\t<lastmod>[file-lastmod docs/posts.html]</lastmod>"
+puts $sf "\t\t<changefreq>weekly</changefreq>"
+puts $sf "\t\t<priority>0.3</priority>"
+puts $sf "\t</url>"
+
+puts $sf "\t<url>"
+puts $sf "\t\t<loc>https://$dm/about.html</loc>"
+puts $sf "\t\t<lastmod>[file-lastmod docs/about.html]</lastmod>"
+puts $sf "\t\t<changefreq>monthly</changefreq>"
+puts $sf "\t\t<priority>0.3</priority>"
+puts $sf "\t</url>"
+
+foreach post $posts {
+	dict with post {
+		puts $sf "\t<url>"
+		puts $sf "\t\t<loc>https://$dm[encode-url $url]</loc>"
+		puts $sf "\t\t<lastmod>[file-lastmod $html]</lastmod>"
+		puts $sf "\t\t<changefreq>monthly</changefreq>"
+		puts $sf "\t\t<priority>0.5</priority>"
+		puts $sf "\t</url>"
+	}
+}
+
+puts $sf {</urlset>}
+close $sf
