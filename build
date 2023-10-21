@@ -31,6 +31,16 @@ proc encode-url {url} {
 }
 
 proc rst2html {rst html title} {
+	if {[file exist $html]} {
+		file stat $rst              rstat
+		file stat $html             hstat
+		file stat src/template.html tstat
+
+		if {$hstat(ctime) > $rstat(ctime) && $hstat(ctime) > $tstat(ctime)} {
+			return
+		}
+	}
+
 	exec rst2html5.py				\
 		--strict				\
 		--link-stylesheet			\
@@ -40,7 +50,7 @@ proc rst2html {rst html title} {
 		--title "$title | an9wer's blog"	\
 		$rst $html
 
-	puts "$rst\n\t-> $html"
+	puts "$html <- $rst"
 }
 
 # collect information of each post
@@ -133,3 +143,6 @@ foreach post $posts {
 
 puts $sf {</urlset>}
 close $sf
+puts "docs/sitemap.xml"
+
+# TODO: generate the RSS feed
