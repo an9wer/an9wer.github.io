@@ -1,6 +1,6 @@
 .. container:: posts
 
-	`Portable Shell Scripts are Unachievable </2023/10/10_Portable%20Shell%20Scripts%20are%20Unachievable.html>`_
+	`The Portable Shell Script Is Unachievable </2023/10/10_The%20Portable%20Shell%20Script%20Is%20Unachievable.html>`_
 
 	thought | 2023-10-10
 
