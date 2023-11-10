@@ -73,12 +73,8 @@ foreach rst [lsort -decreasing [fileutil::findByPattern src -glob {[0-9][0-9]_*.
 	lappend posts $post
 }
 
-# generate html page for each post
-foreach post $posts {
-	dict with post {
-		rst2html $rst $html $title
-	}
-}
+
+# main
 
 # generate the 'posts.rst' file
 set pf [open src/posts.rst w]
@@ -102,7 +98,16 @@ rst2html src/tools.rst docs/tools.html tools
 # generate the "about" html page
 rst2html src/about.rst docs/about.html about
 
+# generate html page for each post
+foreach post $posts {
+	dict with post {
+		rst2html $rst $html $title
+	}
+}
+
 # generate the sitemap
+# refer to the link below for the sitemap specification:
+# https://www.sitemaps.org/protocol.html
 set dm an9wer.github.io
 set sf [open docs/sitemap.xml w]
 
@@ -142,7 +147,51 @@ foreach post $posts {
 }
 
 puts $sf {</urlset>}
+
 close $sf
 puts "docs/sitemap.xml"
 
-# TODO: generate the RSS feed
+# generate the RSS feed
+# refer the link below for the RSS specification:
+# https://www.rssboard.org/rss-specification
+set dm an9wer.github.io
+set rf [open docs/rss.xml w]
+puts $rf {<?xml version="1.0" encoding="UTF-8"?>}
+puts $rf {<rss version="2.0">}
+
+puts $rf "\t<channel>"
+puts $rf "\t\t<link>https://$dm/posts.html</link>"
+puts $rf "\t\t<title>an9wer's blog</title>"
+puts $rf "\t\t<category>blog</category>"
+puts $rf "\t\t<webMaster>an9wer@gmail.com (Runney Wu)</webMaster>"
+puts $rf "\t\t<managingEditor>an9wer@gmail.com (Runney Wu)</managingEditor>"
+puts $rf "\t\t<copyright>CC BY-NC-SA</copyright>"
+puts $rf "\t\t<pubDate>[clock format [clock seconds] -format {%a, %d %b %Y %H:%M:%S %Z} -timezone :UTC]</pubDate>"
+puts $rf "\t\t<lastBuildDate>[clock format [clock seconds] -format {%a, %d %b %Y %H:%M:%S %Z} -timezone :UTC]</lastBuildDate>"
+puts $rf "\t\t<docs>https://www.rssboard.org/rss-specification</docs>"
+puts $rf "\t\t<generator>https://github.com/an9wer/an9wer.github.io/blob/master/build</generator>"
+puts $rf "\t\t<ttl>[expr 60 * 24]</ttl>"
+puts $rf "\t\t<image>"
+puts $rf "\t\t\t<url>https://$dm/statics/images/avatar.jpg</url>"
+puts $rf "\t\t\t<title>an9wer's blog</title>"
+puts $rf "\t\t\t<link>https://$dm/posts.html</link>"
+puts $rf "\t\t</image>"
+
+foreach post $posts {
+	dict with post {
+		puts $rf "\t\t<item>"
+		puts $rf "\t\t\t<title>$title</title>"
+		puts $rf "\t\t\t<link>https://$dm[encode-url $url]</link>"
+		# TODO: description
+		puts $rf "\t\t\t<pubDate>[clock format [clock scan $date -format "%Y-%m-%d" -timezone :UTC] -format {%a, %d %b %Y %H:%M:%S %Z} -timezone :UTC]</pubDate>"
+		puts $rf "\t\t\t<author>an9wer@gmail.com</author>"
+		puts $rf "\t\t\t<category>$tags</category>"
+		puts $rf "\t\t</item>"
+	}
+}
+
+puts $rf "\t</channel>"
+puts $rf "</rss>"
+
+close $rf
+puts "docs/rss.xml"
