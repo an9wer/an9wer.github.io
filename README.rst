@@ -6,7 +6,7 @@ A statistics blog system inspired by `bashblog`_.
 Features
 --------
 
-- buld scripts written in `the Tcl programming language`_
+- the build script written in `the Tcl programming language`_
 - posts written in `the reStructuredText markup language`_
 - support for generating an RSS feed
 - support for generating a sitemap
