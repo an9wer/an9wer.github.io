@@ -1,3 +1,5 @@
+#!/usr/bin/env tclsh
+
 proc decode-url {url} {
 	regsub -all {(%[0-9a-fA-F]{2})+} $url \
 		{[encoding convertfrom utf-8 [binary decode hex [string map {% {}} \0]]]} durl
@@ -5,7 +7,6 @@ proc decode-url {url} {
 }
 
 proc HTTPServer {channel clientaddr clientport} {
-
 	lassign [split [gets $channel]] method path version
 
 	if {$method == "GET" && $version == "HTTP/1.1"} {
