@@ -1,6 +1,52 @@
-#!/bin/bash
+proc decode-url {url} {
+	regsub -all {(%[0-9a-fA-F]{2})+} $url \
+		{[encoding convertfrom utf-8 [binary decode hex [string map {% {}} \0]]]} durl
+	return [subst -novar -noback $durl]
+}
 
-pushd docs
-firefox 127.0.0.1:8000/index.html &
-python -m http.server 8000
-popd
+proc HTTPServer {channel clientaddr clientport} {
+
+	lassign [split [gets $channel]] method path version
+
+	if {$method == "GET" && $version == "HTTP/1.1"} {
+		if {$path == "/"} {
+			set path "/index.html"
+		}
+		set path [decode-url "docs$path"]
+
+		puts "Connection from $clientaddr:$clientport registered: $path"
+
+		if {[file exists $path]} {
+			set f [open $path r]
+
+			# Image and font files should be opened in a binary mode, and
+			# here use the binary mode for text files as well for laziness.
+			fconfigure $f       -translation binary
+			fconfigure $channel -translation binary
+
+			switch -regexp $path {
+				\.html$		{ set type "text/html" }
+				\.xml$		{ set type "text/xml" }
+				\.js$		{ set type "application/javascript" }
+				\.css$		{ set type "text/css" }
+				\.ttf$		{ set type "font/ttf" }
+				\.gif$		{ set type "image/gif" }
+				\.png$		{ set type "image/png" }
+				\.webp$		{ set type "image/webp" }
+				\.jpg$|\.jpeg$	{ set type "image/jpeg" }
+			}
+
+			puts $channel "HTTP/1.1 200 OK"
+			puts $channel "content-type: $type"
+			puts $channel ""
+			puts $channel [read $f]
+		} else {
+			puts $channel "HTTP/1.1 404 Not Found"
+		}
+	}
+
+	close $channel
+}
+
+socket -server HTTPServer -myaddr 127.0.0.1 8000
+vwait forever
