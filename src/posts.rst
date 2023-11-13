@@ -1,5 +1,11 @@
 .. container:: posts
 
+	`Gentoo on RaspberryPi 3B - Installation </2023/11/12_Gentoo%20on%20RaspberryPi%203B%20-%20Installation.html>`_
+
+	Gentoo RaspberryPi | 2023-11-12
+
+.. container:: posts
+
 	`The Portable Shell Script Is Unachievable </2023/10/10_The%20Portable%20Shell%20Script%20Is%20Unachievable.html>`_
 
 	thought | 2023-10-10

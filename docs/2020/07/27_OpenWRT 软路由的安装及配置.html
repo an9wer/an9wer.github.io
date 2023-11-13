@@ -63,6 +63,7 @@
 所以需要扩展它的尺寸，将磁盘所剩下的空间都划给它：</p>
 <pre class="literal-block"># parted /dev/sdX
     resizepart 2 -1
+# e2fsck -f /dev/sdX2
 # resize2fs /dev/sdX2
 # reboot</pre>
 <p>重启后进入 OpenWRT 系统，开始安装需要的软件包。

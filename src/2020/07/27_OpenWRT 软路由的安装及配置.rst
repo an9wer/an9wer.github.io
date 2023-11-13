@@ -23,6 +23,7 @@ OpenWRT 软路由的安装及配置
 
     # parted /dev/sdX
         resizepart 2 -1
+    # e2fsck -f /dev/sdX2
     # resize2fs /dev/sdX2
     # reboot
 
