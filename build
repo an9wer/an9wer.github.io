@@ -41,6 +41,9 @@ proc rst2html {rst html title} {
 		}
 	}
 
+	# create parent directories
+	file mkdir [file dirname $html]
+
 	exec rst2html5.py				\
 		--strict				\
 		--link-stylesheet			\
