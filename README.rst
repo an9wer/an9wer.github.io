@@ -25,10 +25,6 @@ Build all posts, the RSS feed file, and the sitemap file: ::
 
     $ ./build
 
-Remove obsolete HTML files, after renaming post files: ::
-
-    $ ./clean
-
 Start a local HTTP server, listening on the port 8000: ::
 
     $ ./run
