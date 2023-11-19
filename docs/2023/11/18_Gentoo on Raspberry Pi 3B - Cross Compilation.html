@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Gentoo RaspberryPi" name="tags" />
+<title>Gentoo on Raspberry Pi 3B - Cross Compilation | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google-site-verification" content="D9Voj3ig1u2V_j67hvPedW7fa4RE4Wa7HAT2iOkm51s" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<script defer src="/statics/js/index.js" type="text/javascript"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1BWX0L2JW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W1BWX0L2JW');
+</script>
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/posts.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="posts" href="/posts.html">Posts</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="tools" href="/tools.html">Tools</a>
+      <a id="about" href="/about.html">About</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Gentoo on Raspberry Pi 3B - Cross Compilation</h1>
+<dl class="docinfo simple">
+<dt class="published">published<span class="colon">:</span></dt>
+<dd class="published"><p>2023-11-18</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>In <a class="reference external" href="/2023/11/12_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html">my last post</a>, I have installed Gentoo on my Raspberry Pi 3B. However,
+compiling packages from source codes (that is how Gentoo works) requires a lot
+of hardware resources, it seems impractial to do that on a Raspberry Pi 3B.
+Fortunately, it is possible to transfer the heavy compilation tasks to a
+powerful AMD64 system (such as a Gentoo desktop/server with more compute cores
+and more memory) using <a class="reference external" href="https://wiki.gentoo.org/wiki/Crossdev">crossdev</a>  - a set of bash scripts that utilize emerge
+to provide a system integrated cross-compilation capability.</p>
+<section id="steps-for-cross-compilation">
+<h2>Steps for Cross Compilation</h2>
+<section id="setup-cross-toolchain">
+<h3>Setup Cross-toolchain</h3>
+<p>Install the crossdev:</p>
+<pre class="literal-block">$ sudo emerge -av sys-devel/crossdev</pre>
+<p>Install the toolchain for Raspberry Pi 3B in 32-bit mode:</p>
+<pre class="literal-block">$ sudo crossdev --stable -t armv7a-unknown-linux-gnueabihf</pre>
+<p>The above command will create a cross build environment under the directory
+&quot;/usr/armv7a-unknown-linux-gnueabihf&quot;, which is a minimal root system:</p>
+<pre class="literal-block">$ ls /usr/armv7a-unknown-linux-gnueabihf/
+bin  etc  lib  run  sbin  sys-include  tmp  usr  var</pre>
+<p>Such that we can cross compile packages and install them into the cross build
+environment:</p>
+<pre class="literal-block">$ sudo armv7a-unknown-linux-gnueabihf-emerge -av &lt;PACKAGE&gt;</pre>
+<p>But before installing any packages, we need to dive into the cross
+build environment and configure its portage system.</p>
+</section>
+<section id="configure-portage-make-conf">
+<h3>Configure portage/make.conf</h3>
+<p>Set FLAGS-related variables (just copied from the &quot;make.conf&quot; file in the
+Raspberry Pi 3B):</p>
+<pre class="literal-block">$ sudo nano /usr/armv7a-unknown-linux-gnuabihf/etc/portage/make.conf
+        COMMON_FLAGS=&quot;-O2 -pipe -march=armv7-a -mfpu=vfpv3-d16 -mfloat-abi=hard&quot;
+        CFLAGS=&quot;${COMMON_FLAGS}&quot;
+        CXXFLAGS=&quot;${COMMON_FLAGS}&quot;
+        FCFLAGS=&quot;${COMMON_FLAGS}&quot;
+        FFLAGS=&quot;${COMMON_FLAGS}&quot;</pre>
+<p>Disable the <span class="docutils literal">introspection</span> USE flag, because I found the
+<span class="docutils literal"><span class="pre">gobject-introspection</span></span> package <a class="reference external" href="https://bugs.gentoo.org/850895">failed</a> to be cross compiled:</p>
+<pre class="literal-block">$ sudo nano /usr/armv7a-unknown-linux-gnuabihf/etc/portage/make.conf
+        USE=&quot;-introspection&quot;</pre>
+</section>
+<section id="configure-portage-make-profile">
+<h3>Configure portage/make.profile</h3>
+<p>The default &quot;make.profile&quot; in the cross build environment, created by the
+crossdev, is linked to &quot;gentoo/profiles/embedded&quot;. Here we set it to
+&quot;gentoo/profiles/default/linux/arm/17.0/armv7a&quot; to keep it same as the one
+in the Raspberry Pi 3B:</p>
+<pre class="literal-block">$ sudo rm /usr/armv7a-unknown-linux-gnueabihf/etc/portage/make.profile
+$ sudo ln -s /var/db/repos/gentoo/profiles/default/linux/arm/17.0/armv7a /usr/armv7a-unknown-linux-gnueabihf/etc/portage/make.profile</pre>
+</section>
+</section>
+<section id="finally">
+<h2>Finally</h2>
+<p>Now, we can cross compile packages for the Rapberry Pi 3B on a powerful AMD64
+machine.</p>
+<p>Thanks for reading :)</p>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+</body>
+</html>

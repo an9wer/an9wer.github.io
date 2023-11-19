@@ -7,8 +7,8 @@
 		<webMaster>an9wer@gmail.com (Runney Wu)</webMaster>
 		<managingEditor>an9wer@gmail.com (Runney Wu)</managingEditor>
 		<copyright>CC BY-NC-SA</copyright>
-		<pubDate>Mon, 13 Nov 2023 10:55:26 UTC</pubDate>
-		<lastBuildDate>Mon, 13 Nov 2023 10:55:26 UTC</lastBuildDate>
+		<pubDate>Sun, 19 Nov 2023 11:36:00 UTC</pubDate>
+		<lastBuildDate>Sun, 19 Nov 2023 11:36:00 UTC</lastBuildDate>
 		<docs>https://www.rssboard.org/rss-specification</docs>
 		<generator>https://github.com/an9wer/an9wer.github.io/blob/master/build</generator>
 		<ttl>1440</ttl>
@@ -18,9 +18,16 @@
 			<link>https://an9wer.github.io/posts.html</link>
 		</image>
 		<item>
-			<title>Gentoo on RaspberryPi 3B - Installation</title>
-			<link>https://an9wer.github.io/2023/11/12_Gentoo%20on%20RaspberryPi%203B%20-%20Installation.html</link>
-			<pubDate>Sun, 12 Nov 2023 00:00:00 UTC</pubDate>
+			<title>Gentoo on Raspberry Pi 3B - Cross Compilation</title>
+			<link>https://an9wer.github.io/2023/11/18_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Cross%20Compilation.html</link>
+			<pubDate>Sat, 18 Nov 2023 00:00:00 UTC</pubDate>
+			<author>an9wer@gmail.com</author>
+			<category>Gentoo RaspberryPi</category>
+		</item>
+		<item>
+			<title>Gentoo on Raspberry Pi 3B - Installation</title>
+			<link>https://an9wer.github.io/2023/11/11_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html</link>
+			<pubDate>Sat, 11 Nov 2023 00:00:00 UTC</pubDate>
 			<author>an9wer@gmail.com</author>
 			<category>Gentoo RaspberryPi</category>
 		</item>

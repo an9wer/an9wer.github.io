@@ -1,8 +1,14 @@
 .. container:: posts
 
-	`Gentoo on RaspberryPi 3B - Installation </2023/11/12_Gentoo%20on%20RaspberryPi%203B%20-%20Installation.html>`_
+	`Gentoo on Raspberry Pi 3B - Cross Compilation </2023/11/18_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Cross%20Compilation.html>`_
 
-	Gentoo RaspberryPi | 2023-11-12
+	Gentoo RaspberryPi | 2023-11-18
+
+.. container:: posts
+
+	`Gentoo on Raspberry Pi 3B - Installation </2023/11/11_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html>`_
+
+	Gentoo RaspberryPi | 2023-11-11
 
 .. container:: posts
 
