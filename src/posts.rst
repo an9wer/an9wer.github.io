@@ -6,9 +6,9 @@
 
 .. container:: posts
 
-	`Gentoo on Raspberry Pi 3B - Installation </2023/11/11_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html>`_
+	`Gentoo on Raspberry Pi 3B - Installation </2023/11/12_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html>`_
 
-	Gentoo RaspberryPi | 2023-11-11
+	Gentoo RaspberryPi | 2023-11-12
 
 .. container:: posts
 
