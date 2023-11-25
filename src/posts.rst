@@ -1,5 +1,11 @@
 .. container:: posts
 
+	`Gentoo on Raspberry Pi 3B - Binhost </2023/11/20_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Binhost.html>`_
+
+	Gentoo RaspberryPi | 2023-11-20
+
+.. container:: posts
+
 	`Gentoo on Raspberry Pi 3B - Cross Compilation </2023/11/18_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Cross%20Compilation.html>`_
 
 	Gentoo RaspberryPi | 2023-11-18

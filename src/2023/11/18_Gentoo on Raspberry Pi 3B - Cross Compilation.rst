@@ -17,6 +17,9 @@ to provide a system integrated cross-compilation capability.
 Steps for Cross Compilation
 ---------------------------
 
+The following steps will create a cross build environment on a powerful AMD64
+machine for compiling packages for the Raspberry Pi 3B.
+
 Setup Cross-toolchain
 """""""""""""""""""""
 
@@ -24,7 +27,7 @@ Install the crossdev: ::
 
 	$ sudo emerge -av sys-devel/crossdev
 
-Install the toolchain for Raspberry Pi 3B in 32-bit mode: ::
+Install toolchains for the Raspberry Pi 3B (32-bit mode): ::
 
 	$ sudo crossdev --stable -t armv7a-unknown-linux-gnueabihf
 
@@ -34,13 +37,13 @@ The above command will create a cross build environment under the directory
 	$ ls /usr/armv7a-unknown-linux-gnueabihf/
 	bin  etc  lib  run  sbin  sys-include  tmp  usr  var
 
-Such that we can cross compile packages and install them into the cross build
+After that we can cross compile packages and install them into the cross build
 environment: ::
 
 	$ sudo armv7a-unknown-linux-gnueabihf-emerge -av <PACKAGE>
 
-But before installing any packages, we need to dive into the cross
-build environment and configure its portage system.
+But before compiling any packages, we need to dive into the cross
+build environment and configure the portage system.
 
 Configure portage/make.conf
 """""""""""""""""""""""""""
@@ -55,8 +58,8 @@ Raspberry Pi 3B): ::
 		FCFLAGS="${COMMON_FLAGS}"
 		FFLAGS="${COMMON_FLAGS}"
 
-Disable the ``introspection`` USE flag, because I found the
-``gobject-introspection`` package `failed`_ to be cross compiled: ::
+Disable the ``introspection`` USE flag, because there are some existing
+`issues`_ for the ``gobject-introspection`` package to be cross compiled: ::
 
 	$ sudo nano /usr/armv7a-unknown-linux-gnuabihf/etc/portage/make.conf
 		USE="-introspection"
@@ -72,14 +75,13 @@ in the Raspberry Pi 3B::
 	$ sudo rm /usr/armv7a-unknown-linux-gnueabihf/etc/portage/make.profile
 	$ sudo ln -s /var/db/repos/gentoo/profiles/default/linux/arm/17.0/armv7a /usr/armv7a-unknown-linux-gnueabihf/etc/portage/make.profile
 
-Finally
--------
+Finally, we can safely cross compile packages for the Raspberry Pi 3B, or even
+update the entire system: ::
 
-Now, we can cross compile packages for the Rapberry Pi 3B on a powerful AMD64
-machine.
+	$ sudo armv7a-unknown-linux-gnueabihf-emerge -av --update --newuse --deep @world
 
 Thanks for reading :)
 
 .. _my last post: /2023/11/12_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html
 .. _crossdev: https://wiki.gentoo.org/wiki/Crossdev
-.. _failed: https://bugs.gentoo.org/850895
+.. _issues: https://bugs.gentoo.org/850895
