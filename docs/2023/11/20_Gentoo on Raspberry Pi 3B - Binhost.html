@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Gentoo RaspberryPi" name="tags" />
+<title>Gentoo on Raspberry Pi 3B - Binhost | an9wer's blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="google-site-verification" content="D9Voj3ig1u2V_j67hvPedW7fa4RE4Wa7HAT2iOkm51s" />
+<link rel="stylesheet" href="/statics/css/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to an9wer's blog" href="/blog.rss" />
+<link rel="icon" href="/statics/images/icon.jpg" type="image/jpeg" size="32x32" />
+<script defer src="/statics/js/index.js" type="text/javascript"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W1BWX0L2JW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W1BWX0L2JW');
+</script>
+</head>
+
+<body>
+  <div id="main">
+
+    <div id="header">
+      <div id="headerLeft">
+        <div id="name"><a href="/posts.html">an9wer's blog</a></div>
+        <div id="signature">Just stick to it :)</div>
+      </div> <!-- headerLeft -->
+      <div id="headerRight">
+        <div id="avatar"><img src="/statics/images/avatar.jpg"></div>
+      </div> <!-- headerRight -->
+    </div> <!-- header -->
+
+    <div id="navbar">
+      <a id="posts" href="/posts.html">Posts</a>
+      <a id="moments" href="/moments.html">Moments</a>
+      <a id="tools" href="/tools.html">Tools</a>
+      <a id="about" href="/about.html">About</a>
+    </div> <!-- navbar -->
+
+<h1 class="title">Gentoo on Raspberry Pi 3B - Binhost</h1>
+<dl class="docinfo simple">
+<dt class="published">published<span class="colon">:</span></dt>
+<dd class="published"><p>2023-11-20</p>
+</dd>
+</dl>
+
+    <div id="content">
+<p>In <a class="reference external" href="/2023/11/18_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Cross%20Compilation.html">my early post</a>, a cross build environment has been set up on a powerful
+AMD64 system to compile packages for the Raspberry Pi 3B. As mentioned, the
+cross build environment itself is a minimal Linux root system, in which
+armv7a-architecture packages are installed. However, how can those packages be
+available to the Raspberry Pi 3B? Thus, in this post I will continue to set up a
+binhost (binary package host) <a class="footnote-reference brackets" href="#footnote-1" id="footnote-reference-1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> on the AMD64 system, which aims to provide
+the Raspberry Pi 3B readily installable, precompiled packages.</p>
+<section id="set-up-a-binhost-on-the-amd64-system">
+<h2>Set up a Binhost on the AMD64 System</h2>
+<p>The first step is to generate binary packages whenever a package is installed by
+the portage system, which can be approached by the <span class="docutils literal">buildpkg</span> feature in
+the &quot;/etc/portage/make.conf&quot; file:</p>
+<pre class="literal-block">$ sudo nano /etc/portage/make.conf
+        FEATURES=&quot;buildpkg&quot;</pre>
+<p>Next step is to find a way of transfering binary packages from the AMD64 system
+to the Raspberry Pi 3B. Here is an example of using the SSH protocol to access
+binary packages:</p>
+<pre class="literal-block"># copy the public key of the Raspberry Pi 3B to the AMD64 system
+$ ssh-copy-id -i ~/.ssh/rpi3b USER&#64;AMD64</pre>
+</section>
+<section id="install-binary-packages-on-the-raspberry-pi-3b">
+<h2>Install Binary Packages on the Raspberry Pi 3B</h2>
+<p>Correspondingly, to let the portage system retreive binary packages while
+installing packages is to use the <span class="docutils literal">getbinpkg</span> feature in the
+&quot;/etc/portage/make.conf&quot; file:</p>
+<pre class="literal-block">$ sudo nano /etc/portage/make.conf
+        FEATURES=&quot;getbinpkg&quot;</pre>
+<p>Also, to tell the portage system to download binary packages through the SSH
+protocol from the AMD64 system:</p>
+<pre class="literal-block">$ sudo nano /etc/portage/make.conf
+        PORTAGE_BINHOST=&quot;ssh://USER&#64;AMD64/usr/armv7a-unknown-linux-gnueabihf/var/cache/binpkgs&quot;</pre>
+<p>After that, installing a package on the Raspberry Pi 3B will not compile the
+package from scratch, instead a pre-compiled binary package will be used:</p>
+<pre class="literal-block">$ sudo emerge -av &lt;PKG&gt;</pre>
+<p>Thanks for reading :)</p>
+</section>
+<section id="further-readings">
+<h2>Further Readings</h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#footnote-reference-1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://wiki.gentoo.org/wiki/Binary_package_guide">Gentoo Wiki: Binary Package Guide</a></p>
+</aside>
+</aside>
+</section>
+    </div> <!-- content -->
+
+    <div id="footer">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA</a> 2018-2023 an9wer | powered by <a href="http://docutils.sourceforge.net/" target="_blank">docutils</a>
+    </div> <!-- footer -->
+
+  </div> <!-- main -->
+</body>
+</html>

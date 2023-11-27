@@ -6,7 +6,7 @@ Gentoo on Raspberry Pi 3B - Cross Compilation
 .. meta::
 	:tags: Gentoo RaspberryPi
 
-In `my last post`_, I have installed Gentoo on my Raspberry Pi 3B. However,
+In `my previous post`_, I have installed Gentoo on my Raspberry Pi 3B. However,
 compiling packages from source codes (that is how Gentoo works) requires a lot
 of hardware resources, it seems impractial to do that on a Raspberry Pi 3B.
 Fortunately, it is possible to transfer the heavy compilation tasks to a
@@ -82,6 +82,6 @@ update the entire system: ::
 
 Thanks for reading :)
 
-.. _my last post: /2023/11/12_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html
+.. _my previous post: /2023/11/12_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Installation.html
 .. _crossdev: https://wiki.gentoo.org/wiki/Crossdev
 .. _issues: https://bugs.gentoo.org/850895
