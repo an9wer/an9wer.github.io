@@ -1,5 +1,11 @@
 .. container:: posts
 
+	`Porting Rsstail onto OpenBSD </2023/11/27_Porting%20Rsstail%20onto%20OpenBSD.html>`_
+
+	OpenBSD | 2023-11-27
+
+.. container:: posts
+
 	`Gentoo on Raspberry Pi 3B - Binhost </2023/11/20_Gentoo%20on%20Raspberry%20Pi%203B%20-%20Binhost.html>`_
 
 	Gentoo RaspberryPi | 2023-11-20
