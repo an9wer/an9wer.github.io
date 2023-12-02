@@ -7,11 +7,11 @@ Porting Rsstail onto OpenBSD
         :tags: OpenBSD
 
 `Rsstail`_ is a command-line tool that monitors RSS feeds and detects new
-entries. I found it as I was recently searching for a method to message me via
-Telegram whenever there is a new post of `slashdot`_ published. Fortunately,
-slashdot provides an RSS feed to notify readers know its updates, I can
-integrate rsstail into a service that is run in the background to detect and
-notify me of new entries of the RSS feed.
+entries. I found it as I was recently searching for a method to message myself
+via Telegram whenever there is a new post of `slashdot`_ published. Fortunately,
+slashdot provides an RSS feed to notify readers of its updates. I can integrate
+rsstail into a service running in the background to check any new entries of the
+RSS feed and send contents to Telegram.
 
 The service is supposed to run on an OpenBSD server, but rsstail has not been
 ported onto OpenBSD, which means I have to build it by myself.
