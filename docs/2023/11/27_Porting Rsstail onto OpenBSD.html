@@ -74,8 +74,8 @@ a &quot;configure&quot; file. Note that the version of installed automake and au
 should be specified:</p>
 <pre class="literal-block">$ AUTOMAKE_VERSION=1.16 AUTOCONF_VERSION=2.71 sh autogen.sh</pre>
 <p>After that, use the &quot;configure&quot; script to check dependent libraries and generate
-a Makefile. Note that OpenBSD places files of a installed package, including
-its library files if any, into the &quot;/usr/local&quot; directory (e.g.
+a Makefile. Note that OpenBSD places all files of any installed package,
+including its library files if any, into the &quot;/usr/local&quot; directory (e.g.
 &quot;/usr/local/lib/libcurl.so&quot;). To let the &quot;configure&quot; script find the location
 of library files that is under the &quot;usr/local&quot; directory, use <span class="docutils literal">CPPFLAGS</span> and
 <span class="docutils literal">LDFLAGS</span> to specify the location expicitly :</p>

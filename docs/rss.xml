@@ -7,8 +7,8 @@
 		<webMaster>an9wer@gmail.com (Runney Wu)</webMaster>
 		<managingEditor>an9wer@gmail.com (Runney Wu)</managingEditor>
 		<copyright>CC BY-NC-SA</copyright>
-		<pubDate>Sat, 02 Dec 2023 05:56:41 UTC</pubDate>
-		<lastBuildDate>Sat, 02 Dec 2023 05:56:41 UTC</lastBuildDate>
+		<pubDate>Fri, 08 Dec 2023 13:25:36 UTC</pubDate>
+		<lastBuildDate>Fri, 08 Dec 2023 13:25:36 UTC</lastBuildDate>
 		<docs>https://www.rssboard.org/rss-specification</docs>
 		<generator>https://github.com/an9wer/an9wer.github.io/blob/master/build</generator>
 		<ttl>1440</ttl>
@@ -17,6 +17,13 @@
 			<title>an9wer's blog</title>
 			<link>https://an9wer.github.io/posts.html</link>
 		</image>
+		<item>
+			<title>Invoking Tcl in C</title>
+			<link>https://an9wer.github.io/2023/12/08_Invoking%20Tcl%20in%20C.html</link>
+			<pubDate>Fri, 08 Dec 2023 00:00:00 UTC</pubDate>
+			<author>an9wer@gmail.com</author>
+			<category>Tcl</category>
+		</item>
 		<item>
 			<title>Porting Rsstail onto OpenBSD</title>
 			<link>https://an9wer.github.io/2023/11/27_Porting%20Rsstail%20onto%20OpenBSD.html</link>

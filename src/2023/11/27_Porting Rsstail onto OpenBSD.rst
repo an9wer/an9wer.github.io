@@ -39,8 +39,8 @@ should be specified: ::
         $ AUTOMAKE_VERSION=1.16 AUTOCONF_VERSION=2.71 sh autogen.sh
 
 After that, use the "configure" script to check dependent libraries and generate
-a Makefile. Note that OpenBSD places files of a installed package, including
-its library files if any, into the "/usr/local" directory (e.g.
+a Makefile. Note that OpenBSD places all files of any installed package,
+including its library files if any, into the "/usr/local" directory (e.g.
 "/usr/local/lib/libcurl.so"). To let the "configure" script find the location
 of library files that is under the "usr/local" directory, use ``CPPFLAGS`` and
 ``LDFLAGS`` to specify the location expicitly : ::
